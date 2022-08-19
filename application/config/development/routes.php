@@ -119,3 +119,11 @@ $route['export/container/save'] = 'Container/save';
 $route['export/container/detail/(:num)'] = 'Container/detail/$1';
 $route['export/container/update'] = 'Container/update';
 $route['export/container/delete/(:num)'] = 'Container/delete/$1';
+
+/** Export - Incoterm */
+$route['export/incoterm'] = 'Incoterm';
+$route['export/incoterm/add'] = 'Incoterm/add';
+$route['export/incoterm/save'] = 'Incoterm/save';
+$route['export/incoterm/detail/(:num)'] = 'Incoterm/detail/$1';
+$route['export/incoterm/update'] = 'Incoterm/update';
+$route['export/incoterm/delete/(:num)'] = 'Incoterm/delete/$1';
