@@ -38,12 +38,7 @@
 
         public function add()
         {
-            $datas['css'] = [
-                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
-                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
-            ];
             $datas['js'] = [
-                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
@@ -74,12 +69,7 @@
 
         public function detail($id)
         {
-            $datas['css'] = [
-                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
-                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
-            ];
             $datas['js'] = [
-                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),

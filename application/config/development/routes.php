@@ -63,6 +63,7 @@ $route['home'] = 'Home/modules';
 
 /** UAC */
 $route['uac'] = 'Home/uac';
+
 /** UAC - User */
 $route['uac/user'] = 'User';
 $route['uac/user/add'] = 'User/add';
@@ -70,6 +71,7 @@ $route['uac/user/save'] = 'User/save';
 $route['uac/user/detail/(:num)'] = 'User/detail/$1';
 $route['uac/user/update'] = 'User/update';
 $route['uac/user/delete/(:num)'] = 'User/delete/$1';
+
 /** UAC - Module */
 $route['uac/modules'] = 'Modules';
 $route['uac/modules/add'] = 'Modules/add';
@@ -77,6 +79,7 @@ $route['uac/modules/save'] = 'Modules/save';
 $route['uac/modules/detail/(:num)'] = 'Modules/detail/$1';
 $route['uac/modules/update'] = 'Modules/update';
 $route['uac/modules/delete/(:num)'] = 'Modules/delete/$1';
+
 /** UAC - Menu */
 $route['uac/menu'] = 'Menu';
 $route['uac/menu/add'] = 'Menu/add';
@@ -84,6 +87,7 @@ $route['uac/menu/save'] = 'Menu/save';
 $route['uac/menu/detail/(:num)'] = 'Menu/detail/$1';
 $route['uac/menu/update'] = 'Menu/update';
 $route['uac/menu/delete/(:num)'] = 'Menu/delete/$1';
+
 /** UAC - Assign menu */
 $route['uac/assignmenu'] = 'AssignMenu';
 $route['uac/assignmenu/save'] = 'AssignMenu/save';
@@ -91,6 +95,7 @@ $route['uac/assignmenu/delete/(:num)'] = 'AssignMenu/delete/$1';
 
 /** Export */
 $route['export'] = 'Home/export';
+
 /** Export - TOP */
 $route['export/top'] = 'TOP';
 $route['export/top/add'] = 'TOP/add';
@@ -98,6 +103,7 @@ $route['export/top/save'] = 'TOP/save';
 $route['export/top/detail/(:num)'] = 'TOP/detail/$1';
 $route['export/top/update'] = 'TOP/update';
 $route['export/top/delete/(:num)'] = 'TOP/delete/$1';
+
 /** Export - Country */
 $route['export/country'] = 'Country';
 $route['export/country/add'] = 'Country/add';
@@ -105,5 +111,11 @@ $route['export/country/save'] = 'Country/save';
 $route['export/country/detail/(:num)'] = 'Country/detail/$1';
 $route['export/country/update'] = 'Country/update';
 $route['export/country/delete/(:num)'] = 'Country/delete/$1';
+
 /** Export - Container */
 $route['export/container'] = 'Container';
+$route['export/container/add'] = 'Container/add';
+$route['export/container/save'] = 'Container/save';
+$route['export/container/detail/(:num)'] = 'Container/detail/$1';
+$route['export/container/update'] = 'Container/update';
+$route['export/container/delete/(:num)'] = 'Container/delete/$1';
