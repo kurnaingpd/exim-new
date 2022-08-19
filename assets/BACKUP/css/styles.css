@@ -1,0 +1,40 @@
+/* Start Vlanding */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.login-form{
+    margin-top: 150px;
+}
+
+.form-back{
+    width: 500px;
+    height: 500px;
+    padding: 40px;
+}
+
+.form-bd{
+    color:#0F52BA;
+}
+
+.heading-login{
+    font-weight: 800;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+body{
+    background-color: #0F52BA;
+    font-family: 'Roboto', sans-serif;
+}
+
+form label{
+    font-weight: 700;
+}
+
+.logbtn{
+    width: 150px;
+    margin-top: 20px;
+}
+
+/* End Vlanding */

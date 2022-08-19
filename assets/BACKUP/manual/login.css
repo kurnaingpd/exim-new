@@ -1,0 +1,42 @@
+html, body{
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0px;
+}
+
+.flex-card{
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    background-color: #0B1F65;
+}
+
+.flx1{
+    background-color: #0B1F65;
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    position: absolute;
+    z-index: -1;
+    /* box-shadow: rgb(50, 50, 51);
+    box-shadow: 3px 3px 10px 2px rgb(177, 177, 177); */
+}
+
+.flx2{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 255, 255);
+    height: 50%;
+    width: 30%;
+    margin-top: 100px;
+    padding: 30px;
+    position: absolute;
+    z-index: 1;
+    border-radius: 3px;
+    /* text-align: center; */
+}
+
+#ic-head{
+    width: 300px;
+    height: 80px;
+    margin-left: -90px;
+}

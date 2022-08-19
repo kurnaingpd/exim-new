@@ -1,0 +1,45 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class AuthLogin extends CI_Controller {
+
+    function __construct(){
+        parent:: __construct();
+
+        // $this->load->model('MRoot');
+
+    }
+
+    public function doLogin()
+	{
+		$userlogin = $this->input->post('username');
+		$password = $this->input->post('password');
+		$berhasil = $this->MLogin->CheckLogin($userlogin,$password);
+
+		if($berhasil){
+
+            $userlogin = $this->MLogin->GetUserLogin($userlogin, $password);
+            $UserId=$userlogin->UserId;
+
+			$this->session->set_userdata('logged_gexp_in', $userlogin);
+     		$data = array(
+     				"LastLogin" => NOW,
+     		);
+            $this->MLogin->UpdateLastLogin($data, $userlogin->UserName);
+            
+            redirect('Users/Dashboard');
+                          		
+			}else{
+				$this->session->set_flashdata('warns','Mohon Maaf Untuk Username / Password Anda Salah.');
+     			redirect('Login','refresh');
+			}
+    }
+    
+    public function doLogout()
+	{	
+		$this->session->unset_userdata('logged_gexp_in');
+		$this->session->sess_destroy();
+		redirect('Login','refresh');
+	}
+
+}

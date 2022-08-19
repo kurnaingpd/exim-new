@@ -1,0 +1,38 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class RootDashboard extends CI_Controller {
+
+function __construct(){
+    parent:: __construct();
+    
+    if(!$this->session->userdata('logged_gexp_in')){
+        redirect('RootMode/doLogout');
+    }
+        $this->load->model('MRoot');
+        $this->load->model('MLogin');
+}
+
+public function Dashboard(){
+
+    $UserId=$this->session->userdata('logged_gexp_in')->UsersId;
+    // print_r($UserId);
+    $DataUsers=$this->MLogin->GetProfileSign($UserId);
+    $GroupMenu=$DataUsers->UserGroup;
+    $data['menusign']=$this->MLogin->GetMasterMenuSign($UserId);
+
+    // print_r($data);
+
+    // print_r($GroupMenu);
+
+    // $data['menusign']=$this->MLogin->GetMenuSign($UserId);
+	$this->load->view('rootmode/dashboard',$data);
+
+}
+
+
+
+
+
+
+}

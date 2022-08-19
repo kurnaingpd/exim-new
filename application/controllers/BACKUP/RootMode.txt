@@ -1,0 +1,74 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class RootMode extends CI_Controller {
+
+function __construct(){
+    parent:: __construct();
+    
+//     if(!$this->session->userdata('logged_gsts_in')){
+//     redirect('AuthLogin/doLogout');
+// }
+    $this->load->model('MRoot');
+    $this->load->model('MLogin');
+}
+
+public function index(){
+
+	$this->load->view('rootmode/rootlogin');
+
+}
+
+public function doLogin(){
+
+  $username = $this->input->post('username');
+  $password = md5($this->input->post('password'));
+  $hashpass = base64_encode(hash("sha1",$password));
+
+  $CheckUser=$this->MRoot->CheckRootLogin($username,$password,$hashpass);
+  // echo $CheckUser;
+  if($CheckUser=='TRUE'){
+
+      echo "TRUE";
+      $userlogin = $this->MRoot->GetUserRoot($username, $hashpass);
+      $this->session->set_userdata('logged_gexp_in', $userlogin);
+      $data = array(
+        "LastLogin" => NOW,
+      );
+      $this->MRoot->UpdateLastLogin($data, $userlogin->UserName);
+      redirect('RootDashboard/Dashboard');
+
+  }else{
+
+      echo "FALSE";
+
+  }
+
+  // if($CheckUser==TRUE){
+  //   echo "TRUE";
+  // //   // $userlogin = $this->MRoot->GetUserRoot($username, $hashpass);
+  // //   // $this->session->set_userdata('logged_gexp_in', $userlogin);
+  // //   // redirect('RootDashboard/Dashboard');
+  // }else{
+  //   echo"FALSE";
+  // //   // redirect('RootMode');
+  // }
+
+}
+
+public function doLogout(){
+
+		$this->session->unset_userdata('logged_gexp_in');
+		$this->session->sess_destroy();
+		redirect('RootMode','refresh');
+  
+}
+
+public function Test(){
+  $this->load->view('Homepage');
+}
+
+
+
+
+}

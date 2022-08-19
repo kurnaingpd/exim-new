@@ -1,0 +1,695 @@
+<form class="form-horizontal form-bordered" method="get">
+
+											<div class="form-group">
+												<div class="col-md-1">
+													<div>
+														<span class="btn btn-danger"></span>
+													</div>
+												</div>
+												<label class="col-md-2" for="inputDefault">SIGN PI</label>
+												<div class="col-md-3">
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault" disabled>
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault" disabled>
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary" disabled><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success" disabled><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Purchase Order ( If Any )</label>
+												<div class="col-md-3">
+													
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">TOP</label>
+												<div class="col-md-3">
+													
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Down Payment Receipt</label>
+												<div class="col-md-3">
+													
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Down Payment Receipt Confirmation</label>
+												<div class="col-md-3">
+													
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Shipping Term</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+													<select id="basic" data-plugin-selectTwo class="form-control" name="customercountry">
+															<option value="">-- Pilih --</option>
+															<option value="">FOB</option>
+															<option value="">CIF</option>
+                                                    </select>
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<p>Document</p>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-1" for="inputDefault"></label>
+												<label class="col-md-3" for="inputDefault">Bill Of Ladding</label>
+													<label class="col-md-1" for="inputDefault"></label>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-1" for="inputDefault"></label>
+												<label class="col-md-3" for="inputDefault">Packing List</label>
+													<label class="col-md-1" for="inputDefault"></label>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-1" for="inputDefault"></label>
+												<label class="col-md-3" for="inputDefault">Invoice</label>
+													<label class="col-md-1" for="inputDefault"></label>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-1" for="inputDefault"></label>
+												<label class="col-md-3" for="inputDefault">Invoice Under Value</label>
+													<label class="col-md-1" for="inputDefault"></label>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-1" for="inputDefault"></label>
+												<label class="col-md-3" for="inputDefault">COO</label>
+													<label class="col-md-1" for="inputDefault"></label>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-1" for="inputDefault"></label>
+												<label class="col-md-3" for="inputDefault">Health Certificate / Certificate of Free Sale</label>
+													<label class="col-md-1" for="inputDefault"></label>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-1" for="inputDefault"></label>
+												<label class="col-md-3" for="inputDefault">Material Safety Data Sheet</label>
+													<label class="col-md-1" for="inputDefault"></label>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-1" for="inputDefault"></label>
+												<label class="col-md-3" for="inputDefault">COA</label>
+													<label class="col-md-1" for="inputDefault"></label>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-1" for="inputDefault"></label>
+												<label class="col-md-3" for="inputDefault">Product Specification</label>
+													<label class="col-md-1" for="inputDefault"></label>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-1" for="inputDefault"></label>
+												<label class="col-md-3" for="inputDefault">Surat Pernyataan Product</label>
+													<label class="col-md-1" for="inputDefault"></label>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-1" for="inputDefault"></label>
+												<label class="col-md-3" for="inputDefault">Others</label>
+													<label class="col-md-1" for="inputDefault"></label>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Expired Date Printing Trial</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i></button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Expired Date Printing Approval</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">FOC Approval</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">POSM Availbility</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Finish Good Ready Date</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Vessel Schedule</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Balance Payment</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+													<select id="basic" data-plugin-selectTwo class="form-control" name="customercountry">
+															<option value="">-- Pilih --</option>
+															<option value="">Down Payment</option>
+															<option value="">All Payment</option>
+                                                    </select>
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<br>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Vessel Booking Confirmation</label>
+												<div class="col-md-3">
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Stuffing</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<input type="file" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+													<button type="submit" class="btn btn btn-info" disabled><i class="fa fa-download"></i> </button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Draft BL Sent</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Draft BL Approved</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Telex Release</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+													<select id="basic" data-plugin-selectTwo class="form-control" name="customercountry">
+															<option value="">-- Pilih --</option>
+															<!-- <option value="">Down Payment</option>
+															<option value="">All Payment</option> -->
+                                                    </select>
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Original Document Sent</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">TOP Payment Balancing</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Estimation Time of Departure [ETD]</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-1">
+												<span class="btn btn-warning"></span>
+												</div>
+												<label class="col-md-2" for="inputDefault">Estimation Time of Arrival [ETA]</label>
+												<div class="col-md-3">
+													<!-- <input type="date" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<input type="date" class="form-control" id="inputDefault">
+												</div>
+												<div class="col-md-2">
+													<!-- <input type="file" class="form-control" id="inputDefault"> -->
+												</div>
+												<div class="col-md-2">
+													<button type="submit" class="btn btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+													<button type="submit" class="btn btn btn-success"><i class="fa fa-save"></i> Save</button>
+												</div>
+											</div>
+
+											
+
+
+							</form>
