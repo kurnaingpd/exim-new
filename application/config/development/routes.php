@@ -127,3 +127,6 @@ $route['export/incoterm/save'] = 'Incoterm/save';
 $route['export/incoterm/detail/(:num)'] = 'Incoterm/detail/$1';
 $route['export/incoterm/update'] = 'Incoterm/update';
 $route['export/incoterm/delete/(:num)'] = 'Incoterm/delete/$1';
+
+/** Export - Item */
+$route['export/item'] = 'Item';
