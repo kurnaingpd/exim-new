@@ -159,3 +159,11 @@ $route['export/loading_port/save'] = 'LoadingPort/save';
 $route['export/loading_port/detail/(:num)'] = 'LoadingPort/detail/$1';
 $route['export/loading_port/update'] = 'LoadingPort/update';
 $route['export/loading_port/delete/(:num)'] = 'LoadingPort/delete/$1';
+
+/** Export - Beneficiary */
+$route['export/beneficiary'] = 'Beneficiary';
+$route['export/beneficiary/add'] = 'Beneficiary/add';
+$route['export/beneficiary/save'] = 'Beneficiary/save';
+$route['export/beneficiary/detail/(:num)'] = 'Beneficiary/detail/$1';
+$route['export/beneficiary/update'] = 'Beneficiary/update';
+$route['export/beneficiary/delete/(:num)'] = 'Beneficiary/delete/$1';
