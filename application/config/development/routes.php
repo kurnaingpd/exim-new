@@ -143,3 +143,11 @@ $route['export/item_mapping/save'] = 'ItemMapping/save';
 $route['export/item_mapping/detail/(:num)'] = 'ItemMapping/detail/$1';
 $route['export/item_mapping/update'] = 'ItemMapping/update';
 $route['export/item_mapping/delete/(:num)'] = 'ItemMapping/delete/$1';
+
+/** Export - Bank */
+$route['export/bank'] = 'Bank';
+$route['export/bank/add'] = 'Bank/add';
+$route['export/bank/save'] = 'Bank/save';
+$route['export/bank/detail/(:num)'] = 'Bank/detail/$1';
+$route['export/bank/update'] = 'Bank/update';
+$route['export/bank/delete/(:num)'] = 'Bank/delete/$1';
