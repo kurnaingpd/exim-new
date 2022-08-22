@@ -4,7 +4,7 @@ $(function () {
         "buttons": [{
             "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
             "action": function ( e, dt, node, config ) {
-                window.location.href = site_url + "export/incoterm/add";
+                window.location.href = site_url + "export/item/add";
             }
         }]
     }).buttons().container().appendTo('#titemlist_wrapper .col-md-6:eq(0)');

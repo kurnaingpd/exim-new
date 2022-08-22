@@ -30,7 +30,7 @@
             $datas['breadcrumb'] = ['Export', 'Master', 'Item'];
             $datas['header'] = 'Item list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD->readData('view_item', ['is_deleted' => '0'])
             ];
 
             $this->template->load('default', 'contents' , 'export/item/list', $datas);
@@ -38,27 +38,125 @@
 
         public function add()
         {
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+            ];
 
+            $datas['js'] = [
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/item/add.js"),
+            ];
+            $datas['title'] = 'Export - Item';
+            $datas['breadcrumb'] = ['Export', 'Master', 'Item'];
+            $datas['header'] = 'Add record';
+            $datas['params'] = [
+                'category' => $this->M_CRUD->readData('master_item_category', ['is_deleted' => '0'])
+            ];
+
+            $this->template->load('default', 'contents' , 'export/item/add', $datas);
         }
 
         public function save()
         {
+            $post = $this->input->post();
+            $item_code = $this->M_CRUD->readDatabyID('master_item', ['is_deleted' => '0', 'code' => $post['code']]);
 
+            if($item_code) {
+                $response = ['status' => 0, 'messages' => 'Item code already exist.', 'icon' => 'error'];
+            } else {
+                $param = [
+                    'code' => $post['code'],
+                    'hs_code' => $post['hscode'],
+                    'item_category_id' => $post['category'],
+                    'item_category_id' => $post['category'],
+                    'name' => $post['name'],
+                    'pack_desc' => $post['desc'],
+                    'net_wight' => $post['net'],
+                    'gross_weight' => $post['gross'],
+                    'length' => $post['length'],
+                    'width' => $post['width'],
+                    'height' => $post['height'],
+                ];
+
+                if($this->M_CRUD->insertData('master_item', $param)) {
+                    $response = ['status' => 1, 'messages' => 'Item has been saved successfully.', 'icon' => 'success', 'url' => 'export/item'];
+                } else {
+                    $response = ['status' => 0, 'messages' => 'Item has failed to save.', 'icon' => 'error'];
+                }
+            }
+
+            echo json_encode($response);
         }
 
         public function detail($id)
         {
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+            ];
 
+            $datas['js'] = [
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/item/detail.js"),
+            ];
+            $datas['title'] = 'Export - Item';
+            $datas['breadcrumb'] = ['Export', 'Master', 'Item'];
+            $datas['header'] = 'Detail record';
+            $datas['params'] = [
+                'detail' => $this->M_CRUD->readDatabyID('master_item', ['is_deleted' => '0', 'id' => $id]),
+                'category' => $this->M_CRUD->readData('master_item_category', ['is_deleted' => '0'])
+            ];
+            
+            $this->template->load('default', 'contents' , 'export/item/detail', $datas);
         }
 
         public function update()
         {
-
+            $post = $this->input->post();
+            $condition = ['id' => $post['id']];
+            $param = [
+                'hs_code' => $post['hscode'],
+                'item_category_id' => $post['category'],
+                'item_category_id' => $post['category'],
+                'name' => $post['name'],
+                'pack_desc' => $post['desc'],
+                'net_wight' => $post['net'],
+                'gross_weight' => $post['gross'],
+                'length' => $post['length'],
+                'width' => $post['width'],
+                'height' => $post['height'],
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+            
+            if($this->M_CRUD->updateData('master_item', $param, $condition)) {
+                $response = ['status' => 1, 'messages' => 'Item has been updated successfully.', 'icon' => 'success', 'url' => 'export/item'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Item has failed to update.', 'icon' => 'error'];
+            }
+            
+            echo json_encode($response);
         }
 
         public function delete($id)
         {
+            $condition = [
+                'id' => $id
+            ];
             
+            if($this->M_CRUD->deleteData('master_item', $condition)) {
+                $response = ['status' => 1, 'messages' => 'Item has been deleted successfully.', 'icon' => 'success', 'url' => 'export/item'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Item has failed to delete.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
         }
     }
 
