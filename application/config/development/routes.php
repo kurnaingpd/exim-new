@@ -135,3 +135,11 @@ $route['export/item/save'] = 'Item/save';
 $route['export/item/detail/(:num)'] = 'Item/detail/$1';
 $route['export/item/update'] = 'Item/update';
 $route['export/item/delete/(:num)'] = 'Item/delete/$1';
+
+/** Export - Item Mapping */
+$route['export/item_mapping'] = 'ItemMapping';
+$route['export/item_mapping/add'] = 'ItemMapping/add';
+$route['export/item_mapping/save'] = 'ItemMapping/save';
+$route['export/item_mapping/detail/(:num)'] = 'ItemMapping/detail/$1';
+$route['export/item_mapping/update'] = 'ItemMapping/update';
+$route['export/item_mapping/delete/(:num)'] = 'ItemMapping/delete/$1';
