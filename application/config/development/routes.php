@@ -151,3 +151,11 @@ $route['export/bank/save'] = 'Bank/save';
 $route['export/bank/detail/(:num)'] = 'Bank/detail/$1';
 $route['export/bank/update'] = 'Bank/update';
 $route['export/bank/delete/(:num)'] = 'Bank/delete/$1';
+
+/** Export - Loading Port */
+$route['export/loading_port'] = 'LoadingPort';
+$route['export/loading_port/add'] = 'LoadingPort/add';
+$route['export/loading_port/save'] = 'LoadingPort/save';
+$route['export/loading_port/detail/(:num)'] = 'LoadingPort/detail/$1';
+$route['export/loading_port/update'] = 'LoadingPort/update';
+$route['export/loading_port/delete/(:num)'] = 'LoadingPort/delete/$1';
