@@ -22,7 +22,7 @@
                 <div class="col-md-3">
                     <div class="form-group required">
                         <label for="account" class="control-label">Account</label>
-                        <input type="text" name="account" class="form-control" id="account" placeholder="Enter bank account" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
+                        <input type="text" name="account" class="form-control upper" id="account" placeholder="Enter bank account" autocomplete="off" required>
                     </div>
                 </div>
 

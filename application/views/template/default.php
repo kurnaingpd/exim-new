@@ -113,6 +113,7 @@
                                                 <i class="<?=$gm['menu_group_icon']?> mr-2"></i><b><?=$gm['menu_group_name']?></b>
                                             </div>
                                             <ul class="list-group list-group-flush">
+                                                <div class="overflow-auto" style="max-height: 250px; overflow-y: hidden;">
                                                 <?php foreach($menu[$grp] as $val => $sm) : ?>
                                                     <li class="list-group-item">
                                                         <a href="<?=site_url($sm['menu_sub_url'])?>" class="text-secondary">
@@ -120,6 +121,7 @@
                                                         </a>
                                                     </li>
                                                 <?php endforeach; ?>
+                                                </div>
                                             </ul>
                                         </div>
                                     <?php endforeach; ?>
