@@ -80,7 +80,7 @@
                     </a>
                 </div>
                 <div class="col-md-6">
-                    <button class="btn btn-success save btn-block">
+                    <button class="btn btn-success save btn-block" id="btn-customer-save">
                         <i class="fas fa-save mr-2"></i>Save
                     </button>
                 </div>

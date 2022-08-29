@@ -40,23 +40,22 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="shipto_discharge" class="control-label">Discharge port</label>
-                <input type="text" name="shipto_discharge" class="form-control upper" id="shipto_discharge" placeholder="Enter discharge port" autocomplete="off">
+                <input type="text" name="shipto_discharge" class="form-control upper port" id="shipto_discharge" placeholder="Enter discharge port" autocomplete="off">
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="form-group">
                 <label for="shipto_destination" class="control-label">Destination port</label>
-                <input type="text" name="shipto_destination" class="form-control upper" id="shipto_destination" placeholder="Enter destination port" autocomplete="off">
+                <input type="text" name="shipto_destination" class="form-control upper port" id="shipto_destination" placeholder="Enter destination port" autocomplete="off">
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-            <button type="button mt-5" class="btn btn-success btn-block" id="btn-shipto">
-                <i class="fas fa-plus-square mr-2"></i>Add detail(s)
-            </button>
+            <input type="button mt-5" class="btn btn-success btn-block" id="btn-shipto" value="Add detail(s)">
+                <!-- <i class="fas fa-plus-square mr-2"></i>Add detail(s) -->
         </div>
     </div>
 </div>

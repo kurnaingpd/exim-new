@@ -44,7 +44,7 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="cp_balancing" class="control-label">Balancing (in %)</label>
-            <input type="text" name="cp_balancing" class="form-control" id="cp_balancing" value="100" readonly>
+            <input type="text" name="cp_balancing" class="form-control" id="cp_balancing" value="100" readonly style="background-color: white;">
         </div>
     </div>
 

@@ -77,39 +77,114 @@
         public function save()
         {
             $post = $this->input->post();
-            $country = $this->M_CRUD->readDatabyID('master_country', ['is_deleted' => '0', 'id' => $post['con_country']]);
-            $autonumber = $this->M_CRUD->autoNumber('master_customer', 'code', '8801', $country->code, 4);
-            
-            /** consignee */
-            $paramConsignee = [
-                'code' => $autonumber,
-                'company_name' => $post['con_company'],
-                'address' => $post['con_address'],
-                'country_id' => $post['con_country'],
-                'phone_no' => $post['con_phone'],
-                'created_by' => $this->session->userdata('logged_in')->id,
+            echo "<pre>";
+            print_r($post);
+            echo "</pre>";
+            // $country = $this->M_CRUD->readDatabyID('master_country', ['is_deleted' => '0', 'id' => $post['con_country']]);
+            // $autonumber = $this->M_CRUD->autoNumber('master_customer', 'code', '8801', $country->code, 4);
+
+            // if($post) {
+            //     $paramConsignee = [
+            //         'code' => $autonumber,
+            //         'company_name' => $post['con_company'],
+            //         'address' => $post['con_address'],
+            //         'country_id' => $post['con_country'],
+            //         'phone_no' => $post['con_phone'],
+            //         'created_by' => $this->session->userdata('logged_in')->id,
+            //     ];
+            //     $customer = $this->M_CRUD->insertData('master_customer', $paramConsignee);
+
+            //     if($customer) {
+            //         /** Notify */
+            //         $this->saveNotify($post, $customer);
+            //         /** Contact person */
+            //         $this->saveContactPerson($post, $customer);
+            //         /** Bank account */
+            //         $this->saveBank($post, $customer);
+            //         /** Shipp-to Address */
+            //         $this->saveShipAddress($post, $customer);
+
+            //         $response = ['status' => 1, 'messages' => 'Customer has been saved successfully.', 'icon' => 'success', 'url' => 'export/customer'];
+            //     } else {
+            //         $response = ['status' => 0, 'messages' => 'Customer has failed to save.', 'icon' => 'error'];
+            //     }
+            // }
+
+            // echo json_encode($response);
+        }
+
+        public function saveNotify($param, $cust_id)
+        {
+            $datas = [
+                'customer_id' => $cust_id,
+                'company_name' => $param['not_company'],
+                'address' => $param['not_address'],
+                'country_id' => $param['not_country_id'],
+                'phone_no' => $param['not_phone'],
             ];
-            $customer = $this->M_CRUD->insertData('master_customer', $paramConsignee);
-            
-            if($customer) {
-                $paramNotify = [
-                    'customer_id' => $customer,
-                    'company_name' => $post['not_company'],
-                    'address' => $post['not_address'],
-                    'country_id' => $post['not_country_id'],
-                    'phone_no' => $post['con_phone'],
-                ];
+            $this->M_CRUD->insertData('master_customer_notify', $datas);
+        }
 
-                if($this->M_CRUD->insertData('master_customer_notify', $paramNotify)) {
-                    $response = ['status' => 1, 'messages' => 'Customer has been saved successfully.', 'icon' => 'success', 'url' => 'export/customer'];
-                } else {
-                    $response = ['status' => 0, 'messages' => 'Customer has failed to save.', 'icon' => 'error'];
+        public function saveContactPerson($param, $cust_id)
+        {
+            $datas = [
+                'customer_id' => $cust_id,
+                'name' => $param['not_company'],
+                'phone_no' => $param['not_company'],
+                'email' => $param['not_company'],
+                'top_id' => $param['not_company'],
+                'dp' => $param['not_company'],
+                'balancing' => $param['not_company'],
+                'currency_id' => $param['not_company'],
+                'incoterm_id' => $param['not_company'],
+            ];
+            $this->M_CRUD->insertData('master_customer_cp', $datas);
+        }
+
+        public function saveBank($param, $cust_id)
+        {
+            $datas = [
+                'customer_id' => $cust_id,
+                'bank_id' => $param['not_company'],
+                'account_no' => $param['not_company'],
+                'account_name' => $param['not_company'],
+            ];
+            $this->M_CRUD->insertData('master_customer_bank', $datas);
+        }
+
+        public function saveShipAddress($param, $cust_id)
+        {
+            $datas = [
+                'customer_id' => $cust_id,
+                'company_name' => $param['not_company'],
+                'address' => $param['not_address'],
+                'country_id' => $param['not_country_id'],
+                'phone_no' => $param['not_phone'],
+            ];
+            $ShipAddress = $this->M_CRUD->insertData('master_customer_ship', $datas);
+
+            if($ShipAddress) {
+                $Grid = array();
+			
+                foreach($_POST as $index => $value){
+                    if(preg_match("/^grid_/i", $index)) {
+                        $index = preg_replace("/^grid_/i","",$index);
+                        $arr = explode('_',$index);
+                        $rnd = $arr[count($arr)-1];
+                        array_pop($arr);
+                        $idx = implode('_',$arr);
+                        
+                        $Grid[$rnd][$idx] = $value;
+                        if(!isset($Grid[$rnd][$ShipAddress])){
+                            $Grid[$rnd][$ShipAddress] = $ShipAddress;
+                        }
+                    }
                 }
-            } else {
-                $response = ['status' => 0, 'messages' => 'Customer has failed to save.', 'icon' => 'error'];
-            }
 
-            echo json_encode($response);
+                echo "<pre>";
+                print_r($Grid);
+                echo "</pre>";
+            }
         }
 
         public function detail($id)
