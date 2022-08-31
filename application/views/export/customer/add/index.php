@@ -46,7 +46,10 @@
 
     <div class="card">
         <div class="card-header">
-            <h6>Contact person ship-to</h6>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="cpshipto" name="cpshipto">
+                <label class="form-check-label" for="cpshipto">Contact person ship-to</label>
+            </div>
         </div>
         <div class="card-body">
             <?php $this->load->view('export/customer/add/cpshipto'); ?>
@@ -55,7 +58,10 @@
 
     <div class="card">
         <div class="card-header">
-            <h6>Import document needs</h6>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="import" name="import" value="1">
+                <label class="form-check-label" for="import">Import document needs</label>
+            </div>
         </div>
         <div class="card-body">
             <?php $this->load->view('export/customer/add/import'); ?>
@@ -64,7 +70,10 @@
 
     <div class="card">
         <div class="card-header">
-            <h6>Coding printing</h6>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="coding" name="coding" value="1">
+                <label class="form-check-label" for="coding">Coding printing</label>
+            </div>
         </div>
         <div class="card-body">
             <?php $this->load->view('export/customer/add/coding'); ?>
@@ -75,7 +84,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-default btn-block" href="<?=site_url('export/customer')?>">
+                    <a class="btn btn-default btn-block cancel" href="<?=site_url('export/customer')?>">
                         <i class="fas fa-ban mr-2"></i>Cancel
                     </a>
                 </div>

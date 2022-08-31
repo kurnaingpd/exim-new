@@ -146,7 +146,7 @@
 				$code = intval($record->code) + 1;
 			}
 
-			$code = $prefix.'-'.$country.'-'.str_pad($code, $run_number, 0, STR_PAD_LEFT);
+			$code = $prefix.$country.str_pad($code, $run_number, 0, STR_PAD_LEFT);
 
 			return $code;
 		}
