@@ -55,7 +55,6 @@
     <div class="row">
         <div class="col-md-12">
             <input type="button mt-5" class="btn btn-success btn-block" id="btn-shipto" value="Add detail(s)">
-                <!-- <i class="fas fa-plus-square mr-2"></i>Add detail(s) -->
         </div>
     </div>
 </div>

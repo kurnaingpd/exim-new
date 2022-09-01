@@ -30,7 +30,7 @@
             $datas['breadcrumb'] = ['Export', 'Master', 'Customer'];
             $datas['header'] = 'Customer list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('master_customer', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD->readData('view_customer_list', ['is_deleted' => '0'])
             ];
 
             $this->template->load('default', 'contents' , 'export/customer/list', $datas);
@@ -56,7 +56,6 @@
             $datas['breadcrumb'] = ['Export', 'Master', 'Customer'];
             $datas['header'] = 'Add record';
             $datas['params'] = [
-                // 'autonumber' => $this->M_CRUD->autoNumber('master_customer', 'code', '8801', 'IDN', 4),
                 'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
                 'bank' => $this->M_CRUD->readData('master_bank', ['is_deleted' => '0']),
                 'top' => $this->M_CRUD->readData('master_top', ['is_deleted' => '0']),
@@ -93,23 +92,23 @@
 
                 if($customer) {
                     /** Notify */
-                    // $this->saveNotify($post, $customer);
+                    $this->saveNotify($post, $customer);
                     /** Contact person */
-                    // $this->saveContactPerson($post, $customer);
+                    $this->saveContactPerson($post, $customer);
                     /** Bank account */
-                    // $this->saveBank($post, $customer);
+                    $this->saveBank($post, $customer);
                     /** Ship-to Address */
                     $this->saveShipAddress($post, $customer);
                     /** Contact person ship-to */
-                    if( !empty($post['cpshipto_name']) ) {
+                    if( !empty($post['cpshipto']) ) {
                         $this->saveCPShipTo($post, $customer);
                     }
                     /** Import document needs */
-                    if( !empty($post['imp_bill']) ) {
+                    if( !empty($post['import_doc']) ) {
                         $this->saveImport($post, $customer);
                     }
                     /** Coding printing */
-                    if( !empty($post['imp_bill']) ) {
+                    if( !empty($post['coding_print']) ) {
                         $this->saveCoding($post, $customer);
                     }
 
@@ -138,14 +137,14 @@
         {
             $datas = [
                 'customer_id' => $cust_id,
-                'name' => $param['not_company'],
-                'phone_no' => $param['not_company'],
-                'email' => $param['not_company'],
-                'top_id' => $param['not_company'],
-                'dp' => $param['not_company'],
-                'balancing' => $param['not_company'],
-                'currency_id' => $param['not_company'],
-                'incoterm_id' => $param['not_company'],
+                'name' => $param['cp_name'],
+                'phone_no' => $param['cp_phone'],
+                'email' => $param['cp_email'],
+                'top_id' => $param['cp_top'],
+                'dp' => $param['cp_dp'],
+                'balancing' => $param['cp_balancing'],
+                'currency_id' => $param['cp_currency'],
+                'incoterm_id' => $param['cp_incoterm'],
             ];
             $this->M_CRUD->insertData('master_customer_cp', $datas);
         }
@@ -154,9 +153,9 @@
         {
             $datas = [
                 'customer_id' => $cust_id,
-                'bank_id' => $param['not_company'],
-                'account_no' => $param['not_company'],
-                'account_name' => $param['not_company'],
+                'bank_id' => $param['con_bank'],
+                'account_no' => $param['bank_accno'],
+                'account_name' => $param['bank_accname'],
             ];
             $this->M_CRUD->insertData('master_customer_bank', $datas);
         }
@@ -165,10 +164,10 @@
         {
             $datas = [
                 'customer_id' => $cust_id,
-                'company_name' => $param['not_company'],
-                'address' => $param['not_address'],
-                'country_id' => $param['not_country_id'],
-                'phone_no' => $param['not_phone'],
+                'company_name' => $param['shipto_company'],
+                'address' => $param['shipto_address'],
+                'country_id' => $param['shipto_country'],
+                'phone_no' => ($param['shipto_phone']?$param['shipto_phone']:NULL),
             ];
             $ShipAddress = $this->M_CRUD->insertData('master_customer_ship', $datas);
 
@@ -236,27 +235,24 @@
         {
             $datas = [
                 'customer_id' => $cust_id,
-                'company_name' => $param['not_company'],
-                'address' => $param['not_address'],
-                'country_id' => $param['not_country_id'],
-                'phone_no' => $param['not_phone'],
+                'notes' => ($param['coding_notes']?$param['coding_notes']:NULL),
             ];
-            $ShipAddress = $this->M_CRUD->insertData('master_customer_ship', $datas);
+            $Coding = $this->M_CRUD->insertData('master_customer_coding', $datas);
 
-            if($ShipAddress) {
+            if($Coding) {
                 $Grid = array();
 			
                 foreach($_POST as $index => $value){
-                    if(preg_match("/^grid_/i", $index)) {
-                        $index = preg_replace("/^grid_/i","",$index);
+                    if(preg_match("/^cd_/i", $index)) {
+                        $index = preg_replace("/^cd_/i","",$index);
                         $arr = explode('_',$index);
                         $rnd = $arr[count($arr)-1];
                         array_pop($arr);
                         $idx = implode('_',$arr);
                         
                         $Grid[$rnd][$idx] = $value;
-                        if(!isset($Grid[$rnd]['customer_ship_id'])){
-                            $Grid[$rnd]['customer_ship_id'] = $ShipAddress;
+                        if(!isset($Grid[$rnd]['customer_coding_id'])){
+                            $Grid[$rnd]['customer_coding_id'] = $Coding;
                         }
                     }
                 }
@@ -264,11 +260,13 @@
                 if(!empty($Grid)) {
                     foreach($Grid as $detail) {
                         $params = [
-                            'customer_ship_id' => $detail['customer_ship_id'],
-                            'discharge_port' => $detail['shipto_discharge'],
-                            'destination_port' => $detail['shipto_destination'],
+                            'customer_coding_id' => $detail['customer_coding_id'],
+                            'coding_type_id' => $detail['coding_type'],
+                            'import_by' => $detail['coding_import'],
+                            'hotline' => $detail['coding_hotline'],
+                            'best_before' => $detail['coding_bb'],
                         ];
-                        $this->M_CRUD->insertData('master_customer_ship_detail', $params);
+                        $this->M_CRUD->insertData('master_customer_coding_detail', $params);
                     }
                 }
             }

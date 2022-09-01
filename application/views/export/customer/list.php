@@ -22,10 +22,10 @@
                     <tr class="align-middle">
                         <td class="text-center"><?=$no?>.</td>
                         <td class="text-center"><?=$rows->code?></td>
-                        <td><?=$rows->name?></td>
-                        <td><?=$rows->name?></td>
-                        <td><?=$rows->name?></td>
-                        <td><?=$rows->name?></td>
+                        <td><?=$rows->company_name?></td>
+                        <td><?=$rows->address?></td>
+                        <td><?=$rows->country_name?></td>
+                        <td class="text-center"><?=$rows->phone_no?></td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center">

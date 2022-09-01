@@ -168,9 +168,10 @@ $route['export/beneficiary/detail/(:num)'] = 'Beneficiary/detail/$1';
 $route['export/beneficiary/update'] = 'Beneficiary/update';
 $route['export/beneficiary/delete/(:num)'] = 'Beneficiary/delete/$1';
 
-/** Export - Beneficiary */
+/** Export - Customer */
 $route['export/customer'] = 'Customer';
 $route['export/customer/add'] = 'Customer/add';
 $route['export/customer/bank'] = 'Customer/bank';
 $route['export/customer/bank/(:num)'] = 'Customer/bank/$1';
 $route['export/customer/save'] = 'Customer/save';
+$route['export/customer/delete/(:num)'] = 'Customer/delete/$1';

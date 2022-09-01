@@ -59,7 +59,7 @@
     <div class="card">
         <div class="card-header">
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="import" name="import" value="1">
+                <input class="form-check-input" type="checkbox" id="import_doc" name="import_doc">
                 <label class="form-check-label" for="import">Import document needs</label>
             </div>
         </div>
@@ -71,7 +71,7 @@
     <div class="card">
         <div class="card-header">
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="coding" name="coding" value="1">
+                <input class="form-check-input" type="checkbox" id="coding_print" name="coding_print">
                 <label class="form-check-label" for="coding">Coding printing</label>
             </div>
         </div>
