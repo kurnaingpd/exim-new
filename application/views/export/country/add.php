@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <h6><i class="fas fa-list-alt mr-2"></i><?=$header?></h6>
+        <h6><i class="fas fa-plus-circle mr-2"></i><?=$header?></h6>
     </div>
     <div class="card-body">
         <form id="form-country-add">

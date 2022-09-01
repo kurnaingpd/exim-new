@@ -175,3 +175,11 @@ $route['export/customer/bank'] = 'Customer/bank';
 $route['export/customer/bank/(:num)'] = 'Customer/bank/$1';
 $route['export/customer/save'] = 'Customer/save';
 $route['export/customer/delete/(:num)'] = 'Customer/delete/$1';
+
+/** Export Proforma */
+$route['export/proforma'] = 'ProformaInvoice';
+$route['export/proforma/add'] = 'ProformaInvoice/add';
+$route['export/proforma/customer'] = 'ProformaInvoice/customer';
+$route['export/proforma/customer/(:num)'] = 'ProformaInvoice/customer/$1';
+$route['export/proforma/beneficiary'] = 'ProformaInvoice/beneficiary';
+$route['export/proforma/beneficiary/(:num)'] = 'ProformaInvoice/beneficiary/$1';
