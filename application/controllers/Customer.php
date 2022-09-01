@@ -284,7 +284,17 @@
 
         public function delete($id)
         {
+            $condition = [
+                'id' => $id
+            ];
+            
+            if($this->M_CRUD->deleteData('master_customer', $condition)) {
+                $response = ['status' => 1, 'messages' => 'Customer has been deleted successfully.', 'icon' => 'success', 'url' => 'export/customer'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Customer has failed to delete.', 'icon' => 'error'];
+            }
 
+            echo json_encode($response);
         }
     }
 
