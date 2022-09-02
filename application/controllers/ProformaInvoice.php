@@ -58,8 +58,14 @@
             $datas['params'] = [
                 'autonumber' => $this->M_CRUD->autoNumberPI('trans_pi', 'code', date('m/Y'), 4),
                 'customer' => $this->M_CRUD->readData('master_customer', ['is_deleted' => '0']),
+                'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
                 'beneficiary' => $this->M_CRUD->readData('master_beneficiary', ['is_deleted' => '0']),
                 'load_port' => $this->M_CRUD->readData('master_loading_port', ['is_deleted' => '0']),
+                // 'discharge' => $this->M_CRUD->readData('view_customer_ship_detail', ['is_deleted' => '0']),
+                'container' => $this->M_CRUD->readData('master_container', ['is_deleted' => '0']),
+                'bank' => $this->M_CRUD->readData('master_bank', ['is_deleted' => '0']),
+                'currency' => $this->M_CRUD->readData('master_currency', ['is_deleted' => '0']),
+                // 'top' => $this->M_CRUD->readData('master_top', ['is_deleted' => '0']),
             ];
 
             $this->template->load('default', 'contents' , 'export/proforma/add/index', $datas);
@@ -74,6 +80,18 @@
         public function beneficiary($id = NULL)
         {
             $data = $this->M_CRUD->readDatabyID('view_beneficiary', ['is_deleted' => '0', 'id' => $id]);
+            echo json_encode($data);
+        }
+
+        public function discharge($cust_id = NULL)
+        {
+            $data = $this->M_CRUD->readData('view_customer_ship_detail', ['is_deleted' => '0', 'customer_id' => $cust_id]);
+            echo json_encode($data);
+        }
+
+        public function destination($id = NULL)
+        {
+            $data = $this->M_CRUD->readDatabyID('view_customer_ship_detail', ['is_deleted' => '0', 'id' => $id]);
             echo json_encode($data);
         }
 

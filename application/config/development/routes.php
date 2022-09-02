@@ -183,3 +183,7 @@ $route['export/proforma/customer'] = 'ProformaInvoice/customer';
 $route['export/proforma/customer/(:num)'] = 'ProformaInvoice/customer/$1';
 $route['export/proforma/beneficiary'] = 'ProformaInvoice/beneficiary';
 $route['export/proforma/beneficiary/(:num)'] = 'ProformaInvoice/beneficiary/$1';
+$route['export/proforma/discharge'] = 'ProformaInvoice/discharge';
+$route['export/proforma/discharge/(:num)'] = 'ProformaInvoice/discharge/$1';
+$route['export/proforma/destination'] = 'ProformaInvoice/destination';
+$route['export/proforma/destination/(:num)'] = 'ProformaInvoice/destination/$1';

@@ -37,6 +37,9 @@
                             <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">
                                 <i class="fas fa-trash"></i>
                             </button>
+                            <a href="<?=site_url('export/proforma/print/'.$rows->id)?>" class="btn btn-sm btn-warning" target="_blank">
+                                <i class="fas fa-print"></i>
+                            </a>
                         </td>
                     </tr>
                 <?php $no++; endforeach; ?>

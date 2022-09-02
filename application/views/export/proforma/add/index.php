@@ -13,21 +13,16 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="pi_po" class="control-label">PO # (If any)</label>
-                        <input type="text" name="pi_po" class="form-control" id="pi_po" placeholder="Enter PO" autocomplete="off" autofocus>
+                    <div class="form-group required">
+                        <label for="pi_date" class="control-label">PI date</label>
+                        <input type="text" name="pi_date" class="form-control" id="pi_date" value="<?=date('Y-m-d')?>" disabled>
                     </div>
                 </div>
 
                 <div class="col-md-4">
-                    <div class="form-group required">
-                        <label for="pi_customer" class="control-label">Customer</label>
-                        <select name="pi_customer" class="form-control select2bs4" id="pi_customer" required>
-                            <option></option>
-                            <?php foreach($params['customer'] as $rows) : ?>
-                                <option value="<?=$rows->id?>"><?=$rows->code.' - '.$rows->company_name?></option>
-                            <?php endforeach; ?>
-                        </select>
+                    <div class="form-group">
+                        <label for="pi_po" class="control-label">PO # (If any)</label>
+                        <input type="text" name="pi_po" class="form-control" id="pi_po" placeholder="Enter PO" autocomplete="off" autofocus>
                     </div>
                 </div>
             </div>
@@ -63,13 +58,19 @@
 
     <div class="card">
         <div class="card-header">
-            <h6>Others</h6>
+            <h6>Item(s)</h6>
         </div>
         <div class="card-body">
             <?php $this->load->view('export/proforma/add/items'); ?>
         </div>
         <div class="card-body border-top">
             <?php $this->load->view('export/proforma/add/items_detail'); ?>
+        </div>
+        <div class="card-footer">
+            <small>
+                Current CBM: <input type="text" value="0" size="4" id="currenct_cbm" style="background-color: transparent; text-align: center; border: 0;"><br>
+                Remain CBM: <input type="text" value="0" size="4" id="remain_cbm" style="background-color: transparent; text-align: center; border: 0;">
+            </small>
         </div>
     </div>
 

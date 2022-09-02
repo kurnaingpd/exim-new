@@ -5,6 +5,8 @@ $(function () {
         allowClear: true
     })
 
+    // $("#consignee_country").select2("readonly", true);
+
     $.validator.setDefaults({
         submitHandler: function () {
             save();
@@ -28,8 +30,24 @@ $(function () {
 
 $('select#pi_consignee').on('change', function() {
     var data = $('select#pi_consignee').select2('data');
+    consignee(data[0].id);
+    discharge(data[0].id);
+});
+
+$('select#pi_beneficiary').on('change', function() {
+    var data = $('select#pi_beneficiary').select2('data');
+    beneficiary(data[0].id);
+});
+
+$('select#discharge_port').on('change', function() {
+    var data = $('select#discharge_port').select2('data');
+    destination(data[0].id);
+});
+
+function consignee(id)
+{
     $.ajax({
-        url: site_url + "export/proforma/customer/" + data[0].id,
+        url: site_url + "export/proforma/customer/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {
@@ -39,11 +57,15 @@ $('select#pi_consignee').on('change', function() {
                 document.getElementById("consignee_country").value = response.country_name;
                 document.getElementById("consignee_phone").value = response.phone_no;
                 document.getElementById("consignee_cp").value = response.name;
+                document.getElementById("top_id").value = response.top_id;
+                document.getElementById("top").value = response.top_name;
             } else {
                 document.getElementById("consignee_address").value = '';
                 document.getElementById("consignee_country").value = '';
                 document.getElementById("consignee_phone").value = '';
                 document.getElementById("consignee_cp").value = '';
+                document.getElementById("top_id").value = '';
+                document.getElementById("top").value = '';
             }
         },
         error: function (e) {
@@ -51,12 +73,12 @@ $('select#pi_consignee').on('change', function() {
             swal("", "Terjadi kesalahan pada sistem.", "error");
         }        
     });
-});
+}
 
-$('select#pi_beneficiary').on('change', function() {
-    var data = $('select#pi_beneficiary').select2('data');
+function beneficiary(id)
+{
     $.ajax({
-        url: site_url + "export/proforma/beneficiary/" + data[0].id,
+        url: site_url + "export/proforma/beneficiary/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {
@@ -78,7 +100,51 @@ $('select#pi_beneficiary').on('change', function() {
             swal("", "Terjadi kesalahan pada sistem.", "error");
         }        
     });
-});
+}
+
+function discharge(id)
+{
+    $.ajax({
+        url: site_url + "export/proforma/discharge/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            console.log(response)
+            var html = '';
+            var i;
+            for(i=0; i<response.length; i++) {
+                html += '<option></option>';
+                html += '<option value="'+response[i].id+'">'+response[i].discharge_port+'</option>';
+            }
+            $('#discharge_port').html(html);
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+            swal("", "Terjadi kesalahan pada sistem.", "error");
+        }        
+    });
+}
+
+function destination(id)
+{
+    $.ajax({
+        url: site_url + "export/proforma/destination/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            console.log(response)
+            if(response) {
+                document.getElementById("destination_port").value = response.destination_port;
+            } else {
+                document.getElementById("destination_port").value = '';
+            }
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+            swal("", "Terjadi kesalahan pada sistem.", "error");
+        }        
+    });
+}
 
 function save()
 {
