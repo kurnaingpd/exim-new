@@ -187,3 +187,7 @@ $route['export/proforma/discharge'] = 'ProformaInvoice/discharge';
 $route['export/proforma/discharge/(:num)'] = 'ProformaInvoice/discharge/$1';
 $route['export/proforma/destination'] = 'ProformaInvoice/destination';
 $route['export/proforma/destination/(:num)'] = 'ProformaInvoice/destination/$1';
+$route['export/proforma/cbm'] = 'ProformaInvoice/cbm';
+$route['export/proforma/cbm/(:num)'] = 'ProformaInvoice/cbm/$1';
+$route['export/proforma/item'] = 'ProformaInvoice/item';
+$route['export/proforma/item/(:num)'] = 'ProformaInvoice/item/$1';

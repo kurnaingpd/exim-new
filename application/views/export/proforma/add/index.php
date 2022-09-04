@@ -68,8 +68,8 @@
         </div>
         <div class="card-footer">
             <small>
-                Current CBM: <input type="text" value="0" size="4" id="currenct_cbm" style="background-color: transparent; text-align: center; border: 0;"><br>
-                Remain CBM: <input type="text" value="0" size="4" id="remain_cbm" style="background-color: transparent; text-align: center; border: 0;">
+                Maximum CBM: <input type="text" value="0" size="4" id="currenct_cbm" style="background-color: transparent; border: 0;"><br>
+                Remain CBM: <input type="text" value="0" id="remain_cbm" style="background-color: transparent; border: 0;">
             </small>
         </div>
     </div>

@@ -61,11 +61,11 @@
                 'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
                 'beneficiary' => $this->M_CRUD->readData('master_beneficiary', ['is_deleted' => '0']),
                 'load_port' => $this->M_CRUD->readData('master_loading_port', ['is_deleted' => '0']),
-                // 'discharge' => $this->M_CRUD->readData('view_customer_ship_detail', ['is_deleted' => '0']),
                 'container' => $this->M_CRUD->readData('master_container', ['is_deleted' => '0']),
                 'bank' => $this->M_CRUD->readData('master_bank', ['is_deleted' => '0']),
                 'currency' => $this->M_CRUD->readData('master_currency', ['is_deleted' => '0']),
-                // 'top' => $this->M_CRUD->readData('master_top', ['is_deleted' => '0']),
+                'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
+                'item' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0']),
             ];
 
             $this->template->load('default', 'contents' , 'export/proforma/add/index', $datas);
@@ -92,6 +92,18 @@
         public function destination($id = NULL)
         {
             $data = $this->M_CRUD->readDatabyID('view_customer_ship_detail', ['is_deleted' => '0', 'id' => $id]);
+            echo json_encode($data);
+        }
+
+        public function cbm($id = NULL)
+        {
+            $data = $this->M_CRUD->readDatabyID('master_container', ['is_deleted' => '0', 'id' => $id]);
+            echo json_encode($data);
+        }
+
+        public function item($id = NULL)
+        {
+            $data = $this->M_CRUD->readDatabyID('master_item', ['is_deleted' => '0', 'id' => $id]);
             echo json_encode($data);
         }
 
