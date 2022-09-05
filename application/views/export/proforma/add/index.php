@@ -89,7 +89,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="remark" class="control-label">Remark</label>
-                        <textarea name="remark" class="form-control upper" id="remark" placeholder="Enter remark" disabled required rows="2"></textarea>
+                        <textarea name="remark" class="form-control upper" id="remark" placeholder="Enter remark" readonly rows="2"></textarea>
                     </div>
                 </div>
 
@@ -98,7 +98,7 @@
                         <label for="attachment">Attachment</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="attachment" name="attachment" accept="image/*" required>
+                                <input type="file" class="custom-file-input" id="attachment" name="attachment" accept="image/*">
                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                             </div>
                         </div>

@@ -107,9 +107,76 @@
             echo json_encode($data);
         }
 
+        public function coding($id = NULL)
+        {
+            $data = $this->M_CRUD->readData('view_customer_coding', ['is_deleted' => '0', 'customer_id' => $id]);
+            echo json_encode($data);
+        }
+
         public function save()
         {
+            $post = $this->input->post();
+            $params = [
+                'code' => $post['pi_code'],
+                'po_no' => ($post['pi_po']?$post['pi_po']:NULL),
+                'customer_id' => $post['pi_consignee'],
+                'consignee_id' => $post['pi_consignee'],
+                'beneficiary_id' => $post['pi_beneficiary'],
+                'loading_port_id' => $post['loading_port'],
+                'customer_ship_id' => $post['discharge_port'],
+                'container_id' => $post['container'],
+                'number_of_container' => $post['container_no'],
+                'freight_company' => $post['freight_company'],
+                'freight_company_contact' => $post['freight_company_cont'],
+                'freight_company_no' => $post['freight_company_no'],
+                'freight_cost' => $post['freight_cost'],
+                'insurance' => $post['insurance'],
+                'bank_id' => $post['bank'],
+                'currency_id' => $post['currency'],
+                'ppn' => $post['ppn'],
+                'top_id' => $post['top_id'],
+                'pi_status_id' => 1,
+                'created_by' => $this->session->userdata('logged_in')->id,
+            ];
+            $header = $this->M_CRUD->insertData('trans_pi', $params);
 
+            if($header) {
+                $Grid = array();
+			
+                foreach($_POST as $index => $value){
+                    if(preg_match("/^grid_/i", $index)) {
+                        $index = preg_replace("/^grid_/i","",$index);
+                        $arr = explode('_',$index);
+                        $rnd = $arr[count($arr)-1];
+                        array_pop($arr);
+                        $idx = implode('_',$arr);
+                        
+                        $Grid[$rnd][$idx] = $value;
+                        if(!isset($Grid[$rnd]['pi_id'])){
+                            $Grid[$rnd]['pi_id'] = $header;
+                        }
+                    }
+                }
+
+                if(!empty($Grid)) {
+                    foreach($Grid as $detail) {
+                        $params = [
+                            'pi_id' => $detail['pi_id'],
+                            'pi_item_category_id' => $detail['item_category'],
+                            'item_id' => $detail['product'],
+                            'qty' => $detail['qty'],
+                            'price' => $detail['price'],
+                        ];
+                        $this->M_CRUD->insertData('trans_pi_detail', $params);
+                    }
+                }
+                
+                $response = ['status' => 1, 'messages' => 'Proforma invoice: '.$post['pi_code'].' has been saved successfully.', 'icon' => 'success', 'url' => 'export/proforma'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Container has failed to save.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
         }
     }
 

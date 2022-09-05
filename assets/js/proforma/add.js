@@ -17,44 +17,53 @@ $(function () {
             swal("", "Item data cannot be empty.", "warning");
         } else {
             var rnd = Math.floor((Math.random() * 10000) + 1);
-            document.getElementById("remain_cbm").value = document.getElementById("remain_cbm").value - (Number(document.getElementById("volume").value) * Number(document.getElementById("qty").value));
-            $('tbody#data-item').append(
-                '<tr data-id="'+rnd+'">'+
-                    '<td>'+
-                        '<input type="hidden" id="grid_item_category_'+rnd+'" name="grid_item_category_'+rnd+'" value="'+$('select.item[name="item_category"]').val()+'" />'+
-                        '<input type="text" class="form-control" value="'+$('select.item[name="item_category"] option:selected').text()+'" style="background-color:#ffffff;" readonly />'+
-                    '</td>'+
-                    '<td>'+
-                        '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
-                        '<input type="text" class="form-control" value="'+$('select.item[name="product"] option:selected').text()+'" style="background-color:#ffffff;" readonly />'+
-                        '<input type="hidden" class="form-control" id="grid_volume_'+rnd+'" name="grid_volume_'+rnd+'" value="'+$('input.item[name="volume"]').val()+'" style="background-color:#ffffff;" readonly />'+
-                    '</td>'+
-                    '<td>'+
-                        '<input type="text" class="form-control" id="grid_hs_code_'+rnd+'" name="grid_hs_code_'+rnd+'" value="'+$('input.item[name="hs_code"]').val()+'" style="background-color:#ffffff;" readonly />'+
-                    '</td>'+
-                    '<td>'+
-                        '<input type="text" class="form-control" id="grid_config_'+rnd+'" name="grid_config_'+rnd+'" value="'+$('input.item[name="config"]').val()+'" style="background-color:#ffffff;" readonly />'+
-                    '</td>'+
-                    '<td>'+
-                        '<input type="text" class="form-control" id="grid_qty_'+rnd+'" name="grid_qty_'+rnd+'" value="'+$('input.item[name="qty"]').val()+'" style="background-color:#ffffff;" readonly />'+
-                    '</td>'+
-                    '<td>'+
-                        '<input type="text" class="form-control" id="grid_qty_'+rnd+'" name="grid_qty_'+rnd+'" value="'+$('input.item[name="price"]').val()+'" style="background-color:#ffffff;" readonly />'+
-                    '</td>'+
-                    '<td class="text-center">'+
-                        '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
-                    '</td>'+
-                '</tr>'
-            );
+            var remain_cbm = document.getElementById("remain_cbm").value - (Number(document.getElementById("volume").value) * Number(document.getElementById("qty").value));
+            console.log(remain_cbm);
             
-            $('.item').val('');
-            $("#item_category").select2("val", "");
-            // $("#product").select2("val", "");
+            if(remain_cbm < 0) {
+                swal("", "Qty melebihi maximum CBM.", "warning");
+            } else {
+                document.getElementById("remain_cbm").value = remain_cbm;
+                $('tbody#data-item').append(
+                    '<tr data-id="'+rnd+'">'+
+                        '<td>'+
+                            '<input type="hidden" id="grid_item_category_'+rnd+'" name="grid_item_category_'+rnd+'" value="'+$('select.item[name="item_category"]').val()+'" />'+
+                            '<input type="text" class="form-control" value="'+$('select.item[name="item_category"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
+                            '<input type="text" class="form-control" value="'+$('select.item[name="product"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
+                            '<input type="hidden" class="form-control volume" id="grid_volume_'+rnd+'" name="grid_volume_'+rnd+'" data-value="'+$('input.item[name="volume"]').val()+'" value="'+$('input.item[name="volume"]').val()+'" style="background-color:#ffffff;" readonly />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="text" class="form-control" id="grid_hs_code_'+rnd+'" name="grid_hs_code_'+rnd+'" value="'+$('input.item[name="hs_code"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="text" class="form-control" id="grid_config_'+rnd+'" name="grid_config_'+rnd+'" value="'+$('input.item[name="config"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="text" class="form-control qty" id="grid_qty_'+rnd+'" name="grid_qty_'+rnd+'" data-value="'+$('input.item[name="qty"]').val()+'" value="'+$('input.item[name="qty"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="text" class="form-control" id="grid_price_'+rnd+'" name="grid_price_'+rnd+'" value="'+$('input.item[name="price"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '</td>'+
+                        '<td class="text-center">'+
+                            '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
+                        '</td>'+
+                    '</tr>'
+                );
+                
+                $('.item').val('');
+                $(".item").val('').trigger('change')
+            }
             
             $('button.btn-remove').off('click').on('click',function(){
                 var id = $(this).attr('data-row');
+                var volume = $("tr[data-id="+id+"]").find(".volume").data("value");
+                var qty = $("tr[data-id="+id+"]").find(".qty").data("value");
+                var cbm = (volume * qty);
                 $("tr[data-id="+id+"]").remove();
-                document.getElementById("remain_cbm").value = Number(document.getElementById("remain_cbm").value) + 10;
+                document.getElementById("remain_cbm").value = Number(document.getElementById("remain_cbm").value) + cbm;
             });
         }
     });
@@ -84,6 +93,7 @@ $('select#pi_consignee').on('change', function() {
     var data = $('select#pi_consignee').select2('data');
     consignee(data[0].id);
     discharge(data[0].id);
+    coding(data[0].id);
 });
 
 $('select#pi_beneficiary').on('change', function() {
@@ -113,7 +123,6 @@ function consignee(id)
         type: "POST",
         dataType: "json",
         success: function(response) {
-            console.log(response)
             if(response) {
                 document.getElementById("consignee_address").value = response.address;
                 document.getElementById("consignee_country").value = response.country_name;
@@ -144,7 +153,6 @@ function beneficiary(id)
         type: "POST",
         dataType: "json",
         success: function(response) {
-            console.log(response)
             if(response) {
                 document.getElementById("beneficiary_address").value = response.address;
                 document.getElementById("beneficiary_country").value = response.country_name;
@@ -171,7 +179,6 @@ function discharge(id)
         type: "POST",
         dataType: "json",
         success: function(response) {
-            console.log(response)
             var html = '';
             var i;
             for(i=0; i<response.length; i++) {
@@ -194,7 +201,6 @@ function destination(id)
         type: "POST",
         dataType: "json",
         success: function(response) {
-            console.log(response)
             if(response) {
                 document.getElementById("destination_port").value = response.destination_port;
             } else {
@@ -215,7 +221,6 @@ function cbm(id)
         type: "POST",
         dataType: "json",
         success: function(response) {
-            console.log(response)
             if(response) {
                 document.getElementById("currenct_cbm").value = response.max_cbm;
                 document.getElementById("remain_cbm").value = response.max_cbm;
@@ -238,7 +243,6 @@ function item(id)
         type: "POST",
         dataType: "json",
         success: function(response) {
-            console.log(response)
             if(response) {
                 var lengths = Number(response.length);
                 var widths = Number(response.width);
@@ -260,6 +264,46 @@ function item(id)
     });
 }
 
+function coding(id)
+{
+    $.ajax({
+        url: site_url + "export/proforma/coding/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            console.log(response)
+            if(response) {
+                document.getElementById("sachet_imported").value = response[0].import_by;
+                document.getElementById("sachet_hotline").value = response[0].hotline;
+                document.getElementById("sachet_bb").value = response[0].best_before;
+                document.getElementById("pouch_imported").value = response[1].import_by;
+                document.getElementById("pouch_hotline").value = response[1].hotline;
+                document.getElementById("pouch_bb").value = response[1].best_before;
+                document.getElementById("case_imported").value = response[2].import_by;
+                document.getElementById("case_hotline").value = response[2].hotline;
+                document.getElementById("case_bb").value = response[2].best_before;
+                document.getElementById("notes").value = response[0].notes;
+                
+            } else {
+                document.getElementById("sachet_imported").value = '';
+                document.getElementById("sachet_hotline").value = '';
+                document.getElementById("sachet_bb").value = '';
+                document.getElementById("pouch_imported").value = response[1].import_by;
+                document.getElementById("pouch_hotline").value = response[1].hotline;
+                document.getElementById("pouch_bb").value = response[1].best_before;
+                document.getElementById("case_imported").value = response[2].import_by;
+                document.getElementById("case_hotline").value = response[2].hotline;
+                document.getElementById("case_bb").value = response[2].best_before;
+                document.getElementById("notes").value = response[2].notes;
+            }
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+            swal("", "Terjadi kesalahan pada sistem.", "error");
+        }        
+    });
+}
+
 function save()
 {
     $.ajax({
@@ -269,19 +313,19 @@ function save()
         dataType: "json",
         beforeSend: function(){
             $('a.cancel').prop('disabled', true);
-            $('button#btn-customer-save').html("<img src=" + base_url + "assets/images/inventory/loader.gif style='height:20px;'  /> Saving...").prop('disabled', true);
+            $('button#btn-proforma-save').html("<img src=" + base_url + "assets/images/inventory/loader.gif style='height:20px;'  /> Saving...").prop('disabled', true);
         },
         success: function(response) {
             console.log(response);
-            // if(response.status == 1) {
-            //     $('a.cancel').prop('disabled', true);
-            //     $('button#btn-customer-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', true);
-            //     swal("", response.messages, response.icon).then((value) => {
-            //         window.location.href = site_url + response.url;
-            //     });
-            // } else {
-            //     swal("", response.messages, response.icon);
-            // }
+            if(response.status == 1) {
+                $('a.cancel').prop('disabled', true);
+                $('button#btn-proforma-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', true);
+                swal("", response.messages, response.icon).then((value) => {
+                    window.location.href = site_url + response.url;
+                });
+            } else {
+                swal("", response.messages, response.icon);
+            }
         },
         error: function (e) {
             console.log("Terjadi kesalahan pada sistem");

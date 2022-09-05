@@ -44,7 +44,7 @@ $(function () {
         var hotline = $('#coding_hotline').val();
         var bb = $('#coding_bb').val();
 
-        if(type == "" && imports == "" && hotline == "" && bb == "") {
+        if(type == "" || imports == "" || hotline == "" || bb == "") {
             swal("", "Coding printing section cannot be empty.", "warning");
         } else {
             var rnd = Math.floor((Math.random() * 10000) + 1);

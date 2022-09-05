@@ -191,3 +191,6 @@ $route['export/proforma/cbm'] = 'ProformaInvoice/cbm';
 $route['export/proforma/cbm/(:num)'] = 'ProformaInvoice/cbm/$1';
 $route['export/proforma/item'] = 'ProformaInvoice/item';
 $route['export/proforma/item/(:num)'] = 'ProformaInvoice/item/$1';
+$route['export/proforma/coding'] = 'ProformaInvoice/coding';
+$route['export/proforma/coding/(:num)'] = 'ProformaInvoice/coding/$1';
+$route['export/proforma/save'] = 'ProformaInvoice/save';
