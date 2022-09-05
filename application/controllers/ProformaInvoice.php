@@ -30,7 +30,7 @@
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Proforma Invoice'];
             $datas['header'] = 'Proforma invoice list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('view_customer_list', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD->readData('view_trans_pi_list', ['is_deleted' => '0'])
             ];
 
             $this->template->load('default', 'contents' , 'export/proforma/list', $datas);
@@ -177,6 +177,33 @@
             }
 
             echo json_encode($response);
+        }
+
+        public function detail($id)
+        {
+
+        }
+
+        public function update()
+        {
+
+        }
+
+        public function delete($id)
+        {
+
+        }
+
+        public function print($id)
+        {
+            require_once('assets/mpdf_v8.0.3-master/vendor/autoload.php');
+            $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
+            $mpdf->SetHeader('<img src="' . base_url() . 'assets/images/inventory/skp-logo-crop-removebg.png" width="16%" />||');
+            $content = $this->load->view('export/print/proforma', [], true);
+            $mpdf->WriteHTML($content);
+            $filename = "Export-ProformaInvoice";
+            $time = date('YmdHis');
+            $mpdf->Output($filename."-".$time.".pdf", 'I');
         }
     }
 

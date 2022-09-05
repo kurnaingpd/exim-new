@@ -9,10 +9,10 @@
                     <th>#</th>
                     <th>PI number</th>
                     <th>PI date</th>
-                    <th>Progoress (%)</th>
                     <th>Customer</th>
                     <th>Country</th>
                     <th>PIC</th>
+                    <th>Status</th>
                     <th>Created at</th>
                     <th>Updated at</th>
                     <th><i class="fas fa-ellipsis-h"></i></th>
@@ -23,15 +23,17 @@
                     <tr class="align-middle">
                         <td class="text-center"><?=$no?>.</td>
                         <td class="text-center"><?=$rows->code?></td>
-                        <td><?=$rows->company_name?></td>
-                        <td><?=$rows->address?></td>
+                        <td class="text-center"><?=$rows->pi_date?></td>
+                        <td><?=$rows->customer?></td>
                         <td><?=$rows->country_name?></td>
-                        <td><?=$rows->country_name?></td>
-                        <td class="text-center"><?=$rows->phone_no?></td>
+                        <td><?=$rows->pic?></td>
+                        <td class="text-center">
+                            <span class="badge bg-<?=$rows->bg_color?>"><?=$rows->status_name?></span>
+                        </td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center">
-                            <a href="<?=site_url('export/country/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
+                            <a href="<?=site_url('export/proforma/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">
