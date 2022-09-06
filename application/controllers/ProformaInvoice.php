@@ -193,18 +193,6 @@
         {
 
         }
-
-        public function print($id)
-        {
-            require_once('assets/mpdf_v8.0.3-master/vendor/autoload.php');
-            $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
-            $mpdf->SetHeader('<img src="' . base_url() . 'assets/images/inventory/skp-logo-crop-removebg.png" width="16%" />||');
-            $content = $this->load->view('export/print/proforma', [], true);
-            $mpdf->WriteHTML($content);
-            $filename = "Export-ProformaInvoice";
-            $time = date('YmdHis');
-            $mpdf->Output($filename."-".$time.".pdf", 'I');
-        }
     }
 
 ?>
