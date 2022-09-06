@@ -1,15 +1,22 @@
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
         <div class="form-group required">
             <label for="con_company" class="control-label">Company name</label>
             <input type="text" name="con_company" class="form-control upper" id="con_company" placeholder="Enter company name" autocomplete="off" autofocus required>
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-2">
         <div class="form-group required">
             <label for="con_address" class="control-label">Address</label>
             <textarea name="con_address" class="form-control upper" id="con_address" placeholder="Enter address" autocomplete="off" required rows="3"></textarea>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="form-group required">
+            <label for="con_town" class="control-label">Town</label>
+            <input type="text" name="con_town" class="form-control upper" id="con_town" placeholder="Enter town" autocomplete="off" required>
         </div>
     </div>
 

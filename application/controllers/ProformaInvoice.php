@@ -181,7 +181,25 @@
 
         public function detail($id)
         {
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+            ];
+            $datas['js'] = [
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/container/detail.js"),
+            ];
+            $datas['title'] = 'Export - Proforma Invoice';
+            $datas['breadcrumb'] = ['Export', 'Transaction', 'Proforma Invoice'];
+            $datas['header'] = 'Detail record';
+            // $datas['params'] = [
+            //     'detail' => $this->M_CRUD->readDatabyID('master_container', ['is_deleted' => '0', 'id' => $id]),
+            // ];
 
+            $this->template->load('default', 'contents' , 'export/proforma/detail/index', $datas);
         }
 
         public function update()
