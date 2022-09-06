@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `gexp_bank_cust` (
   PRIMARY KEY (`BankCustId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_bank_cust: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_bank_cust: ~1 rows (approximately)
 DELETE FROM `gexp_bank_cust`;
 INSERT INTO `gexp_bank_cust` (`BankCustId`, `CustCodeId`, `BankCustAccountName`, `BankCustAccountNo`, `BankCustName`, `BankCustBranch`, `BankCustAddress`, `BankCustSwiftCode`, `BankCustCode`) VALUES
 	(1, '1', 'LLP "B3 group"', 'KZ6896502F0012782447', 'АО «ForteBank»', 'NUR SULTAN', '010000, KAZAKHSTAN, G. NUR-SULTAN, R-N ESIL, UL. B', 'IRTYKZKA', '-');
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `gexp_coa_signpi` (
   PRIMARY KEY (`coa_detsign_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_coa_signpi: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_coa_signpi: ~1 rows (approximately)
 DELETE FROM `gexp_coa_signpi`;
 INSERT INTO `gexp_coa_signpi` (`coa_detsign_id`, `sign_id_pi`, `coa_detsign_date`, `coa_detsign_path`, `createdAt`, `createdBy`) VALUES
 	(1, 1, '2022-07-21', 'COA-KAZ.pdf', '2022-07-21 13:10:06', 10);
@@ -206,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `gexp_contact_cust` (
   PRIMARY KEY (`CtId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_contact_cust: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_contact_cust: ~1 rows (approximately)
 DELETE FROM `gexp_contact_cust`;
 INSERT INTO `gexp_contact_cust` (`CtId`, `CtTicketCustCode`, `CtName`, `CtPhone`, `CtEmail`, `CtTOP`, `CtDp`, `CtBalancing`, `CtCurrency`, `CtIncoterm`) VALUES
 	(1, '1', 'Yerkanat Ussenov', '+7777 207 7373', 'Erkanat.ussen81@gmail.com', 8, '30', '70', 'USD', 3);
@@ -277,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `gexp_importdoc_cust` (
   PRIMARY KEY (`ImportdocId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_importdoc_cust: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_importdoc_cust: ~1 rows (approximately)
 DELETE FROM `gexp_importdoc_cust`;
 INSERT INTO `gexp_importdoc_cust` (`ImportdocId`, `CustCodeId`, `BillOfLadding`, `PackingList`, `InvoiceA`, `InvoiceUV`, `COO`, `HealthCert`, `MaterialSafety`, `COA`, `ProductSpec`, `OthersAdd`) VALUES
 	(1, '1', 'Send Original Doc', 'Send Original Doc', 'Send Original Doc', 'Not Include', 'Send Original Doc', 'Send Original Doc', 'Not Include', 'Send Original Doc', 'Send Original Doc', 'QUALITY CERTIFICATE');
@@ -294,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `gexp_invoice_print` (
   PRIMARY KEY (`inv_print_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_invoice_print: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_invoice_print: ~1 rows (approximately)
 DELETE FROM `gexp_invoice_print`;
 INSERT INTO `gexp_invoice_print` (`inv_print_id`, `inv_print_no`, `inv_print_carton_barcode`, `inv_print_batch`, `inv_print_expired_date`, `inv_print_production_date`) VALUES
 	(1, '0001/SKP-EXP/INV/07/2022', 1, NULL, NULL, NULL);
@@ -335,7 +335,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_bank` (
   PRIMARY KEY (`BankId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_bank: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_bank: ~1 rows (approximately)
 DELETE FROM `gexp_master_bank`;
 INSERT INTO `gexp_master_bank` (`BankId`, `BankCode`, `BankName`, `BankOffice`, `BankDesc`, `BankAccount`, `BankSwiftCode`, `BankStats`, `CreatedAt`, `CreatedBy`, `UpdateAt`, `UpdateBy`) VALUES
 	(1, '01', 'DBS INDONESIA', 'DBS BANK TOWER BRANCH', 'JL. PROF. DR. SATRIO KAV 3-5, CIPUTRA WORLD JAKARTA 12940', '3220119139', 'dbsbidja', 1, '2022-06-15 14:09:03', 1, NULL, NULL);
@@ -358,7 +358,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_beneficiary` (
   PRIMARY KEY (`BeneficiaryId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_beneficiary: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_beneficiary: ~1 rows (approximately)
 DELETE FROM `gexp_master_beneficiary`;
 INSERT INTO `gexp_master_beneficiary` (`BeneficiaryId`, `BeneficiaryDesc`, `BeneficiaryOffice`, `BeneficiaryAddr`, `BeneficiaryCountry`, `BeneficiaryCP`, `BeneficiaryPhone`, `BeneficiaryStats`, `CreatedAt`, `CreatedBy`, `UpdateAt`, `UpdateBy`) VALUES
 	(1, 'PT. SUMBER KOPI PRIMA', ' JL. LINGKAR TIMUR', 'LORAM WETAN, JATI,  KAB. KUDUS, JAWA TENGAH, 59344', 9, 'EVI SUSANTI', '-', 1, '2022-06-15 14:03:30', 1, '2022-06-15 14:04:02', 1);
@@ -380,7 +380,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_coa` (
   UNIQUE KEY `gexp_coa_no` (`gexp_coa_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_coa: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_coa: ~1 rows (approximately)
 DELETE FROM `gexp_master_coa`;
 INSERT INTO `gexp_master_coa` (`gexp_coa_id`, `gexp_coa_no`, `gexp_coa_date`, `gexp_coa_invoice`, `gexp_coa_product_name`, `gexp_coa_product_date`, `gexp_coa_month`, `gexp_coa_years`, `gexp_coa_createdAt`, `gexp_coa_createdBy`) VALUES
 	(1, '0001/07/2022/KAZ', '2022-07-18', 1, NULL, NULL, NULL, '2022', '2022-07-18 10:07:21', 10);
@@ -504,7 +504,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_expreq` (
   PRIMARY KEY (`gexp_expreq_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_expreq: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_expreq: ~1 rows (approximately)
 DELETE FROM `gexp_master_expreq`;
 INSERT INTO `gexp_master_expreq` (`gexp_expreq_id`, `gexp_expreq_pi_id`, `gexp_expreq_remark`, `gexp_expreq_doc01`, `gexp_expreq_doc02`, `gexp_expreq_doc03`, `gexp_expreq_date`, `gexp_expreq_month`, `gexp_expreq_years`, `gexp_expreq_createdAt`, `gexp_expreq_createdBy`, `gexp_expreq_statrows`, `gexp_expreq_docval`, `gexp_expreq_uploadby`, `gexp_expreq_statusDoc`, `gexp_expreq_confirm_id`, `gexp_expreq_confirmedAt`, `gexp_expreq_isRevisi`, `gexp_expreq_ValRevisi`, `gexp_expreq_DateRevisi`) VALUES
 	(1, 1, '', 'Ketentuan_Kazakhstan_V2_3_(3_Hanger).pdf', NULL, NULL, '2022-07-15', '07', '2022', '2022-07-15 17:14:29', 21, 1, 1, 6, 1, 41, '2022-07-15 17:23:34', 2, NULL, NULL);
@@ -611,7 +611,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_invoice` (
   UNIQUE KEY `gexp_invoice_pi` (`gexp_invoice_pi`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_invoice: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_invoice: ~1 rows (approximately)
 DELETE FROM `gexp_master_invoice`;
 INSERT INTO `gexp_master_invoice` (`gexp_invoice_id`, `gexp_invoice_no`, `gexp_invoice_pi`, `gexp_invoice_ffrn`, `gexp_invoice_date`, `gexp_invoice_month`, `gexp_invoice_years`, `gexp_invoice_statrows`, `gexp_invoice_createdAt`, `gexp_invoice_createdBy`, `gexp_invoice_isPL`, `gexp_invoice_isCoa`, `gexp_invoice_isProdspec`, `gexp_invoice_isQcert`, `gexp_invoice_isSpp`) VALUES
 	(1, '0001/SKP-EXP/INV/07/2022', 1, '-', '2022-07-15', NULL, NULL, 1, '2022-07-15 17:32:43', 7, 1, NULL, NULL, NULL, NULL);
@@ -700,7 +700,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_packlist` (
   UNIQUE KEY `gexp_packlist_invoice_id` (`gexp_packlist_invoice_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_packlist: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_packlist: ~1 rows (approximately)
 DELETE FROM `gexp_master_packlist`;
 INSERT INTO `gexp_master_packlist` (`gexp_packlist_id`, `gexp_packlist_invoice_id`, `gexp_packlist_no`, `gexp_packlist_container`, `gexp_packlist_date`, `gexp_packlist_month`, `gexp_packlist_years`, `gexp_packlist_statrows`, `gexp_packlist_createdAt`, `gexp_packlist_createdBy`) VALUES
 	(1, 1, '0001/SKP-EXT/PL/07/2022', '1', '2022-07-15', NULL, NULL, 1, '2022-07-15 17:36:20', 15);
@@ -754,7 +754,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_pi` (
   UNIQUE KEY `gexp_pi_no` (`gexp_pi_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_pi: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_pi: ~1 rows (approximately)
 DELETE FROM `gexp_master_pi`;
 INSERT INTO `gexp_master_pi` (`gexp_pi_id`, `gexp_pi_no`, `gexp_pi_po`, `gexp_pi_customer`, `gexp_pi_consignee_id`, `gexp_pi_beneficiary_id`, `gexp_pi_loadport_id`, `gexp_pi_dischargeport_id`, `gexp_pi_destinatport_id`, `gexp_pi_container`, `gexp_pi_number_container`, `gexp_pi_freight_company`, `gexp_pi_freight_compcontact`, `gexp_pi_freight_compnumber`, `gexp_pi_freight_cost`, `gexp_pi_insurance`, `gexp_pi_bank`, `gexp_pi_currency`, `gexp_pi_ppn`, `gexp_pi_remark`, `gexp_pi_attachment01`, `gexp_pi_statrow`, `gexp_pi_week`, `gexp_pi_date`, `gexp_pi_month`, `gexp_pi_years`, `gexp_pi_statusPI`, `gexp_pi_createdAt`, `gexp_pi_createdBy`, `gexp_pi_updatedAt`, `gexp_pi_updatedBy`, `gexp_pi_parentlogs`, `gexp_pi_ApprovedBy`, `gexp_pi_ApprovedAt`, `gexp_pi_isApproved`, `gexp_pi_onSubmit`, `gexp_pi_Submit_Date`, `gexp_pi_submit_by`, `gexp_pi_isExpreq`, `gexp_pi_Expreq_path`, `gexp_pi_Expreq_isUpload`, `gexp_pi_Expreq_UpTime`) VALUES
 	(1, '0058/SKP-EXP/PI/07/2022', '-', NULL, 1, 1, 2, 0, 0, 4, '1', '-', '-', '-', 0.00, 0.00, 1, '3', 2, NULL, NULL, 1, NULL, '2022-07-15', '07', '2022', 1, '2022-07-15 16:46:37', 41, '0000-00-00 00:00:00', NULL, NULL, 21, '2022-07-15 17:14:29', 1, 1, '2022-07-15 17:13:20', 41, NULL, NULL, NULL, NULL);
@@ -840,7 +840,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_qs` (
   UNIQUE KEY `gexp_qs_invoice_id` (`gexp_qs_invoice_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_qs: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_qs: ~1 rows (approximately)
 DELETE FROM `gexp_master_qs`;
 INSERT INTO `gexp_master_qs` (`gexp_qs_id`, `gexp_qs_no`, `gexp_qs_coa_id`, `gexp_qs_invoice_id`, `gexp_qs_date`, `gexp_qs_month`, `gexp_qs_years`, `gexp_qs_createdAt`, `gexp_qs_createdBy`, `gexp_qs_statusrows`) VALUES
 	(1, '0001/SKP-QS/07/2022', 1, 1, '2022-07-21', '07', '2022', '2022-07-21 12:13:11', 10, 1);
@@ -861,7 +861,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_spec` (
   UNIQUE KEY `gexp_spec_no` (`gexp_spec_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_spec: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_spec: ~1 rows (approximately)
 DELETE FROM `gexp_master_spec`;
 INSERT INTO `gexp_master_spec` (`gexp_spec_id`, `gexp_spec_no`, `gexp_spec_date`, `gexp_spec_invoice_id`, `gexp_spec_po_no`, `gexp_spec_product_id`, `gexp_spec_createdAt`, `gexp_spec_createdBy`, `gexp_spec_statrows`) VALUES
 	(1, '0001/SKP-PRDSPEC/07/2022', '2022-07-21', 1, '12345', NULL, '2022-07-21 11:58:11', 10, NULL);
@@ -884,7 +884,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_spp` (
   UNIQUE KEY `gexp_spp_no` (`gexp_spp_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_spp: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_spp: ~1 rows (approximately)
 DELETE FROM `gexp_master_spp`;
 INSERT INTO `gexp_master_spp` (`gexp_spp_id`, `gexp_spp_no`, `gexp_spp_inv_id`, `gexp_spp_nama`, `gexp_spp_jabatan`, `gexp_spp_description`, `gexp_spp_date`, `gexp_spp_month`, `gexp_spp_years`, `gexp_spp_createdAt`, `gexp_spp_createdBy`) VALUES
 	(1, '0001/SKP-EXP/SPP/07/2022', 1, 'shofa istiana', 'Quality Assurance', 'OK', NULL, NULL, NULL, '0000-00-00 00:00:00', 10);
@@ -1010,6 +1010,15 @@ INSERT INTO `gexp_packlist_detail` (`gexp_packlistdet_id`, `gexp_packlist_number
 	(5, '0001/SKP-EXT/PL/07/2022', '-', '2', 'CAFFINO CAPPUCINNO MOCHA POUCH', '210111', 'POUCH', '206', '1023', '2023-10-18', '2021-10-18', '988.8', '1194.8', '5.8329621', NULL, '2022-07-15 17:36:20', 15, 15),
 	(6, '0001/SKP-EXT/PL/07/2022', NULL, '1', 'CAFFINO CAPPUCCINO POUCH', '210111', 'POUCH', '206', NULL, NULL, NULL, '988.8', '1194.8', '5.8329621', NULL, '2022-07-15 17:36:20', 15, NULL);
 
+-- Dumping structure for view gpd_gexp.gexp_pi_cbm
+DROP VIEW IF EXISTS `gexp_pi_cbm`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `gexp_pi_cbm` (
+	`pi_no` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`current_cbm` DECIMAL(42,6) NULL,
+	`currenct_remain_cbm` DECIMAL(20,6) UNSIGNED NULL
+) ENGINE=MyISAM;
+
 -- Dumping structure for table gpd_gexp.gexp_pi_good
 DROP TABLE IF EXISTS `gexp_pi_good`;
 CREATE TABLE IF NOT EXISTS `gexp_pi_good` (
@@ -1097,7 +1106,7 @@ CREATE TABLE IF NOT EXISTS `gexp_prodspec_signpi` (
   PRIMARY KEY (`prodspec_signid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_prodspec_signpi: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_prodspec_signpi: ~1 rows (approximately)
 DELETE FROM `gexp_prodspec_signpi`;
 INSERT INTO `gexp_prodspec_signpi` (`prodspec_signid`, `sign_pi_id`, `prodspec_date`, `prodspec_val`, `createdAt`, `createdBy`) VALUES
 	(1, 1, '2022-07-21', 'Product_Spec-KAZ.pdf', '2022-07-21 12:04:46', 10);
@@ -1132,7 +1141,7 @@ CREATE TABLE IF NOT EXISTS `gexp_shipto_cust` (
   PRIMARY KEY (`ShiptoId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_shipto_cust: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_shipto_cust: ~1 rows (approximately)
 DELETE FROM `gexp_shipto_cust`;
 INSERT INTO `gexp_shipto_cust` (`ShiptoId`, `ShipCodeCust`, `ShipCompanyName`, `ShipAddress`, `ShipCountry`, `ShipPhone`, `ShiptoCpName`, `ShiptoCpPhone`, `ShiptoCpEmail`) VALUES
 	(1, '1', 'B3 GROUP LLP', 'Esil district, st. Bukhar Zhyrau, 36, apt. 98, Nur Sultan', 'Kazakhstan', '+7777 207 7373', 'Yerkanat Ussenov', '+7777 207 7373', 'Erkanat.ussen81@gmail.com');
@@ -1318,7 +1327,7 @@ CREATE TABLE IF NOT EXISTS `gexp_sign_pi` (
   PRIMARY KEY (`sign_pi_noid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_sign_pi: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_sign_pi: ~1 rows (approximately)
 DELETE FROM `gexp_sign_pi`;
 INSERT INTO `gexp_sign_pi` (`sign_pi_noid`, `sign_pi_statrows`, `sign_pi_id`, `sign_pi_no`, `sign_pi_submitPI`, `sign_pi_submit_path`, `sign_pi_submit_date`, `sign_pi_submit_at`, `sign_pi_submit_by`, `sign_pi_po`, `sign_pi_po_path`, `sign_pi_po_date`, `sign_pi_po_at`, `sign_pi_po_by`, `sign_pi_top`, `sign_pi_top_value`, `sign_pi_top_path`, `sign_pi_top_date`, `sign_pi_top_at`, `sign_pi_top_by`, `sign_dp_receipt`, `sign_dp_receipt_date`, `sign_dp_receipt_path`, `sign_dp_receipt_at`, `sign_dp_receipt_by`, `sign_dp_receipt_conf`, `sign_dp_receipt_conf_date`, `sign_dp_receipt_conf_at`, `sign_dp_receipt_conf_by`, `sign_shipping_term`, `sign_shipping_term_value`, `sign_shipping_term_date`, `sign_shipping_term_at`, `sign_shipping_term_by`, `sign_bill_of_ladding`, `sign_bill_of_ladding_path`, `sign_bill_of_ladding_date`, `sign_bill_of_ladding_at`, `sign_bill_of_ladding_by`, `sign_packing_list`, `sign_packing_list_path`, `sign_packing_list_date`, `sign_packing_list_at`, `sign_packing_list_by`, `sign_invoice`, `sign_invoice_path`, `sign_invoice_date`, `sign_invoice_at`, `sign_invoice_by`, `sign_invoice_underval`, `sign_invoice_underval_path`, `sign_invoice_underval_date`, `sign_invoice_underval_at`, `sign_invoice_underval_by`, `sign_coo`, `sign_coo_path`, `sign_coo_date`, `sign_coo_at`, `sign_coo_by`, `sign_healthcert`, `sign_healthcert_path`, `sign_healthcert_date`, `sign_healthcert_at`, `sign_healthcert_by`, `sign_materialsafe`, `sign_materialsafe_path`, `sign_materialsafe_date`, `sign_materialsafe_at`, `sign_materialsafe_by`, `sign_coa`, `sign_coa_path`, `sign_coa_date`, `sign_coa_at`, `sign_coa_by`, `sign_product_specificat`, `sign_product_specificat_path`, `sign_product_specificat_date`, `sign_product_specificat_at`, `sign_product_specificat_by`, `sign_spp`, `sign_spp_path`, `sign_spp_date`, `sign_spp_at`, `sign_spp_by`, `sign_others`, `sign_others_path`, `sign_others_date`, `sign_others_at`, `sign_others_by`, `sign_expprint_trial`, `sign_expprint_trial_path`, `sign_expprint_trial_date`, `sign_expprint_trial_at`, `sign_expprint_trial_by`, `sign_expprint_apprv`, `sign_expprint_apprv_date`, `sign_expprint_apprv_at`, `sign_expprint_apprv_by`, `sign_foc`, `sign_foc_date`, `sign_foc_at`, `sign_foc_by`, `sign_posm`, `sign_posm_date`, `sign_posm_at`, `sign_posm_by`, `sign_finishgod`, `sign_finishgod_date`, `sign_finishgod_at`, `sign_finishgod_by`, `sign_vesselsche`, `sign_vesselsche_date`, `sign_vesselsche_at`, `sign_vesselsche_by`, `sign_balancepay`, `sign_balancepay_value`, `sign_balancepay_date`, `sign_balancepay_at`, `sign_balancepay_by`, `sign_vesselbookconf`, `sign_vesselbookconf_date`, `sign_vesselbookconf_at`, `sign_vesselbookconf_by`, `sign_stuffing`, `sign_stuffing_path`, `sign_stuffing_date`, `sign_stuffing_at`, `sign_stuffing_by`, `sign_draftbl_sent`, `sign_draftbl_sent_date`, `sign_draftbl_sent_at`, `sign_draftbl_sent_by`, `sign_draftbl_apprv`, `sign_draftbl_apprv_date`, `sign_draftbl_apprv_at`, `sign_draftbl_apprv_by`, `sign_telex_release`, `sign_telex_release_date`, `sign_telex_release_at`, `sign_telex_release_by`, `sign_origin_docsent`, `sign_origin_docsent_date`, `sign_origin_docsent_at`, `sign_origin_docsent_by`, `sign_toppay_balance`, `sign_toppay_balance_date`, `sign_toppay_balance_at`, `sign_toppay_balance_by`, `sign_etd`, `sign_etd_date`, `sign_etd_at`, `sign_etd_by`, `sign_eta`, `sign_eta_date`, `sign_eta_at`, `sign_eta_by`) VALUES
 	(1, 1, 1, '0058/SKP-EXP/PI/07/2022', 1, '06_10_2021__Invoice_585.pdf', '2022-07-15', '2022-07-15 17:23:00', 41, 1, 'CA_-_Libur_Hari_Raya_Idul_Fitri.pdf', '2022-09-02', '2022-09-02 14:11:44', 4, 1, 'TOP 30 DAYS', NULL, '2022-07-21', '2022-07-21 10:30:46', 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'surrender_BL1.pdf', '2022-07-23', '2022-08-01 10:23:07', 27, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'GMO_Statement-KAZ.pdf', '2022-07-21', '2022-07-21 14:19:03', 10, 1, NULL, '2022-07-21', '2022-07-21 13:10:06', 10, 1, NULL, '2022-07-21', '2022-07-21 12:04:46', 10, 1, 'Surat_Pernyataan_Eksport_-_Produk_Kemasan_Berbeda_KAZ.pdf', '2022-07-21', '2022-07-21 14:05:43', 10, NULL, NULL, NULL, NULL, NULL, 1, 'Ketentuan_Kazakhstan_V2_3_(3_Hanger).pdf', '2021-06-15', '2022-07-21 14:59:50', 6, 1, '2021-06-15', '2022-07-21 14:58:54', 6, NULL, NULL, NULL, NULL, 1, '2021-06-15', '2022-07-21 14:58:04', 6, 1, '2021-07-05', '2022-07-21 14:55:38', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2022-07-13', '2022-08-01 10:27:31', 27, NULL, NULL, NULL, NULL, NULL, 1, '2022-07-20', '2022-08-01 10:29:47', 27, 1, '2022-07-22', '2022-08-01 10:33:03', 27, NULL, NULL, NULL, NULL, 1, '2022-07-28', '2022-08-01 10:33:40', 27, NULL, NULL, NULL, NULL, 1, '2022-07-23', '2022-08-01 10:36:38', 27, NULL, NULL, NULL, NULL);
@@ -1361,7 +1370,7 @@ CREATE TABLE IF NOT EXISTS `gexp_specdet_product` (
   PRIMARY KEY (`gexp_specdet_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_specdet_product: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_specdet_product: ~1 rows (approximately)
 DELETE FROM `gexp_specdet_product`;
 INSERT INTO `gexp_specdet_product` (`gexp_specdet_id`, `gexp_specdet_head`, `gexp_specdet_invoice`, `gexp_specdet_item`, `gexp_specdet_desc`, `gexp_specdet_physical_form`, `gexp_specdet_physical_texture`, `gexp_specdet_physical_colour`, `gexp_specdet_physical_taste`, `gexp_specdet_physical_odour`, `gexp_specdet_chemical_fat`, `gexp_specdet_chemical_moisture`, `gexp_specdet_chemical_caffeine`, `gexp_specdet_micro_platecount`, `gexp_specdet_micro_mouldyeast`, `gexp_specdet_micro_coliform`, `gexp_specdet_micro_salmonella`, `gexp_specdet_heamet_lead`, `gexp_specdet_heamet_arsenic`, `gexp_specdet_heamet_mercury`, `gexp_specdet_heamet_tin`, `gexp_specdet_heamet_cadmium`, `gexp_specdet_inregdient`, `gexp_specdet_prodshelife`, `gexp_specdet_packmate`, `gexp_specdet_storeconreq`, `gexp_specdet_fun_foodmaterial`, `gexp_specdet_usage`, `gexp_specdet_allergen`, `gexp_specdet_countorigin`, `gexp_specdet_createdat`, `gexp_specdet_createdby`) VALUES
 	(1, 1, 1, 4, 'asdada', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '<p><br></p>', '<p><br></p>', '<p><br></p>', '<p><br></p>', '<p><br></p>', '<p><br></p>', '<p><br></p>', '<p><br></p>', '2022-08-31 11:15:05', 10);
@@ -1415,7 +1424,7 @@ DELETE FROM `gexp_users`;
 INSERT INTO `gexp_users` (`UsersId`, `UserName`, `UserPassword`, `AccountName`, `UserEmail`, `UserPhone`, `UserJabatan`, `UserGroup`, `isStatus`, `HashToken`, `CreatedAt`, `CreatedBy`, `UpdateAt`, `UpdateBy`, `LastLogin`, `isAccess`) VALUES
 	(1, 'administrator', '200ceb26807d6bf99fd6f4f0d1ca54d4', 'administrator', 'nursaid@gonusa-distribusi.com', '-', 'Bussiness Analyst', 1, 1, 'MTBjMTIxMmY4ZjZmZTMyYTg0MDYzM2ExNDBiZjUwODgyNjJlNDkxZA==', '2021-09-29 13:12:32', 0, NULL, NULL, '2022-08-22 13:58:42', 1),
 	(3, 'admin01', '18c6d818ae35a3e8279b5330eda01498', 'admin01', 'r.kurnain@gmail.com', '085695332565', NULL, 2, 1, 'ZTg2ZTY4NWVhMGZmMTBlMWVhOTQyYmE2NDdlNjNmZWEyMzgzZmEwYg==', NULL, NULL, NULL, NULL, '2022-03-26 13:02:56', 0),
-	(4, 'sales01', '827ccb0eea8a706c4c34a16891f84e7b', 'Sales 01', 'kurnain.arsyi@gonusa-distribusi.com', '085695332565', 'Sales Officer', 20, 1, 'ZmU3MDNkMjU4YzdlZjVmNTBiNzFlMDY1NjVhNjVhYTA3MTk0OTA3Zg==', NULL, NULL, NULL, NULL, '2022-09-02 14:06:22', 0),
+	(4, 'sales01', '827ccb0eea8a706c4c34a16891f84e7b', 'Sales 01', 'kurnain.arsyi@gonusa-distribusi.com', '085695332565', 'Sales Officer', 20, 1, 'ZmU3MDNkMjU4YzdlZjVmNTBiNzFlMDY1NjVhNjVhYTA3MTk0OTA3Zg==', NULL, NULL, NULL, NULL, '2022-09-06 09:50:17', 0),
 	(5, 'warehouse01', '827ccb0eea8a706c4c34a16891f84e7b', 'warehouse 01', 'warehouse01@gmail.com', '085695332565', NULL, 21, 1, 'ZmU3MDNkMjU4YzdlZjVmNTBiNzFlMDY1NjVhNjVhYTA3MTk0OTA3Zg==', NULL, NULL, NULL, NULL, '2022-08-31 11:08:10', 0),
 	(6, 'ppic01', '827ccb0eea8a706c4c34a16891f84e7b', 'PPIC 01', 'ppic01@gmail.com', '085695332565', NULL, 22, 1, 'ZmU3MDNkMjU4YzdlZjVmNTBiNzFlMDY1NjVhNjVhYTA3MTk0OTA3Zg==', NULL, NULL, NULL, NULL, '2022-08-01 14:50:05', 0),
 	(7, 'evi.susanti', '827ccb0eea8a706c4c34a16891f84e7b', 'Evi Susanti', 'evi.susanti@sumberkopiprima.com', '-', 'Finance', 23, 1, 'ZmU3MDNkMjU4YzdlZjVmNTBiNzFlMDY1NjVhNjVhYTA3MTk0OTA3Zg==', NULL, NULL, NULL, NULL, '2022-08-22 09:32:13', 0),
@@ -1445,6 +1454,28 @@ INSERT INTO `gexp_users` (`UsersId`, `UserName`, `UserPassword`, `AccountName`, 
 	(31, 'anita.margareta', '827ccb0eea8a706c4c34a16891f84e7b', 'Anita Margareta', 'anita.margareta@sumberkopiprima.com', '-', 'QC Manager', 25, 1, 'ZmU3MDNkMjU4YzdlZjVmNTBiNzFlMDY1NjVhNjVhYTA3MTk0OTA3Zg==', NULL, NULL, NULL, NULL, '2022-08-16 15:38:00', 0),
 	(32, 'djie.livanny', '827ccb0eea8a706c4c34a16891f84e7b', 'Djie Livanny', 'djie.livanny@sumberkopiprima.com', '-', 'Finance', 23, 1, 'ZmU3MDNkMjU4YzdlZjVmNTBiNzFlMDY1NjVhNjVhYTA3MTk0OTA3Zg==', NULL, NULL, NULL, NULL, '2022-05-31 10:55:00', 0),
 	(41, 'fahna.nur.santika', '827ccb0eea8a706c4c34a16891f84e7b', 'Fahna Nur Santika', 'fahna.nur.santika@gonusa-distribusi.com', '-', 'Business Development Manager', 20, 1, 'ZmU3MDNkMjU4YzdlZjVmNTBiNzFlMDY1NjVhNjVhYTA3MTk0OTA3Zg==', NULL, NULL, NULL, NULL, '2022-08-01 11:14:03', 0);
+
+-- Dumping structure for view gpd_gexp.gexp_view_ketentuan_exp
+DROP VIEW IF EXISTS `gexp_view_ketentuan_exp`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `gexp_view_ketentuan_exp` (
+	`gexp_expreq_id` INT(11) NULL COMMENT 'Gexp Export Required',
+	`gexp_expreq_pi_id` INT(11) NULL,
+	`gexp_expreq_remark` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`gexp_pi_no` VARCHAR(255) NULL COMMENT 'No PI' COLLATE 'utf8mb4_general_ci',
+	`gexp_pi_date` DATE NULL COMMENT 'PI creation Date',
+	`CustCompanyName` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`CountryName` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`gexp_pi_statusPI` VARCHAR(8) NULL COLLATE 'utf8mb4_general_ci',
+	`gexp_pi_statusPI_label` VARCHAR(7) NULL COLLATE 'utf8mb4_general_ci',
+	`gexp_expreq_statusDoc` VARCHAR(8) NULL COLLATE 'utf8mb4_general_ci',
+	`gexp_expreq_statusDoc_label` VARCHAR(7) NULL COLLATE 'utf8mb4_general_ci',
+	`gexp_expreq_statusDoc_id` INT(11) NULL,
+	`gexp_expreq_docval_id` INT(11) NULL,
+	`gexp_expreq_doc02_id` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`gexp_expreq_ValRevisi` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`gexp_expreq_DateRevisi` VARCHAR(19) NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
 
 -- Dumping structure for table gpd_gexp.gimp_consignee
 DROP TABLE IF EXISTS `gimp_consignee`;
@@ -1731,7 +1762,7 @@ CREATE TABLE IF NOT EXISTS `master_bank` (
   UNIQUE KEY `code` (`code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_bank: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.master_bank: ~2 rows (approximately)
 DELETE FROM `master_bank`;
 INSERT INTO `master_bank` (`id`, `code`, `name`, `account`, `branch`, `address`, `swift_code`, `created_at`, `updated_at`, `is_deleted`) VALUES
 	(1, '01', 'DBS INDONESIA', '3220119139', 'DBS BANK TOWER BRANCH', 'JL. PROF. DR. SATRIO KAV 3-5, CIPUTRA WORLD JAKARTA 12940', 'dbsbidja', '2022-08-22 07:50:52', NULL, '0'),
@@ -1755,10 +1786,10 @@ CREATE TABLE IF NOT EXISTS `master_beneficiary` (
   CONSTRAINT `FK__master_country` FOREIGN KEY (`country_id`) REFERENCES `master_country` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_beneficiary: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.master_beneficiary: ~1 rows (approximately)
 DELETE FROM `master_beneficiary`;
 INSERT INTO `master_beneficiary` (`id`, `company_name`, `office`, `address`, `country_id`, `cp_name`, `phone`, `created_at`, `updated_at`, `is_deleted`) VALUES
-	(1, 'PT. SUMBER KOPI PRIMA', ' JL. LINGKAR TIMUR', 'LORAM WETAN, JATI,  KAB. KUDUS, JAWA TENGAH, 59344', 7, 'EVI SUSANTI', NULL, '2022-08-22 10:50:41', NULL, '0');
+	(1, 'PT. SUMBER KOPI PRIMA', ' JL. LINGKAR TIMUR', 'LORAM WETAN, JATI,  KAB. KUDUS, JAWA TENGAH, 59344', 7, 'EVI SUSANTI', '085774439141', '2022-08-22 10:50:41', NULL, '0');
 
 -- Dumping structure for table gpd_gexp.master_coding_type
 DROP TABLE IF EXISTS `master_coding_type`;
@@ -1769,7 +1800,7 @@ CREATE TABLE IF NOT EXISTS `master_coding_type` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_coding_type: ~2 rows (approximately)
+-- Dumping data for table gpd_gexp.master_coding_type: ~3 rows (approximately)
 DELETE FROM `master_coding_type`;
 INSERT INTO `master_coding_type` (`id`, `name`, `is_deleted`) VALUES
 	(1, 'Sachet', '0'),
@@ -1868,6 +1899,7 @@ CREATE TABLE IF NOT EXISTS `master_customer` (
   `code` varchar(20) NOT NULL,
   `company_name` varchar(100) NOT NULL COMMENT 'cust consignee name = company name',
   `address` text NOT NULL,
+  `town` varchar(100) NOT NULL,
   `country_id` tinyint(4) NOT NULL,
   `phone_no` varchar(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -1885,10 +1917,10 @@ CREATE TABLE IF NOT EXISTS `master_customer` (
   CONSTRAINT `FK_master_customer_master_user_2` FOREIGN KEY (`updated_by`) REFERENCES `master_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_customer: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.master_customer: ~1 rows (approximately)
 DELETE FROM `master_customer`;
-INSERT INTO `master_customer` (`id`, `code`, `company_name`, `address`, `country_id`, `phone_no`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_deleted`) VALUES
-	(2, '8801KAZ0001', 'B3 GROUP LLP', 'ESIL DISTRICT, ST. BUKHAR ZHYRAU, 36, APT. 98, NUR SULTAN', 28, '+77772077373', '2022-09-01 03:51:04', 1, NULL, NULL, '0');
+INSERT INTO `master_customer` (`id`, `code`, `company_name`, `address`, `town`, `country_id`, `phone_no`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_deleted`) VALUES
+	(2, '8801KAZ0001', 'B3 GROUP LLP', 'ESIL DISTRICT, ST. BUKHAR ZHYRAU, 36, APT. 98, NUR SULTAN', 'Nur Sultan', 28, '+77772077373', '2022-09-01 03:51:04', 1, NULL, NULL, '0');
 
 -- Dumping structure for table gpd_gexp.master_customer_backup
 DROP TABLE IF EXISTS `master_customer_backup`;
@@ -1923,7 +1955,7 @@ CREATE TABLE IF NOT EXISTS `master_customer_bank` (
   CONSTRAINT `FK_master_customer_bank_master_customer` FOREIGN KEY (`customer_id`) REFERENCES `master_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_customer_bank: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.master_customer_bank: ~1 rows (approximately)
 DELETE FROM `master_customer_bank`;
 INSERT INTO `master_customer_bank` (`id`, `customer_id`, `bank_id`, `account_no`, `account_name`, `is_deleted`) VALUES
 	(2, 2, 2, 'KZ6896502F0012782447', 'АО «ForteBank»', '0');
@@ -1940,7 +1972,7 @@ CREATE TABLE IF NOT EXISTS `master_customer_coding` (
   CONSTRAINT `FK_master_customer_coding_master_customer` FOREIGN KEY (`customer_id`) REFERENCES `master_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_customer_coding: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.master_customer_coding: ~1 rows (approximately)
 DELETE FROM `master_customer_coding`;
 INSERT INTO `master_customer_coding` (`id`, `customer_id`, `notes`, `is_deleted`) VALUES
 	(1, 2, NULL, '0');
@@ -1994,7 +2026,7 @@ CREATE TABLE IF NOT EXISTS `master_customer_cp` (
   CONSTRAINT `FK_master_customer_cp_master_top` FOREIGN KEY (`top_id`) REFERENCES `master_top` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_customer_cp: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.master_customer_cp: ~1 rows (approximately)
 DELETE FROM `master_customer_cp`;
 INSERT INTO `master_customer_cp` (`id`, `customer_id`, `name`, `phone_no`, `email`, `top_id`, `dp`, `balancing`, `currency_id`, `incoterm_id`, `is_deleted`) VALUES
 	(2, 2, 'YERKANAT USSENOV', '+77772077373', 'Erkanat.ussen81@gmail.com', 6, 30, 70, 3, 3, '0');
@@ -2013,7 +2045,7 @@ CREATE TABLE IF NOT EXISTS `master_customer_cp_ship` (
   CONSTRAINT `FK_master_customer_cp_ship_master_customer` FOREIGN KEY (`customer_id`) REFERENCES `master_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_customer_cp_ship: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.master_customer_cp_ship: ~1 rows (approximately)
 DELETE FROM `master_customer_cp_ship`;
 INSERT INTO `master_customer_cp_ship` (`id`, `customer_id`, `name`, `phone`, `email`, `is_deleted`) VALUES
 	(1, 2, 'YERKANAT USSENOV', '+77772077373', 'Erkanat.ussen81@gmail.com', '0');
@@ -2039,7 +2071,7 @@ CREATE TABLE IF NOT EXISTS `master_customer_import_doc` (
   CONSTRAINT `FK_master_customer_import_doc_detail_master_customer` FOREIGN KEY (`customer_id`) REFERENCES `master_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table gpd_gexp.master_customer_import_doc: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.master_customer_import_doc: ~1 rows (approximately)
 DELETE FROM `master_customer_import_doc`;
 INSERT INTO `master_customer_import_doc` (`id`, `customer_id`, `bill_of_ladding`, `packing_list`, `invoice`, `invoice_uv`, `coo`, `health_cert`, `material_safety`, `coa`, `prod_spec`, `others`, `is_deleted`) VALUES
 	(1, 2, '1', '2', '1', '2', '1', '2', '1', '2', '1', 'test others', '0');
@@ -2061,7 +2093,7 @@ CREATE TABLE IF NOT EXISTS `master_customer_notify` (
   CONSTRAINT `FK_master_customer_notify_master_customer` FOREIGN KEY (`customer_id`) REFERENCES `master_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_customer_notify: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.master_customer_notify: ~1 rows (approximately)
 DELETE FROM `master_customer_notify`;
 INSERT INTO `master_customer_notify` (`id`, `customer_id`, `company_name`, `address`, `country_id`, `phone_no`, `is_deleted`) VALUES
 	(2, 2, 'B3 GROUP LLP', 'ESIL DISTRICT, ST. BUKHAR ZHYRAU, 36, APT. 98, NUR SULTAN', 28, '+77772077373', '0');
@@ -2083,7 +2115,7 @@ CREATE TABLE IF NOT EXISTS `master_customer_ship` (
   CONSTRAINT `FK_master_customer_ship_master_customer` FOREIGN KEY (`customer_id`) REFERENCES `master_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_customer_ship: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.master_customer_ship: ~1 rows (approximately)
 DELETE FROM `master_customer_ship`;
 INSERT INTO `master_customer_ship` (`id`, `customer_id`, `company_name`, `address`, `country_id`, `phone_no`, `is_deleted`) VALUES
 	(2, 2, 'B3 GROUP LLP', 'ESIL DISTRICT, ST. BUKHAR ZHYRAU, 36, APT. 98, NUR SULTAN', 28, '+7777 207 7373', '0');
@@ -2120,7 +2152,7 @@ CREATE TABLE IF NOT EXISTS `master_incoterm` (
   UNIQUE KEY `code` (`code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_incoterm: ~12 rows (approximately)
+-- Dumping data for table gpd_gexp.master_incoterm: ~11 rows (approximately)
 DELETE FROM `master_incoterm`;
 INSERT INTO `master_incoterm` (`id`, `code`, `name`, `created_at`, `updated_at`, `is_deleted`) VALUES
 	(1, 'FOB', 'Free On Board', '2022-08-19 08:22:54', NULL, '0'),
@@ -2158,7 +2190,7 @@ CREATE TABLE IF NOT EXISTS `master_item` (
   CONSTRAINT `FK_master_item_master_item_category` FOREIGN KEY (`item_category_id`) REFERENCES `master_item_category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_item: ~19 rows (approximately)
+-- Dumping data for table gpd_gexp.master_item: ~18 rows (approximately)
 DELETE FROM `master_item`;
 INSERT INTO `master_item` (`id`, `code`, `hs_code`, `item_category_id`, `name`, `pack_desc`, `net_wight`, `gross_weight`, `length`, `width`, `height`, `created_at`, `updated_at`, `is_deleted`) VALUES
 	(1, '30000041', '2101.11.19', 1, 'CAFFINO COFFEE LATTE CLASSIC', '24 POUCH X 10 SACHET X 20GR', 4.80, 5.92, 505, 220, 267, '2022-08-22 03:50:27', NULL, '0'),
@@ -2189,7 +2221,7 @@ CREATE TABLE IF NOT EXISTS `master_item_category` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_item_category: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.master_item_category: ~2 rows (approximately)
 DELETE FROM `master_item_category`;
 INSERT INTO `master_item_category` (`id`, `name`, `is_deleted`) VALUES
 	(1, 'CAFFINO', '0'),
@@ -2227,7 +2259,7 @@ CREATE TABLE IF NOT EXISTS `master_loading_port` (
   UNIQUE KEY `code` (`code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_loading_port: ~2 rows (approximately)
+-- Dumping data for table gpd_gexp.master_loading_port: ~3 rows (approximately)
 DELETE FROM `master_loading_port`;
 INSERT INTO `master_loading_port` (`id`, `code`, `name`, `created_at`, `updated_at`, `is_deleted`) VALUES
 	(1, 'JKT', 'Jakarta', '2022-08-22 09:44:44', NULL, '0'),
@@ -2244,7 +2276,7 @@ CREATE TABLE IF NOT EXISTS `master_menu_group` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_menu_group: ~3 rows (approximately)
+-- Dumping data for table gpd_gexp.master_menu_group: ~4 rows (approximately)
 DELETE FROM `master_menu_group`;
 INSERT INTO `master_menu_group` (`id`, `name`, `icon`, `is_deleted`) VALUES
 	(1, 'Master', 'fas fa-database', '0'),
@@ -2271,7 +2303,7 @@ CREATE TABLE IF NOT EXISTS `master_menu_module` (
   CONSTRAINT `FK_master_module_master_user_2` FOREIGN KEY (`updated_by`) REFERENCES `master_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_menu_module: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.master_menu_module: ~2 rows (approximately)
 DELETE FROM `master_menu_module`;
 INSERT INTO `master_menu_module` (`id`, `name`, `icon`, `url`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_deleted`) VALUES
 	(1, 'UAC', 'far fa-keyboard', 'uac', '2022-08-09 08:17:35', NULL, NULL, NULL, '0'),
@@ -2302,7 +2334,7 @@ CREATE TABLE IF NOT EXISTS `master_menu_sub` (
   CONSTRAINT `FK_master_menu_sub_master_user_2` FOREIGN KEY (`updated_by`) REFERENCES `master_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_menu_sub: ~11 rows (approximately)
+-- Dumping data for table gpd_gexp.master_menu_sub: ~15 rows (approximately)
 DELETE FROM `master_menu_sub`;
 INSERT INTO `master_menu_sub` (`id`, `menu_module_id`, `menu_group_id`, `name`, `icon`, `url`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_deleted`) VALUES
 	(1, 1, 1, 'User', 'fas fa-users', 'uac/user', '2022-08-09 10:55:18', NULL, NULL, NULL, '0'),
@@ -2338,7 +2370,7 @@ CREATE TABLE IF NOT EXISTS `master_pi_item` (
   CONSTRAINT `FK_gexp_master_pi_item_gexp_master_pi_opt` FOREIGN KEY (`option_id`) REFERENCES `master_pi_opt` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_pi_item: ~35 rows (approximately)
+-- Dumping data for table gpd_gexp.master_pi_item: ~36 rows (approximately)
 DELETE FROM `master_pi_item`;
 INSERT INTO `master_pi_item` (`id`, `group_id`, `item`, `option_id`, `name`, `created_at`, `is_deleted`) VALUES
 	(1, 20, 'Signed PI', 1, 'signed_pi', '2022-08-04 07:26:00', '0'),
@@ -2426,7 +2458,7 @@ CREATE TABLE IF NOT EXISTS `master_pi_opt` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_pi_opt: ~2 rows (approximately)
+-- Dumping data for table gpd_gexp.master_pi_opt: ~3 rows (approximately)
 DELETE FROM `master_pi_opt`;
 INSERT INTO `master_pi_opt` (`id`, `name`, `is_deleted`) VALUES
 	(1, 'Attachment', '0'),
@@ -2438,20 +2470,39 @@ DROP TABLE IF EXISTS `master_pi_status`;
 CREATE TABLE IF NOT EXISTS `master_pi_status` (
   `id` tinyint(4) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `bg-color` varchar(50) NOT NULL,
+  `bg_color` varchar(50) NOT NULL,
   `is_deleted` enum('0','1') NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_pi_status: ~5 rows (approximately)
+-- Dumping data for table gpd_gexp.master_pi_status: ~6 rows (approximately)
 DELETE FROM `master_pi_status`;
-INSERT INTO `master_pi_status` (`id`, `name`, `bg-color`, `is_deleted`) VALUES
-	(1, 'Draft', 'default', '0'),
+INSERT INTO `master_pi_status` (`id`, `name`, `bg_color`, `is_deleted`) VALUES
+	(1, 'Submit', 'secondary', '0'),
 	(2, 'Finish', 'info', '0'),
 	(3, 'Cancel', 'danger', '0'),
 	(4, 'Need Approval', 'info', '0'),
 	(5, 'Approved', 'success', '0'),
 	(6, 'Revise', 'warning', '0');
+
+-- Dumping structure for table gpd_gexp.master_position
+DROP TABLE IF EXISTS `master_position`;
+CREATE TABLE IF NOT EXISTS `master_position` (
+  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `role_id` tinyint(4) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `is_deleted` enum('0','1') NOT NULL DEFAULT '0' COMMENT '0 = No; 1 = Yes;',
+  PRIMARY KEY (`id`),
+  KEY `FK_master_position_master_role` (`role_id`),
+  CONSTRAINT `FK_master_position_master_role` FOREIGN KEY (`role_id`) REFERENCES `master_role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table gpd_gexp.master_position: ~3 rows (approximately)
+DELETE FROM `master_position`;
+INSERT INTO `master_position` (`id`, `role_id`, `name`, `is_deleted`) VALUES
+	(1, 2, 'Fullstack Developer', '0'),
+	(2, 3, 'Business Development Manager', '0'),
+	(3, 1, 'Superuser', '0');
 
 -- Dumping structure for table gpd_gexp.master_qc_item_category
 DROP TABLE IF EXISTS `master_qc_item_category`;
@@ -2477,7 +2528,7 @@ CREATE TABLE IF NOT EXISTS `master_qc_status` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_qc_status: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.master_qc_status: ~2 rows (approximately)
 DELETE FROM `master_qc_status`;
 INSERT INTO `master_qc_status` (`id`, `name`, `is_deleted`) VALUES
 	(1, 'Aman', '0'),
@@ -2516,7 +2567,7 @@ CREATE TABLE IF NOT EXISTS `master_top` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_top: ~5 rows (approximately)
+-- Dumping data for table gpd_gexp.master_top: ~6 rows (approximately)
 DELETE FROM `master_top`;
 INSERT INTO `master_top` (`id`, `name`, `created_at`, `updated_at`, `is_deleted`) VALUES
 	(1, 'LC', '2022-08-19 03:03:37', NULL, '0'),
@@ -2711,7 +2762,7 @@ CREATE TABLE IF NOT EXISTS `trans_menu_assign` (
   CONSTRAINT `FK_trans_menu_assign_master_user` FOREIGN KEY (`created_by`) REFERENCES `master_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.trans_menu_assign: ~16 rows (approximately)
+-- Dumping data for table gpd_gexp.trans_menu_assign: ~19 rows (approximately)
 DELETE FROM `trans_menu_assign`;
 INSERT INTO `trans_menu_assign` (`id`, `menu_sub_id`, `role_id`, `created_at`, `created_by`) VALUES
 	(1, 1, 1, '2022-08-10 04:02:28', NULL),
@@ -2816,7 +2867,6 @@ CREATE TABLE IF NOT EXISTS `trans_pi` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`),
   KEY `FK_trans_pi_master_loading_port` (`loading_port_id`),
-  KEY `FK_trans_pi_master_customer_ship` (`customer_ship_id`),
   KEY `FK_trans_pi_master_container` (`container_id`),
   KEY `FK_trans_pi_master_bank` (`bank_id`),
   KEY `FK_trans_pi_master_currency` (`currency_id`),
@@ -2827,22 +2877,25 @@ CREATE TABLE IF NOT EXISTS `trans_pi` (
   KEY `FK_trans_pi_master_customer` (`customer_id`),
   KEY `FK_trans_pi_master_customer_2` (`consignee_id`),
   KEY `FK_trans_pi_master_beneficiary` (`beneficiary_id`),
+  KEY `FK_trans_pi_master_customer_ship_detail` (`customer_ship_id`),
   CONSTRAINT `FK_trans_pi_master_bank` FOREIGN KEY (`bank_id`) REFERENCES `master_bank` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_master_beneficiary` FOREIGN KEY (`beneficiary_id`) REFERENCES `master_beneficiary` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_master_container` FOREIGN KEY (`container_id`) REFERENCES `master_container` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_master_currency` FOREIGN KEY (`currency_id`) REFERENCES `master_currency` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_master_customer` FOREIGN KEY (`customer_id`) REFERENCES `master_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_master_customer_2` FOREIGN KEY (`consignee_id`) REFERENCES `master_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_trans_pi_master_customer_ship` FOREIGN KEY (`customer_ship_id`) REFERENCES `master_customer_ship` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_trans_pi_master_customer_ship_detail` FOREIGN KEY (`customer_ship_id`) REFERENCES `master_customer_ship_detail` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_master_loading_port` FOREIGN KEY (`loading_port_id`) REFERENCES `master_loading_port` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_master_pi_status` FOREIGN KEY (`pi_status_id`) REFERENCES `master_pi_status` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_master_top` FOREIGN KEY (`top_id`) REFERENCES `master_top` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_master_user` FOREIGN KEY (`created_by`) REFERENCES `master_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_master_user_2` FOREIGN KEY (`updated_by`) REFERENCES `master_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.trans_pi: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.trans_pi: ~1 rows (approximately)
 DELETE FROM `trans_pi`;
+INSERT INTO `trans_pi` (`id`, `code`, `po_no`, `customer_id`, `consignee_id`, `beneficiary_id`, `loading_port_id`, `customer_ship_id`, `container_id`, `number_of_container`, `freight_company`, `freight_company_contact`, `freight_company_no`, `freight_cost`, `insurance`, `bank_id`, `currency_id`, `ppn`, `top_id`, `remark`, `attachment`, `pi_status_id`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_deleted`) VALUES
+	(1, '0001/SKP-EXP/PI/09/2022', NULL, 2, 2, 1, 1, 3, 3, 1, 'test1', 'test2', 0, 0, 0, 1, 3, '0', 6, NULL, NULL, 1, '2022-09-05 10:22:45', 1, NULL, NULL, '0');
 
 -- Dumping structure for table gpd_gexp.trans_pi_detail
 DROP TABLE IF EXISTS `trans_pi_detail`;
@@ -2852,7 +2905,7 @@ CREATE TABLE IF NOT EXISTS `trans_pi_detail` (
   `pi_item_category_id` tinyint(4) NOT NULL,
   `item_id` tinyint(4) NOT NULL,
   `qty` decimal(20,0) NOT NULL DEFAULT 0,
-  `price` decimal(20,0) NOT NULL DEFAULT 0,
+  `price` decimal(20,2) NOT NULL DEFAULT 0.00,
   `is_deleted` enum('0','1') NOT NULL DEFAULT '0' COMMENT '0 = No; 1 = Yes;',
   PRIMARY KEY (`id`),
   KEY `FK_trans_pi_detail_trans_pi` (`pi_id`),
@@ -2861,10 +2914,17 @@ CREATE TABLE IF NOT EXISTS `trans_pi_detail` (
   CONSTRAINT `FK_trans_pi_detail_master_item` FOREIGN KEY (`item_id`) REFERENCES `master_item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_detail_master_pi_item_category` FOREIGN KEY (`pi_item_category_id`) REFERENCES `master_pi_item_category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_detail_trans_pi` FOREIGN KEY (`pi_id`) REFERENCES `trans_pi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.trans_pi_detail: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.trans_pi_detail: ~6 rows (approximately)
 DELETE FROM `trans_pi_detail`;
+INSERT INTO `trans_pi_detail` (`id`, `pi_id`, `pi_item_category_id`, `item_id`, `qty`, `price`, `is_deleted`) VALUES
+	(1, 1, 1, 1, 822, 12.80, '0'),
+	(2, 1, 1, 2, 822, 12.80, '0'),
+	(3, 1, 1, 3, 411, 12.80, '0'),
+	(4, 1, 2, 3, 103, 12.80, '0'),
+	(5, 1, 2, 2, 206, 12.80, '0'),
+	(6, 1, 2, 1, 160, 12.80, '0');
 
 -- Dumping structure for table gpd_gexp.trans_pi_history
 DROP TABLE IF EXISTS `trans_pi_history`;
@@ -3081,6 +3141,575 @@ DELETE FROM `trans_spp_detail`;
 
 -- Dumping structure for view gpd_gexp.view_assign_group
 DROP VIEW IF EXISTS `view_assign_group`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_assign_group` (
+	`menu_module_id` TINYINT(4) NOT NULL,
+	`menu_module_url` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`menu_group_id` TINYINT(4) NOT NULL,
+	`menu_group_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`menu_group_icon` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`role_id` TINYINT(4) NOT NULL
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_assign_menu
+DROP VIEW IF EXISTS `view_assign_menu`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_assign_menu` (
+	`menu_module_id` TINYINT(4) NOT NULL,
+	`menu_module_url` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`menu_group_id` TINYINT(4) NOT NULL,
+	`menu_sub_id` TINYINT(4) NOT NULL,
+	`menu_sub_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`menu_sub_icon` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`menu_sub_url` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`role_id` TINYINT(4) NOT NULL
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_assign_module
+DROP VIEW IF EXISTS `view_assign_module`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_assign_module` (
+	`menu_module_id` TINYINT(4) NOT NULL,
+	`menu_module_name` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`menu_module_icon` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`menu_module_url` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`role_id` TINYINT(4) NOT NULL
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_beneficiary
+DROP VIEW IF EXISTS `view_beneficiary`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_beneficiary` (
+	`id` TINYINT(4) NOT NULL,
+	`company_name` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`office` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',
+	`address` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',
+	`country_id` TINYINT(4) NOT NULL,
+	`cp_name` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`phone` VARCHAR(20) NULL COLLATE 'utf8mb4_general_ci',
+	`created_at` TIMESTAMP NOT NULL,
+	`updated_at` DATETIME NULL,
+	`is_deleted` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`country_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_cek_cbm_per_item
+DROP VIEW IF EXISTS `view_cek_cbm_per_item`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_cek_cbm_per_item` (
+	`pi_no` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`item_code` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`brand_name` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`item_name` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`panjang` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`lebar` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`tinggi` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`qty` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`result_cbm` DOUBLE(19,2) NULL
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_cek_cbm_per_pi
+DROP VIEW IF EXISTS `view_cek_cbm_per_pi`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_cek_cbm_per_pi` (
+	`pi_no` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`container` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`max_cbm` INT(11) NULL,
+	`tot_qty` DOUBLE NULL,
+	`result_cbm` DOUBLE(19,2) NULL,
+	`remain_cbm` DOUBLE(19,2) NULL
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_customer_coding
+DROP VIEW IF EXISTS `view_customer_coding`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_customer_coding` (
+	`id` SMALLINT(6) NOT NULL,
+	`customer_id` SMALLINT(6) NULL,
+	`notes` VARCHAR(200) NULL COLLATE 'utf8mb4_general_ci',
+	`is_deleted` ENUM('0','1') NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`coding_type_id` TINYINT(4) NOT NULL,
+	`import_by` VARCHAR(200) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`hotline` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`best_before` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_customer_cp
+DROP VIEW IF EXISTS `view_customer_cp`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_customer_cp` (
+	`id` SMALLINT(6) NOT NULL,
+	`customer_id` SMALLINT(6) NOT NULL,
+	`name` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`phone_no` VARCHAR(20) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`email` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`top_id` TINYINT(4) NOT NULL,
+	`dp` DECIMAL(3,0) NOT NULL COMMENT 'Format: percentage',
+	`balancing` DECIMAL(3,0) NOT NULL COMMENT 'Format: percentage',
+	`currency_id` TINYINT(4) NOT NULL,
+	`incoterm_id` TINYINT(4) NOT NULL,
+	`is_deleted` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`top_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`currency_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`incoterm_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`address` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',
+	`country_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_customer_list
+DROP VIEW IF EXISTS `view_customer_list`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_customer_list` (
+	`id` SMALLINT(6) NOT NULL,
+	`code` VARCHAR(20) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`company_name` VARCHAR(100) NOT NULL COMMENT 'cust consignee name = company name' COLLATE 'utf8mb4_general_ci',
+	`address` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',
+	`country_id` TINYINT(4) NOT NULL,
+	`phone_no` VARCHAR(20) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`created_at` TIMESTAMP NOT NULL,
+	`created_by` TINYINT(4) NOT NULL,
+	`updated_at` DATETIME NULL,
+	`updated_by` TINYINT(4) NULL,
+	`is_deleted` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`country_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_customer_ship_detail
+DROP VIEW IF EXISTS `view_customer_ship_detail`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_customer_ship_detail` (
+	`id` SMALLINT(6) NOT NULL,
+	`customer_ship_id` SMALLINT(6) NULL,
+	`discharge_port` VARCHAR(100) NULL COLLATE 'utf8mb4_general_ci',
+	`destination_port` VARCHAR(100) NULL COLLATE 'utf8mb4_general_ci',
+	`is_deleted` ENUM('0','1') NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`customer_id` SMALLINT(6) NOT NULL
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_gimp_doc_import
+DROP VIEW IF EXISTS `view_gimp_doc_import`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_gimp_doc_import` (
+	`docim_id` INT(11) NOT NULL,
+	`doc_status` VARCHAR(10) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`doc_label` VARCHAR(7) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`po` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`ship_no` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`sender` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`seller` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`consignee` VARCHAR(100) NULL COLLATE 'utf8mb4_general_ci',
+	`commodity` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`category` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`hscode` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`lartas` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`term` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`hbl` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`mbl` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`qty_container` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`container_no` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`uom` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`good_qty` DECIMAL(20,0) UNSIGNED NULL,
+	`gw` DECIMAL(20,2) UNSIGNED NULL,
+	`nw` DECIMAL(20,2) UNSIGNED NULL,
+	`cbm` DECIMAL(20,0) NULL,
+	`pol` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`pod` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`etd` VARCHAR(10) NULL COLLATE 'utf8mb4_general_ci',
+	`eta` VARCHAR(10) NULL COLLATE 'utf8mb4_general_ci',
+	`pib_aju` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`coo` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`materlist` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`rcvd` VARCHAR(10) NULL COLLATE 'utf8mb4_general_ci',
+	`billing` VARCHAR(10) NULL COLLATE 'utf8mb4_general_ci',
+	`spjm` VARCHAR(10) NULL COLLATE 'utf8mb4_general_ci',
+	`spjk` VARCHAR(10) NULL COLLATE 'utf8mb4_general_ci',
+	`sppb` VARCHAR(10) NULL COLLATE 'utf8mb4_general_ci',
+	`pickup_do` VARCHAR(10) NULL COLLATE 'utf8mb4_general_ci',
+	`delivery` VARCHAR(10) NULL COLLATE 'utf8mb4_general_ci',
+	`remarks` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`currency` DECIMAL(20,2) NULL,
+	`cif` DECIMAL(20,2) NULL,
+	`duty` DECIMAL(20,2) NULL,
+	`vat` DECIMAL(20,3) NULL,
+	`tax` DECIMAL(20,3) NULL,
+	`freight` DECIMAL(20,2) NULL,
+	`handling` DECIMAL(20,2) NULL,
+	`at_cost` DECIMAL(20,2) NULL,
+	`additional` DECIMAL(20,0) NULL,
+	`lead_time` INT(7) NULL,
+	`times` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`percent` DECIMAL(49,8) NULL,
+	`cif_2` DECIMAL(40,4) NULL,
+	`landed_cost` DECIMAL(65,10) NULL,
+	`percentage` DECIMAL(65,14) NULL,
+	`forwarder` VARCHAR(255) NULL COLLATE 'utf8mb4_general_ci',
+	`created_years` VARCHAR(4) NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_item
+DROP VIEW IF EXISTS `view_item`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_item` (
+	`id` TINYINT(4) NOT NULL,
+	`code` VARCHAR(20) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`hs_code` VARCHAR(20) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`item_category_id` TINYINT(4) NOT NULL,
+	`name` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`pack_desc` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`net_wight` DECIMAL(20,2) NOT NULL,
+	`gross_weight` DECIMAL(20,2) NOT NULL,
+	`length` DECIMAL(10,0) NOT NULL,
+	`width` DECIMAL(10,0) NOT NULL,
+	`height` DECIMAL(10,0) NOT NULL,
+	`created_at` TIMESTAMP NOT NULL,
+	`updated_at` DATETIME NULL,
+	`is_deleted` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`item_category_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`dimensions` VARCHAR(39) NOT NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_item_mapping
+DROP VIEW IF EXISTS `view_item_mapping`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_item_mapping` (
+	`id` SMALLINT(6) NOT NULL,
+	`item_id` TINYINT(4) NOT NULL,
+	`country_id` TINYINT(4) NOT NULL,
+	`created_at` TIMESTAMP NOT NULL,
+	`updated_at` DATETIME NULL,
+	`is_deleted` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`item_code` VARCHAR(20) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`item_hscode` VARCHAR(20) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`item_name` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`country_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_menu_assign
+DROP VIEW IF EXISTS `view_menu_assign`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_menu_assign` (
+	`id` TINYINT(4) NOT NULL,
+	`menu_sub_id` TINYINT(4) NOT NULL,
+	`role_id` TINYINT(4) NOT NULL,
+	`created_at` TIMESTAMP NOT NULL,
+	`created_by` TINYINT(4) NULL,
+	`module_name` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`group_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`menu_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`role_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_menu_sub
+DROP VIEW IF EXISTS `view_menu_sub`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_menu_sub` (
+	`id` TINYINT(4) NOT NULL,
+	`menu_module_id` TINYINT(4) NOT NULL,
+	`menu_group_id` TINYINT(4) NOT NULL,
+	`name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`icon` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`url` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`created_at` TIMESTAMP NOT NULL,
+	`created_by` TINYINT(4) NULL,
+	`updated_at` DATETIME NULL,
+	`updated_by` TINYINT(4) NULL,
+	`is_deleted` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`menu_module_name` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`menu_group_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_print_category_trans_pi
+DROP VIEW IF EXISTS `view_print_category_trans_pi`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_print_category_trans_pi` (
+	`pi_id` SMALLINT(6) NOT NULL,
+	`item_category_id` TINYINT(4) NOT NULL,
+	`item_category_name` VARCHAR(64) NOT NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_print_detail_trans_pi
+DROP VIEW IF EXISTS `view_print_detail_trans_pi`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_print_detail_trans_pi` (
+	`id` SMALLINT(6) NOT NULL,
+	`pi_id` SMALLINT(6) NOT NULL,
+	`pi_item_category_id` TINYINT(4) NOT NULL,
+	`item_id` TINYINT(4) NOT NULL,
+	`qty` DECIMAL(20,0) NOT NULL,
+	`price` DECIMAL(20,2) NOT NULL,
+	`is_deleted` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`item_name` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`pack_desc` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`total` DECIMAL(40,2) NOT NULL
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_print_footer_trans_pi
+DROP VIEW IF EXISTS `view_print_footer_trans_pi`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_print_footer_trans_pi` (
+	`pi_id` SMALLINT(6) NOT NULL,
+	`tot_qty` DECIMAL(42,0) NULL,
+	`tot_price` DECIMAL(42,2) NULL,
+	`grand_total` DECIMAL(40,2) NOT NULL
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_print_header_trans_pi
+DROP VIEW IF EXISTS `view_print_header_trans_pi`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_print_header_trans_pi` (
+	`id` SMALLINT(6) NOT NULL,
+	`inv_no` VARCHAR(25) NOT NULL COMMENT 'Format: 0000/SKP-EXP/PI/MM/YYYY' COLLATE 'utf8mb4_general_ci',
+	`po_no` VARCHAR(25) NULL COLLATE 'utf8mb4_general_ci',
+	`town` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`consignee` MEDIUMTEXT NOT NULL COLLATE 'utf8mb4_general_ci',
+	`beneficiary` MEDIUMTEXT NULL COLLATE 'utf8mb4_general_ci',
+	`bank` MEDIUMTEXT NOT NULL COLLATE 'utf8mb4_general_ci',
+	`destination_port` VARCHAR(100) NULL COLLATE 'utf8mb4_general_ci',
+	`estimated` VARCHAR(15) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`loading_port` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`country_origin` VARCHAR(9) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`container` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`incoterm` VARCHAR(5) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`currency_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`currency_icon` VARCHAR(5) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`top_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`is_deleted` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_print_signature_trans_pi
+DROP VIEW IF EXISTS `view_print_signature_trans_pi`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_print_signature_trans_pi` (
+	`pi_id` SMALLINT(6) NOT NULL,
+	`customer_id` SMALLINT(6) NOT NULL,
+	`pic` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`positions` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`town` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`company_name` VARCHAR(100) NOT NULL COMMENT 'cust consignee name = company name' COLLATE 'utf8mb4_general_ci',
+	`cp_name` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_trans_pi_list
+DROP VIEW IF EXISTS `view_trans_pi_list`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_trans_pi_list` (
+	`id` SMALLINT(6) NOT NULL,
+	`code` VARCHAR(25) NOT NULL COMMENT 'Format: 0000/SKP-EXP/PI/MM/YYYY' COLLATE 'utf8mb4_general_ci',
+	`po_no` VARCHAR(25) NULL COLLATE 'utf8mb4_general_ci',
+	`customer_id` SMALLINT(6) NOT NULL,
+	`consignee_id` SMALLINT(6) NOT NULL,
+	`beneficiary_id` TINYINT(4) NOT NULL,
+	`loading_port_id` TINYINT(4) NOT NULL,
+	`customer_ship_id` SMALLINT(6) NOT NULL,
+	`container_id` TINYINT(4) NOT NULL,
+	`number_of_container` DECIMAL(20,0) NOT NULL,
+	`freight_company` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`freight_company_contact` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`freight_company_no` DECIMAL(20,0) NOT NULL,
+	`freight_cost` DECIMAL(20,0) NOT NULL,
+	`insurance` DECIMAL(20,0) NOT NULL,
+	`bank_id` TINYINT(4) NOT NULL,
+	`currency_id` TINYINT(4) NOT NULL,
+	`ppn` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`top_id` TINYINT(4) NOT NULL,
+	`remark` TEXT NULL COLLATE 'utf8mb4_general_ci',
+	`attachment` VARCHAR(200) NULL COLLATE 'utf8mb4_general_ci',
+	`pi_status_id` TINYINT(4) NOT NULL,
+	`created_at` TIMESTAMP NOT NULL,
+	`created_by` TINYINT(4) NOT NULL,
+	`updated_at` DATETIME NULL,
+	`updated_by` TINYINT(4) NULL,
+	`is_deleted` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`pi_date` VARCHAR(10) NULL COLLATE 'utf8mb4_general_ci',
+	`customer` VARCHAR(100) NOT NULL COMMENT 'cust consignee name = company name' COLLATE 'utf8mb4_general_ci',
+	`country_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`pic` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`status_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`bg_color` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_user_list
+DROP VIEW IF EXISTS `view_user_list`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_user_list` (
+	`id` TINYINT(4) NOT NULL,
+	`fullname` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`username` VARCHAR(10) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`email` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`role_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`created_at` TIMESTAMP NOT NULL,
+	`updated_at` VARCHAR(19) NULL COLLATE 'utf8mb4_general_ci',
+	`is_deleted` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_user_role
+DROP VIEW IF EXISTS `view_user_role`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_user_role` (
+	`id` TINYINT(4) NOT NULL,
+	`fullname` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`username` VARCHAR(10) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`email` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`password` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`created_at` TIMESTAMP NOT NULL,
+	`updated_at` TIMESTAMP NULL,
+	`is_deleted` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`role_id` TINYINT(4) NOT NULL,
+	`role_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.gexp_email_list
+DROP VIEW IF EXISTS `gexp_email_list`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `gexp_email_list`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `gexp_email_list` AS SELECT
+	a.UsersId id, a.UserEmail email
+FROM gexp_users a
+WHERE a.isStatus = 1 
+AND a.UsersId IN (3,4)
+-- AND a.UserGroup BETWEEN '20' AND '26' 
+-- AND a.UsersId BETWEEN '34' AND '40' ;
+
+-- Dumping structure for view gpd_gexp.gexp_pi_cbm
+DROP VIEW IF EXISTS `gexp_pi_cbm`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `gexp_pi_cbm`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `gexp_pi_cbm` AS SELECT
+	a.gexp_good_pi_no pi_no, SUM(a.current_cbm) current_cbm,
+	(
+		select
+			b.currenct_remain_cbm
+		FROM gexp_pi_good b
+		WHERE b.gexp_good_pi_no = a.gexp_good_pi_no
+		ORDER BY b.gexp_good_id DESC LIMIT 1
+	) currenct_remain_cbm
+FROM gexp_pi_good a
+GROUP BY a.gexp_good_pi_no ;
+
+-- Dumping structure for view gpd_gexp.gexp_view_ketentuan_exp
+DROP VIEW IF EXISTS `gexp_view_ketentuan_exp`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `gexp_view_ketentuan_exp`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `gexp_view_ketentuan_exp` AS SELECT 
+	MAX(a.gexp_expreq_id) gexp_expreq_id, a.gexp_expreq_pi_id, IF(a.gexp_expreq_remark IS NULL, '-', a.gexp_expreq_remark) gexp_expreq_remark,
+	b.gexp_pi_no, b.gexp_pi_date,
+	c.CustCompanyName, d.CountryName,
+	
+	CASE
+		WHEN b.gexp_pi_statusPI = 1 THEN 'Approved'
+		WHEN b.gexp_pi_statusPI = 2 THEN 'Void'
+		WHEN b.gexp_pi_statusPI = 3 THEN 'Waiting'
+	ELSE 'Draft'
+	END gexp_pi_statusPI,
+	
+	CASE
+		WHEN b.gexp_pi_statusPI = 1 THEN 'success'
+		WHEN b.gexp_pi_statusPI = 2 THEN 'danger'
+		WHEN b.gexp_pi_statusPI = 3 THEN 'warning'
+	ELSE 'default'
+	END gexp_pi_statusPI_label,
+	
+	CASE
+		WHEN (
+			SELECT ep.gexp_expreq_statusDoc FROM gexp_master_expreq ep
+			WHERE ep.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+			ORDER BY ep.gexp_expreq_id DESC LIMIT 1
+		) = 1 THEN 'Approved'
+		WHEN (
+			SELECT ep.gexp_expreq_statusDoc FROM gexp_master_expreq ep
+			WHERE ep.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+			ORDER BY ep.gexp_expreq_id DESC LIMIT 1
+		) = 2 THEN 'Void'
+		WHEN (
+			SELECT ep.gexp_expreq_statusDoc FROM gexp_master_expreq ep
+			WHERE ep.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+			ORDER BY ep.gexp_expreq_id DESC LIMIT 1
+		) = 3 THEN 'Waiting'
+		WHEN (
+			SELECT ep.gexp_expreq_statusDoc FROM gexp_master_expreq ep
+			WHERE ep.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+			ORDER BY ep.gexp_expreq_id DESC LIMIT 1
+		) = 4 THEN 'Revised'
+	ELSE 'Draft'
+	END gexp_expreq_statusDoc,
+	
+	CASE
+		WHEN (
+			SELECT ep.gexp_expreq_statusDoc FROM gexp_master_expreq ep
+			WHERE ep.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+			ORDER BY ep.gexp_expreq_id DESC LIMIT 1
+		) = 1 THEN 'success'
+		WHEN (
+			SELECT ep.gexp_expreq_statusDoc FROM gexp_master_expreq ep
+			WHERE ep.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+			ORDER BY ep.gexp_expreq_id DESC LIMIT 1
+		) = 2 THEN 'danger'
+		WHEN (
+			SELECT ep.gexp_expreq_statusDoc FROM gexp_master_expreq ep
+			WHERE ep.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+			ORDER BY ep.gexp_expreq_id DESC LIMIT 1
+		) = 3 THEN 'warning'
+		WHEN (
+			SELECT ep.gexp_expreq_statusDoc FROM gexp_master_expreq ep
+			WHERE ep.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+			ORDER BY ep.gexp_expreq_id DESC LIMIT 1
+		) = 4 THEN 'warning'
+	ELSE 'default'
+	END gexp_expreq_statusDoc_label,
+	
+	(
+		SELECT ep.gexp_expreq_statusDoc FROM gexp_master_expreq ep
+		WHERE ep.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+		ORDER BY ep.gexp_expreq_id DESC LIMIT 1
+	) gexp_expreq_statusDoc_id,
+	
+	(
+		SELECT ep4.gexp_expreq_docval FROM gexp_master_expreq ep4
+		WHERE ep4.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+		ORDER BY ep4.gexp_expreq_id DESC LIMIT 1
+	) gexp_expreq_docval_id,
+	
+	(
+		SELECT ep5.gexp_expreq_doc02 FROM gexp_master_expreq ep5
+		WHERE ep5.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+		ORDER BY ep5.gexp_expreq_id DESC LIMIT 1
+	) gexp_expreq_doc02_id,
+
+	CASE
+		WHEN (
+			SELECT ep2.gexp_expreq_isRevisi FROM gexp_master_expreq ep2
+			WHERE ep2.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+			ORDER BY ep2.gexp_expreq_id DESC LIMIT 1
+		) = 1 THEN (
+			SELECT ep2.gexp_expreq_ValRevisi FROM gexp_master_expreq ep2
+			WHERE ep2.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+			ORDER BY ep2.gexp_expreq_id DESC LIMIT 1
+		)
+	ELSE '-'
+	END gexp_expreq_ValRevisi,
+	
+	CASE
+		WHEN (
+			SELECT ep3.gexp_expreq_isRevisi FROM gexp_master_expreq ep3
+			WHERE ep3.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+			ORDER BY ep3.gexp_expreq_id DESC LIMIT 1
+		) = 1 THEN (
+			SELECT ep3.gexp_expreq_DateRevisi FROM gexp_master_expreq ep3
+			WHERE ep3.gexp_expreq_pi_id = a.gexp_expreq_pi_id
+			ORDER BY ep3.gexp_expreq_id DESC LIMIT 1
+		)
+	ELSE '-'
+	END gexp_expreq_DateRevisi
+FROM gexp_master_expreq a
+JOIN gexp_master_pi b ON a.gexp_expreq_pi_id = b.gexp_pi_id
+JOIN gexp_master_customer c ON b.gexp_pi_consignee_id = c.CustId
+JOIN gexp_master_country d ON c.CustCountry = d.CountryId
+WHERE b.gexp_pi_statusPI = '1' AND b.gexp_pi_statrow = '1'
+GROUP BY a.gexp_expreq_pi_id
+ORDER BY gexp_expreq_id ASC ;
+
+-- Dumping structure for view gpd_gexp.view_assign_group
+DROP VIEW IF EXISTS `view_assign_group`;
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `view_assign_group`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_assign_group` AS SELECT
@@ -3148,6 +3777,15 @@ JOIN gexp_master_pi c ON a.gexp_good_pi_no = c.gexp_pi_no
 JOIN gexp_master_container d ON c.gexp_pi_container = d.ContainerId
 GROUP BY a.gexp_good_pi_no
 ORDER BY a.gexp_good_pi_no ;
+
+-- Dumping structure for view gpd_gexp.view_customer_coding
+DROP VIEW IF EXISTS `view_customer_coding`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `view_customer_coding`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_customer_coding` AS SELECT
+	a.*, b.coding_type_id, b.import_by, b.hotline, b.best_before
+FROM master_customer_coding a
+JOIN master_customer_coding_detail b ON a.id = b.customer_coding_id ;
 
 -- Dumping structure for view gpd_gexp.view_customer_cp
 DROP VIEW IF EXISTS `view_customer_cp`;
@@ -3293,6 +3931,108 @@ FROM master_menu_sub a
 JOIN master_menu_module b ON a.menu_module_id = b.id
 JOIN master_menu_group c ON a.menu_group_id = c.id
 ORDER BY a.id ;
+
+-- Dumping structure for view gpd_gexp.view_print_category_trans_pi
+DROP VIEW IF EXISTS `view_print_category_trans_pi`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `view_print_category_trans_pi`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_print_category_trans_pi` AS SELECT
+	a.pi_id, a.pi_item_category_id item_category_id,
+	IF(a.pi_item_category_id = 1, CONCAT('1 x Container ', c.name), 'Free of Charge') item_category_name
+FROM trans_pi_detail a
+JOIN trans_pi b ON a.pi_id = b.id
+JOIN master_container c ON b.container_id = c.id
+GROUP BY a.pi_id, a.pi_item_category_id ;
+
+-- Dumping structure for view gpd_gexp.view_print_detail_trans_pi
+DROP VIEW IF EXISTS `view_print_detail_trans_pi`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `view_print_detail_trans_pi`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_print_detail_trans_pi` AS SELECT
+	a.*, b.name item_name, b.pack_desc, (a.qty * a.price) total
+FROM trans_pi_detail a
+JOIN master_item b ON a.item_id = b.id
+ORDER BY a.pi_item_category_id ;
+
+-- Dumping structure for view gpd_gexp.view_print_footer_trans_pi
+DROP VIEW IF EXISTS `view_print_footer_trans_pi`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `view_print_footer_trans_pi`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_print_footer_trans_pi` AS SELECT
+	a.pi_id, SUM(a.qty) tot_qty, SUM(a.price) tot_price, (a.qty * a.price) grand_total
+FROM trans_pi_detail a
+GROUP BY a.pi_id ;
+
+-- Dumping structure for view gpd_gexp.view_print_header_trans_pi
+DROP VIEW IF EXISTS `view_print_header_trans_pi`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `view_print_header_trans_pi`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_print_header_trans_pi` AS SELECT
+	a.id, a.code inv_no, 
+	IF(a.po_no IS NULL, '-', a.po_no) po_no, b.town,
+	
+	CONCAT(
+		b.company_name, '<br>',
+		b.address, '<br>',
+		b.phone_no
+	) consignee,
+	
+	CONCAT(
+		c.company_name, '<br>',
+		c.office, '<br>',
+		c.address, '<br>',
+		c.phone
+	) beneficiary,
+	
+	CONCAT(
+		k.name, '<br>',
+		k.branch, '<br>',
+		k.address, '<br>',
+		'<b>Acc No: </b>', k.account, '<br>',
+		'<b>Swift code: </b>', k.swift_code
+	) bank,
+	
+	d.destination_port, '30 Working Days' estimated, e.name loading_port, 'Indonesia' country_origin, 
+	f.name container, h.code incoterm, 
+	i.name currency_name, i.icon currency_icon, j.name top_name,
+	a.is_deleted
+FROM trans_pi a
+JOIN master_customer b ON a.consignee_id = b.id
+JOIN master_beneficiary c ON a.beneficiary_id = c.id
+JOIN master_customer_ship_detail d ON a.customer_ship_id = d.id
+JOIN master_loading_port e ON a.loading_port_id = e.id
+JOIN master_container f ON a.container_id = f.id
+JOIN master_customer_cp g ON a.consignee_id = g.customer_id
+JOIN master_incoterm h ON g.incoterm_id = h.id
+JOIN master_currency i ON a.currency_id = i.id
+JOIN master_top j ON a.top_id = j.id
+JOIN master_bank k ON a.bank_id = k.id ;
+
+-- Dumping structure for view gpd_gexp.view_print_signature_trans_pi
+DROP VIEW IF EXISTS `view_print_signature_trans_pi`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `view_print_signature_trans_pi`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_print_signature_trans_pi` AS SELECT
+	a.id pi_id, a.customer_id, d.fullname pic, f.name positions, b.town, b.company_name, c.name cp_name
+FROM trans_pi a
+JOIN master_customer b ON a.customer_id = b.id
+JOIN master_customer_cp c ON b.id = c.customer_id
+JOIN `master_user` d ON a.created_by = d.id
+JOIN master_user_role e ON d.id = e.user_id
+JOIN master_position f ON e.role_id = f.role_id ;
+
+-- Dumping structure for view gpd_gexp.view_trans_pi_list
+DROP VIEW IF EXISTS `view_trans_pi_list`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `view_trans_pi_list`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_trans_pi_list` AS SELECT
+	a.*, DATE_FORMAT(a.created_at, '%Y-%m-%d') pi_date, 
+	b.company_name customer, c.name country_name, d.fullname pic, e.name status_name, e.bg_color
+FROM trans_pi a
+JOIN master_customer b ON a.customer_id = b.id
+JOIN master_country c ON b.country_id = c.id
+JOIN `master_user` d ON a.created_by = d.id
+JOIN master_pi_status e ON a.pi_status_id = e.id ;
 
 -- Dumping structure for view gpd_gexp.view_user_list
 DROP VIEW IF EXISTS `view_user_list`;
