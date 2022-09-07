@@ -84,7 +84,7 @@
                     'code' => $autonumber,
                     'company_name' => $post['con_company'],
                     'address' => $post['con_address'],
-                    'town' => $post['con_address'],
+                    'town' => $post['con_town'],
                     'country_id' => $post['con_country'],
                     'phone_no' => $post['con_phone'],
                     'created_by' => $this->session->userdata('logged_in')->id,

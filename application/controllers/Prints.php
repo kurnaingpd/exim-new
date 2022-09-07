@@ -25,7 +25,7 @@
 
             $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
             $mpdf->defaultheaderline = 0;
-            // $mpdf->defaultfooterline = 0;
+            $mpdf->defaultfooterline = 0;
             $mpdf->setAutoTopMargin = 'stretch';
             $mpdf->setAutoBottomMargin = 'stretch';
             $mpdf->SetHeader('<img src="' . base_url() . 'assets/images/inventory/skp-logo-crop-removebg.png" width="17%" />||');

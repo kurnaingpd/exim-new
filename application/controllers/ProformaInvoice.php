@@ -170,6 +170,13 @@
                         $this->M_CRUD->insertData('trans_pi_detail', $params);
                     }
                 }
+
+                $paramHistory = [
+                    'pi_id' => $header,
+                    'pi_status_id' => 1,
+                    'remark' => ($post['remark']?$post['remark']:NULL),
+                ];
+                $this->M_CRUD->insertData('trans_pi_history', $paramHistory);
                 
                 $response = ['status' => 1, 'messages' => 'Proforma invoice: '.$post['pi_code'].' has been saved successfully.', 'icon' => 'success', 'url' => 'export/proforma'];
             } else {
@@ -195,21 +202,33 @@
             $datas['title'] = 'Export - Proforma Invoice';
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Proforma Invoice'];
             $datas['header'] = 'Detail record';
-            // $datas['params'] = [
-            //     'detail' => $this->M_CRUD->readDatabyID('master_container', ['is_deleted' => '0', 'id' => $id]),
-            // ];
+            $datas['params'] = [
+                'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_detail', ['is_deleted' => '0', 'id' => $id]),
+                'category' => $this->M_CRUD->pi_category('view_print_category_trans_pi', ['pi_id' => $id]),
+                'item' => $this->M_CRUD->pi_item('view_print_detail_trans_pi', ['is_deleted' => '0', 'pi_id' => $id]),
+            ];
 
             $this->template->load('default', 'contents' , 'export/proforma/detail/index', $datas);
         }
 
-        public function update()
-        {
+        // public function update()
+        // {
 
-        }
+        // }
 
         public function delete($id)
         {
+            $condition = [
+                'id' => $id
+            ];
+            
+            if($this->M_CRUD->deleteData('trans_pi', $condition)) {
+                $response = ['status' => 1, 'messages' => 'Proforma invoice has been deleted successfully.', 'icon' => 'success', 'url' => 'export/proforma'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Proforma invoice has failed to delete.', 'icon' => 'error'];
+            }
 
+            echo json_encode($response);
         }
     }
 

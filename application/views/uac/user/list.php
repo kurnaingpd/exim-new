@@ -11,6 +11,7 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th>Position</th>
                     <th>Created at</th>
                     <th>Updated at</th>
                     <th><i class="fas fa-ellipsis-h"></i></th>
@@ -24,6 +25,7 @@
                         <td class="text-center"><?=$rows->username?></td>
                         <td><?=$rows->email?></td>
                         <td class="text-center"><?=$rows->role_name?></td>
+                        <td><?=$rows->position_name?></td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=$rows->updated_at?></td>
                         <td class="text-center">

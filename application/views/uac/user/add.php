@@ -5,7 +5,7 @@
     <div class="card-body">
         <form id="form-user-add">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group required">
                         <label for="fullname" class="control-label">Fullname</label>
                         <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Enter fullname" autocomplete="off" autofocus required>
@@ -19,7 +19,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group required">
                         <label for="username" class="control-label">Email</label>
                         <input type="email" name="email" class="form-control no-space lower" id="email" placeholder="Enter email" autocomplete="off" required>
@@ -34,6 +34,15 @@
                             <?php foreach($params['role'] as $rows) : ?>
                                 <option value="<?=$rows->id?>"><?=$rows->name?></option>
                             <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group required">
+                        <label for="position" class="control-label">Position</label>
+                        <select class="form-control select2bs4" id="position" name="position" required>
+                            <option></option>
                         </select>
                     </div>
                 </div>

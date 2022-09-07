@@ -63,8 +63,9 @@ $(function () {
                 '</tr>'
             );
             
-            $("#coding_type").select2("val", "");
+            // $("#coding_type").select2("val", "");
             $('.coding').val('');
+            $(".coding").val('').trigger('change')
             
             $('button.btn-remove').off('click').on('click',function(){
                 var id = $(this).attr('data-row');

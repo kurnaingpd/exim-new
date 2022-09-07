@@ -59,6 +59,12 @@
             $this->template->load('default', 'contents' , 'uac/user/add', $datas);
         }
 
+        public function position($id = NULL)
+        {
+            $data = $this->M_CRUD->readData('master_position', ['is_deleted' => '0', 'role_id' => $id]);
+            echo json_encode($data);
+        }
+
         public function save()
         {
             $post = $this->input->post();
@@ -82,6 +88,7 @@
                     $paramUserRole = [
                         'user_id' => $user,
                         'role_id' => $post['role'],
+                        'position_id' => $post['position'],
                     ];
                     $this->M_CRUD->insertData('master_user_role', $paramUserRole);
                     $response = ['status' => 1, 'messages' => 'User has been saved successfully.', 'icon' => 'success', 'url' => 'uac/user'];

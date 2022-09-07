@@ -33,15 +33,21 @@
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center">
-                            <a href="<?=site_url('export/proforma/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                            <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">
-                                <i class="fas fa-trash"></i>
-                            </button>
+                            <?php if($this->session->userdata('logged_in')->role_id == 1 || $this->session->userdata('logged_in')->role_id == 2 || $this->session->userdata('logged_in')->role_id == 4) : ?>
+                                <a href="<?=site_url('export/proforma/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            <?php endif; ?>
+
                             <a href="<?=site_url('export/proforma/print/'.$rows->id)?>" class="btn btn-sm btn-warning" target="_blank">
                                 <i class="fas fa-print"></i>
                             </a>
+
+                            <?php if($this->session->userdata('logged_in')->role_id == 1 || $this->session->userdata('logged_in')->role_id == 2 || $this->session->userdata('logged_in')->role_id == 3) : ?>
+                                <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            <?php endif; ?>
                         </td>
                     </tr>
                 <?php $no++; endforeach; ?>

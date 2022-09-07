@@ -28,7 +28,7 @@ $(function () {
             username: {
                 required: true,
                 minlength: 5,
-                maxlength: 10,
+                maxlength: 30,
             },
             email: {
                 required: true,
@@ -54,6 +54,33 @@ $(function () {
         }
     });
 });
+
+$('select#role').on('change', function() {
+    var data = $('select#role').select2('data');
+    position(data[0].id);
+});
+
+function position(id)
+{
+    $.ajax({
+        url: site_url + "uac/user/position/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            var html = '';
+            var i;
+            for(i=0; i<response.length; i++) {
+                html += '<option></option>';
+                html += '<option value="'+response[i].id+'">'+response[i].name+'</option>';
+            }
+            $('#position').html(html);
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+            swal("", "Terjadi kesalahan pada sistem.", "error");
+        }        
+    });
+}
 
 function save()
 {

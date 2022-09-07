@@ -5,24 +5,31 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <div class="form-group required">
+                        <label for="pi_status" class="control-label">PI status</label>
+                        <input type="text" name="pi_status" class="form-control" id="pi_status" value="<?=$params['detail']->pi_status?>" disabled>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
                     <div class="form-group required">
                         <label for="pi_code" class="control-label">PI no.</label>
-                        <input type="text" name="pi_code" class="form-control" id="pi_code" value="" readonly>
+                        <input type="text" name="pi_code" class="form-control" id="pi_code" value="<?=$params['detail']->pi_no?>" disabled>
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group required">
                         <label for="pi_date" class="control-label">PI date</label>
-                        <input type="text" name="pi_date" class="form-control" id="pi_date" value="" disabled>
+                        <input type="text" name="pi_date" class="form-control" id="pi_date" value="<?=$params['detail']->pi_date?>" disabled>
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="pi_po" class="control-label">PO # (If any)</label>
-                        <input type="text" name="pi_po" class="form-control" id="pi_po" value="" disabled>
+                        <input type="text" name="pi_po" class="form-control" id="pi_po" value="<?=$params['detail']->po_no?>" disabled>
                     </div>
                 </div>
             </div>
@@ -66,6 +73,15 @@
     </div>
 
     <div class="card">
+        <div class="card-header">
+            <h6>Summary</h6>
+        </div>
+        <div class="card-body">
+            <?php $this->load->view('export/proforma/detail/summary'); ?>
+        </div>
+    </div>
+
+    <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
@@ -77,14 +93,21 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <a class="btn btn-default btn-block cancel" href="<?=site_url('export/proforma')?>">
-                        <i class="fas fa-ban mr-2"></i>Cancel
+                        <i class="fas fa-ban mr-2"></i>Exit
                     </a>
                 </div>
-                <div class="col-md-6">
-                    <button class="btn btn-success save btn-block" id="btn-proforma-save">
-                        <i class="fas fa-save mr-2"></i>Save
+
+                <div class="col-md-4">
+                    <button class="btn btn-success btn-block approved">
+                        <i class="fas fa-check mr-2"></i>Approved
+                    </button>
+                </div>
+
+                <div class="col-md-4">
+                    <button class="btn btn-warning btn-block revised">
+                        <i class="far fa-edit mr-2"></i>Revised
                     </button>
                 </div>
             </div>

@@ -67,6 +67,8 @@ $route['uac'] = 'Home/uac';
 /** UAC - User */
 $route['uac/user'] = 'User';
 $route['uac/user/add'] = 'User/add';
+$route['uac/user/position'] = 'User/position';
+$route['uac/user/position/(:num)'] = 'User/position/$1';
 $route['uac/user/save'] = 'User/save';
 $route['uac/user/detail/(:num)'] = 'User/detail/$1';
 $route['uac/user/update'] = 'User/update';
@@ -196,3 +198,4 @@ $route['export/proforma/coding/(:num)'] = 'ProformaInvoice/coding/$1';
 $route['export/proforma/save'] = 'ProformaInvoice/save';
 $route['export/proforma/print/(:num)'] = 'Prints/proforma/$1';
 $route['export/proforma/detail/(:num)'] = 'ProformaInvoice/detail/$1';
+$route['export/proforma/delete/(:num)'] = 'ProformaInvoice/delete/$1';
