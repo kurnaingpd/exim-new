@@ -197,7 +197,7 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/container/detail.js"),
+                // base_url("assets/js/container/detail.js"),
             ];
             $datas['title'] = 'Export - Proforma Invoice';
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Proforma Invoice'];
@@ -211,10 +211,36 @@
             $this->template->load('default', 'contents' , 'export/proforma/detail/index', $datas);
         }
 
-        // public function update()
-        // {
+        public function process($id)
+        {
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+            ];
+            $datas['js'] = [
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/proforma/process.js"),
+            ];
+            $datas['title'] = 'Export - Proforma Invoice';
+            $datas['breadcrumb'] = ['Export', 'Transaction', 'Proforma Invoice'];
+            $datas['header'] = 'Process';
+            $datas['params'] = [
+                'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_detail', ['is_deleted' => '0', 'id' => $id]),
+                'category' => $this->M_CRUD->pi_category('view_print_category_trans_pi', ['pi_id' => $id]),
+                'item' => $this->M_CRUD->pi_item('view_print_detail_trans_pi', ['is_deleted' => '0', 'pi_id' => $id]),
+                'status' => $this->M_CRUD->readDataIn('master_pi_status', ['is_deleted' => '0', 'id' => ['5','7']]),
+            ];
 
-        // }
+            $this->template->load('default', 'contents' , 'export/proforma/process/index', $datas);
+        }
+
+        public function update()
+        {
+            
+        }
 
         public function delete($id)
         {

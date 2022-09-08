@@ -93,22 +93,10 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <a class="btn btn-default btn-block cancel" href="<?=site_url('export/proforma')?>">
                         <i class="fas fa-ban mr-2"></i>Exit
                     </a>
-                </div>
-
-                <div class="col-md-4">
-                    <button class="btn btn-success btn-block approved">
-                        <i class="fas fa-check mr-2"></i>Approved
-                    </button>
-                </div>
-
-                <div class="col-md-4">
-                    <button class="btn btn-warning btn-block revised">
-                        <i class="far fa-edit mr-2"></i>Revised
-                    </button>
                 </div>
             </div>
         </div>

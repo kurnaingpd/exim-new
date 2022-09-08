@@ -16,6 +16,20 @@
 			return $query -> result();
         }
 
+		public function readDataIn($table, $params = NULL)
+        {
+            $this -> db -> from($table);
+			if($params) {
+				foreach($params as $conditions => $val) {
+					$this -> db -> where_in($conditions, $val);
+				}
+			}
+			
+			$query = $this -> db -> get();
+			
+			return $query -> result();
+        }
+
         public function readDatabyID($table, $params)
         {
             $this -> db -> from($table);

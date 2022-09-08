@@ -33,13 +33,19 @@
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center">
-                            <?php if($this->session->userdata('logged_in')->role_id == 1 || $this->session->userdata('logged_in')->role_id == 2 || $this->session->userdata('logged_in')->role_id == 4) : ?>
+                            <?php if($this->session->userdata('logged_in')->role_id == 1 || $this->session->userdata('logged_in')->role_id == 2 || $this->session->userdata('logged_in')->role_id == 3) : ?>
                                 <a href="<?=site_url('export/proforma/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
-                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-file-alt"></i>
                                 </a>
                             <?php endif; ?>
 
-                            <a href="<?=site_url('export/proforma/print/'.$rows->id)?>" class="btn btn-sm btn-warning" target="_blank">
+                            <?php if($this->session->userdata('logged_in')->role_id == 4) : ?>
+                                <a href="<?=site_url('export/proforma/process/'.$rows->id)?>" class="btn btn-sm btn-warning">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            <?php endif; ?>
+
+                            <a href="<?=site_url('export/proforma/print/'.$rows->id)?>" class="btn btn-sm btn-success" target="_blank">
                                 <i class="fas fa-print"></i>
                             </a>
 
