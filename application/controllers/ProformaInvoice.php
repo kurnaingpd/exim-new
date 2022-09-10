@@ -231,15 +231,45 @@
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_detail', ['is_deleted' => '0', 'id' => $id]),
                 'category' => $this->M_CRUD->pi_category('view_print_category_trans_pi', ['pi_id' => $id]),
                 'item' => $this->M_CRUD->pi_item('view_print_detail_trans_pi', ['is_deleted' => '0', 'pi_id' => $id]),
-                'status' => $this->M_CRUD->readDataIn('master_pi_status', ['is_deleted' => '0', 'id' => ['5','7']]),
+                'categories' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
+                'items' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0']),
+                'item_revise' => $this->M_CRUD->readData('view_print_detail_trans_pi', ['is_deleted' => '0', 'pi_id' => $id]),
+                'cbm_revise' => $this->M_CRUD->readDatabyID('view_trans_pi_detail_item', ['is_deleted' => '0', 'pi_id' => $id]),
             ];
+
+            if($datas['params']['detail']->pi_status_id == 7) {
+                $datas['status'] = $this->M_CRUD->readDataIn('master_pi_status', ['is_deleted' => '0', 'id' => ['3','6']]);
+            } else {
+                $datas['status'] = $this->M_CRUD->readDataIn('master_pi_status', ['is_deleted' => '0', 'id' => ['3','5','7']]);
+            }
 
             $this->template->load('default', 'contents' , 'export/proforma/process/index', $datas);
         }
 
         public function update()
         {
-            
+            $post = $this->input->post();
+            $condition = ['id' => $post['id']];
+            $param = [
+                'pi_status_id' => $post['status'],
+                'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $this->session->userdata('logged_in')->id,
+            ];
+
+            if($this->M_CRUD->updateData('trans_pi', $param, $condition)) {
+                $paramHistory = [
+                    'pi_id' => $post['id'],
+                    'pi_status_id' => $post['status'],
+                    'remark' => ($post['remark']?$post['remark']:NULL)
+                ];
+
+                $this->M_CRUD->insertData('trans_pi_history', $paramHistory);
+                $response = ['status' => 1, 'messages' => 'Proforma invoice has been updated successfully.', 'icon' => 'success', 'url' => 'export/proforma'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Proforma invoice has failed to update.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
         }
 
         public function delete($id)
@@ -252,6 +282,21 @@
                 $response = ['status' => 1, 'messages' => 'Proforma invoice has been deleted successfully.', 'icon' => 'success', 'url' => 'export/proforma'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Proforma invoice has failed to delete.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
+        }
+
+        public function delete_item($id)
+        {
+            $condition = [
+                'id' => $id
+            ];
+            
+            if($this->M_CRUD->deleteData('trans_pi_detail', $condition)) {
+                $response = ['status' => 1, 'messages' => 'Item has been deleted successfully.'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Item has failed to delete.'];
             }
 
             echo json_encode($response);

@@ -39,8 +39,8 @@
                                 </a>
                             <?php endif; ?>
 
-                            <?php if($this->session->userdata('logged_in')->role_id == 4) : ?>
-                                <a href="<?=site_url('export/proforma/process/'.$rows->id)?>" class="btn btn-sm btn-warning">
+                            <?php if($this->session->userdata('logged_in')->role_id == 3 || $this->session->userdata('logged_in')->role_id == 4) : ?>
+                                <a href="<?=site_url('export/proforma/process/'.$rows->id)?>" class="btn btn-sm btn-warning" <?=$rows->display?>>
                                     <i class="fas fa-edit"></i>
                                 </a>
                             <?php endif; ?>

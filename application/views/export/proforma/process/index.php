@@ -70,9 +70,24 @@
                 <div class="card-header">
                     <h6>Item(s)</h6>
                 </div>
-                <div class="card-body">
-                    <?php $this->load->view('export/proforma/detail/items'); ?>
-                </div>
+                <?php if($params['detail']->pi_status_id == 7) : ?>
+                    <div class="card-body">
+                        <?php $this->load->view('export/proforma/process/items_revise'); ?>
+                    </div>
+                    <div class="card-body border-top">
+                        <?php $this->load->view('export/proforma/process/items_revise_detail'); ?>
+                    </div>
+                    <div class="card-footer">
+                        <small>
+                            Maximum CBM: <input type="text" value="<?=$params['detail']->max_cbm?>" size="4" id="currenct_cbm" style="background-color: transparent; border: 0;"><br>
+                            Remain CBM: <input type="text" value="<?=$params['detail']->max_cbm - $params['cbm_revise']->cbm?>" id="remain_cbm" style="background-color: transparent; border: 0;">
+                        </small>
+                    </div>
+                <?php else : ?>
+                    <div class="card-body">
+                        <?php $this->load->view('export/proforma/detail/items'); ?>
+                    </div>
+                <?php endif; ?>
             </div>
 
             <div class="card">
@@ -97,7 +112,7 @@
                                 <label for="status" class="control-label">Status</label>
                                 <select class="form-control select2bs4" id="status" name="status" required>
                                     <option></option>
-                                    <?php foreach($params['status'] as $rows) : ?>
+                                    <?php foreach($status as $rows) : ?>
                                         <option value="<?=$rows->id?>"><?=$rows->name?></option>
                                     <?php endforeach; ?>
                                 </select>
@@ -109,14 +124,20 @@
                         <div class="col-md-12">
                             <div class="form-group" id="required">
                                 <label for="remark" class="control-label">Remark</label>
-                                <textarea name="remark" class="form-control upper" id="remark" placeholder="Enter remark" rows="4" disabled></textarea>
+                                <textarea name="remark" class="form-control upper" id="remark" placeholder="Enter remark" rows="4" readonly></textarea>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12">
-                            <button class="btn btn-success btn-block approved">
+                        <div class="col-md-6">
+                            <a class="btn btn-default btn-block cancel" href="<?=site_url('export/proforma')?>">
+                                <i class="fas fa-ban mr-2"></i>Cancel
+                            </a>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button class="btn btn-success btn-block approved" id="btn-process">
                                 <i class="fas fa-save mr-2"></i>Save
                             </button>
                         </div>
