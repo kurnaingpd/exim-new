@@ -202,3 +202,6 @@ $route['export/proforma/process/(:num)'] = 'ProformaInvoice/process/$1';
 $route['export/proforma/update'] = 'ProformaInvoice/update';
 $route['export/proforma/delete/(:num)'] = 'ProformaInvoice/delete/$1';
 $route['export/proforma/delete_item/(:num)'] = 'ProformaInvoice/delete_item/$1';
+
+/** Signed PI */
+$route['export/signedpi'] = 'SignedPI';
