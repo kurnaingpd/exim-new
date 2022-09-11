@@ -229,6 +229,53 @@
 			
 			return $result;
         }
+
+		public function signed_item($table, $params = NULL)
+        {
+            $result = array();
+            $this -> db -> from($table);
+			if($params) {
+				foreach($params as $conditions => $val) {
+					$this -> db -> where($conditions, $val);
+				}
+			}
+
+			$query = $this -> db -> get();
+            
+
+            if($query -> num_rows() > 0)
+			{
+				foreach($query -> result_array() as $rows)
+				{
+					$result[$rows['id']] = $rows;
+				}
+			}
+			
+			return $result;
+        }
+
+		public function pi_item_role($table, $params = NULL)
+        {
+            $result = array();
+            $this -> db -> from($table);
+			if($params) {
+				foreach($params as $conditions => $val) {
+					$this -> db -> where($conditions, $val);
+				}
+			}
+			
+			$query = $this -> db -> get();
+
+            if($query -> num_rows() > 0)
+			{
+				foreach($query -> result_array() as $rows)
+				{
+					$result[$rows['id']] = $rows;
+				}
+			}
+			
+			return $result;
+        }
     }
 
 ?>
