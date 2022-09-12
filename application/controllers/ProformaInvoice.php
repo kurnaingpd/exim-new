@@ -180,7 +180,7 @@
                 
                 $response = ['status' => 1, 'messages' => 'Proforma invoice: '.$post['pi_code'].' has been saved successfully.', 'icon' => 'success', 'url' => 'export/proforma'];
             } else {
-                $response = ['status' => 0, 'messages' => 'Container has failed to save.', 'icon' => 'error'];
+                $response = ['status' => 0, 'messages' => 'Proforma invoice has failed to save.', 'icon' => 'error'];
             }
 
             echo json_encode($response);

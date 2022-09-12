@@ -247,7 +247,10 @@
 			{
 				foreach($query -> result_array() as $rows)
 				{
-					$result[$rows['id']] = $rows;
+					$result[$rows['id']]['id'] = $rows['id'];
+					$result[$rows['id']]['item'] = $rows['item'];
+					$result[$rows['id']]['option_id'] = $rows['option_id'];
+					$result[$rows['id']]['name'] = $rows['name'];
 				}
 			}
 			
@@ -270,7 +273,10 @@
 			{
 				foreach($query -> result_array() as $rows)
 				{
-					$result[$rows['id']] = $rows;
+					$result[$rows['pi_item_id']]['pi_item_id'] = $rows['pi_item_id'];
+					$result[$rows['pi_item_id']]['dates'] = $rows['dates'];
+					$result[$rows['pi_item_id']]['val'] = $rows['val'];
+					$result[$rows['pi_item_id']]['flags'] = $rows['flags'];
 				}
 			}
 			

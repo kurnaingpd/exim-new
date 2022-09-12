@@ -39,29 +39,115 @@
         public function detail($id)
         {
             $datas['css'] = [
-                "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"),
-                "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"),
-                "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css"),
+                "text/css,stylesheet, https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css",
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
             ];
             $datas['js'] = [
-                base_url("assets/adminlte/plugins/datatables/jquery.dataTables.min.js"),
-                base_url("assets/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"),
-                base_url("assets/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"),
-                base_url("assets/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"),
-                base_url("assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"),
-                base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/signedpi/list.js"),
+                "https://cdn.jsdelivr.net/npm/flatpickr",
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/signedpi/detail.js"),
             ];
             $datas['title'] = 'Export - Signed PI';
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Signed PI'];
             $datas['header'] = 'Process';
             $datas['params'] = [
+                'id' => $id,
+                'detail' => $this->M_CRUD->readDatabyID('trans_signed_pi', ['pi_id' => $id]),
                 'item' => $this->M_CRUD->signed_item('master_pi_item', ['is_deleted' => '0']),
-                'assign' => $this->M_CRUD->pi_item_role('master_pi_item_assign', ['is_deleted' => '0', 'role_id' => $this->session->userdata('logged_in')->role_id]),
+                'assign' => $this->M_CRUD->pi_item_role('view_pi_item_assign', ['is_deleted' => '0', 'role_id' => $this->session->userdata('logged_in')->role_id]),
+                'top' => $this->M_CRUD->readData('master_top', ['is_deleted' => '0']),
+                'incoterm' => $this->M_CRUD->readData('master_incoterm', ['is_deleted' => '0']),
+                'balance' => $this->M_CRUD->readData('master_balance_payment', ['is_deleted' => '0']),
             ];
 
             $this->template->load('default', 'contents' , 'export/signedpi/detail', $datas);
+        }
+
+        public function save()
+        {
+            $post = $this->input->post();
+            $Grid = array();
+			
+            foreach($_POST as $index => $value){
+                if(preg_match("/^pi_/i", $index)) {
+                    $index = preg_replace("/^pi_/i","",$index);
+                    $arr = explode('_',$index);
+                    $rnd = $arr[count($arr)-1];
+                    array_pop($arr);
+                    $idx = implode('_',$arr);
+                    
+                    $Grid[$rnd][$idx] = $value;
+                    if(!isset($Grid[$rnd]['id'])){
+                        $Grid[$rnd]['id'] = $post['id'];
+                    }
+                }
+            }
+
+            if($_FILES) {
+                foreach($_FILES as $index => $value){
+                    if(preg_match("/^pi_/i", $index)) {
+                        $index = preg_replace("/^pi_/i","",$index);
+                        $arr = explode('_',$index);
+                        $rnd = $arr[count($arr)-1];
+                        array_pop($arr);
+                        $idx = implode('_',$arr);
+                        
+                        $Grid[$rnd][$idx] = $value['name'];
+                        if(!isset($Grid[$rnd]['id'])){
+                            $Grid[$rnd]['id'] = $post['id'];
+                        }
+                    }
+                }
+            }
+
+            foreach($Grid as $item) {
+                if(count(explode('.', $item['val'])) > 1) {
+                    $path = 'assets/attachment/signedpi/';
+                    $temp_name = $item['val'];
+                    $ext = explode('.', $temp_name);
+                    $end = strtolower(end($ext));
+                    $timestamp = mt_rand(1, time());
+                    $randomDate = date("d M Y", $timestamp);
+                    $filename = md5($randomDate).'.'.$end;
+
+                    if ( !file_exists($path) ) {
+                        mkdir($path, 0777, true);
+                    }
+
+                    $name = "pi_val_".$item['item_id'];
+                    move_uploaded_file($_FILES[$name]['tmp_name'], $path.$filename);
+
+                    $params = [
+                        'pi_id' => $item['id'],
+                        'pi_item_id' => $item['item_id'],
+                        'dates' => $item['date'],
+                        'value' => $filename,
+                        'created_by' => $this->session->userdata('logged_in')->id,
+                    ];
+                } else {
+                    $params = [
+                        'pi_id' => $item['id'],
+                        'pi_item_id' => $item['item_id'],
+                        'dates' => $item['date'],
+                        'value' => $item['val'],
+                        'created_by' => $this->session->userdata('logged_in')->id,
+                    ];
+                }
+
+                if($this->M_CRUD->insertData('trans_signed_pi', $params)) {
+                    $response = ['status' => 1, 'messages' => 'Signed PI has been saved successfully.', 'icon' => 'success', 'url' => 'export/signedpi'];
+                } else {
+                    $response = ['status' => 0, 'messages' => 'Signed PI has failed to save.', 'icon' => 'error'];
+                }
+            }
+
+            echo json_encode($response);
         }
     }
 

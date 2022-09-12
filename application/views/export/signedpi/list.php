@@ -31,7 +31,7 @@
                         <td class="text-center">
                             <span class="badge bg-<?=$rows->bg_color?>"><?=$rows->status_name?></span>
                         </td>
-                        <td class="text-center">0</td>
+                        <td class="text-center"><?=$rows->progress?></td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center">
