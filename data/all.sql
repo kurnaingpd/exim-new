@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `gexp_bank_cust` (
   PRIMARY KEY (`BankCustId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_bank_cust: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_bank_cust: ~0 rows (approximately)
 DELETE FROM `gexp_bank_cust`;
 INSERT INTO `gexp_bank_cust` (`BankCustId`, `CustCodeId`, `BankCustAccountName`, `BankCustAccountNo`, `BankCustName`, `BankCustBranch`, `BankCustAddress`, `BankCustSwiftCode`, `BankCustCode`) VALUES
 	(1, '1', 'LLP "B3 group"', 'KZ6896502F0012782447', 'АО «ForteBank»', 'NUR SULTAN', '010000, KAZAKHSTAN, G. NUR-SULTAN, R-N ESIL, UL. B', 'IRTYKZKA', '-');
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `gexp_coa_signpi` (
   PRIMARY KEY (`coa_detsign_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_coa_signpi: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_coa_signpi: ~0 rows (approximately)
 DELETE FROM `gexp_coa_signpi`;
 INSERT INTO `gexp_coa_signpi` (`coa_detsign_id`, `sign_id_pi`, `coa_detsign_date`, `coa_detsign_path`, `createdAt`, `createdBy`) VALUES
 	(1, 1, '2022-07-21', 'COA-KAZ.pdf', '2022-07-21 13:10:06', 10);
@@ -206,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `gexp_contact_cust` (
   PRIMARY KEY (`CtId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_contact_cust: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_contact_cust: ~0 rows (approximately)
 DELETE FROM `gexp_contact_cust`;
 INSERT INTO `gexp_contact_cust` (`CtId`, `CtTicketCustCode`, `CtName`, `CtPhone`, `CtEmail`, `CtTOP`, `CtDp`, `CtBalancing`, `CtCurrency`, `CtIncoterm`) VALUES
 	(1, '1', 'Yerkanat Ussenov', '+7777 207 7373', 'Erkanat.ussen81@gmail.com', 8, '30', '70', 'USD', 3);
@@ -277,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `gexp_importdoc_cust` (
   PRIMARY KEY (`ImportdocId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_importdoc_cust: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_importdoc_cust: ~0 rows (approximately)
 DELETE FROM `gexp_importdoc_cust`;
 INSERT INTO `gexp_importdoc_cust` (`ImportdocId`, `CustCodeId`, `BillOfLadding`, `PackingList`, `InvoiceA`, `InvoiceUV`, `COO`, `HealthCert`, `MaterialSafety`, `COA`, `ProductSpec`, `OthersAdd`) VALUES
 	(1, '1', 'Send Original Doc', 'Send Original Doc', 'Send Original Doc', 'Not Include', 'Send Original Doc', 'Send Original Doc', 'Not Include', 'Send Original Doc', 'Send Original Doc', 'QUALITY CERTIFICATE');
@@ -294,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `gexp_invoice_print` (
   PRIMARY KEY (`inv_print_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_invoice_print: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_invoice_print: ~0 rows (approximately)
 DELETE FROM `gexp_invoice_print`;
 INSERT INTO `gexp_invoice_print` (`inv_print_id`, `inv_print_no`, `inv_print_carton_barcode`, `inv_print_batch`, `inv_print_expired_date`, `inv_print_production_date`) VALUES
 	(1, '0001/SKP-EXP/INV/07/2022', 1, 1, NULL, NULL);
@@ -335,7 +335,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_bank` (
   PRIMARY KEY (`BankId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_bank: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_bank: ~0 rows (approximately)
 DELETE FROM `gexp_master_bank`;
 INSERT INTO `gexp_master_bank` (`BankId`, `BankCode`, `BankName`, `BankOffice`, `BankDesc`, `BankAccount`, `BankSwiftCode`, `BankStats`, `CreatedAt`, `CreatedBy`, `UpdateAt`, `UpdateBy`) VALUES
 	(1, '01', 'DBS INDONESIA', 'DBS BANK TOWER BRANCH', 'JL. PROF. DR. SATRIO KAV 3-5, CIPUTRA WORLD JAKARTA 12940', '3220119139', 'dbsbidja', 1, '2022-06-15 14:09:03', 1, NULL, NULL);
@@ -358,7 +358,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_beneficiary` (
   PRIMARY KEY (`BeneficiaryId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_beneficiary: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_beneficiary: ~0 rows (approximately)
 DELETE FROM `gexp_master_beneficiary`;
 INSERT INTO `gexp_master_beneficiary` (`BeneficiaryId`, `BeneficiaryDesc`, `BeneficiaryOffice`, `BeneficiaryAddr`, `BeneficiaryCountry`, `BeneficiaryCP`, `BeneficiaryPhone`, `BeneficiaryStats`, `CreatedAt`, `CreatedBy`, `UpdateAt`, `UpdateBy`) VALUES
 	(1, 'PT. SUMBER KOPI PRIMA', ' JL. LINGKAR TIMUR', 'LORAM WETAN, JATI,  KAB. KUDUS, JAWA TENGAH, 59344', 9, 'EVI SUSANTI', '-', 1, '2022-06-15 14:03:30', 1, '2022-06-15 14:04:02', 1);
@@ -380,7 +380,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_coa` (
   UNIQUE KEY `gexp_coa_no` (`gexp_coa_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_coa: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_coa: ~0 rows (approximately)
 DELETE FROM `gexp_master_coa`;
 INSERT INTO `gexp_master_coa` (`gexp_coa_id`, `gexp_coa_no`, `gexp_coa_date`, `gexp_coa_invoice`, `gexp_coa_product_name`, `gexp_coa_product_date`, `gexp_coa_month`, `gexp_coa_years`, `gexp_coa_createdAt`, `gexp_coa_createdBy`) VALUES
 	(1, '0001/07/2022/KAZ', '2022-07-18', 1, NULL, NULL, NULL, '2022', '2022-07-18 10:07:21', 10);
@@ -504,7 +504,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_expreq` (
   PRIMARY KEY (`gexp_expreq_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_expreq: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_expreq: ~0 rows (approximately)
 DELETE FROM `gexp_master_expreq`;
 INSERT INTO `gexp_master_expreq` (`gexp_expreq_id`, `gexp_expreq_pi_id`, `gexp_expreq_remark`, `gexp_expreq_doc01`, `gexp_expreq_doc02`, `gexp_expreq_doc03`, `gexp_expreq_date`, `gexp_expreq_month`, `gexp_expreq_years`, `gexp_expreq_createdAt`, `gexp_expreq_createdBy`, `gexp_expreq_statrows`, `gexp_expreq_docval`, `gexp_expreq_uploadby`, `gexp_expreq_statusDoc`, `gexp_expreq_confirm_id`, `gexp_expreq_confirmedAt`, `gexp_expreq_isRevisi`, `gexp_expreq_ValRevisi`, `gexp_expreq_DateRevisi`) VALUES
 	(1, 1, '', 'Ketentuan_Kazakhstan_V2_3_(3_Hanger).pdf', NULL, NULL, '2022-07-15', '07', '2022', '2022-07-15 17:14:29', 21, 1, 1, 6, 1, 41, '2022-07-15 17:23:34', 2, NULL, NULL);
@@ -611,7 +611,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_invoice` (
   UNIQUE KEY `gexp_invoice_pi` (`gexp_invoice_pi`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_invoice: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_invoice: ~0 rows (approximately)
 DELETE FROM `gexp_master_invoice`;
 INSERT INTO `gexp_master_invoice` (`gexp_invoice_id`, `gexp_invoice_no`, `gexp_invoice_pi`, `gexp_invoice_ffrn`, `gexp_invoice_date`, `gexp_invoice_month`, `gexp_invoice_years`, `gexp_invoice_statrows`, `gexp_invoice_createdAt`, `gexp_invoice_createdBy`, `gexp_invoice_isPL`, `gexp_invoice_isCoa`, `gexp_invoice_isProdspec`, `gexp_invoice_isQcert`, `gexp_invoice_isSpp`) VALUES
 	(1, '0001/SKP-EXP/INV/07/2022', 1, '-', '2022-07-15', NULL, NULL, 1, '2022-07-15 17:32:43', 7, 1, NULL, NULL, NULL, NULL);
@@ -700,7 +700,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_packlist` (
   UNIQUE KEY `gexp_packlist_invoice_id` (`gexp_packlist_invoice_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_packlist: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_packlist: ~0 rows (approximately)
 DELETE FROM `gexp_master_packlist`;
 INSERT INTO `gexp_master_packlist` (`gexp_packlist_id`, `gexp_packlist_invoice_id`, `gexp_packlist_no`, `gexp_packlist_container`, `gexp_packlist_date`, `gexp_packlist_month`, `gexp_packlist_years`, `gexp_packlist_statrows`, `gexp_packlist_createdAt`, `gexp_packlist_createdBy`) VALUES
 	(1, 1, '0001/SKP-EXT/PL/07/2022', '1', '2022-07-15', NULL, NULL, 1, '2022-07-15 17:36:20', 15);
@@ -754,7 +754,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_pi` (
   UNIQUE KEY `gexp_pi_no` (`gexp_pi_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_pi: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_pi: ~0 rows (approximately)
 DELETE FROM `gexp_master_pi`;
 INSERT INTO `gexp_master_pi` (`gexp_pi_id`, `gexp_pi_no`, `gexp_pi_po`, `gexp_pi_customer`, `gexp_pi_consignee_id`, `gexp_pi_beneficiary_id`, `gexp_pi_loadport_id`, `gexp_pi_dischargeport_id`, `gexp_pi_destinatport_id`, `gexp_pi_container`, `gexp_pi_number_container`, `gexp_pi_freight_company`, `gexp_pi_freight_compcontact`, `gexp_pi_freight_compnumber`, `gexp_pi_freight_cost`, `gexp_pi_insurance`, `gexp_pi_bank`, `gexp_pi_currency`, `gexp_pi_ppn`, `gexp_pi_remark`, `gexp_pi_attachment01`, `gexp_pi_statrow`, `gexp_pi_week`, `gexp_pi_date`, `gexp_pi_month`, `gexp_pi_years`, `gexp_pi_statusPI`, `gexp_pi_createdAt`, `gexp_pi_createdBy`, `gexp_pi_updatedAt`, `gexp_pi_updatedBy`, `gexp_pi_parentlogs`, `gexp_pi_ApprovedBy`, `gexp_pi_ApprovedAt`, `gexp_pi_isApproved`, `gexp_pi_onSubmit`, `gexp_pi_Submit_Date`, `gexp_pi_submit_by`, `gexp_pi_isExpreq`, `gexp_pi_Expreq_path`, `gexp_pi_Expreq_isUpload`, `gexp_pi_Expreq_UpTime`) VALUES
 	(1, '0058/SKP-EXP/PI/07/2022', '-', NULL, 1, 1, 2, 0, 0, 4, '1', '-', '-', '-', 0.00, 0.00, 1, '3', 2, NULL, NULL, 1, NULL, '2022-07-15', '07', '2022', 1, '2022-07-15 16:46:37', 41, '0000-00-00 00:00:00', NULL, NULL, 21, '2022-07-15 17:14:29', 1, 1, '2022-07-15 17:13:20', 41, NULL, NULL, NULL, NULL);
@@ -840,7 +840,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_qs` (
   UNIQUE KEY `gexp_qs_invoice_id` (`gexp_qs_invoice_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_qs: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_qs: ~0 rows (approximately)
 DELETE FROM `gexp_master_qs`;
 INSERT INTO `gexp_master_qs` (`gexp_qs_id`, `gexp_qs_no`, `gexp_qs_coa_id`, `gexp_qs_invoice_id`, `gexp_qs_date`, `gexp_qs_month`, `gexp_qs_years`, `gexp_qs_createdAt`, `gexp_qs_createdBy`, `gexp_qs_statusrows`) VALUES
 	(1, '0001/SKP-QS/07/2022', 1, 1, '2022-07-21', '07', '2022', '2022-07-21 12:13:11', 10, 1);
@@ -861,7 +861,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_spec` (
   UNIQUE KEY `gexp_spec_no` (`gexp_spec_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_spec: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_spec: ~0 rows (approximately)
 DELETE FROM `gexp_master_spec`;
 INSERT INTO `gexp_master_spec` (`gexp_spec_id`, `gexp_spec_no`, `gexp_spec_date`, `gexp_spec_invoice_id`, `gexp_spec_po_no`, `gexp_spec_product_id`, `gexp_spec_createdAt`, `gexp_spec_createdBy`, `gexp_spec_statrows`) VALUES
 	(1, '0001/SKP-PRDSPEC/07/2022', '2022-07-21', 1, '12345', NULL, '2022-07-21 11:58:11', 10, NULL);
@@ -884,7 +884,7 @@ CREATE TABLE IF NOT EXISTS `gexp_master_spp` (
   UNIQUE KEY `gexp_spp_no` (`gexp_spp_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_master_spp: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_master_spp: ~0 rows (approximately)
 DELETE FROM `gexp_master_spp`;
 INSERT INTO `gexp_master_spp` (`gexp_spp_id`, `gexp_spp_no`, `gexp_spp_inv_id`, `gexp_spp_nama`, `gexp_spp_jabatan`, `gexp_spp_description`, `gexp_spp_date`, `gexp_spp_month`, `gexp_spp_years`, `gexp_spp_createdAt`, `gexp_spp_createdBy`) VALUES
 	(1, '0001/SKP-EXP/SPP/07/2022', 1, 'shofa istiana', 'Quality Assurance', 'OK', NULL, NULL, NULL, '0000-00-00 00:00:00', 10);
@@ -1106,7 +1106,7 @@ CREATE TABLE IF NOT EXISTS `gexp_prodspec_signpi` (
   PRIMARY KEY (`prodspec_signid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_prodspec_signpi: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_prodspec_signpi: ~0 rows (approximately)
 DELETE FROM `gexp_prodspec_signpi`;
 INSERT INTO `gexp_prodspec_signpi` (`prodspec_signid`, `sign_pi_id`, `prodspec_date`, `prodspec_val`, `createdAt`, `createdBy`) VALUES
 	(1, 1, '2022-07-21', 'Product_Spec-KAZ.pdf', '2022-07-21 12:04:46', 10);
@@ -1141,7 +1141,7 @@ CREATE TABLE IF NOT EXISTS `gexp_shipto_cust` (
   PRIMARY KEY (`ShiptoId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_shipto_cust: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_shipto_cust: ~0 rows (approximately)
 DELETE FROM `gexp_shipto_cust`;
 INSERT INTO `gexp_shipto_cust` (`ShiptoId`, `ShipCodeCust`, `ShipCompanyName`, `ShipAddress`, `ShipCountry`, `ShipPhone`, `ShiptoCpName`, `ShiptoCpPhone`, `ShiptoCpEmail`) VALUES
 	(1, '1', 'B3 GROUP LLP', 'Esil district, st. Bukhar Zhyrau, 36, apt. 98, Nur Sultan', 'Kazakhstan', '+7777 207 7373', 'Yerkanat Ussenov', '+7777 207 7373', 'Erkanat.ussen81@gmail.com');
@@ -1327,7 +1327,7 @@ CREATE TABLE IF NOT EXISTS `gexp_sign_pi` (
   PRIMARY KEY (`sign_pi_noid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_sign_pi: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_sign_pi: ~0 rows (approximately)
 DELETE FROM `gexp_sign_pi`;
 INSERT INTO `gexp_sign_pi` (`sign_pi_noid`, `sign_pi_statrows`, `sign_pi_id`, `sign_pi_no`, `sign_pi_submitPI`, `sign_pi_submit_path`, `sign_pi_submit_date`, `sign_pi_submit_at`, `sign_pi_submit_by`, `sign_pi_po`, `sign_pi_po_path`, `sign_pi_po_date`, `sign_pi_po_at`, `sign_pi_po_by`, `sign_pi_top`, `sign_pi_top_value`, `sign_pi_top_path`, `sign_pi_top_date`, `sign_pi_top_at`, `sign_pi_top_by`, `sign_dp_receipt`, `sign_dp_receipt_date`, `sign_dp_receipt_path`, `sign_dp_receipt_at`, `sign_dp_receipt_by`, `sign_dp_receipt_conf`, `sign_dp_receipt_conf_date`, `sign_dp_receipt_conf_at`, `sign_dp_receipt_conf_by`, `sign_shipping_term`, `sign_shipping_term_value`, `sign_shipping_term_date`, `sign_shipping_term_at`, `sign_shipping_term_by`, `sign_bill_of_ladding`, `sign_bill_of_ladding_path`, `sign_bill_of_ladding_date`, `sign_bill_of_ladding_at`, `sign_bill_of_ladding_by`, `sign_packing_list`, `sign_packing_list_path`, `sign_packing_list_date`, `sign_packing_list_at`, `sign_packing_list_by`, `sign_invoice`, `sign_invoice_path`, `sign_invoice_date`, `sign_invoice_at`, `sign_invoice_by`, `sign_invoice_underval`, `sign_invoice_underval_path`, `sign_invoice_underval_date`, `sign_invoice_underval_at`, `sign_invoice_underval_by`, `sign_coo`, `sign_coo_path`, `sign_coo_date`, `sign_coo_at`, `sign_coo_by`, `sign_healthcert`, `sign_healthcert_path`, `sign_healthcert_date`, `sign_healthcert_at`, `sign_healthcert_by`, `sign_materialsafe`, `sign_materialsafe_path`, `sign_materialsafe_date`, `sign_materialsafe_at`, `sign_materialsafe_by`, `sign_coa`, `sign_coa_path`, `sign_coa_date`, `sign_coa_at`, `sign_coa_by`, `sign_product_specificat`, `sign_product_specificat_path`, `sign_product_specificat_date`, `sign_product_specificat_at`, `sign_product_specificat_by`, `sign_spp`, `sign_spp_path`, `sign_spp_date`, `sign_spp_at`, `sign_spp_by`, `sign_others`, `sign_others_path`, `sign_others_date`, `sign_others_at`, `sign_others_by`, `sign_expprint_trial`, `sign_expprint_trial_path`, `sign_expprint_trial_date`, `sign_expprint_trial_at`, `sign_expprint_trial_by`, `sign_expprint_apprv`, `sign_expprint_apprv_date`, `sign_expprint_apprv_at`, `sign_expprint_apprv_by`, `sign_foc`, `sign_foc_date`, `sign_foc_at`, `sign_foc_by`, `sign_posm`, `sign_posm_date`, `sign_posm_at`, `sign_posm_by`, `sign_finishgod`, `sign_finishgod_date`, `sign_finishgod_at`, `sign_finishgod_by`, `sign_vesselsche`, `sign_vesselsche_date`, `sign_vesselsche_at`, `sign_vesselsche_by`, `sign_balancepay`, `sign_balancepay_value`, `sign_balancepay_date`, `sign_balancepay_at`, `sign_balancepay_by`, `sign_vesselbookconf`, `sign_vesselbookconf_date`, `sign_vesselbookconf_at`, `sign_vesselbookconf_by`, `sign_stuffing`, `sign_stuffing_path`, `sign_stuffing_date`, `sign_stuffing_at`, `sign_stuffing_by`, `sign_draftbl_sent`, `sign_draftbl_sent_date`, `sign_draftbl_sent_at`, `sign_draftbl_sent_by`, `sign_draftbl_apprv`, `sign_draftbl_apprv_date`, `sign_draftbl_apprv_at`, `sign_draftbl_apprv_by`, `sign_telex_release`, `sign_telex_release_date`, `sign_telex_release_at`, `sign_telex_release_by`, `sign_origin_docsent`, `sign_origin_docsent_date`, `sign_origin_docsent_at`, `sign_origin_docsent_by`, `sign_toppay_balance`, `sign_toppay_balance_date`, `sign_toppay_balance_at`, `sign_toppay_balance_by`, `sign_etd`, `sign_etd_date`, `sign_etd_at`, `sign_etd_by`, `sign_eta`, `sign_eta_date`, `sign_eta_at`, `sign_eta_by`) VALUES
 	(1, 1, 1, '0058/SKP-EXP/PI/07/2022', 1, '06_10_2021__Invoice_585.pdf', '2022-07-15', '2022-07-15 17:23:00', 41, 1, 'CONTOH_PRINT_PACKING_LIST5.pdf', '2022-09-08', '2022-09-08 16:03:49', 4, 1, 'TOP 30 DAYS', NULL, '2022-07-21', '2022-07-21 10:30:46', 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'FOB', '2022-09-09', '2022-09-09 16:30:30', 4, 1, 'surrender_BL1.pdf', '2022-07-23', '2022-08-01 10:23:07', 27, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'GMO_Statement-KAZ.pdf', '2022-07-21', '2022-07-21 14:19:03', 10, 1, NULL, '2022-07-21', '2022-07-21 13:10:06', 10, 1, NULL, '2022-07-21', '2022-07-21 12:04:46', 10, 1, 'Surat_Pernyataan_Eksport_-_Produk_Kemasan_Berbeda_KAZ.pdf', '2022-07-21', '2022-07-21 14:05:43', 10, NULL, NULL, NULL, NULL, NULL, 1, 'Ketentuan_Kazakhstan_V2_3_(3_Hanger).pdf', '2021-06-15', '2022-07-21 14:59:50', 6, 1, '2021-06-15', '2022-07-21 14:58:54', 6, NULL, NULL, NULL, NULL, 1, '2021-06-15', '2022-07-21 14:58:04', 6, 1, '2021-07-05', '2022-07-21 14:55:38', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2022-07-13', '2022-08-01 10:27:31', 27, NULL, NULL, NULL, NULL, NULL, 1, '2022-07-20', '2022-08-01 10:29:47', 27, 1, '2022-07-22', '2022-08-01 10:33:03', 27, NULL, NULL, NULL, NULL, 1, '2022-07-28', '2022-08-01 10:33:40', 27, NULL, NULL, NULL, NULL, 1, '2022-07-23', '2022-08-01 10:36:38', 27, NULL, NULL, NULL, NULL);
@@ -1370,7 +1370,7 @@ CREATE TABLE IF NOT EXISTS `gexp_specdet_product` (
   PRIMARY KEY (`gexp_specdet_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.gexp_specdet_product: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.gexp_specdet_product: ~0 rows (approximately)
 DELETE FROM `gexp_specdet_product`;
 INSERT INTO `gexp_specdet_product` (`gexp_specdet_id`, `gexp_specdet_head`, `gexp_specdet_invoice`, `gexp_specdet_item`, `gexp_specdet_desc`, `gexp_specdet_physical_form`, `gexp_specdet_physical_texture`, `gexp_specdet_physical_colour`, `gexp_specdet_physical_taste`, `gexp_specdet_physical_odour`, `gexp_specdet_chemical_fat`, `gexp_specdet_chemical_moisture`, `gexp_specdet_chemical_caffeine`, `gexp_specdet_micro_platecount`, `gexp_specdet_micro_mouldyeast`, `gexp_specdet_micro_coliform`, `gexp_specdet_micro_salmonella`, `gexp_specdet_heamet_lead`, `gexp_specdet_heamet_arsenic`, `gexp_specdet_heamet_mercury`, `gexp_specdet_heamet_tin`, `gexp_specdet_heamet_cadmium`, `gexp_specdet_inregdient`, `gexp_specdet_prodshelife`, `gexp_specdet_packmate`, `gexp_specdet_storeconreq`, `gexp_specdet_fun_foodmaterial`, `gexp_specdet_usage`, `gexp_specdet_allergen`, `gexp_specdet_countorigin`, `gexp_specdet_createdat`, `gexp_specdet_createdby`) VALUES
 	(1, 1, 1, 4, 'asdada', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '<p><br></p>', '<p><br></p>', '<p><br></p>', '<p><br></p>', '<p><br></p>', '<p><br></p>', '<p><br></p>', '<p><br></p>', '2022-08-31 11:15:05', 10);
@@ -1745,6 +1745,21 @@ INSERT INTO `gimp_user` (`user_id`, `user_username`, `user_pass`, `user_encrypt`
 	(4, 'lingga.pradipta', '827ccb0eea8a706c4c34a16891f84e7b', 'ZmU3MDNkMjU4YzdlZjVmNTBiNzFlMDY1NjVhNjVhYTA3MTk0OTA3Zg==', '-', 'Lingga.Pradipta', 'lingga.e.pradipta@sumberkopiprima.com', '-', 1, NULL, NULL, 1, NULL, NULL, '2022-07-29 13:37:55', 2),
 	(5, 'support', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '0', 'IT SUPPORT', 'it.support@gonusa-distribusi.com', '0', 1, NULL, '2022-04-18 11:32:38', 2, '2022-04-18 11:32:49', 2, NULL, 1);
 
+-- Dumping structure for table gpd_gexp.master_balance_payment
+DROP TABLE IF EXISTS `master_balance_payment`;
+CREATE TABLE IF NOT EXISTS `master_balance_payment` (
+  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `is_deleted` enum('0','1') NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table gpd_gexp.master_balance_payment: ~2 rows (approximately)
+DELETE FROM `master_balance_payment`;
+INSERT INTO `master_balance_payment` (`id`, `name`, `is_deleted`) VALUES
+	(1, 'Down payment', '0'),
+	(2, 'All payment', '0');
+
 -- Dumping structure for table gpd_gexp.master_bank
 DROP TABLE IF EXISTS `master_bank`;
 CREATE TABLE IF NOT EXISTS `master_bank` (
@@ -1786,7 +1801,7 @@ CREATE TABLE IF NOT EXISTS `master_beneficiary` (
   CONSTRAINT `FK__master_country` FOREIGN KEY (`country_id`) REFERENCES `master_country` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_beneficiary: ~1 rows (approximately)
+-- Dumping data for table gpd_gexp.master_beneficiary: ~0 rows (approximately)
 DELETE FROM `master_beneficiary`;
 INSERT INTO `master_beneficiary` (`id`, `company_name`, `office`, `address`, `country_id`, `cp_name`, `phone`, `created_at`, `updated_at`, `is_deleted`) VALUES
 	(1, 'PT. SUMBER KOPI PRIMA', ' JL. LINGKAR TIMUR', 'LORAM WETAN, JATI,  KAB. KUDUS, JAWA TENGAH, 59344', 7, 'EVI SUSANTI', '085774439141', '2022-08-22 10:50:41', NULL, '0');
@@ -2328,7 +2343,7 @@ CREATE TABLE IF NOT EXISTS `master_menu_sub` (
   CONSTRAINT `FK_master_menu_sub_master_user_2` FOREIGN KEY (`updated_by`) REFERENCES `master_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.master_menu_sub: ~16 rows (approximately)
+-- Dumping data for table gpd_gexp.master_menu_sub: ~15 rows (approximately)
 DELETE FROM `master_menu_sub`;
 INSERT INTO `master_menu_sub` (`id`, `menu_module_id`, `menu_group_id`, `name`, `icon`, `url`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_deleted`) VALUES
 	(1, 1, 1, 'User', 'fas fa-users', 'uac/user', '2022-08-09 10:55:18', NULL, NULL, NULL, '0'),
@@ -2346,64 +2361,166 @@ INSERT INTO `master_menu_sub` (`id`, `menu_module_id`, `menu_group_id`, `name`, 
 	(13, 2, 1, 'Beneficiary', 'fas fa-sync-alt', 'export/beneficiary', '2022-08-22 10:18:35', NULL, NULL, NULL, '0'),
 	(14, 2, 1, 'Customer', 'fas fa-building', 'export/customer', '2022-08-23 02:25:34', NULL, NULL, NULL, '0'),
 	(15, 2, 2, 'Proforma Invoice', 'fas fa-file-invoice-dollar', 'export/proforma', '2022-09-01 04:28:10', NULL, NULL, NULL, '0'),
-	(16, 2, 2, 'Signed PI', 'fas fa-signature', 'signedpi', '2022-09-09 09:07:44', NULL, NULL, NULL, '0');
+	(16, 2, 2, 'Signed PI', 'fas fa-signature', 'export/signedpi', '2022-09-09 09:07:44', NULL, NULL, NULL, '0');
 
 -- Dumping structure for table gpd_gexp.master_pi_item
 DROP TABLE IF EXISTS `master_pi_item`;
 CREATE TABLE IF NOT EXISTS `master_pi_item` (
   `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
-  `group_id` int(11) NOT NULL,
   `item` varchar(100) NOT NULL,
   `option_id` tinyint(4) NOT NULL,
   `name` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `is_deleted` enum('0','1') NOT NULL DEFAULT '0' COMMENT '0 = No; 1 = Yes;',
   PRIMARY KEY (`id`),
-  KEY `FK_gexp_master_pi_item_gexp_master_group` (`group_id`),
   KEY `FK_gexp_master_pi_item_gexp_master_pi_opt` (`option_id`),
-  CONSTRAINT `FK_gexp_master_pi_item_gexp_master_group` FOREIGN KEY (`group_id`) REFERENCES `gexp_master_group` (`GroupId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_gexp_master_pi_item_gexp_master_pi_opt` FOREIGN KEY (`option_id`) REFERENCES `master_pi_opt` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table gpd_gexp.master_pi_item: ~36 rows (approximately)
 DELETE FROM `master_pi_item`;
-INSERT INTO `master_pi_item` (`id`, `group_id`, `item`, `option_id`, `name`, `created_at`, `is_deleted`) VALUES
-	(1, 20, 'Signed PI', 1, 'signed_pi', '2022-08-04 07:26:00', '0'),
-	(2, 20, 'Purchase Order (If Any)', 1, 'purchase', '2022-08-04 07:26:39', '0'),
-	(3, 23, 'TOP', 2, 'top', '2022-08-04 07:29:19', '0'),
-	(4, 23, 'Down Payment Receipt', 1, 'dp_receipt', '2022-08-04 07:30:13', '0'),
-	(5, 23, 'Down Payment Received Confirmation', 3, 'dp_confirm', '2022-08-04 07:34:23', '0'),
-	(6, 20, 'Shipping Term', 2, 'shipping_term', '2022-08-04 07:36:04', '0'),
-	(7, 24, 'Bill of Ladding', 1, 'bill_ladding', '2022-08-04 07:38:57', '0'),
-	(8, 21, 'Packing List', 1, 'packing_list', '2022-08-04 07:39:47', '0'),
-	(9, 23, 'Invoice', 1, 'invoice', '2022-08-04 07:41:10', '0'),
-	(10, 23, 'Invoice Under Value', 1, 'invoice_uv', '2022-08-04 07:41:33', '0'),
-	(11, 26, 'COO', 1, 'coo', '2022-08-04 07:57:09', '0'),
-	(12, 26, 'Health Certificate / Certificate of Free Sale', 1, 'health_cert', '2022-08-04 07:57:37', '0'),
-	(13, 26, 'Material Safety Data Sheet', 1, 'material_safety', '2022-08-04 07:57:38', '0'),
-	(14, 26, 'COA', 1, 'coa', '2022-08-04 07:57:38', '0'),
-	(15, 26, 'Product Spesification', 1, 'prod_spec', '2022-08-04 07:57:38', '0'),
-	(16, 26, 'Surat Pernyataan Produk', 1, 'spp', '2022-08-04 07:57:38', '0'),
-	(17, 24, 'Others', 1, 'others', '2022-08-04 07:57:38', '0'),
-	(18, 22, 'Ketentuan Export Dokumen', 1, 'ket_exp_doc', '2022-08-04 07:57:38', '0'),
-	(19, 22, 'Ketentuan Export Dokumen Approve', 1, 'ket_exp_doc_apprv', '2022-08-04 07:57:38', '0'),
-	(20, 23, 'FOC Approval', 3, 'foc_approval', '2022-08-04 07:57:38', '0'),
-	(21, 21, 'POSM Availability', 3, 'posm', '2022-08-04 07:57:38', '0'),
-	(22, 22, 'Finish Good Ready Date', 3, 'finish_good', '2022-08-04 07:57:38', '0'),
-	(23, 24, 'Vessel Schedule', 3, 'vessel_schedule', '2022-08-04 07:57:38', '0'),
-	(24, 23, 'Balance Payment', 2, 'balance_payment', '2022-08-04 07:57:38', '0'),
-	(25, 24, 'Vessel Booking Confirmation', 3, 'vessel_confirm', '2022-08-04 07:57:38', '0'),
-	(26, 21, 'Stuffing', 1, 'stuffing', '2022-08-04 07:57:38', '0'),
-	(27, 24, 'Draft BL Sent', 3, 'draft_sent', '2022-08-04 07:57:38', '0'),
-	(28, 24, 'Draft BL Approved', 3, 'draft_approved', '2022-08-04 07:57:38', '0'),
-	(29, 24, 'Telex Release', 3, 'telex', '2022-08-04 07:57:39', '0'),
-	(30, 24, 'Original Document Sent', 3, 'ori_doc_sent', '2022-08-04 07:57:39', '0'),
-	(31, 23, 'TOP Payment Balancing', 3, 'top_payment', '2022-08-04 07:57:39', '0'),
-	(32, 24, 'Estimation Time of Departure [ETD]', 3, 'etd', '2022-08-04 07:57:39', '0'),
-	(33, 24, 'Estimation Time of Arrival [ETA]', 3, 'eta', '2022-08-04 07:57:39', '0'),
-	(34, 24, 'COO', 1, 'coo', '2022-08-04 08:24:43', '0'),
-	(35, 24, 'Health Certificate / Certificate of Free Sale', 1, 'health_cert', '2022-08-04 08:25:07', '0'),
-	(36, 24, 'Stuffing', 1, 'stuffing', '2022-08-04 08:25:48', '0');
+INSERT INTO `master_pi_item` (`id`, `item`, `option_id`, `name`, `created_at`, `is_deleted`) VALUES
+	(1, 'Signed PI', 1, 'signed_pi', '2022-08-04 07:26:00', '0'),
+	(2, 'Purchase Order (If Any)', 1, 'purchase', '2022-08-04 07:26:39', '0'),
+	(3, 'TOP', 2, 'top', '2022-08-04 07:29:19', '0'),
+	(4, 'Down Payment Receipt', 1, 'dp_receipt', '2022-08-04 07:30:13', '0'),
+	(5, 'Down Payment Received Confirmation', 3, 'dp_confirm', '2022-08-04 07:34:23', '0'),
+	(6, 'Shipping Term', 2, 'shipping_term', '2022-08-04 07:36:04', '0'),
+	(7, 'Bill of Ladding', 1, 'bill_ladding', '2022-08-04 07:38:57', '0'),
+	(8, 'Packing List', 1, 'packing_list', '2022-08-04 07:39:47', '0'),
+	(9, 'Invoice', 1, 'invoice', '2022-08-04 07:41:10', '0'),
+	(10, 'Invoice Under Value', 1, 'invoice_uv', '2022-08-04 07:41:33', '0'),
+	(11, 'COO', 1, 'coo', '2022-08-04 07:57:09', '0'),
+	(12, 'Health Certificate / Certificate of Free Sale', 1, 'health_cert', '2022-08-04 07:57:37', '0'),
+	(13, 'Material Safety Data Sheet', 1, 'material_safety', '2022-08-04 07:57:38', '0'),
+	(14, 'COA', 1, 'coa', '2022-08-04 07:57:38', '0'),
+	(15, 'Product Spesification', 1, 'prod_spec', '2022-08-04 07:57:38', '0'),
+	(16, 'Surat Pernyataan Produk', 1, 'spp', '2022-08-04 07:57:38', '0'),
+	(17, 'Others', 1, 'others', '2022-08-04 07:57:38', '0'),
+	(18, 'Ketentuan Export Dokumen', 1, 'ket_exp_doc', '2022-08-04 07:57:38', '0'),
+	(19, 'Ketentuan Export Dokumen Approve', 3, 'ket_exp_doc_apprv', '2022-08-04 07:57:38', '0'),
+	(20, 'FOC Approval', 3, 'foc_approval', '2022-08-04 07:57:38', '0'),
+	(21, 'POSM Availability', 3, 'posm', '2022-08-04 07:57:38', '0'),
+	(22, 'Finish Good Ready Date', 3, 'finish_good', '2022-08-04 07:57:38', '0'),
+	(23, 'Vessel Schedule', 3, 'vessel_schedule', '2022-08-04 07:57:38', '0'),
+	(24, 'Balance Payment', 2, 'balance_payment', '2022-08-04 07:57:38', '0'),
+	(25, 'Vessel Booking Confirmation', 3, 'vessel_confirm', '2022-08-04 07:57:38', '0'),
+	(26, 'Stuffing', 1, 'stuffing', '2022-08-04 07:57:38', '0'),
+	(27, 'Draft BL Sent', 3, 'draft_sent', '2022-08-04 07:57:38', '0'),
+	(28, 'Draft BL Approved', 3, 'draft_approved', '2022-08-04 07:57:38', '0'),
+	(29, 'Telex Release', 3, 'telex', '2022-08-04 07:57:39', '0'),
+	(30, 'Original Document Sent', 3, 'ori_doc_sent', '2022-08-04 07:57:39', '0'),
+	(31, 'TOP Payment Balancing', 3, 'top_payment', '2022-08-04 07:57:39', '0'),
+	(32, 'Estimation Time of Departure [ETD]', 3, 'etd', '2022-08-04 07:57:39', '0'),
+	(33, 'Estimation Time of Arrival [ETA]', 3, 'eta', '2022-08-04 07:57:39', '0');
+
+-- Dumping structure for table gpd_gexp.master_pi_item_assign
+DROP TABLE IF EXISTS `master_pi_item_assign`;
+CREATE TABLE IF NOT EXISTS `master_pi_item_assign` (
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `role_id` tinyint(4) NOT NULL,
+  `pi_item_id` tinyint(3) unsigned NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_deleted` enum('0','1') NOT NULL DEFAULT '0' COMMENT '0 = No; 1 = Yes;',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `FK_master_pi_item_assign_master_role` (`role_id`),
+  KEY `FK_master_pi_item_assign_master_pi_item` (`pi_item_id`),
+  CONSTRAINT `FK_master_pi_item_assign_master_pi_item` FOREIGN KEY (`pi_item_id`) REFERENCES `master_pi_item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_master_pi_item_assign_master_role` FOREIGN KEY (`role_id`) REFERENCES `master_role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table gpd_gexp.master_pi_item_assign: ~34 rows (approximately)
+DELETE FROM `master_pi_item_assign`;
+INSERT INTO `master_pi_item_assign` (`id`, `role_id`, `pi_item_id`, `created_at`, `is_deleted`) VALUES
+	(1, 3, 1, '2022-09-11 04:35:11', '0'),
+	(2, 3, 2, '2022-09-11 04:35:50', '0'),
+	(3, 3, 6, '2022-09-11 04:36:14', '0'),
+	(4, 6, 3, '2022-09-11 04:36:49', '0'),
+	(5, 6, 4, '2022-09-11 04:37:03', '0'),
+	(6, 6, 5, '2022-09-11 04:37:12', '0'),
+	(7, 6, 9, '2022-09-11 04:38:08', '0'),
+	(8, 6, 10, '2022-09-11 04:38:18', '0'),
+	(9, 6, 20, '2022-09-11 04:38:39', '0'),
+	(10, 6, 24, '2022-09-11 04:40:04', '0'),
+	(11, 6, 31, '2022-09-11 04:40:25', '0'),
+	(12, 7, 7, '2022-09-11 04:41:37', '0'),
+	(13, 7, 11, '2022-09-11 04:41:55', '0'),
+	(14, 7, 12, '2022-09-11 04:42:28', '0'),
+	(15, 7, 17, '2022-09-11 04:43:11', '0'),
+	(16, 7, 23, '2022-09-11 04:43:59', '0'),
+	(17, 7, 25, '2022-09-11 04:44:21', '0'),
+	(18, 7, 26, '2022-09-11 04:47:03', '0'),
+	(19, 7, 27, '2022-09-11 04:48:15', '0'),
+	(20, 7, 28, '2022-09-11 04:48:27', '0'),
+	(21, 7, 29, '2022-09-11 04:48:45', '0'),
+	(22, 7, 30, '2022-09-11 04:49:02', '0'),
+	(23, 7, 32, '2022-09-11 04:49:20', '0'),
+	(24, 7, 33, '2022-09-11 04:49:29', '0'),
+	(25, 4, 8, '2022-09-11 04:50:16', '0'),
+	(26, 4, 21, '2022-09-11 04:50:48', '0'),
+	(27, 4, 26, '2022-09-11 04:51:32', '0'),
+	(28, 9, 11, '2022-09-11 04:53:24', '0'),
+	(29, 9, 12, '2022-09-11 04:53:47', '0'),
+	(30, 9, 13, '2022-09-11 04:54:08', '0'),
+	(31, 9, 14, '2022-09-11 04:54:35', '0'),
+	(32, 9, 15, '2022-09-11 04:54:52', '0'),
+	(33, 9, 16, '2022-09-11 04:55:15', '0'),
+	(34, 5, 18, '2022-09-11 04:55:59', '0'),
+	(35, 5, 19, '2022-09-11 04:56:10', '0'),
+	(36, 5, 22, '2022-09-11 04:56:37', '0');
+
+-- Dumping structure for table gpd_gexp.master_pi_item_assign_copy
+DROP TABLE IF EXISTS `master_pi_item_assign_copy`;
+CREATE TABLE IF NOT EXISTS `master_pi_item_assign_copy` (
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `pi_item_id` tinyint(3) unsigned NOT NULL,
+  `group_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_deleted` enum('0','1') NOT NULL DEFAULT '0' COMMENT '0 = No; 1 = Yes;',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `FK_gexp_master_pi_item_gexp_master_group` (`group_id`) USING BTREE,
+  CONSTRAINT `master_pi_item_assign_copy_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `gexp_master_group` (`GroupId`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table gpd_gexp.master_pi_item_assign_copy: ~36 rows (approximately)
+DELETE FROM `master_pi_item_assign_copy`;
+INSERT INTO `master_pi_item_assign_copy` (`id`, `pi_item_id`, `group_id`, `created_at`, `is_deleted`) VALUES
+	(1, 0, 20, '2022-08-04 07:26:00', '0'),
+	(2, 0, 20, '2022-08-04 07:26:39', '0'),
+	(3, 0, 23, '2022-08-04 07:29:19', '0'),
+	(4, 0, 23, '2022-08-04 07:30:13', '0'),
+	(5, 0, 23, '2022-08-04 07:34:23', '0'),
+	(6, 0, 20, '2022-08-04 07:36:04', '0'),
+	(7, 0, 24, '2022-08-04 07:38:57', '0'),
+	(8, 0, 21, '2022-08-04 07:39:47', '0'),
+	(9, 0, 23, '2022-08-04 07:41:10', '0'),
+	(10, 0, 23, '2022-08-04 07:41:33', '0'),
+	(11, 0, 26, '2022-08-04 07:57:09', '0'),
+	(12, 0, 26, '2022-08-04 07:57:37', '0'),
+	(13, 0, 26, '2022-08-04 07:57:38', '0'),
+	(14, 0, 26, '2022-08-04 07:57:38', '0'),
+	(15, 0, 26, '2022-08-04 07:57:38', '0'),
+	(16, 0, 26, '2022-08-04 07:57:38', '0'),
+	(17, 0, 24, '2022-08-04 07:57:38', '0'),
+	(18, 0, 22, '2022-08-04 07:57:38', '0'),
+	(19, 0, 22, '2022-08-04 07:57:38', '0'),
+	(20, 0, 23, '2022-08-04 07:57:38', '0'),
+	(21, 0, 21, '2022-08-04 07:57:38', '0'),
+	(22, 0, 22, '2022-08-04 07:57:38', '0'),
+	(23, 0, 24, '2022-08-04 07:57:38', '0'),
+	(24, 0, 23, '2022-08-04 07:57:38', '0'),
+	(25, 0, 24, '2022-08-04 07:57:38', '0'),
+	(26, 0, 21, '2022-08-04 07:57:38', '0'),
+	(27, 0, 24, '2022-08-04 07:57:38', '0'),
+	(28, 0, 24, '2022-08-04 07:57:38', '0'),
+	(29, 0, 24, '2022-08-04 07:57:39', '0'),
+	(30, 0, 24, '2022-08-04 07:57:39', '0'),
+	(31, 0, 23, '2022-08-04 07:57:39', '0'),
+	(32, 0, 24, '2022-08-04 07:57:39', '0'),
+	(33, 0, 24, '2022-08-04 07:57:39', '0'),
+	(34, 0, 24, '2022-08-04 08:24:43', '0'),
+	(35, 0, 24, '2022-08-04 08:25:07', '0'),
+	(36, 0, 24, '2022-08-04 08:25:48', '0');
 
 -- Dumping structure for table gpd_gexp.master_pi_item_category
 DROP TABLE IF EXISTS `master_pi_item_category`;
@@ -2770,7 +2887,7 @@ CREATE TABLE IF NOT EXISTS `trans_menu_assign` (
   CONSTRAINT `FK_trans_menu_assign_master_user` FOREIGN KEY (`created_by`) REFERENCES `master_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.trans_menu_assign: ~23 rows (approximately)
+-- Dumping data for table gpd_gexp.trans_menu_assign: ~20 rows (approximately)
 DELETE FROM `trans_menu_assign`;
 INSERT INTO `trans_menu_assign` (`id`, `menu_sub_id`, `role_id`, `created_at`, `created_by`) VALUES
 	(1, 1, 1, '2022-08-10 04:02:28', NULL),
@@ -2902,14 +3019,14 @@ CREATE TABLE IF NOT EXISTS `trans_pi` (
   CONSTRAINT `FK_trans_pi_master_top` FOREIGN KEY (`top_id`) REFERENCES `master_top` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_master_user` FOREIGN KEY (`created_by`) REFERENCES `master_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_master_user_2` FOREIGN KEY (`updated_by`) REFERENCES `master_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table gpd_gexp.trans_pi: ~3 rows (approximately)
 DELETE FROM `trans_pi`;
 INSERT INTO `trans_pi` (`id`, `code`, `po_no`, `customer_id`, `consignee_id`, `beneficiary_id`, `loading_port_id`, `customer_ship_id`, `container_id`, `number_of_container`, `freight_company`, `freight_company_contact`, `freight_company_no`, `freight_cost`, `insurance`, `bank_id`, `currency_id`, `ppn`, `top_id`, `remark`, `attachment`, `pi_status_id`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_deleted`) VALUES
-	(1, '0001/SKP-EXP/PI/09/2022', NULL, 2, 2, 1, 1, 2, 3, 10, 'test company', 'test company contact', 0, 100, 1000, 2, 3, '0', 6, NULL, NULL, 7, '2022-09-07 09:56:29', 1, '2022-09-09 10:30:18', 4, '0'),
-	(3, '0002/SKP-EXP/PI/09/2022', NULL, 3, 3, 1, 2, 3, 2, 5, 'compabt', 'company contact', 0, 50, 99, 1, 3, '0', 6, NULL, NULL, 5, '2022-09-07 10:15:19', 1, '2022-09-09 09:49:37', 4, '0'),
-	(4, '0003/SKP-EXP/PI/09/2022', NULL, 2, 2, 1, 1, 2, 3, 2, 'freight company', 'tset', 0, 10, 100, 2, 3, '0', 6, NULL, NULL, 5, '2022-09-09 09:52:15', 1, '2022-09-09 17:37:27', 4, '0');
+	(1, '0001/SKP-EXP/PI/09/2022', NULL, 2, 2, 1, 1, 2, 1, 123, 'fc1', 'fcc1', 0, 100, 100, 1, 3, '0', 6, NULL, NULL, 5, '2022-09-11 00:12:50', 3, '2022-09-11 07:32:27', 4, '0'),
+	(2, '0002/SKP-EXP/PI/09/2022', NULL, 3, 3, 1, 2, 3, 2, 456, 'fc2', 'fcc2', 0, 100, 100, 2, 3, '0', 6, NULL, NULL, 3, '2022-09-11 00:16:36', 3, '2022-09-11 07:36:55', 4, '0'),
+	(3, '0003/SKP-EXP/PI/09/2022', NULL, 2, 2, 1, 3, 2, 3, 798, 'fc3', 'fcc3', 0, 200, 9, 2, 3, '0', 6, NULL, NULL, 5, '2022-09-11 00:19:47', 3, '2022-09-11 07:46:21', 4, '0');
 
 -- Dumping structure for table gpd_gexp.trans_pi_detail
 DROP TABLE IF EXISTS `trans_pi_detail`;
@@ -2928,26 +3045,19 @@ CREATE TABLE IF NOT EXISTS `trans_pi_detail` (
   CONSTRAINT `FK_trans_pi_detail_master_item` FOREIGN KEY (`item_id`) REFERENCES `master_item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_detail_master_pi_item_category` FOREIGN KEY (`pi_item_category_id`) REFERENCES `master_pi_item_category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_trans_pi_detail_trans_pi` FOREIGN KEY (`pi_id`) REFERENCES `trans_pi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.trans_pi_detail: ~15 rows (approximately)
+-- Dumping data for table gpd_gexp.trans_pi_detail: ~8 rows (approximately)
 DELETE FROM `trans_pi_detail`;
 INSERT INTO `trans_pi_detail` (`id`, `pi_id`, `pi_item_category_id`, `item_id`, `qty`, `price`, `is_deleted`) VALUES
-	(1, 1, 1, 1, 822, 12.80, '0'),
-	(2, 1, 1, 2, 822, 12.80, '0'),
-	(3, 1, 1, 3, 411, 12.80, '0'),
-	(4, 1, 2, 3, 103, 12.80, '0'),
-	(5, 1, 2, 2, 206, 12.80, '0'),
-	(6, 1, 2, 1, 160, 12.80, '0'),
-	(10, 3, 1, 4, 1000, 87.00, '0'),
-	(11, 3, 1, 6, 50, 10.00, '0'),
-	(12, 3, 2, 11, 1500, 10.00, '0'),
-	(13, 4, 1, 1, 400, 12.80, '0'),
-	(14, 4, 1, 2, 1000, 21.00, '0'),
-	(15, 4, 2, 2, 800, 12.00, '0'),
-	(16, 4, 1, 5, 300, 90.00, '0'),
-	(17, 4, 1, 9, 30, 10.00, '0'),
-	(18, 4, 2, 1, 20, 10.00, '0');
+	(1, 1, 1, 1, 1000, 10.00, '0'),
+	(2, 1, 2, 2, 50, 10.00, '0'),
+	(3, 2, 1, 1, 2000, 10.00, '0'),
+	(4, 2, 2, 2, 60, 10.00, '0'),
+	(5, 3, 1, 1, 900, 9.00, '0'),
+	(6, 3, 1, 8, 100, 9.00, '0'),
+	(7, 3, 2, 11, 1200, 10.00, '0'),
+	(8, 3, 2, 11, 200, 10.00, '0');
 
 -- Dumping structure for table gpd_gexp.trans_pi_history
 DROP TABLE IF EXISTS `trans_pi_history`;
@@ -2961,22 +3071,20 @@ CREATE TABLE IF NOT EXISTS `trans_pi_history` (
   PRIMARY KEY (`id`),
   KEY `FK_trans_pi_history_trans_pi` (`pi_id`),
   KEY `FK_trans_pi_history_master_pi_status` (`pi_status_id`),
-  KEY `FK_trans_pi_history_master_user` (`created_by`),
-  CONSTRAINT `FK_trans_pi_history_master_pi_status` FOREIGN KEY (`pi_status_id`) REFERENCES `master_pi_status` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_trans_pi_history_master_user` FOREIGN KEY (`created_by`) REFERENCES `master_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_trans_pi_history_trans_pi` FOREIGN KEY (`pi_id`) REFERENCES `trans_pi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+  KEY `FK_trans_pi_history_master_user` (`created_by`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.trans_pi_history: ~7 rows (approximately)
+-- Dumping data for table gpd_gexp.trans_pi_history: ~8 rows (approximately)
 DELETE FROM `trans_pi_history`;
 INSERT INTO `trans_pi_history` (`id`, `pi_id`, `pi_status_id`, `remark`, `created_at`, `created_by`) VALUES
-	(1, 1, 1, NULL, '2022-09-07 09:56:30', 0),
-	(2, 3, 5, NULL, '2022-09-09 02:49:37', 0),
-	(3, 1, 7, 'test qty', '2022-09-09 03:30:18', 0),
-	(4, 4, 1, NULL, '2022-09-09 09:52:17', 0),
-	(5, 4, 7, 'qty kebanyakan', '2022-09-09 10:05:20', 0),
-	(6, 4, 6, 'sudah direvisi', '2022-09-09 10:07:17', 0),
-	(7, 4, 5, NULL, '2022-09-09 10:37:27', 0);
+	(1, 1, 1, NULL, '2022-09-11 00:12:51', 0),
+	(2, 2, 1, NULL, '2022-09-11 00:16:36', 0),
+	(3, 3, 1, NULL, '2022-09-11 00:19:47', 0),
+	(4, 1, 5, NULL, '2022-09-11 00:32:28', 0),
+	(5, 2, 3, NULL, '2022-09-11 00:36:56', 0),
+	(6, 3, 7, 'qty nya tambahin', '2022-09-11 00:37:46', 0),
+	(7, 3, 6, 'sudah di tambahin', '2022-09-11 00:43:05', 0),
+	(8, 3, 5, NULL, '2022-09-11 00:46:21', 0);
 
 -- Dumping structure for table gpd_gexp.trans_prod_spec
 DROP TABLE IF EXISTS `trans_prod_spec`;
@@ -3107,7 +3215,9 @@ DELETE FROM `trans_qcontrol_check`;
 DROP TABLE IF EXISTS `trans_signed_pi`;
 CREATE TABLE IF NOT EXISTS `trans_signed_pi` (
   `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `pi_id` smallint(6) NOT NULL,
   `pi_item_id` tinyint(4) unsigned NOT NULL,
+  `dates` date DEFAULT NULL,
   `value` varchar(200) NOT NULL,
   `is_sent` enum('0','1') NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -3116,11 +3226,16 @@ CREATE TABLE IF NOT EXISTS `trans_signed_pi` (
   `updated_by` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_gexp_trans_signed_pi_gexp_master_pi_item` (`pi_item_id`),
-  CONSTRAINT `FK_gexp_trans_signed_pi_gexp_master_pi_item` FOREIGN KEY (`pi_item_id`) REFERENCES `master_pi_item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  KEY `FK_trans_signed_pi_trans_pi` (`pi_id`),
+  CONSTRAINT `FK_gexp_trans_signed_pi_gexp_master_pi_item` FOREIGN KEY (`pi_item_id`) REFERENCES `master_pi_item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_trans_signed_pi_trans_pi` FOREIGN KEY (`pi_id`) REFERENCES `trans_pi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gpd_gexp.trans_signed_pi: ~0 rows (approximately)
+-- Dumping data for table gpd_gexp.trans_signed_pi: ~2 rows (approximately)
 DELETE FROM `trans_signed_pi`;
+INSERT INTO `trans_signed_pi` (`id`, `pi_id`, `pi_item_id`, `dates`, `value`, `is_sent`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
+	(1, 1, 1, '2022-09-12', '05f6b79963a9fa3d8519ab3e489cf13e.pdf', '0', '2022-09-12 10:43:42', 3, NULL, NULL),
+	(2, 1, 6, '2022-09-12', '3', '0', '2022-09-12 10:43:42', 3, NULL, NULL);
 
 -- Dumping structure for table gpd_gexp.trans_spp
 DROP TABLE IF EXISTS `trans_spp`;
@@ -3450,6 +3565,35 @@ CREATE TABLE `view_menu_sub` (
 	`menu_group_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci'
 ) ENGINE=MyISAM;
 
+-- Dumping structure for view gpd_gexp.view_pi_item_assign
+DROP VIEW IF EXISTS `view_pi_item_assign`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_pi_item_assign` (
+	`id` TINYINT(3) UNSIGNED NOT NULL,
+	`role_id` TINYINT(4) NOT NULL,
+	`pi_item_id` TINYINT(3) UNSIGNED NOT NULL,
+	`created_at` TIMESTAMP NOT NULL,
+	`is_deleted` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`dates` DATE NULL,
+	`val` VARCHAR(200) NULL COLLATE 'utf8mb4_general_ci',
+	`is_sent` ENUM('0','1') NULL COLLATE 'utf8mb4_general_ci',
+	`flags` VARCHAR(16) NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
+-- Dumping structure for view gpd_gexp.view_pi_item_signed
+DROP VIEW IF EXISTS `view_pi_item_signed`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `view_pi_item_signed` (
+	`id` TINYINT(3) UNSIGNED NOT NULL,
+	`item` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`option_id` TINYINT(4) NOT NULL,
+	`name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`created_at` TIMESTAMP NOT NULL,
+	`is_deleted` ENUM('0','1') NOT NULL COMMENT '0 = No; 1 = Yes;' COLLATE 'utf8mb4_general_ci',
+	`opt` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`display` VARCHAR(8) NOT NULL COLLATE 'utf8mb4_general_ci'
+) ENGINE=MyISAM;
+
 -- Dumping structure for view gpd_gexp.view_print_category_trans_pi
 DROP VIEW IF EXISTS `view_print_category_trans_pi`;
 -- Creating temporary table to overcome VIEW dependency errors
@@ -3626,7 +3770,9 @@ CREATE TABLE `view_trans_pi_list` (
 	`pic` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
 	`status_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
 	`bg_color` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
-	`display` VARCHAR(22) NOT NULL COLLATE 'utf8mb4_general_ci'
+	`display` VARCHAR(22) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`display_wh` VARCHAR(22) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`progress` DECIMAL(26,2) NULL
 ) ENGINE=MyISAM;
 
 -- Dumping structure for view gpd_gexp.view_user_list
@@ -4035,6 +4181,27 @@ JOIN master_menu_module b ON a.menu_module_id = b.id
 JOIN master_menu_group c ON a.menu_group_id = c.id
 ORDER BY a.id ;
 
+-- Dumping structure for view gpd_gexp.view_pi_item_assign
+DROP VIEW IF EXISTS `view_pi_item_assign`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `view_pi_item_assign`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_pi_item_assign` AS SELECT
+	a.*, b.dates, b.value val, b.is_sent,
+	IF(a.pi_item_id = b.pi_item_id, 'checked disabled', '') flags
+FROM master_pi_item_assign a
+LEFT JOIN trans_signed_pi b ON a.pi_item_id = b.pi_item_id ;
+
+-- Dumping structure for view gpd_gexp.view_pi_item_signed
+DROP VIEW IF EXISTS `view_pi_item_signed`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `view_pi_item_signed`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_pi_item_signed` AS SELECT
+	a.*, b.name opt,
+	IF(a.option_id = 3, 'disabled', '') display
+FROM master_pi_item a
+JOIN master_pi_opt b ON a.option_id = b.id
+ORDER BY a.id ;
+
 -- Dumping structure for view gpd_gexp.view_print_category_trans_pi
 DROP VIEW IF EXISTS `view_print_category_trans_pi`;
 -- Removing temporary table and create final VIEW structure
@@ -4184,12 +4351,17 @@ DROP TABLE IF EXISTS `view_trans_pi_list`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_trans_pi_list` AS SELECT
 	a.*, DATE_FORMAT(a.created_at, '%Y-%m-%d') pi_date, 
 	b.company_name customer, c.name country_name, d.fullname pic, e.name status_name, e.bg_color,
-	IF(a.pi_status_id IN (1,6,7), '', 'style="display: none;"') display
+	IF(a.pi_status_id IN (3,5,6), 'style="display: none;"', '') display,
+	IF(a.pi_status_id IN (3,5,7), 'style="display: none;"', '') display_wh,
+	ROUND(((COUNT(f.pi_id)/33) * 100), 2) progress
 FROM trans_pi a
 JOIN master_customer b ON a.customer_id = b.id
 JOIN master_country c ON b.country_id = c.id
 JOIN `master_user` d ON a.created_by = d.id
-JOIN master_pi_status e ON a.pi_status_id = e.id ;
+JOIN master_pi_status e ON a.pi_status_id = e.id 
+LEFT JOIN trans_signed_pi f ON a.id = f.pi_id
+GROUP BY a.id
+ORDER BY a.created_at ASC ;
 
 -- Dumping structure for view gpd_gexp.view_user_list
 DROP VIEW IF EXISTS `view_user_list`;
