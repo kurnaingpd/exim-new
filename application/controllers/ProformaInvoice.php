@@ -171,6 +171,17 @@
                     }
                 }
 
+                $signed_item = $this->M_CRUD->readData('master_pi_item', ['is_deleted' => '0']);
+
+                foreach($signed_item as $item_id) {
+                    $dataItem = [
+                        'pi_id' => $header,
+                        'pi_item_id' => $item_id->id,
+                        'created_by' => $this->session->userdata('logged_in')->id,
+                    ];
+                    $this->M_CRUD->insertData('trans_signed_pi', $dataItem);
+                }
+
                 $paramHistory = [
                     'pi_id' => $header,
                     'pi_status_id' => 1,
