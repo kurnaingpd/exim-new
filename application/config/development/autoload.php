@@ -103,7 +103,7 @@ $autoload['helper'] = array('url','file','Currency','sendmails');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array();
+$autoload['config'] = array('email');
 
 /*
 | -------------------------------------------------------------------

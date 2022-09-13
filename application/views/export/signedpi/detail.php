@@ -33,15 +33,15 @@
 
                 <div class="card-body overflow-auto" style="max-height: 550px; overflow-x: hidden;">
                     <?php 
-                        foreach($params['item'] as $item_id => $rows) :
-                            if(isset($params['assign'][$item_id])) :
+                        foreach($params['item'] as $item_id) : 
+                            if(isset($params['assign'][$item_id->pi_item_id])) :
                     ?>
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input check" type="checkbox" id="<?=$rows['id']?>" name="pi_item_id_<?=$rows['id']?>" value="<?=$rows['id']?>" <?=$params['assign'][$item_id]['flags']?>>
-                                        <label class="form-check-label" for="cpshipto"><?=$rows['item']?></label>
+                                        <input class="form-check-input check" type="checkbox" id="<?=$item_id->pi_item_id?>" name="pi_item_id_<?=$item_id->pi_item_id?>" value="<?=$item_id->pi_item_id?>" <?=$item_id->flags?>>
+                                        <label class="form-check-label" for="cpshipto"><?=$item_id->item?></label>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input item_<?=$rows['id']?> cursor-context" autocomplete="off" id="pi_date_<?=$rows['name']?>" name="pi_date_<?=$rows['id']?>" value="<?=$params['assign'][$item_id]['dates']?>" disabled required>
+                                        <input type="text" class="form-control datetimepicker-input item_<?=$item_id->pi_item_id?> cursor-context" autocomplete="off" id="pi_date_<?=$item_id->name?>" name="pi_date_<?=$item_id->pi_item_id?>" value="<?=$item_id->dates?>" disabled required>
                                         <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
@@ -59,27 +59,27 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php if($rows['option_id'] == 1) : ?>
+                                    <?php if($item_id->option_id == 1) : ?>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input item_<?=$rows['id']?>" id="pi_val_<?=$rows['id']?>" name="pi_val_<?=$rows['id']?>" accept="application/pdf" id="pi_val_<?=$rows['name']?>" name="pi_val_<?=$rows['id']?>" value="<?=$params['assign'][$item_id]['val']?>" disabled required>
+                                                <input type="file" class="custom-file-input item_<?=$item_id->pi_item_id?>" id="pi_val_<?=$item_id->pi_item_id?>" name="pi_val_<?=$item_id->pi_item_id?>" accept="application/pdf" id="pi_val_<?=$item_id->name?>" name="pi_val_<?=$item_id->pi_item_id?>" value="<?=$item_id->value?>" disabled required>
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
                                         </div>
-                                    <?php elseif($rows['option_id'] == 2) : ?>
-                                        <select class="form-control select2bs4 item_<?=$rows['id']?>"" id="pi_val_<?=$rows['name']?>" name="pi_val_<?=$rows['id']?>" disabled required>
+                                    <?php elseif($item_id->option_id == 2) : ?>
+                                        <select class="form-control select2bs4 item_<?=$item_id->pi_item_id?>"" id="pi_val_<?=$item_id->name?>" name="pi_val_<?=$item_id->pi_item_id?>" disabled required>
                                             <option></option>
-                                            <?php if($rows['id'] == 3) : ?>
+                                            <?php if($item_id->pi_item_id == 3) : ?>
                                                 <?php foreach($params['top'] as $rows) : ?>
-                                                    <option value="<?=$rows->id?>" <?=(($rows->id==$params['assign'][$item_id]['val'])?'selected':'')?>><?=$rows->name?></option>
+                                                    <option value="<?=$rows->id?>" <?=(($rows->id==$item_id->value)?'selected':'')?>><?=$rows->name?></option>
                                                 <?php endforeach; ?>
-                                            <?php elseif($rows['id'] == 6) : ?>
+                                            <?php elseif($item_id->pi_item_id == 6) : ?>
                                                 <?php foreach($params['incoterm'] as $rows) : ?>
-                                                    <option value="<?=$rows->id?>" <?=(($rows->id==$params['assign'][$item_id]['val'])?'selected':'')?> ><?=$rows->code.' - '.$rows->name?></option>
+                                                    <option value="<?=$rows->id?>" <?=(($rows->id==$item_id->value)?'selected':'')?> ><?=$rows->code.' - '.$rows->name?></option>
                                                 <?php endforeach; ?>
-                                            <?php elseif($rows['id'] == 24) : ?>
+                                            <?php elseif($item_id->pi_item_id == 24) : ?>
                                                 <?php foreach($params['balance'] as $rows) : ?>
-                                                    <option value="<?=$rows->id?>" <?=(($rows->id==$params['assign'][$item_id]['val'])?'selected':'')?><?=$rows->name?></option>
+                                                    <option value="<?=$rows->id?>" <?=(($rows->id==$item_id->value)?'selected':'')?><?=$rows->name?></option>
                                                 <?php endforeach; ?>
                                             <?php endif; ?>
                                         </select>
@@ -87,13 +87,13 @@
                                 </div>
                             </div>
                         </div>
-                    <?php else : ?>
-                        <div class="row">
+                        <?php else : ?>
+                            <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input check" type="checkbox" id="<?=$rows['id']?>" name="<?=$rows['id']?>" disabled>
-                                        <label class="form-check-label" for="cpshipto"><?=$rows['item']?></label>
+                                        <input class="form-check-input check" type="checkbox" id="<?=$item_id->pi_item_id?>" name="pi_item_id_<?=$item_id->pi_item_id?>" value="<?=$item_id->pi_item_id?>" <?=$item_id->flags?> disabled>
+                                        <label class="form-check-label" for="cpshipto"><?=$item_id->item?></label>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                        <input type="text" class="form-control datepicker cursor-context" autocomplete="off" id="date_<?=$rows['name']?>" name="date_<?=$rows['name']?>" disabled required>
+                                        <input type="text" class="form-control datetimepicker-input item_<?=$item_id->pi_item_id?> cursor-context" autocomplete="off" id="pi_date_<?=$item_id->name?>" name="pi_date_<?=$item_id->pi_item_id?>" value="<?=$item_id->dates?>" disabled required>
                                         <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
@@ -111,27 +111,27 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php if($rows['option_id'] == 1) : ?>
+                                    <?php if($item_id->option_id == 1) : ?>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input item_<?=$rows['id']?>" id="pi_val_<?=$rows['id']?>" name="pi_val_<?=$rows['id']?>" accept="application/pdf" id="pi_val_<?=$rows['name']?>" name="pi_val_<?=$rows['name']?>" disabled required>
+                                                <input type="file" class="custom-file-input item_<?=$item_id->pi_item_id?>" id="pi_val_<?=$item_id->pi_item_id?>" name="pi_val_<?=$item_id->pi_item_id?>" accept="application/pdf" id="pi_val_<?=$item_id->name?>" name="pi_val_<?=$item_id->pi_item_id?>" value="<?=$item_id->value?>" disabled required>
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
                                         </div>
-                                    <?php elseif($rows['option_id'] == 2) : ?>
-                                        <select class="form-control select2bs4 item_<?=$rows['id']?>"" id="pi_val_<?=$rows['name']?>" name="pi_val_<?=$rows['name']?>" disabled required>
+                                    <?php elseif($item_id->option_id == 2) : ?>
+                                        <select class="form-control select2bs4 item_<?=$item_id->pi_item_id?>"" id="pi_val_<?=$item_id->name?>" name="pi_val_<?=$item_id->pi_item_id?>" disabled required>
                                             <option></option>
-                                            <?php if($rows['id'] == 3) : ?>
+                                            <?php if($item_id->pi_item_id == 3) : ?>
                                                 <?php foreach($params['top'] as $rows) : ?>
-                                                    <option value="<?=$rows->id?>"><?=$rows->name?></option>
+                                                    <option value="<?=$rows->id?>" <?=(($rows->id==$item_id->value)?'selected':'')?>><?=$rows->name?></option>
                                                 <?php endforeach; ?>
-                                            <?php elseif($rows['id'] == 6) : ?>
+                                            <?php elseif($item_id->pi_item_id == 6) : ?>
                                                 <?php foreach($params['incoterm'] as $rows) : ?>
-                                                    <option value="<?=$rows->id?>"><?=$rows->code.' - '.$rows->name?></option>
+                                                    <option value="<?=$rows->id?>" <?=(($rows->id==$item_id->value)?'selected':'')?> ><?=$rows->code.' - '.$rows->name?></option>
                                                 <?php endforeach; ?>
-                                            <?php elseif($rows['id'] == 24) : ?>
+                                            <?php elseif($item_id->pi_item_id == 24) : ?>
                                                 <?php foreach($params['balance'] as $rows) : ?>
-                                                    <option value="<?=$rows->id?>"><?=$rows->name?></option>
+                                                    <option value="<?=$rows->id?>" <?=(($rows->id==$item_id->value)?'selected':'')?><?=$rows->name?></option>
                                                 <?php endforeach; ?>
                                             <?php endif; ?>
                                         </select>
@@ -139,9 +139,9 @@
                                 </div>
                             </div>
                         </div>
-                    <?php
-                            endif;
-                        endforeach;
+                    <?php 
+                        endif;
+                        endforeach; 
                     ?>
                 </div>
             

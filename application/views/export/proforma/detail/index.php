@@ -94,7 +94,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <a class="btn btn-default btn-block cancel" href="<?=site_url('export/proforma')?>">
+                    <a class="btn btn-default btn-block cancel"  href="#" onclick="history.go(-1)">
                         <i class="fas fa-ban mr-2"></i>Exit
                     </a>
                 </div>

@@ -207,3 +207,8 @@ $route['export/proforma/delete_item/(:num)'] = 'ProformaInvoice/delete_item/$1';
 $route['export/signedpi'] = 'SignedPI';
 $route['export/signedpi/detail/(:num)'] = 'SignedPI/detail/$1';
 $route['export/signedpi/save'] = 'SignedPI/save';
+
+/** Export Term/Ketentuan Ekspor */
+$route['export/expterm'] = 'ExportTerm';
+$route['export/expterm/add'] = 'ExportTerm/add';
+$route['export/expterm/save'] = 'ExportTerm/save';

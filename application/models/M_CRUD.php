@@ -165,6 +165,23 @@
 			return $code;
 		}
 
+		public function autoNumberExpTerms($table, $column, $prefix, $run_number) {
+			$this->db->from($table);
+			$this->db->order_by($column, 'DESC');
+			$query = $this -> db -> get();
+			$record = $query -> row();
+
+			if(!$record) {
+				$code = 1;
+			} else {
+				$code = intval($record->code) + 1;
+			}
+
+			$code = $prefix.str_pad($code, $run_number, 0, STR_PAD_LEFT);
+
+			return $code;
+		}
+
 		public function autoNumberPI($table, $column, $date, $run_number) {
 			$this->db->from($table);
 			$this->db->order_by($column, 'DESC');
@@ -273,14 +290,25 @@
 			{
 				foreach($query -> result_array() as $rows)
 				{
+					$result[$rows['pi_item_id']]['role_id'] = $rows['role_id'];
 					$result[$rows['pi_item_id']]['pi_item_id'] = $rows['pi_item_id'];
-					$result[$rows['pi_item_id']]['dates'] = $rows['dates'];
-					$result[$rows['pi_item_id']]['val'] = $rows['val'];
-					$result[$rows['pi_item_id']]['flags'] = $rows['flags'];
 				}
 			}
 			
 			return $result;
+        }
+
+		function pi_email($table)
+        {
+            $result = [];
+            $this -> db -> from($table);
+            $query = $this -> db -> get();
+
+            foreach($query->result_array() as $rows) {
+                $result[] = $rows['email'];
+            }
+
+            return $result;
         }
     }
 

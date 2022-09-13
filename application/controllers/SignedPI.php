@@ -58,9 +58,8 @@
             $datas['header'] = 'Process';
             $datas['params'] = [
                 'id' => $id,
-                'detail' => $this->M_CRUD->readDatabyID('trans_signed_pi', ['pi_id' => $id]),
-                'item' => $this->M_CRUD->signed_item('master_pi_item', ['is_deleted' => '0']),
-                'assign' => $this->M_CRUD->pi_item_role('view_pi_item_assign', ['is_deleted' => '0', 'role_id' => $this->session->userdata('logged_in')->role_id]),
+                'item' => $this->M_CRUD->readData('view_pi_item_signed', ['pi_id' => $id, 'is_deleted' => '0']),
+                'assign' => $this->M_CRUD->pi_item_role('master_pi_item_assign', ['is_deleted' => '0', 'role_id' => $this->session->userdata('logged_in')->role_id]),
                 'top' => $this->M_CRUD->readData('master_top', ['is_deleted' => '0']),
                 'incoterm' => $this->M_CRUD->readData('master_incoterm', ['is_deleted' => '0']),
                 'balance' => $this->M_CRUD->readData('master_balance_payment', ['is_deleted' => '0']),
@@ -123,30 +122,43 @@
                     $name = "pi_val_".$item['item_id'];
                     move_uploaded_file($_FILES[$name]['tmp_name'], $path.$filename);
 
-                    $params = [
+                    $condition = [
                         'pi_id' => $item['id'],
                         'pi_item_id' => $item['item_id'],
+                    ];
+                    $params = [
                         'dates' => $item['date'],
                         'value' => $filename,
-                        'created_by' => $this->session->userdata('logged_in')->id,
+                        'updated_by' => $this->session->userdata('logged_in')->id,
+                        'updated_at' => date('Y-m-d H:i:s'),
                     ];
                 } else {
-                    $params = [
+                    $condition = [
                         'pi_id' => $item['id'],
                         'pi_item_id' => $item['item_id'],
+                    ];
+                    $params = [
                         'dates' => $item['date'],
                         'value' => $item['val'],
-                        'created_by' => $this->session->userdata('logged_in')->id,
+                        'updated_by' => $this->session->userdata('logged_in')->id,
+                        'updated_at' => date('Y-m-d H:i:s'),
                     ];
                 }
 
-                if($this->M_CRUD->insertData('trans_signed_pi', $params)) {
+                if($this->M_CRUD->updateData('trans_signed_pi', $params, $condition)) {
                     $response = ['status' => 1, 'messages' => 'Signed PI has been saved successfully.', 'icon' => 'success', 'url' => 'export/signedpi'];
                 } else {
                     $response = ['status' => 0, 'messages' => 'Signed PI has failed to save.', 'icon' => 'error'];
                 }
             }
 
+            $data_pi = [
+                'header' => $this->M_CRUD->readDatabyID('view_trans_pi_email_header', ['pi_id' => $post['id']]),
+                'detail' => $this->M_CRUD->readData('view_trans_pi_email_detail', ['pi_id' => $post['id']]),
+                'list' => $this->M_CRUD->pi_email('view_trans_pi_email_user'),
+            ];
+
+            sendmail('PROGRESS PI | '.$data_pi['header']->pi_no, $data_pi['list'], $this->load->view('export/email/content', $data_pi['detail'],  TRUE));
             echo json_encode($response);
         }
     }
