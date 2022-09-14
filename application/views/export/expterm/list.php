@@ -37,6 +37,10 @@
                                 <i class="fas fa-file-alt"></i>
                             </a>
 
+                            <a href="<?=site_url('export/expterm/process/'.$rows->pi_id)?>" class="btn btn-sm btn-warning">
+                                <i class="fas fa-edit"></i>
+                            </a>
+
                             <a href="<?=base_url('assets/attachment/expterm/'.$rows->file)?>" class="btn btn-sm btn-success" target="_blank">
                                 <i class="fas fa-download"></i>
                             </a>
