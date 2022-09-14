@@ -54,17 +54,14 @@
  * NOTE: If you change these, also change the error_reporting() code below
  */
 	switch ($_SERVER['HTTP_HOST']) {
-		case 'localhost':
-			$env = 'development';
-			break;
 		case 'http://dev.gexim.gonusa.id/':
-			$env = 'testing';
+			define('ENVIRONMENT', 'testing');
 			break;
 		case 'http://gexim.gonusa.id/':
-			$env = 'production';
+			define('ENVIRONMENT', 'productino');
 			break;
 		default:
-			$env = 'development';
+			define('ENVIRONMENT', 'development');
 			break;
 	}
  	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
