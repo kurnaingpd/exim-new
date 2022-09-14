@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '43.245.191.204',
+	'hostname' => 'http://dev.gexim.gonusa.id/',
 	'username' => 'dev04',
 	'password' => 'Welcome123',
 	'database' => 'gpd_gexp_dev',
