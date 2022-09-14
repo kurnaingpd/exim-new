@@ -57,7 +57,7 @@
 		case 'localhost':
 			$env = 'development';
 			break;
-		case 'http://dev.gexim.gonusa.id//':
+		case 'http://dev.gexim.gonusa.id/':
 			$env = 'testing';
 			break;
 		case 'http://gexim.gonusa.id//':
