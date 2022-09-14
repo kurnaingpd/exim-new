@@ -215,3 +215,10 @@ $route['export/expterm/save'] = 'ExportTerm/save';
 $route['export/expterm/detail/(:num)'] = 'ExportTerm/detail/$1';
 $route['export/expterm/process/(:num)'] = 'ExportTerm/process/$1';
 $route['export/expterm/update'] = 'ExportTerm/update';
+
+/** Invoice */
+$route['export/invoice'] = 'Invoice';
+$route['export/invoice/add'] = 'Invoice/add';
+$route['export/invoice/save'] = 'Invoice/save';
+$route['export/invoice/detail/(:num)'] = 'Invoice/detail/$1';
+$route['export/invoice/print/(:num)'] = 'Prints/invoice/$1';
