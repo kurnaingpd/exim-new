@@ -1,7 +1,4 @@
 RewriteEngine On
-SetEnvIf Host http://gexim.gonusa.id/$ CI_ENV=production
-SetEnvIf Host http://dev.gexim.gonusa.id/$ CI_ENV=testing
-SetEnvIf Host localhost$ CI_ENV=development
 #RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

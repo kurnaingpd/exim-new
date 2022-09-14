@@ -53,17 +53,17 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	switch ($_SERVER['HTTP_HOST']) {
-		case 'http://dev.gexim.gonusa.id/':
-			define('ENVIRONMENT', 'testing');
-			break;
-		case 'http://gexim.gonusa.id/':
-			define('ENVIRONMENT', 'productino');
-			break;
-		default:
-			define('ENVIRONMENT', 'development');
-			break;
-	}
+	// switch ($_SERVER['HTTP_HOST']) {
+	// 	case 'http://dev.gexim.gonusa.id/':
+	// 		define('ENVIRONMENT', 'testing');
+	// 		break;
+	// 	case 'http://gexim.gonusa.id/':
+	// 		define('ENVIRONMENT', 'production');
+	// 		break;
+	// 	default:
+	// 		define('ENVIRONMENT', 'testing');
+	// 		break;
+	// }
  	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
