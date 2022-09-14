@@ -33,6 +33,8 @@
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg">Sign in to start your session</p>
+                    <?php echo $this->db->database; ?>
+                            <?php echo ENVIRONMENT; ?>
                     <form id="form-login">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Username" id="username" name="username" autocomplete="off" required autofocus>

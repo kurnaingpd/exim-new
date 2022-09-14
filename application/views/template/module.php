@@ -55,9 +55,6 @@
                                 $CI->load->model(['M_CRUD']);
                                 $module = $CI->M_CRUD->assignmodule('view_assign_module', ['role_id' => $this->session->userdata('logged_in')->role_id]);
                             ?>
-
-                            <?php echo $this->db->database; ?>
-                            <?php echo ENVIRONMENT; ?>
                             <div class="row">
                                 <?php foreach($module as $mod) : ?>
                                     <div class="col-md-2">
