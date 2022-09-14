@@ -33,11 +33,11 @@
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center">
-                            <a href="<?=site_url('export/proforma/detail/'.$rows->pi_id)?>" class="btn btn-sm btn-info">
+                            <a href="<?=site_url('export/expterm/detail/'.$rows->pi_id)?>" class="btn btn-sm btn-info">
                                 <i class="fas fa-file-alt"></i>
                             </a>
 
-                            <a href="<?=base_url('assets/attachment/expterm/'.$rows->file)?>" class="btn btn-sm btn-info" target="_blank">
+                            <a href="<?=base_url('assets/attachment/expterm/'.$rows->file)?>" class="btn btn-sm btn-success" target="_blank">
                                 <i class="fas fa-download"></i>
                             </a>
                         </td>

@@ -68,7 +68,6 @@
             $path = 'assets/attachment/expterm/';
             $post = $this->input->post();
 
-            // if($_FILES) {
             if ( isset($_FILES['attachment']) && $_FILES['attachment']['name'] != '' ) {
                 $temp_name = $_FILES['attachment']['name'];
                 $ext = explode('.', $temp_name);
@@ -99,7 +98,30 @@
             }
 
             echo json_encode($response);
-            // }
+        }
+
+        public function detail($id)
+        {
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+            ];
+            $datas['js'] = [
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+            ];
+            $datas['title'] = 'Export - Export Term';
+            $datas['breadcrumb'] = ['Export', 'Transaction', 'Export Term'];
+            $datas['header'] = 'Detail record';
+            $datas['params'] = [
+                'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_detail', ['is_deleted' => '0', 'id' => $id]),
+                'category' => $this->M_CRUD->pi_category('view_print_category_trans_pi', ['pi_id' => $id]),
+                'item' => $this->M_CRUD->pi_item('view_print_detail_trans_pi', ['is_deleted' => '0', 'pi_id' => $id]),
+            ];
+
+            $this->template->load('default', 'contents' , 'export/expterm/detail', $datas);
         }
     }
 
