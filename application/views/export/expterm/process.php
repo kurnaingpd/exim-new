@@ -1,5 +1,6 @@
 <form id="form-expterms-process">
-    <input type="hidden" id="id" name="id" value="<?=$params['detail']->id?>">
+    <input type="hidden" id="expterm_id" name="expterm_id" value="<?=$params['term']->id?>">
+    <input type="hidden" id="pi_id" name="pi_id" value="<?=$params['term']->pi_id?>">
     <div class="row">
         <div class="col-md-9">
             
@@ -122,7 +123,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <a class="btn btn-default btn-block cancel" href="<?=site_url('export/proforma')?>">
+                            <a class="btn btn-default btn-block cancel" href="#" onclick="history.go(-1)">
                                 <i class="fas fa-ban mr-2"></i>Cancel
                             </a>
                         </div>

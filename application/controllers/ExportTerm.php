@@ -37,7 +37,7 @@
             $this->template->load('default', 'contents' , 'export/expterm/list', $datas);
         }
 
-        public function add()
+        public function add($id)
         {
             $datas['css'] = [
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
@@ -57,7 +57,7 @@
             $datas['header'] = 'Add record';
             $datas['params'] = [
                 'autonumber' => $this->M_CRUD->autoNumberExpTerms('trans_export_terms', 'code', 'ExpTerm/'.date('Y/m/'), 4),
-                'pi' => $this->M_CRUD->readData('view_trans_pi_expterm'),
+                'pi' => $this->M_CRUD->readDatabyID('view_trans_pi_expterm', ['id' => $id]),
             ];
 
             $this->template->load('default', 'contents' , 'export/expterm/add', $datas);
@@ -74,7 +74,7 @@
                 $end = strtolower(end($ext));
                 $timestamp = mt_rand(1, time());
                 $randomDate = date("d M Y", $timestamp);
-                $filename = md5($randomDate).'.'.$end;
+                $filename = 'Export-Terms-'.md5($randomDate).'.'.$end;
 
                 if ( !file_exists($path) ) {
                     mkdir($path, 0777, true);
@@ -89,8 +89,15 @@
                     'pi_status_id' => 1,
                     'created_by' => $this->session->userdata('logged_in')->id,
                 ];
-                
-                if($this->M_CRUD->insertData('trans_export_terms', $params)) {
+                $header = $this->M_CRUD->insertData('trans_export_terms', $params);
+
+                if($header) {
+                    $paramHistory = [
+                        'export_terms_id' => $header,
+                        'status_id' => 1
+                    ];
+    
+                    $this->M_CRUD->insertData('trans_export_terms_history', $paramHistory);
                     $response = ['status' => 1, 'messages' => 'Export terms has been saved successfully.', 'icon' => 'success', 'url' => 'export/expterm'];
                 } else {
                     $response = ['status' => 0, 'messages' => 'Export terms has failed to save.', 'icon' => 'error'];
@@ -135,17 +142,51 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/expterm/process.js"),
             ];
             $datas['title'] = 'Export - Export Term';
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Export Term'];
             $datas['header'] = 'Process';
             $datas['params'] = [
+                'term' => $this->M_CRUD->readDatabyID('trans_export_terms', ['is_deleted' => '0', 'pi_id' => $id]),
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_detail', ['is_deleted' => '0', 'id' => $id]),
                 'category' => $this->M_CRUD->pi_category('view_print_category_trans_pi', ['pi_id' => $id]),
                 'item' => $this->M_CRUD->pi_item('view_print_detail_trans_pi', ['is_deleted' => '0', 'pi_id' => $id]),
             ];
 
+            if($datas['params']['detail']->pi_status_id == 7) {
+                $datas['status'] = $this->M_CRUD->readDataIn('master_pi_status', ['is_deleted' => '0', 'id' => ['3','6']]);
+            } else {
+                $datas['status'] = $this->M_CRUD->readDataIn('master_pi_status', ['is_deleted' => '0', 'id' => ['3','5','7']]);
+            }
+
             $this->template->load('default', 'contents' , 'export/expterm/process', $datas);
+        }
+
+        public function update()
+        {
+            $post = $this->input->post();
+            $condition = ['id' => $post['expterm_id']];
+            $param = [
+                'pi_status_id' => $post['status'],
+                'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $this->session->userdata('logged_in')->id,
+            ];
+
+            if($this->M_CRUD->updateData('trans_export_terms', $param, $condition)) {
+                $paramHistory = [
+                    'export_terms_id' => $post['expterm_id'],
+                    'status_id' => $post['status'],
+                    'remark' => ($post['remark']?$post['remark']:NULL)
+                ];
+
+                $this->M_CRUD->insertData('trans_export_terms_history', $paramHistory);
+                $response = ['status' => 1, 'messages' => 'Export terms has been updated successfully.', 'icon' => 'success', 'url' => 'export/expterm'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Export terms has failed to update.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
         }
     }
 

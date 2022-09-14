@@ -15,12 +15,7 @@
                 <div class="col-md-3">
                     <div class="form-group required">
                         <label for="top" class="control-label">PI number</label>
-                        <select class="form-control select2bs4" id="pi_no" name="pi_no" required>
-                            <option></option>
-                            <?php foreach($params['pi'] as $rows) : ?>
-                                <option value="<?=$rows->id?>"><?=$rows->pi_no?></option>
-                            <?php endforeach; ?>
-                        </select>
+                        <input type="text" name="pi_no" class="form-control" id="pi_no" value="<?=$params['pi']->pi_no?>" readonly>
                     </div>
                 </div>
 

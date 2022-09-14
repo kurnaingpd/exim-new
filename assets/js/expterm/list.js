@@ -1,13 +1,13 @@
 $(function () {
     $("#texptermlist").DataTable({
         "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": [{
-            "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
-            "action": function ( e, dt, node, config ) {
-                window.location.href = site_url + "export/expterm/add";
-            }
-        }]
-    }).buttons().container().appendTo('#texptermlist_wrapper .col-md-6:eq(0)');
+        // "buttons": [{
+        //     "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
+        //     "action": function ( e, dt, node, config ) {
+        //         window.location.href = site_url + "export/expterm/add";
+        //     }
+        // }]
+    });
 
     $('#texptermlist tbody').on('click', 'button#delete', function () {
         var id = $(this).attr("data-id");

@@ -210,7 +210,8 @@ $route['export/signedpi/save'] = 'SignedPI/save';
 
 /** Export Term/Ketentuan Ekspor */
 $route['export/expterm'] = 'ExportTerm';
-$route['export/expterm/add'] = 'ExportTerm/add';
+$route['export/expterm/add/(:num)'] = 'ExportTerm/add/$1';
 $route['export/expterm/save'] = 'ExportTerm/save';
 $route['export/expterm/detail/(:num)'] = 'ExportTerm/detail/$1';
 $route['export/expterm/process/(:num)'] = 'ExportTerm/process/$1';
+$route['export/expterm/update'] = 'ExportTerm/update';

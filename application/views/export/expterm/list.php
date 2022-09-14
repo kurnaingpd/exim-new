@@ -37,11 +37,49 @@
                                 <i class="fas fa-file-alt"></i>
                             </a>
 
-                            <a href="<?=site_url('export/expterm/process/'.$rows->pi_id)?>" class="btn btn-sm btn-warning">
+                            <?php 
+                                if($rows->pi_status_id) {
+                                    $display_upload = 'style="display: none;"';
+                                    $display_download = '';
+                                    
+                                    if($this->session->userdata('logged_in')->role_id == 5) {
+                                        if($rows->pi_status_id == 1) {
+                                            $display = 'style="display: none;"';
+                                        } elseif($rows->pi_status_id == 5) {
+                                            $display = 'style="display: none;"';
+                                        } elseif($rows->pi_status_id == 6) {
+                                            $display = '';
+                                        }
+                                    } elseif($this->session->userdata('logged_in')->role_id == 3) {
+                                        // $display_upload = 'style="display: none;"';
+                                        if($rows->pi_status_id == 1) {
+                                            $display = '';
+                                        } elseif($rows->pi_status_id == 5) {
+                                            $display = 'style="display: none;"';
+                                        } elseif($rows->pi_status_id == 6) {
+                                            $display = 'style="display: none;"';
+                                        }
+                                    }
+                                } else {
+                                    $display = 'style="display: none;"';
+                                    $display_upload = '';
+                                    $display_download = 'style="display: none;"';
+                                }
+
+                                if($this->session->userdata('logged_in')->role_id == 3) {
+                                    $display_upload = 'style="display: none;"';
+                                }
+                            ?>
+
+                            <a href="<?=site_url('export/expterm/add/'.$rows->pi_id)?>" class="btn btn-sm btn-warning" <?=$display_upload?>>
+                                <i class="fas fa-upload"></i>
+                            </a>
+
+                            <a href="<?=site_url('export/expterm/process/'.$rows->pi_id)?>" class="btn btn-sm btn-warning" <?=$display?>>
                                 <i class="fas fa-edit"></i>
                             </a>
 
-                            <a href="<?=base_url('assets/attachment/expterm/'.$rows->file)?>" class="btn btn-sm btn-success" target="_blank">
+                            <a href="<?=base_url('assets/attachment/expterm/'.$rows->file)?>" class="btn btn-sm btn-success" target="_blank" <?=$display_download?>>
                                 <i class="fas fa-download"></i>
                             </a>
                         </td>
