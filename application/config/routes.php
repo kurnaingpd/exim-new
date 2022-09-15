@@ -222,3 +222,10 @@ $route['export/invoice/add'] = 'Invoice/add';
 $route['export/invoice/save'] = 'Invoice/save';
 $route['export/invoice/detail/(:num)'] = 'Invoice/detail/$1';
 $route['export/invoice/print/(:num)'] = 'Prints/invoice/$1';
+
+/** QC Check */
+$route['export/qc_check'] = 'QCCheck';
+$route['export/qc_check/add'] = 'QCCheck/add';
+$route['export/qc_check/save'] = 'QCCheck/save';
+$route['export/qc_check/detail/(:num)'] = 'QCCheck/detail/$1';
+$route['export/qc_check/update'] = 'QCCheck/update';
