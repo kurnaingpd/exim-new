@@ -107,7 +107,6 @@
             );
             $content = $this->load->view('export/print/index', $datas, true);
             $mpdf->SetFooter('
-                <div style="text-align: left; font-style: normal; font-size:7px;">Note : Please Sign This Proforma Invoice, fill the date and send back to us with PO as your confirmation</div>
                 <div style="box-sizing: border-box; content: "", clear: both; display: table;">
                     <div style="float: left; width: 30%; text-align: left; font-style: normal; font-weight: normal; font-size:7px; color: #989579;">
                         <p>

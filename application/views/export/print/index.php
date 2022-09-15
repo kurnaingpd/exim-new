@@ -21,12 +21,12 @@
             }
 
             .content {
-                font-size: 9px;
+                font-size: 8px;
             }
 
             .box-name {
                 float: left;
-                width: 43%;
+                width: 25%;
             }
 
             .box-colon {
@@ -47,7 +47,7 @@
 
             .table {
                 width: 100%;
-                font-size: 9px;
+                font-size: 8px;
                 border-style: solid;
                 border-width: 1px;
                 border-collapse: collapse;
@@ -64,6 +64,12 @@
                 border-width: 1px;
                 border-top-style: none;
                 border-bottom-style: none;
+                padding: 1%;
+            }
+
+            .data-border {
+                border-style: solid;
+                border-width: 1px;
                 padding: 1%;
             }
 
