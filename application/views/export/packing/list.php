@@ -30,6 +30,9 @@
                             <a href="<?=site_url('export/packing/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
                                 <i class="fas fa-edit"></i>
                             </a>
+                            <a href="<?=site_url('export/packing/print/'.$rows->id)?>" class="btn btn-sm btn-warning" target="_blank">
+                                <i class="fas fa-print"></i>
+                            </a>
                         </td>
                     </tr>
                 <?php $no++; endforeach; ?>

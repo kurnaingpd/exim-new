@@ -233,4 +233,8 @@ $route['export/qc_check/update'] = 'QCCheck/update';
 /** Packing */
 $route['export/packing'] = 'Packing';
 $route['export/packing/add'] = 'Packing/add';
+$route['export/packing/data'] = 'Packing/data';
+$route['export/packing/data/(:num)'] = 'Packing/data/$1';
+$route['export/packing/item'] = 'Packing/table_item';
+$route['export/packing/item/(:num)'] = 'Packing/table_item/$1';
 $route['export/packing/save'] = 'Packing/save';

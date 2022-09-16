@@ -43,11 +43,17 @@
                 "text/css,stylesheet, https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css",
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"),
             ];
 
             $datas['js'] = [
                 "https://cdn.jsdelivr.net/npm/flatpickr",
                 base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/datatables/jquery.dataTables.min.js"),
+                base_url("assets/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"),
+                base_url("assets/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"),
+                base_url("assets/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
@@ -59,9 +65,23 @@
             $datas['params'] = [
                 'autonumber' => $this->M_CRUD->autoNumberPacking('trans_packing_list', 'code', '/SKP-PL/'.date('m/Y'), 4),
                 'invoice' => $this->M_CRUD->readData('view_trans_pi_packing'),
+                'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
+                'loading' => $this->M_CRUD->readData('master_loading_port', ['is_deleted' => '0']),
             ];
 
-            $this->template->load('default', 'contents' , 'export/packing/add', $datas);
+            $this->template->load('default', 'contents' , 'export/packing/add/index', $datas);
+        }
+
+        public function data($id = NULl)
+        {
+            $data = $this->M_CRUD->readDatabyID('view_trans_pi_packing_get', ['is_deleted' => '0', 'id' => $id]);
+            echo json_encode($data);
+        }
+
+        public function table_item($id = NULL)
+        {
+            $data = $this->M_CRUD->readData('view_trans_pi_packing_item_get', ['is_deleted' => '0', 'id' => $id]);
+            echo json_encode($data);
         }
 
         public function save()
@@ -81,6 +101,34 @@
                     'packing_list_id' => $header,
                 ];
                 $this->M_CRUD->insertData('trans_packing_inv_filter', $paramsFilter);
+                $Grid = array();
+			
+                foreach($_POST as $index => $value){
+                    if(preg_match("/^grid_/i", $index)) {
+                        $index = preg_replace("/^grid_/i","",$index);
+                        $arr = explode('_',$index);
+                        $rnd = $arr[count($arr)-1];
+                        array_pop($arr);
+                        $idx = implode('_',$arr);
+                        
+                        $Grid[$rnd][$idx] = $value;
+                        if(!isset($Grid[$rnd]['id'])){
+                            $Grid[$rnd]['id'] = $rnd;
+                        }
+                    }
+                }
+
+                if(!empty($Grid)) {
+                    foreach($Grid as $detail) {
+                        $params = [
+                            'carton_barcode' => $detail['carton'],
+                            'expired_date' => $detail['expdate'],
+                            'production_date' => $detail['proddate'],
+                            'batch' => $detail['batch'],
+                        ];
+                        $this->M_CRUD->updateData('trans_pi_detail', $params, ['id' => $detail['id']]);
+                    }
+                }
                 $response = ['status' => 1, 'messages' => 'Packing has been saved successfully.', 'icon' => 'success', 'url' => 'export/packing'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Packing check has failed to save.', 'icon' => 'error'];
