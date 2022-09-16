@@ -125,6 +125,7 @@
                             'expired_date' => $detail['expdate'],
                             'production_date' => $detail['proddate'],
                             'batch' => $detail['batch'],
+                            'qty' => $detail['qty'],
                         ];
                         $this->M_CRUD->updateData('trans_pi_detail', $params, ['id' => $detail['id']]);
                     }
@@ -132,6 +133,78 @@
                 $response = ['status' => 1, 'messages' => 'Packing has been saved successfully.', 'icon' => 'success', 'url' => 'export/packing'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Packing check has failed to save.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
+        }
+
+        public function detail($id)
+        {
+            $datas['css'] = [
+                "text/css,stylesheet, https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css",
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"),
+            ];
+
+            $datas['js'] = [
+                "https://cdn.jsdelivr.net/npm/flatpickr",
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/datatables/jquery.dataTables.min.js"),
+                base_url("assets/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"),
+                base_url("assets/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"),
+                base_url("assets/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/packing/detail.js"),
+            ];
+            $datas['title'] = 'Export - Packing';
+            $datas['breadcrumb'] = ['Export', 'Transaction', 'Packing'];
+            $datas['header'] = 'Detail record';
+            $datas['params'] = [
+                'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_packing_detail', ['is_deleted' => '0', 'id' => $id]),
+                'list' => $this->M_CRUD->readData('view_trans_pi_packing_detail_list', ['is_deleted' => '0', 'id' => $id]),
+            ];
+
+            $this->template->load('default', 'contents' , 'export/packing/detail/index', $datas);
+        }
+
+        public function update()
+        {
+            $post = $this->input->post();
+            $Grid = array();
+			
+            foreach($_POST as $index => $value){
+                if(preg_match("/^grid_/i", $index)) {
+                    $index = preg_replace("/^grid_/i","",$index);
+                    $arr = explode('_',$index);
+                    $rnd = $arr[count($arr)-1];
+                    array_pop($arr);
+                    $idx = implode('_',$arr);
+                    
+                    $Grid[$rnd][$idx] = $value;
+                    if(!isset($Grid[$rnd]['id'])){
+                        $Grid[$rnd]['id'] = $rnd;
+                    }
+                }
+            }
+
+            if(!empty($Grid)) {
+                foreach($Grid as $detail) {
+                    $params = [
+                        'carton_barcode' => $detail['carton'],
+                        'expired_date' => $detail['expdate'],
+                        'production_date' => $detail['proddate'],
+                        'batch' => $detail['batch'],
+                        'qty' => $detail['qty'],
+                    ];
+                    $this->M_CRUD->updateData('trans_pi_detail', $params, ['id' => $detail['id']]);
+                }
+                $response = ['status' => 1, 'messages' => 'Packing has been updated successfully.', 'icon' => 'success', 'url' => 'export/packing'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Packing check has failed to update.', 'icon' => 'error'];
             }
 
             echo json_encode($response);

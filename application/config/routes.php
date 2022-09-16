@@ -238,3 +238,5 @@ $route['export/packing/data/(:num)'] = 'Packing/data/$1';
 $route['export/packing/item'] = 'Packing/table_item';
 $route['export/packing/item/(:num)'] = 'Packing/table_item/$1';
 $route['export/packing/save'] = 'Packing/save';
+$route['export/packing/detail/(:num)'] = 'Packing/detail/$1';
+$route['export/packing/update'] = 'Packing/update';

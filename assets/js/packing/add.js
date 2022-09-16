@@ -125,7 +125,9 @@ function get_data_item(id)
                                 '<td>'+data[i].item_name+'</td>'+
                                 '<td class="text-center">'+data[i].hs_code+'</td>'+
                                 '<td>'+data[i].pack_desc+'</td>'+
-                                '<td class="text-right">'+data[i].qty+'</td>'+
+                                '<td class="text-right">'+
+                                    '<input type="text" class="form-control text-right" id="grid_qty_'+data[i].pi_detail_id+'" name="grid_qty_'+data[i].pi_detail_id+'" value="'+data[i].qty+'" required>'+
+                                '</td>'+
                                 '<td><input type="text" class="form-control" id="grid_batch_'+data[i].pi_detail_id+'" name="grid_batch_'+data[i].pi_detail_id+'" required></td>'+
                                 '<td><input type="text" class="form-control" id="grid_expdate_'+data[i].pi_detail_id+'" name="grid_expdate_'+data[i].pi_detail_id+'" required></td>'+
                                 '<td><input type="text" class="form-control" id="grid_proddate_'+data[i].pi_detail_id+'" name="grid_proddate_'+data[i].pi_detail_id+'" required></td>'+
