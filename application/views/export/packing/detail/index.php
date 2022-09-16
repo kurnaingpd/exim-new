@@ -1,4 +1,5 @@
 <form id="form-packing-detail">
+    <input type="hidden" id="id" name="id" value="<?=$params['detail']->id?>">
     <div class="card">
         <div class="card-header">
             <h6><i class="fas fa-plus-circle mr-2"></i><?=$header?></h6>

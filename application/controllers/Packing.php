@@ -191,20 +191,28 @@
                 }
             }
 
-            if(!empty($Grid)) {
-                foreach($Grid as $detail) {
-                    $params = [
-                        'carton_barcode' => $detail['carton'],
-                        'expired_date' => $detail['expdate'],
-                        'production_date' => $detail['proddate'],
-                        'batch' => $detail['batch'],
-                        'qty' => $detail['qty'],
-                    ];
-                    $this->M_CRUD->updateData('trans_pi_detail', $params, ['id' => $detail['id']]);
+            $params = [
+                'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $this->session->userdata('logged_in')->id,
+            ];
+            $header = $this->M_CRUD->updateData('trans_packing_list', $params, ['id' => $post['id']]);
+
+            if($header) {
+                if(!empty($Grid)) {
+                    foreach($Grid as $detail) {
+                        $params = [
+                            'carton_barcode' => $detail['carton'],
+                            'expired_date' => $detail['expdate'],
+                            'production_date' => $detail['proddate'],
+                            'batch' => $detail['batch'],
+                            'qty' => $detail['qty'],
+                        ];
+                        $this->M_CRUD->updateData('trans_pi_detail', $params, ['id' => $detail['id']]);
+                    }
+                    $response = ['status' => 1, 'messages' => 'Packing has been updated successfully.', 'icon' => 'success', 'url' => 'export/packing'];
+                } else {
+                    $response = ['status' => 0, 'messages' => 'Packing check has failed to update.', 'icon' => 'error'];
                 }
-                $response = ['status' => 1, 'messages' => 'Packing has been updated successfully.', 'icon' => 'success', 'url' => 'export/packing'];
-            } else {
-                $response = ['status' => 0, 'messages' => 'Packing check has failed to update.', 'icon' => 'error'];
             }
 
             echo json_encode($response);

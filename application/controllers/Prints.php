@@ -144,7 +144,7 @@
 
         public function packing($id)
         {
-            $datas['title'] = 'Print Invoice';
+            $datas['title'] = 'Print Packing';
             // $datas['params'] = [
             //     'header' => $this->M_CRUD->readDatabyID('view_print_header_trans_pi', ['is_deleted' => '0', 'id' => $id]),
             //     'category' => $this->M_CRUD->pi_category('view_print_category_trans_pi', ['pi_id' => $id]),
