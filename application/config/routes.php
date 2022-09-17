@@ -241,3 +241,27 @@ $route['export/packing/save'] = 'Packing/save';
 $route['export/packing/detail/(:num)'] = 'Packing/detail/$1';
 $route['export/packing/update'] = 'Packing/update';
 $route['export/packing/print/(:num)'] = 'Prints/packing/$1';
+
+/** COA */
+$route['export/coa'] = 'COA';
+$route['export/coa/add'] = 'COA/add';
+$route['export/coa/save'] = 'COA/save';
+$route['export/coa/print/(:num)'] = 'Prints/COA/$1';
+
+/** Product Specification */
+$route['export/prodspec'] = 'ProductSpec';
+$route['export/prodspec/add'] = 'ProductSpec/add';
+$route['export/prodspec/save'] = 'ProductSpec/save';
+$route['export/prodspec/print/(:num)'] = 'Prints/ProductSpec/$1';
+
+/** Quality Certificate */
+$route['export/qcertificate'] = 'QCertificate';
+$route['export/qcertificate/add'] = 'QCertificate/add';
+$route['export/qcertificate/save'] = 'QCertificate/save';
+$route['export/qcertificate/print/(:num)'] = 'Prints/QCertificate/$1';
+
+/** Product Statement Letter */
+$route['export/spp'] = 'SPP';
+$route['export/spp/add'] = 'SPP/add';
+$route['export/spp/save'] = 'SPP/save';
+$route['export/spp/print/(:num)'] = 'Prints/SPP/$1';

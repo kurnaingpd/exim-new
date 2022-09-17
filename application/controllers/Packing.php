@@ -127,7 +127,18 @@
                             'batch' => $detail['batch'],
                             'qty' => $detail['qty'],
                         ];
-                        $this->M_CRUD->updateData('trans_pi_detail', $params, ['id' => $detail['id']]);
+                        
+                        if($this->M_CRUD->updateData('trans_pi_detail', $params, ['id' => $detail['id']])) {
+                            $paramDetail = [
+                                'packing_list_id' => $header,
+                                'pi_detail_id' => $detail['id'],
+                                'carton_barcode' => $detail['carton'],
+                                'expired_date' => $detail['expdate'],
+                                'production_date' => $detail['proddate'],
+                                'batch' => $detail['batch'],
+                            ];
+                            $this->M_CRUD->insertData('trans_packing_list_detail', $paramDetail);
+                        }
                     }
                 }
                 $response = ['status' => 1, 'messages' => 'Packing has been saved successfully.', 'icon' => 'success', 'url' => 'export/packing'];
