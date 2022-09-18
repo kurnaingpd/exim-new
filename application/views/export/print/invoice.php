@@ -1,5 +1,5 @@
 <div id="container">
-    <h4 class="title" style="margin-bottom: 0px;"><u>INVOICE</u></h4>
+    <h4 class="title" style="margin-bottom: 0px;">INVOICE</h4>
     <div class="title" style="font-size: 8px; margin-bottom: 3%;">0001/SKP-EXT/INV/09/2022</div>
 
     <div id="content" class="content">
