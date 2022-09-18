@@ -245,6 +245,12 @@ $route['export/packing/print/(:num)'] = 'Prints/packing/$1';
 /** COA */
 $route['export/coa'] = 'COA';
 $route['export/coa/add'] = 'COA/add';
+$route['export/coa/country'] = 'COA/country';
+$route['export/coa/country/(:num)'] = 'COA/country/$1';
+$route['export/coa/item'] = 'COA/item';
+$route['export/coa/item/(:num)'] = 'COA/item/$1';
+$route['export/coa/qcheck'] = 'COA/qcheck';
+$route['export/coa/qcheck/(:num)'] = 'COA/qcheck/$1';
 $route['export/coa/save'] = 'COA/save';
 $route['export/coa/print/(:num)'] = 'Prints/COA/$1';
 

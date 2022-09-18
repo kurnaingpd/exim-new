@@ -30,7 +30,7 @@
 			return $query -> result();
         }
 
-        public function readDatabyID($table, $params)
+        public function readDatabyID($table, $params = NULL)
         {
             $this -> db -> from($table);
 			if($params) {
@@ -217,6 +217,23 @@
 		}
 
 		public function autoNumberPacking($table, $column, $prefix, $run_number) {
+			$this->db->from($table);
+			$this->db->order_by($column, 'DESC');
+			$query = $this -> db -> get();
+			$record = $query -> row();
+
+			if(!$record) {
+				$code = 1;
+			} else {
+				$code = intval($record->code) + 1;
+			}
+
+			$code = str_pad($code, $run_number, 0, STR_PAD_LEFT).$prefix;
+
+			return $code;
+		}
+
+		public function autoNumberCOA($table, $column, $prefix, $run_number) {
 			$this->db->from($table);
 			$this->db->order_by($column, 'DESC');
 			$query = $this -> db -> get();

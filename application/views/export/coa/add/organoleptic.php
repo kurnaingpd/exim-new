@@ -2,14 +2,14 @@
     <div class="col-md-6">
         <div class="form-group required">
             <label for="aroma" class="control-label">Aroma</label>
-            <input type="text" class="form-control" id="aroma" placeholder="Enter aroma" value="" disabled>
+            <input type="text" class="form-control" id="aroma" placeholder="Enter aroma" disabled>
         </div>
     </div>
 
     <div class="col-md-6">
         <div class="form-group required">
             <label for="taste" class="control-label">Taste</label>
-            <input type="text" class="form-control" id="taste" placeholder="Enter taste" value="" disabled>
+            <input type="text" class="form-control" id="taste" placeholder="Enter taste" disabled>
         </div>
     </div>
 </div>

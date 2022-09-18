@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="form-group required">
             <label for="code" class="control-label">COA no.</label>
-            <input type="text" name="code" class="form-control" id="code" value="" readonly>
+            <input type="text" name="code" class="form-control" id="code" value="<?=$params['autonumber']?>" readonly>
         </div>
     </div>
 
@@ -12,7 +12,7 @@
             <select name="invoice" class="form-control select2bs4" id="invoice" required>
                 <option></option>
                 <?php foreach($params['invoice'] as $rows) : ?>
-                    <option value="<?=$rows->inv_id?>"><?=$rows->inv_no?></option>
+                    <option value="<?=$rows->invoice_id?>"><?=$rows->invoice_no?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -22,44 +22,33 @@
 <div class="row">
     <div class="col-md-3">
         <div class="form-group required">
-            <label for="product" class="control-label">Product name</label>
-            <select name="product" class="form-control select2bs4" id="product" required>
+            <label for="packing" class="control-label">Product name</label>
+            <select name="packing" class="form-control select2bs4 grid" id="packing">
                 <option></option>
-                <?php foreach($params['invoice'] as $rows) : ?>
-                    <option value="<?=$rows->inv_id?>"><?=$rows->inv_no?></option>
-                <?php endforeach; ?>
             </select>
+            <input type="hidden" class="grid" id="item" name="item">
+            <input type="hidden" class="grid" id="qcheck_id" name="qcheck_id">
         </div>
     </div>
 
     <div class="col-md-3">
         <div class="form-group required">
             <label for="batch" class="control-label">Batch number</label>
-            <select name="batch" class="form-control select2bs4" id="batch" required>
-                <option></option>
-                <?php foreach($params['invoice'] as $rows) : ?>
-                    <option value="<?=$rows->inv_id?>"><?=$rows->inv_no?></option>
-                <?php endforeach; ?>
-            </select>
+            <input type="text" name="batch" class="form-control" id="batch" placeholder="Enter batch number" disabled>
         </div>
     </div>
 
     <div class="col-md-3">
         <div class="form-group required">
             <label for="product_date" class="control-label">Product date</label>
-            <select name="product_date" class="form-control select2bs4" id="product_date" required>
-                <option></option>
-                <?php foreach($params['invoice'] as $rows) : ?>
-                    <option value="<?=$rows->inv_id?>"><?=$rows->inv_no?></option>
-                <?php endforeach; ?>
-            </select>
+            <input type="text" name="product_date" class="form-control" id="product_date" placeholder="Enter product date" disabled>
         </div>
     </div>
 
     <div class="col-md-3">
         <div class="form-group required">
             <label for="expired_date" class="control-label">Expired date</label>
-            <input type="text" name="expired_date" class="form-control" id="expired_date" value="" readonly>
+            <input type="text" name="expired_date" class="form-control" id="expired_date" placeholder="Enter expired date" readonly>
         </div>
     </div>
 </div>
