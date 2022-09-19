@@ -276,4 +276,4 @@ $route['export/qcertificate/print/(:num)'] = 'Prints/qcertificate/$1';
 $route['export/spp'] = 'SPP';
 $route['export/spp/add'] = 'SPP/add';
 $route['export/spp/save'] = 'SPP/save';
-$route['export/spp/print/(:num)'] = 'Prints/SPP/$1';
+$route['export/spp/print/(:num)'] = 'Prints/spp/$1';
