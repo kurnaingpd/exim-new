@@ -27,14 +27,52 @@
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
                 base_url("assets/js/qcertificate/list.js"),
             ];
-            $datas['title'] = 'Export - Quality Certification';
-            $datas['breadcrumb'] = ['Export', 'Transaction', 'Quality Certification'];
-            $datas['header'] = 'Quality Certification';
+            $datas['title'] = 'Export - Quality Certificate';
+            $datas['breadcrumb'] = ['Export', 'Transaction', 'Quality Certificate'];
+            $datas['header'] = 'Quality Certificate';
             // $datas['params'] = [
             //     'list' => $this->M_CRUD->readData('view_trans_packing_list')
             // ];
 
             $this->template->load('default', 'contents' , 'export/qcertificate/list', $datas);
+        }
+
+        public function add()
+        {
+            $datas['css'] = [
+                "text/css,stylesheet, https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css",
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+            ];
+
+            $datas['js'] = [
+                "https://cdn.jsdelivr.net/npm/flatpickr",
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/qcertificate/add.js"),
+            ];
+            $datas['title'] = 'Export - Quality Certificate';
+            $datas['breadcrumb'] = ['Export', 'Transaction', 'Quality Certificate'];
+            $datas['header'] = 'Add record';
+            $datas['params'] = [
+                'autonumber' => $this->M_CRUD->autoNumberQCert('trans_qcertificate', 'code', '/SKP-QS/'.date('m/Y'), 4),
+                'coa' => $this->M_CRUD->readData('view_trans_qcertificate_coa'),
+            ];
+
+            $this->template->load('default', 'contents' , 'export/qcertificate/add', $datas);
+        }
+
+        public function coa($id = NULL)
+        {
+            $data = $this->M_CRUD->readDatabyID('view_trans_qcertificate_coa', ['id' => $id]);
+            echo json_encode($data);
+        }
+
+        public function save()
+        {
+
         }
     }
 
