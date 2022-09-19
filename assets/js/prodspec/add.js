@@ -30,19 +30,43 @@ $(function () {
                         '<input type="text" class="form-control" value="'+$('select.grid[name="packing"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
                     '</td>'+
                     '<td>'+
-                        '<input type="text" class="form-control" id="grid_mercury_'+rnd+'" name="grid_mercury_'+rnd+'" value="'+$('input.grid[name="mercury"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '<input type="text" class="form-control" id="grid_desc_'+rnd+'" name="grid_desc_'+rnd+'" value="'+$('textarea.grid[name="desc"]').val()+'" style="background-color:#ffffff;" readonly required />'+
                     '</td>'+
                     '<td>'+
-                        '<input type="text" class="form-control" id="grid_lead_'+rnd+'" name="grid_lead_'+rnd+'" value="'+$('input.grid[name="lead"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '<input type="text" class="form-control" id="grid_form_'+rnd+'" name="grid_form_'+rnd+'" value="'+$('input.grid[name="form"]').val()+'" style="background-color:#ffffff;" readonly required />'+
                     '</td>'+
                     '<td>'+
-                        '<input type="text" class="form-control" id="grid_cadmium_'+rnd+'" name="grid_cadmium_'+rnd+'" value="'+$('input.grid[name="cadmium"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '<input type="text" class="form-control" id="grid_texture_'+rnd+'" name="grid_texture_'+rnd+'" value="'+$('input.grid[name="texture"]').val()+'" style="background-color:#ffffff;" readonly required />'+
                     '</td>'+
                     '<td>'+
-                        '<input type="text" class="form-control" id="grid_tin_'+rnd+'" name="grid_tin_'+rnd+'" value="'+$('input.grid[name="tin"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '<input type="text" class="form-control" id="grid_colour_'+rnd+'" name="grid_colour_'+rnd+'" value="'+$('input.grid[name="colour"]').val()+'" style="background-color:#ffffff;" readonly required />'+
                     '</td>'+
                     '<td>'+
-                        '<input type="text" class="form-control" id="grid_arsenic_'+rnd+'" name="grid_arsenic_'+rnd+'" value="'+$('input.grid[name="arsenic"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '<input type="text" class="form-control" id="grid_taste_'+rnd+'" name="grid_taste_'+rnd+'" value="'+$('input.grid[name="taste"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="text" class="form-control" id="grid_odour_'+rnd+'" name="grid_odour_'+rnd+'" value="'+$('input.grid[name="odour"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="text" class="form-control" id="grid_fat_'+rnd+'" name="grid_fat_'+rnd+'" value="'+$('input.grid[name="fat"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="text" class="form-control" id="grid_moisture_'+rnd+'" name="grid_moisture_'+rnd+'" value="'+$('input.grid[name="moisture"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="text" class="form-control" id="grid_caffeine_'+rnd+'" name="grid_caffeine_'+rnd+'" value="'+$('input.grid[name="caffeine"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="text" class="form-control" id="grid_ingredients_'+rnd+'" name="grid_ingredients_'+rnd+'" value="'+$('textarea.grid[name="ingredients"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="text" class="form-control" id="grid_product_shelf_'+rnd+'" name="grid_product_shelf_'+rnd+'" value="'+$('input.grid[name="product_shelf"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="text" class="form-control" id="grid_packaging_'+rnd+'" name="grid_packaging_'+rnd+'" value="'+$('input.grid[name="packaging"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="text" class="form-control" id="grid_storage_'+rnd+'" name="grid_storage_'+rnd+'" value="'+$('input.grid[name="storage"]').val()+'" style="background-color:#ffffff;" readonly required />'+
                     '</td>'+
                 '</tr>'
             );
@@ -65,7 +89,7 @@ $(function () {
         }
     });
 
-    $('#form-coa-add').validate({
+    $('#form-prodspec-add').validate({
         errorElement: 'span',
         errorPlacement: function (error, element) {
             error.addClass('invalid-feedback');
@@ -82,7 +106,6 @@ $(function () {
 
 $('#invoice').on('change', function() {
     var data = $('#invoice').select2('data');
-    country(data[0].id);
     item(data[0].id);
 });
 
@@ -91,31 +114,14 @@ $('#packing').on('change', function() {
     details(data[0].id);
 });
 
-function country(id)
-{
-    $.ajax({
-        url: site_url + "export/coa/country/" + id,
-        type: "POST",
-        dataType: "json",
-        success: function(response) {
-            if(response) {
-                document.getElementById("code").value = document.getElementById("code").value + response.country_code;
-            }
-        },
-        error: function (e) {
-            console.log("Terjadi kesalahan pada sistem");
-            swal("", "Terjadi kesalahan pada sistem.", "error");
-        }        
-    });
-}
-
 function item(id)
 {
     $.ajax({
-        url: site_url + "export/coa/item/" + id,
+        url: site_url + "export/prodspec/item/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {
+            document.getElementById("po").value = response[0].ffrn;
             var html = '';
             var i;
             for(i=0; i<response.length; i++) {
@@ -134,40 +140,16 @@ function item(id)
 function details(id)
 {
     $.ajax({
-        url: site_url + "export/coa/qcheck/" + id,
+        url: site_url + "export/prodspec/qcheck/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {
             if(response) {
                 document.getElementById("item").value = response.item_id;
                 document.getElementById("qcheck_id").value = response.id;
-                document.getElementById("batch").value = response.batch;
-                document.getElementById("product_date").value = response.production_date;
-                document.getElementById("expired_date").value = response.expired_date;
-                document.getElementById("aroma").value = response.aroma;
-                document.getElementById("taste").value = response.taste;
-                document.getElementById("moisture").value = response.moisture;
-                document.getElementById("ph").value = response.ph;
-                document.getElementById("brix").value = response.brix;
-                document.getElementById("salmonella").value = response.salmonella;
-                document.getElementById("plate").value = response.total_plate;
-                document.getElementById("mold").value = response.yeast;
-                document.getElementById("enterobacteriaceae").value = response.enterobacteriaceae;
             } else {
                 document.getElementById("item").value = '';
                 document.getElementById("qcheck_id").value = '';
-                document.getElementById("batch").value = '';
-                document.getElementById("product_date").value = '';
-                document.getElementById("expired_date").value = '';
-                document.getElementById("aroma").value = '';
-                document.getElementById("taste").value = '';
-                document.getElementById("moisture").value = '';
-                document.getElementById("ph").value = '';
-                document.getElementById("brix").value = '';
-                document.getElementById("salmonella").value = '';
-                document.getElementById("plate").value = '';
-                document.getElementById("mold").value = '';
-                document.getElementById("enterobacteriaceae").value = '';
             }
         },
         error: function (e) {
@@ -180,19 +162,19 @@ function details(id)
 function save()
 {
     $.ajax({
-        url: site_url + "export/coa/save",
+        url: site_url + "export/prodspec/save",
         type: "POST",
-        data: $("#form-coa-add").serialize(),
+        data: $("#form-prodspec-add").serialize(),
         dataType: "json",
         beforeSend: function(){
             $('a.cancel').prop('disabled', true);
-            $('button#btn-coa-save').html("<img src=" + base_url + "assets/images/inventory/loader.gif style='height:20px;'  /> Saving...").prop('disabled', true);
+            $('button#btn-prodspec-save').html("<img src=" + base_url + "assets/images/inventory/loader.gif style='height:20px;'  /> Saving...").prop('disabled', true);
         },
         success: function(response) {
             console.log(response);
             if(response.status == 1) {
                 $('a.cancel').prop('disabled', true);
-                $('button#btn-coa-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', true);
+                $('button#btn-prodspec-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', true);
                 swal("", response.messages, response.icon).then((value) => {
                     window.location.href = site_url + response.url;
                 });
@@ -204,7 +186,7 @@ function save()
             console.log("Terjadi kesalahan pada sistem");
             swal("", "Terjadi kesalahan pada sistem.", "error");
             $('a.cancel').prop('disabled', false);
-            $('button#btn-coa-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', false);
+            $('button#btn-prodspec-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', false);
         }        
     });
 }

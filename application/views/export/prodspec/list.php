@@ -11,29 +11,24 @@
                     <th>Invoice no.</th>
                     <th>Product name</th>
                     <th>Created at</th>
-                    <th>Updated at</th>
                     <th><i class="fas fa-ellipsis-h"></i></th>
                 </tr>
             </thead>
             <tbody>
-                <!-- <?php $no=1; foreach($params['list'] as $rows) : ?>
+                <?php $no=1; foreach($params['list'] as $rows) : ?>
                     <tr class="align-middle">
                         <td class="text-center"><?=$no?>.</td>
-                        <td><?=$rows->company_name?></td>
-                        <td><?=$rows->office?></td>
-                        <td><?=$rows->address?></td>
+                        <td class="text-center"><?=$rows->code?></td>
+                        <td class="text-center"><?=$rows->invoice_no?></td>
+                        <td><?=$rows->item_name?></td>
                         <td class="text-center"><?=$rows->created_at?></td>
-                        <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center">
-                            <a href="<?=site_url('export/beneficiary/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
-                                <i class="fas fa-edit"></i>
+                            <a href="<?=site_url('export/prodspec/print/'.$rows->id)?>" class="btn btn-sm btn-warning" target="_blank">
+                                <i class="fas fa-print"></i>
                             </a>
-                            <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">
-                                <i class="fas fa-trash"></i>
-                            </button>
                         </td>
                     </tr>
-                <?php $no++; endforeach; ?> -->
+                <?php $no++; endforeach; ?>
             </tbody>
         </table>
     </div>

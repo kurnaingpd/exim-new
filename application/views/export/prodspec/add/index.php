@@ -1,4 +1,4 @@
-<form id="form-coa-add">
+<form id="form-prodspec-add">
     <div class="card">
         <div class="card-header">
             <h6><i class="fas fa-plus-circle mr-2"></i><?=$header?></h6>
@@ -40,7 +40,7 @@
                     </a>
                 </div>
                 <div class="col-md-6">
-                    <button class="btn btn-success save btn-block" id="btn-coa-save">
+                    <button class="btn btn-success save btn-block" id="btn-prodspec-save">
                         <i class="fas fa-save mr-2"></i>Save
                     </button>
                 </div>

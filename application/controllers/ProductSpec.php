@@ -30,9 +30,9 @@
             $datas['title'] = 'Export - Product Specification';
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Product Specification'];
             $datas['header'] = 'Product Specification';
-            // $datas['params'] = [
-            //     'list' => $this->M_CRUD->readData('view_trans_packing_list')
-            // ];
+            $datas['params'] = [
+                'list' => $this->M_CRUD->readData('view_trans_prodspec_list')
+            ];
 
             $this->template->load('default', 'contents' , 'export/prodspec/list', $datas);
         }
@@ -59,15 +59,81 @@
             $datas['params'] = [
                 'autonumber' => $this->M_CRUD->autoNumberProdSpec('trans_prod_spec', 'code', '/SKP-PRDSPEC/'.date('m/Y'), 4),
                 'invoice' => $this->M_CRUD->readData('view_trans_prodspec_invoice'),
-                'item' => $this->M_CRUD->readData('view_trans_coa_item'),
+                'item' => $this->M_CRUD->readData('view_trans_prodspec_item'),
             ];
 
             $this->template->load('default', 'contents' , 'export/prodspec/add/index', $datas);
         }
 
+        public function item($id = NULL)
+        {
+            $data = $this->M_CRUD->readData('view_trans_prodspec_item', ['invoice_id' => $id]);
+            echo json_encode($data);
+        }
+
+        public function qcheck($id = NULL)
+        {
+            $data = $this->M_CRUD->readDatabyID('view_trans_prodspec_qcheck', ['is_deleted' => '0', 'packing_detail_id' => $id]);
+            echo json_encode($data);
+        }
+
         public function save()
         {
+            $post = $this->input->post();
+            $params = [
+                'code' => $post['code'],
+                'invoice_id' => $post['invoice'],
+                'created_by' => $this->session->userdata('logged_in')->id,
+            ];
+            $header = $this->M_CRUD->insertData('trans_prod_spec', $params);
 
+            if($header) {
+                $Grid = array();
+			
+                foreach($_POST as $index => $value){
+                    if(preg_match("/^grid_/i", $index)) {
+                        $index = preg_replace("/^grid_/i","",$index);
+                        $arr = explode('_',$index);
+                        $rnd = $arr[count($arr)-1];
+                        array_pop($arr);
+                        $idx = implode('_',$arr);
+                        
+                        $Grid[$rnd][$idx] = $value;
+                        if(!isset($Grid[$rnd]['prod_spec_id'])){
+                            $Grid[$rnd]['prod_spec_id'] = $header;
+                        }
+                    }
+                }
+
+                if(!empty($Grid)) {
+                    foreach($Grid as $detail) {
+                        $params = [
+                            'prod_spec_id' => $header,
+                            'packing_list_detail_id' => $detail['packing'],
+                            'qc_check_id' => $detail['qcheck_id'],
+                            'description' => $detail['desc'],
+                            'form' => $detail['form'],
+                            'texture' => $detail['texture'],
+                            'colour' => $detail['colour'],
+                            'taste' => $detail['taste'],
+                            'odour' => $detail['odour'],
+                            'fat' => $detail['fat'],
+                            'moisture' => $detail['moisture'],
+                            'caffeine' => $detail['caffeine'],
+                            'ingredients' => $detail['ingredients'],
+                            'product_shelf' => $detail['product_shelf'],
+                            'packaging' => $detail['packaging'],
+                            'storage' => $detail['storage'],
+                        ];
+                        $this->M_CRUD->insertData('trans_prod_spec_detail', $params);
+                    }
+                    $response = ['status' => 1, 'messages' => 'Product specification has been saved successfully.', 'icon' => 'success', 'url' => 'export/prodspec'];
+                } else {
+                    $response = ['status' => 0, 'messages' => 'Product specification has failed to save.', 'icon' => 'error'];
+                }
+            }
+
+            echo json_encode($response);
         }
     }
 

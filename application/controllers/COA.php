@@ -132,14 +132,6 @@
             }
 
             echo json_encode($response);
-
-            // if($this->M_CRUD->insertData('trans_coa', $params)) {
-            //     $response = ['status' => 1, 'messages' => 'COA has been saved successfully.', 'icon' => 'success', 'url' => 'export/coa'];
-            // } else {
-            //     $response = ['status' => 0, 'messages' => 'COA has failed to save.', 'icon' => 'error'];
-            // }
-
-            // echo json_encode($response);
         }
     }
 
