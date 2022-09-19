@@ -252,7 +252,7 @@ $route['export/coa/item/(:num)'] = 'COA/item/$1';
 $route['export/coa/qcheck'] = 'COA/qcheck';
 $route['export/coa/qcheck/(:num)'] = 'COA/qcheck/$1';
 $route['export/coa/save'] = 'COA/save';
-$route['export/coa/print/(:num)'] = 'Prints/COA/$1';
+$route['export/coa/print/(:num)'] = 'Prints/coa/$1';
 
 /** Product Specification */
 $route['export/prodspec'] = 'ProductSpec';
@@ -262,7 +262,7 @@ $route['export/prodspec/qcheck'] = 'ProductSpec/qcheck';
 $route['export/prodspec/qcheck/(:num)'] = 'ProductSpec/qcheck/$1';
 $route['export/prodspec/item/(:num)'] = 'ProductSpec/item/$1';
 $route['export/prodspec/save'] = 'ProductSpec/save';
-$route['export/prodspec/print/(:num)'] = 'Prints/ProductSpec/$1';
+$route['export/prodspec/print/(:num)'] = 'Prints/prodspec/$1';
 
 /** Quality Certificate */
 $route['export/qcertificate'] = 'QCertificate';

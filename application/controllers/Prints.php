@@ -259,7 +259,64 @@
                 </div>
             ');
             $mpdf->WriteHTML($content);
-            $filename = "Export-Invoice";
+            $filename = "Export-COA";
+            $time = date('YmdHis');
+            $mpdf->Output($filename."-".$time.".pdf", 'I');
+        }
+
+        public function prodspec($id)
+        {
+            $datas['title'] = 'Print Product Specification';
+            $datas['content'] = $this->load->view('export/print/prodspec', $datas, true);
+            $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
+            $mpdf->defaultheaderline = 0;
+            $mpdf->defaultfooterline = 0;
+            $mpdf->setAutoTopMargin = 'stretch';
+            $mpdf->setAutoBottomMargin = 'stretch';
+            $mpdf->SetHeader('<img src="' . base_url() . 'assets/images/inventory/skp-logo-crop-removebg.png" width="17%" />||');
+            $mpdf->AddPage(
+                'P', // L - landscape, P - portrait 
+                '', '', '', '',
+                20, // margin_left
+                20, // margin right
+                30, // margin top
+                0, // margin bottom
+                10, // margin header
+                8
+            );
+            $content = $this->load->view('export/print/index', $datas, true);
+            $mpdf->SetFooter('
+                <div style="box-sizing: border-box; content: "", clear: both; display: table;">
+                    <div style="float: left; width: 30%; text-align: left; font-style: normal; font-weight: normal; font-size:7px; color: #989579;">
+                        <p>
+                            <b>Factory Kudus</b><br>
+                            Jl. Lingkar Timur, Loram Wetan<br>
+                            Jati, Kab. Kudus<br>
+                            Jawa Tengah 59344<br>
+                            P +62 291 4257202<br>
+                            sumberkopiprima.com
+                        </p>
+                    </div>
+                    <div style="float: left; width: 30%; text-align: left; margin-left: 9%; font-style: normal; font-weight: normal; font-size:7px; color: #989579;">
+                        <p>
+                            <b>Factory Mojokerto</b><br>
+                            Jl. Raya Mojokerto - Lamongan<br>
+                            Desa Mojokumpul, Kemlagi<br>
+                            Mojokerto<br>
+                            Jawa Timur 61353
+                        </p>
+                    </div>
+                    <div style="float: left; width: 30%; text-align: left; margin-left: 9%; font-style: normal; font-weight: normal; font-size:7px; color: #989579;">
+                        <p>
+                            <b>Factory Kudus</b><br>
+                            Desa Loram Wetan, Jati<br>
+                            Kudus, Jawa Tengah 59311
+                        </p>
+                    </div>
+                </div>
+            ');
+            $mpdf->WriteHTML($content);
+            $filename = "Export-ProductSpecification";
             $time = date('YmdHis');
             $mpdf->Output($filename."-".$time.".pdf", 'I');
         }
