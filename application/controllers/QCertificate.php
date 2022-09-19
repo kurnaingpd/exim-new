@@ -30,9 +30,9 @@
             $datas['title'] = 'Export - Quality Certificate';
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Quality Certificate'];
             $datas['header'] = 'Quality Certificate';
-            // $datas['params'] = [
-            //     'list' => $this->M_CRUD->readData('view_trans_packing_list')
-            // ];
+            $datas['params'] = [
+                'list' => $this->M_CRUD->readData('view_trans_qcertificate_list')
+            ];
 
             $this->template->load('default', 'contents' , 'export/qcertificate/list', $datas);
         }
@@ -72,7 +72,21 @@
 
         public function save()
         {
+            $post = $this->input->post();
+            $params = [
+                'code' => $post['code'],
+                'coa_id' => $post['qa'],
+                'invoice_id' => $post['invoice_id'],
+                'created_by' => $this->session->userdata('logged_in')->id,
+            ];
 
+            if($this->M_CRUD->insertData('trans_qcertificate', $params)) {
+                $response = ['status' => 1, 'messages' => 'Quality certificate has been saved successfully.', 'icon' => 'success', 'url' => 'export/qcertificate'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Quality certificate has failed to save.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
         }
     }
 
