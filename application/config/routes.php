@@ -270,7 +270,7 @@ $route['export/qcertificate/add'] = 'QCertificate/add';
 $route['export/prodspec/coa'] = 'QCertificate/coa';
 $route['export/prodspec/coa/(:num)'] = 'QCertificate/coa/$1';
 $route['export/qcertificate/save'] = 'QCertificate/save';
-$route['export/qcertificate/print/(:num)'] = 'Prints/QCertificate/$1';
+$route['export/qcertificate/print/(:num)'] = 'Prints/qcertificate/$1';
 
 /** Product Statement Letter */
 $route['export/spp'] = 'SPP';
