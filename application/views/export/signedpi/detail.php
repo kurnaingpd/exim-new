@@ -92,8 +92,6 @@
                                     <a href="<?=base_url('assets/attachment/signedpi/'.$item_id->value)?>" class="btn btn-block btn-info text-center <?=$item_id->download?>" target="_blank"  >
                                         <i class="fas fa-download"></i>
                                     </a>
-                                <?php elseif($item_id->option_id == 2) : ?>
-
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -147,6 +145,14 @@
                                         </select>
                                     <?php endif; ?>
                                 </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <?php if($item_id->option_id == 1) : ?>
+                                    <a href="<?=base_url('assets/attachment/signedpi/'.$item_id->value)?>" class="btn btn-block btn-info text-center <?=$item_id->download?>" target="_blank"  >
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     <?php 
