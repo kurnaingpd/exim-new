@@ -1,16 +1,5 @@
-<div id="header">
-    <div class="row border-bottom">
-        <div class="col-md-12">
-            <div class="form-group">
-                <label for="coding_notes" class="control-label">Notes</label>
-                <textarea name="coding_notes" class="form-control upper cod_print" id="coding_notes" placeholder="Enter notes" autocomplete="off" rows="2" disabled></textarea>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div id="detail">
-    <div class="row mt-3">
+    <div class="row">
         <div class="col-md-3">
             <div class="form-group">
                 <label for="coding_type" class="control-label">Type</label>
@@ -41,6 +30,15 @@
             <div class="form-group">
                 <label for="coding_bb" class="control-label">Best before</label>
                 <input type="text" name="coding_bb" class="form-control cod_print coding" id="coding_bb" placeholder="Enter best before" autocomplete="off" disabled>
+            </div>
+        </div>
+    </div>
+
+    <div class="row border-bottom">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="coding_notes" class="control-label">Notes</label>
+                <textarea name="coding_notes" class="form-control upper cod_print" id="coding_notes" placeholder="Enter notes" autocomplete="off" rows="2" disabled></textarea>
             </div>
         </div>
     </div>
