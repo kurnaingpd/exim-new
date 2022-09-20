@@ -25,10 +25,7 @@
                         <td><?=$rows->shipper_name?></td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center">
-                            <a href="<?=site_url('export/invoice/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
-                                <i class="fas fa-file"></i>
-                            </a>
-                            <a href="<?=site_url('export/invoice/print/'.$rows->id)?>" class="btn btn-sm btn-warning" target="_blank">
+                            <a href="<?=site_url('export/invoice/print/'.$rows->id)?>" class="btn btn-sm btn-success" target="_blank">
                                 <i class="fas fa-print"></i>
                             </a>
                         </td>
