@@ -18,13 +18,13 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 text-center">
+                <div class="col-md-5 text-center">
                     <div class="form-group">
                         <label for="cpshipto">Value</label>
                     </div>
                 </div>
 
-                <div class="col-md-3 text-center">
+                <div class="col-md-1 text-center">
                     <div class="form-group">
                         <i class="fas fa-ellipsis-h"></i>
                     </div>
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="form-group">
                                     <?php if($item_id->option_id == 1) : ?>
                                         <div class="input-group">
@@ -86,6 +86,16 @@
                                     <?php endif; ?>
                                 </div>
                             </div>
+
+                            <div class="col-md-1">
+                                <?php if($item_id->option_id == 1) : ?>
+                                    <a href="<?=base_url('assets/attachment/signedpi/'.$item_id->value)?>" class="btn btn-block btn-info text-center <?=$item_id->download?>" target="_blank"  >
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                <?php elseif($item_id->option_id == 2) : ?>
+
+                                <?php endif; ?>
+                            </div>
                         </div>
                         <?php else : ?>
                             <div class="row">
@@ -109,7 +119,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="form-group">
                                     <?php if($item_id->option_id == 1) : ?>
                                         <div class="input-group">

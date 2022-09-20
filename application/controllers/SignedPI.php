@@ -58,7 +58,7 @@
             $datas['header'] = 'Process';
             $datas['params'] = [
                 'id' => $id,
-                'item' => $this->M_CRUD->readData('view_pi_item_signed', ['pi_id' => $id, 'is_deleted' => '0']),
+                'item' => $this->M_CRUD->readData('view_trans_pi_signed_item', ['pi_id' => $id, 'is_deleted' => '0']),
                 'assign' => $this->M_CRUD->pi_item_role('master_pi_item_assign', ['is_deleted' => '0', 'role_id' => $this->session->userdata('logged_in')->role_id]),
                 'top' => $this->M_CRUD->readData('master_top', ['is_deleted' => '0']),
                 'incoterm' => $this->M_CRUD->readData('master_incoterm', ['is_deleted' => '0']),
