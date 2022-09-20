@@ -85,44 +85,6 @@
                     <?php $this->load->view('export/proforma/add/coding'); ?>
                 </div>
             </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="remark" class="control-label">Remark</label>
-                                <textarea name="remark" class="form-control upper" id="remark" placeholder="Enter remark" readonly rows="2"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="attachment">Attachment</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="attachment" name="attachment" accept="image/*">
-                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- <div class="row">
-                        <div class="col-md-6">
-                            <a class="btn btn-default btn-block cancel" href="<?=site_url('export/proforma')?>">
-                                <i class="fas fa-ban mr-2"></i>Cancel
-                            </a>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-success save btn-block" id="btn-proforma-save">
-                                <i class="fas fa-save mr-2"></i>Save
-                            </button>
-                        </div>
-                    </div> -->
-                </div>
-            </div>
         </div>
         <div class="card-body">
             <div class="row">
@@ -139,6 +101,4 @@
             </div>
         </div>
     </div>
-
-    
 </form>
