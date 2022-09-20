@@ -208,14 +208,13 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                // base_url("assets/js/container/detail.js"),
             ];
             $datas['title'] = 'Export - Proforma Invoice';
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Proforma Invoice'];
             $datas['header'] = 'Detail record';
             $datas['params'] = [
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_detail', ['is_deleted' => '0', 'id' => $id]),
-                'category' => $this->M_CRUD->pi_category('view_print_category_trans_pi', ['pi_id' => $id]),
+                'category' => $this->M_CRUD->pi_category('view_print_trans_pi_category', ['pi_id' => $id]),
                 'item' => $this->M_CRUD->pi_item('view_print_detail_trans_pi', ['is_deleted' => '0', 'pi_id' => $id]),
             ];
 
@@ -240,11 +239,11 @@
             $datas['header'] = 'Process';
             $datas['params'] = [
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_detail', ['is_deleted' => '0', 'id' => $id]),
-                'category' => $this->M_CRUD->pi_category('view_print_category_trans_pi', ['pi_id' => $id]),
-                'item' => $this->M_CRUD->pi_item('view_print_detail_trans_pi', ['is_deleted' => '0', 'pi_id' => $id]),
+                'category' => $this->M_CRUD->pi_category('view_print_trans_pi_category', ['pi_id' => $id]),
+                'item' => $this->M_CRUD->pi_item('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
                 'categories' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
                 'items' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0']),
-                'item_revise' => $this->M_CRUD->readData('view_print_detail_trans_pi', ['is_deleted' => '0', 'pi_id' => $id]),
+                'item_revise' => $this->M_CRUD->readData('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
                 'cbm_revise' => $this->M_CRUD->readDatabyID('view_trans_pi_detail_item', ['is_deleted' => '0', 'pi_id' => $id]),
             ];
 
@@ -271,7 +270,8 @@
                 $paramHistory = [
                     'pi_id' => $post['id'],
                     'pi_status_id' => $post['status'],
-                    'remark' => ($post['remark']?$post['remark']:NULL)
+                    'remark' => ($post['remark']?$post['remark']:NULL),
+                    'created_by' => $this->session->userdata('logged_in')->id,
                 ];
 
                 $this->M_CRUD->insertData('trans_pi_history', $paramHistory);
