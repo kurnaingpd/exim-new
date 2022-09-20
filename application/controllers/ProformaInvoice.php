@@ -215,7 +215,7 @@
             $datas['params'] = [
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_detail', ['is_deleted' => '0', 'id' => $id]),
                 'category' => $this->M_CRUD->pi_category('view_print_trans_pi_category', ['pi_id' => $id]),
-                'item' => $this->M_CRUD->pi_item('view_print_detail_trans_pi', ['is_deleted' => '0', 'pi_id' => $id]),
+                'item' => $this->M_CRUD->pi_item('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
             ];
 
             $this->template->load('default', 'contents' , 'export/proforma/detail/index', $datas);
