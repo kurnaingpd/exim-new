@@ -9,7 +9,7 @@
                     <th>#</th>
                     <th>Customer code</th>
                     <th>Company name</th>
-                    <th>Address</th>
+                    <th>Town</th>
                     <th>Country</th>
                     <th>Phone</th>
                     <th>Created at</th>
@@ -23,14 +23,14 @@
                         <td class="text-center"><?=$no?>.</td>
                         <td class="text-center"><?=$rows->code?></td>
                         <td><?=$rows->company_name?></td>
-                        <td><?=$rows->address?></td>
+                        <td><?=$rows->town?></td>
                         <td><?=$rows->country_name?></td>
                         <td class="text-center"><?=$rows->phone_no?></td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center">
-                            <a href="<?=site_url('export/country/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
-                                <i class="fas fa-edit"></i>
+                            <a href="<?=site_url('export/customer/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
+                                <i class="fas fa-eye"></i>
                             </a>
                             <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">
                                 <i class="fas fa-trash"></i>

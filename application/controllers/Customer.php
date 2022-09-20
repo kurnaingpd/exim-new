@@ -30,7 +30,7 @@
             $datas['breadcrumb'] = ['Export', 'Master', 'Customer'];
             $datas['header'] = 'Customer list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('view_customer_list', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD->readData('view_master_customer_list', ['is_deleted' => '0'])
             ];
 
             $this->template->load('default', 'contents' , 'export/customer/list', $datas);
@@ -61,6 +61,8 @@
                 'top' => $this->M_CRUD->readData('master_top', ['is_deleted' => '0']),
                 'currency' => $this->M_CRUD->readData('master_currency', ['is_deleted' => '0']),
                 'incoterm' => $this->M_CRUD->readData('master_incoterm', ['is_deleted' => '0']),
+                'import_bill' => $this->M_CRUD->readData('master_import_doc_option', ['flag' => '1', 'is_deleted' => '0']),
+                'import_nonbill' => $this->M_CRUD->readData('master_import_doc_option', ['flag' => '2', 'is_deleted' => '0']),
                 'coding' => $this->M_CRUD->readData('master_coding_type', ['is_deleted' => '0']),
             ];
 
@@ -275,12 +277,47 @@
 
         public function detail($id)
         {
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/bs-stepper/css/bs-stepper.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+            ];
 
-        }
+            $datas['js'] = [
+                base_url("assets/adminlte/plugins/bs-stepper/js/bs-stepper.min.js"),
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/customer/detail.js"),
+            ];
+            $datas['title'] = 'Export - Customer';
+            $datas['breadcrumb'] = ['Export', 'Master', 'Customer'];
+            $datas['header'] = 'Detail record';
+            $datas['params'] = [
+                'customer' => $this->M_CRUD->readDatabyID('master_customer', ['id' => $id]),
+                'cust_bank' => $this->M_CRUD->readDatabyID('view_master_customer_bank', ['customer_id' => $id]),
+                'cust_notify' => $this->M_CRUD->readDatabyID('master_customer_notify', ['customer_id' => $id]),
+                'cust_country' => $this->M_CRUD->readDatabyID('view_master_customer_country', ['customer_id' => $id]),
+                'cust_cp' => $this->M_CRUD->readDatabyID('master_customer_cp', ['customer_id' => $id]),
+                'cust_ship' => $this->M_CRUD->readDatabyID('master_customer_ship', ['customer_id' => $id]),
+                'cust_cpship' => $this->M_CRUD->readDatabyID('master_customer_cp_ship', ['customer_id' => $id]),
+                'cust_import' => $this->M_CRUD->readDatabyID('master_customer_import_doc', ['customer_id' => $id]),
+                'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
+                'bank' => $this->M_CRUD->readData('master_bank', ['is_deleted' => '0']),
+                'top' => $this->M_CRUD->readData('master_top', ['is_deleted' => '0']),
+                'currency' => $this->M_CRUD->readData('master_currency', ['is_deleted' => '0']),
+                'incoterm' => $this->M_CRUD->readData('master_incoterm', ['is_deleted' => '0']),
+                'import_bill' => $this->M_CRUD->readData('master_import_doc_option', ['flag' => '1', 'is_deleted' => '0']),
+                'import_nonbill' => $this->M_CRUD->readData('master_import_doc_option', ['flag' => '2', 'is_deleted' => '0']),
+                'cust_coding' => $this->M_CRUD->readDatabyID('master_customer_coding', ['customer_id' => $id]),
+            ];
+            $datas['detail'] = [
+                'cust_ship' => $this->M_CRUD->readData('master_customer_ship_detail', ['customer_ship_id' => $datas['params']['cust_ship']->id]),
+                'cust_coding' => $this->M_CRUD->readData('view_master_customer_coding_detail', ['customer_coding_id' => $datas['params']['cust_coding']->id]),
+            ];
 
-        public function update()
-        {
-
+            $this->template->load('default', 'contents' , 'export/customer/detail/index', $datas);
         }
 
         public function delete($id)
