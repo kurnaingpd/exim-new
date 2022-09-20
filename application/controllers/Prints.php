@@ -14,14 +14,16 @@
         public function proforma($id)
         {
             $datas['title'] = 'Print Proforma Invoice';
-            $datas['params'] = [
-                'header' => $this->M_CRUD->readDatabyID('view_print_header_trans_pi', ['is_deleted' => '0', 'id' => $id]),
-                'category' => $this->M_CRUD->pi_category('view_print_category_trans_pi', ['pi_id' => $id]),
-                'detail' => $this->M_CRUD->pi_item('view_print_detail_trans_pi', ['is_deleted' => '0', 'pi_id' => $id]),
-                'footer' => $this->M_CRUD->readDatabyID('view_print_footer_trans_pi', ['pi_id' => $id]),
-                'signature' => $this->M_CRUD->readDatabyID('view_print_signature_trans_pi', ['pi_id' => $id]),
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/css/proforma.css"),
             ];
-            $datas['content'] = $this->load->view('export/print/proforma', $datas, true);
+            $datas['params'] = [
+                'header' => $this->M_CRUD->readDatabyID('view_print_trans_pi_header', ['is_deleted' => '0', 'id' => $id]),
+                'category' => $this->M_CRUD->pi_category('view_print_trans_pi_category', ['pi_id' => $id]),
+                'detail' => $this->M_CRUD->pi_item('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
+                'footer' => $this->M_CRUD->readDatabyID('view_print_trans_pi_footer', ['pi_id' => $id]),
+                'signature' => $this->M_CRUD->readDatabyID('view_print_trans_pi_signature', ['pi_id' => $id]),
+            ];
 
             $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
             $mpdf->defaultheaderline = 0;
@@ -39,7 +41,7 @@
                 10, // margin header
                 8
             );
-            $content = $this->load->view('export/print/index', $datas, true);
+            $content = $this->load->view('export/print/proforma', $datas, true);
             $mpdf->SetFooter('
                 <div style="text-align: left; font-style: normal; font-size:7px;">Note : Please Sign This Proforma Invoice, fill the date and send back to us with PO as your confirmation</div>
                 <div style="box-sizing: border-box; content: "", clear: both; display: table;">

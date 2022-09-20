@@ -2,10 +2,19 @@
 <html lang="en">
     <head>
         <title><?=$title?></title>
+        <?php
+            if ( isset($css) ){
+                foreach($css as $rows){
+                    $exp = explode(",", $rows);
+                    echo "<link type=\"{$exp[0]}\" rel=\"{$exp[1]}\" href=\"{$exp[2]}\" />\n";
+                }
+            }
+        ?>
         <style>
-            * {
+            /* * {
                 box-sizing: border-box;
             }
+
             .box {
                 float: left;
                 width: 28%;
@@ -84,7 +93,7 @@
 
             .title {
                 text-align: center;
-            }
+            } */
         </style>
     </head>
     <body>

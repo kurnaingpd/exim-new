@@ -125,44 +125,6 @@
                                             </ul>
                                         </div>
                                     <?php endforeach; ?>
-
-                                    <!-- <div class="card border">
-                                        <div class="card-header" style="background-color: #e6e6e6;">
-                                            <i class="fas fa-database mr-2"></i><b>Master</b>
-                                        </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">
-                                                <a href="<?=site_url('uac/user')?>" class="text-secondary">
-                                                    <i class="fas fa-users mr-2"></i>User
-                                                </a>
-                                            </li>
-
-                                            <li class="list-group-item">
-                                                <a href="<?=site_url('uac/modules')?>" class="text-secondary">
-                                                    <i class="far fa-file-alt mr-2"></i>Module
-                                                </a>
-                                            </li>
-
-                                            <li class="list-group-item">
-                                                <a href="<?=site_url('uac/menu')?>" class="text-secondary">
-                                                    <i class="fas fa-bars mr-2"></i>Menu
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="card border">
-                                        <div class="card-header" style="background-color: #e6e6e6;">
-                                            <i class="fas fa-server mr-2"></i><b>Transaction</b>
-                                        </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">
-                                                <a href="<?=site_url('uac/assignmenu')?>" class="text-secondary">
-                                                    <i class="fas fa-users-cog mr-2"></i>Assign menu
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div> -->
                                 </div>
 
                                 <div class="col-md-10">
