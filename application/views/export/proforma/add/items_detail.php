@@ -7,7 +7,6 @@
             <th>Configuration</th>
             <th>Qty</th>
             <th>Price</th>
-            <th>Total</th>
             <th><i class="fas fa-ellipsis-h"></i></th>
         </tr>
     </thead>
