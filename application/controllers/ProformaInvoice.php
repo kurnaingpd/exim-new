@@ -185,7 +185,7 @@
                 $paramHistory = [
                     'pi_id' => $header,
                     'pi_status_id' => 1,
-                    'remark' => ($post['remark']?$post['remark']:NULL),
+                    'created_by' => $this->session->userdata('logged_in')->id,
                 ];
                 $this->M_CRUD->insertData('trans_pi_history', $paramHistory);
                 

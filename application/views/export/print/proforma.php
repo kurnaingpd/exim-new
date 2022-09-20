@@ -46,7 +46,7 @@
             </div>
 
             <div id="row">
-                <div class="box-name">COUNTRY OF ORIFIN</div>
+                <div class="box-name">COUNTRY OF ORIGIN</div>
                 <div class="box-colon">:</div>
                 <div class="box-value"><?=$params['header']->country_origin?></div>
             </div>
