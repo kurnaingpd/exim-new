@@ -149,21 +149,24 @@
         public function packing($id)
         {
             $datas['title'] = 'Print Packing';
-            // $datas['params'] = [
-            //     'header' => $this->M_CRUD->readDatabyID('view_print_header_trans_pi', ['is_deleted' => '0', 'id' => $id]),
-            //     'category' => $this->M_CRUD->pi_category('view_print_category_trans_pi', ['pi_id' => $id]),
-            //     'detail' => $this->M_CRUD->pi_item('view_print_detail_trans_pi', ['is_deleted' => '0', 'pi_id' => $id]),
-            //     'footer' => $this->M_CRUD->readDatabyID('view_print_footer_trans_pi', ['pi_id' => $id]),
-            //     'signature' => $this->M_CRUD->readDatabyID('view_print_signature_trans_pi', ['pi_id' => $id]),
-            // ];
-            $datas['content'] = $this->load->view('export/print/packing', $datas, true);
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/css/print/packing.css"),
+            ];
+            $datas['params'] = [
+                'header' => $this->M_CRUD->readDatabyID('view_print_trans_packing_header', ['is_deleted' => '0', 'id' => $id]),
+                // 'category' => $this->M_CRUD->pi_category('view_print_category_trans_pi', ['pi_id' => $id]),
+                'detail' => $this->M_CRUD->readData('view_print_trans_packing_detail', ['packing_list_id' => $id]),
+                // 'footer' => $this->M_CRUD->readDatabyID('view_print_footer_trans_pi', ['pi_id' => $id]),
+                // 'signature' => $this->M_CRUD->readDatabyID('view_print_signature_trans_pi', ['pi_id' => $id]),
+            ];
+            // $datas['content'] = $this->load->view('export/print/packing', $datas, true);
 
             $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
             $mpdf->defaultheaderline = 0;
             $mpdf->defaultfooterline = 0;
             $mpdf->setAutoTopMargin = 'stretch';
             $mpdf->setAutoBottomMargin = 'stretch';
-            $mpdf->SetHeader('<img src="' . base_url() . 'assets/images/inventory/skp-logo-crop-removebg.png" width="14%" />||');
+            $mpdf->SetHeader('<img src="' . base_url() . 'assets/images/inventory/skp-logo-crop-removebg.png" width="11%" />||');
             $mpdf->AddPage(
                 'L', // L - landscape, P - portrait 
                 '', '', '', '',
@@ -174,7 +177,7 @@
                 10, // margin header
                 8
             );
-            $content = $this->load->view('export/print/index', $datas, true);
+            $content = $this->load->view('export/print/packing', $datas, true);
             $mpdf->SetFooter('
                 <div style="box-sizing: border-box; content: "", clear: both; display: table;">
                     <div style="float: left; width: 30%; text-align: left; font-style: normal; font-weight: normal; font-size:7px; color: #989579;">

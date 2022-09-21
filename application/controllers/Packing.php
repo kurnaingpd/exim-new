@@ -63,7 +63,7 @@
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Packing'];
             $datas['header'] = 'Add record';
             $datas['params'] = [
-                'autonumber' => $this->M_CRUD->autoNumberPacking('trans_packing_list', 'code', '/SKP-PL/'.date('m/Y'), 4),
+                'autonumber' => $this->M_CRUD->autoNumberPacking('trans_packing_list', 'code', '/SKP-EXT/PL/'.date('m/Y'), 4),
                 'invoice' => $this->M_CRUD->readData('view_trans_pi_packing'),
                 'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
                 'loading' => $this->M_CRUD->readData('master_loading_port', ['is_deleted' => '0']),

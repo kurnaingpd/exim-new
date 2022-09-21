@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+.title {
+    text-align: center;
+}
+
+.content {
+    font-size: 7px;
+}
+
+.clearfix-content::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.box-name {
+    float: left;
+    width: 25%;
+}
+
+.box-colon {
+    float: left;
+    width: 2%
+}
+
+.box-value {
+    float: left;
+    width: 35%;
+}
+
+.table {
+    width: 100%;
+    font-size: 7px;
+    border-style: solid;
+    border-width: 1px;
+    border-collapse: collapse;
+}
+
+th {
+    border-style: solid;
+    border-width: 1px;
+    padding: 1%;
+}
+
+.data-border {
+    border-style: solid;
+    border-width: 1px;
+    padding: 1%;
+}
+
+.summary {
+    font-weight: bold;
+}
