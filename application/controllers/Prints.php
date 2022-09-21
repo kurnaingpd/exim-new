@@ -154,12 +154,8 @@
             ];
             $datas['params'] = [
                 'header' => $this->M_CRUD->readDatabyID('view_print_trans_packing_header', ['is_deleted' => '0', 'id' => $id]),
-                // 'category' => $this->M_CRUD->pi_category('view_print_category_trans_pi', ['pi_id' => $id]),
                 'detail' => $this->M_CRUD->readData('view_print_trans_packing_detail', ['packing_list_id' => $id]),
-                // 'footer' => $this->M_CRUD->readDatabyID('view_print_footer_trans_pi', ['pi_id' => $id]),
-                // 'signature' => $this->M_CRUD->readDatabyID('view_print_signature_trans_pi', ['pi_id' => $id]),
             ];
-            // $datas['content'] = $this->load->view('export/print/packing', $datas, true);
 
             $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
             $mpdf->defaultheaderline = 0;

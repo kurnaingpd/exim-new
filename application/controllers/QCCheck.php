@@ -58,7 +58,7 @@
             $datas['header'] = 'Add record';
             $datas['params'] = [
                 'autonumber' => $this->M_CRUD->autoNumberQCheck('trans_qcontrol_check', 'code', '/SKP-QC/'.date('m/Y'), 4),
-                'product' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0']),
+                'product' => $this->M_CRUD->readData('view_trans_qcheck_item', ['is_deleted' => '0']),
                 'status' => $this->M_CRUD->readData('master_qc_status', ['is_deleted' => '0']),
             ];
 
