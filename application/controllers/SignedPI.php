@@ -128,10 +128,18 @@
                     ];
                     $params = [
                         'dates' => $item['date'],
-                        'value' => $filename,
+                        'value' => 'Attachment location: assets/attachment/signedpi/',
                         'updated_by' => $this->session->userdata('logged_in')->id,
                         'updated_at' => date('Y-m-d H:i:s'),
                     ];
+
+                    $paramsAttachment = [
+                        'pi_id' => $item['id'],
+                        'pi_item_id' => $item['item_id'],
+                        'values' => $filename,
+                        'created_by' => $this->session->userdata('logged_in')->id,
+                    ];
+                    $this->M_CRUD->insertData('trans_signed_pi_attachment', $paramsAttachment);
                 } else {
                     $condition = [
                         'pi_id' => $item['id'],
