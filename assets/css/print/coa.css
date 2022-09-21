@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+.title {
+    text-align: center;
+}
+
+.content {
+    font-size: 11px;
+    margin-top: 4%;
+}
+
+.box-name {
+    float: left;
+    width: 25%;
+}
+
+.box-colon {
+    float: left;
+    width: 4%
+}
+
+.box-value {
+    float: left;
+    width: 35%;
+}
