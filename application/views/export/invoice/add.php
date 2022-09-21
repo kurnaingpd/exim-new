@@ -26,7 +26,7 @@
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="description" class="control-label">PO # (If any)</label>
+                        <label for="description" class="control-label">FFRN #</label>
                         <input type="text" name="po_no" class="form-control" id="po_no" placeholder="Enter PO" autocomplete="off">
                     </div>
                 </div>

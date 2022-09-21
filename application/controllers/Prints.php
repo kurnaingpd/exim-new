@@ -15,7 +15,7 @@
         {
             $datas['title'] = 'Print Proforma Invoice';
             $datas['css'] = [
-                "text/css,stylesheet,".base_url("assets/css/proforma.css"),
+                "text/css,stylesheet,".base_url("assets/css/print/proforma.css"),
             ];
             $datas['params'] = [
                 'header' => $this->M_CRUD->readDatabyID('view_print_trans_pi_header', ['is_deleted' => '0', 'id' => $id]),
@@ -82,14 +82,16 @@
         public function invoice($id)
         {
             $datas['title'] = 'Print Invoice';
-            $datas['params'] = [
-                'header' => $this->M_CRUD->readDatabyID('view_print_header_trans_pi', ['is_deleted' => '0', 'id' => $id]),
-                'category' => $this->M_CRUD->pi_category('view_print_category_trans_pi', ['pi_id' => $id]),
-                'detail' => $this->M_CRUD->pi_item('view_print_detail_trans_pi', ['is_deleted' => '0', 'pi_id' => $id]),
-                'footer' => $this->M_CRUD->readDatabyID('view_print_footer_trans_pi', ['pi_id' => $id]),
-                'signature' => $this->M_CRUD->readDatabyID('view_print_signature_trans_pi', ['pi_id' => $id]),
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/css/print/invoice.css"),
             ];
-            $datas['content'] = $this->load->view('export/print/invoice', $datas, true);
+            $datas['params'] = [
+                'header' => $this->M_CRUD->readDatabyID('view_print_trans_invoice_header', ['is_deleted' => '0', 'id' => $id]),
+                'category' => $this->M_CRUD->pi_category('view_print_trans_invoice_category', ['invoice_id' => $id]),
+                'detail' => $this->M_CRUD->pi_item('view_print_trans_invoice_detail', ['is_deleted' => '0', 'invoice_id' => $id]),
+                'footer' => $this->M_CRUD->readData('view_print_trans_invoice_footer', ['invoice_id' => $id]),
+                // 'signature' => $this->M_CRUD->readDatabyID('view_print_trans_pi_signature', ['pi_id' => $id]),
+            ];
 
             $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
             $mpdf->defaultheaderline = 0;
@@ -107,7 +109,7 @@
                 10, // margin header
                 8
             );
-            $content = $this->load->view('export/print/index', $datas, true);
+            $content = $this->load->view('export/print/invoice', $datas, true);
             $mpdf->SetFooter('
                 <div style="box-sizing: border-box; content: "", clear: both; display: table;">
                     <div style="float: left; width: 30%; text-align: left; font-style: normal; font-weight: normal; font-size:7px; color: #989579;">
