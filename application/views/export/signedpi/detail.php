@@ -48,17 +48,71 @@
 
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input item_<?=$item_id->pi_item_id?> cursor-context" autocomplete="off" id="pi_date_<?=$item_id->name?>" name="pi_date_<?=$item_id->pi_item_id?>" value="<?=$item_id->dates?>" disabled required>
-                                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    <?php if($item_id->pi_item_id == 14 || $item_id->pi_item_id == 15) : ?>
+                                        <?php if($item_id->dates) : ?>
+                                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                                <input type="text" class="form-control datetimepicker-input item_<?=$item_id->pi_item_id?> cursor-context" autocomplete="off" id="pi_date_<?=$item_id->name?>" name="pi_date_<?=$item_id->pi_item_id?>" value="<?=$item_id->dates?>" style="background-color: #fff;" required>
+                                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                </div>
+                                            </div>
+                                        <?php else : ?>
+                                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                                <input type="text" class="form-control datetimepicker-input item_<?=$item_id->pi_item_id?> cursor-context" autocomplete="off" id="pi_date_<?=$item_id->name?>" name="pi_date_<?=$item_id->pi_item_id?>" disabled required>
+                                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php else : ?>
+                                        <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                            <input type="text" class="form-control datetimepicker-input item_<?=$item_id->pi_item_id?> cursor-context" autocomplete="off" id="pi_date_<?=$item_id->name?>" name="pi_date_<?=$item_id->pi_item_id?>" value="<?=$item_id->dates?>" disabled required>
+                                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
 
                             <div class="col-md-5">
                                 <div class="form-group">
+                                <?php if($item_id->pi_item_id == 14 || $item_id->pi_item_id == 15) : ?>
+                                    <?php if($item_id->option_id == 1) : ?>
+                                        <?php if($item_id->value) : ?>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input item_<?=$item_id->pi_item_id?>" id="pi_val_<?=$item_id->pi_item_id?>" name="pi_val_<?=$item_id->pi_item_id?>" accept="application/pdf" id="pi_val_<?=$item_id->name?>" name="pi_val_<?=$item_id->pi_item_id?>" value="<?=$item_id->value?>" required>
+                                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                </div>
+                                            </div>
+                                        <?php else : ?>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input item_<?=$item_id->pi_item_id?>" id="pi_val_<?=$item_id->pi_item_id?>" name="pi_val_<?=$item_id->pi_item_id?>" accept="application/pdf" id="pi_val_<?=$item_id->name?>" name="pi_val_<?=$item_id->pi_item_id?>" value="<?=$item_id->value?>" disabled required>
+                                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php elseif($item_id->option_id == 2) : ?>
+                                        <select class="form-control select2bs4 item_<?=$item_id->pi_item_id?>"" id="pi_val_<?=$item_id->name?>" name="pi_val_<?=$item_id->pi_item_id?>" disabled required>
+                                            <option></option>
+                                            <?php if($item_id->pi_item_id == 3) : ?>
+                                                <?php foreach($params['top'] as $rows) : ?>
+                                                    <option value="<?=$rows->id?>" <?=(($rows->id==$item_id->value)?'selected':'')?>><?=$rows->name?></option>
+                                                <?php endforeach; ?>
+                                            <?php elseif($item_id->pi_item_id == 6) : ?>
+                                                <?php foreach($params['incoterm'] as $rows) : ?>
+                                                    <option value="<?=$rows->id?>" <?=(($rows->id==$item_id->value)?'selected':'')?> ><?=$rows->code.' - '.$rows->name?></option>
+                                                <?php endforeach; ?>
+                                            <?php elseif($item_id->pi_item_id == 24) : ?>
+                                                <?php foreach($params['balance'] as $rows) : ?>
+                                                    <option value="<?=$rows->id?>" <?=(($rows->id==$item_id->value)?'selected':'')?><?=$rows->name?></option>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                        </select>
+                                    <?php endif; ?>
+                                <?php else : ?>
                                     <?php if($item_id->option_id == 1) : ?>
                                         <div class="input-group">
                                             <div class="custom-file">
@@ -84,14 +138,21 @@
                                             <?php endif; ?>
                                         </select>
                                     <?php endif; ?>
+                                <?php endif; ?>
                                 </div>
                             </div>
 
-                            <div class="col-md-1">
+                            <div class="col-md-1 text-center">
                                 <?php if($item_id->option_id == 1) : ?>
-                                    <a href="<?=base_url('assets/attachment/signedpi/'.$item_id->value)?>" class="btn btn-block btn-info text-center <?=$item_id->download?>" target="_blank"  >
-                                        <i class="fas fa-download"></i>
-                                    </a>
+                                    <?php if($item_id->pi_item_id == 14 || $item_id->pi_item_id == 15) : ?>
+                                        <a href="<?=site_url('export/signedpi/attachment/'.$params['id'].'/'.$item_id->pi_item_id)?>" class="btn btn-block btn-info <?=$item_id->download?>">
+                                            <i class="fas fa-list"></i>
+                                        </a>
+                                    <?php else : ?>
+                                        <a href="<?=base_url('assets/attachment/signedpi/'.$item_id->value)?>" class="btn btn-block btn-info <?=$item_id->download?>" target="_blank"  >
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             </div>
                         </div>
