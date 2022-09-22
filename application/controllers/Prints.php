@@ -143,6 +143,7 @@
             $mpdf->WriteHTML($content);
             $filename = "Export-Invoice";
             $time = date('YmdHis');
+            $page_count = $mpdf -> page;
             $mpdf->Output($filename."-".$time.".pdf", 'I');
         }
 
