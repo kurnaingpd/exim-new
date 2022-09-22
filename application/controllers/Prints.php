@@ -403,7 +403,14 @@
         public function spp($id)
         {
             $datas['title'] = 'Print Product Statement Letter';
-            $datas['content'] = $this->load->view('export/print/spp', $datas, true);
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/css/print/spp.css"),
+            ];
+            $datas['params'] = [
+                'header' => $this->M_CRUD->readDatabyID('trans_spp', ['id' => $id]),
+                'detail' => $this->M_CRUD->readData('trans_spp_detail', ['spp_id' => $id]),
+            ];
+
             $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
             $mpdf->defaultheaderline = 0;
             $mpdf->defaultfooterline = 0;
@@ -420,7 +427,7 @@
                 10, // margin header
                 8
             );
-            $content = $this->load->view('export/print/index', $datas, true);
+            $content = $this->load->view('export/print/spp', $datas, true);
             $mpdf->SetFooter('
                 <div style="box-sizing: border-box; content: "", clear: both; display: table;">
                     <div style="float: left; width: 30%; text-align: left; font-style: normal; font-weight: normal; font-size:7px; color: #989579;">
