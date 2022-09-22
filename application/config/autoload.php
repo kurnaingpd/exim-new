@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session','email','template');
+$autoload['libraries'] = array('database','session','template');
 
 /*
 | -------------------------------------------------------------------
@@ -103,7 +103,7 @@ $autoload['helper'] = array('url','file','Currency','sendmails');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array('email');
+$autoload['config'] = array();
 
 /*
 | -------------------------------------------------------------------

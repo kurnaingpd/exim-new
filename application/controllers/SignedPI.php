@@ -167,8 +167,22 @@
                 'list' => $this->M_CRUD->pi_email('view_trans_pi_email_user'),
             ];
 
-            sendmail('PROGRESS PI | '.$data_pi['header']->pi_no, $data_pi['list'], $this->load->view('export/email/content', $data_pi['detail'],  TRUE));
+            $this->sendmail('PROGRESS PI | '.$data_pi['header']->pi_no, $data_pi['list'], $this->load->view('export/email/content', $data_pi,  TRUE));
             echo json_encode($response);
+        }
+
+        public function sendmail($subject, $to, $content)
+        {
+            $implode = implode(", ", $to);
+            $this->load->config('email');
+            $this->load->library('email');
+            $this->email->set_newline("\r\n");
+            $this->email->set_crlf("\r\n");
+            $this->email->from('no-reply4@gonusa-distribusi.com');
+            $this->email->to($implode);
+            $this->email->subject($subject);
+            $this->email->message($content);
+            $this->email->send();
         }
 
         public function attachment($pi_id, $item_id)
