@@ -50,7 +50,7 @@
                                 <div class="mr-3">
                                     <div class="form-group">
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input check" type="checkbox" id="carton" name="carton" value="" >
+                                            <input class="form-check-input check" type="checkbox" id="carton" name="carton" data-packing="<?=$params['detail']->id?>">
                                             <label class="form-check-label" for="carton">Carton barcode</label>
                                         </div>
                                     </div>
@@ -58,7 +58,7 @@
                                 <div class="mr-3">
                                     <div class="form-group">
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input check" type="checkbox" id="batch" name="batch" value="" >
+                                            <input class="form-check-input check" type="checkbox" id="batch" name="batch" data-packing="<?=$params['detail']->id?>">
                                             <label class="form-check-label" for="batch">Batch</label>
                                         </div>
                                     </div>
@@ -66,7 +66,7 @@
                                 <div class="mr-3">
                                     <div class="form-group">
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input check" type="checkbox" id="expired" name="expired" value="" >
+                                            <input class="form-check-input check" type="checkbox" id="expired" name="expired" data-packing="<?=$params['detail']->id?>">
                                             <label class="form-check-label" for="expired">Expired date</label>
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@
                                 <div class="mr-3">
                                     <div class="form-group">
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input check" type="checkbox" id="production" name="production" value="" >
+                                            <input class="form-check-input check" type="checkbox" id="production" name="production" data-packing="<?=$params['detail']->id?>">
                                             <label class="form-check-label" for="production">Production date</label>
                                         </div>
                                     </div>

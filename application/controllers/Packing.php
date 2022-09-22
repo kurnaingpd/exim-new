@@ -228,6 +228,21 @@
 
             echo json_encode($response);
         }
+
+        public function filter($id)
+        {
+            $post = $this->input->post();
+            $params = [
+                $post['fields'] => $post['filter'],
+            ];
+            if($this->M_CRUD->updateData('trans_packing_inv_filter', $params, ['id' => $id])) {
+                $response = ['status' => 1, 'messages' => 'Filter packing list has been updated successfully.', 'icon' => 'success'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Packing check has failed to update.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
+        }
     }
 
 ?>

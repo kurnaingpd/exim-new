@@ -242,6 +242,7 @@ $route['export/packing/item/(:num)'] = 'Packing/table_item/$1';
 $route['export/packing/save'] = 'Packing/save';
 $route['export/packing/detail/(:num)'] = 'Packing/detail/$1';
 $route['export/packing/update'] = 'Packing/update';
+$route['export/packing/filter/(:num)'] = 'Packing/filter/$1';
 $route['export/packing/print/(:num)'] = 'Prints/packing/$1';
 
 /** COA */

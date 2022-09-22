@@ -3,6 +3,18 @@ $(function () {
         "responsive": true, "lengthChange": false, "autoWidth": false, "searching": false, "paging": false, "info": false
     });
 
+    $('input.check').on('change', function() {
+        var id = $(this).attr('id');
+        var packing = $(this).attr('data-packing');
+        var status = $(this).is(":checked");
+        
+        if (status) {
+            checking(packing, id, '1')
+        } else {
+            checking(packing, id, '0')
+        }
+    });
+
     $.validator.setDefaults({
         submitHandler: function () {
             save();
@@ -23,6 +35,31 @@ $(function () {
         }
     });
 });
+
+function checking(packing, id, data)
+{
+    $.ajax({
+        url: site_url + "export/packing/filter/" + packing,
+        type: "POST",
+        data: {fields: id, filter: data},
+        dataType: "json",
+        success: function(response) {
+            console.log(response);
+            // if(response.status == 1) {
+            //     $('a.cancel').prop('disabled', true);
+            //     $('button#btn-packing-update').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', true);
+            //     swal("", response.messages, response.icon).then((value) => {
+            //         window.location.href = site_url + response.url;
+            //     });
+            // } else {
+            //     swal("", response.messages, response.icon);
+            // }
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+        }        
+    });
+}
 
 function save()
 {

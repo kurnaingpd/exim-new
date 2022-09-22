@@ -59,7 +59,7 @@
                         </tbody>
                     </table>
                     <div style="margin-top: 1%;">
-                        <p>Deskripsi</p>
+                        <p><?=$params['header']->description?></p>
                     </div>
                 </div>
 
