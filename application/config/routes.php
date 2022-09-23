@@ -323,3 +323,11 @@ $route['import/forwarder/save'] = 'Forwarder/save';
 $route['import/forwarder/detail/(:num)'] = 'Forwarder/detail/$1';
 $route['import/forwarder/update'] = 'Forwarder/update';
 $route['import/forwarder/delete/(:num)'] = 'Forwarder/delete/$1';
+
+/** Import - Document Import */
+$route['import/docimport'] = 'DocumentImport';
+$route['import/docimport/add'] = 'DocumentImport/add';
+$route['import/docimport/save'] = 'DocumentImport/save';
+$route['import/docimport/detail/(:num)'] = 'DocumentImport/detail/$1';
+$route['import/docimport/update'] = 'DocumentImport/update';
+$route['import/docimport/delete/(:num)'] = 'DocumentImport/delete/$1';
