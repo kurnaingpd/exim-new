@@ -315,3 +315,11 @@ $route['import/shipper/save'] = 'Shipper/save';
 $route['import/shipper/detail/(:num)'] = 'Shipper/detail/$1';
 $route['import/shipper/update'] = 'Shipper/update';
 $route['import/shipper/delete/(:num)'] = 'Shipper/delete/$1';
+
+/** Import - Forwarder */
+$route['import/forwarder'] = 'Forwarder';
+$route['import/forwarder/add'] = 'Forwarder/add';
+$route['import/forwarder/save'] = 'Forwarder/save';
+$route['import/forwarder/detail/(:num)'] = 'Forwarder/detail/$1';
+$route['import/forwarder/update'] = 'Forwarder/update';
+$route['import/forwarder/delete/(:num)'] = 'Forwarder/delete/$1';
