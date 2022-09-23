@@ -307,3 +307,11 @@ $route['import/consignee/save'] = 'Consignee/save';
 $route['import/consignee/detail/(:num)'] = 'Consignee/detail/$1';
 $route['import/consignee/update'] = 'Consignee/update';
 $route['import/consignee/delete/(:num)'] = 'Consignee/delete/$1';
+
+/** Import - Shipper */
+$route['import/shipper'] = 'Shipper';
+$route['import/shipper/add'] = 'Shipper/add';
+$route['import/shipper/save'] = 'Shipper/save';
+$route['import/shipper/detail/(:num)'] = 'Shipper/detail/$1';
+$route['import/shipper/update'] = 'Shipper/update';
+$route['import/shipper/delete/(:num)'] = 'Shipper/delete/$1';
