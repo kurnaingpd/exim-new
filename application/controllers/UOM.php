@@ -1,6 +1,6 @@
 <?php
 
-    Class Category extends CI_Controller
+    Class UOM extends CI_Controller
     {
         public function __construct()
         {
@@ -25,16 +25,16 @@
                 base_url("assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"),
                 base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/category/list.js"),
+                base_url("assets/js/uom/list.js"),
             ];
-            $datas['title'] = 'Import - Category';
-            $datas['breadcrumb'] = ['Import', 'Master', 'Category'];
-            $datas['header'] = 'Category list';
+            $datas['title'] = 'Import - UOM';
+            $datas['breadcrumb'] = ['Import', 'Master', 'UOM'];
+            $datas['header'] = 'UOM list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('master_category', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD->readData('master_uom', ['is_deleted' => '0'])
             ];
 
-            $this->template->load('default', 'contents' , 'import/category/list', $datas);
+            $this->template->load('default', 'contents' , 'import/uom/list', $datas);
         }
 
         public function add()
@@ -43,13 +43,13 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/category/add.js"),
+                base_url("assets/js/uom/add.js"),
             ];
-            $datas['title'] = 'Import - Category';
-            $datas['breadcrumb'] = ['Import', 'Master', 'Category'];
+            $datas['title'] = 'Import - UOM';
+            $datas['breadcrumb'] = ['Import', 'Master', 'UOM'];
             $datas['header'] = 'Add record';
 
-            $this->template->load('default', 'contents' , 'import/category/add', $datas);
+            $this->template->load('default', 'contents' , 'import/uom/add', $datas);
         }
 
         public function save()
@@ -60,10 +60,10 @@
                 'created_by' => $this->session->userdata('logged_in')->id,
             ];
 
-            if($this->M_CRUD->insertData('master_category', $params)) {
-                $response = ['status' => 1, 'messages' => 'Category has been saved successfully.', 'icon' => 'success', 'url' => 'import/category'];
+            if($this->M_CRUD->insertData('master_uom', $params)) {
+                $response = ['status' => 1, 'messages' => 'UOM has been saved successfully.', 'icon' => 'success', 'url' => 'import/uom'];
             } else {
-                $response = ['status' => 0, 'messages' => 'Category has failed to save.', 'icon' => 'error'];
+                $response = ['status' => 0, 'messages' => 'UOM has failed to save.', 'icon' => 'error'];
             }
 
             echo json_encode($response);
@@ -75,16 +75,16 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/category/detail.js"),
+                base_url("assets/js/uom/detail.js"),
             ];
-            $datas['title'] = 'Import - Category';
-            $datas['breadcrumb'] = ['Import', 'Master', 'Category'];
+            $datas['title'] = 'Import - UOM';
+            $datas['breadcrumb'] = ['Import', 'Master', 'UOM'];
             $datas['header'] = 'Detail record';
             $datas['params'] = [
-                'detail' => $this->M_CRUD->readDatabyID('master_category', ['id' => $id])
+                'detail' => $this->M_CRUD->readDatabyID('master_uom', ['id' => $id])
             ];
 
-            $this->template->load('default', 'contents' , 'import/category/detail', $datas);
+            $this->template->load('default', 'contents' , 'import/uom/detail', $datas);
         }
 
         public function update()
@@ -97,10 +97,10 @@
                 'updated_by' => $this->session->userdata('logged_in')->id,
             ];
 
-            if($this->M_CRUD->updateData('master_category', $params, $condition)) {
-                $response = ['status' => 1, 'messages' => 'Category has been updated successfully.', 'icon' => 'success', 'url' => 'import/category'];
+            if($this->M_CRUD->updateData('master_uom', $params, $condition)) {
+                $response = ['status' => 1, 'messages' => 'UOM has been updated successfully.', 'icon' => 'success', 'url' => 'import/uom'];
             } else {
-                $response = ['status' => 0, 'messages' => 'Category has failed to update.', 'icon' => 'error'];
+                $response = ['status' => 0, 'messages' => 'UOM has failed to update.', 'icon' => 'error'];
             }
 
             echo json_encode($response);
@@ -110,10 +110,10 @@
         {
             $condition = ['id' => $id];
             
-            if($this->M_CRUD->deleteData('master_category', $condition)) {
-                $response = ['status' => 1, 'messages' => 'Category has been deleted successfully.', 'icon' => 'success', 'url' => 'import/category'];
+            if($this->M_CRUD->deleteData('master_uom', $condition)) {
+                $response = ['status' => 1, 'messages' => 'UOM has been deleted successfully.', 'icon' => 'success', 'url' => 'import/uom'];
             } else {
-                $response = ['status' => 0, 'messages' => 'Category has failed to delete.', 'icon' => 'error'];
+                $response = ['status' => 0, 'messages' => 'UOM has failed to delete.', 'icon' => 'error'];
             }
 
             echo json_encode($response);

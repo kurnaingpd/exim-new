@@ -179,7 +179,7 @@ $route['export/customer/save'] = 'Customer/save';
 $route['export/customer/detail/(:num)'] = 'Customer/detail/$1';
 $route['export/customer/delete/(:num)'] = 'Customer/delete/$1';
 
-/** Export Proforma */
+/** Export - Proforma */
 $route['export/proforma'] = 'ProformaInvoice';
 $route['export/proforma/add'] = 'ProformaInvoice/add';
 $route['export/proforma/customer'] = 'ProformaInvoice/customer';
@@ -204,13 +204,13 @@ $route['export/proforma/update'] = 'ProformaInvoice/update';
 $route['export/proforma/delete/(:num)'] = 'ProformaInvoice/delete/$1';
 $route['export/proforma/delete_item/(:num)'] = 'ProformaInvoice/delete_item/$1';
 
-/** Signed PI */
+/** Export - Signed PI */
 $route['export/signedpi'] = 'SignedPI';
 $route['export/signedpi/detail/(:num)'] = 'SignedPI/detail/$1';
 $route['export/signedpi/save'] = 'SignedPI/save';
 $route['export/signedpi/attachment/(:num)/(:num)'] = 'SignedPI/attachment/$1/$2';
 
-/** Export Term/Ketentuan Ekspor */
+/** Export - Term/Ketentuan Ekspor */
 $route['export/expterm'] = 'ExportTerm';
 $route['export/expterm/add/(:num)'] = 'ExportTerm/add/$1';
 $route['export/expterm/save'] = 'ExportTerm/save';
@@ -218,21 +218,21 @@ $route['export/expterm/detail/(:num)'] = 'ExportTerm/detail/$1';
 $route['export/expterm/process/(:num)'] = 'ExportTerm/process/$1';
 $route['export/expterm/update'] = 'ExportTerm/update';
 
-/** Invoice */
+/** Export - Invoice */
 $route['export/invoice'] = 'Invoice';
 $route['export/invoice/add'] = 'Invoice/add';
 $route['export/invoice/save'] = 'Invoice/save';
 $route['export/invoice/detail/(:num)'] = 'Invoice/detail/$1';
 $route['export/invoice/print/(:num)'] = 'Prints/invoice/$1';
 
-/** QC Check */
+/** Export - QC Check */
 $route['export/qc_check'] = 'QCCheck';
 $route['export/qc_check/add'] = 'QCCheck/add';
 $route['export/qc_check/save'] = 'QCCheck/save';
 $route['export/qc_check/detail/(:num)'] = 'QCCheck/detail/$1';
 $route['export/qc_check/update'] = 'QCCheck/update';
 
-/** Packing */
+/** Export - Packing */
 $route['export/packing'] = 'Packing';
 $route['export/packing/add'] = 'Packing/add';
 $route['export/packing/data'] = 'Packing/data';
@@ -245,7 +245,7 @@ $route['export/packing/update'] = 'Packing/update';
 $route['export/packing/filter/(:num)'] = 'Packing/filter/$1';
 $route['export/packing/print/(:num)'] = 'Prints/packing/$1';
 
-/** COA */
+/** Export - COA */
 $route['export/coa'] = 'COA';
 $route['export/coa/add'] = 'COA/add';
 $route['export/coa/country'] = 'COA/country';
@@ -257,7 +257,7 @@ $route['export/coa/qcheck/(:num)'] = 'COA/qcheck/$1';
 $route['export/coa/save'] = 'COA/save';
 $route['export/coa/print/(:num)'] = 'Prints/coa/$1';
 
-/** Product Specification */
+/** Export - Product Specification */
 $route['export/prodspec'] = 'ProductSpec';
 $route['export/prodspec/add'] = 'ProductSpec/add';
 $route['export/prodspec/item'] = 'ProductSpec/item';
@@ -267,7 +267,7 @@ $route['export/prodspec/qcheck/(:num)'] = 'ProductSpec/qcheck/$1';
 $route['export/prodspec/save'] = 'ProductSpec/save';
 $route['export/prodspec/print/(:num)'] = 'Prints/prodspec/$1';
 
-/** Quality Certificate */
+/** Export - Quality Certificate */
 $route['export/qcertificate'] = 'QCertificate';
 $route['export/qcertificate/add'] = 'QCertificate/add';
 $route['export/prodspec/coa'] = 'QCertificate/coa';
@@ -275,7 +275,7 @@ $route['export/prodspec/coa/(:num)'] = 'QCertificate/coa/$1';
 $route['export/qcertificate/save'] = 'QCertificate/save';
 $route['export/qcertificate/print/(:num)'] = 'Prints/qcertificate/$1';
 
-/** Product Statement Letter */
+/** Export - Product Statement Letter */
 $route['export/spp'] = 'SPP';
 $route['export/spp/add'] = 'SPP/add';
 $route['export/spp/save'] = 'SPP/save';
@@ -283,9 +283,19 @@ $route['export/spp/print/(:num)'] = 'Prints/spp/$1';
 
 /** Import */
 $route['import'] = 'Home/import';
+
+/** Import - Category */
 $route['import/category'] = 'Category';
 $route['import/category/add'] = 'Category/add';
 $route['import/category/save'] = 'Category/save';
 $route['import/category/detail/(:num)'] = 'Category/detail/$1';
 $route['import/category/update'] = 'Category/update';
 $route['import/category/delete/(:num)'] = 'Category/delete/$1';
+
+/** Import - UOM */
+$route['import/uom'] = 'UOM';
+$route['import/uom/add'] = 'UOM/add';
+$route['import/uom/save'] = 'UOM/save';
+$route['import/uom/detail/(:num)'] = 'UOM/detail/$1';
+$route['import/uom/update'] = 'UOM/update';
+$route['import/uom/delete/(:num)'] = 'UOM/delete/$1';
