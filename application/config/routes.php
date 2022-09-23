@@ -299,3 +299,11 @@ $route['import/uom/save'] = 'UOM/save';
 $route['import/uom/detail/(:num)'] = 'UOM/detail/$1';
 $route['import/uom/update'] = 'UOM/update';
 $route['import/uom/delete/(:num)'] = 'UOM/delete/$1';
+
+/** Import - Consignee */
+$route['import/consignee'] = 'Consignee';
+$route['import/consignee/add'] = 'Consignee/add';
+$route['import/consignee/save'] = 'Consignee/save';
+$route['import/consignee/detail/(:num)'] = 'Consignee/detail/$1';
+$route['import/consignee/update'] = 'Consignee/update';
+$route['import/consignee/delete/(:num)'] = 'Consignee/delete/$1';
