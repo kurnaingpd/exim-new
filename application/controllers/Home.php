@@ -32,6 +32,15 @@
 
             $this->template->load('default', 'contents' , 'home/index', $datas);
         }
+
+        public function import()
+        {
+            $datas['title'] = 'Import - Home';
+            $datas['breadcrumb'] = ['Import', 'Home'];
+            $datas['modules'] = 'Import';
+
+            $this->template->load('default', 'contents' , 'home/index', $datas);
+        }
     }
 
 ?>

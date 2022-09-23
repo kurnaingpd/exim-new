@@ -280,3 +280,12 @@ $route['export/spp'] = 'SPP';
 $route['export/spp/add'] = 'SPP/add';
 $route['export/spp/save'] = 'SPP/save';
 $route['export/spp/print/(:num)'] = 'Prints/spp/$1';
+
+/** Import */
+$route['import'] = 'Home/import';
+$route['import/category'] = 'Category';
+$route['import/category/add'] = 'Category/add';
+$route['import/category/save'] = 'Category/save';
+$route['import/category/detail/(:num)'] = 'Category/detail/$1';
+$route['import/category/update'] = 'Category/update';
+$route['import/category/delete/(:num)'] = 'Category/delete/$1';
