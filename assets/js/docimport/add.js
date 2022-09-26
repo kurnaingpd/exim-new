@@ -18,13 +18,39 @@ $(function () {
         // minDate: "today",
     });
 
+    $(".percent").keyup(function () {
+        document.getElementById("percent").value = 
+            Number($("#handling_vat").val()) + Number($("#at_cost").val()) + (
+                Number($("#duty").val()) * Number($("#currency").val())
+            ) / (
+                (Number($("#cif").val()) * Number($("#currency").val())) + Number($("#freight_vat").val())
+            )
+        ;
+    });
+
+    $(".cif2").keyup(function () {
+        document.getElementById("cif_2").value = Number($("#cif").val()) * Number($("#currency").val());
+    });
+
+    $(".landed_cost").keyup(function () {
+        document.getElementById("landed_cost").value = (
+            (Number($("#duty").val()) * Number($("#cif_2").val())) + Number($("#handling_vat").val()) + Number($("#at_cost").val())
+        );
+    });
+
     $.validator.setDefaults({
         submitHandler: function () {
-            save();
+            var inputs = $('.docs').filter((i, el) => el.value.trim() === '').length;
+            console.log(inputs)
+            if(inputs == 45) {
+                swal("", "Document import can not be empty.", "warning");
+            } else {
+                save();
+            }
         }
     });
 
-    $('#form-consignee-add').validate({
+    $('#form-docimport-add').validate({
         errorElement: 'span',
         errorPlacement: function (error, element) {
             error.addClass('invalid-feedback');
@@ -42,9 +68,9 @@ $(function () {
 function save()
 {
     $.ajax({
-        url: site_url + "import/consignee/save",
+        url: site_url + "import/docimport/save",
         type: "POST",
-        data: $("#form-consignee-add").serialize(),
+        data: $("#form-docimport-add").serialize(),
         dataType: "json",
         beforeSend: function(){
             $('a.cancel').prop('disabled', true);

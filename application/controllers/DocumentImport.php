@@ -70,18 +70,23 @@
         public function save()
         {
             $post = $this->input->post();
-            $params = [
-                'name' => $post['name'],
-                'created_by' => $this->session->userdata('logged_in')->id,
-            ];
 
-            if($this->M_CRUD->insertData('master_shipper', $params)) {
-                $response = ['status' => 1, 'messages' => 'Shipper has been saved successfully.', 'icon' => 'success', 'url' => 'import/shipper'];
-            } else {
-                $response = ['status' => 0, 'messages' => 'Shipper has failed to save.', 'icon' => 'error'];
-            }
+            echo "<pre>";
+            print_r($post);
+            echo "</pre>";
 
-            echo json_encode($response);
+            // $params = [
+            //     'name' => $post['name'],
+            //     'created_by' => $this->session->userdata('logged_in')->id,
+            // ];
+
+            // if($this->M_CRUD->insertData('master_shipper', $params)) {
+            //     $response = ['status' => 1, 'messages' => 'Shipper has been saved successfully.', 'icon' => 'success', 'url' => 'import/shipper'];
+            // } else {
+            //     $response = ['status' => 0, 'messages' => 'Shipper has failed to save.', 'icon' => 'error'];
+            // }
+
+            // echo json_encode($response);
         }
 
         public function detail($id)
