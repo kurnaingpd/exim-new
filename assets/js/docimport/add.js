@@ -9,6 +9,15 @@ $(function () {
         allowClear: true
     })
 
+    $(".datetimepicker-input").css("background-color", "#FFF");
+
+    flatpickr(".datetimepicker-input", {
+        dateFormat: "Y-m-d",
+        allowInput: false,
+        disableMobile: "true",
+        // minDate: "today",
+    });
+
     $.validator.setDefaults({
         submitHandler: function () {
             save();

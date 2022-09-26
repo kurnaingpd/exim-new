@@ -42,9 +42,11 @@
             $datas['css'] = [
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+                "text/css,stylesheet, https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css",
             ];
             $datas['js'] = [
                 base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                "https://cdn.jsdelivr.net/npm/flatpickr",
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
@@ -58,6 +60,8 @@
                 'consignee' => $this->M_CRUD->readData('master_consignee', ['is_deleted' => '0']),
                 'category' => $this->M_CRUD->readData('master_category', ['is_deleted' => '0']),
                 'incoterm' => $this->M_CRUD->readData('master_incoterm', ['is_deleted' => '0']),
+                'uom' => $this->M_CRUD->readData('master_uom', ['is_deleted' => '0']),
+                'forwarder' => $this->M_CRUD->readData('master_forwarder', ['is_deleted' => '0']),
             ];
 
             $this->template->load('default', 'contents' , 'import/docimport/add', $datas);
