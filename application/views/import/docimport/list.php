@@ -22,16 +22,16 @@
                 <?php $no=1; foreach($params['list'] as $rows) : ?>
                     <tr class="align-middle text-center">
                         <td><?=$no?>.</td>
-                        <td><?=$rows->name?></td>
-                        <td><?=$rows->name?></td>
-                        <td><?=$rows->name?></td>
-                        <td><?=$rows->name?></td>
-                        <td><?=$rows->name?></td>
-                        <td><?=$rows->name?></td>
+                        <td><?=$rows->code?></td>
+                        <td><?=($rows->po_no?$rows->po_no:'-')?></td>
+                        <td><?=($rows->shipment_no?$rows->shipment_no:'-')?></td>
+                        <td><?=($rows->shipper?$rows->shipper:'-')?></td>
+                        <td><?=($rows->seller?$rows->seller:'-')?></td>
+                        <td><?=($rows->consignee?$rows->consignee:'-')?></td>
                         <td><?=$rows->created_at?></td>
                         <td><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td>
-                            <a href="<?=site_url('import/category/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
+                            <a href="<?=site_url('import/docimport/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">

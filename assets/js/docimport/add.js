@@ -9,23 +9,27 @@ $(function () {
         allowClear: true
     })
 
-    $(".datetimepicker-input").css("background-color", "#FFF");
+    $('[data-mask]').inputmask();
 
-    flatpickr(".datetimepicker-input", {
-        dateFormat: "Y-m-d",
-        allowInput: false,
-        disableMobile: "true",
-        // minDate: "today",
+    $(".lead_time").keyup(function () {
+        var eta = new Date($("#eta").val());
+        var delivery = new Date($("#delivery").val());
+        var diff = delivery - eta;
+        var days = diff/1000/60/60/24;
+
+        if(isNaN(days)) {
+            document.getElementById("lead_time").value = 0;
+        } else {
+            document.getElementById("lead_time").value = days;
+        }
+        console.log(days)
     });
 
     $(".percent").keyup(function () {
-        document.getElementById("percent").value = 
-            Number($("#handling_vat").val()) + Number($("#at_cost").val()) + (
-                Number($("#duty").val()) * Number($("#currency").val())
-            ) / (
-                (Number($("#cif").val()) * Number($("#currency").val())) + Number($("#freight_vat").val())
-            )
-        ;
+        document.getElementById("percent").value = (
+            (Number($("#handling_vat").val()) + Number($("#at_cost").val()) + (Number($("#duty").val()) * Number($("#currency").val()))) / 
+            ((Number($("#cif").val()) * Number($("#currency").val())) + Number($("#freight_vat").val()))
+        ).toFixed(2);
     });
 
     $(".cif2").keyup(function () {
@@ -35,6 +39,10 @@ $(function () {
     $(".landed_cost").keyup(function () {
         document.getElementById("landed_cost").value = (
             (Number($("#duty").val()) * Number($("#cif_2").val())) + Number($("#handling_vat").val()) + Number($("#at_cost").val())
+        );
+
+        document.getElementById("percentage").value = (
+            ((Number($("#duty").val()) * Number($("#cif_2").val())) + Number($("#handling_vat").val()) + Number($("#at_cost").val())) / (Number($("#cif").val()) * Number($("#currency").val()))
         );
     });
 

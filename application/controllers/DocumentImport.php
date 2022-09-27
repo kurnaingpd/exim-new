@@ -31,7 +31,7 @@
             $datas['breadcrumb'] = ['Import', 'Transaction', 'Document Import'];
             $datas['header'] = 'Document import list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('trans_doc_import', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD->readData('view_trans_doc_import_list', ['is_deleted' => '0'])
             ];
 
             $this->template->load('default', 'contents' , 'import/docimport/list', $datas);
@@ -42,11 +42,11 @@
             $datas['css'] = [
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
-                "text/css,stylesheet, https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css",
             ];
             $datas['js'] = [
+                base_url("assets/adminlte/plugins/moment/moment.min.js"),
+                base_url("assets/adminlte/plugins/inputmask/jquery.inputmask.min.js"),
                 base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
-                "https://cdn.jsdelivr.net/npm/flatpickr",
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
@@ -56,6 +56,7 @@
             $datas['breadcrumb'] = ['Import', 'Transaction', 'Document Import'];
             $datas['header'] = 'Add record';
             $datas['params'] = [
+                'code' => $this->M_CRUD->autoNumberDocImport('trans_doc_import', 'code', '/SKP-IMP/'.date('m/Y'), 4),
                 'shipper' => $this->M_CRUD->readData('master_shipper', ['is_deleted' => '0']),
                 'consignee' => $this->M_CRUD->readData('master_consignee', ['is_deleted' => '0']),
                 'category' => $this->M_CRUD->readData('master_category', ['is_deleted' => '0']),
@@ -70,41 +71,94 @@
         public function save()
         {
             $post = $this->input->post();
+            $params = [
+                'code' => $post['code'],
+                'po_no' => ($post['po']?$post['po']:NULL),
+                'shipment_no' => ($post['shipment']?$post['shipment']:NULL),
+                'shipper_id' => ($post['shipper']?$post['shipper']:NULL),
+                'seller' => ($post['seller']?$post['seller']:NULL),
+                'consignee_id' => ($post['consignee']?$post['consignee']:NULL),
+                'commodity' => ($post['commodity']?$post['commodity']:NULL),
+                'category_id' => ($post['category']?$post['category']:NULL),
+                'hs_code' => ($post['hscode']?$post['hscode']:NULL),
+                'lartas' => ($post['lartas']?$post['lartas']:NULL),
+                'incoterm_id' => ($post['incoterm']?$post['incoterm']:NULL),
+                'hbl' => ($post['hbl']?$post['hbl']:NULL),
+                'mbl' => ($post['mbl']?$post['mbl']:NULL),
+                'qty_container' => ($post['qty_container']?$post['qty_container']:NULL),
+                'container_no' => ($post['container_no']?$post['container_no']:NULL),
+                'goods_qty' => ($post['goods_qty']?$post['goods_qty']:NULL),
+                'uom_id' => ($post['uom']?$post['uom']:NULL),
+                'gross_weight' => ($post['gw']?$post['gw']:NULL),
+                'net_weight' => ($post['nw']?$post['nw']:NULL),
+                'cbm' => ($post['cbm']?$post['cbm']:NULL),
+                'pol' => ($post['pol']?$post['pol']:NULL),
+                'pod' => ($post['pod']?$post['pod']:NULL),
+                'etd' => ($post['etd']?$post['etd']:NULL),
+                'eta' => ($post['eta']?$post['eta']:NULL),
+                'pib_aju' => ($post['pib_aju']?$post['pib_aju']:NULL),
+                'coo' => ($post['coo']?$post['coo']:NULL),
+                'master_list' => ($post['masterlist']?$post['masterlist']:NULL),
+                'rcvd_ori_doc' => ($post['rcvd_ori']?$post['rcvd_ori']:NULL),
+                'billing' => ($post['billing']?$post['billing']:NULL),
+                'spjm' => ($post['spjm']?$post['spjm']:NULL),
+                'spjk' => ($post['spjk']?$post['spjk']:NULL),
+                'sppb' => ($post['sppb']?$post['sppb']:NULL),
+                'pickup_do' => ($post['pickup_do']?$post['pickup_do']:NULL),
+                'delivery' => ($post['delivery']?$post['delivery']:NULL),
+                'remarks' => ($post['remarks']?$post['remarks']:NULL),
+                'currency' => ($post['currency']?$post['currency']:NULL),
+                'cif' => ($post['cif']?$post['cif']:NULL),
+                'duty' => ($post['duty']?$post['duty']:NULL),
+                'vat' => ($post['vat']?$post['vat']:NULL),
+                'tax' => ($post['tax']?$post['tax']:NULL),
+                'freight' => ($post['freight_vat']?$post['freight_vat']:NULL),
+                'handling' => ($post['handling_vat']?$post['handling_vat']:NULL),
+                'at_cost' => ($post['at_cost']?$post['at_cost']:NULL),
+                'additional' => ($post['additional']?$post['additional']:NULL),
+                'time' => ($post['times']?$post['times']:NULL),
+                'forwarder_id' => ($post['forwarder']?$post['forwarder']:NULL),
+                'created_by' => $this->session->userdata('logged_in')->id,
+            ];
 
-            echo "<pre>";
-            print_r($post);
-            echo "</pre>";
+            if($this->M_CRUD->insertData('trans_doc_import', $params)) {
+                $response = ['status' => 1, 'messages' => 'Document import has been saved successfully.', 'icon' => 'success', 'url' => 'import/docimport'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Document import has failed to save.', 'icon' => 'error'];
+            }
 
-            // $params = [
-            //     'name' => $post['name'],
-            //     'created_by' => $this->session->userdata('logged_in')->id,
-            // ];
-
-            // if($this->M_CRUD->insertData('master_shipper', $params)) {
-            //     $response = ['status' => 1, 'messages' => 'Shipper has been saved successfully.', 'icon' => 'success', 'url' => 'import/shipper'];
-            // } else {
-            //     $response = ['status' => 0, 'messages' => 'Shipper has failed to save.', 'icon' => 'error'];
-            // }
-
-            // echo json_encode($response);
+            echo json_encode($response);
         }
 
         public function detail($id)
         {
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+            ];
             $datas['js'] = [
+                base_url("assets/adminlte/plugins/moment/moment.min.js"),
+                base_url("assets/adminlte/plugins/inputmask/jquery.inputmask.min.js"),
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/shipper/detail.js"),
+                base_url("assets/js/docimport/detail.js"),
             ];
-            $datas['title'] = 'Import - Shipper';
-            $datas['breadcrumb'] = ['Import', 'Master', 'Shipper'];
+            $datas['title'] = 'Import - Document Import';
+            $datas['breadcrumb'] = ['Import', 'Transactino', 'Document Import'];
             $datas['header'] = 'Detail record';
             $datas['params'] = [
-                'detail' => $this->M_CRUD->readDatabyID('master_shipper', ['id' => $id])
+                'detail' => $this->M_CRUD->readDatabyID('trans_doc_import', ['id' => $id]),
+                'shipper' => $this->M_CRUD->readData('master_shipper', ['is_deleted' => '0']),
+                'consignee' => $this->M_CRUD->readData('master_consignee', ['is_deleted' => '0']),
+                'category' => $this->M_CRUD->readData('master_category', ['is_deleted' => '0']),
+                'incoterm' => $this->M_CRUD->readData('master_incoterm', ['is_deleted' => '0']),
+                'uom' => $this->M_CRUD->readData('master_uom', ['is_deleted' => '0']),
+                'forwarder' => $this->M_CRUD->readData('master_forwarder', ['is_deleted' => '0']),
             ];
 
-            $this->template->load('default', 'contents' , 'import/shipper/detail', $datas);
+            $this->template->load('default', 'contents' , 'import/docimport/detail', $datas);
         }
 
         public function update()
@@ -112,15 +166,59 @@
             $post = $this->input->post();
             $condition = ['id' => $post['id']];
             $params = [
-                'name' => $post['name'],
+                'po_no' => ($post['po']?$post['po']:NULL),
+                'shipment_no' => ($post['shipment']?$post['shipment']:NULL),
+                'shipper_id' => ($post['shipper']?$post['shipper']:NULL),
+                'seller' => ($post['seller']?$post['seller']:NULL),
+                'consignee_id' => ($post['consignee']?$post['consignee']:NULL),
+                'commodity' => ($post['commodity']?$post['commodity']:NULL),
+                'category_id' => ($post['category']?$post['category']:NULL),
+                'hs_code' => ($post['hscode']?$post['hscode']:NULL),
+                'lartas' => ($post['lartas']?$post['lartas']:NULL),
+                'incoterm_id' => ($post['incoterm']?$post['incoterm']:NULL),
+                'hbl' => ($post['hbl']?$post['hbl']:NULL),
+                'mbl' => ($post['mbl']?$post['mbl']:NULL),
+                'qty_container' => ($post['qty_container']?$post['qty_container']:NULL),
+                'container_no' => ($post['container_no']?$post['container_no']:NULL),
+                'goods_qty' => ($post['goods_qty']?$post['goods_qty']:NULL),
+                'uom_id' => ($post['uom']?$post['uom']:NULL),
+                'gross_weight' => ($post['gw']?$post['gw']:NULL),
+                'net_weight' => ($post['nw']?$post['nw']:NULL),
+                'cbm' => ($post['cbm']?$post['cbm']:NULL),
+                'pol' => ($post['pol']?$post['pol']:NULL),
+                'pod' => ($post['pod']?$post['pod']:NULL),
+                'etd' => ($post['etd']?$post['etd']:NULL),
+                'eta' => ($post['eta']?$post['eta']:NULL),
+                'pib_aju' => ($post['pib_aju']?$post['pib_aju']:NULL),
+                'coo' => ($post['coo']?$post['coo']:NULL),
+                'master_list' => ($post['masterlist']?$post['masterlist']:NULL),
+                'rcvd_ori_doc' => ($post['rcvd_ori']?$post['rcvd_ori']:NULL),
+                'billing' => ($post['billing']?$post['billing']:NULL),
+                'spjm' => ($post['spjm']?$post['spjm']:NULL),
+                'spjk' => ($post['spjk']?$post['spjk']:NULL),
+                'sppb' => ($post['sppb']?$post['sppb']:NULL),
+                'pickup_do' => ($post['pickup_do']?$post['pickup_do']:NULL),
+                'delivery' => ($post['delivery']?$post['delivery']:NULL),
+                'remarks' => ($post['remarks']?$post['remarks']:NULL),
+                'currency' => ($post['currency']?$post['currency']:NULL),
+                'cif' => ($post['cif']?$post['cif']:NULL),
+                'duty' => ($post['duty']?$post['duty']:NULL),
+                'vat' => ($post['vat']?$post['vat']:NULL),
+                'tax' => ($post['tax']?$post['tax']:NULL),
+                'freight' => ($post['freight_vat']?$post['freight_vat']:NULL),
+                'handling' => ($post['handling_vat']?$post['handling_vat']:NULL),
+                'at_cost' => ($post['at_cost']?$post['at_cost']:NULL),
+                'additional' => ($post['additional']?$post['additional']:NULL),
+                'time' => ($post['times']?$post['times']:NULL),
+                'forwarder_id' => ($post['forwarder']?$post['forwarder']:NULL),
                 'updated_at' => date('Y-m-d H:i:s'),
                 'updated_by' => $this->session->userdata('logged_in')->id,
             ];
 
-            if($this->M_CRUD->updateData('master_shipper', $params, $condition)) {
-                $response = ['status' => 1, 'messages' => 'Shipper has been updated successfully.', 'icon' => 'success', 'url' => 'import/shipper'];
+            if($this->M_CRUD->updateData('trans_doc_import', $params, $condition)) {
+                $response = ['status' => 1, 'messages' => 'Document import has been updated successfully.', 'icon' => 'success', 'url' => 'import/docimport'];
             } else {
-                $response = ['status' => 0, 'messages' => 'Shipper has failed to update.', 'icon' => 'error'];
+                $response = ['status' => 0, 'messages' => 'Document import has failed to update.', 'icon' => 'error'];
             }
 
             echo json_encode($response);
@@ -130,10 +228,10 @@
         {
             $condition = ['id' => $id];
             
-            if($this->M_CRUD->deleteData('master_shipper', $condition)) {
-                $response = ['status' => 1, 'messages' => 'Shipper has been deleted successfully.', 'icon' => 'success', 'url' => 'import/shipper'];
+            if($this->M_CRUD->deleteData('trans_doc_import', $condition)) {
+                $response = ['status' => 1, 'messages' => 'Document import has been deleted successfully.', 'icon' => 'success', 'url' => 'import/docimport'];
             } else {
-                $response = ['status' => 0, 'messages' => 'Shipper has failed to delete.', 'icon' => 'error'];
+                $response = ['status' => 0, 'messages' => 'Document import has failed to delete.', 'icon' => 'error'];
             }
 
             echo json_encode($response);

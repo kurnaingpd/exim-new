@@ -7,6 +7,13 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
+                        <label for="code" class="control-label">Code</label>
+                        <input type="text" name="code" class="form-control docs upper" id="code" value="<?=$params['code']?>" readonly>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
                         <label for="po" class="control-label">PO #</label>
                         <input type="text" name="po" class="form-control docs upper" id="po" placeholder="Enter po" autocomplete="off" autofocus>
                     </div>
@@ -49,16 +56,16 @@
                         </select>
                     </div>
                 </div>
+            </div>
 
+            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="commodity" class="control-label">Commodity</label>
                         <input type="text" name="commodity" class="form-control docs upper" id="commodity" placeholder="Enter commodity" autocomplete="off">
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="category" class="control-label">Category</label>
@@ -103,16 +110,16 @@
                         <input type="text" name="hbl" class="form-control docs upper" id="hbl" placeholder="Enter hbl" autocomplete="off">
                     </div>
                 </div>
+            </div>
 
+            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="mbl" class="control-label">MBL</label>
                         <input type="text" name="mbl" class="form-control docs upper" id="mbl" placeholder="Enter mbl" autocomplete="off">
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="qty_container" class="control-label">Qty container</label>
@@ -152,16 +159,16 @@
                         <input type="text" name="gw" class="form-control docs" id="gw" placeholder="Enter gross weight" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                     </div>
                 </div>
+            </div>
 
+            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="nw" class="control-label">Net weight (NW)</label>
                         <input type="text" name="nw" class="form-control docs" id="nw" placeholder="Enter net weight" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="cbm" class="control-label">CBM</label>
@@ -186,11 +193,11 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="etd" class="control-label">Estimation time of departure (ETD)</label>
-                        <div class="input-group date" id="etd" data-target-input="nearest">
-                            <input type="text" class="form-control docs datetimepicker-input cursor-context" autocomplete="off" id="etd" name="etd" placeholder="Enter estimation time of departure" autocomplete="off">
-                            <div class="input-group-append" data-target="#etd" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                             </div>
+                            <input type="text" class="form-control docs" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy-mm-dd" id="etd" name="etd" placeholder="Enter estimation time of departure" autocomplete="off" data-mask>
                         </div>
                     </div>
                 </div>
@@ -198,24 +205,24 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="eta" class="control-label">Estimated time of arrival (ETA)</label>
-                        <div class="input-group date" id="eta" data-target-input="nearest">
-                            <input type="text" class="form-control docs datetimepicker-input cursor-context" autocomplete="off" id="eta" name="eta" placeholder="Enter estimated time of arrival" autocomplete="off">
-                            <div class="input-group-append" data-target="#eta" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                             </div>
+                            <input type="text" class="form-control docs" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy-mm-dd" id="eta" name="eta" placeholder="Enter estimated time of arrival" autocomplete="off" data-mask>
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="pib_aju" class="control-label">PIB AJU</label>
                         <input type="text" name="pib_aju" class="form-control docs" id="pib_aju" placeholder="Enter PIB AJU" autocomplete="off">
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="coo" class="control-label">COO</label>
@@ -233,11 +240,11 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="rcvd_ori" class="control-label">Rcvd ori document</label>
-                        <div class="input-group date" id="rcvd_ori" data-target-input="nearest">
-                            <input type="text" class="form-control docs datetimepicker-input cursor-context" autocomplete="off" id="rcvd_ori" name="rcvd_ori" placeholder="Enter rcvd ori document" autocomplete="off">
-                            <div class="input-group-append" data-target="#rcvd_ori" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                             </div>
+                            <input type="text" class="form-control docs" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy-mm-dd" id="rcvd_ori" name="rcvd_ori" placeholder="Enter rcvd ori document" autocomplete="off" data-mask>
                         </div>
                     </div>
                 </div>
@@ -245,11 +252,11 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="billing" class="control-label">Billing</label>
-                        <div class="input-group date" id="billing" data-target-input="nearest">
-                            <input type="text" class="form-control docs datetimepicker-input cursor-context" autocomplete="off" id="billing" name="billing" placeholder="Enter billing" autocomplete="off">
-                            <div class="input-group-append" data-target="#billing" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                             </div>
+                            <input type="text" class="form-control docs" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy-mm-dd" id="billing" name="billing" placeholder="Enter billing" autocomplete="off" data-mask>
                         </div>
                     </div>
                 </div>
@@ -257,23 +264,11 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="spjm" class="control-label">SPJM</label>
-                        <div class="input-group date" id="spjm" data-target-input="nearest">
-                            <input type="text" class="form-control docs datetimepicker-input cursor-context" autocomplete="off" id="spjm" name="spjm" placeholder="Enter spjm" autocomplete="off">
-                            <div class="input-group-append" data-target="#spjm" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="spjk" class="control-label">SPJK</label>
-                        <div class="input-group date" id="spjk" data-target-input="nearest">
-                            <input type="text" class="form-control docs datetimepicker-input cursor-context" autocomplete="off" id="spjk" name="spjk" placeholder="Enter spjk" autocomplete="off">
-                            <div class="input-group-append" data-target="#spjk" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                            </div>
+                            <input type="text" class="form-control docs" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy-mm-dd" id="spjm" name="spjm" placeholder="Enter spjm" autocomplete="off" data-mask>
                         </div>
                     </div>
                 </div>
@@ -282,12 +277,24 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label for="sppb" class="control-label">SPPB</label>
-                        <div class="input-group date" id="sppb" data-target-input="nearest">
-                            <input type="text" class="form-control docs datetimepicker-input cursor-context" autocomplete="off" id="sppb" name="sppb" placeholder="Enter sppb" autocomplete="off">
-                            <div class="input-group-append" data-target="#sppb" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <label for="spjk" class="control-label">SPJK</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                             </div>
+                            <input type="text" class="form-control docs" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy-mm-dd" id="spjk" name="spjk" placeholder="Enter spjk" autocomplete="off" data-mask>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="sppb" class="control-label">SPPB</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                            </div>
+                            <input type="text" class="form-control docs" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy-mm-dd" id="sppb" name="sppb" placeholder="Enter sppb" autocomplete="off" data-mask>
                         </div>
                     </div>
                 </div>
@@ -295,11 +302,11 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="pickup_do" class="control-label">Pickup DO</label>
-                        <div class="input-group date" id="pickup_do" data-target-input="nearest">
-                            <input type="text" class="form-control docs datetimepicker-input cursor-context" autocomplete="off" id="pickup_do" name="pickup_do" placeholder="Enter pickup do" autocomplete="off">
-                            <div class="input-group-append" data-target="#pickup_do" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                             </div>
+                            <input type="text" class="form-control docs" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy-mm-dd" id="pickup_do" name="pickup_do" placeholder="Enter pickup do" autocomplete="off" data-mask>
                         </div>
                     </div>
                 </div>
@@ -307,11 +314,11 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="delivery" class="control-label">Delivery</label>
-                        <div class="input-group date" id="delivery" data-target-input="nearest">
-                            <input type="text" class="form-control docs datetimepicker-input cursor-context" autocomplete="off" id="delivery" name="delivery" placeholder="Enter delivery" autocomplete="off">
-                            <div class="input-group-append" data-target="#delivery" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                             </div>
+                            <input type="text" class="form-control docs lead_time" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy-mm-dd" id="delivery" name="delivery" placeholder="Enter delivery" autocomplete="off" data-mask>
                         </div>
                     </div>
                 </div>
@@ -329,16 +336,16 @@
                         <input type="text" name="currency" class="form-control docs percent cif2" id="currency" placeholder="Enter currency" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                     </div>
                 </div>
+            </div>
 
+            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="cif" class="control-label">CIF</label>
                         <input type="text" name="cif" class="form-control docs percent cif2" id="cif" placeholder="Enter cif" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="duty" class="control-label">Duty</label>
@@ -373,16 +380,16 @@
                         <input type="text" name="handling_vat" class="form-control docs percent landed_cost" id="handling_vat" placeholder="Enter handling" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                     </div>
                 </div>
+            </div>
 
+            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="at_cost" class="control-label">At cost</label>
                         <input type="text" name="at_cost" class="form-control docs percent landed_cost" id="at_cost" placeholder="Enter at cost" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="additional" class="control-label">Additional</label>
@@ -414,19 +421,19 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="cif_2" class="control-label">CIF 2</label>
-                        <input type="text" name="cif_2" class="form-control" id="cif_2" value="0" disabled>
-                    </div>
-                </div>
-
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="landed_cost" class="control-label">Landed cost</label>
-                        <input type="text" name="landed_cost" class="form-control" id="landed_cost" value="0" disabled>
+                        <input type="text" name="cif_2" class="form-control persentasi" id="cif_2" value="0" disabled>
                     </div>
                 </div>
             </div>
 
             <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="landed_cost" class="control-label">Landed cost</label>
+                        <input type="text" name="landed_cost" class="form-control persentasi" id="landed_cost" value="0" disabled>
+                    </div>
+                </div>
+
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="percentage" class="control-label">%</label>
