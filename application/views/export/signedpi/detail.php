@@ -40,7 +40,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input check" type="checkbox" id="<?=$item_id->pi_item_id?>" name="pi_item_id_<?=$item_id->pi_item_id?>" value="<?=$item_id->pi_item_id?>" <?=$item_id->flags?>>
+                                        <input class="form-check-input check" type="checkbox" id="<?=$item_id->pi_item_id?>" name="pi_item_id_<?=$item_id->pi_item_id?>" value="<?=$item_id->pi_item_id?>" >
                                         <label class="form-check-label" for="cpshipto"><?=$item_id->item?></label>
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                                     <?php if($item_id->pi_item_id == 14 || $item_id->pi_item_id == 15) : ?>
                                         <?php if($item_id->dates) : ?>
                                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                                <input type="text" class="form-control datetimepicker-input item_<?=$item_id->pi_item_id?> cursor-context" autocomplete="off" id="pi_date_<?=$item_id->name?>" name="pi_date_<?=$item_id->pi_item_id?>" value="<?=$item_id->dates?>" style="background-color: #fff;" required>
+                                                <input type="text" class="form-control datetimepicker-input item_<?=$item_id->pi_item_id?> cursor-context" autocomplete="off" id="pi_date_<?=$item_id->name?>" name="pi_date_<?=$item_id->pi_item_id?>" value="<?=$item_id->dates?>" disabled required>
                                                 <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                                 </div>
@@ -82,7 +82,7 @@
                                         <?php if($item_id->value) : ?>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input item_<?=$item_id->pi_item_id?>" id="pi_val_<?=$item_id->pi_item_id?>" name="pi_val_<?=$item_id->pi_item_id?>" accept="application/pdf" id="pi_val_<?=$item_id->name?>" name="pi_val_<?=$item_id->pi_item_id?>" value="<?=$item_id->value?>" required>
+                                                    <input type="file" class="custom-file-input item_<?=$item_id->pi_item_id?>" id="pi_val_<?=$item_id->pi_item_id?>" name="pi_val_<?=$item_id->pi_item_id?>" accept="application/pdf" id="pi_val_<?=$item_id->name?>" name="pi_val_<?=$item_id->pi_item_id?>" value="<?=$item_id->value?>" disabled required>
                                                     <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                                 </div>
                                             </div>
@@ -161,7 +161,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input check" type="checkbox" id="<?=$item_id->pi_item_id?>" name="pi_item_id_<?=$item_id->pi_item_id?>" value="<?=$item_id->pi_item_id?>" <?=$item_id->flags?> disabled>
+                                        <input class="form-check-input check" type="checkbox" id="<?=$item_id->pi_item_id?>" name="pi_item_id_<?=$item_id->pi_item_id?>" value="<?=$item_id->pi_item_id?>"  disabled>
                                         <label class="form-check-label" for="cpshipto"><?=$item_id->item?></label>
                                     </div>
                                 </div>
