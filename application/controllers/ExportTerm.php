@@ -56,7 +56,8 @@
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Export Terms'];
             $datas['header'] = 'Add record';
             $datas['params'] = [
-                'autonumber' => $this->M_CRUD->autoNumberExpTerms('trans_export_terms', 'code', 'ExpTerm/'.date('Y/m/'), 4),
+                // 'autonumber' => $this->M_CRUD->autoNumberExpTerms('trans_export_terms', 'code', 'ExpTerm/'.date('Y/m/'), 4),
+                'autonumber' => $this->M_CRUD->autoNumberInvoice('trans_export_terms', 'code', '/ExpTerm/'.date('m/Y'), 4),
                 'pi' => $this->M_CRUD->readDatabyID('view_trans_pi_expterm', ['id' => $id]),
             ];
 
@@ -94,7 +95,8 @@
                 if($header) {
                     $paramHistory = [
                         'export_terms_id' => $header,
-                        'status_id' => 1
+                        'status_id' => 1,
+                        'created_by' => $this->session->userdata('logged_in')->id,
                     ];
     
                     $this->M_CRUD->insertData('trans_export_terms_history', $paramHistory);
