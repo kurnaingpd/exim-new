@@ -105,7 +105,10 @@
 
         public function excel()
         {
-
+            $datas['params'] = [
+                'list' => $this->M_CRUD->readData('view_trans_doc_pib_payment_xls', ['is_deleted' => '0']),
+            ];
+            $this->load->view('import/docpayment/excel', $datas);
         }
     }
 

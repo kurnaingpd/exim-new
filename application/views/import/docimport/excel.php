@@ -1,6 +1,7 @@
 <?php
+    $filename = "DocumentImport-".date('YmdHis');
     header("Content-type: application/vnd-ms-excel");
-    header("Content-Disposition: attachment; filename=hasil.xls");
+    header("Content-Disposition: attachment; filename=".$filename.".xls");
 ?>
 
 <style>
