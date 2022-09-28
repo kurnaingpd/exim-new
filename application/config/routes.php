@@ -334,6 +334,11 @@ $route['import/docimport/delete/(:num)'] = 'DocumentImport/delete/$1';
 $route['import/docimport/excel'] = 'DocumentImport/excel';
 
 /** Import - ETA & PIB Payment */
-$route['import/etapayment'] = 'DocumentImport';
-$route['import/etapayment/add'] = 'DocumentImport/add';
-$route['import/etapayment/save'] = 'DocumentImport/save';
+$route['import/docpayment'] = 'DocPayment';
+$route['import/docpayment/add'] = 'DocPayment/add';
+$route['import/docpayment/datas'] = 'DocPayment/datas';
+$route['import/docpayment/datas/(:num)'] = 'DocPayment/datas/$1';
+$route['import/docpayment/save'] = 'DocPayment/save';
+$route['import/docpayment/detail/(:num)'] = 'DocPayment/detail/$1';
+$route['import/docpayment/delete/(:num)'] = 'DocPayment/delete/$1';
+$route['import/docpayment/excel'] = 'DocPayment/excel';
