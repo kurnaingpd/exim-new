@@ -331,3 +331,9 @@ $route['import/docimport/save'] = 'DocumentImport/save';
 $route['import/docimport/detail/(:num)'] = 'DocumentImport/detail/$1';
 $route['import/docimport/update'] = 'DocumentImport/update';
 $route['import/docimport/delete/(:num)'] = 'DocumentImport/delete/$1';
+$route['import/docimport/excel'] = 'DocumentImport/excel';
+
+/** Import - ETA & PIB Payment */
+$route['import/etapayment'] = 'DocumentImport';
+$route['import/etapayment/add'] = 'DocumentImport/add';
+$route['import/etapayment/save'] = 'DocumentImport/save';

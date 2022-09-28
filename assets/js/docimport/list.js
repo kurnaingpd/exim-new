@@ -3,8 +3,15 @@ $(function () {
         "responsive": true, "lengthChange": false, "autoWidth": false,
         "buttons": [{
             "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
+            "className": 'border',
             "action": function ( e, dt, node, config ) {
                 window.location.href = site_url + "import/docimport/add";
+            }
+        }, {
+            "text": '<i class="far fa-file-excel mr-1"></i> Excel',
+            "className": 'border btn-success',
+            "action": function ( e, dt, node, config ) {
+                window.location.href = site_url + "import/docimport/excel";
             }
         }]
     }).buttons().container().appendTo('#tdocumentlist_wrapper .col-md-6:eq(0)');
