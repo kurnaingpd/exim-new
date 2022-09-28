@@ -72,6 +72,7 @@
         {
             $post = $this->input->post();
             $Grid = array();
+            $Grid2 = array();
 			
             foreach($_POST as $index => $value){
                 if(preg_match("/^pi_/i", $index)) {
@@ -101,6 +102,21 @@
                         if(!isset($Grid[$rnd]['id'])){
                             $Grid[$rnd]['id'] = $post['id'];
                         }
+                    }
+                }
+            }
+
+            foreach($_POST as $index => $value){
+                if(preg_match("/^pi_/i", $index)) {
+                    $index = preg_replace("/^pi_/i","",$index);
+                    $arr = explode('_',$index);
+                    $rnd = $arr[count($arr)-1];
+                    array_pop($arr);
+                    $idx = implode('_',$arr);
+                    
+                    $Grid2[$rnd] = $value;
+                    if(!isset($Grid2[$rnd]['id'])){
+                        $Grid2[$rnd] = $rnd;
                     }
                 }
             }
@@ -163,7 +179,7 @@
 
             $data_pi = [
                 'header' => $this->M_CRUD->readDatabyID('view_trans_pi_email_header', ['pi_id' => $post['id']]),
-                'detail' => $this->M_CRUD->readData('view_trans_pi_email_detail', ['pi_id' => $post['id']]),
+                'detail' => $this->M_CRUD->readDataIn('view_trans_pi_email_detail', ['pi_id' => $post['id'], 'pi_item_id' => $Grid2]),
                 'list' => $this->M_CRUD->pi_email('view_trans_pi_email_user'),
             ];
 
