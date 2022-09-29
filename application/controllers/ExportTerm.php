@@ -179,7 +179,8 @@
                 $paramHistory = [
                     'export_terms_id' => $post['expterm_id'],
                     'status_id' => $post['status'],
-                    'remark' => ($post['remark']?$post['remark']:NULL)
+                    'remark' => ($post['remark']?$post['remark']:NULL),
+                    'created_by' => $this->session->userdata('logged_in')->id,
                 ];
 
                 $this->M_CRUD->insertData('trans_export_terms_history', $paramHistory);

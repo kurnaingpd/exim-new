@@ -342,3 +342,6 @@ $route['import/docpayment/save'] = 'DocPayment/save';
 $route['import/docpayment/detail/(:num)'] = 'DocPayment/detail/$1';
 $route['import/docpayment/delete/(:num)'] = 'DocPayment/delete/$1';
 $route['import/docpayment/excel'] = 'DocPayment/excel';
+
+/** Import - Report Import */
+$route['import/report_import'] = 'ReportImport';
