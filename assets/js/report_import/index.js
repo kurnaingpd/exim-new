@@ -13,7 +13,7 @@ $(function () {
     });
 
     $("#trptimport").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false, 
+        "responsive": true, "lengthChange": false, "scrollX": true,
         "buttons": [{
             "text": '<i class="far fa-file-excel mr-1"></i> Excel',
             "className": 'border btn-success',
