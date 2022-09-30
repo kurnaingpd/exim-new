@@ -13,6 +13,7 @@
                     <th>Shipper</th>
                     <th>Seller</th>
                     <th>Consignee</th>
+                    <th>Status</th>
                     <th>Created at</th>
                     <th>Updated at</th>
                     <th><i class="fas fa-ellipsis-h"></i></th>
@@ -28,6 +29,9 @@
                         <td><?=($rows->shipper?$rows->shipper:'-')?></td>
                         <td><?=($rows->seller?$rows->seller:'-')?></td>
                         <td><?=($rows->consignee?$rows->consignee:'-')?></td>
+                        <td>
+                            <span class="badge bg-<?=$rows->bg_color?>"><?=$rows->doc_import_status?></span>
+                        </td>
                         <td><?=$rows->created_at?></td>
                         <td><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td>

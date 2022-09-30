@@ -2,12 +2,12 @@
     <thead>
         <tr class="text-center">
             <th>#</th>
-            <th>PI number</th>
-            <th>PI date</th>
-            <th>Customer</th>
-            <th>Country</th>
-            <th>PIC</th>
-            <th>Status</th>
+            <th>PO</th>
+            <th>Shipment no.</th>
+            <th>Shipper</th>
+            <th>Seller</th>
+            <th>Consignee</th>
+            <th>Commodity</th>
             <th>Progress (%)</th>
             <th>Created at</th>
             <th>Updated at</th>

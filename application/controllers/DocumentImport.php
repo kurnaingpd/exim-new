@@ -156,6 +156,7 @@
                 'incoterm' => $this->M_CRUD->readData('master_incoterm', ['is_deleted' => '0']),
                 'uom' => $this->M_CRUD->readData('master_uom', ['is_deleted' => '0']),
                 'forwarder' => $this->M_CRUD->readData('master_forwarder', ['is_deleted' => '0']),
+                'status' => $this->M_CRUD->readData('master_doc_import_status', ['is_deleted' => '0']),
             ];
 
             $this->template->load('default', 'contents' , 'import/docimport/detail', $datas);
@@ -211,6 +212,7 @@
                 'additional' => ($post['additional']?$post['additional']:0),
                 'time' => ($post['times']?$post['times']:0),
                 'forwarder_id' => ($post['forwarder']?$post['forwarder']:NULL),
+                'doc_import_status_id' => $post['status'],
                 'updated_at' => date('Y-m-d H:i:s'),
                 'updated_by' => $this->session->userdata('logged_in')->id,
             ];

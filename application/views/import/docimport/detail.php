@@ -454,7 +454,17 @@
                     </div>
                 </div>
 
-                <input type="hidden" name="counter" id="counter">
+                <div class="col-md-2">
+                    <div class="form-group required">
+                        <label for="status" class="control-label">Status</label>
+                        <select name="status" class="form-control docs select2bs4" id="status" required>
+                            <option></option>
+                            <?php foreach($params['status'] as $rows) : ?>
+                                <option value="<?=$rows->id?>"><?=$rows->name?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="card-body">
