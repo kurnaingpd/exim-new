@@ -15,6 +15,7 @@
             <th>Product Shelf Life</th>
             <th>Packaging Material</th>
             <th>Storage Condition Requirement</th>
+            <th><i class="fas fa-ellipsis-h"></i></th>
         </tr>
     </thead>
     <tbody id="grid-detail"></tbody>

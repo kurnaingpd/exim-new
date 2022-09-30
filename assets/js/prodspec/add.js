@@ -27,7 +27,7 @@ $(function () {
                         '<input type="hidden" id="grid_item_'+rnd+'" name="grid_item_'+rnd+'" value="'+$('input.grid[name="item"]').val()+'" />'+
                         '<input type="hidden" id="grid_qcheck_id_'+rnd+'" name="grid_qcheck_id_'+rnd+'" value="'+$('input.grid[name="qcheck_id"]').val()+'" />'+
                         '<input type="hidden" id="grid_packing_'+rnd+'" name="grid_packing_'+rnd+'" value="'+$('select.grid[name="packing"]').val()+'" />'+
-                        '<input type="text" class="form-control" value="'+$('select.grid[name="packing"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
+                        '<input type="text" class="form-control" id="grid_packing_name_'+rnd+'" name="grid_packing_name_'+rnd+'" value="'+$('select.grid[name="packing"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
                     '</td>'+
                     '<td>'+
                         '<input type="text" class="form-control" id="grid_desc_'+rnd+'" name="grid_desc_'+rnd+'" value="'+$('textarea.grid[name="desc"]').val()+'" style="background-color:#ffffff;" readonly required />'+
@@ -68,12 +68,51 @@ $(function () {
                     '<td>'+
                         '<input type="text" class="form-control" id="grid_storage_'+rnd+'" name="grid_storage_'+rnd+'" value="'+$('input.grid[name="storage"]').val()+'" style="background-color:#ffffff;" readonly required />'+
                     '</td>'+
+                    '<td>'+
+                        '<button type="button" class="btn btn-info btn-flat btn-edit" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-edit"></i></button>'+
+                    '</td>'+
                 '</tr>'
             );
             
             $("select#packing option[value='"+$('select.grid[name="packing"]').val()+"']").remove();
             $('.grid').val('');
             $(".grid").val('').trigger('change')
+
+            $('button.btn-edit').off('click').on('click',function(){
+                var id = $(this).attr('data-row');
+                var product_id = $("tr[data-id="+id+"]").find("#grid_packing_"+id).val();
+                var product_name = $("tr[data-id="+id+"]").find("#grid_packing_name_"+id).val();
+                var desc = $("tr[data-id="+id+"]").find("#grid_desc_"+id).val();
+                var form = $("tr[data-id="+id+"]").find("#grid_form_"+id).val();
+                var texture = $("tr[data-id="+id+"]").find("#grid_texture_"+id).val();
+                var colour = $("tr[data-id="+id+"]").find("#grid_colour_"+id).val();
+                var taste = $("tr[data-id="+id+"]").find("#grid_taste_"+id).val();
+                var odour = $("tr[data-id="+id+"]").find("#grid_odour_"+id).val();
+                var fat = $("tr[data-id="+id+"]").find("#grid_fat_"+id).val();
+                var moisture = $("tr[data-id="+id+"]").find("#grid_moisture_"+id).val();
+                var caffeine = $("tr[data-id="+id+"]").find("#grid_caffeine_"+id).val();
+                var ingredients = $("tr[data-id="+id+"]").find("#grid_ingredients_"+id).val();
+                var product_shelf = $("tr[data-id="+id+"]").find("#grid_product_shelf_"+id).val();
+                var packaging = $("tr[data-id="+id+"]").find("#grid_packaging_"+id).val();
+                var storage = $("tr[data-id="+id+"]").find("#grid_storage_"+id).val();
+
+                $('select#packing').append('<option value="'+product_id+'">'+product_name+'</option>');
+                $("select#packing").select2("val", product_id);
+                $("#desc").val(desc);
+                $("#form").val(form);
+                $("#texture").val(texture);
+                $("#colour").val(colour);
+                $("#taste").val(taste);
+                $("#odour").val(odour);
+                $("#fat").val(fat);
+                $("#moisture").val(moisture);
+                $("#caffeine").val(caffeine);
+                $("#ingredients").val(ingredients);
+                $("#product_shelf").val(product_shelf);
+                $("#packaging").val(packaging);
+                $("#storage").val(storage);
+                $("tr[data-id="+id+"]").remove();
+            });
         }
     });
 
