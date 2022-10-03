@@ -24,7 +24,19 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-3">
+                    <div class="form-group required">
+                        <label for="dates" class="control-label">Invoice date</label>
+                        <div class="input-group date" id="dates" data-target-input="nearest">
+                            <input type="text" class="form-control datetimepicker-input cursor-context" autocomplete="off" id="dates" name="dates" placeholder="Enter invoice date" required>
+                            <div class="input-group-append" data-target="#dates" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="description" class="control-label">FFRN #</label>
                         <input type="text" name="po_no" class="form-control" id="po_no" placeholder="Enter PO" autocomplete="off">

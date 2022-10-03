@@ -40,11 +40,13 @@
         public function add()
         {
             $datas['css'] = [
+                "text/css,stylesheet, https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css",
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
             ];
 
             $datas['js'] = [
+                "https://cdn.jsdelivr.net/npm/flatpickr",
                 base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
                 base_url("assets/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
@@ -74,6 +76,7 @@
                 $params = [
                     'pi_id' => $post['pi_no'],
                     'code' => $post['code'],
+                    'dates' => $post['dates'],
                     'ffrn' => ($post['po_no']?$post['po_no']:NULL),
                     'created_by' => $this->session->userdata('logged_in')->id,
                 ];

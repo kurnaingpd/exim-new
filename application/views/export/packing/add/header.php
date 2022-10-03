@@ -2,7 +2,7 @@
     <div class="col-md-3">
         <div class="form-group required">
             <label for="code" class="control-label">Packing no.</label>
-            <input type="text" name="code" class="form-control" id="code" value="<?=$params['autonumber']?>" readonly>
+            <input type="text" name="code" class="form-control" id="code" value="<?=$params['autonumber']?>">
         </div>
     </div>
 
