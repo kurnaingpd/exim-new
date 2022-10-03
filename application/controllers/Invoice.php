@@ -66,18 +66,23 @@
         public function save()
         {
             $post = $this->input->post();
+            $invoice = $this->M_CRUD->readDatabyID('trans_invoice', ['code' => $post['code']]);
 
-            $params = [
-                'pi_id' => $post['pi_no'],
-                'code' => $post['code'],
-                'ffrn' => ($post['po_no']?$post['po_no']:NULL),
-                'created_by' => $this->session->userdata('logged_in')->id,
-            ];
-
-            if($this->M_CRUD->insertData('trans_invoice', $params)) {
-                $response = ['status' => 1, 'messages' => 'Invoice has been saved successfully.', 'icon' => 'success', 'url' => 'export/invoice'];
+            if($invoice) {
+                $response = ['status' => 0, 'messages' => 'Invoice code already exist.', 'icon' => 'error'];
             } else {
-                $response = ['status' => 0, 'messages' => 'Invoice has failed to save.', 'icon' => 'error'];
+                $params = [
+                    'pi_id' => $post['pi_no'],
+                    'code' => $post['code'],
+                    'ffrn' => ($post['po_no']?$post['po_no']:NULL),
+                    'created_by' => $this->session->userdata('logged_in')->id,
+                ];
+    
+                if($this->M_CRUD->insertData('trans_invoice', $params)) {
+                    $response = ['status' => 1, 'messages' => 'Invoice has been saved successfully.', 'icon' => 'success', 'url' => 'export/invoice'];
+                } else {
+                    $response = ['status' => 0, 'messages' => 'Invoice has failed to save.', 'icon' => 'error'];
+                }
             }
 
             echo json_encode($response);

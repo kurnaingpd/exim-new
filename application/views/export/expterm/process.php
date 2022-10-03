@@ -116,10 +116,26 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group required">
-                                    <label for="attachment" class="control-label">Upload export terms</label>
+                                    <label for="attachment1" class="control-label">Upload export terms (1)</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="attachment" name="attachment" accept="application/pdf" autofocus autocomplete="off" required>
+                                            <input type="file" class="custom-file-input" id="attachment1" name="attachment1" accept="application/pdf" autofocus autocomplete="off" required>
+                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if($params['term']->pi_status_id == 7) : ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="attachment2" class="control-label">Upload export terms (2)</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="attachment2" name="attachment2" accept="application/pdf" autofocus autocomplete="off">
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
                                     </div>

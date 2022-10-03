@@ -67,28 +67,46 @@
         {
             $path = 'assets/attachment/expterm/';
             $post = $this->input->post();
+            $params = [
+                'pi_id' => $post['pi_no'],
+                'code' => $post['code'],
+                'pi_status_id' => 1,
+                'created_by' => $this->session->userdata('logged_in')->id,
+            ];
 
-            if ( isset($_FILES['attachment']) && $_FILES['attachment']['name'] != '' ) {
-                $temp_name = $_FILES['attachment']['name'];
-                $ext = explode('.', $temp_name);
-                $end = strtolower(end($ext));
-                $timestamp = mt_rand(1, time());
-                $randomDate = date("d M Y", $timestamp);
-                $filename = 'Export-Terms-'.md5($randomDate).'.'.$end;
+            if($_FILES) {
+                if ( isset($_FILES['attachment1']) && $_FILES['attachment1']['name'] != '' ) {
+                    $temp_name = $_FILES['attachment1']['name'];
+                    $ext = explode('.', $temp_name);
+                    $end = strtolower(end($ext));
+                    $timestamp = mt_rand(1, time());
+                    $randomDate = date("d M Y", $timestamp);
+                    $filename1 = 'Export-Terms-'.md5($randomDate).'.'.$end;
 
-                if ( !file_exists($path) ) {
-                    mkdir($path, 0777, true);
+                    if ( !file_exists($path) ) {
+                        mkdir($path, 0777, true);
+                    }
+
+                    move_uploaded_file($_FILES['attachment1']['tmp_name'], $path.$filename1);
+                    $params['file_1'] = $filename1;
                 }
 
-                move_uploaded_file($_FILES['attachment']['tmp_name'], $path.$filename);
+                if ( isset($_FILES['attachment2']) && $_FILES['attachment2']['name'] != '' ) {
+                    $temp_name = $_FILES['attachment2']['name'];
+                    $ext = explode('.', $temp_name);
+                    $end = strtolower(end($ext));
+                    $timestamp = mt_rand(1, time());
+                    $randomDate = date("d M Y", $timestamp);
+                    $filename2 = 'Export-Terms-'.md5($randomDate).'.'.$end;
 
-                $params = [
-                    'pi_id' => $post['pi_no'],
-                    'code' => $post['code'],
-                    'file' => $filename,
-                    'pi_status_id' => 1,
-                    'created_by' => $this->session->userdata('logged_in')->id,
-                ];
+                    if ( !file_exists($path) ) {
+                        mkdir($path, 0777, true);
+                    }
+
+                    move_uploaded_file($_FILES['attachment2']['tmp_name'], $path.$filename2);
+                    $params['file_2'] = $filename2;
+                }
+
                 $header = $this->M_CRUD->insertData('trans_export_terms', $params);
 
                 if($header) {
@@ -106,6 +124,45 @@
             }
 
             echo json_encode($response);
+
+            // if ( isset($_FILES['attachment1']) && $_FILES['attachment1']['name'] != '' ) {
+            //     $temp_name = $_FILES['attachment1']['name'];
+            //     $ext = explode('.', $temp_name);
+            //     $end = strtolower(end($ext));
+            //     $timestamp = mt_rand(1, time());
+            //     $randomDate = date("d M Y", $timestamp);
+            //     $filename1 = 'Export-Terms-'.md5($randomDate).'.'.$end;
+
+            //     if ( !file_exists($path) ) {
+            //         mkdir($path, 0777, true);
+            //     }
+
+            //     move_uploaded_file($_FILES['attachment1']['tmp_name'], $path.$filename1);
+
+            //     $params = [
+            //         'pi_id' => $post['pi_no'],
+            //         'code' => $post['code'],
+            //         'file' => $filename1,
+            //         'pi_status_id' => 1,
+            //         'created_by' => $this->session->userdata('logged_in')->id,
+            //     ];
+            //     $header = $this->M_CRUD->insertData('trans_export_terms', $params);
+
+                // if($header) {
+                //     $paramHistory = [
+                //         'export_terms_id' => $header,
+                //         'status_id' => 1,
+                //         'created_by' => $this->session->userdata('logged_in')->id,
+                //     ];
+    
+                //     $this->M_CRUD->insertData('trans_export_terms_history', $paramHistory);
+                //     $response = ['status' => 1, 'messages' => 'Export terms has been saved successfully.', 'icon' => 'success', 'url' => 'export/expterm'];
+                // } else {
+                //     $response = ['status' => 0, 'messages' => 'Export terms has failed to save.', 'icon' => 'error'];
+                // }
+            // }
+
+            // echo json_encode($response);
         }
 
         public function detail($id)
@@ -171,46 +228,64 @@
             $post = $this->input->post();
             $condition = ['id' => $post['expterm_id']];
 
-            if ( isset($_FILES['attachment']) && $_FILES['attachment']['name'] != '' ) {
-                $temp_name = $_FILES['attachment']['name'];
-                $ext = explode('.', $temp_name);
-                $end = strtolower(end($ext));
-                $timestamp = mt_rand(1, time());
-                $randomDate = date("d M Y", $timestamp);
-                $filename = 'Export-Terms-'.md5($randomDate).'.'.$end;
+            $params = [
+                'pi_status_id' => $post['status'],
+                'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $this->session->userdata('logged_in')->id,
+            ];
 
-                if ( !file_exists($path) ) {
-                    mkdir($path, 0777, true);
+            if($_FILES) {
+                if ( isset($_FILES['attachment1']) && $_FILES['attachment1']['name'] != '' ) {
+                    $temp_name = $_FILES['attachment1']['name'];
+                    $ext = explode('.', $temp_name);
+                    $end = strtolower(end($ext));
+                    $timestamp = mt_rand(1, time());
+                    $randomDate = date("d M Y", $timestamp);
+                    $filename1 = 'Export-Terms-'.md5($randomDate).'.'.$end;
+
+                    if ( !file_exists($path) ) {
+                        mkdir($path, 0777, true);
+                    }
+
+                    move_uploaded_file($_FILES['attachment1']['tmp_name'], $path.$filename1);
+                    $params['file_1'] = $filename1;
                 }
 
-                move_uploaded_file($_FILES['attachment']['tmp_name'], $path.$filename);
+                if ( isset($_FILES['attachment2']) && $_FILES['attachment2']['name'] != '' ) {
+                    $temp_name = $_FILES['attachment2']['name'];
+                    $ext = explode('.', $temp_name);
+                    $end = strtolower(end($ext));
+                    $timestamp = mt_rand(1, time());
+                    $randomDate = date("d M Y", $timestamp);
+                    $filename2 = 'Export-Terms-'.md5($randomDate).'.'.$end;
 
-                $param = [
-                    'pi_status_id' => $post['status'],
-                    'file' => $filename,
-                    'updated_at' => date('Y-m-d H:i:s'),
-                    'updated_by' => $this->session->userdata('logged_in')->id,
-                ];
+                    if ( !file_exists($path) ) {
+                        mkdir($path, 0777, true);
+                    }
+
+                    move_uploaded_file($_FILES['attachment2']['tmp_name'], $path.$filename2);
+                    $params['file_2'] = $filename2;
+                }
+
+                if($this->M_CRUD->updateData('trans_export_terms', $params, $condition)) {
+                    $paramHistory = [
+                        'export_terms_id' => $post['expterm_id'],
+                        'status_id' => $post['status'],
+                        'remark' => ($post['remark']?$post['remark']:NULL),
+                        'created_by' => $this->session->userdata('logged_in')->id,
+                    ];
+    
+                    $this->M_CRUD->insertData('trans_export_terms_history', $paramHistory);
+                    $response = ['status' => 1, 'messages' => 'Export terms has been updated successfully.', 'icon' => 'success', 'url' => 'export/expterm'];
+                } else {
+                    $response = ['status' => 0, 'messages' => 'Export terms has failed to update.', 'icon' => 'error'];
+                }
             } else {
-                $param = [
-                    'pi_status_id' => $post['status'],
-                    'updated_at' => date('Y-m-d H:i:s'),
-                    'updated_by' => $this->session->userdata('logged_in')->id,
-                ];
-            }
-
-            if($this->M_CRUD->updateData('trans_export_terms', $param, $condition)) {
-                $paramHistory = [
-                    'export_terms_id' => $post['expterm_id'],
-                    'status_id' => $post['status'],
-                    'remark' => ($post['remark']?$post['remark']:NULL),
-                    'created_by' => $this->session->userdata('logged_in')->id,
-                ];
-
-                $this->M_CRUD->insertData('trans_export_terms_history', $paramHistory);
-                $response = ['status' => 1, 'messages' => 'Export terms has been updated successfully.', 'icon' => 'success', 'url' => 'export/expterm'];
-            } else {
-                $response = ['status' => 0, 'messages' => 'Export terms has failed to update.', 'icon' => 'error'];
+                if($this->M_CRUD->updateData('trans_export_terms', $params, $condition)) {
+                    $response = ['status' => 1, 'messages' => 'Export terms has been updated successfully.', 'icon' => 'success', 'url' => 'export/expterm'];
+                } else {
+                    $response = ['status' => 0, 'messages' => 'Export terms has failed to update.', 'icon' => 'error'];
+                }
             }
 
             echo json_encode($response);

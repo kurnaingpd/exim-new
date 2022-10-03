@@ -8,7 +8,7 @@
                 <div class="col-md-3">
                     <div class="form-group required">
                         <label for="code" class="control-label">Invoice no.</label>
-                        <input type="text" name="code" class="form-control upper" id="code" value="<?=$params['autonumber']?>" readonly>
+                        <input type="text" name="code" class="form-control upper" id="code" value="<?=$params['autonumber']?>">
                     </div>
                 </div>
 

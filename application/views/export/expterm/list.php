@@ -12,6 +12,8 @@
                     <th>PI date</th>
                     <th>Customer</th>
                     <th>Country</th>
+                    <th>File 1</th>
+                    <th>File 2</th>
                     <th>Status</th>
                     <th>Created at</th>
                     <th>Updated at</th>
@@ -28,6 +30,21 @@
                         <td><?=$rows->cust_name?></td>
                         <td><?=$rows->country_name?></td>
                         <td class="text-center">
+                            <?php if($rows->file_1) : ?>
+                                <a href="<?=base_url('assets/attachment/expterm/'.$rows->file_1)?>" target="_blank" <?=$rows->pi_status_id?'':'style="display: none;"'?>>
+                                    Click here to download
+                                </a>
+                            <?php endif; ?>
+                        </td>
+
+                        <td class="text-center">
+                            <?php if($rows->file_2) : ?>
+                                <a href="<?=base_url('assets/attachment/expterm/'.$rows->file_2)?>" target="_blank" <?=$rows->pi_status_id?'':'style="display: none;"'?>>
+                                    Click here to download
+                                </a>
+                            <?php endif; ?>
+                        </td>
+                        <td class="text-center">
                             <span class="badge bg-<?=$rows->bg_color?>"><?=$rows->pi_status_name?></span>
                         </td>
                         <td class="text-center"><?=$rows->created_at?></td>
@@ -40,7 +57,7 @@
                             <?php 
                                 if($rows->pi_status_id) {
                                     $display_upload = 'style="display: none;"';
-                                    $display_download = '';
+                                    // $display_download = '';
                                     
                                     if($this->session->userdata('logged_in')->role_id == 5) {
                                         if($rows->pi_status_id == 1) {
@@ -67,7 +84,7 @@
                                 } else {
                                     $display = 'style="display: none;"';
                                     $display_upload = '';
-                                    $display_download = 'style="display: none;"';
+                                    // $display_download = 'style="display: none;"';
                                 }
 
                                 if($this->session->userdata('logged_in')->role_id == 3) {
@@ -81,10 +98,6 @@
 
                             <a href="<?=site_url('export/expterm/process/'.$rows->pi_id)?>" class="btn btn-sm btn-warning" <?=$display?>>
                                 <i class="fas fa-edit"></i>
-                            </a>
-
-                            <a href="<?=base_url('assets/attachment/expterm/'.$rows->file)?>" class="btn btn-sm btn-success" target="_blank" <?=$display_download?>>
-                                <i class="fas fa-download"></i>
                             </a>
                         </td>
                     </tr>
