@@ -122,41 +122,60 @@
             }
 
             foreach($Grid as $item) {
-                if(count(explode('.', $item['val'])) > 1) {
-                    $path = 'assets/attachment/signedpi/';
-                    $temp_name = $item['val'];
-                    $ext = explode('.', $temp_name);
-                    $end = strtolower(end($ext));
-                    $timestamp = mt_rand(1, time());
-                    $randomDate = date("d M Y", $timestamp);
-                    $filename = md5($randomDate).'.'.$end;
-
-                    if ( !file_exists($path) ) {
-                        mkdir($path, 0777, true);
+                if(isset($item['val'])) {
+                    if(count(explode('.', $item['val'])) > 1) {
+                        $path = 'assets/attachment/signedpi/';
+                        $temp_name = $item['val'];
+                        $ext = explode('.', $temp_name);
+                        $end = strtolower(end($ext));
+                        $timestamp = mt_rand(1, time());
+                        $randomDate = date("d M Y", $timestamp);
+                        $filename = md5($randomDate).'.'.$end;
+    
+                        if ( !file_exists($path) ) {
+                            mkdir($path, 0777, true);
+                        }
+    
+                        $name = "pi_val_".$item['item_id'];
+                        move_uploaded_file($_FILES[$name]['tmp_name'], $path.$filename);
+    
+                        $condition = [
+                            'pi_id' => $item['id'],
+                            'pi_item_id' => $item['item_id'],
+                        ];
+                        $params = [
+                            'dates' => $item['date'],
+                            'value' => 'Attachment location: assets/attachment/signedpi/',
+                            'updated_by' => $this->session->userdata('logged_in')->id,
+                            'updated_at' => date('Y-m-d H:i:s'),
+                        ];
+    
+                        $paramsAttachment = [
+                            'pi_id' => $item['id'],
+                            'pi_item_id' => $item['item_id'],
+                            'dates' => $item['date'],
+                            'values' => $filename,
+                            'created_by' => $this->session->userdata('logged_in')->id,
+                        ];
+                        $this->M_CRUD->insertData('trans_signed_pi_attachment', $paramsAttachment);
+                    } else {
+                        $condition = [
+                            'pi_id' => $item['id'],
+                            'pi_item_id' => $item['item_id'],
+                        ];
+                        $params = [
+                            'dates' => $item['date'],
+                            'value' => $item['val'],
+                            'updated_by' => $this->session->userdata('logged_in')->id,
+                            'updated_at' => date('Y-m-d H:i:s'),
+                        ];
                     }
-
-                    $name = "pi_val_".$item['item_id'];
-                    move_uploaded_file($_FILES[$name]['tmp_name'], $path.$filename);
-
-                    $condition = [
-                        'pi_id' => $item['id'],
-                        'pi_item_id' => $item['item_id'],
-                    ];
-                    $params = [
-                        'dates' => $item['date'],
-                        'value' => 'Attachment location: assets/attachment/signedpi/',
-                        'updated_by' => $this->session->userdata('logged_in')->id,
-                        'updated_at' => date('Y-m-d H:i:s'),
-                    ];
-
-                    $paramsAttachment = [
-                        'pi_id' => $item['id'],
-                        'pi_item_id' => $item['item_id'],
-                        'dates' => $item['date'],
-                        'values' => $filename,
-                        'created_by' => $this->session->userdata('logged_in')->id,
-                    ];
-                    $this->M_CRUD->insertData('trans_signed_pi_attachment', $paramsAttachment);
+    
+                    if($this->M_CRUD->updateData('trans_signed_pi', $params, $condition)) {
+                        $response = ['status' => 1, 'messages' => 'Signed PI has been saved successfully.', 'icon' => 'success', 'url' => 'export/signedpi'];
+                    } else {
+                        $response = ['status' => 0, 'messages' => 'Signed PI has failed to save.', 'icon' => 'error'];
+                    }
                 } else {
                     $condition = [
                         'pi_id' => $item['id'],
@@ -164,16 +183,16 @@
                     ];
                     $params = [
                         'dates' => $item['date'],
-                        'value' => $item['val'],
+                        // 'value' => $item['val'],
                         'updated_by' => $this->session->userdata('logged_in')->id,
                         'updated_at' => date('Y-m-d H:i:s'),
                     ];
-                }
-
-                if($this->M_CRUD->updateData('trans_signed_pi', $params, $condition)) {
-                    $response = ['status' => 1, 'messages' => 'Signed PI has been saved successfully.', 'icon' => 'success', 'url' => 'export/signedpi'];
-                } else {
-                    $response = ['status' => 0, 'messages' => 'Signed PI has failed to save.', 'icon' => 'error'];
+                    
+                    if($this->M_CRUD->updateData('trans_signed_pi', $params, $condition)) {
+                        $response = ['status' => 1, 'messages' => 'Signed PI has been saved successfully.', 'icon' => 'success', 'url' => 'export/signedpi'];
+                    } else {
+                        $response = ['status' => 0, 'messages' => 'Signed PI has failed to save.', 'icon' => 'error'];
+                    }
                 }
             }
 

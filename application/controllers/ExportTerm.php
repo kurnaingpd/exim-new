@@ -156,7 +156,7 @@
                 'item' => $this->M_CRUD->pi_item('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
             ];
 
-            if($datas['params']['detail']->pi_status_id == 7) {
+            if($datas['params']['term']->pi_status_id == 7) {
                 $datas['status'] = $this->M_CRUD->readDataIn('master_pi_status', ['is_deleted' => '0', 'id' => ['3','6']]);
             } else {
                 $datas['status'] = $this->M_CRUD->readDataIn('master_pi_status', ['is_deleted' => '0', 'id' => ['3','5','7']]);

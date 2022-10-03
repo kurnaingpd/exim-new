@@ -114,6 +114,20 @@
 
                     <div class="row">
                         <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="attachment" class="control-label">Upload export terms</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="attachment" name="attachment" accept="application/pdf" autofocus autocomplete="off" required>
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="form-group" id="required">
                                 <label for="remark" class="control-label">Remark</label>
                                 <textarea name="remark" class="form-control upper" id="remark" placeholder="Enter remark" rows="4" readonly></textarea>
