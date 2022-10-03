@@ -75,14 +75,14 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_cost" class="control-label">Freight cost</label>
-            <input type="text" name="freight_cost" class="form-control" id="freight_cost" placeholder="Enter freight cost" value="0" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
+            <input type="text" name="freight_cost" class="form-control" id="freight_cost" placeholder="Enter freight cost" value="0" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="insurance" class="control-label">Insurance</label>
-            <input type="text" name="insurance" class="form-control" id="insurance" placeholder="Enter insurance" value="0" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
+            <input type="text" name="insurance" class="form-control" id="insurance" placeholder="Enter insurance" value="0" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
         </div>
     </div>
 
