@@ -56,7 +56,6 @@
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Export Terms'];
             $datas['header'] = 'Add record';
             $datas['params'] = [
-                // 'autonumber' => $this->M_CRUD->autoNumberExpTerms('trans_export_terms', 'code', 'ExpTerm/'.date('Y/m/'), 4),
                 'autonumber' => $this->M_CRUD->autoNumberInvoice('trans_export_terms', 'code', '/ExpTerm/'.date('m/Y'), 4),
                 'pi' => $this->M_CRUD->readDatabyID('view_trans_pi_expterm', ['id' => $id]),
             ];
@@ -141,6 +140,7 @@
             ];
             $datas['js'] = [
                 base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
@@ -167,13 +167,37 @@
 
         public function update()
         {
+            $path = 'assets/attachment/expterm/';
             $post = $this->input->post();
             $condition = ['id' => $post['expterm_id']];
-            $param = [
-                'pi_status_id' => $post['status'],
-                'updated_at' => date('Y-m-d H:i:s'),
-                'updated_by' => $this->session->userdata('logged_in')->id,
-            ];
+
+            if ( isset($_FILES['attachment']) && $_FILES['attachment']['name'] != '' ) {
+                $temp_name = $_FILES['attachment']['name'];
+                $ext = explode('.', $temp_name);
+                $end = strtolower(end($ext));
+                $timestamp = mt_rand(1, time());
+                $randomDate = date("d M Y", $timestamp);
+                $filename = 'Export-Terms-'.md5($randomDate).'.'.$end;
+
+                if ( !file_exists($path) ) {
+                    mkdir($path, 0777, true);
+                }
+
+                move_uploaded_file($_FILES['attachment']['tmp_name'], $path.$filename);
+
+                $param = [
+                    'pi_status_id' => $post['status'],
+                    'file' => $filename,
+                    'updated_at' => date('Y-m-d H:i:s'),
+                    'updated_by' => $this->session->userdata('logged_in')->id,
+                ];
+            } else {
+                $param = [
+                    'pi_status_id' => $post['status'],
+                    'updated_at' => date('Y-m-d H:i:s'),
+                    'updated_by' => $this->session->userdata('logged_in')->id,
+                ];
+            }
 
             if($this->M_CRUD->updateData('trans_export_terms', $param, $condition)) {
                 $paramHistory = [

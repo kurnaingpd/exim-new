@@ -5,6 +5,8 @@ $(function () {
         allowClear: true
     })
 
+    bsCustomFileInput.init();
+
     $.validator.setDefaults({
         submitHandler: function () {
             save();
@@ -42,11 +44,18 @@ $('select#status').on('change', function() {
 
 function save()
 {
+    var form = $('#form-expterms-process')[0];
+    var data = new FormData(form);
+
     $.ajax({
-        url: site_url + "export/expterm/update",
         type: "POST",
-        data: $('#form-expterms-process').serialize(),
+        enctype: 'multipart/form-data',
+        url: site_url + "export/expterm/update",
+        data: data,
         dataType: "json",
+        cache : false,
+        contentType: false,
+        processData: false,
         beforeSend: function(){
             $('a.cancel').prop('disabled', true);
             $('button#btn-process').html("<img src=" + base_url + "assets/images/inventory/loader.gif style='height:20px;'  /> Saving...").prop('disabled', true);
@@ -54,7 +63,7 @@ function save()
         success: function(response) {
             console.log(response);
             if(response.status == 1) {
-                $('a.cancel').prop('disabled', false);
+                $('a.cancel').prop('disabled', true);
                 $('button#btn-process').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', true);
                 swal("", response.messages, response.icon).then((value) => {
                     window.location.href = site_url + response.url;
@@ -68,6 +77,6 @@ function save()
             swal("", "Terjadi kesalahan pada sistem.", "error");
             $('a.cancel').prop('disabled', true);
             $('button#btn-customer-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', true);
-        }        
+        }     
     });
 }

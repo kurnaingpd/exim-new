@@ -48,7 +48,7 @@
                                         } elseif($rows->pi_status_id == 5) {
                                             $display = 'style="display: none;"';
                                         } elseif($rows->pi_status_id == 6) {
-                                            $display = '';
+                                            $display = 'style="display: none;"';
                                         } elseif($rows->pi_status_id == 7) {
                                             $display = '';
                                         }
@@ -59,7 +59,7 @@
                                         } elseif($rows->pi_status_id == 5) {
                                             $display = 'style="display: none;"';
                                         } elseif($rows->pi_status_id == 6) {
-                                            $display = 'style="display: none;"';
+                                            $display = '';
                                         } elseif($rows->pi_status_id == 7) {
                                             $display = 'style="display: none;"';
                                         }
