@@ -40,7 +40,6 @@
         public function add()
         {
             $datas['css'] = [
-                "text/css,stylesheet, https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css",
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"),
@@ -48,7 +47,6 @@
             ];
 
             $datas['js'] = [
-                "https://cdn.jsdelivr.net/npm/flatpickr",
                 base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
                 base_url("assets/adminlte/plugins/datatables/jquery.dataTables.min.js"),
                 base_url("assets/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"),
@@ -87,63 +85,69 @@
         public function save()
         {
             $post = $this->input->post();
-            $params = [
-                'code' => $post['code'],
-                'invoice_id' => $post['invoice'],
-                'dates' => $post['pack_date'],
-                'container' => $post['container'],
-                'created_by' => $this->session->userdata('logged_in')->id,
-            ];
-            $header = $this->M_CRUD->insertData('trans_packing_list', $params);
+            $packing = $this->M_CRUD->readDatabyID('trans_packing_list', ['code' => $post['code']]);
 
-            if($header) {
-                $paramsFilter = [
-                    'packing_list_id' => $header,
+            if($packing) {
+                $response = ['status' => 0, 'messages' => 'Invoice code already exist.', 'icon' => 'error'];
+            } else {
+                $params = [
+                    'code' => $post['code'],
+                    'invoice_id' => $post['invoice'],
+                    'dates' => $post['pack_date'],
+                    'container' => $post['container'],
+                    'created_by' => $this->session->userdata('logged_in')->id,
                 ];
-                $this->M_CRUD->insertData('trans_packing_inv_filter', $paramsFilter);
-                $Grid = array();
-			
-                foreach($_POST as $index => $value){
-                    if(preg_match("/^grid_/i", $index)) {
-                        $index = preg_replace("/^grid_/i","",$index);
-                        $arr = explode('_',$index);
-                        $rnd = $arr[count($arr)-1];
-                        array_pop($arr);
-                        $idx = implode('_',$arr);
-                        
-                        $Grid[$rnd][$idx] = $value;
-                        if(!isset($Grid[$rnd]['id'])){
-                            $Grid[$rnd]['id'] = $rnd;
+                $header = $this->M_CRUD->insertData('trans_packing_list', $params);
+    
+                if($header) {
+                    $paramsFilter = [
+                        'packing_list_id' => $header,
+                    ];
+                    $this->M_CRUD->insertData('trans_packing_inv_filter', $paramsFilter);
+                    $Grid = array();
+                
+                    foreach($_POST as $index => $value){
+                        if(preg_match("/^grid_/i", $index)) {
+                            $index = preg_replace("/^grid_/i","",$index);
+                            $arr = explode('_',$index);
+                            $rnd = $arr[count($arr)-1];
+                            array_pop($arr);
+                            $idx = implode('_',$arr);
+                            
+                            $Grid[$rnd][$idx] = $value;
+                            if(!isset($Grid[$rnd]['id'])){
+                                $Grid[$rnd]['id'] = $rnd;
+                            }
                         }
                     }
-                }
-
-                if(!empty($Grid)) {
-                    foreach($Grid as $detail) {
-                        $params = [
-                            'carton_barcode' => $detail['carton'],
-                            'expired_date' => $detail['expdate'],
-                            'production_date' => $detail['proddate'],
-                            'batch' => $detail['batch'],
-                            'qty' => $detail['qty'],
-                        ];
-                        
-                        if($this->M_CRUD->updateData('trans_pi_detail', $params, ['id' => $detail['id']])) {
-                            $paramDetail = [
-                                'packing_list_id' => $header,
-                                'pi_detail_id' => $detail['id'],
+    
+                    if(!empty($Grid)) {
+                        foreach($Grid as $detail) {
+                            $params = [
                                 'carton_barcode' => $detail['carton'],
                                 'expired_date' => $detail['expdate'],
                                 'production_date' => $detail['proddate'],
                                 'batch' => $detail['batch'],
+                                'qty' => $detail['qty'],
                             ];
-                            $this->M_CRUD->insertData('trans_packing_list_detail', $paramDetail);
+                            
+                            if($this->M_CRUD->updateData('trans_pi_detail', $params, ['id' => $detail['id']])) {
+                                $paramDetail = [
+                                    'packing_list_id' => $header,
+                                    'pi_detail_id' => $detail['id'],
+                                    'carton_barcode' => $detail['carton'],
+                                    'expired_date' => $detail['expdate'],
+                                    'production_date' => $detail['proddate'],
+                                    'batch' => $detail['batch'],
+                                ];
+                                $this->M_CRUD->insertData('trans_packing_list_detail', $paramDetail);
+                            }
                         }
                     }
+                    $response = ['status' => 1, 'messages' => 'Packing has been saved successfully.', 'icon' => 'success', 'url' => 'export/packing'];
+                } else {
+                    $response = ['status' => 0, 'messages' => 'Packing check has failed to save.', 'icon' => 'error'];
                 }
-                $response = ['status' => 1, 'messages' => 'Packing has been saved successfully.', 'icon' => 'success', 'url' => 'export/packing'];
-            } else {
-                $response = ['status' => 0, 'messages' => 'Packing check has failed to save.', 'icon' => 'error'];
             }
 
             echo json_encode($response);
