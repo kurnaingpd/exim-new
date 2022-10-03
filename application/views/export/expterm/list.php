@@ -49,6 +49,8 @@
                                             $display = 'style="display: none;"';
                                         } elseif($rows->pi_status_id == 6) {
                                             $display = '';
+                                        } elseif($rows->pi_status_id == 7) {
+                                            $display = '';
                                         }
                                     } elseif($this->session->userdata('logged_in')->role_id == 3) {
                                         // $display_upload = 'style="display: none;"';
@@ -57,6 +59,8 @@
                                         } elseif($rows->pi_status_id == 5) {
                                             $display = 'style="display: none;"';
                                         } elseif($rows->pi_status_id == 6) {
+                                            $display = 'style="display: none;"';
+                                        } elseif($rows->pi_status_id == 7) {
                                             $display = 'style="display: none;"';
                                         }
                                     }
