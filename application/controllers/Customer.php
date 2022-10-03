@@ -229,6 +229,7 @@
                 'material_safety' => ($param['imp_mat']?$param['imp_mat']:NULL),
                 'coa' => ($param['imp_coa']?$param['imp_coa']:NULL),
                 'prod_spec' => ($param['imp_ps']?$param['imp_ps']:NULL),
+                'qcertificate' => ($param['imp_qc']?$param['imp_qc']:NULL),
                 'others' => ($param['imp_others']?$param['imp_others']:NULL),
             ];
             $this->M_CRUD->insertData('master_customer_import_doc', $datas);
