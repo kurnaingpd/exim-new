@@ -100,7 +100,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td class="foot">GRAND TOTAL <?=$params['header']->incoterm.' '.$params['header']->destination_port?></td>
+                                <td class="foot">GRAND TOTAL <?=$params['header']->incoterm.' '.$params['header']->destination?></td>
                                 <td class="foot"></td>
                                 <td class="foot" align="right"><?=number_format($params['footer']->tot_qty)?></td>
                                 <td class="foot" align="right"><?=$params['header']->currency_icon.' '.number_format($params['footer']->tot_price, 2)?></td>
