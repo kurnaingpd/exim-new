@@ -66,14 +66,28 @@
                         <thead>
                             <tr>
                                 <th>NO.</th>
+
+                                <?php if($params['header']->carton == 0) : ?>
                                 <th>CARTON BARCODE</th>
+                                <?php endif; ?>
+                                
                                 <th>DESCRIPTION OF GOODS</th>
                                 <th>HS CODE</th>
                                 <th>PACKING</th>
                                 <th>QTY</th>
+
+                                <?php if($params['header']->batch == 0) : ?>
                                 <th>BATCH</th>
+                                <?php endif; ?>
+
+                                <?php if($params['header']->expired == 0) : ?>
                                 <th>EXPIRED<br>DATE</th>
+                                <?php endif; ?>
+
+                                <?php if($params['header']->production == 0) : ?>
                                 <th>PRODUCTION<br>DATE</th>
+                                <?php endif; ?>
+
                                 <th>NET WEIGHT</th>
                                 <th>GROSS WEIGHT</th>
                                 <th>TOTAL MEASUREMENT<br>(CBM)</th>
@@ -90,17 +104,32 @@
                                     $totQty += $rows->qty;
                                     $totNet += $rows->net_wight;
                                     $totGross += $rows->gross_weight;
+                                    $cols_total = 5 - $params['header']->carton;
                             ?>
                                 <tr>
                                     <td class="data-border" align="center"><?=$no?>.</td>
+
+                                    <?php if($params['header']->carton == 0) : ?>
                                     <td class="data-border" align="center"><?=$rows->carton_barcode?></td>
+                                    <?php endif; ?>
+
                                     <td class="data-border"><?=$rows->item_name?></td>
                                     <td class="data-border" align="center"><?=$rows->hs_code?></td>
                                     <td class="data-border" align="center"><?=$rows->packing?></td>
                                     <td class="data-border" align="right"><?=number_format($rows->qty)?></td>
+
+                                    <?php if($params['header']->batch == 0) : ?>
                                     <td class="data-border" align="center"><?=$rows->batch?></td>
+                                    <?php endif; ?>
+
+                                    <?php if($params['header']->expired == 0) : ?>
                                     <td class="data-border"><?=$rows->expired_date?></td>
+                                    <?php endif; ?>
+
+                                    <?php if($params['header']->production == 0) : ?>
                                     <td class="data-border"><?=$rows->production_date?></td>
+                                    <?php endif; ?>
+
                                     <td class="data-border" align="center"><?=number_format($rows->net_wight, 2)?></td>
                                     <td class="data-border" align="center"><?=number_format($rows->gross_weight, 2)?></td>
                                     <td class="data-border" align="center">-</td>
@@ -110,11 +139,21 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td style="text-align: left; padding: 1%; font-weight: bold;" colspan="5">TOTAL</td>
+                                <td style="text-align: left; padding: 1%; font-weight: bold;" colspan="<?=$cols_total?>">TOTAL</td>
                                 <td align="center" class="summary"><?=number_format($totQty)?></td>
+                                
+                                <?php if($params['header']->batch == 0) : ?>
                                 <td></td>
+                                <?php endif; ?>
+
+                                <?php if($params['header']->expired == 0) : ?>
                                 <td></td>
+                                <?php endif; ?>
+
+                                <?php if($params['header']->production == 0) : ?>
                                 <td></td>
+                                <?php endif; ?>
+
                                 <td class="summary" align="center"><?=number_format($totNet, 2)?></td>
                                 <td class="summary" align="center"><?=number_format($totGross, 2)?></td>
                                 <td colspan="2"></td>
