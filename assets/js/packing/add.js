@@ -11,7 +11,6 @@ $(function () {
         dateFormat: "Y-m-d",
         allowInput: false,
         disableMobile: "true",
-        minDate: "today",
     });
 
     $(".upper").keyup(function () {
@@ -167,6 +166,8 @@ function save()
                 });
             } else {
                 swal("", response.messages, response.icon);
+                $('a.cancel').prop('disabled', false);
+                $('button#btn-packing-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', false);
             }
         },
         error: function (e) {

@@ -9,9 +9,15 @@ $(function () {
         var status = $(this).is(":checked");
         
         if (status) {
+            console.log(status)
             checking(packing, id, '1')
+            $('.'+id).hide();
         } else {
+            console.log(status)
             checking(packing, id, '0')
+            $('.'+id).removeClass("d-none");
+            $('.'+id).show();
+            // console.log('show')
         }
     });
 
@@ -45,15 +51,6 @@ function checking(packing, id, data)
         dataType: "json",
         success: function(response) {
             console.log(response);
-            // if(response.status == 1) {
-            //     $('a.cancel').prop('disabled', true);
-            //     $('button#btn-packing-update').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', true);
-            //     swal("", response.messages, response.icon).then((value) => {
-            //         window.location.href = site_url + response.url;
-            //     });
-            // } else {
-            //     swal("", response.messages, response.icon);
-            // }
         },
         error: function (e) {
             console.log("Terjadi kesalahan pada sistem");

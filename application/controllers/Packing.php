@@ -40,6 +40,7 @@
         public function add()
         {
             $datas['css'] = [
+                "text/css,stylesheet, https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css",
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"),
@@ -47,6 +48,7 @@
             ];
 
             $datas['js'] = [
+                "https://cdn.jsdelivr.net/npm/flatpickr",
                 base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
                 base_url("assets/adminlte/plugins/datatables/jquery.dataTables.min.js"),
                 base_url("assets/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"),
@@ -72,13 +74,13 @@
 
         public function data($id = NULl)
         {
-            $data = $this->M_CRUD->readDatabyID('view_trans_pi_packing_get', ['is_deleted' => '0', 'id' => $id]);
+            $data = $this->M_CRUD->readDatabyID('view_trans_packing_get', ['is_deleted' => '0', 'id' => $id]);
             echo json_encode($data);
         }
 
         public function table_item($id = NULL)
         {
-            $data = $this->M_CRUD->readData('view_trans_pi_packing_item_get', ['is_deleted' => '0', 'id' => $id]);
+            $data = $this->M_CRUD->readData('view_trans_packing_item_get', ['is_deleted' => '0', 'id' => $id]);
             echo json_encode($data);
         }
 
@@ -88,7 +90,7 @@
             $packing = $this->M_CRUD->readDatabyID('trans_packing_list', ['code' => $post['code']]);
 
             if($packing) {
-                $response = ['status' => 0, 'messages' => 'Invoice code already exist.', 'icon' => 'error'];
+                $response = ['status' => 0, 'messages' => 'Packing list code already exist.', 'icon' => 'error'];
             } else {
                 $params = [
                     'code' => $post['code'],
@@ -179,8 +181,8 @@
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Packing'];
             $datas['header'] = 'Detail record';
             $datas['params'] = [
-                'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_packing_detail', ['is_deleted' => '0', 'id' => $id]),
-                'list' => $this->M_CRUD->readData('view_trans_pi_packing_detail_list', ['is_deleted' => '0', 'id' => $id]),
+                'detail' => $this->M_CRUD->readDatabyID('view_trans_packing_detail', ['is_deleted' => '0', 'id' => $id]),
+                'list' => $this->M_CRUD->readData('view_trans_packing_detail_list', ['is_deleted' => '0', 'id' => $id]),
             ];
 
             $this->template->load('default', 'contents' , 'export/packing/detail/index', $datas);
