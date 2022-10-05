@@ -67,7 +67,7 @@
                             <tr>
                                 <th>NO.</th>
 
-                                <?php if($params['header']->carton == 0) : ?>
+                                <?php if($params['header']->carton == 1) : ?>
                                 <th>CARTON BARCODE</th>
                                 <?php endif; ?>
                                 
@@ -76,15 +76,15 @@
                                 <th>PACKING</th>
                                 <th>QTY</th>
 
-                                <?php if($params['header']->batch == 0) : ?>
+                                <?php if($params['header']->batch == 1) : ?>
                                 <th>BATCH</th>
                                 <?php endif; ?>
 
-                                <?php if($params['header']->expired == 0) : ?>
+                                <?php if($params['header']->expired == 1) : ?>
                                 <th>EXPIRED<br>DATE</th>
                                 <?php endif; ?>
 
-                                <?php if($params['header']->production == 0) : ?>
+                                <?php if($params['header']->production == 1) : ?>
                                 <th>PRODUCTION<br>DATE</th>
                                 <?php endif; ?>
 
@@ -104,12 +104,12 @@
                                     $totQty += $rows->qty;
                                     $totNet += $rows->net_wight;
                                     $totGross += $rows->gross_weight;
-                                    $cols_total = 5 - $params['header']->carton;
+                                    $cols_total = 4 + $params['header']->carton;
                             ?>
                                 <tr>
                                     <td class="data-border" align="center"><?=$no?>.</td>
 
-                                    <?php if($params['header']->carton == 0) : ?>
+                                    <?php if($params['header']->carton == 1) : ?>
                                     <td class="data-border" align="center"><?=$rows->carton_barcode?></td>
                                     <?php endif; ?>
 
@@ -118,15 +118,15 @@
                                     <td class="data-border" align="center"><?=$rows->packing?></td>
                                     <td class="data-border" align="right"><?=number_format($rows->qty)?></td>
 
-                                    <?php if($params['header']->batch == 0) : ?>
+                                    <?php if($params['header']->batch == 1) : ?>
                                     <td class="data-border" align="center"><?=$rows->batch?></td>
                                     <?php endif; ?>
 
-                                    <?php if($params['header']->expired == 0) : ?>
+                                    <?php if($params['header']->expired == 1) : ?>
                                     <td class="data-border"><?=$rows->expired_date?></td>
                                     <?php endif; ?>
 
-                                    <?php if($params['header']->production == 0) : ?>
+                                    <?php if($params['header']->production == 1) : ?>
                                     <td class="data-border"><?=$rows->production_date?></td>
                                     <?php endif; ?>
 
@@ -142,15 +142,15 @@
                                 <td style="text-align: left; padding: 1%; font-weight: bold;" colspan="<?=$cols_total?>">TOTAL</td>
                                 <td align="center" class="summary"><?=number_format($totQty)?></td>
                                 
-                                <?php if($params['header']->batch == 0) : ?>
+                                <?php if($params['header']->batch == 1) : ?>
                                 <td></td>
                                 <?php endif; ?>
 
-                                <?php if($params['header']->expired == 0) : ?>
+                                <?php if($params['header']->expired == 1) : ?>
                                 <td></td>
                                 <?php endif; ?>
 
-                                <?php if($params['header']->production == 0) : ?>
+                                <?php if($params['header']->production == 1) : ?>
                                 <td></td>
                                 <?php endif; ?>
 
