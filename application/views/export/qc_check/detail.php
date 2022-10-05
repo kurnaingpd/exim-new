@@ -158,14 +158,21 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div class="form-group required">
                                 <label for="yeast" class="control-label">Yeast & mold</label>
                                 <input type="text" name="yeast" class="form-control upper" id="yeast" value="<?=$params['detail']->yeast?>" autocomplete="off" placeholder="Enter yeast & mold" required>
                             </div>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
+                            <div class="form-group required">
+                                <label for="coliform" class="control-label">Coliform</label>
+                                <input type="text" name="coliform" class="form-control upper" id="coliform" value="<?=$params['detail']->coliform?>"autocomplete="off" placeholder="Enter coliform" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
                             <div class="form-group required">
                                 <label for="salmonella" class="control-label">Salmonella</label>
                                 <input type="text" name="salmonella" class="form-control upper" id="salmonella" value="<?=$params['detail']->salmonella?>" autocomplete="off" placeholder="Enter salmonella" required>
