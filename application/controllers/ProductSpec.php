@@ -71,10 +71,15 @@
             echo json_encode($data);
         }
 
-        public function qcheck($id = NULL)
+        public function qcheck($id)
         {
             $data = $this->M_CRUD->readDatabyID('view_trans_prodspec_qcheck', ['is_deleted' => '0', 'packing_detail_id' => $id]);
-            echo json_encode($data);
+            
+            if($data) {
+                echo json_encode($data);
+            } else {
+                echo json_encode(['messages' => 'Item ini belum diinput pada QC check.']);
+            }
         }
 
         public function save()
@@ -124,6 +129,10 @@
                             'product_shelf' => $detail['product_shelf'],
                             'packaging' => $detail['packaging'],
                             'storage' => $detail['storage'],
+                            'functions' => $detail['functions'],
+                            'usage' => $detail['usage'],
+                            'source' => $detail['source'],
+                            'country' => $detail['country'],
                         ];
                         $this->M_CRUD->insertData('trans_prod_spec_detail', $params);
                     }

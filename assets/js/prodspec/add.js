@@ -69,6 +69,18 @@ $(function () {
                         '<input type="text" class="form-control" id="grid_storage_'+rnd+'" name="grid_storage_'+rnd+'" value="'+$('input.grid[name="storage"]').val()+'" style="background-color:#ffffff;" readonly required />'+
                     '</td>'+
                     '<td>'+
+                        '<input type="text" class="form-control" id="grid_functions_'+rnd+'" name="grid_functions_'+rnd+'" value="'+$('input.grid[name="functions"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="text" class="form-control" id="grid_usage_'+rnd+'" name="grid_usage_'+rnd+'" value="'+$('input.grid[name="usage"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="text" class="form-control" id="grid_source_'+rnd+'" name="grid_source_'+rnd+'" value="'+$('input.grid[name="source"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="text" class="form-control" id="grid_country_'+rnd+'" name="grid_country_'+rnd+'" value="'+$('input.grid[name="country"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                    '</td>'+
+                    '<td>'+
                         '<button type="button" class="btn btn-info btn-flat btn-edit" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-edit"></i></button>'+
                     '</td>'+
                 '</tr>'
@@ -95,6 +107,10 @@ $(function () {
                 var product_shelf = $("tr[data-id="+id+"]").find("#grid_product_shelf_"+id).val();
                 var packaging = $("tr[data-id="+id+"]").find("#grid_packaging_"+id).val();
                 var storage = $("tr[data-id="+id+"]").find("#grid_storage_"+id).val();
+                var functions = $("tr[data-id="+id+"]").find("#grid_functions_"+id).val();
+                var usage = $("tr[data-id="+id+"]").find("#grid_usage_"+id).val();
+                var source = $("tr[data-id="+id+"]").find("#grid_source_"+id).val();
+                var country = $("tr[data-id="+id+"]").find("#grid_country_"+id).val();
 
                 $('select#packing').append('<option value="'+product_id+'">'+product_name+'</option>');
                 $("select#packing").select2("val", product_id);
@@ -111,6 +127,10 @@ $(function () {
                 $("#product_shelf").val(product_shelf);
                 $("#packaging").val(packaging);
                 $("#storage").val(storage);
+                $("#functions").val(functions);
+                $("#usage").val(usage);
+                $("#source").val(source);
+                $("#country").val(country);
                 $("tr[data-id="+id+"]").remove();
             });
         }
@@ -183,17 +203,25 @@ function details(id)
         type: "POST",
         dataType: "json",
         success: function(response) {
+            console.log(response)
             if(response) {
-                document.getElementById("item").value = response.item_id;
-                document.getElementById("qcheck_id").value = response.id;
+                if(response.item_id) {
+                    document.getElementById("item").value = response.item_id;
+                    document.getElementById("qcheck_id").value = response.id;
+                } else {
+                    swal("", response.messages, "error");
+                    $("#packing").val(null).trigger("change");
+                }
             } else {
                 document.getElementById("item").value = '';
                 document.getElementById("qcheck_id").value = '';
             }
         },
         error: function (e) {
-            console.log("Terjadi kesalahan pada sistem");
-            swal("", "Terjadi kesalahan pada sistem.", "error");
+            // console.log("Terjadi kesalahan pada sistem");
+            // swal("", "Terjadi kesalahan pada sistem.", "error");
+            document.getElementById("item").value = '';
+            document.getElementById("qcheck_id").value = '';
         }        
     });
 }

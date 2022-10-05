@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="form-group required">
             <label for="packing" class="control-label">Product name</label>
-            <select name="packing" class="form-control select2bs4 grid" id="packing">
+            <select name="packing" class="form-control select2bs4 grid packing" id="packing">
                 <option></option>
             </select>
             <input type="hidden" class="grid" id="item" name="item">
@@ -106,6 +106,36 @@
         <div class="form-group required">
             <label for="storage" class="control-label">Storage Condition Requirement</label>
             <input type="text" class="form-control grid" id="storage" name="storage" autocomplete="off" placeholder="Enter storage condition requirement" >
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group required">
+            <label for="functions" class="control-label">Function of the food material</label>
+            <input type="text" class="form-control grid" id="functions" name="functions" autocomplete="off" placeholder="Enter function of the food material">
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group required">
+            <label for="usage" class="control-label">Usage</label>
+            <input type="text" class="form-control grid" id="usage" name="usage" autocomplete="off" placeholder="Enter usage" >
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group required">
+            <label for="source" class="control-label">Source Of Allergen</label>
+            <input type="text" class="form-control grid" id="source" name="source" autocomplete="off" placeholder="Enter source of allergen" >
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group required">
+            <label for="country" class="control-label">Country of origin</label>
+            <input type="text" class="form-control grid" id="country" name="country" autocomplete="off" placeholder="Enter country of origin" >
         </div>
     </div>
 </div>

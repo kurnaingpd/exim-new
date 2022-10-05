@@ -15,6 +15,10 @@
             <th>Product Shelf Life</th>
             <th>Packaging Material</th>
             <th>Storage Condition Requirement</th>
+            <th>Function of the food material</th>
+            <th>Usage</th>
+            <th>Source Of Allergen</th>
+            <th>Country of origin</th>
             <th><i class="fas fa-ellipsis-h"></i></th>
         </tr>
     </thead>
