@@ -185,8 +185,8 @@ function save()
         error: function (e) {
             console.log("Terjadi kesalahan pada sistem");
             swal("", "Terjadi kesalahan pada sistem.", "error");
-            $('a.cancel').prop('disabled', true);
-            $('button#btn-customer-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', true);
+            $('a.cancel').prop('disabled', false);
+            $('button#btn-process').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', false);
         }        
     });
 }

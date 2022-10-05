@@ -267,6 +267,63 @@
             ];
 
             if($this->M_CRUD->updateData('trans_pi', $param, $condition)) {
+                $Grid = array();
+
+                foreach($_POST as $index => $value){
+                    if(preg_match("/^grid_/i", $index)) {
+                        $index = preg_replace("/^grid_/i","",$index);
+                        $arr = explode('_',$index);
+                        $rnd = $arr[count($arr)-1];
+                        array_pop($arr);
+                        $idx = implode('_',$arr);
+                        
+                        $Grid[$rnd][$idx] = $value;
+                        if(!isset($Grid[$rnd]['pi_id'])){
+                            $Grid[$rnd]['pi_id'] = $post['id'];
+                        }
+                    }
+                }
+
+                if(!empty($Grid)) {
+                    foreach($Grid as $detail) {
+                        $params = [
+                            'pi_id' => $detail['pi_id'],
+                            'pi_item_category_id' => $detail['item_category'],
+                            'item_id' => $detail['product'],
+                            'qty' => $detail['qty'],
+                            'price' => $detail['price'],
+                        ];
+                        $this->M_CRUD->insertData('trans_pi_detail', $params);
+                    }
+                }
+                
+                $Detail = array();
+                
+                foreach($_POST as $index => $value){
+                    if(preg_match("/^pi_/i", $index)) {
+                        $index = preg_replace("/^pi_/i","",$index);
+                        $arr = explode('_',$index);
+                        $rnd = $arr[count($arr)-1];
+                        array_pop($arr);
+                        $idx = implode('_',$arr);
+                        
+                        $Detail[$rnd][$idx] = $value;
+                        if(!isset($Detail[$rnd]['id'])){
+                            $Detail[$rnd]['id'] = $rnd;
+                        }
+                    }
+                }
+
+                if(!empty($Detail)) {
+                    foreach($Detail as $list) {
+                        $paramsDetail = [
+                            'qty' => $list['qty'],
+                            'price' => $list['price'],
+                        ];
+                        $this->M_CRUD->updateData('trans_pi_detail', $paramsDetail, ['id' => $list['detail_id']]);
+                    }
+                }
+
                 $paramHistory = [
                     'pi_id' => $post['id'],
                     'pi_status_id' => $post['status'],
