@@ -14,6 +14,7 @@
                     <th>Country</th>
                     <th>File 1</th>
                     <th>File 2</th>
+                    <th>Remarks</th>
                     <th>Status</th>
                     <th>Created at</th>
                     <th>Updated at</th>
@@ -32,7 +33,7 @@
                         <td class="text-center">
                             <?php if($rows->file_1) : ?>
                                 <a href="<?=base_url('assets/attachment/expterm/'.$rows->file_1)?>" target="_blank" <?=$rows->pi_status_id?'':'style="display: none;"'?>>
-                                    Click here to download
+                                    <i class="fas fa-file-download"></i>
                                 </a>
                             <?php endif; ?>
                         </td>
@@ -40,10 +41,11 @@
                         <td class="text-center">
                             <?php if($rows->file_2) : ?>
                                 <a href="<?=base_url('assets/attachment/expterm/'.$rows->file_2)?>" target="_blank" <?=$rows->pi_status_id?'':'style="display: none;"'?>>
-                                    Click here to download
+                                    <i class="fas fa-file-download"></i>
                                 </a>
                             <?php endif; ?>
                         </td>
+                        <td><?=$rows->remarks?></td>
                         <td class="text-center">
                             <span class="badge bg-<?=$rows->bg_color?>"><?=$rows->pi_status_name?></span>
                         </td>
