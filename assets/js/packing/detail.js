@@ -11,12 +11,12 @@ $(function () {
         if (status) {
             console.log(status)
             checking(packing, id, '1')
-            $('.'+id).hide();
+            $('.'+id).removeClass("d-none");
+            $('.'+id).show();
         } else {
             console.log(status)
             checking(packing, id, '0')
-            $('.'+id).removeClass("d-none");
-            $('.'+id).show();
+            $('.'+id).hide();
             // console.log('show')
         }
     });
