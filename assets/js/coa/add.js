@@ -148,30 +148,30 @@ function details(id)
                 document.getElementById("batch").value = response.batch;
                 document.getElementById("product_date").value = response.production_date;
                 document.getElementById("expired_date").value = response.expired_date;
-                document.getElementById("aroma").value = response.aroma;
-                document.getElementById("taste").value = response.taste;
-                document.getElementById("moisture").value = response.moisture;
-                document.getElementById("ph").value = response.ph;
-                document.getElementById("brix").value = response.brix;
-                document.getElementById("salmonella").value = response.salmonella;
-                document.getElementById("plate").value = response.total_plate;
-                document.getElementById("mold").value = response.yeast;
-                document.getElementById("enterobacteriaceae").value = response.enterobacteriaceae;
+                // document.getElementById("aroma").value = response.aroma;
+                // document.getElementById("taste").value = response.taste;
+                // document.getElementById("moisture").value = response.moisture;
+                // document.getElementById("ph").value = response.ph;
+                // document.getElementById("brix").value = response.brix;
+                // document.getElementById("salmonella").value = response.salmonella;
+                // document.getElementById("plate").value = response.total_plate;
+                // document.getElementById("mold").value = response.yeast;
+                // document.getElementById("enterobacteriaceae").value = response.enterobacteriaceae;
             } else {
                 document.getElementById("item").value = '';
                 document.getElementById("qcheck_id").value = '';
                 document.getElementById("batch").value = '';
                 document.getElementById("product_date").value = '';
                 document.getElementById("expired_date").value = '';
-                document.getElementById("aroma").value = '';
-                document.getElementById("taste").value = '';
-                document.getElementById("moisture").value = '';
-                document.getElementById("ph").value = '';
-                document.getElementById("brix").value = '';
-                document.getElementById("salmonella").value = '';
-                document.getElementById("plate").value = '';
-                document.getElementById("mold").value = '';
-                document.getElementById("enterobacteriaceae").value = '';
+                // document.getElementById("aroma").value = '';
+                // document.getElementById("taste").value = '';
+                // document.getElementById("moisture").value = '';
+                // document.getElementById("ph").value = '';
+                // document.getElementById("brix").value = '';
+                // document.getElementById("salmonella").value = '';
+                // document.getElementById("plate").value = '';
+                // document.getElementById("mold").value = '';
+                // document.getElementById("enterobacteriaceae").value = '';
             }
         },
         error: function (e) {
