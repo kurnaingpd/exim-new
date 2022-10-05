@@ -139,6 +139,10 @@ function details(id)
         dataType: "json",
         success: function(response) {
             if(response) {
+                if(response.qc_status_id == 2) {
+                    swal("", "Produk tidak aman.", "info");
+                }
+                
                 document.getElementById("item").value = response.item_id;
                 document.getElementById("qcheck_id").value = response.id;
                 document.getElementById("batch").value = response.batch;
