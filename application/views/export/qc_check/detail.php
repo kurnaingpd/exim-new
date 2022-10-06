@@ -51,6 +51,34 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group required">
+                                <label for="no_surat" class="control-label">No. surat jalan</label>
+                                <input type="text" name="no_surat" class="form-control" id="no_surat" placeholder="Enter no. surat jalan" value="<?=$params['detail']->surat_jalan?>" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group required">
+                                <label for="batch" class="control-label">Batch</label>
+                                <input type="text" name="batch" class="form-control" id="batch" placeholder="Enter batch" value="<?=$params['detail']->batch?>" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="attachment" class="control-label">Image</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="attachment" name="attachment" accept="image/*" autofocus autocomplete="off">
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

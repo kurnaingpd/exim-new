@@ -12,6 +12,7 @@
                     <th>Production date</th>
                     <th>Expire date</th>
                     <th>Finish good check date</th>
+                    <th>Images</th>
                     <th>Created at</th>
                     <th>Updated at</th>
                     <th><i class="fas fa-ellipsis-h"></i></th>
@@ -26,6 +27,13 @@
                         <td class="text-center"><?=$rows->production_date?></td>
                         <td class="text-center"><?=$rows->expired_date?></td>
                         <td class="text-center"><?=$rows->finish_good_date?></td>
+                        <td class="text-center">
+                            <?php if($rows->attachment) : ?>
+                            <a href="<?=base_url('assets/attachment/qc_check/'.$rows->attachment)?>" target="_blank">
+                                    <i class="fas fa-file-download"></i>
+                            </a>
+                            <?php endif; ?>
+                        </td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=$rows->updated_at?></td>
                         <td class="text-center">

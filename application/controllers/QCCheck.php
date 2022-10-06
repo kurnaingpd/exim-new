@@ -103,7 +103,7 @@
                     $end = strtolower(end($ext));
                     $timestamp = mt_rand(1, time());
                     $randomDate = date("d M Y", $timestamp);
-                    $filename = 'Export-Terms-'.md5($randomDate).'.'.$end;
+                    $filename = 'QC-Check-'.md5($randomDate).'.'.$end;
 
                     if ( !file_exists($path) ) {
                         mkdir($path, 0777, true);
@@ -155,12 +155,15 @@
 
         public function update()
         {
+            $path = 'assets/attachment/qc_check/';
             $post = $this->input->post();
             $condition = ['id' => $post['id']];
             $params = [
                 'item_id' => $post['product'],
                 'production_date' => $post['prod_date'],
                 'expired_date' => $post['exp_date'],
+                'surat_jalan' => $post['no_surat'],
+                'batch' => $post['batch'],
                 'aroma' => $post['aroma'],
                 'taste' => $post['taste'],
                 'value' => $post['value'],
@@ -181,10 +184,26 @@
                 'updated_by' => $this->session->userdata('logged_in')->id,
             ];
 
-            if($this->M_CRUD->updateData('trans_qcontrol_check', $params, $condition)) {
-                $response = ['status' => 1, 'messages' => 'QC check has been updated successfully.', 'icon' => 'success', 'url' => 'export/qc_check'];
-            } else {
-                $response = ['status' => 0, 'messages' => 'QC check has failed to update.', 'icon' => 'error'];
+            if ( isset($_FILES['attachment']) && $_FILES['attachment']['name'] != '' ) {
+                $temp_name = $_FILES['attachment']['name'];
+                $ext = explode('.', $temp_name);
+                $end = strtolower(end($ext));
+                $timestamp = mt_rand(1, time());
+                $randomDate = date("d M Y", $timestamp);
+                $filename = 'QC-Check-'.md5($randomDate).'.'.$end;
+
+                if ( !file_exists($path) ) {
+                    mkdir($path, 0777, true);
+                }
+
+                move_uploaded_file($_FILES['attachment']['tmp_name'], $path.$filename);
+                $params['attachment'] = $filename;
+
+                if($this->M_CRUD->updateData('trans_qcontrol_check', $params, $condition)) {
+                    $response = ['status' => 1, 'messages' => 'QC check has been updated successfully.', 'icon' => 'success', 'url' => 'export/qc_check'];
+                } else {
+                    $response = ['status' => 0, 'messages' => 'QC check has failed to update.', 'icon' => 'error'];
+                }
             }
 
             echo json_encode($response);
