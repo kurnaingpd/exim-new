@@ -124,45 +124,6 @@
             }
 
             echo json_encode($response);
-
-            // if ( isset($_FILES['attachment1']) && $_FILES['attachment1']['name'] != '' ) {
-            //     $temp_name = $_FILES['attachment1']['name'];
-            //     $ext = explode('.', $temp_name);
-            //     $end = strtolower(end($ext));
-            //     $timestamp = mt_rand(1, time());
-            //     $randomDate = date("d M Y", $timestamp);
-            //     $filename1 = 'Export-Terms-'.md5($randomDate).'.'.$end;
-
-            //     if ( !file_exists($path) ) {
-            //         mkdir($path, 0777, true);
-            //     }
-
-            //     move_uploaded_file($_FILES['attachment1']['tmp_name'], $path.$filename1);
-
-            //     $params = [
-            //         'pi_id' => $post['pi_no'],
-            //         'code' => $post['code'],
-            //         'file' => $filename1,
-            //         'pi_status_id' => 1,
-            //         'created_by' => $this->session->userdata('logged_in')->id,
-            //     ];
-            //     $header = $this->M_CRUD->insertData('trans_export_terms', $params);
-
-                // if($header) {
-                //     $paramHistory = [
-                //         'export_terms_id' => $header,
-                //         'status_id' => 1,
-                //         'created_by' => $this->session->userdata('logged_in')->id,
-                //     ];
-    
-                //     $this->M_CRUD->insertData('trans_export_terms_history', $paramHistory);
-                //     $response = ['status' => 1, 'messages' => 'Export terms has been saved successfully.', 'icon' => 'success', 'url' => 'export/expterm'];
-                // } else {
-                //     $response = ['status' => 0, 'messages' => 'Export terms has failed to save.', 'icon' => 'error'];
-                // }
-            // }
-
-            // echo json_encode($response);
         }
 
         public function detail($id)

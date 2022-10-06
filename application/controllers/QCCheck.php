@@ -68,7 +68,7 @@
 
         public function save()
         {
-            $path = 'assets/attachment/expterm/';
+            $path = 'assets/attachment/qc_check/';
             $post = $this->input->post();
             $params = [
                 'code' => $post['code'],
