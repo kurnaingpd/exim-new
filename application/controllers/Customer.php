@@ -360,17 +360,17 @@
                 /** Ship-to Address */
                 $this->saveUpdateShipAddress($post, $customer);
                 /** Contact person ship-to */
-                if( !empty($post['cpshipto']) ) {
+                // if( !empty($post['cpshipto']) ) {
                     $this->saveUpdateCPShipTo($post, $customer);
-                }
+                // }
                 /** Import document needs */
-                if( !empty($post['import_doc']) ) {
+                // if( !empty($post['import_doc']) ) {
                     $this->saveUpdateImport($post, $customer);
-                }
+                // }
                 /** Coding printing */
-                if( !empty($post['coding_print']) ) {
+                // if( !empty($post['coding_print']) ) {
                     $this->saveUpdateCoding($post, $customer);
-                }
+                // }
 
                 $response = ['status' => 1, 'messages' => 'Customer has been saved successfully.', 'icon' => 'success', 'url' => 'export/customer'];
             } else {
