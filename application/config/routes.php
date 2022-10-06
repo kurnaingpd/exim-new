@@ -181,6 +181,14 @@ $route['export/customer/shipto_delete/(:num)'] = 'Customer/shipto_del/$1';
 $route['export/customer/update'] = 'Customer/update';
 $route['export/customer/delete/(:num)'] = 'Customer/delete/$1';
 
+/** Export - Freight */
+$route['export/freight'] = 'Freight';
+$route['export/freight/add'] = 'Freight/add';
+$route['export/freight/save'] = 'Freight/save';
+$route['export/freight/detail/(:num)'] = 'Freight/detail/$1';
+$route['export/freight/update'] = 'Freight/update';
+$route['export/freight/delete/(:num)'] = 'Freight/delete/$1';
+
 /** Export - Proforma */
 $route['export/proforma'] = 'ProformaInvoice';
 $route['export/proforma/add'] = 'ProformaInvoice/add';
