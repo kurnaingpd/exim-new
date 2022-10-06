@@ -5,6 +5,8 @@ $(function () {
         allowClear: true
     })
 
+    bsCustomFileInput.init();
+
     $(".datetimepicker-input").css("background-color", "#FFF");
 
     flatpickr(".datetimepicker-input", {

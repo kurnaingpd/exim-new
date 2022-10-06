@@ -47,6 +47,7 @@
 
             $datas['js'] = [
                 "https://cdn.jsdelivr.net/npm/flatpickr",
+                base_url("assets/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"),
                 base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
@@ -67,12 +68,15 @@
 
         public function save()
         {
+            $path = 'assets/attachment/expterm/';
             $post = $this->input->post();
             $params = [
                 'code' => $post['code'],
                 'item_id' => $post['product'],
                 'production_date' => $post['prod_date'],
                 'expired_date' => $post['exp_date'],
+                'surat_jalan' => $post['no_surat'],
+                'batch' => $post['batch'],
                 'aroma' => $post['aroma'],
                 'taste' => $post['taste'],
                 'value' => $post['value'],
@@ -92,10 +96,30 @@
                 'created_by' => $this->session->userdata('logged_in')->id,
             ];
 
-            if($this->M_CRUD->insertData('trans_qcontrol_check', $params)) {
-                $response = ['status' => 1, 'messages' => 'QC check has been saved successfully.', 'icon' => 'success', 'url' => 'export/qc_check'];
+            if($_FILES) {
+                if ( isset($_FILES['attachment']) && $_FILES['attachment']['name'] != '' ) {
+                    $temp_name = $_FILES['attachment']['name'];
+                    $ext = explode('.', $temp_name);
+                    $end = strtolower(end($ext));
+                    $timestamp = mt_rand(1, time());
+                    $randomDate = date("d M Y", $timestamp);
+                    $filename = 'Export-Terms-'.md5($randomDate).'.'.$end;
+
+                    if ( !file_exists($path) ) {
+                        mkdir($path, 0777, true);
+                    }
+
+                    move_uploaded_file($_FILES['attachment']['tmp_name'], $path.$filename);
+                    $params['attachment'] = $filename;
+
+                    if($this->M_CRUD->insertData('trans_qcontrol_check', $params)) {
+                        $response = ['status' => 1, 'messages' => 'QC check has been saved successfully.', 'icon' => 'success', 'url' => 'export/qc_check'];
+                    } else {
+                        $response = ['status' => 0, 'messages' => 'QC check has failed to save.', 'icon' => 'error'];
+                    }
+                }
             } else {
-                $response = ['status' => 0, 'messages' => 'QC check has failed to save.', 'icon' => 'error'];
+                $response = ['status' => 0, 'messages' => 'QC check image has failed to save.', 'icon' => 'error'];
             }
 
             echo json_encode($response);
