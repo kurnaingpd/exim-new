@@ -36,6 +36,15 @@
         </div>
     </div>
 
+    <!-- <div class="card">
+        <div class="card-header">
+            <h6>Ship-to address</h6>
+        </div>
+        <div class="card-body">
+            <?php $this->load->view('export/customer/detail/shipto'); ?>
+        </div>
+    </div> -->
+
     <div class="card">
         <div class="card-header">
             <h6>Ship-to address</h6>
@@ -75,10 +84,15 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <a class="btn btn-default btn-block cancel" href="#" onclick="history.go(-1)">
                         <i class="fas fa-ban mr-2"></i>Cancel
                     </a>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-success save btn-block" id="btn-customer-save">
+                        <i class="fas fa-save mr-2"></i>Save
+                    </button>
                 </div>
             </div>
         </div>

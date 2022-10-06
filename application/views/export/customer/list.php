@@ -30,7 +30,7 @@
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center">
                             <a href="<?=site_url('export/customer/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
-                                <i class="fas fa-eye"></i>
+                                <i class="fas fa-edit"></i>
                             </a>
                             <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">
                                 <i class="fas fa-trash"></i>

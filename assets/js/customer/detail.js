@@ -9,6 +9,34 @@ $(function () {
         this.value = this.value.toLocaleUpperCase();
     });
 
+    $('input#btn-shipto').on('click',function(){
+        console.log('coding');
+        var discharge = $('#shipto_discharge').val();
+        var destination = $('#shipto_destination').val();
+
+        if(discharge == "" && destination == "") {
+            swal("", "Discharge/destination port cannot be empty.", "warning");
+        } else {
+            var rnd = Math.floor((Math.random() * 10000) + 1);
+            $('tbody#data-shipto').append(
+                '<tr data-id="'+rnd+'">'+
+                    '<td><input type="text" class="form-control" id="grid_shipto_discharge_'+rnd+'" name="grid_shipto_discharge_'+rnd+'" value="'+$('input.port[name="shipto_discharge"]').val()+'" style="background-color:#ffffff;" readonly /></td>'+
+                    '<td><input type="text" class="form-control" id="grid_shipto_destination_'+rnd+'" name="grid_shipto_destination_'+rnd+'" value="'+$('input.port[name="shipto_destination"]').val()+'" style="background-color:#ffffff;" readonly /></td>'+
+                    '<td class="text-center">'+
+                        '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
+                    '</td>'+
+                '</tr>'
+            );
+            
+            $('.port').val('');
+            
+            $('button.btn-remove').off('click').on('click',function(){
+                var id = $(this).attr('data-row');
+                $("tr[data-id="+id+"]").remove();
+            });
+        }
+    });
+
     $('input#cpshipto').on('change', function() {
         var status = document.getElementById("cpshipto").checked;
         if (status) {
@@ -126,10 +154,32 @@ $("#cp_dp").keyup(function () {
     document.getElementById("cp_balancing").value = 100 - Number(document.getElementById("cp_dp").value);
 });
 
+$('button.btn-remove').off('click').on('click',function(){
+    var id = $(this).attr('data-row');
+    $("tr[data-id="+id+"]").remove();
+    shipto_delete(id);
+});
+
+function shipto_delete(id, cbm)
+{
+    $.ajax({
+        url: site_url + "export/customer/shipto_delete/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            console.log(response)
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+            swal("", "Terjadi kesalahan pada sistem.", "error");
+        }        
+    });
+}
+
 function save()
 {
     $.ajax({
-        url: site_url + "export/customer/save",
+        url: site_url + "export/customer/update",
         type: "POST",
         data: $('#form-customer-detail').serialize(),
         dataType: "json",
@@ -147,13 +197,15 @@ function save()
                 });
             } else {
                 swal("", response.messages, response.icon);
+                $('a.cancel').prop('disabled', false);
+                $('button#btn-customer-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', false);
             }
         },
         error: function (e) {
             console.log("Terjadi kesalahan pada sistem");
             swal("", "Terjadi kesalahan pada sistem.", "error");
-            $('a.cancel').prop('disabled', true);
-            $('button#btn-customer-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', true);
+            $('a.cancel').prop('disabled', false);
+            $('button#btn-customer-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', false);
         }        
     });
 }

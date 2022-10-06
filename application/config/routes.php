@@ -177,6 +177,8 @@ $route['export/customer/bank'] = 'Customer/bank';
 $route['export/customer/bank/(:num)'] = 'Customer/bank/$1';
 $route['export/customer/save'] = 'Customer/save';
 $route['export/customer/detail/(:num)'] = 'Customer/detail/$1';
+$route['export/customer/shipto_delete/(:num)'] = 'Customer/shipto_del/$1';
+$route['export/customer/update'] = 'Customer/update';
 $route['export/customer/delete/(:num)'] = 'Customer/delete/$1';
 
 /** Export - Proforma */

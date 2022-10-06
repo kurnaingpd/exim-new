@@ -314,11 +314,180 @@
                 'cust_coding' => $this->M_CRUD->readDatabyID('master_customer_coding', ['customer_id' => $id]),
             ];
             $datas['detail'] = [
-                'cust_ship' => $this->M_CRUD->readData('master_customer_ship_detail', ['customer_ship_id' => $datas['params']['cust_ship']->id]),
-                'cust_coding' => $this->M_CRUD->readData('view_master_customer_coding_detail', ['customer_coding_id' => $datas['params']['cust_coding']->id]),
+                'cust_ship' => $this->M_CRUD->readData('master_customer_ship_detail', ['is_deleted' => '0', 'customer_ship_id' => $datas['params']['cust_ship']->id]),
+                'cust_coding' => $this->M_CRUD->readData('view_master_customer_coding_detail', ['is_deleted' => '0', 'customer_coding_id' => $datas['params']['cust_coding']->id]),
             ];
 
             $this->template->load('default', 'contents' , 'export/customer/detail/index', $datas);
+        }
+
+        public function shipto_del($id)
+        {
+            $condition = [
+                'id' => $id
+            ];
+            
+            if($this->M_CRUD->deleteData('master_customer_ship_detail', $condition)) {
+                $response = ['status' => 1, 'messages' => 'Item has been deleted successfully.'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Item has failed to delete.'];
+            }
+
+            echo json_encode($response);
+        }
+
+        public function update()
+        {
+            $post = $this->input->post();
+            $params = [
+                'company_name' => $post['con_company'],
+                'address' => $post['con_address'],
+                'town' => $post['con_town'],
+                'country_id' => $post['con_country'],
+                'phone_no' => $post['con_phone'],
+                'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $this->session->userdata('logged_in')->id,
+            ];
+            $customer = $this->M_CRUD->updateData('master_customer', $params, ['id' => $post['id']]);
+
+            if($customer) {
+                /** Notify */
+                $this->saveUpdateNotify($post, $customer);
+                /** Contact person */
+                $this->saveUpdateContactPerson($post, $customer);
+                /** Bank account */
+                $this->saveUpdateBank($post, $customer);
+                /** Ship-to Address */
+                $this->saveUpdateShipAddress($post, $customer);
+                /** Contact person ship-to */
+                if( !empty($post['cpshipto']) ) {
+                    $this->saveUpdateCPShipTo($post, $customer);
+                }
+                /** Import document needs */
+                if( !empty($post['import_doc']) ) {
+                    $this->saveUpdateImport($post, $customer);
+                }
+                /** Coding printing */
+                if( !empty($post['coding_print']) ) {
+                    $this->saveUpdateCoding($post, $customer);
+                }
+
+                $response = ['status' => 1, 'messages' => 'Customer has been saved successfully.', 'icon' => 'success', 'url' => 'export/customer'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Customer has failed to save.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
+        }
+
+        public function saveUpdateNotify($param, $cust_id)
+        {
+            $datas = [
+                'company_name' => $param['not_company'],
+                'address' => $param['not_address'],
+                'country_id' => $param['not_country_id'],
+                'phone_no' => $param['not_phone'],
+            ];
+            $this->M_CRUD->updateData('master_customer_notify', $datas, ['customer_id' => $cust_id]);
+        }
+
+        public function saveUpdateContactPerson($param, $cust_id)
+        {
+            $datas = [
+                'name' => $param['cp_name'],
+                'phone_no' => $param['cp_phone'],
+                'email' => $param['cp_email'],
+                'top_id' => $param['cp_top'],
+                'dp' => $param['cp_dp'],
+                'balancing' => $param['cp_balancing'],
+                'currency_id' => $param['cp_currency'],
+                'incoterm_id' => $param['cp_incoterm'],
+            ];
+            $this->M_CRUD->updateData('master_customer_cp', $datas, ['customer_id' => $cust_id]);
+        }
+
+        public function saveUpdateBank($param, $cust_id)
+        {
+            $datas = [
+                'bank_id' => $param['con_bank'],
+                'account_no' => $param['bank_accno'],
+                'account_name' => $param['bank_accname'],
+            ];
+            $this->M_CRUD->updateData('master_customer_bank', $datas, ['customer_id' => $cust_id]);
+        }
+
+        public function saveUpdateShipAddress($param, $cust_id)
+        {
+            $datas = [
+                'company_name' => $param['shipto_company'],
+                'address' => $param['shipto_address'],
+                'country_id' => $param['shipto_country'],
+                'phone_no' => ($param['shipto_phone']?$param['shipto_phone']:NULL),
+            ];
+            $this->M_CRUD->updateData('master_customer_ship', $datas, ['customer_id' => $cust_id]);
+            $Grid = array();
+        
+            foreach($_POST as $index => $value){
+                if(preg_match("/^grid_/i", $index)) {
+                    $index = preg_replace("/^grid_/i","",$index);
+                    $arr = explode('_',$index);
+                    $rnd = $arr[count($arr)-1];
+                    array_pop($arr);
+                    $idx = implode('_',$arr);
+                    
+                    $Grid[$rnd][$idx] = $value;
+                    if(!isset($Grid[$rnd]['customer_ship_id'])){
+                        $Grid[$rnd]['customer_ship_id'] = $param['id'];
+                    }
+                }
+            }
+
+            if(!empty($Grid)) {
+                foreach($Grid as $detail) {
+                    $params = [
+                        'customer_ship_id' => $detail['customer_ship_id'],
+                        'discharge_port' => $detail['shipto_discharge'],
+                        'destination_port' => $detail['shipto_destination'],
+                    ];
+                    $this->M_CRUD->insertData('master_customer_ship_detail', $params);
+                }
+            }
+        }
+
+        public function saveUpdateCPShipTo($param, $cust_id)
+        {
+            $datas = [
+                'name' => ($param['cpshipto_name']?$param['cpshipto_name']:NULL),
+                'phone' => ($param['cpshipto_phone']?$param['cpshipto_phone']:NULL),
+                'email' => ($param['cpshipto_email']?$param['cpshipto_email']:NULL),
+            ];
+            $this->M_CRUD->updateData('master_customer_cp_ship', $datas, ['customer_id' => $cust_id]);
+        }
+
+        public function saveUpdateImport($param, $cust_id)
+        {
+            $datas = [
+                'bill_of_ladding' => ($param['imp_bill']?$param['imp_bill']:NULL),
+                'packing_list' => ($param['imp_packing']?$param['imp_packing']:NULL),
+                'invoice' => ($param['imp_inv']?$param['imp_inv']:NULL),
+                'invoice_uv' => ($param['imp_inv_uv']?$param['imp_inv_uv']:NULL),
+                'coo' => ($param['imp_coo']?$param['imp_coo']:NULL),
+                'health_cert' => ($param['imp_hc']?$param['imp_hc']:NULL),
+                'material_safety' => ($param['imp_mat']?$param['imp_mat']:NULL),
+                'coa' => ($param['imp_coa']?$param['imp_coa']:NULL),
+                'prod_spec' => ($param['imp_ps']?$param['imp_ps']:NULL),
+                'qcertificate' => ($param['imp_qc']?$param['imp_qc']:NULL),
+                'others' => ($param['imp_others']?$param['imp_others']:NULL),
+            ];
+            $this->M_CRUD->updateData('master_customer_import_doc', $datas, ['customer_id' => $cust_id]);
+        }
+
+        public function saveUpdateCoding($param, $cust_id)
+        {
+            $datas = [
+                'notes' => ($param['coding_notes']?$param['coding_notes']:NULL),
+            ];
+            $this->M_CRUD->updateData('master_customer_coding', $datas, ['customer_id' => $cust_id]);
         }
 
         public function delete($id)
