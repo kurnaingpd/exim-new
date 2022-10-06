@@ -12,6 +12,7 @@
                     <th>Customer</th>
                     <th>Country</th>
                     <th>PIC</th>
+                    <th>Remarks</th>
                     <th>Status</th>
                     <th>Created at</th>
                     <th>Updated at</th>
@@ -27,13 +28,14 @@
                         <td><?=$rows->customer?></td>
                         <td><?=$rows->country_name?></td>
                         <td><?=$rows->pic?></td>
+                        <td><?=$rows->remarks?></td>
                         <td class="text-center">
                             <span class="badge bg-<?=$rows->bg_color?>"><?=$rows->status_name?></span>
                         </td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center">
-                            <?php if($rows->pi_status_id == 5) : ?>
+                            <?php if($rows->pi_status_id == 5 && $this->session->userdata('logged_in')->role_id == 3) : ?>
                                 <a href="<?=site_url('export/proforma/requests/'.$rows->id)?>" class="btn btn-sm btn-warning">
                                     <i class="fas fa-edit"></i>
                                 </a>
