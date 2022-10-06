@@ -62,6 +62,7 @@
                 'beneficiary' => $this->M_CRUD->readData('master_beneficiary', ['is_deleted' => '0']),
                 'load_port' => $this->M_CRUD->readData('master_loading_port', ['is_deleted' => '0']),
                 'container' => $this->M_CRUD->readData('master_container', ['is_deleted' => '0']),
+                'freight' => $this->M_CRUD->readData('master_freight', ['is_deleted' => '0']),
                 'bank' => $this->M_CRUD->readData('master_bank', ['is_deleted' => '0']),
                 'currency' => $this->M_CRUD->readData('master_currency', ['is_deleted' => '0']),
                 'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
@@ -101,6 +102,12 @@
             echo json_encode($data);
         }
 
+        public function freight($id = NULL)
+        {
+            $data = $this->M_CRUD->readDatabyID('master_freight', ['is_deleted' => '0', 'id' => $id]);
+            echo json_encode($data);
+        }
+
         public function item($id = NULL)
         {
             $data = $this->M_CRUD->readDatabyID('master_item', ['is_deleted' => '0', 'id' => $id]);
@@ -126,11 +133,11 @@
                 'customer_ship_id' => $post['discharge_port'],
                 'container_id' => $post['container'],
                 'number_of_container' => $post['container_no'],
-                'freight_company' => $post['freight_company'],
-                'freight_company_contact' => $post['freight_company_cont'],
-                'freight_company_no' => $post['freight_company_no'],
-                'freight_cost' => $post['freight_cost'],
-                'insurance' => $post['insurance'],
+                'freight_id' => $post['freight_company'],
+                // 'freight_company_contact' => $post['freight_company_cont'],
+                // 'freight_company_no' => $post['freight_company_no'],
+                // 'freight_cost' => $post['freight_cost'],
+                // 'insurance' => $post['insurance'],
                 'bank_id' => $post['bank'],
                 'currency_id' => $post['currency'],
                 'ppn' => $post['ppn'],
@@ -166,6 +173,7 @@
                             'item_id' => $detail['product'],
                             'qty' => $detail['qty'],
                             'price' => $detail['price'],
+                            'cbm' => $detail['cbm'],
                         ];
                         $this->M_CRUD->insertData('trans_pi_detail', $params);
                     }

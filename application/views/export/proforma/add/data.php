@@ -52,7 +52,13 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_company" class="control-label">Freight company</label>
-            <input type="text" name="freight_company" class="form-control upper" id="freight_company" placeholder="Enter freight company" required>
+            <!-- <input type="text" name="freight_company" class="form-control upper" id="freight_company" placeholder="Enter freight company" required> -->
+            <select name="freight_company" class="form-control select2bs4" id="freight_company" required>
+                <option></option>
+                <?php foreach($params['freight'] as $rows) : ?>
+                    <option value="<?=$rows->id?>"><?=$rows->company?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
     </div>
 </div>
@@ -61,17 +67,18 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_company_cont" class="control-label">Freight company contact</label>
-            <input type="text" name="freight_company_cont" class="form-control upper" id="freight_company_cont" placeholder="Enter freight company contact" required>
+            <input type="text" class="form-control upper" id="freight_company_cont" placeholder="Enter freight company contact" disabled>
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_company_no" class="control-label">Freight company number</label>
-            <input type="text" name="freight_company_no" class="form-control upper" id="freight_company_no" placeholder="Enter freight company number" required>
+            <input type="text" class="form-control upper" id="freight_company_no" placeholder="Enter freight company number" disabled>
         </div>
     </div>
-
+    
+    <?php if($this->session->userdata('logged_in')->role_id == 7) : ?>
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_cost" class="control-label">Freight cost</label>
@@ -85,6 +92,7 @@
             <input type="text" name="insurance" class="form-control" id="insurance" placeholder="Enter insurance" value="0" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
         </div>
     </div>
+    <?php endif; ?>
 
     <div class="col-md-2">
         <div class="form-group required">
@@ -109,9 +117,9 @@
             </select>
         </div>
     </div>
-</div>
+<!-- </div>
 
-<div class="row">
+<div class="row"> -->
     <div class="col-md-2">
         <div class="form-group required">
             <label for="ppn" class="control-label">PPN</label>

@@ -17,6 +17,7 @@ $(function () {
             swal("", "Item data cannot be empty.", "warning");
         } else {
             var rnd = Math.floor((Math.random() * 10000) + 1);
+            var cbm_item = Number(document.getElementById("volume").value) * Number(document.getElementById("qty").value);
             var remain_cbm = document.getElementById("remain_cbm").value - (Number(document.getElementById("volume").value) * Number(document.getElementById("qty").value));
             console.log(remain_cbm);
             
@@ -34,6 +35,7 @@ $(function () {
                             '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
                             '<input type="text" class="form-control" value="'+$('select.item[name="product"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
                             '<input type="hidden" class="form-control volume" id="grid_volume_'+rnd+'" name="grid_volume_'+rnd+'" data-value="'+$('input.item[name="volume"]').val()+'" value="'+$('input.item[name="volume"]').val()+'" style="background-color:#ffffff;" readonly />'+
+                            '<input type="hidden" class="form-control volume" id="grid_cbm_'+rnd+'" name="grid_cbm_'+rnd+'" data-value="'+cbm_item+'" value="'+cbm_item+'" />'+
                         '</td>'+
                         '<td>'+
                             '<input type="text" class="form-control" id="grid_hs_code_'+rnd+'" name="grid_hs_code_'+rnd+'" value="'+$('input.item[name="hs_code"]').val()+'" style="background-color:#ffffff;" readonly required />'+
@@ -109,6 +111,11 @@ $('select#discharge_port').on('change', function() {
 $('select#container').on('change', function() {
     var data = $('select#container').select2('data');
     cbm(data[0].id);
+});
+
+$('select#freight_company').on('change', function() {
+    var data = $('select#freight_company').select2('data');
+    freight(data[0].id);
 });
 
 $('select#product').on('change', function() {
@@ -236,6 +243,28 @@ function cbm(id)
     });
 }
 
+function freight(id)
+{
+    $.ajax({
+        url: site_url + "export/proforma/freight/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            if(response) {
+                document.getElementById("freight_company_cont").value = response.contact;
+                document.getElementById("freight_company_no").value = response.number;
+            } else {
+                document.getElementById("freight_company_cont").value = 0;
+                document.getElementById("freight_company_no").value = 0;
+            }
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+            swal("", "Terjadi kesalahan pada sistem.", "error");
+        }        
+    });
+}
+
 function item(id)
 {
     $.ajax({
@@ -325,13 +354,15 @@ function save()
                 });
             } else {
                 swal("", response.messages, response.icon);
+                $('a.cancel').prop('disabled', false);
+                $('button#btn-proforma-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', false);
             }
         },
         error: function (e) {
             console.log("Terjadi kesalahan pada sistem");
             swal("", "Terjadi kesalahan pada sistem.", "error");
-            $('a.cancel').prop('disabled', true);
-            $('button#btn-customer-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', true);
+            $('a.cancel').prop('disabled', false);
+            $('button#btn-proforma-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', false);
         }        
     });
 }
