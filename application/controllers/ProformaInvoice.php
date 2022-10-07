@@ -493,6 +493,51 @@
 
             echo json_encode($response);
         }
+
+        public function edit($id)
+        {
+            // $datas['css'] = [
+            //     "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+            //     "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+            // ];
+            $datas['js'] = [
+                // base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/proforma/edit.js"),
+            ];
+            $datas['title'] = 'Export - Proforma Invoice';
+            $datas['breadcrumb'] = ['Export', 'Transaction', 'Proforma Invoice'];
+            $datas['header'] = 'Detail record';
+            $datas['params'] = [
+                'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_detail', ['is_deleted' => '0', 'id' => $id]),
+                'category' => $this->M_CRUD->pi_category('view_print_trans_pi_category', ['pi_id' => $id]),
+                'item' => $this->M_CRUD->pi_item('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
+            ];
+
+            $this->template->load('default', 'contents' , 'export/proforma/edit/index', $datas);
+        }
+
+        public function edit_procurement()
+        {
+            $post = $this->input->post();
+            $condition = ['id' => $post['id']];
+            $params = [
+                'freight_cost' => $post['freight_cost'],
+                'insurance' => $post['insurance'],
+                'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $this->session->userdata('logged_in')->id,
+            ];
+
+            if($this->M_CRUD->updateData('trans_pi', $params, $condition)) {
+                $response = ['status' => 1, 'messages' => 'Proforma invoice has been updated successfully.', 'icon' => 'success', 'url' => 'export/proforma'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Proforma invoice has failed to update.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
+        }
     }
 
 ?>
