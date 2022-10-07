@@ -10,6 +10,7 @@
                     <th>COA no.</th>
                     <th>Invoice no.</th>
                     <th>Product name</th>
+                    <th>Images</th>
                     <th>Created at</th>
                     <th><i class="fas fa-ellipsis-h"></i></th>
                 </tr>
@@ -21,6 +22,13 @@
                         <td class="text-center"><?=$rows->code?></td>
                         <td class="text-center"><?=$rows->invoice_no?></td>
                         <td><?=$rows->item_name?></td>
+                        <td class="text-center">
+                            <?php if($rows->attachment) : ?>
+                            <a href="<?=base_url('assets/attachment/qc_check/'.$rows->attachment)?>" target="_blank">
+                                    <i class="fas fa-file-download"></i>
+                            </a>
+                            <?php endif; ?>
+                        </td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center">
                             <a href="<?=site_url('export/coa/print/'.$rows->id)?>" class="btn btn-sm btn-warning" target="_blank">
