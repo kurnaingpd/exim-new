@@ -74,7 +74,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h6>Import document needs</h6>
+            <h6>Coding printing</h6>
         </div>
         <div class="card-body">
             <?php $this->load->view('export/customer/detail/coding'); ?>
