@@ -219,6 +219,7 @@
             ];
             $datas['params'] = [
                 'detail' => $this->M_CRUD->readDatabyID('view_print_trans_coa_detail', ['id' => $id]),
+                'signature' => $this->M_CRUD->readDatabyID('view_print_trans_coa_signature', ['id' => $id]),
             ];
 
             $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);

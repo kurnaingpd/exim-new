@@ -129,8 +129,8 @@
                 <div id="signature" style="margin-top: 10%; box-sizing: border-box; content: ''; clear: both; display: table;">
                     <div style="float: left; width: 30%; text-align: center;">
                         Jakarta, <?=IndoDate?>
-                        <div style="margin-top: 30%; font-weight: bold;"><u>Slamet Supriyadi</u></div>
-                        <div>QA Manager</div>
+                        <div style="margin-top: 30%; font-weight: bold;"><u><?=$params['signature']->fullname?></u></div>
+                        <div><?=$params['signature']->position_name?></div>
                     </div>
                 </div>
 
