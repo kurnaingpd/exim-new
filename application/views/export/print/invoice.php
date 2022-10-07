@@ -119,27 +119,17 @@
                                     $tQty = 0;
                                     $Grand = 0;
                                     $tGrand = 0;
-
-                                    if($group == 1) {
-                                        if($params['header']->cols_purchase > 1) {
-                                            $coslpan = "rowspan='".$params['header']->cols_purchase."'";
-                                        } else {
-                                            $coslpan = "";
-                                        }
-                                    } else {
-                                        if($params['header']->cols_free > 1) {
-                                            $coslpan = "rowspan='".$params['header']->cols_free."'";
-                                        } else {
-                                            $coslpan = "";
-                                        }
-                                    }
+                                    $row_1_cols_tot_incoterm = 5 + $params['header']->carton;
+                                    $row_1_cols_qty_price = 2 + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                    $row_cols_ocean = 7 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                    $row_cols_insurance = 7 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                    $row_cols_grand = 7 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                    $row_cols_says = 8 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
 
                                     foreach($params['detail'][$group] as $detail => $dtl) :
                                         $tQty += $dtl['qty'];
                                         $Grand = ($dtl['qty'] * $dtl['price']);
                                         $tGrand += $Grand;
-
-                                        
                                 ?>
                                 <tr>
                                     <td class="data-border" align="center"><?=$no?>.</td>
@@ -148,7 +138,7 @@
                                     <td class="data-border" align="center"><?=($dtl['carton_barcode']?$dtl['carton_barcode']:'-')?></td>
                                     <?php endif; ?>
 
-                                    <td class="data-border" align="center"><?=$coslpan?></td>
+                                    <td class="data-border" align="center"><?=$params['header']->number_of_container?></td>
                                     <td class="data-border" align="center"><?=($dtl['hs_code'])?></td>
                                     <td class="data-border"><?=($dtl['item_name'])?></td>
                                     <td class="data-border"><?=($dtl['pack'])?></td>
@@ -181,31 +171,27 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td class="data-border" style="text-align: left; font-weight: bold;" colspan="6">TOTAL <?=$params['header']->incoterm.' '.$params['header']->destination_port?></th>
+                                    <td class="data-border" style="text-align: left; font-weight: bold;" colspan="<?=$row_1_cols_tot_incoterm?>">TOTAL FOB <?=$params['header']->loading_port?></th>
                                     <td class="data-border" align="right"><?=number_format($tQty)?></td>
-                                    <td class="data-border" colspan="5" align="right"><?=number_format($tGrand, 2)?></td>
+                                    <td class="data-border" colspan="<?=$row_1_cols_qty_price?>" align="right"><?=number_format($tGrand, 2)?></td>
                                 </tr>
-                                <?php 
-                                    if($group == 1) : 
-                                        if($params['header']->incoterm_id == 2 || $params['header']->incoterm_id == 3) : 
-                                ?>
+                                <?php if($group == 1) : ?>
+                                    <?php if($params['header']->incoterm_id <> 1) : ?>
                                     <tr>
-                                        <td class="data-border" style="text-align: left; font-weight: bold;" colspan="11">OCEAN FREIGHT</th>
+                                        <td class="data-border" style="text-align: left; font-weight: bold;" colspan="<?=$row_cols_ocean?>">OCEAN FREIGHT</th>
                                         <td class="data-border" align="right"><?=number_format($params['header']->freight_cost, 2)?></td>
                                     </tr>
-                                        <?php endif; ?>
-                                    <?php if($params['header']->incoterm_id == 3) : ?>
                                     <tr>
-                                        <td class="data-border" style="text-align: left; font-weight: bold;" colspan="11">INSURANCE</th>
+                                        <td class="data-border" style="text-align: left; font-weight: bold;" colspan="<?=$row_cols_insurance?>">INSURANCE</th>
                                         <td class="data-border" align="right"><?=number_format($params['header']->insurance, 2)?></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="data-border" style="text-align: left; font-weight: bold;" colspan="<?=$row_cols_grand?>">GRAND TOTAL <?=$params['header']->incoterm.' '.$params['header']->destination_port?></th>
+                                        <td class="data-border" align="right"><?=number_format($totAll, 2)?></td>
                                     </tr>
                                     <?php endif; ?>
                                     <tr>
-                                        <td class="data-border" style="text-align: left; font-weight: bold;" colspan="11">GRAND TOTAL</th>
-                                        <td class="data-border" align="right"><?=number_format($totAll, 2)?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="data-border" style="text-align: left; font-weight: bold;" colspan="12">SAY: <?=strtoupper($said.' '.$params['header']->currency_spell)?></th>
+                                        <td class="data-border" style="text-align: left; font-weight: bold;" colspan="<?=$row_cols_says?>">SAY: <?=strtoupper($said.' '.$params['header']->currency_spell)?></th>
                                     </tr>
                                 <?php endif; ?>
                             </tfoot>
