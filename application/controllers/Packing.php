@@ -96,7 +96,7 @@
                     'code' => $post['code'],
                     'invoice_id' => $post['invoice'],
                     'dates' => $post['pack_date'],
-                    'container' => $post['container'],
+                    // 'container' => $post['container'],
                     'created_by' => $this->session->userdata('logged_in')->id,
                 ];
                 $header = $this->M_CRUD->insertData('trans_packing_list', $params);

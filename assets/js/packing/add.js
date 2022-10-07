@@ -58,6 +58,7 @@ function get_data(id)
             console.log(response);
             if(response) {
                 document.getElementById("pi_id").value = response.pi_id;
+                document.getElementById("container").value = response.number_of_container;
                 document.getElementById("cons_company").value = response.cons_name;
                 document.getElementById("cons_address").value = response.cons_address;
                 document.getElementById("cons_country").value = response.cons_country_name;
@@ -77,6 +78,7 @@ function get_data(id)
                 document.getElementById("ship_country").value = response.country_origin;
             } else {
                 document.getElementById("pi_id").value = "";
+                document.getElementById("container").value = "";
                 document.getElementById("cons_company").value = "";
                 document.getElementById("cons_address").value = "";
                 document.getElementById("cons_country").value = "";

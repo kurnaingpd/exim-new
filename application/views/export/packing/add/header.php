@@ -34,7 +34,7 @@
     <div class="col-md-3">
         <div class="form-group required">
             <label for="container" class="control-label">Container</label>
-            <input type="text" name="container" class="form-control upper" id="container" placeholder="Enter container" autocomplete="off" required>
+            <input type="text" name="container" class="form-control upper" id="container" placeholder="Enter container" autocomplete="off" disabled>
         </div>
     </div>
 </div>
