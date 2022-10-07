@@ -150,7 +150,28 @@
                         <li style="font-weight: bold; margin-top: 1%;">Storage Condition Requirement
                             <ul style="margin: 0; padding: 0; font-weight: normal;"><?=$params['detail']->storage?></ul>
                         </li>
+                        <li style="font-weight: bold; margin-top: 1%;">Function of the food material
+                            <ul style="margin: 0; padding: 0; font-weight: normal;"><?=$params['detail']->functions?></ul>
+                        </li>
+                        <li style="font-weight: bold; margin-top: 1%;">Usage
+                            <ul style="margin: 0; padding: 0; font-weight: normal;"><?=$params['detail']->usage?></ul>
+                        </li>
+                        <li style="font-weight: bold; margin-top: 1%;">Source Of Allergen
+                            <ul style="margin: 0; padding: 0; font-weight: normal;"><?=$params['detail']->source?></ul>
+                        </li>
+                        <li style="font-weight: bold; margin-top: 1%;">Country of origin
+                            <ul style="margin: 0; padding: 0; font-weight: normal;"><?=$params['detail']->country?></ul>
+                        </li>
                     </ol>
+                </div>
+            </div>
+
+            <div id="signature" style="margin-top: 2%; box-sizing: border-box; content: ''; clear: both; display: table;">
+                <div style="float: left; width: 20%; text-align: center;">
+                    Sincerely,<br>
+                    PT. SUMBER KOPI PRIMA
+                    <div style="margin-top: 30%; font-weight: bold;"><u><?=$this->session->userdata('logged_in')->fullname?></u></div>
+                    <div><?=$this->session->userdata('logged_in')->position_name?></div>
                 </div>
             </div>
         </div>
