@@ -69,7 +69,7 @@
             $post = $this->input->post();
             $pi = $this->M_CRUD->readDatabyID('trans_pi', ['code' => $post['pi_no']]);
             $params = [
-                'pi_id' => $pi,
+                'pi_id' => $pi->id,
                 'code' => $post['code'],
                 'pi_status_id' => 1,
                 'created_by' => $this->session->userdata('logged_in')->id,
