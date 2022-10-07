@@ -86,15 +86,29 @@
                             <thead>
                                 <tr>
                                     <th>NO.</th>
-                                    <th>CARTOON BARCODE</th>
+
+                                    <?php if($params['header']->carton == 1) : ?>
+                                    <th>CARTON BARCODE</th>
+                                    <?php endif; ?>
+
                                     <th>CONTAINER</th>
                                     <th>HS CODE</th>
                                     <th>DESCRIPTION OF GOODS</th>
                                     <th>PACKING</th>
                                     <th>QTY</th>
+
+                                    <?php if($params['header']->batch == 1) : ?>
                                     <th>BATCH</th>
-                                    <th>EXPIRED DATE</th>
-                                    <th>PRODUCTION DATE</th>
+                                    <?php endif; ?>
+
+                                    <?php if($params['header']->expired == 1) : ?>
+                                    <th>EXPIRED<br>DATE</th>
+                                    <?php endif; ?>
+
+                                    <?php if($params['header']->production == 1) : ?>
+                                    <th>PRODUCTION<br>DATE</th>
+                                    <?php endif; ?>
+
                                     <th>UNIT PRICE<br>(<?=$params['header']->currency_icon?>)</th>
                                     <th>TOTAL PRICE<br>(<?=$params['header']->currency_icon?>)</th>
                                 </tr>
@@ -105,22 +119,53 @@
                                     $tQty = 0;
                                     $Grand = 0;
                                     $tGrand = 0;
+
+                                    if($group == 1) {
+                                        if($params['header']->cols_purchase > 1) {
+                                            $coslpan = "rowspan='".$params['header']->cols_purchase."'";
+                                        } else {
+                                            $coslpan = "";
+                                        }
+                                    } else {
+                                        if($params['header']->cols_free > 1) {
+                                            $coslpan = "rowspan='".$params['header']->cols_free."'";
+                                        } else {
+                                            $coslpan = "";
+                                        }
+                                    }
+
                                     foreach($params['detail'][$group] as $detail => $dtl) :
                                         $tQty += $dtl['qty'];
                                         $Grand = ($dtl['qty'] * $dtl['price']);
                                         $tGrand += $Grand;
+
+                                        
                                 ?>
                                 <tr>
                                     <td class="data-border" align="center"><?=$no?>.</td>
+
+                                    <?php if($params['header']->carton == 1) : ?>
                                     <td class="data-border" align="center"><?=($dtl['carton_barcode']?$dtl['carton_barcode']:'-')?></td>
-                                    <td class="data-border" align="center">CONTAINER</td>
+                                    <?php endif; ?>
+
+                                    <td class="data-border" align="center"><?=$coslpan?></td>
                                     <td class="data-border" align="center"><?=($dtl['hs_code'])?></td>
                                     <td class="data-border"><?=($dtl['item_name'])?></td>
                                     <td class="data-border"><?=($dtl['pack'])?></td>
                                     <td class="data-border" align="right"><?=number_format($dtl['qty'])?></td>
+
+                                    <?php if($params['header']->batch == 1) : ?>
                                     <td class="data-border" align="center"><?=($dtl['batch']?$dtl['batch']:'-')?></td>
+                                    <?php endif; ?>
+                                    
+                                    <?php if($params['header']->expired == 1) : ?>
                                     <td class="data-border" align="center"><?=($dtl['batch']?$dtl['batch']:'-')?></td>
+                                    <?php endif; ?>
+
+                                    <?php if($params['header']->production == 1) : ?>
                                     <td class="data-border" align="center"><?=($dtl['batch']?$dtl['batch']:'-')?></td>
+                                    <?php endif; ?>
+
                                     <td class="data-border" align="right"><?=number_format($dtl['price'], 2)?></td>
                                     <td class="data-border" align="right"><?=number_format($dtl['total'], 2)?></td>
                                 </tr>

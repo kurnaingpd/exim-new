@@ -164,14 +164,14 @@
                         </li>
                     </ol>
                 </div>
-            </div>
 
-            <div id="signature" style="margin-top: 2%; box-sizing: border-box; content: ''; clear: both; display: table;">
-                <div style="float: left; width: 20%; text-align: center;">
-                    Sincerely,<br>
-                    PT. SUMBER KOPI PRIMA
-                    <div style="margin-top: 30%; font-weight: bold;"><u><?=$this->session->userdata('logged_in')->fullname?></u></div>
-                    <div><?=$this->session->userdata('logged_in')->position_name?></div>
+                <div id="signature" style="margin-top: 2%; box-sizing: border-box; content: ''; clear: both; display: table;">
+                    <div style="float: left; width: 20%; text-align: center;">
+                        Sincerely,<br>
+                        PT. SUMBER KOPI PRIMA
+                        <div style="margin-top: 30%; font-weight: bold;"><u><?=$this->session->userdata('logged_in')->fullname?></u></div>
+                        <div><?=$this->session->userdata('logged_in')->position_name?></div>
+                    </div>
                 </div>
             </div>
         </div>
