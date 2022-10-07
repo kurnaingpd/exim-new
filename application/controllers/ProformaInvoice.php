@@ -178,7 +178,7 @@
                             'item_id' => $detail['product'],
                             'qty' => $detail['qty'],
                             'price' => $detail['price'],
-                            'cbm' => $detail['cbm'],
+                            'cbm_item' => $detail['cbm'],
                         ];
                         $this->M_CRUD->insertData('trans_pi_detail', $params);
                     }
