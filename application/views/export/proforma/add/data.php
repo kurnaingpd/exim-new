@@ -45,7 +45,7 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="container_no" class="control-label">Number of container</label>
-            <input type="text" name="container_no" class="form-control upper" id="container_no" placeholder="Enter number of container" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
+            <input type="text" name="container_no" class="form-control upper" id="container_no" placeholder="Enter number of container" required>
         </div>
     </div>
 

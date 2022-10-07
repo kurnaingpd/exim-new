@@ -5,6 +5,10 @@ $(function () {
         allowClear: true
     })
 
+    $(".upper").keyup(function () {
+        this.value = this.value.toLocaleUpperCase();
+    });
+
     $('input#btn-item').on('click',function(){
         console.log('item');
         var item_category = $('.item_category').val();
