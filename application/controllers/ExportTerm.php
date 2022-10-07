@@ -113,6 +113,7 @@
                     $paramHistory = [
                         'export_terms_id' => $header,
                         'status_id' => 1,
+                        'remark' => $post['remarks'],
                         'created_by' => $this->session->userdata('logged_in')->id,
                     ];
     

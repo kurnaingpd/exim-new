@@ -5,14 +5,14 @@
     <div class="card-body">
         <form id="form-expterm-add">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group required">
                         <label for="top" class="control-label">Code</label>
                         <input type="text" name="code" class="form-control" id="code" value="<?=$params['autonumber']?>" readonly>
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group required">
                         <label for="top" class="control-label">PI number</label>
                         <input type="text" name="pi_no" class="form-control" id="pi_no" value="<?=$params['pi']->pi_no?>" readonly>
@@ -40,6 +40,14 @@
                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group required">
+                        <label for="top" class="control-label">Remarks</label>
+                        <!-- <input type="text" name="pi_no" class="form-control" id="pi_no" value="<?=$params['pi']->pi_no?>" readonly> -->
+                        <textarea class="form-control" id="remarks" name="remarks" rows="3" required></textarea>
                     </div>
                 </div>
             </div>
