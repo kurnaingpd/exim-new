@@ -100,11 +100,13 @@
                                 $totQty = 0;
                                 $totNet = 0;
                                 $totGross = 0;
+                                $totCBM = 0;
                                 foreach($params['detail'] as $rows) :
                                     $totQty += $rows->qty;
                                     $totNet += $rows->net_wight;
                                     $totGross += $rows->gross_weight;
                                     $cols_total = 4 + $params['header']->carton;
+                                    $totCBM += $rows->cbm_item;
                             ?>
                                 <tr>
                                     <td class="data-border" align="center"><?=$no?>.</td>
@@ -132,7 +134,7 @@
 
                                     <td class="data-border" align="center"><?=number_format($rows->net_wight, 2)?></td>
                                     <td class="data-border" align="center"><?=number_format($rows->gross_weight, 2)?></td>
-                                    <td class="data-border" align="center">-</td>
+                                    <td class="data-border" align="center"><?=round($rows->cbm_item, 4)?></td>
                                     <td class="data-border" align="center"><?=$rows->dimensions?></td>
                                 </tr>
                             <?php $no++; endforeach; ?>
@@ -156,7 +158,8 @@
 
                                 <td class="summary" align="center"><?=number_format($totNet, 2)?></td>
                                 <td class="summary" align="center"><?=number_format($totGross, 2)?></td>
-                                <td colspan="2"></td>
+                                <td class="summary" align="center"><?=round($totCBM, 4)?></td>
+                                <td></td>
                             </tr>
                         </tfoot>
                     </table>
