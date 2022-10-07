@@ -57,6 +57,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['default_controller'] = 'Auth';
 $route['authentication'] = 'Auth/process';
 $route['logout'] = 'Auth/logout';
+$route['err_500'] = 'Override';
 
 /** Home module */
 $route['home'] = 'Home/modules';

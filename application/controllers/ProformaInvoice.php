@@ -38,38 +38,43 @@
 
         public function add()
         {
-            $datas['css'] = [
-                "text/css,stylesheet,".base_url("assets/adminlte/plugins/bs-stepper/css/bs-stepper.min.css"),
-                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
-                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
-            ];
-
-            $datas['js'] = [
-                base_url("assets/adminlte/plugins/bs-stepper/js/bs-stepper.min.js"),
-                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
-                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
-                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
-                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/proforma/add.js"),
-            ];
-            $datas['title'] = 'Export - Proforma Invoice';
-            $datas['breadcrumb'] = ['Export', 'Transaction', 'Proforma Invoice'];
-            $datas['header'] = 'Add record';
-            $datas['params'] = [
-                'autonumber' => $this->M_CRUD->autoNumberPI('trans_pi', 'code', date('m/Y'), 4),
-                'customer' => $this->M_CRUD->readData('master_customer', ['is_deleted' => '0']),
-                'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
-                'beneficiary' => $this->M_CRUD->readData('master_beneficiary', ['is_deleted' => '0']),
-                'load_port' => $this->M_CRUD->readData('master_loading_port', ['is_deleted' => '0']),
-                'container' => $this->M_CRUD->readData('master_container', ['is_deleted' => '0']),
-                'freight' => $this->M_CRUD->readData('master_freight', ['is_deleted' => '0']),
-                'bank' => $this->M_CRUD->readData('master_bank', ['is_deleted' => '0']),
-                'currency' => $this->M_CRUD->readData('master_currency', ['is_deleted' => '0']),
-                'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
-                'item' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0']),
-            ];
-
-            $this->template->load('default', 'contents' , 'export/proforma/add/index', $datas);
+            
+                $datas['css'] = [
+                    "text/css,stylesheet,".base_url("assets/adminlte/plugins/bs-stepper/css/bs-stepper.min.css"),
+                    "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                    "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+                ];
+    
+                $datas['js'] = [
+                    base_url("assets/adminlte/plugins/bs-stepper/js/bs-stepper.min.js"),
+                    base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                    base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                    base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                    base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                    base_url("assets/js/proforma/add.js"),
+                ];
+                $datas['title'] = 'Export - Proforma Invoice';
+                $datas['breadcrumb'] = ['Export', 'Transaction', 'Proforma Invoice'];
+                $datas['header'] = 'Add record';
+                $datas['params'] = [
+                    'autonumber' => $this->M_CRUD->autoNumberPI('trans_pi', 'code', date('m/Y'), 4),
+                    'customer' => $this->M_CRUD->readData('master_customer', ['is_deleted' => '0']),
+                    'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
+                    'beneficiary' => $this->M_CRUD->readData('master_beneficiary', ['is_deleted' => '0']),
+                    'load_port' => $this->M_CRUD->readData('master_loading_port', ['is_deleted' => '0']),
+                    'container' => $this->M_CRUD->readData('master_container', ['is_deleted' => '0']),
+                    'freight' => $this->M_CRUD->readData('master_freight', ['is_deleted' => '0']),
+                    'bank' => $this->M_CRUD->readData('master_bank', ['is_deleted' => '0']),
+                    'currency' => $this->M_CRUD->readData('master_currency', ['is_deleted' => '0']),
+                    'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
+                    'item' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0']),
+                ];
+            if($this->session->userdata('logged_in')->role_id == 3) {
+                $this->template->load('default', 'contents' , 'export/proforma/add/index', $datas);
+            } else {
+                $this->load->view('uac/override/index');
+            }
+            
         }
 
         public function customer($id = NULL)
@@ -388,6 +393,7 @@
             $post = $this->input->post();
             $condition = ['id' => $post['id']];
             $param = [
+                'pi_status_id' => 1,
                 'updated_at' => date('Y-m-d H:i:s'),
                 'updated_by' => $this->session->userdata('logged_in')->id,
             ];
