@@ -149,7 +149,7 @@
                                             <i class="fas fa-list"></i>
                                         </a>
                                     <?php else : ?>
-                                        <a href="<?=base_url('assets/attachment/signedpi/'.$item_id->value)?>" class="btn btn-block btn-info <?=$item_id->download?>" target="_blank"  >
+                                        <a href="<?=base_url($item_id->value)?>" class="btn btn-block btn-info <?=$item_id->download?>" target="_blank"  >
                                             <i class="fas fa-download"></i>
                                         </a>
                                     <?php endif; ?>

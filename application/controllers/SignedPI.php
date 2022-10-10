@@ -125,12 +125,14 @@
                 if(isset($item['val'])) {
                     if(count(explode('.', $item['val'])) > 1) {
                         $path = 'assets/attachment/signedpi/';
+                        $data_item = $this->M_CRUD->readDatabyID('master_pi_item', ['id' => $item['item_id']]);
+                        $item_name = preg_replace('/\s+/', '', $data_item->item);
                         $temp_name = $item['val'];
                         $ext = explode('.', $temp_name);
                         $end = strtolower(end($ext));
                         $timestamp = mt_rand(1, time());
                         $randomDate = date("d M Y", $timestamp);
-                        $filename = md5($randomDate).'.'.$end;
+                        $filename = $item_name.'-'.md5($randomDate).'.'.$end;
     
                         if ( !file_exists($path) ) {
                             mkdir($path, 0777, true);
@@ -145,7 +147,7 @@
                         ];
                         $params = [
                             'dates' => $item['date'],
-                            'value' => 'Attachment location: assets/attachment/signedpi/',
+                            'value' => $path.$filename,
                             'updated_by' => $this->session->userdata('logged_in')->id,
                             'updated_at' => date('Y-m-d H:i:s'),
                         ];
@@ -154,7 +156,7 @@
                             'pi_id' => $item['id'],
                             'pi_item_id' => $item['item_id'],
                             'dates' => $item['date'],
-                            'values' => $filename,
+                            'values' => $path.$filename,
                             'created_by' => $this->session->userdata('logged_in')->id,
                         ];
                         $this->M_CRUD->insertData('trans_signed_pi_attachment', $paramsAttachment);
