@@ -161,9 +161,9 @@
                                 </tr>
                                 <?php 
                                     $no++; endforeach;
-                                    if($params['header']->incoterm_id == 2) {
-                                        $totAll = $tGrand + $params['header']->freight_cost;
-                                    } elseif($params['header']->incoterm_id == 3) {
+                                    if($params['header']->incoterm_id <> 1) {
+                                        $totAll = $tGrand;
+                                    } else {
                                         $totAll = $tGrand + $params['header']->freight_cost + $params['header']->insurance;
                                     }
                                     $said = CurencyLang::toEnglish($totAll);
