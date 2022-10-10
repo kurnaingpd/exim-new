@@ -32,7 +32,7 @@
                         <td><?=$rows->country_name?></td>
                         <td class="text-center">
                             <?php if($rows->file_1) : ?>
-                                <a href="<?=base_url('assets/attachment/expterm/'.$rows->file_1)?>" target="_blank" <?=$rows->pi_status_id?'':'style="display: none;"'?>>
+                                <a href="<?=base_url($rows->file_1)?>" target="_blank" <?=$rows->pi_status_id?'':'style="display: none;"'?>>
                                     <i class="fas fa-file-download"></i>
                                 </a>
                             <?php endif; ?>
@@ -40,7 +40,7 @@
 
                         <td class="text-center">
                             <?php if($rows->file_2) : ?>
-                                <a href="<?=base_url('assets/attachment/expterm/'.$rows->file_2)?>" target="_blank" <?=$rows->pi_status_id?'':'style="display: none;"'?>>
+                                <a href="<?=base_url($rows->file_2)?>" target="_blank" <?=$rows->pi_status_id?'':'style="display: none;"'?>>
                                     <i class="fas fa-file-download"></i>
                                 </a>
                             <?php endif; ?>

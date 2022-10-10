@@ -75,6 +75,15 @@
                 'pi_status_id' => 1,
                 'created_by' => $this->session->userdata('logged_in')->id,
             ];
+            $condition = [
+                'pi_id' => $pi->id,
+                'pi_item_id' => 18,
+            ];
+            $paramsSignePI = [
+                'dates' => date('Y-m-d'),
+                'updated_by' => $this->session->userdata('logged_in')->id,
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
 
             if($_FILES) {
                 if ( isset($_FILES['attachment1']) && $_FILES['attachment1']['name'] != '' ) {
@@ -84,35 +93,9 @@
                     $timestamp = mt_rand(1, time());
                     $randomDate = date("d M Y", $timestamp);
                     $filename1 = 'Export-Terms-'.md5($randomDate).'.'.$end;
-
-                    if ( !file_exists($path) ) {
-                        mkdir($path, 0777, true);
-                    }
-
                     move_uploaded_file($_FILES['attachment1']['tmp_name'], $path.$filename1);
-                    move_uploaded_file($_FILES['attachment1']['tmp_name'], $path_signed_pi.$filename1);
-                    $params['file_1'] = $filename1;
-
-                    $condition = [
-                        'pi_id' => $pi->id,
-                        'pi_item_id' => 18,
-                    ];
-                    $paramsSignePI = [
-                        'dates' => date('Y-m-d'),
-                        'value' => $filename1,
-                        'updated_by' => $this->session->userdata('logged_in')->id,
-                        'updated_at' => date('Y-m-d H:i:s'),
-                    ];
-                    $this->M_CRUD->updateData('trans_signed_pi', $paramsSignePI, $condition);
-
-                    $paramsAttachment = [
-                        'pi_id' => $pi->id,
-                        'pi_item_id' => 18,
-                        'dates' => date('Y-m-d'),
-                        'values' => $filename1,
-                        'created_by' => $this->session->userdata('logged_in')->id,
-                    ];
-                    $this->M_CRUD->insertData('trans_signed_pi_attachment', $paramsAttachment);
+                    $params['file_1'] = $path.$filename1;
+                    $paramsSignePI['value'] = $path.$filename1;
                 }
 
                 if ( isset($_FILES['attachment2']) && $_FILES['attachment2']['name'] != '' ) {
@@ -122,13 +105,8 @@
                     $timestamp = mt_rand(1, time());
                     $randomDate = date("d M Y", $timestamp);
                     $filename2 = 'Export-Terms-'.md5($randomDate).'.'.$end;
-
-                    if ( !file_exists($path) ) {
-                        mkdir($path, 0777, true);
-                    }
-
                     move_uploaded_file($_FILES['attachment2']['tmp_name'], $path.$filename2);
-                    $params['file_2'] = $filename2;
+                    $params['file_2'] = $path.$filename2;
                 }
 
                 $header = $this->M_CRUD->insertData('trans_export_terms', $params);
@@ -141,15 +119,9 @@
                         'created_by' => $this->session->userdata('logged_in')->id,
                     ];
     
-                    $this->M_CRUD->insertData('trans_export_terms_history', $paramHistory);
-
-                    $data_pi = [
-                        'header' => $this->M_CRUD->readDatabyID('view_trans_pi_email_header', ['pi_id' => $pi->id]),
-                        'detail' => $this->M_CRUD->readDataIn('view_trans_pi_email_detail', ['pi_id' => $pi->id, 'pi_item_id' => [18]]),
-                        'list' => $this->M_CRUD->pi_email('view_trans_pi_email_user'),
-                    ];
-        
-                    $this->sendmail('PROGRESS PI | '.$data_pi['header']->pi_no, $data_pi['list'], $this->load->view('export/email/content', $data_pi,  TRUE));
+                    if($this->M_CRUD->updateData('trans_signed_pi', $paramsSignePI, $condition)) {
+                        $this->M_CRUD->insertData('trans_export_terms_history', $paramHistory);
+                    }
                     $response = ['status' => 1, 'messages' => 'Export terms has been saved successfully.', 'icon' => 'success', 'url' => 'export/expterm'];
                 } else {
                     $response = ['status' => 0, 'messages' => 'Export terms has failed to save.', 'icon' => 'error'];
@@ -157,20 +129,6 @@
             }
 
             echo json_encode($response);
-        }
-
-        public function sendmail($subject, $to, $content)
-        {
-            $implode = implode(", ", $to);
-            $this->load->config('email');
-            $this->load->library('email');
-            $this->email->set_newline("\r\n");
-            $this->email->set_crlf("\r\n");
-            $this->email->from('no-reply7@gonusa-distribusi.com');
-            $this->email->to($implode);
-            $this->email->subject($subject);
-            $this->email->message($content);
-            $this->email->send();
         }
 
         public function detail($id)
@@ -235,7 +193,6 @@
             $path = 'assets/attachment/expterm/';
             $post = $this->input->post();
             $condition = ['id' => $post['expterm_id']];
-            $pi = $this->M_CRUD->readDatabyID('trans_export_terms', ['id' => $post['expterm_id']]);
 
             $params = [
                 'pi_status_id' => $post['status'],
@@ -291,25 +248,6 @@
                 }
             } else {
                 if($this->M_CRUD->updateData('trans_export_terms', $params, $condition)) {
-                    if($post['status'] == 5) {
-                        $conditionPI = [
-                            'pi_id' => $pi->pi_id,
-                            'pi_item_id' => 19,
-                        ];
-                        $paramsSignePI = [
-                            'dates' => date('Y-m-d'),
-                            'updated_by' => $this->session->userdata('logged_in')->id,
-                            'updated_at' => date('Y-m-d H:i:s'),
-                        ];
-                        $this->M_CRUD->updateData('trans_signed_pi', $paramsSignePI, $conditionPI);
-                        $data_pi = [
-                            'header' => $this->M_CRUD->readDatabyID('view_trans_pi_email_header', ['pi_id' => $pi->pi_id]),
-                            'detail' => $this->M_CRUD->readDataIn('view_trans_pi_email_detail', ['pi_id' => $pi->pi_id, 'pi_item_id' => [19]]),
-                            'list' => $this->M_CRUD->pi_email('view_trans_pi_email_user'),
-                        ];
-                        $this->sendmail('PROGRESS PI | '.$data_pi['header']->pi_no, $data_pi['list'], $this->load->view('export/email/content', $data_pi,  TRUE));
-                    }
-
                     $response = ['status' => 1, 'messages' => 'Export terms has been updated successfully.', 'icon' => 'success', 'url' => 'export/expterm'];
                 } else {
                     $response = ['status' => 0, 'messages' => 'Export terms has failed to update.', 'icon' => 'error'];
