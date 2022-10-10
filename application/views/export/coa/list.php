@@ -24,7 +24,7 @@
                         <td><?=$rows->item_name?></td>
                         <td class="text-center">
                             <?php if($rows->attachment) : ?>
-                            <a href="<?=base_url('assets/attachment/qc_check/'.$rows->attachment)?>" target="_blank">
+                            <a href="<?=base_url($rows->attachment)?>" target="_blank">
                                     <i class="fas fa-file-download"></i>
                             </a>
                             <?php endif; ?>

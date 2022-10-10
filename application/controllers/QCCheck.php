@@ -110,7 +110,7 @@
                     }
 
                     move_uploaded_file($_FILES['attachment']['tmp_name'], $path.$filename);
-                    $params['attachment'] = $filename;
+                    $params['attachment'] = $path.$filename;
 
                     if($this->M_CRUD->insertData('trans_qcontrol_check', $params)) {
                         $response = ['status' => 1, 'messages' => 'QC check has been saved successfully.', 'icon' => 'success', 'url' => 'export/qc_check'];
@@ -197,7 +197,7 @@
                 }
 
                 move_uploaded_file($_FILES['attachment']['tmp_name'], $path.$filename);
-                $params['attachment'] = $filename;
+                $params['attachment'] = $path.$filename;
 
                 if($this->M_CRUD->updateData('trans_qcontrol_check', $params, $condition)) {
                     $response = ['status' => 1, 'messages' => 'QC check has been updated successfully.', 'icon' => 'success', 'url' => 'export/qc_check'];
