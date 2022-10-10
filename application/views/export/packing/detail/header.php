@@ -28,7 +28,7 @@
     <div class="col-md-3">
         <div class="form-group required">
             <label for="container" class="control-label">Container</label>
-            <input type="text" class="form-control upper" value="<?=$params['detail']->container?>" disabled>
+            <input type="text" class="form-control upper" id="container" name="container" value="<?=$params['detail']->container?>">
         </div>
     </div>
 </div>

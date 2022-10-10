@@ -209,12 +209,17 @@
             }
 
             $params = [
+                'container' => $post['container'],
                 'updated_at' => date('Y-m-d H:i:s'),
                 'updated_by' => $this->session->userdata('logged_in')->id,
             ];
             $header = $this->M_CRUD->updateData('trans_packing_list', $params, ['id' => $post['id']]);
 
             if($header) {
+                $pi = $this->M_CRUD->readDatabyID('view_trans_packing_list_pi', ['packing_id' => $post['id']]);
+                $paramsPI = ['number_of_container' => $post['container']];
+                $this->M_CRUD->updateData('trans_pi', $paramsPI, ['id' => $pi->id]);
+
                 if(!empty($Grid)) {
                     foreach($Grid as $detail) {
                         $params = [
