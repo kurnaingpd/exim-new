@@ -51,7 +51,7 @@
         public function list()
         {
             $column_order = [
-                NULL, 'po_no', 'shipment_no', 'shipper', 'seller', 'consignee', 'commodity', 'category', 'hs_code', 'lartas', 'incoterm', 'hbl', 'mbl', 'qty_container', 'container_no', 'goods_qty', 'uom', 
+                'po_no', 'shipment_no', 'shipper', 'seller', 'consignee', 'commodity', 'category', 'hs_code', 'lartas', 'incoterm', 'hbl', 'mbl', 'qty_container', 'container_no', 'goods_qty', 'uom', 
                 'gross_weight', 'net_weight', 'cbm', 'pol', 'pod', 'etd', 'eta', 'pib_aju', 'coo', 'master_list', 'rcvd_ori_doc', 'billing', 'spjm', 'spjk', 'sppb', 'pickup_do', 'delivery', 'remarks', 'currency', 'cif',
                 'duty', 'vat', 'tax', 'freight', 'handling', 'at_cost', 'additional', 'lead_time', 'time', 'percent', 'cif2', 'landed_cost', 'percentage', 'forwarder'
             ];

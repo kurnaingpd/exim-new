@@ -1,7 +1,7 @@
 <table id="trptimport" class="table table-sm table-bordered table-striped">
     <thead>
         <tr class="text-center">
-            <th>#</th>
+            <!-- <th>#</th> -->
             <th>PO</th>
             <th>Shipment no.</th>
             <th>Shipper</th>

@@ -1,3 +1,5 @@
+var tables;
+
 $(function () {
     flatpickr(".datetimepicker-input", {
         dateFormat: "Y-m-d",
@@ -11,8 +13,13 @@ $(function () {
         allowClear: true
     });
 
-    var table = $("#trptimport").DataTable({
-        "scrollX": true, "lengthChange": false, "processing": true, "serverSide": true, "order": [], "dom": 'Blfrtip',
+    $('#trptimport thead tr')
+        .clone(true)
+        .addClass('filters')
+        .appendTo('#trptimport thead');
+
+    var tables = $("#trptimport").DataTable({
+        "scrollX": true, "lengthChange": false, "processing": true, "serverSide": true, "order": [], "dom": 'Blfrtip', "fixedHeader": true,
         "ajax": {
             "url": site_url + "import/report_import/list",
             "type": "POST",
@@ -38,8 +45,40 @@ $(function () {
                 var sheet = xlsx.xl.worksheets['sheet1.xml'];
                 $('row', sheet).attr('s', '0');
             }
-        }]
+        }],
+        initComplete: function () {
+            this.api().columns().every(function () {
+              var column = this;
+              var select = $('<select><option value=""></option></select>')
+                .appendTo($(column.header()).empty())
+                .on('change', function () {
+                  var val = $.fn.dataTable.util.escapeRegex(
+                    $(this).val()
+                  );
+      
+                  column
+                    .search(val ? '^' + val + '$' : '', true, false)
+                    .draw();
+                });
+      
+              column.data().unique().sort().each(function (d, j) {
+                select.append('<option value="' + d + '">' + d + '</option>')
+              });
+            });
+        }
     }).buttons().container().appendTo('#trptimport_wrapper .col-md-6:eq(0)');
+
+    $(tables.columns(1).header()).find('select').on('change', function () {
+        var nextSelect = $(tables.columns(2).header()).find('select');
+        var nextColumn = tables.column(2);
+        var nextColumnResults = tables.column(2, { search: 'applied' });
+        nextColumn.search('').draw();
+        nextSelect.empty();
+        nextSelect.append('<option value=""></option>');
+        nextColumnResults.data().unique().sort().each(function (d, j) {
+          nextSelect.append('<option value="' + d + '">' + d + '</option>')
+        });
+    });
 });
 
 function newexportaction(e, dt, button, config) {
