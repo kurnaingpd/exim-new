@@ -149,11 +149,11 @@
                                     <?php endif; ?>
                                     
                                     <?php if($params['header']->expired == 1) : ?>
-                                    <td class="data-border" align="center"><?=($dtl['batch']?$dtl['batch']:'-')?></td>
+                                    <td class="data-border" align="center"><?=($dtl['expired_date']?$dtl['expired_date']:'-')?></td>
                                     <?php endif; ?>
 
                                     <?php if($params['header']->production == 1) : ?>
-                                    <td class="data-border" align="center"><?=($dtl['batch']?$dtl['batch']:'-')?></td>
+                                    <td class="data-border" align="center"><?=($dtl['production_date']?$dtl['production_date']:'-')?></td>
                                     <?php endif; ?>
 
                                     <td class="data-border" align="right"><?=number_format($dtl['price'], 2)?></td>
