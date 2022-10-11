@@ -81,7 +81,7 @@
         </div>
 
         <div class="col-md-6">
-            <button type="button" id="btn-filter" class="btn btn-block btn-default">
+            <button type="button" id="btn-reset" class="btn btn-block btn-default">
                 <i class="fas fa-trash-restore-alt mr-2"></i>Reset
             </button>
         </div>

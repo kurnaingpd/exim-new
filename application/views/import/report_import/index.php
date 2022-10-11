@@ -1,11 +1,11 @@
-<div class="card">
+<!-- <div class="card">
     <div class="card-header">
         <h6><i class="fas fa-filter mr-2"></i><?=$header?></h6>
     </div>
     <div class="card-body">
         <?php $this->load->view('import/report_import/filter') ?>
     </div>
-</div>
+</div> -->
 
 <div class="card">
     <div class="card-header">
