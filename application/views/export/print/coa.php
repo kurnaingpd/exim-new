@@ -61,7 +61,7 @@
                         <div id="row">
                             <div class="box-name">pH</div>
                             <div class="box-colon">:</div>
-                            <div class="box-value">p<?=$params['detail']->ph?>H</div>
+                            <div class="box-value"><?=$params['detail']->ph?></div>
                         </div>
 
                         <div id="row">
