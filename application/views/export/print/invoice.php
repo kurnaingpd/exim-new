@@ -161,7 +161,7 @@
                                 </tr>
                                 <?php 
                                     $no++; endforeach;
-                                    if($params['header']->incoterm_id == 1) {
+                                    if($params['header']->incoterm_id == 3) {
                                         $totAll = $tGrand + $params['header']->freight_cost + $params['header']->insurance;
                                     } elseif($params['header']->incoterm_id == 2) {
                                         $totAll = $tGrand + $params['header']->freight_cost;
