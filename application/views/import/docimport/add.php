@@ -123,7 +123,7 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="qty_container" class="control-label">Qty container</label>
-                        <input type="text" name="qty_container" class="form-control docs" id="qty_container" placeholder="Enter qty container" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                        <input type="text" name="qty_container" class="form-control docs" id="qty_container" placeholder="Enter qty container" autocomplete="off">
                     </div>
                 </div>
 
