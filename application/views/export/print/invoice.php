@@ -163,7 +163,7 @@
                                     $no++; endforeach;
                                     if($params['header']->incoterm_id == 1) {
                                         $totAll = $tGrand + $params['header']->freight_cost + $params['header']->insurance;
-                                    } elseif($params['header']->incoterm_id == 1) {
+                                    } elseif($params['header']->incoterm_id == 2) {
                                         $totAll = $tGrand + $params['header']->freight_cost;
                                     } else {
                                         $totAll = $tGrand;
