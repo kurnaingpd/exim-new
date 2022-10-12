@@ -134,31 +134,36 @@
         {
             $get = $this->input->post();
 
-            if($get['po']) {
+            if(($get['po'])) {
                 $condition['po_no'] = $get['po'];
             }
 
-            if($get['delivery']) {
+            if(($get['delivery'])) {
                 $condition['delivery'] = $get['delivery'];
             }
 
-            if($get['consignee']) {
+            if(($get['consignee'])) {
                 $condition['consignee_id'] = $get['consignee'];
             }
 
-            if($get['category']) {
+            if(($get['category'])) {
                 $condition['category_id'] = $get['category'];
             }
 
-            if($get['shipper']) {
+            if(($get['shipper'])) {
                 $condition['shipper_id'] = $get['shipper'];
             }
 
-            if($get['forwarder']) {
+            if(($get['forwarder'])) {
                 $condition['forwarder_id'] = $get['forwarder'];
             }
+
+            if(isset($condition)) {
+                $query = $this -> M_CRUD -> readData("view_trans_doc_import_xls", $condition);
+            } else {
+                $query = $this -> M_CRUD -> readData("view_trans_doc_import_xls");
+            }
             
-            $query = $this -> M_CRUD -> readData("view_trans_doc_import_xls", $condition);
             echo json_encode($query);
         }
     }
