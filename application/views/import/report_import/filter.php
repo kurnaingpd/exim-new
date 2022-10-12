@@ -20,6 +20,9 @@
                     <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
+                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker" style="cursor: pointer;">
+                        <div class="input-group-text clear-btn"><i class="fa fa-times"></i></div>
+                    </div>
                 </div>
             </div>
         </div>
