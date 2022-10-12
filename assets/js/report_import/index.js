@@ -159,7 +159,9 @@ $(function () {
     });
 
     $('button#btn-generate').on('click',function() {
-        swal("", "On progress.", "info");
+        $("#trptimport").table2excel({
+            filename: "report_doc_import_" + Math.floor(Math.random() * Date.now()),
+        });
     });
 
     $('button#btn-reset').on('click',function() {
