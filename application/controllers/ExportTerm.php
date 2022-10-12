@@ -214,7 +214,7 @@
                     }
 
                     move_uploaded_file($_FILES['attachment1']['tmp_name'], $path.$filename1);
-                    $params['file_1'] = $filename1;
+                    $params['file_1'] = $path.$filename1;
                 }
 
                 if ( isset($_FILES['attachment2']) && $_FILES['attachment2']['name'] != '' ) {
@@ -230,7 +230,7 @@
                     }
 
                     move_uploaded_file($_FILES['attachment2']['tmp_name'], $path.$filename2);
-                    $params['file_2'] = $filename2;
+                    $params['file_2'] = $path.$filename2;
                 }
 
                 if($this->M_CRUD->updateData('trans_export_terms', $params, $condition)) {
