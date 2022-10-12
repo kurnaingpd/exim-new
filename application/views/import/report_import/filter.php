@@ -74,13 +74,19 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <button type="button" id="btn-filter" class="btn btn-block btn-info">
-                <i class="fas fa-search mr-2"></i>Search
+                <i class="fas fa-file-code mr-2"></i>Show
             </button>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
+            <button type="button" id="btn-generate" class="btn btn-block btn-success">
+                <i class="fas fa-file-excel mr-2"></i>Excel
+            </button>
+        </div>
+
+        <div class="col-md-4">
             <button type="button" id="btn-reset" class="btn btn-block btn-default">
                 <i class="fas fa-trash-restore-alt mr-2"></i>Reset
             </button>
