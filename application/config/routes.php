@@ -363,3 +363,7 @@ $route['import/docpayment/excel'] = 'DocPayment/excel';
 /** Import - Report Import */
 $route['import/report_import'] = 'ReportImport';
 $route['import/report_import/html'] = 'ReportImport/html';
+
+/** Import - Report Cost */
+$route['import/report_cost'] = 'ReportCost';
+$route['import/report_cost/html'] = 'ReportCost/html';
