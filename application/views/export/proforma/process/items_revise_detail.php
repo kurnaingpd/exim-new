@@ -27,10 +27,10 @@
                     <input type="text" class="form-control" id="pi_config_<?=$rows->id?>" name="pi_config_<?=$rows->id?>" value="<?=$rows->pack_desc?>" disabled style="background-color:#ffffff;">
                 </td>
                 <td>
-                    <input type="text" class="form-control" id="pi_qty_<?=$rows->id?>" name="pi_qty_<?=$rows->id?>" value="<?=$rows->qty?>" size="5">
+                    <input type="text" class="form-control" id="pi_qty_<?=$rows->id?>" name="pi_qty_<?=$rows->id?>" value="<?=$rows->qty?>" size="5" disabled style="background-color:#ffffff;">
                 </td>
                 <td>
-                    <input type="text" class="form-control" id="pi_price_<?=$rows->id?>" name="pi_price_<?=$rows->id?>" value="<?=$rows->price?>" size="5">
+                    <input type="text" class="form-control" id="pi_price_<?=$rows->id?>" name="pi_price_<?=$rows->id?>" value="<?=$rows->price?>" size="5" disabled style="background-color:#ffffff;">
                 </td>
                 <td>
                     <button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="<?=$rows->id?>" data-value="<?=$rows->remain_cbm?>"><i class="fas fa-trash"></i></button>

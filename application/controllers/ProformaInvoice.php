@@ -310,32 +310,32 @@
                     }
                 }
                 
-                $Detail = array();
+                // $Detail = array();
                 
-                foreach($_POST as $index => $value){
-                    if(preg_match("/^pi_/i", $index)) {
-                        $index = preg_replace("/^pi_/i","",$index);
-                        $arr = explode('_',$index);
-                        $rnd = $arr[count($arr)-1];
-                        array_pop($arr);
-                        $idx = implode('_',$arr);
+                // foreach($_POST as $index => $value){
+                //     if(preg_match("/^pi_/i", $index)) {
+                //         $index = preg_replace("/^pi_/i","",$index);
+                //         $arr = explode('_',$index);
+                //         $rnd = $arr[count($arr)-1];
+                //         array_pop($arr);
+                //         $idx = implode('_',$arr);
                         
-                        $Detail[$rnd][$idx] = $value;
-                        if(!isset($Detail[$rnd]['id'])){
-                            $Detail[$rnd]['id'] = $rnd;
-                        }
-                    }
-                }
+                //         $Detail[$rnd][$idx] = $value;
+                //         if(!isset($Detail[$rnd]['id'])){
+                //             $Detail[$rnd]['id'] = $rnd;
+                //         }
+                //     }
+                // }
 
-                if(!empty($Detail)) {
-                    foreach($Detail as $list) {
-                        $paramsDetail = [
-                            'qty' => $list['qty'],
-                            'price' => $list['price'],
-                        ];
-                        $this->M_CRUD->updateData('trans_pi_detail', $paramsDetail, ['id' => $list['detail_id']]);
-                    }
-                }
+                // if(!empty($Detail)) {
+                //     foreach($Detail as $list) {
+                //         $paramsDetail = [
+                //             'qty' => $list['qty'],
+                //             'price' => $list['price'],
+                //         ];
+                //         $this->M_CRUD->updateData('trans_pi_detail', $paramsDetail, ['id' => $list['detail_id']]);
+                //     }
+                // }
 
                 $paramHistory = [
                     'pi_id' => $post['id'],
@@ -429,32 +429,32 @@
                     }
                 }
                 
-                $Detail = array();
+                // $Detail = array();
                 
-                foreach($_POST as $index => $value){
-                    if(preg_match("/^pi_/i", $index)) {
-                        $index = preg_replace("/^pi_/i","",$index);
-                        $arr = explode('_',$index);
-                        $rnd = $arr[count($arr)-1];
-                        array_pop($arr);
-                        $idx = implode('_',$arr);
+                // foreach($_POST as $index => $value){
+                //     if(preg_match("/^pi_/i", $index)) {
+                //         $index = preg_replace("/^pi_/i","",$index);
+                //         $arr = explode('_',$index);
+                //         $rnd = $arr[count($arr)-1];
+                //         array_pop($arr);
+                //         $idx = implode('_',$arr);
                         
-                        $Detail[$rnd][$idx] = $value;
-                        if(!isset($Detail[$rnd]['id'])){
-                            $Detail[$rnd]['id'] = $rnd;
-                        }
-                    }
-                }
+                //         $Detail[$rnd][$idx] = $value;
+                //         if(!isset($Detail[$rnd]['id'])){
+                //             $Detail[$rnd]['id'] = $rnd;
+                //         }
+                //     }
+                // }
 
-                if(!empty($Detail)) {
-                    foreach($Detail as $list) {
-                        $paramsDetail = [
-                            'qty' => $list['qty'],
-                            'price' => $list['price'],
-                        ];
-                        $this->M_CRUD->updateData('trans_pi_detail', $paramsDetail, ['id' => $list['detail_id']]);
-                    }
-                }
+                // if(!empty($Detail)) {
+                //     foreach($Detail as $list) {
+                //         $paramsDetail = [
+                //             'qty' => $list['qty'],
+                //             'price' => $list['price'],
+                //         ];
+                //         $this->M_CRUD->updateData('trans_pi_detail', $paramsDetail, ['id' => $list['detail_id']]);
+                //     }
+                // }
 
                 $response = ['status' => 1, 'messages' => 'Proforma invoice has been updated successfully.', 'icon' => 'success', 'url' => 'export/proforma'];
             } else {
