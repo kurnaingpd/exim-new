@@ -25,8 +25,7 @@
                 <td><?=$rows->item_name?></td>
                 <td class="text-center"><?=$rows->hs_code?></td>
                 <td><?=$rows->pack_desc?></td>
-                <td>
-                    <input type="text" class="form-control text-right" id="grid_qty_<?=$rows->pi_detail_id?>" name="grid_qty_<?=$rows->pi_detail_id?>" value="<?=$rows->qty?>" required>
+                <td class="text-right"><?=number_format($rows->qty)?></td>
                 <td class="batch <?=($params['detail']->batch == '0'?'d-none':'')?>">
                     <input type="text" class="form-control" id="grid_batch_<?=$rows->pi_detail_id?>" name="grid_batch_<?=$rows->pi_detail_id?>" value="<?=$rows->batch?>" required>
                 </td>

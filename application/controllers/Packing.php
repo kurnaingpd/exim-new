@@ -227,7 +227,7 @@
                             'expired_date' => $detail['expdate'],
                             'production_date' => $detail['proddate'],
                             'batch' => $detail['batch'],
-                            'qty' => $detail['qty'],
+                            // 'qty' => $detail['qty'],
                         ];
                         $this->M_CRUD->updateData('trans_pi_detail', $params, ['id' => $detail['id']]);
                     }
