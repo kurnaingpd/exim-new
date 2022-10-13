@@ -113,23 +113,16 @@ $('select#discharge_port').on('change', function() {
 });
 
 $('select#container').on('change', function() {
-    swal({
-        title: "",
-        text: "Are you sure to choose this container?",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    })
-    .then((willDelete) => {
-        if (willDelete) {
-            $("select#container").select2({
-                theme: 'bootstrap4',
-                disabled:'readonly'
-            });
-            var data = $('select#container').select2('data');
-            cbm(data[0].id);
-        }
-    });
+    var data = $('select#container').select2('data');
+    cbm(data[0].id);
+    var rowCount = $('#data-item tr').length;
+    console.log(rowCount);
+
+    if(rowCount > 0) {
+        swal("", "Items and CBM have been reset.", "warning");
+        $('#data-item').html("");
+        cbm(data[0].id);
+    }    
 });
 
 $('select#freight_company').on('change', function() {
