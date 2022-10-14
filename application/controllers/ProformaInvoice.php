@@ -132,7 +132,7 @@
                 'customer_ship_id' => $post['discharge_port'],
                 'container_id' => $post['container'],
                 'number_of_container' => $post['container_no'],
-                'freight_id' => $post['freight_company'],
+                // 'freight_id' => $post['freight_company'],
                 // 'freight_company_contact' => $post['freight_company_cont'],
                 // 'freight_company_no' => $post['freight_company_no'],
                 // 'freight_cost' => $post['freight_cost'],
