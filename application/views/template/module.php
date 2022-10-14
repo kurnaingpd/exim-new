@@ -70,44 +70,6 @@
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
-                                <!-- <div class="col-md-2">
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <i class="far fa-keyboard fa-6x"></i>
-                                        </div>
-                                        <div class="card-footer border-top">
-                                            <a href="<?=site_url('uac/home')?>" class="btn btn-block btn-default">
-                                                USER & ACCESS CONTROL
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <i class="fas fa-file-export fa-6x"></i>
-                                        </div>
-                                        <div class="card-footer border-top">
-                                            <a href="<?=site_url('export/home')?>" class="btn btn-block btn-default">
-                                                EXPORT
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <i class="fas fa-file-import fa-6x"></i>
-                                        </div>
-                                        <div class="card-footer border-top">
-                                            <a href="<?=site_url('import/home')?>" class="btn btn-block btn-default">
-                                                IMPORT
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
