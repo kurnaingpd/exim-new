@@ -52,13 +52,13 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_company" class="control-label">Freight company</label>
-            <!-- <input type="text" name="freight_company" class="form-control upper" id="freight_company" placeholder="Enter freight company" required> -->
-            <select name="freight_company" class="form-control select2bs4" id="freight_company" required>
+            <input type="text" name="freight_company" class="form-control upper" id="freight_company" placeholder="Enter freight company" disabled>
+            <!-- <select name="freight_company" class="form-control select2bs4" id="freight_company" required>
                 <option></option>
                 <?php foreach($params['freight'] as $rows) : ?>
                     <option value="<?=$rows->id?>"><?=$rows->company?></option>
                 <?php endforeach; ?>
-            </select>
+            </select> -->
         </div>
     </div>
 </div>

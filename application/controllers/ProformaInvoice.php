@@ -79,7 +79,7 @@
 
         public function customer($id = NULL)
         {
-            $data = $this->M_CRUD->readDatabyID('view_customer_cp', ['is_deleted' => '0', 'id' => $id]);
+            $data = $this->M_CRUD->readDatabyID('view_customer_cp', ['is_deleted' => '0', 'customer_id' => $id]);
             echo json_encode($data);
         }
 
@@ -104,12 +104,6 @@
         public function cbm($id = NULL)
         {
             $data = $this->M_CRUD->readDatabyID('master_container', ['is_deleted' => '0', 'id' => $id]);
-            echo json_encode($data);
-        }
-
-        public function freight($id = NULL)
-        {
-            $data = $this->M_CRUD->readDatabyID('master_freight', ['is_deleted' => '0', 'id' => $id]);
             echo json_encode($data);
         }
 

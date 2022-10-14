@@ -149,6 +149,9 @@ function consignee(id)
                 document.getElementById("consignee_cp").value = response.name;
                 document.getElementById("top_id").value = response.top_id;
                 document.getElementById("top").value = response.top_name;
+                document.getElementById("freight_company").value = response.company;
+                document.getElementById("freight_company_cont").value = response.contact;
+                document.getElementById("freight_company_no").value = response.number;
             } else {
                 document.getElementById("consignee_address").value = '';
                 document.getElementById("consignee_country").value = '';
@@ -156,6 +159,9 @@ function consignee(id)
                 document.getElementById("consignee_cp").value = '';
                 document.getElementById("top_id").value = '';
                 document.getElementById("top").value = '';
+                document.getElementById("freight_company").value = '';
+                document.getElementById("freight_company_cont").value = '';
+                document.getElementById("freight_company_no").value = '';
             }
         },
         error: function (e) {
@@ -246,28 +252,6 @@ function cbm(id)
             } else {
                 document.getElementById("currenct_cbm").value = 0;
                 document.getElementById("remain_cbm").value = 0;
-            }
-        },
-        error: function (e) {
-            console.log("Terjadi kesalahan pada sistem");
-            swal("", "Terjadi kesalahan pada sistem.", "error");
-        }        
-    });
-}
-
-function freight(id)
-{
-    $.ajax({
-        url: site_url + "export/proforma/freight/" + id,
-        type: "POST",
-        dataType: "json",
-        success: function(response) {
-            if(response) {
-                document.getElementById("freight_company_cont").value = response.contact;
-                document.getElementById("freight_company_no").value = response.number;
-            } else {
-                document.getElementById("freight_company_cont").value = 0;
-                document.getElementById("freight_company_no").value = 0;
             }
         },
         error: function (e) {
