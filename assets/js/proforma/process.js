@@ -17,6 +17,7 @@ $(function () {
             swal("", "Item data cannot be empty.", "warning");
         } else {
             var rnd = Math.floor((Math.random() * 10000) + 1);
+            var cbm_item = Number(document.getElementById("volume").value) * Number(document.getElementById("qty").value);
             var remain_cbm = document.getElementById("remain_cbm").value - (Number(document.getElementById("volume").value) * Number(document.getElementById("qty").value));
             console.log(remain_cbm);
 
@@ -26,19 +27,20 @@ $(function () {
                 document.getElementById("remain_cbm").value = remain_cbm;
                 $('tbody#data-item').append(
                     '<tr data-id="'+rnd+'">'+
-                        '<td>'+
+                        '<td style="width: 16%">'+
                             '<input type="hidden" id="grid_item_category_'+rnd+'" name="grid_item_category_'+rnd+'" value="'+$('select.item[name="item_category"]').val()+'" />'+
                             '<input type="text" class="form-control" value="'+$('select.item[name="item_category"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
                         '</td>'+
-                        '<td>'+
+                        '<td style="width: 34%">'+
                             '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
                             '<input type="text" class="form-control" value="'+$('select.item[name="product"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
                             '<input type="hidden" class="form-control volume" id="grid_volume_'+rnd+'" name="grid_volume_'+rnd+'" data-value="'+$('input.item[name="volume"]').val()+'" value="'+$('input.item[name="volume"]').val()+'" style="background-color:#ffffff;" readonly />'+
+                            '<input type="hidden" class="form-control volume" id="grid_cbm_'+rnd+'" name="grid_cbm_'+rnd+'" data-value="'+cbm_item+'" value="'+cbm_item+'" />'+
                         '</td>'+
-                        '<td>'+
+                        '<td style="width: 8%">'+
                             '<input type="text" class="form-control" id="grid_hs_code_'+rnd+'" name="grid_hs_code_'+rnd+'" value="'+$('input.item[name="hs_code"]').val()+'" style="background-color:#ffffff;" readonly required />'+
                         '</td>'+
-                        '<td>'+
+                        '<td style="width: 26%">'+
                             '<input type="text" class="form-control" id="grid_config_'+rnd+'" name="grid_config_'+rnd+'" value="'+$('input.item[name="config"]').val()+'" style="background-color:#ffffff;" readonly required />'+
                         '</td>'+
                         '<td>'+
