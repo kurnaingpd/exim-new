@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="form-group required">
             <label for="product" class="control-label">Product</label>
             <select name="product" class="form-control select2bs4 item" id="product">
@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-1">
         <div class="form-group required">
             <label for="hs_code" class="control-label">HS code</label>
             <input type="text" name="hs_code" class="form-control upper item" id="hs_code" placeholder="Enter hs code">
