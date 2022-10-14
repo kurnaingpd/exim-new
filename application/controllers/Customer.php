@@ -545,14 +545,18 @@
 
             if(!empty($Grid)) {
                 foreach($Grid as $detail) {
-                    $params = [
+                    $condition = [
                         'customer_coding_id' => $detail['customer_coding_id'],
                         'coding_type_id' => $detail['coding_type'],
+                    ];
+                    $params = [
+                        
                         'import_by' => $detail['coding_import'],
                         'hotline' => $detail['coding_hotline'],
                         'best_before' => $detail['coding_bb'],
+                        'is_deleted' => '0',
                     ];
-                    $this->M_CRUD->insertData('master_customer_coding_detail', $params);
+                    $this->M_CRUD->updateData('master_customer_coding_detail', $params, $condition);
                 }
             }
         }
