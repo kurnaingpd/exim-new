@@ -63,7 +63,6 @@ $(function () {
                 '</tr>'
             );
             
-            // $("#coding_type").select2("val", "");
             $("select#coding_type option[value='"+$('select.coding[name="coding_type"]').val()+"']").remove();
             $('.coding').val('');
             $(".coding").val('').trigger('change')

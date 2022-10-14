@@ -318,6 +318,7 @@
                 'cust_cp' => $this->M_CRUD->readDatabyID('master_customer_cp', ['customer_id' => $id]),
                 'cust_ship' => $this->M_CRUD->readDatabyID('master_customer_ship', ['customer_id' => $id]),
                 'cust_cpship' => $this->M_CRUD->readDatabyID('master_customer_cp_ship', ['customer_id' => $id]),
+                'cust_freight' => $this->M_CRUD->readDatabyID('master_customer_freight', ['customer_id' => $id]),
                 'cust_import' => $this->M_CRUD->readDatabyID('master_customer_import_doc', ['customer_id' => $id]),
                 'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
                 'bank' => $this->M_CRUD->readData('master_bank', ['is_deleted' => '0']),
@@ -329,6 +330,7 @@
                 'cust_coding' => $this->M_CRUD->readDatabyID('master_customer_coding', ['customer_id' => $id]),
             ];
             $datas['detail'] = [
+                'coding' => $this->M_CRUD->readData('view_master_customer_coding_type_detail', ['customer_coding_id' => $datas['params']['cust_coding']->id]),
                 'cust_ship' => $this->M_CRUD->readData('master_customer_ship_detail', ['is_deleted' => '0', 'customer_ship_id' => $datas['params']['cust_ship']->id]),
                 'cust_coding' => $this->M_CRUD->readData('view_master_customer_coding_detail', ['is_deleted' => '0', 'customer_coding_id' => $datas['params']['cust_coding']->id]),
             ];
@@ -343,6 +345,21 @@
             ];
             
             if($this->M_CRUD->deleteData('master_customer_ship_detail', $condition)) {
+                $response = ['status' => 1, 'messages' => 'Item has been deleted successfully.'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Item has failed to delete.'];
+            }
+
+            echo json_encode($response);
+        }
+
+        public function coding_del($id)
+        {
+            $condition = [
+                'id' => $id
+            ];
+            
+            if($this->M_CRUD->deleteData('master_customer_coding_detail', $condition)) {
                 $response = ['status' => 1, 'messages' => 'Item has been deleted successfully.'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Item has failed to delete.'];
@@ -367,25 +384,21 @@
 
             if($customer) {
                 /** Notify */
-                $this->saveUpdateNotify($post, $customer);
+                $this->saveUpdateNotify($post, $post['id']);
                 /** Contact person */
-                $this->saveUpdateContactPerson($post, $customer);
+                $this->saveUpdateContactPerson($post, $post['id']);
                 /** Bank account */
-                $this->saveUpdateBank($post, $customer);
+                $this->saveUpdateBank($post, $post['id']);
                 /** Ship-to Address */
-                $this->saveUpdateShipAddress($post, $customer);
+                $this->saveUpdateShipAddress($post, $post['id']);
                 /** Contact person ship-to */
-                // if( !empty($post['cpshipto']) ) {
-                    $this->saveUpdateCPShipTo($post, $customer);
-                // }
+                $this->saveUpdateCPShipTo($post, $post['id']);
+                /** Freight */
+                $this->saveUpdateFreight($post, $post['id']);
                 /** Import document needs */
-                // if( !empty($post['import_doc']) ) {
-                    $this->saveUpdateImport($post, $customer);
-                // }
+                $this->saveUpdateImport($post, $post['id']);
                 /** Coding printing */
-                // if( !empty($post['coding_print']) ) {
-                    $this->saveUpdateCoding($post, $customer);
-                // }
+                $this->saveUpdateCoding($post, $post['id']);
 
                 $response = ['status' => 1, 'messages' => 'Customer has been saved successfully.', 'icon' => 'success', 'url' => 'export/customer'];
             } else {
@@ -479,6 +492,16 @@
             $this->M_CRUD->updateData('master_customer_cp_ship', $datas, ['customer_id' => $cust_id]);
         }
 
+        public function saveUpdateFreight($param, $cust_id)
+        {
+            $datas = [
+                'company' => $param['freight_company'],
+                'contact' => $param['freight_contact'],
+                'number' => $param['freight_number'],
+            ];
+            $this->M_CRUD->updateData('master_customer_freight', $datas, ['customer_id' => $cust_id]);
+        }
+
         public function saveUpdateImport($param, $cust_id)
         {
             $datas = [
@@ -503,6 +526,35 @@
                 'notes' => ($param['coding_notes']?$param['coding_notes']:NULL),
             ];
             $this->M_CRUD->updateData('master_customer_coding', $datas, ['customer_id' => $cust_id]);
+            $Grid = array();
+        
+            foreach($_POST as $index => $value){
+                if(preg_match("/^cd_/i", $index)) {
+                    $index = preg_replace("/^cd_/i","",$index);
+                    $arr = explode('_',$index);
+                    $rnd = $arr[count($arr)-1];
+                    array_pop($arr);
+                    $idx = implode('_',$arr);
+                    
+                    $Grid[$rnd][$idx] = $value;
+                    if(!isset($Grid[$rnd]['customer_coding_id'])){
+                        $Grid[$rnd]['customer_coding_id'] = $param['id'];
+                    }
+                }
+            }
+
+            if(!empty($Grid)) {
+                foreach($Grid as $detail) {
+                    $params = [
+                        'customer_coding_id' => $detail['customer_coding_id'],
+                        'coding_type_id' => $detail['coding_type'],
+                        'import_by' => $detail['coding_import'],
+                        'hotline' => $detail['coding_hotline'],
+                        'best_before' => $detail['coding_bb'],
+                    ];
+                    $this->M_CRUD->insertData('master_customer_coding_detail', $params);
+                }
+            }
         }
 
         public function delete($id)
