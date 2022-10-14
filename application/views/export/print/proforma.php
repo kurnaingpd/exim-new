@@ -113,8 +113,16 @@
                 <hr>
                 <div id="notes" style="margin-top: 2%;">
                     <b>Scheme Payment :</b>
-                    <div>Please TT 100%, <?=$params['header']->top_name?> From BL Date</div>
-                    <div>Please TT To The Following Account :</div>
+
+                    <?php if($params['header']->top_id == 6) : ?>
+                        <div>Please TT <?=$params['header']->dp?>% Before Production</div>
+                        <div>Please TT <?=$params['header']->balancing?>% Before Shipment</div>
+                        <div>Please TT To The Following Account :</div>
+                    <?php else : ?>
+                        <div><?=$params['header']->top_name?> From the Invoice Date</div>
+                        <div>Please TT To The Following Account :</div>
+                    <?php endif; ?>
+
                     <div id="row" style="margin-top: 2%;">
                         <div class="box-name">Bank Name</div>
                         <div class="box-colon">:</div>
