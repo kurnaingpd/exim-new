@@ -106,6 +106,10 @@
                     if( !empty($post['cpshipto']) ) {
                         $this->saveCPShipTo($post, $customer);
                     }
+                    /** Freight */
+                    if( !empty($post['freight']) ) {
+                        $this->saveFreight($post, $customer);
+                    }
                     /** Import document needs */
                     if( !empty($post['import_doc']) ) {
                         $this->saveImport($post, $customer);
@@ -214,6 +218,17 @@
                 'email' => ($param['cpshipto_email']?$param['cpshipto_email']:NULL),
             ];
             $this->M_CRUD->insertData('master_customer_cp_ship', $datas);
+        }
+
+        public function saveFreight($param, $cust_id)
+        {
+            $datas = [
+                'customer_id' => $cust_id,
+                'company' => $param['freight_company'],
+                'contact' => $param['freight_contact'],
+                'number' => $param['freight_number'],
+            ];
+            $this->M_CRUD->insertData('master_customer_freight', $datas);
         }
 
         public function saveImport($param, $cust_id)

@@ -64,6 +64,7 @@ $(function () {
             );
             
             // $("#coding_type").select2("val", "");
+            $("select#coding_type option[value='"+$('select.coding[name="coding_type"]').val()+"']").remove();
             $('.coding').val('');
             $(".coding").val('').trigger('change')
             
@@ -82,6 +83,21 @@ $(function () {
         } else {
             console.log("disable");
             $('input.cpship').prop('disabled', true);
+        }
+    });
+
+    $('input#freight').on('change', function() {
+        var status = document.getElementById("freight").checked;
+        if (status) {
+            console.log("enable");
+            $("div#required").addClass("required");
+            $('input.frei').prop('disabled', false);
+            $('input.frei').prop('required', true);
+        } else {
+            console.log("disable");
+            $("div#required").removeClass("required");
+            $('input.frei').prop('disabled', true);
+            $('input.frei').prop('required', false);
         }
     });
 

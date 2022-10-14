@@ -59,6 +59,18 @@
     <div class="card">
         <div class="card-header">
             <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="freight" name="freight">
+                <label class="form-check-label" for="freight">Freight</label>
+            </div>
+        </div>
+        <div class="card-body">
+            <?php $this->load->view('export/customer/add/freight'); ?>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="import_doc" name="import_doc">
                 <label class="form-check-label" for="import">Import document needs</label>
             </div>
