@@ -137,8 +137,14 @@
                                     <?php if($params['header']->carton == 1) : ?>
                                     <td class="data-border" align="center"><?=($dtl['carton_barcode']?$dtl['carton_barcode']:'-')?></td>
                                     <?php endif; ?>
+                                    
+                                    <?php if($no == 1) : ?>
+                                        <td class="data-border" align="center"><?=$params['header']->number_of_container?></td>
+                                    <?php else : ?>
+                                        <td class="data-border" align="center"></td>
+                                    <?php endif; ?>
+                                    
 
-                                    <td class="data-border" align="center"><?=$params['header']->number_of_container?></td>
                                     <td class="data-border" align="center"><?=($dtl['hs_code'])?></td>
                                     <td class="data-border"><?=($dtl['item_name'])?></td>
                                     <td class="data-border"><?=($dtl['pack'])?></td>
