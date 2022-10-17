@@ -14,14 +14,14 @@
     <body>
         <div id="container">
             <h4 class="title" style="margin-bottom: 0px;">INVOICE</h4>
-            <div class="title" style="font-size: 8px; margin-bottom: 3%;">0001/SKP-EXT/INV/09/2022</div>
+            <div class="title" style="font-size: 8px; margin-bottom: 3%;"><?=$params['header']->inv_no?></div>
 
             <div id="content" class="content">
                 <div id="header" class="clearfix-content">
                     <div id="row">
                         <div class="box-name">PI NO.</div>
                         <div class="box-colon">:</div>
-                        <div class="box-value"><?=$params['header']->inv_no?></div>
+                        <div class="box-value"><?=$params['header']->pi_no?></div>
                     </div>
 
                     <div id="row">
