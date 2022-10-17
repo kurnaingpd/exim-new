@@ -409,8 +409,8 @@
                 "text/css,stylesheet,".base_url("assets/css/print/spp.css"),
             ];
             $datas['params'] = [
-                'header' => $this->M_CRUD->readDatabyID('trans_spp', ['id' => $id]),
-                'detail' => $this->M_CRUD->readData('trans_spp_detail', ['spp_id' => $id]),
+                'header' => $this->M_CRUD->readDatabyID('view_trans_spp_list', ['id' => $id]),
+                'detail' => $this->M_CRUD->readData('view_print_trans_spp_detail', ['spp_id' => $id]),
             ];
 
             $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
