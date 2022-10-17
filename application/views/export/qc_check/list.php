@@ -12,7 +12,8 @@
                     <th>Production date</th>
                     <th>Expire date</th>
                     <th>Finish good check date</th>
-                    <th>Images</th>
+                    <th>Images (1)</th>
+                    <th>Images (2)</th>
                     <th>Created at</th>
                     <th>Updated at</th>
                     <th><i class="fas fa-ellipsis-h"></i></th>
@@ -28,8 +29,15 @@
                         <td class="text-center"><?=$rows->expired_date?></td>
                         <td class="text-center"><?=$rows->finish_good_date?></td>
                         <td class="text-center">
-                            <?php if($rows->attachment) : ?>
-                            <a href="<?=base_url($rows->attachment)?>" target="_blank">
+                            <?php if($rows->attachment_1) : ?>
+                            <a href="<?=base_url($rows->attachment_1)?>" target="_blank">
+                                    <i class="fas fa-file-download"></i>
+                            </a>
+                            <?php endif; ?>
+                        </td>
+                        <td class="text-center">
+                            <?php if($rows->attachment_2) : ?>
+                            <a href="<?=base_url($rows->attachment_2)?>" target="_blank">
                                     <i class="fas fa-file-download"></i>
                             </a>
                             <?php endif; ?>

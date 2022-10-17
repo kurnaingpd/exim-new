@@ -10,7 +10,7 @@
                         <div class="col-md-3">
                             <div class="form-group required">
                                 <label for="code" class="control-label">QC no.</label>
-                                <input type="text" name="code" class="form-control" id="code" value="<?=$params['autonumber']?>" readonly>
+                                <input type="text" name="code" class="form-control" id="code" value="<?=$params['autonumber']?>">
                             </div>
                         </div>
 
@@ -59,19 +59,31 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <div class="form-group required">
                                 <label for="batch" class="control-label">Batch</label>
                                 <input type="text" name="batch" class="form-control" id="batch" placeholder="Enter batch" required>
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group required">
-                                <label for="attachment" class="control-label">Image</label>
+                                <label for="attachment_1" class="control-label">Image (1)</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="attachment" name="attachment" accept="image/*" autofocus autocomplete="off" required>
+                                        <input type="file" class="custom-file-input" id="attachment_1" name="attachment_1" accept="image/*" autofocus autocomplete="off" required>
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group required">
+                                <label for="attachment_2" class="control-label">Image (2)</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="attachment_2" name="attachment_2" accept="image/*" autofocus autocomplete="off" required>
                                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                     </div>
                                 </div>
