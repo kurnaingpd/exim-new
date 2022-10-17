@@ -1,8 +1,10 @@
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-4">
         <div class="form-group">
             <label for="l_trade" class="control-label">(Local) Trade name</label>
-            <input type="text" name="l_trade" class="form-control grid" id="l_trade" placeholder="Enter trade name" autocomplete="off">
+            <select name="l_trade" class="form-control select2bs4 grid" id="l_trade">
+                <option></option>
+            </select>
         </div>
     </div>
 
@@ -13,7 +15,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-2">
         <div class="form-group">
             <label for="l_md_no" class="control-label">(Local) MD no.</label>
             <input type="text" name="l_md_no" class="form-control grid" id="l_md_no" placeholder="Enter md no." autocomplete="off">

@@ -296,6 +296,8 @@ $route['export/qcertificate/print/(:num)'] = 'Prints/qcertificate/$1';
 /** Export - Product Statement Letter */
 $route['export/spp'] = 'SPP';
 $route['export/spp/add'] = 'SPP/add';
+$route['export/spp/item'] = 'SPP/item';
+$route['export/spp/item/(:num)'] = 'SPP/item/$1';
 $route['export/spp/save'] = 'SPP/save';
 $route['export/spp/print/(:num)'] = 'Prints/spp/$1';
 

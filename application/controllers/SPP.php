@@ -40,13 +40,11 @@
         public function add()
         {
             $datas['css'] = [
-                "text/css,stylesheet, https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css",
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
                 "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
             ];
 
             $datas['js'] = [
-                "https://cdn.jsdelivr.net/npm/flatpickr",
                 base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
@@ -64,14 +62,20 @@
             $this->template->load('default', 'contents' , 'export/spp/add/index', $datas);
         }
 
+        public function item($invoice = NULL)
+        {
+            $data = $this->M_CRUD->readData('view_trans_spp_item', ['invoice_id' => $invoice]);
+            echo json_encode($data);
+        }
+
         public function save()
         {
             $post = $this->input->post();
             $params = [
                 'code' => $post['code'],
                 'invoice_id' => $post['invoice'],
-                'name' => ucwords($post['fullname']),
-                'position' => ucwords($post['position']),
+                // 'name' => ucwords($post['fullname']),
+                // 'position' => ucwords($post['position']),
                 'description' => $post['notes'],
                 'created_by' => $this->session->userdata('logged_in')->id,
             ];
@@ -99,7 +103,7 @@
                     foreach($Grid as $detail) {
                         $params = [
                             'spp_id' => $header,
-                            'name_local' => $detail['l_trade'],
+                            'item_id_local' => $detail['l_trade'],
                             'type_local' => $detail['l_type'],
                             'md_no_local' => $detail['l_md_no'],
                             'name_export' => $detail['e_trade'],

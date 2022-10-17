@@ -6,6 +6,7 @@
             <th>(Local) MD no.</th>
             <th>(Export) Trade name</th>
             <th>(Export) Type</th>
+            <th><i class="fas fa-ellipsis-h"></i></th>
         </tr>
     </thead>
     <tbody id="grid-detail"></tbody>

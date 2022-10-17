@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-9">
         <div class="form-group required">
             <label for="invoice" class="control-label">Invoice no.</label>
             <select name="invoice" class="form-control select2bs4" id="invoice" required>
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="col-md-3">
+    <!-- <div class="col-md-3">
         <div class="form-group required">
             <label for="fullname" class="control-label">Fullname</label>
             <input type="text" name="fullname" class="form-control" id="fullname" autocomplete="off" placeholder="Enter fullname" required>
@@ -30,5 +30,5 @@
             <label for="position" class="control-label">Position</label>
             <input type="text" name="position" class="form-control" id="position" autocomplete="off" placeholder="Enter position" required>
         </div>
-    </div>
+    </div> -->
 </div>

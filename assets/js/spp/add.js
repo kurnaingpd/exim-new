@@ -19,7 +19,8 @@ $(function () {
             $('tbody#grid-detail').append(
                 '<tr data-id="'+rnd+'">'+
                     '<td>'+
-                        '<input type="text" class="form-control" id="grid_l_trade_'+rnd+'" name="grid_l_trade_'+rnd+'" value="'+$('input.grid[name="l_trade"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '<input type="hidden" id="grid_l_trade_'+rnd+'" name="grid_l_trade_'+rnd+'" value="'+$('select.grid[name="l_trade"]').val()+'" />'+
+                        '<input type="text" class="form-control" id="grid_l_trade_name_'+rnd+'" name="grid_l_trade_name_'+rnd+'" value="'+$('select.grid[name="l_trade"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
                     '</td>'+
                     '<td>'+
                         '<input type="text" class="form-control" id="grid_l_type_'+rnd+'" name="grid_l_type_'+rnd+'" value="'+$('input.grid[name="l_type"]').val()+'" style="background-color:#ffffff;" readonly required />'+
@@ -33,12 +34,24 @@ $(function () {
                     '<td>'+
                         '<input type="text" class="form-control" id="grid_e_type_'+rnd+'" name="grid_e_type_'+rnd+'" value="'+$('input.grid[name="e_type"]').val()+'" style="background-color:#ffffff;" readonly required />'+
                     '</td>'+
+                    '<td class="text-center">'+
+                        '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
+                    '</td>'+
                 '</tr>'
             );
             
+            $("select#l_trade option[value='"+$('select.grid[name="l_trade"]').val()+"']").remove();
             $('.grid').val('');
             $(".grid").val('').trigger('change')
         }
+
+        $('button.btn-remove').off('click').on('click',function(){
+            var id = $(this).attr('data-row');
+            var product_id = $("tr[data-id="+id+"]").find("#grid_l_trade_"+id).val();
+            var product_name = $("tr[data-id="+id+"]").find("#grid_l_trade_name_"+id).val();
+            $("tr[data-id="+id+"]").remove();
+            $('select#l_trade').append('<option value="'+product_id+'">'+product_name+'</option>');
+        });
     });
 
     $.validator.setDefaults({
@@ -67,6 +80,33 @@ $(function () {
         }
     });
 });
+
+$('select#invoice').on('change', function() {
+    var data = $('select#invoice').select2('data');
+    items(data[0].id);
+});
+
+function items(id)
+{
+    $.ajax({
+        url: site_url + "export/spp/item/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            var html = '';
+            var i;
+            for(i=0; i<response.length; i++) {
+                html += '<option></option>';
+                html += '<option value="'+response[i].id+'">'+response[i].item+'</option>';
+            }
+            $('#l_trade').html(html);
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+            swal("", "Terjadi kesalahan pada sistem.", "error");
+        }        
+    });
+}
 
 function save()
 {
