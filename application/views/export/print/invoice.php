@@ -79,7 +79,7 @@
                     </div>
                 </div>
 
-                <div id="detail" class="content" style="margin-top: 2%;">
+                <div id="detail" class="content">
                     <?php foreach($params['category'] as $group => $item) : ?>
                         <div class="title" style="font-size: 8px; margin-top: 2%; text-align: left; font-weight: bold;"><?=$item['pi_item_category_name']?></div>
                         <table class="table">
