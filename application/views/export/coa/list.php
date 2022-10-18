@@ -10,7 +10,8 @@
                     <th>COA no.</th>
                     <th>Invoice no.</th>
                     <th>Product name</th>
-                    <th>Images</th>
+                    <th>Images (1)</th>
+                    <th>Images (2)</th>
                     <th>Created at</th>
                     <th><i class="fas fa-ellipsis-h"></i></th>
                 </tr>
@@ -23,10 +24,17 @@
                         <td class="text-center"><?=$rows->invoice_no?></td>
                         <td><?=$rows->item_name?></td>
                         <td class="text-center">
-                            <?php if($rows->attachment) : ?>
-                            <a href="<?=base_url($rows->attachment)?>" target="_blank">
+                            <?php if($rows->attachment_1) : ?>
+                                <a href="<?=base_url($rows->attachment_1)?>" target="_blank">
                                     <i class="fas fa-file-download"></i>
-                            </a>
+                                </a>
+                            <?php endif; ?>
+                        </td>
+                        <td class="text-center">
+                            <?php if($rows->attachment_2) : ?>
+                                <a href="<?=base_url($rows->attachment_2)?>" target="_blank">
+                                    <i class="fas fa-file-download"></i>
+                                </a>
                             <?php endif; ?>
                         </td>
                         <td class="text-center"><?=$rows->created_at?></td>
