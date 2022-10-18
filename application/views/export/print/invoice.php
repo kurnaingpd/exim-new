@@ -43,7 +43,7 @@
                     </div>
 
                     <div id="row">
-                        <div class="box-name">BENEFICIAY</div>
+                        <div class="box-name">BENEFICIARY</div>
                         <div class="box-colon">:</div>
                         <div class="box-value"><?=$params['header']->beneficiary?></div>
                     </div>
