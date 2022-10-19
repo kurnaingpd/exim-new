@@ -151,6 +151,7 @@
 
         <script>var base_url = "<?=base_url()?>";</script>
         <script>var site_url = "<?=site_url()?>";</script>
+        <script>var disabled_btn_add_pi_procurement = "<?=(($this->session->userdata('logged_in')->role_id == 3)?'':'disabled');?>";</script>
         <!-- jQuery -->
         <script src="<?=base_url('assets/adminlte/plugins/jquery/jquery.min.js')?>"></script>
         <!-- Bootstrap 4 -->

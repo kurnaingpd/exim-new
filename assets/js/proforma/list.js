@@ -3,6 +3,7 @@ $(function () {
         "responsive": true, "lengthChange": false, "autoWidth": false,
         "buttons": [{
             "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
+            "className": disabled_btn_add_pi_procurement,
             "action": function ( e, dt, node, config ) {
                 window.location.href = site_url + "export/proforma/add";
             }
