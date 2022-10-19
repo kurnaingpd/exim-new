@@ -2,42 +2,57 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="loading_port" class="control-label">Loading port</label>
-            <input type="text" class="form-control" id="loading_port" name="loading_port" value="<?=$params['detail']->data_loading_port?>" disabled>
+            <select name="loading_port" class="form-control select2bs4" id="loading_port" disabled>
+                <option></option>
+                <?php foreach($params['load_port'] as $rows) : ?>
+                    <option value="<?=$rows->id?>" <?=(($rows->id==$params['detail']->loading_port_id)?'selected':'')?>><?=$rows->name?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="discharge_port" class="control-label">Discharge port</label>
-            <input type="text" class="form-control" id="discharge_port" name="discharge_port" value="<?=$params['detail']->data_discharge_port?>" disabled>
+            <select name="discharge_port" class="form-control select2bs4" id="discharge_port" disabled>
+                <option></option>
+                <?php foreach($chained['discharge'] as $rows) : ?>
+                    <option value="<?=$rows->id?>" <?=(($rows->id==$params['detail']->customer_ship_id)?'selected':'')?>><?=$rows->discharge_port?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="destination_port" class="control-label">Destination port</label>
-            <input type="text" name="destination_port" class="form-control" id="destination_port" value="<?=$params['detail']->data_destination_port?>" disabled>
+            <input type="text" name="destination_port" class="form-control" id="destination_port" placeholder="Choose discharge port" disabled value="<?=$params['detail_value']->data_destination_port?>">
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="container" class="control-label">Container</label>
-            <input type="text" name="container" class="form-control" id="container" value="<?=$params['detail']->container_name?>" disabled>
+            <select name="container" class="form-control select2bs4" id="container" disabled>
+                <option></option>
+                <?php foreach($params['container'] as $rows) : ?>
+                    <option value="<?=$rows->id?>" <?=(($rows->id==$params['detail']->container_id)?'selected':'')?>><?=$rows->name?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="container_no" class="control-label">Number of container</label>
-            <input type="text" name="container_no" class="form-control upper" id="container_no" value="<?=$params['detail']->number_of_container?>" disabled>
+            <input type="text" name="container_no" class="form-control upper" id="container_no" placeholder="Enter number of container" value="<?=$params['detail']->number_of_container?>" disabled>
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_company" class="control-label">Freight company</label>
-            <input type="text" name="freight_company" class="form-control upper" id="freight_company" value="<?=$params['detail']->freight_company?>" disabled>
+            <input type="text" name="freight_company" class="form-control upper" id="freight_company" placeholder="Enter freight company" value="<?=($chained['freight']?$chained['freight']->company:'-')?>" disabled>
         </div>
     </div>
 </div>
@@ -46,58 +61,75 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_company_cont" class="control-label">Freight company contact</label>
-            <input type="text" name="freight_company_cont" class="form-control upper" id="freight_company_cont" value="<?=$params['detail']->freight_company_contact?>" disabled>
+            <input type="text" class="form-control upper" id="freight_company_cont" placeholder="Enter freight company contact" value="<?=($chained['freight']?$chained['freight']->contact:'-')?>" disabled>
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_company_no" class="control-label">Freight company number</label>
-            <input type="text" name="freight_company_no" class="form-control upper" id="freight_company_no" value="<?=$params['detail']->freight_company_no?>" disabled>
+            <input type="text" class="form-control upper" id="freight_company_no" placeholder="Enter freight company number" value="<?=($chained['freight']?$chained['freight']->number:'-')?>" disabled>
         </div>
     </div>
-
+    
+    <?php if($this->session->userdata('logged_in')->role_id == 7) : ?>
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_cost" class="control-label">Freight cost</label>
-            <input type="text" name="freight_cost" class="form-control" id="freight_cost" value="<?=number_format($params['detail']->freight_cost, 2)?>" disabled>
+            <input type="text" name="freight_cost" class="form-control" id="freight_cost" placeholder="Enter freight cost" value="0" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="insurance" class="control-label">Insurance</label>
-            <input type="text" name="insurance" class="form-control" id="insurance" value="<?=number_format($params['detail']->insurance, 2)?>" disabled>
+            <input type="text" name="insurance" class="form-control" id="insurance" placeholder="Enter insurance" value="0" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
         </div>
     </div>
+    <?php endif; ?>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="bank" class="control-label">Bank</label>
-            <input type="text" name="bank" class="form-control" id="bank" value="<?=$params['detail']->data_bank_name?>" disabled>
+            <select name="bank" class="form-control select2bs4" id="bank" disabled>
+                <option></option>
+                <?php foreach($params['bank'] as $rows) : ?>
+                    <option value="<?=$rows->id?>" <?=(($rows->id==$params['detail']->bank_id)?'selected':'')?>><?=$rows->name?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="currency" class="control-label">Currency</label>
-            <input type="text" name="currency" class="form-control" id="currency" value="<?=$params['detail']->data_currency?>" disabled>
+            <select name="currency" class="form-control select2bs4" id="currency" disabled>
+                <option></option>
+                <?php foreach($params['currency'] as $rows) : ?>
+                    <option value="<?=$rows->id?>" <?=(($rows->id==$params['detail']->currency_id)?'selected':'')?>><?=$rows->icon.' - '.$rows->spell?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
     </div>
-</div>
+<!-- </div>
 
-<div class="row">
+<div class="row"> -->
     <div class="col-md-2">
         <div class="form-group required">
             <label for="ppn" class="control-label">PPN</label>
-            <input type="text" name="ppn" class="form-control" id="ppn" value="<?=$params['detail']->data_ppn?>" disabled>
+            <select name="ppn" class="form-control select2bs4" id="ppn" disabled>
+                <option></option>
+                <option value="1" <?=(('1'==$params['detail']->ppn)?'selected':'')?>>Yes</option>
+                <option value="0" <?=(('0'==$params['detail']->ppn)?'selected':'')?>>No</option>
+            </select>
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="top" class="control-label">Terms of payment</label>
-            <input type="text" name="top" class="form-control" id="top" value="<?=$params['detail']->data_top?>" disabled>
+            <input type="hidden" name="top_id" class="form-control" id="top_id" value="<?=$params['detail']->top_id?>">
+            <input type="text" name="top" class="form-control" id="top" value="<?=$params['detail_value']->data_top?>" disabled>
         </div>
     </div>
 </div>
