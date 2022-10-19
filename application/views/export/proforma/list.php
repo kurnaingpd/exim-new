@@ -41,30 +41,6 @@
                             </a>
                             -->
                                                         
-                            <?php if($rows->pi_status_id == 5 && $this->session->userdata('logged_in')->role_id == 3) : ?>
-                                <a href="<?=site_url('export/proforma/requests/'.$rows->id)?>" class="btn btn-sm btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            <?php elseif($rows->pi_status_id == 5 && $this->session->userdata('logged_in')->role_id == 7) : ?>
-                                <a href="<?=site_url('export/proforma/edit/'.$rows->id)?>" class="btn btn-sm btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            <?php endif ?>
-                            
-                            <?php if($this->session->userdata('logged_in')->role_id == 3) : ?>
-                                <?php if($rows->pi_status_id <> 1 && $rows->pi_status_id <> 5 && $rows->pi_status_id <> 6) : ?>
-                                    <a href="<?=site_url('export/proforma/process/'.$rows->id)?>" class="btn btn-sm btn-warning">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                <?php endif; ?>
-                            <?php elseif($this->session->userdata('logged_in')->role_id == 4) : ?>
-                                <?php if($rows->pi_status_id == 1 || $rows->pi_status_id == 6) : ?>
-                                    <a href="<?=site_url('export/proforma/process/'.$rows->id)?>" class="btn btn-sm btn-warning">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                <?php endif; ?>
-                            <?php endif; ?>
-
                             <?php if($rows->pi_status_id == 8 && $this->session->userdata('logged_in')->role_id == 3) : ?>
                                 <a href="<?=site_url('export/proforma/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
                                     <i class="fas fa-edit"></i>
@@ -73,6 +49,30 @@
                                 <button class="btn btn-sm btn-success" id="submit" data-id="<?=$rows->id?>">
                                     <i class="fas fa-check"></i>
                                 </button>
+                            <?php else : ?>
+                                <?php if($rows->pi_status_id == 5 && $this->session->userdata('logged_in')->role_id == 3) : ?>
+                                    <a href="<?=site_url('export/proforma/requests/'.$rows->id)?>" class="btn btn-sm btn-info">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                <?php elseif($rows->pi_status_id == 5 && $this->session->userdata('logged_in')->role_id == 7) : ?>
+                                    <a href="<?=site_url('export/proforma/edit/'.$rows->id)?>" class="btn btn-sm btn-info">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                <?php endif ?>
+                                
+                                <?php if($this->session->userdata('logged_in')->role_id == 3) : ?>
+                                    <?php if($rows->pi_status_id <> 1 && $rows->pi_status_id <> 5 && $rows->pi_status_id <> 6) : ?>
+                                        <a href="<?=site_url('export/proforma/process/'.$rows->id)?>" class="btn btn-sm btn-info">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    <?php endif; ?>
+                                <?php elseif($this->session->userdata('logged_in')->role_id == 4) : ?>
+                                    <?php if($rows->pi_status_id == 1 || $rows->pi_status_id == 6) : ?>
+                                        <a href="<?=site_url('export/proforma/process/'.$rows->id)?>" class="btn btn-sm btn-info">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    <?php endif; ?>
+                                <?php endif; ?>
                             <?php endif; ?>
 
                             <a href="<?=site_url('export/proforma/print/'.$rows->id)?>" class="btn btn-sm btn-success" target="_blank">
