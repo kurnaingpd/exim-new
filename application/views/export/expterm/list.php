@@ -58,6 +58,7 @@
 
                             <?php 
                                 if($rows->pi_status_id) {
+                                    $display = '';
                                     $display_upload = 'style="display: none;"';
                                     // $display_download = '';
                                     
