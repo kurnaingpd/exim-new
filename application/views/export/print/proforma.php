@@ -66,7 +66,7 @@
                     </div>
                 </div>
 
-                <div id="detail" class="content" style="margin-top: 2%;">
+                <div id="detail" class="content" style="margin-top: 1%;">
                     <table class="table">
                         <thead>
                             <tr>
@@ -111,7 +111,7 @@
                 </div>
 
                 <hr>
-                <div id="notes" style="margin-top: 2%;">
+                <div id="notes" style="margin-top: 1%;">
                     <b>Scheme Payment :</b>
 
                     <?php if($params['header']->top_id == 6) : ?>
