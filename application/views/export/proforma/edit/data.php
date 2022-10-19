@@ -57,19 +57,35 @@
         </div>
     </div>
 
-    <div class="col-md-2">
-        <div class="form-group required">
-            <label for="freight_cost" class="control-label">Freight cost</label>
-            <input type="text" name="freight_cost" class="form-control" id="freight_cost" placeholder="Enter freight cost" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" autofocus required>
+    <?php if($this->session->userdata('logged_in')->role_id == 7) : ?>
+        <div class="col-md-2">
+            <div class="form-group required">
+                <label for="freight_cost" class="control-label">Freight cost</label>
+                <input type="text" name="freight_cost" class="form-control" id="freight_cost" placeholder="Enter freight cost" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" autofocus required>
+            </div>
         </div>
-    </div>
 
-    <div class="col-md-2">
-        <div class="form-group required">
-            <label for="insurance" class="control-label">Insurance</label>
-            <input type="text" name="insurance" class="form-control" id="insurance" placeholder="Enter insurance" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
+        <div class="col-md-2">
+            <div class="form-group required">
+                <label for="insurance" class="control-label">Insurance</label>
+                <input type="text" name="insurance" class="form-control" id="insurance" placeholder="Enter insurance" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
+            </div>
         </div>
-    </div>
+    <?php else : ?>
+        <div class="col-md-2">
+            <div class="form-group required">
+                <label for="freight_cost" class="control-label">Freight cost</label>
+                <input type="text" name="freight_cost" class="form-control" id="freight_cost" placeholder="Enter freight cost" value="<?=$params['detail']->freight_cost?>" disabled>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group required">
+                <label for="insurance" class="control-label">Insurance</label>
+                <input type="text" name="insurance" class="form-control" id="insurance" placeholder="Enter insurance" value="<?=$params['detail']->insurance?>" disabled>
+            </div>
+        </div>
+    <?php endif; ?>
 
     <div class="col-md-2">
         <div class="form-group required">
