@@ -52,11 +52,13 @@
                             <?php else : ?>
                                 <?php if($rows->pi_status_id == 5 && $this->session->userdata('logged_in')->role_id == 3) : ?>
                                     <a href="<?=site_url('export/proforma/requests/'.$rows->id)?>" class="btn btn-sm btn-warning">
-                                        <i class="fas fa-edit"></i>
+                                        <!-- <i class="fas fa-edit"></i> -->
+                                        <i class="fas fa-recycle"></i>
                                     </a>
                                 <?php elseif($rows->pi_status_id == 5 && $this->session->userdata('logged_in')->role_id == 7) : ?>
                                     <a href="<?=site_url('export/proforma/edit/'.$rows->id)?>" class="btn btn-sm btn-warning">
-                                        <i class="fas fa-edit"></i>
+                                        <!-- <i class="fas fa-edit"></i> -->
+                                        <i class="fas fa-user-edit"></i>
                                     </a>
                                 <?php endif ?>
                                 
