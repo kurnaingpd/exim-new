@@ -44,7 +44,7 @@
                     <h6>Consignee</h6>
                 </div>
                 <div class="card-body">
-                    <?php $this->load->view('export/proforma/detail/consignee'); ?>
+                    <?php $this->load->view('export/proforma/process/consignee'); ?>
                 </div>
             </div>
 
@@ -53,7 +53,7 @@
                     <h6>Beneficiary</h6>
                 </div>
                 <div class="card-body">
-                    <?php $this->load->view('export/proforma/detail/beneficiary'); ?>
+                    <?php $this->load->view('export/proforma/process/beneficiary'); ?>
                 </div>
             </div>
 
@@ -62,7 +62,7 @@
                     <h6>Datas</h6>
                 </div>
                 <div class="card-body">
-                    <?php $this->load->view('export/proforma/detail/data'); ?>
+                    <?php $this->load->view('export/proforma/process/data'); ?>
                 </div>
             </div>
 
@@ -85,7 +85,7 @@
                     </div>
                 <?php else : ?>
                     <div class="card-body">
-                        <?php $this->load->view('export/proforma/detail/items'); ?>
+                        <?php $this->load->view('export/proforma/process/items'); ?>
                     </div>
                 <?php endif; ?>
             </div>
@@ -95,7 +95,7 @@
                     <h6>Summary</h6>
                 </div>
                 <div class="card-body">
-                    <?php $this->load->view('export/proforma/detail/summary'); ?>
+                    <?php $this->load->view('export/proforma/process/summary'); ?>
                 </div>
             </div>
         </div>

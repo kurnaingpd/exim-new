@@ -34,7 +34,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="2">Total <?=$params['detail']->incoterm_code?></td>
+                <td colspan="2">Total</td>
                 <td class="text-right"><?=number_format($tQty)?></td>
                 <td class="text-right"><?=number_format($tPrice, 2)?></td>
                 <td class="text-right"><?=number_format($tTotal, 2)?></td>

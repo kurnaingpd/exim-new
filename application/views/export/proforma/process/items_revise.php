@@ -27,14 +27,14 @@
     <div class="col-md-1">
         <div class="form-group required">
             <label for="hs_code" class="control-label">HS code</label>
-            <input type="text" name="hs_code" class="form-control upper item" id="hs_code" placeholder="Enter hs code">
+            <input type="text" name="hs_code" class="form-control upper item" id="hs_code" placeholder="Enter hs code" disabled style="background-color: #fff;">
         </div>
     </div>
 
     <div class="col-md-3">
         <div class="form-group required">
             <label for="config" class="control-label">Configuration</label>
-            <input type="text" name="config" class="form-control upper item" id="config" placeholder="Enter configuration">
+            <input type="text" name="config" class="form-control upper item" id="config" placeholder="Enter configuration" disabled style="background-color: #fff;">
         </div>
     </div>
 

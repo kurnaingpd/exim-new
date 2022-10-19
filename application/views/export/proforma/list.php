@@ -35,6 +35,12 @@
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center">
+                            <!-- 
+                            <a href="<?=site_url('export/proforma/print/'.$rows->id)?>" class="btn btn-sm btn-success" target="_blank">
+                                <i class="fas fa-print"></i>
+                            </a>
+                            -->
+                                                        
                             <?php if($rows->pi_status_id == 5 && $this->session->userdata('logged_in')->role_id == 3) : ?>
                                 <a href="<?=site_url('export/proforma/requests/'.$rows->id)?>" class="btn btn-sm btn-warning">
                                     <i class="fas fa-edit"></i>
@@ -42,10 +48,6 @@
                             <?php elseif($rows->pi_status_id == 5 && $this->session->userdata('logged_in')->role_id == 7) : ?>
                                 <a href="<?=site_url('export/proforma/edit/'.$rows->id)?>" class="btn btn-sm btn-warning">
                                     <i class="fas fa-edit"></i>
-                                </a>
-                            <?php else : ?>
-                                <a href="<?=site_url('export/proforma/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
-                                    <i class="fas fa-file-alt"></i>
                                 </a>
                             <?php endif ?>
                             
@@ -61,6 +63,16 @@
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 <?php endif; ?>
+                            <?php endif; ?>
+
+                            <?php if($rows->pi_status_id == 8 && $this->session->userdata('logged_in')->role_id == 3) : ?>
+                                <a href="<?=site_url('export/proforma/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+
+                                <button class="btn btn-sm btn-success" id="submit" data-id="<?=$rows->id?>">
+                                    <i class="fas fa-check"></i>
+                                </button>
                             <?php endif; ?>
 
                             <a href="<?=site_url('export/proforma/print/'.$rows->id)?>" class="btn btn-sm btn-success" target="_blank">

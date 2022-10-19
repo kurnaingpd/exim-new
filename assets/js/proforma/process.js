@@ -164,7 +164,7 @@ function item_delete(id, cbm)
 function save()
 {
     $.ajax({
-        url: site_url + "export/proforma/update",
+        url: site_url + "export/proforma/update_process",
         type: "POST",
         data: $('#form-proforma-process').serialize(),
         dataType: "json",
