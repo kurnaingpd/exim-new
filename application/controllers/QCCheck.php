@@ -66,6 +66,12 @@
             $this->template->load('default', 'contents' , 'export/qc_check/add', $datas);
         }
 
+        public function batch($id = NULL)
+        {
+            $data = $this->M_CRUD->readData('view_trans_qcheck_batch', ['item_id' => $id]);
+            echo json_encode($data);
+        }
+
         public function save()
         {
             $path = 'assets/attachment/qc_check/';
@@ -81,7 +87,7 @@
                     'production_date' => $post['prod_date'],
                     'expired_date' => $post['exp_date'],
                     'surat_jalan' => $post['no_surat'],
-                    'batch' => $post['batch'],
+                    'batch_pl_detail_id' => $post['batch'],
                     'aroma' => $post['aroma'],
                     'taste' => $post['taste'],
                     'value' => $post['value'],
@@ -161,6 +167,9 @@
                 'product' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0']),
                 'status' => $this->M_CRUD->readData('master_qc_status', ['is_deleted' => '0']),
             ];
+            $datas['chained'] = [
+                'batch' => $this->M_CRUD->readData('view_trans_qcheck_batch', ['item_id' => $datas['params']['detail']->item_id]),
+            ];
 
             $this->template->load('default', 'contents' , 'export/qc_check/detail', $datas);
         }
@@ -175,7 +184,7 @@
                 'production_date' => $post['prod_date'],
                 'expired_date' => $post['exp_date'],
                 'surat_jalan' => $post['no_surat'],
-                'batch' => $post['batch'],
+                'batch_pl_detail_id' => $post['batch'],
                 'aroma' => $post['aroma'],
                 'taste' => $post['taste'],
                 'value' => $post['value'],
