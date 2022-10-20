@@ -179,7 +179,7 @@
             $datas['header'] = 'Detail record';
             $datas['params'] = [
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_packing_detail', ['is_deleted' => '0', 'id' => $id]),
-                'list' => $this->M_CRUD->readData('view_trans_packing_detail_list', ['is_deleted' => '0', 'id' => $id]),
+                'list' => $this->M_CRUD->readData('view_trans_packing_detail_list', ['is_deleted' => '0', 'packing_list_id' => $id]),
             ];
 
             $this->template->load('default', 'contents' , 'export/packing/detail/index', $datas);
@@ -206,7 +206,7 @@
             }
 
             $params = [
-                'container' => $post['container'],
+                // 'container' => $post['container'],
                 'updated_at' => date('Y-m-d H:i:s'),
                 'updated_by' => $this->session->userdata('logged_in')->id,
             ];
@@ -224,7 +224,7 @@
                             'expired_date' => $detail['expdate'],
                             'production_date' => $detail['proddate'],
                             'batch' => $detail['batch'],
-                            // 'qty' => $detail['qty'],
+                            'qty' => $detail['qty'],
                         ];
                         $this->M_CRUD->updateData('trans_pi_detail', $params, ['id' => $detail['id']]);
                     }

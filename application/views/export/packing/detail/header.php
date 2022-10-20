@@ -28,7 +28,7 @@
     <div class="col-md-3">
         <div class="form-group required">
             <label for="container" class="control-label">Container</label>
-            <input type="text" class="form-control upper" id="container" name="container" value="<?=$params['detail']->container?>">
+            <input type="text" class="form-control upper" id="container" name="container" value="<?=$params['detail']->number_of_container?>">
         </div>
     </div>
 </div>
