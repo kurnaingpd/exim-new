@@ -51,8 +51,8 @@
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
                 base_url("assets/js/spp/add.js"),
             ];
-            $datas['title'] = 'Export - Quality Certificate';
-            $datas['breadcrumb'] = ['Export', 'Transaction', 'Quality Certificate'];
+            $datas['title'] = 'Export - Product Statement Letter';
+            $datas['breadcrumb'] = ['Export', 'Transaction', 'Product Statement Letter'];
             $datas['header'] = 'Add record';
             $datas['params'] = [
                 'autonumber' => $this->M_CRUD->autoNumberSPP('trans_spp', 'code', '/SKP-SPP/'.date('m/Y'), 4),
