@@ -22,11 +22,11 @@
 <div class="row">
     <div class="col-md-3">
         <div class="form-group required">
-            <label for="packing" class="control-label">Product name</label>
-            <select name="packing" class="form-control select2bs4 grid" id="packing">
+            <label for="product" class="control-label">Product name</label>
+            <select name="product" class="form-control select2bs4 grid" id="product">
                 <option></option>
             </select>
-            <input type="hidden" class="grid" id="item" name="item">
+            <!-- <input type="hidden" class="grid" id="item" name="item"> -->
             <input type="hidden" class="grid" id="qcheck_id" name="qcheck_id">
         </div>
     </div>
@@ -34,21 +34,27 @@
     <div class="col-md-3">
         <div class="form-group required">
             <label for="batch" class="control-label">Batch number</label>
-            <input type="text" name="batch" class="form-control" id="batch" placeholder="Enter batch number" disabled>
+            <!-- <input type="text" name="batch" class="form-control" id="batch" placeholder="Enter batch number" disabled> -->
+            <select name="batch" class="form-control select2bs4 grid" id="batch">
+                <option></option>
+            </select>
         </div>
     </div>
 
     <div class="col-md-3">
         <div class="form-group required">
             <label for="product_date" class="control-label">Product date</label>
-            <input type="text" name="product_date" class="form-control" id="product_date" placeholder="Enter product date" disabled>
+            <!-- <input type="text" name="product_date" class="form-control" id="product_date" placeholder="Enter product date" disabled> -->
+            <select name="product_date" class="form-control select2bs4 grid" id="product_date">
+                <option></option>
+            </select>
         </div>
     </div>
 
     <div class="col-md-3">
         <div class="form-group required">
             <label for="expired_date" class="control-label">Expired date</label>
-            <input type="text" name="expired_date" class="form-control" id="expired_date" placeholder="Enter expired date" readonly>
+            <input type="text" name="expired_date" class="form-control" id="expired_date" placeholder="Enter expired date" disabled>
         </div>
     </div>
 </div>

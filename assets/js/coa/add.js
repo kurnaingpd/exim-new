@@ -10,7 +10,7 @@ $(function () {
     });
 
     $('input#btn-item').on('click',function() {
-        var packing = $('#packing').val();
+        var packing = $('#product').val();
         var mercury = $('#mercury').val();
         var lead = $('#lead').val();
         var cadmium = $('#cadmium').val();
@@ -24,10 +24,12 @@ $(function () {
             $('tbody#grid-detail').append(
                 '<tr data-id="'+rnd+'">'+
                     '<td>'+
-                        '<input type="hidden" id="grid_item_'+rnd+'" name="grid_item_'+rnd+'" value="'+$('input.grid[name="item"]').val()+'" />'+
-                        '<input type="hidden" id="grid_qcheck_id_'+rnd+'" name="grid_qcheck_id_'+rnd+'" value="'+$('input.grid[name="qcheck_id"]').val()+'" />'+
-                        '<input type="hidden" id="grid_packing_'+rnd+'" name="grid_packing_'+rnd+'" value="'+$('select.grid[name="packing"]').val()+'" />'+
-                        '<input type="text" class="form-control" value="'+$('select.grid[name="packing"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
+                        // '<input type="hidden" id="grid_item_'+rnd+'" name="grid_item_'+rnd+'" value="'+$('input.grid[name="item"]').val()+'" />'+
+                        // '<input type="hidden" id="grid_qcheck_id_'+rnd+'" name="grid_qcheck_id_'+rnd+'" value="'+$('input.grid[name="qcheck_id"]').val()+'" />'+
+                        '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.grid[name="product"]').val()+'" />'+
+                        '<input type="text" class="form-control" value="'+$('select.grid[name="product"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
+                        '<input type="hidden" id="grid_batch_'+rnd+'" name="grid_batch_'+rnd+'" value="'+$('select.grid[name="batch"]').val()+'" />'+
+                        '<input type="hidden" id="grid_qcheck_id_'+rnd+'" name="grid_qcheck_id_'+rnd+'" value="'+$('select.grid[name="product_date"]').val()+'" />'+
                     '</td>'+
                     '<td>'+
                         '<input type="text" class="form-control" id="grid_mercury_'+rnd+'" name="grid_mercury_'+rnd+'" value="'+$('input.grid[name="mercury"]').val()+'" style="background-color:#ffffff;" readonly required />'+
@@ -86,9 +88,15 @@ $('#invoice').on('change', function() {
     item(data[0].id);
 });
 
-$('#packing').on('change', function() {
-    var data = $('#packing').select2('data');
+$('#product').on('change', function() {
+    var data = $('#product').select2('data');
     details(data[0].id);
+    batch(data[0].id);
+});
+
+$('#product_date').on('change', function() {
+    var data = $('#product_date').select2('data');
+    expdate(data[0].id);
 });
 
 function country(id)
@@ -120,9 +128,31 @@ function item(id)
             var i;
             for(i=0; i<response.length; i++) {
                 html += '<option></option>';
-                html += '<option value="'+response[i].packing_list_detail_id+'">'+response[i].item_code+' - '+response[i].item_name+'</option>';
+                html += '<option value="'+response[i].item_id+'">'+response[i].item_code+' - '+response[i].item_name+'</option>';
             }
-            $('#packing').html(html);
+            $('#product').html(html);
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+            swal("", "Terjadi kesalahan pada sistem.", "error");
+        }        
+    });
+}
+
+function batch(id)
+{
+    $.ajax({
+        url: site_url + "export/qc_check/batch/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            var html = '';
+            var i;
+            for(i=0; i<response.length; i++) {
+                html += '<option></option>';
+                html += '<option value="'+response[i].id+'">'+response[i].batch+'</option>';
+            }
+            $('#batch').html(html);
         },
         error: function (e) {
             console.log("Terjadi kesalahan pada sistem");
@@ -142,36 +172,43 @@ function details(id)
                 if(response.qc_status_id == 2) {
                     swal("", "Produk tidak aman.", "info");
                 }
+
+                var html = '';
+                var i;
+                for(i=0; i<response.length; i++) {
+                    html += '<option></option>';
+                    html += '<option value="'+response[i].id+'">'+response[i].production_date+'</option>';
+                }
+                $('#product_date').html(html);
                 
-                document.getElementById("item").value = response.item_id;
-                document.getElementById("qcheck_id").value = response.id;
-                document.getElementById("batch").value = response.batch;
-                document.getElementById("product_date").value = response.production_date;
+                // document.getElementById("qcheck_id").value = response.id;
+                // document.getElementById("product_date").value = response.production_date;
+                // document.getElementById("expired_date").value = response.expired_date;
+            }
+            //  else {
+            //     // document.getElementById("qcheck_id").value = '';
+            //     // document.getElementById("product_date").value = '';
+            //     // document.getElementById("expired_date").value = '';
+            // }
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+            swal("", "Terjadi kesalahan pada sistem.", "error");
+        }        
+    });
+}
+
+function expdate(id)
+{
+    $.ajax({
+        url: site_url + "export/coa/expdate/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            if(response) {
                 document.getElementById("expired_date").value = response.expired_date;
-                // document.getElementById("aroma").value = response.aroma;
-                // document.getElementById("taste").value = response.taste;
-                // document.getElementById("moisture").value = response.moisture;
-                // document.getElementById("ph").value = response.ph;
-                // document.getElementById("brix").value = response.brix;
-                // document.getElementById("salmonella").value = response.salmonella;
-                // document.getElementById("plate").value = response.total_plate;
-                // document.getElementById("mold").value = response.yeast;
-                // document.getElementById("enterobacteriaceae").value = response.enterobacteriaceae;
             } else {
-                document.getElementById("item").value = '';
-                document.getElementById("qcheck_id").value = '';
-                document.getElementById("batch").value = '';
-                document.getElementById("product_date").value = '';
-                document.getElementById("expired_date").value = '';
-                // document.getElementById("aroma").value = '';
-                // document.getElementById("taste").value = '';
-                // document.getElementById("moisture").value = '';
-                // document.getElementById("ph").value = '';
-                // document.getElementById("brix").value = '';
-                // document.getElementById("salmonella").value = '';
-                // document.getElementById("plate").value = '';
-                // document.getElementById("mold").value = '';
-                // document.getElementById("enterobacteriaceae").value = '';
+                document.getElementById("expired_date").value = response.expired_date;
             }
         },
         error: function (e) {

@@ -134,7 +134,7 @@
                     </div>
                 </div>
 
-                <div id="bottom" style="margin-top: 30%;">
+                <div id="bottom" style="margin-top: 25%;">
                     <div id="footer">
                         <div id="row">
                             <div class="box-name">Invoice No.</div>

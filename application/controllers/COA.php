@@ -77,9 +77,21 @@
             echo json_encode($data);
         }
 
+        public function batch($id = NULL)
+        {
+            $data = $this->M_CRUD->readData('view_trans_qcheck_batch', ['item_id' => $id]);
+            echo json_encode($data);
+        }
+
         public function qcheck($id = NULL)
         {
-            $data = $this->M_CRUD->readDatabyID('view_trans_coa_qcheck', ['is_deleted' => '0', 'packing_detail_id' => $id]);
+            $data = $this->M_CRUD->readData('trans_qcontrol_check', ['is_deleted' => '0', 'item_id' => $id]);
+            echo json_encode($data);
+        }
+
+        public function expdate($id = NULL)
+        {
+            $data = $this->M_CRUD->readDatabyID('trans_qcontrol_check', ['is_deleted' => '0', 'id' => $id]);
             echo json_encode($data);
         }
 
@@ -115,7 +127,8 @@
                     foreach($Grid as $detail) {
                         $params = [
                             'coa_id' => $header,
-                            'packing_list_detail_id' => $detail['packing'],
+                            'item_id' => $detail['product'],
+                            'packing_list_detail_id' => $detail['batch'],
                             'qc_check_id' => $detail['qcheck_id'],
                             'mercury' => $detail['mercury'],
                             'lead' => $detail['lead'],
