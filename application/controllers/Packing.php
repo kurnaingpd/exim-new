@@ -78,9 +78,15 @@
             echo json_encode($data);
         }
 
-        public function table_item($id = NULL)
+        public function item($id = NULL)
         {
-            $data = $this->M_CRUD->readData('view_trans_packing_item_get', ['is_deleted' => '0', 'id' => $id]);
+            $data = $this->M_CRUD->readData('view_trans_packing_item', ['is_deleted' => '0', 'id' => $id]);
+            echo json_encode($data);
+        }
+
+        public function item_detail($id = NULL)
+        {
+            $data = $this->M_CRUD->readDatabyID('view_trans_packing_item_get', ['is_deleted' => '0', 'pi_detail_id' => $id]);
             echo json_encode($data);
         }
 
@@ -125,25 +131,16 @@
     
                     if(!empty($Grid)) {
                         foreach($Grid as $detail) {
-                            $params = [
+                            $paramDetail = [
+                                'packing_list_id' => $header,
+                                'pi_detail_id' => $detail['pi_detail_id'],
+                                'qty' => $detail['qty'],
                                 'carton_barcode' => $detail['carton'],
                                 'expired_date' => $detail['expdate'],
                                 'production_date' => $detail['proddate'],
                                 'batch' => $detail['batch'],
-                                'qty' => $detail['qty'],
                             ];
-                            
-                            if($this->M_CRUD->updateData('trans_pi_detail', $params, ['id' => $detail['id']])) {
-                                $paramDetail = [
-                                    'packing_list_id' => $header,
-                                    'pi_detail_id' => $detail['id'],
-                                    'carton_barcode' => $detail['carton'],
-                                    'expired_date' => $detail['expdate'],
-                                    'production_date' => $detail['proddate'],
-                                    'batch' => $detail['batch'],
-                                ];
-                                $this->M_CRUD->insertData('trans_packing_list_detail', $paramDetail);
-                            }
+                            $this->M_CRUD->insertData('trans_packing_list_detail', $paramDetail);
                         }
                     }
                     $response = ['status' => 1, 'messages' => 'Packing has been saved successfully.', 'icon' => 'success', 'url' => 'export/packing'];

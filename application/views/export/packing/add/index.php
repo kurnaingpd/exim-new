@@ -43,50 +43,18 @@
                         <div>
                             <i class="fas fa-list-alt mr-2"></i>Item
                         </div>
-
-                        <!-- <div>
-                            <div class="d-flex justify-content-end">
-                                <div class="mr-3">
-                                    <div class="form-group">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input check" type="checkbox" id="carton" name="carton" value="" >
-                                            <label class="form-check-label" for="carton">Carton barcode</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mr-3">
-                                    <div class="form-group">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input check" type="checkbox" id="batch" name="batch" value="" >
-                                            <label class="form-check-label" for="batch">Batch</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mr-3">
-                                    <div class="form-group">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input check" type="checkbox" id="expired" name="expired" value="" >
-                                            <label class="form-check-label" for="expired">Expired date</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mr-3">
-                                    <div class="form-group">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input check" type="checkbox" id="production" name="production" value="" >
-                                            <label class="form-check-label" for="production">Production date</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
                 <div class="card-body">
                     <?php $this->load->view('export/packing/add/item'); ?>
                 </div>
+                <div class="card-body">
+                    <?php $this->load->view('export/packing/add/item_detail'); ?>
+                </div>
             </div>
         </div>
+
+        <div id="item_qty"></div>
 
         <div class="card-body">
             <div class="row">
