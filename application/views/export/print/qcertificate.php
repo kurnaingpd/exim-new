@@ -24,7 +24,7 @@
                         <thead>
                             <tr>
                                 <th>PO#</th>
-                                <th>Container #</th>
+                                <th>Quantity<br>(Carton)</th>
                                 <th>Production Date</th>
                                 <th>Expiry Date</th>
                                 <th>Description of Goods</th>
@@ -39,7 +39,7 @@
                                     <td class="data-border"><?=$rows->production_date?></td>
                                     <td class="data-border"><?=$rows->expired_date?></td>
                                     <td class="data-border"><?=$rows->item_name?></td>
-                                    <td class="data-border"><?=$rows->carton_barcode?></td>
+                                    <td class="data-border"><?=$rows->pack_desc?></td>
                                 </tr>
                             <?php $no++; endforeach; ?>
                         </tbody>
@@ -54,7 +54,7 @@
                     </div>
                 </div>
 
-                <div id="bottom" style="margin-top: 70%;">
+                <div id="bottom" style="margin-top: 50%;">
                     <div id="footer">
                         <div id="row">
                             <div class="box-name">Invoice No.</div>
