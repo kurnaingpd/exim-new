@@ -210,7 +210,7 @@ function get_item_qty(id)
             var html = '';
             var i;
             for(i=0; i<response.length; i++) {
-                html += '<input type="text" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
+                html += '<input type="hidden" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
             }
             $('#item_qty').html(html);
         },
