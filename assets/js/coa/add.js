@@ -150,7 +150,7 @@ function batch(id)
             var i;
             for(i=0; i<response.length; i++) {
                 html += '<option></option>';
-                html += '<option value="'+response[i].id+'">'+response[i].batch+'</option>';
+                html += '<option value="'+response[i].batch_pl_detail_id+'">'+response[i].batch+'</option>';
             }
             $('#batch').html(html);
         },

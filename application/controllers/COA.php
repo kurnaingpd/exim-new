@@ -79,7 +79,7 @@
 
         public function batch($id = NULL)
         {
-            $data = $this->M_CRUD->readData('view_trans_qcheck_batch', ['item_id' => $id]);
+            $data = $this->M_CRUD->readData('view_trans_coa_batch', ['item_id' => $id]);
             echo json_encode($data);
         }
 
