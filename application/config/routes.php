@@ -268,6 +268,8 @@ $route['export/packing/detail/(:num)'] = 'Packing/detail/$1';
 $route['export/packing/update'] = 'Packing/update';
 $route['export/packing/filter/(:num)'] = 'Packing/filter/$1';
 $route['export/packing/print/(:num)'] = 'Prints/packing/$1';
+$route['export/packing/delete/(:num)'] = 'Packing/delete/$1';
+$route['export/packing/delete_item/(:num)'] = 'Packing/delete_item/$1';
 
 /** Export - COA */
 $route['export/coa'] = 'COA';

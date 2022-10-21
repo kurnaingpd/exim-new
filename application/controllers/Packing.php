@@ -180,6 +180,8 @@
             $datas['params'] = [
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_packing_detail', ['is_deleted' => '0', 'id' => $id]),
                 'list' => $this->M_CRUD->readData('view_trans_packing_detail_list', ['is_deleted' => '0', 'packing_list_id' => $id]),
+                'item' => $this->M_CRUD->readData('view_trans_packing_detail_item', ['packing_list_id' => $id]),
+                'qty' => $this->M_CRUD->readData('view_trans_packing_detail_qty', ['packing_list_id' => $id]),
             ];
 
             $this->template->load('default', 'contents' , 'export/packing/detail/index', $datas);
@@ -206,7 +208,6 @@
             }
 
             $params = [
-                // 'container' => $post['container'],
                 'updated_at' => date('Y-m-d H:i:s'),
                 'updated_by' => $this->session->userdata('logged_in')->id,
             ];
@@ -219,14 +220,16 @@
 
                 if(!empty($Grid)) {
                     foreach($Grid as $detail) {
-                        $params = [
+                        $paramDetail = [
+                            'packing_list_id' => $post['id'],
+                            'pi_detail_id' => $detail['pi_detail_id'],
+                            'qty' => $detail['qty'],
                             'carton_barcode' => $detail['carton'],
                             'expired_date' => $detail['expdate'],
                             'production_date' => $detail['proddate'],
                             'batch' => $detail['batch'],
-                            'qty' => $detail['qty'],
                         ];
-                        $this->M_CRUD->updateData('trans_pi_detail', $params, ['id' => $detail['id']]);
+                        $this->M_CRUD->insertData('trans_packing_list_detail', $paramDetail);
                     }
                     $response = ['status' => 1, 'messages' => 'Packing has been updated successfully.', 'icon' => 'success', 'url' => 'export/packing'];
                 } else {
@@ -247,6 +250,21 @@
                 $response = ['status' => 1, 'messages' => 'Filter packing list has been updated successfully.', 'icon' => 'success'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Packing check has failed to update.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
+        }
+
+        public function delete_item($id)
+        {
+            $condition = [
+                'id' => $id
+            ];
+            
+            if($this->M_CRUD->deleteData('trans_packing_list_detail', $condition)) {
+                $response = ['status' => 1, 'messages' => 'Item has been deleted successfully.'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Item has failed to delete.'];
             }
 
             echo json_encode($response);

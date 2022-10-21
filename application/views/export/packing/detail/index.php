@@ -86,7 +86,16 @@
                 <div class="card-body">
                     <?php $this->load->view('export/packing/detail/item'); ?>
                 </div>
+                <div class="card-body">
+                    <?php $this->load->view('export/packing/detail/item_detail'); ?>
+                </div>
             </div>
+        </div>
+
+        <div id="item_qty">
+            <?php foreach($params['qty'] as $rows) : ?>
+                <input type="hidden" id="qty_<?=$rows->pi_detail_id?>" value="<?=$rows->qty_remain?>">
+            <?php endforeach; ?>
         </div>
 
         <div class="card-body">

@@ -82,8 +82,6 @@ $(function () {
                 var remain = Number(document.getElementById("qty_"+item).value);
                 $("tr[data-id="+id+"]").remove();
                 document.getElementById("qty_"+item).value = remain + qty;
-                console.log(qty);
-                console.log(remain);
             });
         }
     });
