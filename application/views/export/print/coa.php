@@ -13,7 +13,7 @@
     </head>
     <body>
         <div id="container">
-            <h3 class="title">CERTIFICATE OF ANALYSYS</h3>
+            <h3 class="title">CERTIFICATE OF ANALYSIS</h3>
 
             <div id="content" class="content">
                 <div id="header" class="clearfix-content">
@@ -151,7 +151,7 @@
 
                     <div id="notes" style="margin-top: 2%; border-width:2px; width:100%; border:dotted; text-align:left; border-width:0.5px; padding:5px;">
                         This Information contained in this document is confidential and propriatery information of PT. Sumber Kopi Prima. Any altering of this information 
-                        <br> without express written permission of PT. Sumber Kopi Prima in expressly forbidden. <br><br> This document is valid therefore without signature.
+                        without express written permission of PT. Sumber Kopi Prima in expressly forbidden. <br><br> This document is valid therefore without signature.
                     </div>
                 </div>
             </div>

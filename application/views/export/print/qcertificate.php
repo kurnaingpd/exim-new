@@ -71,7 +71,7 @@
 
                     <div id="notes" style="margin-top: 2%; border-width:2px; width:100%; border:dotted; text-align:left; border-width:0.5px; padding:5px;">
                         This Information contained in this document is confidential and propriatery information of PT. Sumber Kopi Prima. Any altering of this information 
-                        <br> without express written permission of PT. Sumber Kopi Prima in expressly forbidden. <br><br> This document is valid therefore without signature.
+                        without express written permission of PT. Sumber Kopi Prima in expressly forbidden. <br><br> This document is valid therefore without signature.
                     </div>
                 </div>
             </div>
