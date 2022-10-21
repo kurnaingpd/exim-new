@@ -18,8 +18,8 @@
             <h5 class="title" style="margin-top: 0px; margin-bottom: 0px;"><?=$params['detail']->item_name?></h5>
             <h5 class="title" style="margin-top: 0px;">PO Number: <?=$params['detail']->po_no?></h5>
 
-            <div id="content" class="content">
-                <div id="detail" class="content" style="margin-top: 2%;">
+            <div id="content" class="content" style="margin-top: 0px;">
+                <div id="detail" class="content" style="margin-top: 0px;">
                     <ol type="A">
                         <li style="font-weight: bold;">Description
                             <ul style="margin: 0; padding: 0; font-weight: normal;"><?=$params['detail']->description?></ul>
@@ -164,13 +164,42 @@
                         </li>
                     </ol>
                 </div>
-
+<!-- 
                 <div id="signature" style="margin-top: 2%; box-sizing: border-box; content: ''; clear: both; display: table;">
                     <div style="float: left; width: 20%; text-align: center;">
                         Sincerely,<br>
                         PT. SUMBER KOPI PRIMA
                         <div style="margin-top: 30%; font-weight: bold;"><u><?=$this->session->userdata('logged_in')->fullname?></u></div>
                         <div><?=$this->session->userdata('logged_in')->position_name?></div>
+                    </div>
+                </div> -->
+
+                <div id="signature" style="margin-top: 3%; box-sizing: border-box; content: ''; clear: both; display: table;">
+                    <div style="float: left; width: 30%; text-align: center;">
+                        Sincerely,<br>PT. SUMBER KOPI PRIMA
+                        <div style="margin-top: 10%; font-weight: bold;"><u><?=$this->session->userdata('logged_in')->fullname?></u></div>
+                        <div><?=$this->session->userdata('logged_in')->position_name?></div>
+                    </div>
+                </div>
+
+                <div id="bottom" style="margin-top: 3%;">
+                    <div id="footer">
+                        <div id="row">
+                            <div class="box-name">Invoice No.</div>
+                            <div class="box-colon">:</div>
+                            <div class="box-value"><?=$params['detail']->invoice_no?></div>
+                        </div>
+
+                        <div id="row">
+                            <div class="box-name">QA No.</div>
+                            <div class="box-colon">:</div>
+                            <div class="box-value"><?=$params['detail']->qa_no?></div>
+                        </div>
+                    </div>
+
+                    <div id="notes" style="font-size: 8px; margin-top: 1%; border-width:2px; width:100%; border:dotted; text-align:left; border-width:0.5px; padding:3px;">
+                        This Information contained in this document is confidential and propriatery information of PT. Sumber Kopi Prima. Any altering of this information 
+                        without express written permission of PT. Sumber Kopi Prima in expressly forbidden. <br><br> This document is valid therefore without signature.
                     </div>
                 </div>
             </div>

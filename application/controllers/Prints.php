@@ -298,7 +298,7 @@
                 20, // margin right
                 30, // margin top
                 0, // margin bottom
-                10, // margin header
+                5, // margin header
                 8
             );
             $content = $this->load->view('export/print/prodspec', $datas, true);
