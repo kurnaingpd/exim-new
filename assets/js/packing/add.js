@@ -19,10 +19,6 @@ $(function () {
 
     $('input#btn-item').on('click',function() {
         console.log('item');
-        // var item = document.getElementById("product").value;
-        // var qty = Number(document.getElementById("qty").value);
-        // var remain = document.getElementById("qty_"+item).value - qty;
-
         var carton = $('#carton').val();
         var batch = $('#batch').val();
         var expdate = $('#expdate').val();
@@ -214,7 +210,7 @@ function get_item_qty(id)
             var html = '';
             var i;
             for(i=0; i<response.length; i++) {
-                html += '<input type="hidden" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
+                html += '<input type="text" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
             }
             $('#item_qty').html(html);
         },
@@ -239,7 +235,7 @@ function get_data_item(id)
                 document.getElementById("net").value = data.net_wight;
                 document.getElementById("gross").value = data.gross_weight;
                 document.getElementById("dimension").value = data.dimensions;
-                document.getElementById("qty").value = data.qty;
+                document.getElementById("qty").value = ((data.qty == Number(document.getElementById("qty_"+id).value))?(data.qty - 0):(Number(document.getElementById("qty_"+id).value)));
             } else {
                 document.getElementById("hscode").value = "";
                 document.getElementById("packing").value = "";
