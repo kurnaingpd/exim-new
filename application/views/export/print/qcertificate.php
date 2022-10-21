@@ -34,12 +34,12 @@
                         <tbody>
                             <?php $no = 1; foreach($params['detail'] as $rows) : ?>
                                 <tr>
-                                    <td class="data-border"><?=$rows->po_no?></td>
-                                    <td class="data-border"><?=$rows->container?></td>
-                                    <td class="data-border"><?=$rows->production_date?></td>
-                                    <td class="data-border"><?=$rows->expired_date?></td>
-                                    <td class="data-border"><?=$rows->item_name?></td>
-                                    <td class="data-border"><?=$rows->pack_desc?></td>
+                                    <td class="data-border" align="center"><?=$rows->po_no?></td>
+                                    <td class="data-border" align="center"><?=$rows->qty?></td>
+                                    <td class="data-border" align="center"><?=$rows->production_date?></td>
+                                    <td class="data-border" align="center"><?=$rows->expired_date?></td>
+                                    <td class="data-border" align="center"><?=$rows->item_name?></td>
+                                    <td class="data-border" align="center"><?=$rows->pack_desc?></td>
                                 </tr>
                             <?php $no++; endforeach; ?>
                         </tbody>
