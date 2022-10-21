@@ -142,7 +142,7 @@ function item(id)
 function batch(id)
 {
     $.ajax({
-        url: site_url + "export/qc_check/batch/" + id,
+        url: site_url + "export/coa/batch/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {
