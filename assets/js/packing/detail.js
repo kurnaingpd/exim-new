@@ -175,6 +175,7 @@ function get_data_item(id)
         async : false,
         dataType : 'json',
         success : function(data){
+            console.log(data);
             if(data) {
                 document.getElementById("hscode").value = data.hs_code;
                 document.getElementById("packing").value = data.pack_desc;

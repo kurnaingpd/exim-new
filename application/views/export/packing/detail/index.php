@@ -93,8 +93,8 @@
         </div>
 
         <div id="item_qty">
-            <?php foreach($params['qty'] as $rows) : ?>
-                <input type="hidden" id="qty_<?=$rows->pi_detail_id?>" value="<?=$rows->qty_remain?>">
+            <?php foreach($chained['qty'] as $rows) : ?>
+                <input type="hidden" id="qty_<?=$rows->id?>" value="<?=$rows->qty_remain?>">
             <?php endforeach; ?>
         </div>
 

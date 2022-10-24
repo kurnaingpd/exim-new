@@ -181,7 +181,10 @@
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_packing_detail', ['is_deleted' => '0', 'id' => $id]),
                 'list' => $this->M_CRUD->readData('view_trans_packing_detail_list', ['packing_list_id' => $id]),
                 'item' => $this->M_CRUD->readData('view_trans_packing_detail_item', ['packing_list_id' => $id]),
-                'qty' => $this->M_CRUD->readData('view_trans_packing_detail_qty', ['packing_list_id' => $id]),
+            ];
+            
+            $datas['chained'] = [
+                'qty' => $this->M_CRUD->readData('view_trans_packing_detail_qty', ['pi_id' => $datas['params']['detail']->pi_id]),
             ];
 
             $this->template->load('default', 'contents' , 'export/packing/detail/index', $datas);
@@ -246,7 +249,7 @@
             $params = [
                 $post['fields'] => $post['filter'],
             ];
-            if($this->M_CRUD->updateData('trans_packing_inv_filter', $params, ['id' => $id])) {
+            if($this->M_CRUD->updateData('trans_packing_inv_filter', $params, ['packing_list_id' => $id])) {
                 $response = ['status' => 1, 'messages' => 'Filter packing list has been updated successfully.', 'icon' => 'success'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Packing check has failed to update.', 'icon' => 'error'];
