@@ -43,10 +43,11 @@ $(function () {
             var rnd = Math.floor((Math.random() * 10000) + 1);
             var item = document.getElementById("product").value;
             var qty = Number(document.getElementById("qty").value);
+            var qty_inv = Number(document.getElementById("qty_inv").value);
             var remain = document.getElementById("qty_"+item).value - qty;
 
             if(remain < 0) {
-                swal("", "Total qty tidak boleh lebih dari "+qty, "error");
+                swal("", "Total qty tidak boleh lebih dari "+qty_inv, "error");
             } else {
                 document.getElementById("qty_"+item).value = remain;
                 $('tbody#show-data').append(
@@ -182,6 +183,7 @@ function get_data_item(id)
                 document.getElementById("net").value = data.net_wight;
                 document.getElementById("gross").value = data.gross_weight;
                 document.getElementById("dimension").value = data.dimensions;
+                document.getElementById("qty_inv").value = data.qty;
                 document.getElementById("qty").value = ((data.qty == Number(document.getElementById("qty_"+id).value))?(data.qty - 0):(Number(document.getElementById("qty_"+id).value)));
             } else {
                 document.getElementById("hscode").value = "";
