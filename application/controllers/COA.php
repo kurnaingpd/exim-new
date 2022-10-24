@@ -85,13 +85,13 @@
 
         public function qcheck($id = NULL)
         {
-            $data = $this->M_CRUD->readData('trans_qcontrol_check', ['is_deleted' => '0', 'item_id' => $id]);
+            $data = $this->M_CRUD->readDatabyID('trans_qcontrol_check', ['is_deleted' => '0', 'item_id' => $id]);
             echo json_encode($data);
         }
 
-        public function expdate($id = NULL)
+        public function tanggal($id = NULL)
         {
-            $data = $this->M_CRUD->readDatabyID('trans_qcontrol_check', ['is_deleted' => '0', 'id' => $id]);
+            $data = $this->M_CRUD->readDatabyID('view_trans_coa_batch', ['id' => $id]);
             echo json_encode($data);
         }
 

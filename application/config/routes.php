@@ -282,8 +282,8 @@ $route['export/coa/batch'] = 'COA/batch';
 $route['export/coa/batch/(:num)'] = 'COA/batch/$1';
 $route['export/coa/qcheck'] = 'COA/qcheck';
 $route['export/coa/qcheck/(:num)'] = 'COA/qcheck/$1';
-$route['export/coa/expdate'] = 'COA/expdate';
-$route['export/coa/expdate/(:num)'] = 'COA/expdate/$1';
+$route['export/coa/tanggal'] = 'COA/tanggal';
+$route['export/coa/tanggal/(:num)'] = 'COA/tanggal/$1';
 $route['export/coa/save'] = 'COA/save';
 $route['export/coa/print/(:num)'] = 'Prints/coa/$1';
 

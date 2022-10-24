@@ -94,9 +94,9 @@ $('#product').on('change', function() {
     batch(data[0].id);
 });
 
-$('#product_date').on('change', function() {
-    var data = $('#product_date').select2('data');
-    expdate(data[0].id);
+$('#batch').on('change', function() {
+    var data = $('#batch').select2('data');
+    tanggal(data[0].id);
 });
 
 function country(id)
@@ -146,11 +146,12 @@ function batch(id)
         type: "POST",
         dataType: "json",
         success: function(response) {
+            console.log(response)
             var html = '';
             var i;
             for(i=0; i<response.length; i++) {
                 html += '<option></option>';
-                html += '<option value="'+response[i].batch_pl_detail_id+'">'+response[i].batch+'</option>';
+                html += '<option value="'+response[i].id+'">'+response[i].batch+'</option>';
             }
             $('#batch').html(html);
         },
@@ -169,27 +170,11 @@ function details(id)
         dataType: "json",
         success: function(response) {
             if(response) {
-                if(response.qc_status_id == 2) {
-                    swal("", "Produk tidak aman.", "info");
-                }
-
-                var html = '';
-                var i;
-                for(i=0; i<response.length; i++) {
-                    html += '<option></option>';
-                    html += '<option value="'+response[i].id+'">'+response[i].production_date+'</option>';
-                }
-                $('#product_date').html(html);
-                
-                // document.getElementById("qcheck_id").value = response.id;
-                // document.getElementById("product_date").value = response.production_date;
-                // document.getElementById("expired_date").value = response.expired_date;
+                document.getElementById("qcheck_id").value = response.id;
             }
-            //  else {
-            //     // document.getElementById("qcheck_id").value = '';
-            //     // document.getElementById("product_date").value = '';
-            //     // document.getElementById("expired_date").value = '';
-            // }
+             else {
+                document.getElementById("qcheck_id").value = '';
+            }
         },
         error: function (e) {
             console.log("Terjadi kesalahan pada sistem");
@@ -198,17 +183,19 @@ function details(id)
     });
 }
 
-function expdate(id)
+function tanggal(id)
 {
     $.ajax({
-        url: site_url + "export/coa/expdate/" + id,
+        url: site_url + "export/coa/tanggal/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {
             if(response) {
+                document.getElementById("product_date").value = response.production_date;
                 document.getElementById("expired_date").value = response.expired_date;
             } else {
-                document.getElementById("expired_date").value = response.expired_date;
+                document.getElementById("product_date").value = "";
+                document.getElementById("expired_date").value = "";
             }
         },
         error: function (e) {

@@ -44,10 +44,10 @@
     <div class="col-md-3">
         <div class="form-group required">
             <label for="product_date" class="control-label">Product date</label>
-            <!-- <input type="text" name="product_date" class="form-control" id="product_date" placeholder="Enter product date" disabled> -->
-            <select name="product_date" class="form-control select2bs4 grid" id="product_date">
+            <input type="text" name="product_date" class="form-control" id="product_date" placeholder="Enter product date" disabled>
+            <!-- <select name="product_date" class="form-control select2bs4 grid" id="product_date">
                 <option></option>
-            </select>
+            </select> -->
         </div>
     </div>
 
