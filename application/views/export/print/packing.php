@@ -14,7 +14,7 @@
     <body>
         <div id="container">
             <h6 class="title" style="margin-bottom: 0px;"><u>PACKING LIST</u></h6>
-            <div class="title" style="font-size: 7px; margin-bottom: 3%;">No. <?=$params['header']->code?></div>
+            <div class="title" style="font-size: 7px; margin-bottom: 1%;">No. <?=$params['header']->code?></div>
 
             <div id="content" class="content">
                 <div id="header" class="clearfix-content">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
 
-                <div id="detail" class="content" style="margin-top: 2%;">
+                <div id="detail" class="content" style="margin-top: 1%;">
                     <table class="table">
                         <thead>
                             <tr>
@@ -165,10 +165,10 @@
                     </table>
                 </div>
 
-                <div id="signature" style="margin-top: 2%; box-sizing: border-box; content: ''; clear: both; display: table;">
+                <div id="signature" style="margin-top: 1%; box-sizing: border-box; content: ''; clear: both; display: table;">
                     <div style="float: left; width: 20%; text-align: center;">
                         Kudus, <?=IndoDate?>
-                        <div style="margin-top: 30%;">EVAN GUSTIN</div>
+                        <div style="margin-top: 20%;">EVAN GUSTIN</div>
                     </div>
                 </div>
             </div>
