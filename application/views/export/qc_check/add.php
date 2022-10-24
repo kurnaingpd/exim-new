@@ -62,9 +62,7 @@
                         <div class="col-md-2">
                             <div class="form-group required">
                                 <label for="batch" class="control-label">Batch</label>
-                                <select name="batch" class="form-control select2bs4" id="batch" required>
-                                    <option></option>
-                                </select>
+                                <input type="text" name="batch" class="form-control" id="batch" placeholder="Enter batch" required>
                             </div>
                         </div>
 

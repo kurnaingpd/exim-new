@@ -63,12 +63,13 @@
                         <div class="col-md-2">
                             <div class="form-group required">
                                 <label for="batch" class="control-label">Batch</label>
-                                <select name="batch" class="form-control select2bs4" id="batch" required>
+                                <input type="text" name="batch" class="form-control" id="batch" placeholder="Enter batch" required value="<?=$params['detail']->batch?>">
+                                <!-- <select name="batch" class="form-control select2bs4" id="batch" required>
                                     <option></option>
                                     <?php foreach($chained['batch'] as $rows) : ?>
                                         <option value="<?=$rows->id?>" <?=(($rows->id==$params['detail']->batch_pl_detail_id)?'selected':'')?>><?=$rows->batch?></option>
                                     <?php endforeach; ?>
-                                </select>
+                                </select> -->
                             </div>
                         </div>
 

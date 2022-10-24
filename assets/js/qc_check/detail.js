@@ -39,64 +39,35 @@ $(function () {
     });
 });
 
-$('select#product').on('change', function() {
-    var data = $('select#product').select2('data');
-    batch(data[0].id);
-});
+// $('select#product').on('change', function() {
+//     var data = $('select#product').select2('data');
+//     batch(data[0].id);
+// });
 
-function batch(id)
-{
-    $.ajax({
-        url: site_url + "export/qc_check/batch/" + id,
-        type: "POST",
-        dataType: "json",
-        success: function(response) {
-            var html = '';
-            var i;
-            for(i=0; i<response.length; i++) {
-                html += '<option></option>';
-                html += '<option value="'+response[i].id+'">'+response[i].batch+'</option>';
-            }
-            $('#batch').html(html);
-        },
-        error: function (e) {
-            console.log("Terjadi kesalahan pada sistem");
-            swal("", "Terjadi kesalahan pada sistem.", "error");
-        }        
-    });
-}
+// function batch(id)
+// {
+//     $.ajax({
+//         url: site_url + "export/qc_check/batch/" + id,
+//         type: "POST",
+//         dataType: "json",
+//         success: function(response) {
+//             var html = '';
+//             var i;
+//             for(i=0; i<response.length; i++) {
+//                 html += '<option></option>';
+//                 html += '<option value="'+response[i].id+'">'+response[i].batch+'</option>';
+//             }
+//             $('#batch').html(html);
+//         },
+//         error: function (e) {
+//             console.log("Terjadi kesalahan pada sistem");
+//             swal("", "Terjadi kesalahan pada sistem.", "error");
+//         }        
+//     });
+// }
 
 function save()
 {
-    // $.ajax({
-    //     url: site_url + "export/qc_check/update",
-    //     type: "POST",
-    //     data: $("#form-qcheck-detail").serialize(),
-    //     dataType: "json",
-    //     beforeSend: function(){
-    //         $('a.cancel').prop('disabled', true);
-    //         $('button#btn-qcheck-save').html("<img src=" + base_url + "assets/images/inventory/loader.gif style='height:20px;'  /> Saving...").prop('disabled', true);
-    //     },
-    //     success: function(response) {
-    //         console.log(response);
-    //         if(response.status == 1) {
-    //             $('a.cancel').prop('disabled', true);
-    //             $('button#btn-qcheck-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', true);
-    //             swal("", response.messages, response.icon).then((value) => {
-    //                 window.location.href = site_url + response.url;
-    //             });
-    //         } else {
-    //             swal("", response.messages, response.icon);
-    //         }
-    //     },
-    //     error: function (e) {
-    //         console.log("Terjadi kesalahan pada sistem");
-    //         swal("", "Terjadi kesalahan pada sistem.", "error");
-    //         $('a.cancel').prop('disabled', false);
-    //         $('button#btn-qcheck-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', false);
-    //     }        
-    // });
-
     var form = $('#form-qcheck-detail')[0];
     var data = new FormData(form);
 

@@ -41,32 +41,32 @@ $(function () {
     });
 });
 
-$('select#product').on('change', function() {
-    var data = $('select#product').select2('data');
-    batch(data[0].id);
-});
+// $('select#product').on('change', function() {
+//     var data = $('select#product').select2('data');
+//     batch(data[0].id);
+// });
 
-function batch(id)
-{
-    $.ajax({
-        url: site_url + "export/qc_check/batch/" + id,
-        type: "POST",
-        dataType: "json",
-        success: function(response) {
-            var html = '';
-            var i;
-            for(i=0; i<response.length; i++) {
-                html += '<option></option>';
-                html += '<option value="'+response[i].id+'">'+response[i].batch+'</option>';
-            }
-            $('#batch').html(html);
-        },
-        error: function (e) {
-            console.log("Terjadi kesalahan pada sistem");
-            swal("", "Terjadi kesalahan pada sistem.", "error");
-        }        
-    });
-}
+// function batch(id)
+// {
+//     $.ajax({
+//         url: site_url + "export/qc_check/batch/" + id,
+//         type: "POST",
+//         dataType: "json",
+//         success: function(response) {
+//             var html = '';
+//             var i;
+//             for(i=0; i<response.length; i++) {
+//                 html += '<option></option>';
+//                 html += '<option value="'+response[i].id+'">'+response[i].batch+'</option>';
+//             }
+//             $('#batch').html(html);
+//         },
+//         error: function (e) {
+//             console.log("Terjadi kesalahan pada sistem");
+//             swal("", "Terjadi kesalahan pada sistem.", "error");
+//         }        
+//     });
+// }
 
 function save()
 {
