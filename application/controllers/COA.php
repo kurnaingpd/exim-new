@@ -91,7 +91,7 @@
 
         public function tanggal($id = NULL)
         {
-            $data = $this->M_CRUD->readDatabyID('view_trans_coa_batch', ['id' => $id]);
+            $data = $this->M_CRUD->readDatabyID('view_trans_coa_batch', ['qcontrol_check_id' => $id]);
             echo json_encode($data);
         }
 
@@ -128,8 +128,8 @@
                         $params = [
                             'coa_id' => $header,
                             'item_id' => $detail['product'],
-                            'packing_list_detail_id' => $detail['batch'],
-                            'qc_check_id' => $detail['qcheck_id'],
+                            // 'packing_list_detail_id' => $detail['batch'],
+                            'qcontrol_check_id' => $detail['batch'],
                             'mercury' => $detail['mercury'],
                             'lead' => $detail['lead'],
                             'cadmium' => $detail['cadmium'],

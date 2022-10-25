@@ -24,8 +24,7 @@ $(function () {
             $('tbody#grid-detail').append(
                 '<tr data-id="'+rnd+'">'+
                     '<td>'+
-                        // '<input type="hidden" id="grid_item_'+rnd+'" name="grid_item_'+rnd+'" value="'+$('input.grid[name="item"]').val()+'" />'+
-                        '<input type="hidden" id="grid_qcheck_id_'+rnd+'" name="grid_qcheck_id_'+rnd+'" value="'+$('input.grid[name="qcheck_id"]').val()+'" />'+
+                        // '<input type="hidden" id="grid_qcheck_id_'+rnd+'" name="grid_qcheck_id_'+rnd+'" value="'+$('input.grid[name="qcheck_id"]').val()+'" />'+
                         '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.grid[name="product"]').val()+'" />'+
                         '<input type="text" class="form-control" value="'+$('select.grid[name="product"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
                         '<input type="hidden" id="grid_batch_'+rnd+'" name="grid_batch_'+rnd+'" value="'+$('select.grid[name="batch"]').val()+'" />'+
@@ -107,6 +106,8 @@ function country(id)
         success: function(response) {
             if(response) {
                 document.getElementById("code").value = document.getElementById("code").value + response.country_code;
+            } else {
+                document.getElementById("code").value = document.getElementById("code").value.slice(0, -3);
             }
         },
         error: function (e) {
@@ -150,9 +151,11 @@ function batch(id)
             var i;
             for(i=0; i<response.length; i++) {
                 html += '<option></option>';
-                html += '<option value="'+response[i].id+'">'+response[i].batch+'</option>';
+                html += '<option value="'+response[i].qcontrol_check_id+'">'+response[i].batch+'</option>';
             }
             $('#batch').html(html);
+            document.getElementById("product_date").value = "";
+            document.getElementById("expired_date").value = "";
         },
         error: function (e) {
             console.log("Terjadi kesalahan pada sistem");
