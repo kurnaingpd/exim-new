@@ -59,10 +59,15 @@
             $datas['params'] = [
                 'autonumber' => $this->M_CRUD->autoNumberProdSpec('trans_prod_spec', 'code', '/SKP-PRDSPEC/'.date('m/Y'), 4),
                 'invoice' => $this->M_CRUD->readData('view_trans_prodspec_invoice'),
-                'item' => $this->M_CRUD->readData('view_trans_prodspec_item'),
             ];
 
             $this->template->load('default', 'contents' , 'export/prodspec/add/index', $datas);
+        }
+
+        public function po($id = NULL)
+        {
+            $data = $this->M_CRUD->readDatabyID('trans_invoice', ['is_deleted' => '0', 'id' => $id]);
+            echo json_encode($data);
         }
 
         public function item($id = NULL)
@@ -71,15 +76,10 @@
             echo json_encode($data);
         }
 
-        public function qcheck($id)
+        public function batch($id = NULL)
         {
-            $data = $this->M_CRUD->readDatabyID('view_trans_prodspec_qcheck', ['is_deleted' => '0', 'packing_detail_id' => $id]);
-            
-            if($data) {
-                echo json_encode($data);
-            } else {
-                echo json_encode(['messages' => 'Item ini belum diinput pada QC check.']);
-            }
+            $data = $this->M_CRUD->readData('view_trans_prodspec_batch', ['item_id' => $id]);
+            echo json_encode($data);
         }
 
         public function save()
@@ -114,8 +114,8 @@
                     foreach($Grid as $detail) {
                         $params = [
                             'prod_spec_id' => $header,
-                            'packing_list_detail_id' => $detail['packing'],
-                            'qc_check_id' => $detail['qcheck_id'],
+                            'item_id' => $detail['product'],
+                            'qcontrol_check_id' => $detail['batch'],
                             'description' => $detail['desc'],
                             'form' => $detail['form'],
                             'texture' => $detail['texture'],

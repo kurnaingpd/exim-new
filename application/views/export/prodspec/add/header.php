@@ -21,7 +21,7 @@
     <div class="col-md-4">
         <div class="form-group required">
             <label for="po" class="control-label">PO no.</label>
-            <input type="text" name="po" class="form-control" id="po" disabled>
+            <input type="text" name="po" class="form-control" id="po" placeholder="Enter PO" autocomplete="off" disabled>
         </div>
     </div>
 </div>

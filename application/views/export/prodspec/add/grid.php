@@ -2,6 +2,7 @@
     <thead>
         <tr class="text-center">
             <th>Product name</th>
+            <th>Batch</th>
             <th>Description</th>
             <th>Form</th>
             <th>Texture</th>

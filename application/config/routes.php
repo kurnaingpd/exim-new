@@ -294,10 +294,12 @@ $route['export/coa/print/(:num)'] = 'Prints/coa/$1';
 /** Export - Product Specification */
 $route['export/prodspec'] = 'ProductSpec';
 $route['export/prodspec/add'] = 'ProductSpec/add';
+$route['export/prodspec/po'] = 'ProductSpec/po';
+$route['export/prodspec/po/(:num)'] = 'ProductSpec/po/$1';
 $route['export/prodspec/item'] = 'ProductSpec/item';
 $route['export/prodspec/item/(:num)'] = 'ProductSpec/item/$1';
-$route['export/prodspec/qcheck'] = 'ProductSpec/qcheck';
-$route['export/prodspec/qcheck/(:num)'] = 'ProductSpec/qcheck/$1';
+$route['export/prodspec/batch'] = 'ProductSpec/batch';
+$route['export/prodspec/batch/(:num)'] = 'ProductSpec/batch/$1';
 $route['export/prodspec/save'] = 'ProductSpec/save';
 $route['export/prodspec/print/(:num)'] = 'Prints/prodspec/$1';
 

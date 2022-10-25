@@ -1,12 +1,23 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group required">
-            <label for="packing" class="control-label">Product name</label>
-            <select name="packing" class="form-control select2bs4 grid packing" id="packing">
+            <label for="product" class="control-label">Product name</label>
+            <select name="product" class="form-control select2bs4 grid packing" id="product">
                 <option></option>
             </select>
-            <input type="hidden" class="grid" id="item" name="item">
-            <input type="hidden" class="grid" id="qcheck_id" name="qcheck_id">
+            <!-- <input type="hidden" class="grid" id="item" name="item">
+            <input type="hidden" class="grid" id="qcheck_id" name="qcheck_id"> -->
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="form-group required">
+            <label for="batch" class="control-label">Batch</label>
+            <select name="batch" class="form-control select2bs4 grid packing" id="batch">
+                <option></option>
+            </select>
+            <!-- <input type="hidden" class="grid" id="item" name="item">
+            <input type="hidden" class="grid" id="qcheck_id" name="qcheck_id"> -->
         </div>
     </div>
 

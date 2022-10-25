@@ -10,24 +10,26 @@ $(function () {
     });
 
     $('input#btn-item').on('click',function() {
-        var packing = $('#packing').val();
+        var product = $('#product').val();
         var mercury = $('#mercury').val();
         var lead = $('#lead').val();
         var cadmium = $('#cadmium').val();
         var tin = $('#tin').val();
         var arsenic = $('#arsenic').val();
 
-        if(packing == "" || mercury == "" || lead == "" || cadmium == "" || tin == "" || arsenic == "") {
+        if(product == "" || mercury == "" || lead == "" || cadmium == "" || tin == "" || arsenic == "") {
             swal("", "Product name/Mercury/Lead/Cadmium/Tin/Arsenic can not be empty.", "warning");
         } else {
             var rnd = Math.floor((Math.random() * 10000) + 1);
             $('tbody#grid-detail').append(
                 '<tr data-id="'+rnd+'">'+
                     '<td>'+
-                        '<input type="hidden" id="grid_item_'+rnd+'" name="grid_item_'+rnd+'" value="'+$('input.grid[name="item"]').val()+'" />'+
-                        '<input type="hidden" id="grid_qcheck_id_'+rnd+'" name="grid_qcheck_id_'+rnd+'" value="'+$('input.grid[name="qcheck_id"]').val()+'" />'+
-                        '<input type="hidden" id="grid_packing_'+rnd+'" name="grid_packing_'+rnd+'" value="'+$('select.grid[name="packing"]').val()+'" />'+
-                        '<input type="text" class="form-control" id="grid_packing_name_'+rnd+'" name="grid_packing_name_'+rnd+'" value="'+$('select.grid[name="packing"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
+                        '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.grid[name="product"]').val()+'" />'+
+                        '<input type="text" class="form-control" id="grid_product_name_'+rnd+'" name="grid_product_name_'+rnd+'" value="'+$('select.grid[name="product"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="hidden" id="grid_batch_'+rnd+'" name="grid_batch_'+rnd+'" value="'+$('select.grid[name="batch"]').val()+'" />'+
+                        '<input type="text" class="form-control" id="grid_batch_name_'+rnd+'" name="grid_batch_name_'+rnd+'" value="'+$('select.grid[name="batch"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
                     '</td>'+
                     '<td>'+
                         '<input type="text" class="form-control" id="grid_desc_'+rnd+'" name="grid_desc_'+rnd+'" value="'+$('textarea.grid[name="desc"]').val()+'" style="background-color:#ffffff;" readonly required />'+
@@ -86,14 +88,16 @@ $(function () {
                 '</tr>'
             );
             
-            $("select#packing option[value='"+$('select.grid[name="packing"]').val()+"']").remove();
+            // $("select#product option[value='"+$('select.grid[name="product"]').val()+"']").remove();
             $('.grid').val('');
             $(".grid").val('').trigger('change')
 
             $('button.btn-edit').off('click').on('click',function(){
                 var id = $(this).attr('data-row');
-                var product_id = $("tr[data-id="+id+"]").find("#grid_packing_"+id).val();
-                var product_name = $("tr[data-id="+id+"]").find("#grid_packing_name_"+id).val();
+                var product_id = $("tr[data-id="+id+"]").find("#grid_product_"+id).val();
+                // var product_name = $("tr[data-id="+id+"]").find("#grid_product_name_"+id).val();
+                var batch_id = $("tr[data-id="+id+"]").find("#grid_batch_"+id).val();
+                // var batch_name = $("tr[data-id="+id+"]").find("#grid_batch_name_"+id).val();
                 var desc = $("tr[data-id="+id+"]").find("#grid_desc_"+id).val();
                 var form = $("tr[data-id="+id+"]").find("#grid_form_"+id).val();
                 var texture = $("tr[data-id="+id+"]").find("#grid_texture_"+id).val();
@@ -112,8 +116,10 @@ $(function () {
                 var source = $("tr[data-id="+id+"]").find("#grid_source_"+id).val();
                 var country = $("tr[data-id="+id+"]").find("#grid_country_"+id).val();
 
-                $('select#packing').append('<option value="'+product_id+'">'+product_name+'</option>');
-                $("select#packing").select2("val", product_id);
+                // $('select#product').append('<option value="'+product_id+'">'+product_name+'</option>');
+                $("select#product").select2("val", product_id);
+                // $('select#batch').append('<option value="'+batch_id+'">'+batch_name+'</option>');
+                $("select#batch").select2("val", batch_id);
                 $("#desc").val(desc);
                 $("#form").val(form);
                 $("#texture").val(texture);
@@ -165,29 +171,27 @@ $(function () {
 
 $('#invoice').on('change', function() {
     var data = $('#invoice').select2('data');
+    po(data[0].id);
     item(data[0].id);
 });
 
-$('#packing').on('change', function() {
-    var data = $('#packing').select2('data');
-    details(data[0].id);
+$('#product').on('change', function() {
+    var data = $('#product').select2('data');
+    batch(data[0].id);
 });
 
-function item(id)
+function po(id)
 {
     $.ajax({
-        url: site_url + "export/prodspec/item/" + id,
+        url: site_url + "export/prodspec/po/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {
-            document.getElementById("po").value = response[0].ffrn;
-            var html = '';
-            var i;
-            for(i=0; i<response.length; i++) {
-                html += '<option></option>';
-                html += '<option value="'+response[i].packing_list_detail_id+'">'+response[i].item_code+' - '+response[i].item_name+'</option>';
+            if(response) {
+                document.getElementById("po").value = response.ffrn;
+            } else {
+                document.getElementById("po").value = "";
             }
-            $('#packing').html(html);
         },
         error: function (e) {
             console.log("Terjadi kesalahan pada sistem");
@@ -196,30 +200,61 @@ function item(id)
     });
 }
 
-function details(id)
+function item(id)
 {
     $.ajax({
-        url: site_url + "export/prodspec/qcheck/" + id,
+        url: site_url + "export/prodspec/item/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            if(response) {
+                var html = '';
+                var i;
+                for(i=0; i<response.length; i++) {
+                    html += '<option></option>';
+                    html += '<option value="'+response[i].item_id+'">'+response[i].item_code+' - '+response[i].item_name+'</option>';
+                }
+                $('#product').html(html);
+            } else {
+                $('#product').html("");
+            }
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+            swal("", "Terjadi kesalahan pada sistem.", "error");
+        }        
+    });
+}
+
+function batch(id)
+{
+    $.ajax({
+        url: site_url + "export/prodspec/batch/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {
             console.log(response)
-            if(response) {
-                if(response.item_id) {
-                    document.getElementById("item").value = response.item_id;
-                    document.getElementById("qcheck_id").value = response.id;
-                } else {
-                    swal("", response.messages, "error");
-                    $("#packing").val(null).trigger("change");
-                }
-            } else {
-                document.getElementById("item").value = '';
-                document.getElementById("qcheck_id").value = '';
+            var html = '';
+            var i;
+            for(i=0; i<response.length; i++) {
+                html += '<option></option>';
+                html += '<option value="'+response[i].qcontrol_check_id+'">'+response[i].batch+'</option>';
             }
+            $('#batch').html(html);
+            // if(response) {
+            //     if(response.item_id) {
+            //         document.getElementById("item").value = response.item_id;
+            //         document.getElementById("qcheck_id").value = response.id;
+            //     } else {
+            //         swal("", response.messages, "error");
+            //         $("#packing").val(null).trigger("change");
+            //     }
+            // } else {
+            //     document.getElementById("item").value = '';
+            //     document.getElementById("qcheck_id").value = '';
+            // }
         },
         error: function (e) {
-            // console.log("Terjadi kesalahan pada sistem");
-            // swal("", "Terjadi kesalahan pada sistem.", "error");
             document.getElementById("item").value = '';
             document.getElementById("qcheck_id").value = '';
         }        
