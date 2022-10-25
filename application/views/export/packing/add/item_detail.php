@@ -5,8 +5,8 @@
             <th>Description of goods</th>
             <th>Qty</th>
             <th>Batch</th>
-            <th>Expired date<br><small>Format: YYYY-MM-DD</small></th>
             <th>Production date<br><small>Format: YYYY-MM-DD</small></th>
+            <th>Expired date<br><small>Format: YYYY-MM-DD</small></th>
             <th>Net weight</th>
             <th>Gross weight</th>
             <th>Dimension each cartoon</th>

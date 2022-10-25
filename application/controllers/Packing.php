@@ -90,6 +90,18 @@
             echo json_encode($data);
         }
 
+        public function batch($id = NULL)
+        {
+            $data = $this->M_CRUD->readData('view_trans_packing_batch', ['pi_detail_id' => $id]);
+            echo json_encode($data);
+        }
+
+        public function date($id = NULL)
+        {
+            $data = $this->M_CRUD->readDatabyID('trans_qcontrol_check', ['id' => $id]);
+            echo json_encode($data);
+        }
+
         public function save()
         {
             $post = $this->input->post();
@@ -136,9 +148,7 @@
                                 'pi_detail_id' => $detail['pi_detail_id'],
                                 'qty' => $detail['qty'],
                                 'carton_barcode' => $detail['carton'],
-                                'expired_date' => $detail['expdate'],
-                                'production_date' => $detail['proddate'],
-                                'batch' => $detail['batch'],
+                                'qcontrol_check_id' => $detail['batch'],
                             ];
                             $this->M_CRUD->insertData('trans_packing_list_detail', $paramDetail);
                         }

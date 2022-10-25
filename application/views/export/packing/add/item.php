@@ -31,15 +31,17 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="batch" class="control-label">Batch</label>
-            <input type="text" name="batch" class="form-control item" id="batch" placeholder="Enter batch">
+            <select name="batch" class="form-control select2bs4 item" id="batch">
+                <option></option>
+            </select>
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
-            <label for="expdate" class="control-label">Expired date</label>
+            <label for="proddate" class="control-label">Production date</label>
             <div class="input-group date" id="prod_date" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input cursor-context item" autocomplete="off" id="expdate" name="expdate" placeholder="Enter expired date">
+                <input type="text" class="form-control cursor-context item" autocomplete="off" id="proddate" name="proddate" placeholder="Enter production date" disabled>
                 <div class="input-group-append" data-target="#prod_date" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
@@ -49,9 +51,9 @@
 
     <div class="col-md-2">
         <div class="form-group required">
-            <label for="proddate" class="control-label">Production date</label>
+            <label for="expdate" class="control-label">Expired date</label>
             <div class="input-group date" id="prod_date" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input cursor-context item" autocomplete="off" id="proddate" name="proddate" placeholder="Enter production date">
+                <input type="text" class="form-control cursor-context item" autocomplete="off" id="expdate" name="expdate" placeholder="Enter expired date" disabled>
                 <div class="input-group-append" data-target="#prod_date" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
