@@ -3,12 +3,10 @@
         <tr class="text-center align-middle">
             <th class="carton <?=($params['detail']->carton == '0'?'d-none':'')?>">Carton barcode</th>
             <th>Description of goods</th>
-            <!-- <th>HS code</th>
-            <th>Packing</th> -->
             <th>Qty</th>
             <th class="batch <?=($params['detail']->batch == '0'?'d-none':'')?>">Batch</th>
-            <th class="expired <?=($params['detail']->expired == '0'?'d-none':'')?>">Expired date<br><small>Format: YYYY-MM-DD</small></th>
             <th class="production <?=($params['detail']->production == '0'?'d-none':'')?>">Production date<br><small>Format: YYYY-MM-DD</small></th>
+            <th class="expired <?=($params['detail']->expired == '0'?'d-none':'')?>">Expired date<br><small>Format: YYYY-MM-DD</small></th>
             <th>Net weight</th>
             <th>Gross weight</th>
             <th>Dimension each cartoon</th>
@@ -31,11 +29,11 @@
                 <td class="batch <?=($params['detail']->batch == '0'?'d-none':'')?>">
                     <input type="text" class="form-control" value="<?=$rows->batch?>" disabled style="background-color:#ffffff;">
                 </td>
-                <td class="expired <?=($params['detail']->expired == '0'?'d-none':'')?>">
-                    <input type="text" class="form-control" value="<?=$rows->expired_date?>" disabled style="background-color:#ffffff;">
-                </td>
                 <td class="production <?=($params['detail']->production == '0'?'d-none':'')?>">
                     <input type="text" class="form-control" value="<?=$rows->production_date?>" disabled style="background-color:#ffffff;">
+                </td>
+                <td class="expired <?=($params['detail']->expired == '0'?'d-none':'')?>">
+                    <input type="text" class="form-control" value="<?=$rows->expired_date?>" disabled style="background-color:#ffffff;">
                 </td>
                 <td class="text-right">
                     <input type="text" class="form-control" value="<?=$rows->net_wight?>" disabled style="background-color:#ffffff;">

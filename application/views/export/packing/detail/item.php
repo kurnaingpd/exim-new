@@ -40,9 +40,9 @@
 
     <div class="col-md-2">
         <div class="form-group required">
-            <label for="expdate" class="control-label">Expired date</label>
+            <label for="proddate" class="control-label">Production date</label>
             <div class="input-group date" id="prod_date" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input cursor-context item" autocomplete="off" id="expdate" name="expdate" placeholder="Enter expired date">
+                <input type="text" class="form-control datetimepicker-input cursor-context item" autocomplete="off" id="proddate" name="proddate" placeholder="Enter production date">
                 <div class="input-group-append" data-target="#prod_date" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
@@ -52,9 +52,9 @@
 
     <div class="col-md-2">
         <div class="form-group required">
-            <label for="proddate" class="control-label">Production date</label>
+            <label for="expdate" class="control-label">Expired date</label>
             <div class="input-group date" id="prod_date" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input cursor-context item" autocomplete="off" id="proddate" name="proddate" placeholder="Enter production date">
+                <input type="text" class="form-control datetimepicker-input cursor-context item" autocomplete="off" id="expdate" name="expdate" placeholder="Enter expired date">
                 <div class="input-group-append" data-target="#prod_date" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
