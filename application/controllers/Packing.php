@@ -238,9 +238,9 @@
                             'pi_detail_id' => $detail['pi_detail_id'],
                             'qty' => $detail['qty'],
                             'carton_barcode' => $detail['carton'],
-                            'expired_date' => $detail['expdate'],
-                            'production_date' => $detail['proddate'],
-                            'batch' => $detail['batch'],
+                            'qcontrol_check_id' => $detail['batch'],
+                            // 'expired_date' => $detail['expdate'],
+                            // 'production_date' => $detail['proddate'],
                         ];
                         $this->M_CRUD->insertData('trans_packing_list_detail', $paramDetail);
                     }

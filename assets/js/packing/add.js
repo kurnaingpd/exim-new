@@ -33,7 +33,7 @@ $(function () {
 
             if(remain < 0) {
                 swal("", "Total qty tidak boleh lebih dari "+qty_inv, "error");
-            }else if(qty == 0) {
+            } else if(qty == 0) {
                 swal("", "Total qty tidak boleh "+qty, "error");
             } else {
                 document.getElementById("qty_"+item).value = remain;
@@ -50,8 +50,6 @@ $(function () {
                             '<input type="text" class="form-control qty" id="grid_qty_'+rnd+'" name="grid_qty_'+rnd+'" value="'+$('input.item[name="qty"]').val()+'" style="background-color:#ffffff;" readonly />'+
                         '</td>'+
                         '<td>'+
-                            // '<input type="text" class="form-control" id="grid_batch_'+rnd+'" name="grid_batch_'+rnd+'" value="'+$('input.item[name="batch"]').val()+'" style="background-color:#ffffff;" readonly />'+
-                            
                             '<input type="hidden" id="grid_batch_'+rnd+'" name="grid_batch_'+rnd+'" value="'+$('select.item[name="batch"]').val()+'" />'+
                             '<input type="text" class="form-control" value="'+$('select.item[name="batch"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
                         '</td>'+
@@ -85,6 +83,8 @@ $(function () {
                 var qty = Number($("tr[data-id="+id+"]").find(".qty").val());
                 var remain = Number(document.getElementById("qty_"+item).value);
                 $("tr[data-id="+id+"]").remove();
+                $('.item').val('');
+                $(".item").val('').trigger('change')
                 document.getElementById("qty_"+item).value = remain + qty;
             });
         }
