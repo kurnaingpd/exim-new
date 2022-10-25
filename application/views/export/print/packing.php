@@ -79,13 +79,13 @@
                                 <?php if($params['header']->batch == 1) : ?>
                                 <th>BATCH</th>
                                 <?php endif; ?>
+                                
+                                <?php if($params['header']->production == 1) : ?>
+                                <th>PRODUCTION<br>DATE</th>
+                                <?php endif; ?>
 
                                 <?php if($params['header']->expired == 1) : ?>
                                 <th>EXPIRED<br>DATE</th>
-                                <?php endif; ?>
-
-                                <?php if($params['header']->production == 1) : ?>
-                                <th>PRODUCTION<br>DATE</th>
                                 <?php endif; ?>
 
                                 <th>NET WEIGHT</th>
@@ -123,13 +123,13 @@
                                     <?php if($params['header']->batch == 1) : ?>
                                     <td class="data-border" align="center"><?=$rows->batch?></td>
                                     <?php endif; ?>
+                                    
+                                    <?php if($params['header']->production == 1) : ?>
+                                    <td class="data-border"><?=$rows->production_date?></td>
+                                    <?php endif; ?>
 
                                     <?php if($params['header']->expired == 1) : ?>
                                     <td class="data-border"><?=$rows->expired_date?></td>
-                                    <?php endif; ?>
-
-                                    <?php if($params['header']->production == 1) : ?>
-                                    <td class="data-border"><?=$rows->production_date?></td>
                                     <?php endif; ?>
 
                                     <td class="data-border" align="center"><?=number_format($rows->net_wight, 2)?></td>
