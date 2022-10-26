@@ -13,24 +13,6 @@
                 </div>
             </div>
 
-            <!-- <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-list-alt mr-2"></i>Organoleptic Test
-                </div>
-                <div class="card-body">
-                    <?php $this->load->view('export/coa/add/organoleptic'); ?>
-                </div>
-            </div> -->
-
-            <!-- <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-list-alt mr-2"></i>Phisycal & Chemical Test
-                </div>
-                <div class="card-body">
-                    <?php $this->load->view('export/coa/add/phisycal'); ?>
-                </div>
-            </div> -->
-
             <div class="card">
                 <div class="card-header">
                     <i class="fas fa-list-alt mr-2"></i>Heavy Metal Test
@@ -48,20 +30,9 @@
                     <?php $this->load->view('export/coa/add/grid'); ?>
                 </div>
             </div>
-
-            <!-- <div class="card">
-                <div class="card-header">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <i class="fas fa-list-alt mr-2"></i>Microbiology Test
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <?php $this->load->view('export/coa/add/microbiology'); ?>
-                </div>
-            </div> -->
         </div>
+
+        <div id="batch_detail"></div>
 
         <div class="card-body">
             <div class="row">

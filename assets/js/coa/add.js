@@ -16,40 +16,51 @@ $(function () {
         var cadmium = $('#cadmium').val();
         var tin = $('#tin').val();
         var arsenic = $('#arsenic').val();
+        var batch = $('#batch').val();
 
         if(packing == "" || mercury == "" || lead == "" || cadmium == "" || tin == "" || arsenic == "") {
             swal("", "Product name/Mercury/Lead/Cadmium/Tin/Arsenic can not be empty.", "warning");
         } else {
             var rnd = Math.floor((Math.random() * 10000) + 1);
-            $('tbody#grid-detail').append(
-                '<tr data-id="'+rnd+'">'+
-                    '<td>'+
-                        // '<input type="hidden" id="grid_qcheck_id_'+rnd+'" name="grid_qcheck_id_'+rnd+'" value="'+$('input.grid[name="qcheck_id"]').val()+'" />'+
-                        '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.grid[name="product"]').val()+'" />'+
-                        '<input type="text" class="form-control" value="'+$('select.grid[name="product"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
-                        '<input type="hidden" id="grid_batch_'+rnd+'" name="grid_batch_'+rnd+'" value="'+$('select.grid[name="batch"]').val()+'" />'+
-                    '</td>'+
-                    '<td>'+
-                        '<input type="text" class="form-control" id="grid_mercury_'+rnd+'" name="grid_mercury_'+rnd+'" value="'+$('input.grid[name="mercury"]').val()+'" style="background-color:#ffffff;" readonly required />'+
-                    '</td>'+
-                    '<td>'+
-                        '<input type="text" class="form-control" id="grid_lead_'+rnd+'" name="grid_lead_'+rnd+'" value="'+$('input.grid[name="lead"]').val()+'" style="background-color:#ffffff;" readonly required />'+
-                    '</td>'+
-                    '<td>'+
-                        '<input type="text" class="form-control" id="grid_cadmium_'+rnd+'" name="grid_cadmium_'+rnd+'" value="'+$('input.grid[name="cadmium"]').val()+'" style="background-color:#ffffff;" readonly required />'+
-                    '</td>'+
-                    '<td>'+
-                        '<input type="text" class="form-control" id="grid_tin_'+rnd+'" name="grid_tin_'+rnd+'" value="'+$('input.grid[name="tin"]').val()+'" style="background-color:#ffffff;" readonly required />'+
-                    '</td>'+
-                    '<td>'+
-                        '<input type="text" class="form-control" id="grid_arsenic_'+rnd+'" name="grid_arsenic_'+rnd+'" value="'+$('input.grid[name="arsenic"]').val()+'" style="background-color:#ffffff;" readonly required />'+
-                    '</td>'+
-                '</tr>'
-            );
-            
-            $("select#packing option[value='"+$('select.grid[name="packing"]').val()+"']").remove();
-            $('.grid').val('');
-            $(".grid").val('').trigger('change')
+            var isExists = false;
+            $("#grid-detail tr .val_batch").each(function(){
+                var val=$(this).val();
+                if(val==batch) {
+                    isExists = true;
+                }
+            }).val();
+
+            if (isExists) {
+                swal("", "Batch "+$('select.grid[name="batch"] option:selected').text()+" already exist.", "warning");
+            } else {
+                $('tbody#grid-detail').append(
+                    '<tr data-id="'+rnd+'">'+
+                        '<td>'+
+                            '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.grid[name="product"]').val()+'" />'+
+                            '<input type="text" class="form-control" value="'+$('select.grid[name="product"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
+                            '<input type="hidden" class="val_batch" id="grid_batch_'+rnd+'" name="grid_batch_'+rnd+'" value="'+$('select.grid[name="batch"]').val()+'" />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="text" class="form-control" id="grid_mercury_'+rnd+'" name="grid_mercury_'+rnd+'" value="'+$('input.grid[name="mercury"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="text" class="form-control" id="grid_lead_'+rnd+'" name="grid_lead_'+rnd+'" value="'+$('input.grid[name="lead"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="text" class="form-control" id="grid_cadmium_'+rnd+'" name="grid_cadmium_'+rnd+'" value="'+$('input.grid[name="cadmium"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="text" class="form-control" id="grid_tin_'+rnd+'" name="grid_tin_'+rnd+'" value="'+$('input.grid[name="tin"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="text" class="form-control" id="grid_arsenic_'+rnd+'" name="grid_arsenic_'+rnd+'" value="'+$('input.grid[name="arsenic"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '</td>'+
+                    '</tr>'
+                );
+                
+                $('.grid').val('');
+                $(".grid").val('').trigger('change')
+            }
         }
     });
 
@@ -170,13 +181,16 @@ function tanggal(id)
         type: "POST",
         dataType: "json",
         success: function(response) {
+            console.log(response)
             if(response) {
                 if(response.qc_status_id == 2) {
                     swal("", "Produk "+response.item_name+" dengan batch "+response.batch+" tidak aman.", "info");
                 }
+                document.getElementById("pl_id").value = response.production_date;
                 document.getElementById("product_date").value = response.production_date;
                 document.getElementById("expired_date").value = response.expired_date;
             } else {
+                document.getElementById("pl_id").value = "";
                 document.getElementById("product_date").value = "";
                 document.getElementById("expired_date").value = "";
             }
