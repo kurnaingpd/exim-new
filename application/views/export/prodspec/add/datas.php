@@ -5,8 +5,6 @@
             <select name="product" class="form-control select2bs4 grid packing" id="product">
                 <option></option>
             </select>
-            <!-- <input type="hidden" class="grid" id="item" name="item">
-            <input type="hidden" class="grid" id="qcheck_id" name="qcheck_id"> -->
         </div>
     </div>
 
@@ -16,8 +14,6 @@
             <select name="batch" class="form-control select2bs4 grid packing" id="batch">
                 <option></option>
             </select>
-            <!-- <input type="hidden" class="grid" id="item" name="item">
-            <input type="hidden" class="grid" id="qcheck_id" name="qcheck_id"> -->
         </div>
     </div>
 
