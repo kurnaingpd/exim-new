@@ -244,10 +244,10 @@
                         ];
                         $this->M_CRUD->insertData('trans_packing_list_detail', $paramDetail);
                     }
-                    $response = ['status' => 1, 'messages' => 'Packing has been updated successfully.', 'icon' => 'success', 'url' => 'export/packing'];
-                } else {
-                    $response = ['status' => 0, 'messages' => 'Packing check has failed to update.', 'icon' => 'error'];
-                }
+                } 
+                $response = ['status' => 1, 'messages' => 'Packing has been updated successfully.', 'icon' => 'success', 'url' => 'export/packing'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Packing check has failed to update.', 'icon' => 'error'];
             }
 
             echo json_encode($response);
