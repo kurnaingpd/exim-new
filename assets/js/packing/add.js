@@ -18,7 +18,6 @@ $(function () {
     });
 
     $('input#btn-item').on('click',function() {
-        console.log('item');
         var carton = $('#carton').val();
         var batch = $('#batch').val();
 
@@ -82,10 +81,10 @@ $(function () {
                 var id = $(this).attr('data-row');
                 var qty = Number($("tr[data-id="+id+"]").find(".qty").val());
                 var remain = Number(document.getElementById("qty_"+item).value);
+                document.getElementById("qty_"+item).value = remain + qty;
                 $("tr[data-id="+id+"]").remove();
                 $('.item').val('');
                 $(".item").val('').trigger('change')
-                document.getElementById("qty_"+item).value = remain + qty;
             });
         }
     });
@@ -265,13 +264,17 @@ function get_batch(id)
         type: "POST",
         dataType: "json",
         success: function(response) {
-            var html = '';
-            var i;
-            for(i=0; i<response.length; i++) {
-                html += '<option></option>';
-                html += '<option value="'+response[i].qcontrol_check_id+'">'+response[i].batch+'</option>';
+            if(response) {
+                var html = '';
+                var i;
+                for(i=0; i<response.length; i++) {
+                    html += '<option></option>';
+                    html += '<option value="'+response[i].qcontrol_check_id+'">'+response[i].batch+'</option>';
+                }
+                $('#batch').html(html);
+            } else {
+                $('#batch').html("");
             }
-            $('#batch').html(html);
         },
         error: function (e) {
             console.log("Terjadi kesalahan pada sistem");
