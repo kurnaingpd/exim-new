@@ -88,7 +88,6 @@ $('#invoice').on('change', function() {
 
 $('#product').on('change', function() {
     var data = $('#product').select2('data');
-    details(data[0].id);
     batch(data[0].id);
 });
 
@@ -164,27 +163,6 @@ function batch(id)
     });
 }
 
-function details(id)
-{
-    $.ajax({
-        url: site_url + "export/coa/qcheck/" + id,
-        type: "POST",
-        dataType: "json",
-        success: function(response) {
-            if(response) {
-                document.getElementById("qcheck_id").value = response.id;
-            }
-             else {
-                document.getElementById("qcheck_id").value = '';
-            }
-        },
-        error: function (e) {
-            console.log("Terjadi kesalahan pada sistem");
-            swal("", "Terjadi kesalahan pada sistem.", "error");
-        }        
-    });
-}
-
 function tanggal(id)
 {
     $.ajax({
@@ -193,6 +171,9 @@ function tanggal(id)
         dataType: "json",
         success: function(response) {
             if(response) {
+                if(response.qc_status_id == 2) {
+                    swal("", "Produk "+response.item_name+" dengan batch "+response.batch+" tidak aman.", "info");
+                }
                 document.getElementById("product_date").value = response.production_date;
                 document.getElementById("expired_date").value = response.expired_date;
             } else {

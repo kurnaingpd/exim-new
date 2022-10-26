@@ -35,7 +35,6 @@
             <select name="batch" class="form-control select2bs4 grid" id="batch">
                 <option></option>
             </select>
-            <!-- <input type="hidden" class="grid" id="qcheck_id" name="qcheck_id"> -->
         </div>
     </div>
 
