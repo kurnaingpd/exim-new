@@ -186,11 +186,9 @@ function tanggal(id)
                 if(response.qc_status_id == 2) {
                     swal("", "Produk "+response.item_name+" dengan batch "+response.batch+" tidak aman.", "info");
                 }
-                document.getElementById("pl_id").value = response.production_date;
                 document.getElementById("product_date").value = response.production_date;
                 document.getElementById("expired_date").value = response.expired_date;
             } else {
-                document.getElementById("pl_id").value = "";
                 document.getElementById("product_date").value = "";
                 document.getElementById("expired_date").value = "";
             }
