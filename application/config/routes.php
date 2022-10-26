@@ -248,8 +248,6 @@ $route['export/invoice/print/(:num)'] = 'Prints/invoice/$1';
 /** Export - QC Check */
 $route['export/qc_check'] = 'QCCheck';
 $route['export/qc_check/add'] = 'QCCheck/add';
-$route['export/qc_check/batch'] = 'QCCheck/batch';
-$route['export/qc_check/batch/(:num)'] = 'QCCheck/batch/$1';
 $route['export/qc_check/save'] = 'QCCheck/save';
 $route['export/qc_check/detail/(:num)'] = 'QCCheck/detail/$1';
 $route['export/qc_check/update'] = 'QCCheck/update';

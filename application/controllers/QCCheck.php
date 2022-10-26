@@ -66,12 +66,6 @@
             $this->template->load('default', 'contents' , 'export/qc_check/add', $datas);
         }
 
-        public function batch($id = NULL)
-        {
-            $data = $this->M_CRUD->readData('view_trans_qcheck_batch', ['item_id' => $id]);
-            echo json_encode($data);
-        }
-
         public function save()
         {
             $path = 'assets/attachment/qc_check/';
@@ -166,9 +160,6 @@
                 'detail' => $this->M_CRUD->readDatabyID('trans_qcontrol_check', ['is_deleted' => '0', 'id' => $id]),
                 'product' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0']),
                 'status' => $this->M_CRUD->readData('master_qc_status', ['is_deleted' => '0']),
-            ];
-            $datas['chained'] = [
-                'batch' => $this->M_CRUD->readData('view_trans_qcheck_batch', ['item_id' => $datas['params']['detail']->item_id]),
             ];
 
             $this->template->load('default', 'contents' , 'export/qc_check/detail', $datas);
