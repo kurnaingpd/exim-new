@@ -13,12 +13,12 @@
     </head>
     <body>
         <div id="container">
-            <h4 class="title" style="margin-bottom: 0px;">PRODUCT SPECIFICATION</h4>
-            <h4 class="title" style="margin-top: 0px; margin-bottom: 0px; color: #660000;"><?=$params['detail']->item_category?></h4>
-            <h5 class="title" style="margin-top: 0px; margin-bottom: 0px;"><?=$params['detail']->item_name?></h5>
-            <h5 class="title" style="margin-top: 0px;">PO Number: <?=$params['detail']->po_no?></h5>
+            <h5 class="title" style="margin-bottom: 0px;">PRODUCT SPECIFICATION</h5>
+            <h5 class="title" style="margin-top: 0px; margin-bottom: 0px; color: #660000;"><?=$params['detail']->item_category?></h5>
+            <h6 class="title" style="margin-top: 0px; margin-bottom: 0px;"><?=$params['detail']->item_name?></h6>
+            <h6 class="title" style="margin-top: 0px;">PO Number: <?=$params['detail']->po_no?></h6>
 
-            <div id="content" class="content" style="margin-top: 0px;">
+            <div id="content" class="content">
                 <div id="detail" class="content" style="margin-top: 0px;">
                     <ol type="A">
                         <li style="font-weight: bold;">Description
@@ -165,10 +165,10 @@
                     </ol>
                 </div>
 
-                <div id="signature" style="margin-top: 3%; box-sizing: border-box; content: ''; clear: both; display: table;">
+                <div id="signature" style="margin-top: 1%; box-sizing: border-box; content: ''; clear: both; display: table;">
                     <div style="float: left; width: 30%; text-align: center;">
                         Sincerely,<br>PT. SUMBER KOPI PRIMA
-                        <div style="margin-top: 10%; font-weight: bold;"><u><?=$this->session->userdata('logged_in')->fullname?></u></div>
+                        <div style="margin-top: 20%; font-weight: bold;"><u><?=$this->session->userdata('logged_in')->fullname?></u></div>
                         <div><?=$this->session->userdata('logged_in')->position_name?></div>
                     </div>
                 </div>
