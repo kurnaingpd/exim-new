@@ -49,8 +49,8 @@
                 <div id="signature" style="margin-top: 4%; box-sizing: border-box; content: ''; clear: both; display: table;">
                     <div style="float: left; width: 20%; text-align: center;">
                         Respectfully,
-                        <div style="margin-top: 30%; font-weight: bold;"><u>Slamet Supriyadi</u></div>
-                        <div>QA Manager</div>
+                        <div style="margin-top: 30%; font-weight: bold;"><u><?=$params['header']->fullname?></u></div>
+                        <div><?=$params['header']->positions?></div>
                     </div>
                 </div>
 
