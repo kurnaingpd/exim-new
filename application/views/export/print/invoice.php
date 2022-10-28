@@ -85,7 +85,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>NO.</th>
+                                    <!-- <th>NO.</th> -->
 
                                     <?php if($params['header']->carton == 1) : ?>
                                     <th>CARTON BARCODE</th>
@@ -119,12 +119,12 @@
                                     $tQty = 0;
                                     $Grand = 0;
                                     $tGrand = 0;
-                                    $row_1_cols_tot_incoterm = 5 + $params['header']->carton;
+                                    $row_1_cols_tot_incoterm = 4 + $params['header']->carton;
                                     $row_1_cols_qty_price = 2 + $params['header']->batch + $params['header']->expired + $params['header']->production;
-                                    $row_cols_ocean = 7 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
-                                    $row_cols_insurance = 7 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
-                                    $row_cols_grand = 7 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
-                                    $row_cols_says = 8 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                    $row_cols_ocean = 6 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                    $row_cols_insurance = 6 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                    $row_cols_grand = 6 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                    $row_cols_says = 7 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
 
                                     foreach($params['detail'][$group] as $detail => $dtl) :
                                         $tQty += $dtl['qty'];
@@ -132,10 +132,10 @@
                                         $tGrand += $Grand;
                                 ?>
                                 <tr>
-                                    <td class="data-border" align="center"><?=$no?>.</td>
+                                    <!-- <td class="data-border" align="center"><?=$no?>.</td> -->
 
                                     <?php if($params['header']->carton == 1) : ?>
-                                    <td class="data-border" align="center"><?=($dtl['carton_barcode']?$dtl['carton_barcode']:'-')?></td>
+                                    <td class="data-border" align="center"><?=($dtl['cartons']?$dtl['cartons']:'-')?></td>
                                     <?php endif; ?>
                                     
                                     <?php if($no == 1) : ?>
@@ -151,7 +151,7 @@
                                     <td class="data-border" align="right"><?=number_format($dtl['qty'])?></td>
 
                                     <?php if($params['header']->batch == 1) : ?>
-                                    <td class="data-border" align="center"><?=($dtl['batch']?$dtl['batch']:'-')?></td>
+                                    <td class="data-border" align="center"><?=($dtl['batchs']?$dtl['batchs']:'-')?></td>
                                     <?php endif; ?>
 
                                     <?php if($params['header']->production == 1) : ?>
