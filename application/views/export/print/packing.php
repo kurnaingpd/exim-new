@@ -118,7 +118,7 @@
                                     <td class="data-border"><?=$rows->item_name?></td>
                                     <td class="data-border" align="center"><?=$rows->hs_code?></td>
                                     <td class="data-border" align="center"><?=$rows->packing?></td>
-                                    <td class="data-border" align="right"><?=number_format($rows->qty)?></td>
+                                    <td class="data-border" align="right"><?=number_format($rows->tot_qty)?></td>
 
                                     <?php if($params['header']->batch == 1) : ?>
                                     <td class="data-border" align="center"><?=$rows->batch?></td>
