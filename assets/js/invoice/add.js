@@ -11,7 +11,6 @@ $(function () {
         dateFormat: "Y-m-d",
         allowInput: false,
         disableMobile: "true",
-        minDate: "today",
     });
 
     $.validator.setDefaults({
