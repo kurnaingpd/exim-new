@@ -30,7 +30,7 @@
             $datas['breadcrumb'] = ['Export', 'Master', 'Customer'];
             $datas['header'] = 'Customer list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('view_master_customer_list', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD->readData('view_master_customer_list')
             ];
 
             $this->template->load('default', 'contents' , 'export/customer/list', $datas);
@@ -563,11 +563,15 @@
 
         public function delete($id)
         {
+            $customer = $this->M_CRUD->readDatabyID('master_customer', ['id' => $id]);
             $condition = [
                 'id' => $id
             ];
+            $params = [
+                'is_deleted' => (($customer->is_deleted == '0') ? '1': '0')
+            ];
             
-            if($this->M_CRUD->deleteData('master_customer', $condition)) {
+            if($this->M_CRUD->updateData('master_customer', $params, $condition)) {
                 $response = ['status' => 1, 'messages' => 'Customer has been deleted successfully.', 'icon' => 'success', 'url' => 'export/customer'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Customer has failed to delete.', 'icon' => 'error'];
