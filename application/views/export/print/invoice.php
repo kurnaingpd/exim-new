@@ -101,12 +101,12 @@
                                     <th>BATCH</th>
                                     <?php endif; ?>
 
-                                    <?php if($params['header']->expired == 1) : ?>
-                                    <th>EXPIRED<br>DATE</th>
-                                    <?php endif; ?>
-
                                     <?php if($params['header']->production == 1) : ?>
                                     <th>PRODUCTION<br>DATE</th>
+                                    <?php endif; ?>
+
+                                    <?php if($params['header']->expired == 1) : ?>
+                                    <th>EXPIRED<br>DATE</th>
                                     <?php endif; ?>
 
                                     <th>UNIT PRICE<br>(<?=$params['header']->currency_icon?>)</th>
@@ -153,13 +153,13 @@
                                     <?php if($params['header']->batch == 1) : ?>
                                     <td class="data-border" align="center"><?=($dtl['batch']?$dtl['batch']:'-')?></td>
                                     <?php endif; ?>
-                                    
-                                    <?php if($params['header']->expired == 1) : ?>
-                                    <td class="data-border" align="center"><?=($dtl['expired_date']?$dtl['expired_date']:'-')?></td>
-                                    <?php endif; ?>
 
                                     <?php if($params['header']->production == 1) : ?>
-                                    <td class="data-border" align="center"><?=($dtl['production_date']?$dtl['production_date']:'-')?></td>
+                                    <td class="data-border" align="center"><?=($dtl['prod_date']?$dtl['prod_date']:'-')?></td>
+                                    <?php endif; ?>
+                                    
+                                    <?php if($params['header']->expired == 1) : ?>
+                                    <td class="data-border" align="center"><?=($dtl['exp_date']?$dtl['exp_date']:'-')?></td>
                                     <?php endif; ?>
 
                                     <td class="data-border" align="right"><?=number_format($dtl['price'], 2)?></td>
