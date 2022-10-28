@@ -58,6 +58,7 @@
             $datas['header'] = 'Process';
             $datas['params'] = [
                 'id' => $id,
+                'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_list', ['is_deleted' => '0', 'id' => $id]),
                 'item' => $this->M_CRUD->readData('view_trans_pi_signed_item', ['pi_id' => $id, 'is_deleted' => '0']),
                 'assign' => $this->M_CRUD->pi_item_role('master_pi_item_assign', ['is_deleted' => '0', 'role_id' => $this->session->userdata('logged_in')->role_id]),
                 'top' => $this->M_CRUD->readData('master_top', ['is_deleted' => '0']),
@@ -243,7 +244,7 @@
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Signed PI'];
             $datas['header'] = 'Attachment list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('trans_signed_pi_attachment', ['pi_id' => $pi_id, 'pi_item_id' => $item_id])
+                'list' => $this->M_CRUD->readData('trans_signed_pi_attachment', ['pi_id' => $pi_id])
             ];
 
             $this->template->load('default', 'contents' , 'export/signedpi/attachment', $datas);

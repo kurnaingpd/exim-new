@@ -84,6 +84,18 @@
                 'updated_by' => $this->session->userdata('logged_in')->id,
                 'updated_at' => date('Y-m-d H:i:s'),
             ];
+            $paramsAttachment_1 = [
+                'pi_id' => $pi->id,
+                'pi_item_id' => 18,
+                'dates' => date('Y-m-d'),
+                'created_by' => $this->session->userdata('logged_in')->id,
+            ];
+            $paramsAttachment_2 = [
+                'pi_id' => $pi->id,
+                'pi_item_id' => 18,
+                'dates' => date('Y-m-d'),
+                'created_by' => $this->session->userdata('logged_in')->id,
+            ];
 
             if($_FILES) {
                 if ( isset($_FILES['attachment1']) && $_FILES['attachment1']['name'] != '' ) {
@@ -95,7 +107,8 @@
                     $filename1 = 'Export-Terms-'.md5($randomDate).'.'.$end;
                     move_uploaded_file($_FILES['attachment1']['tmp_name'], $path.$filename1);
                     $params['file_1'] = $path.$filename1;
-                    $paramsSignePI['value'] = $path.$filename1;
+                    $paramsAttachment_1['values'] = $path.$filename1;
+                    $this->M_CRUD->insertData('trans_signed_pi_attachment', $paramsAttachment_1);
                 }
 
                 if ( isset($_FILES['attachment2']) && $_FILES['attachment2']['name'] != '' ) {
@@ -107,6 +120,8 @@
                     $filename2 = 'Export-Terms-'.md5($randomDate).'.'.$end;
                     move_uploaded_file($_FILES['attachment2']['tmp_name'], $path.$filename2);
                     $params['file_2'] = $path.$filename2;
+                    $paramsAttachment_2['values'] = $path.$filename2;
+                    $this->M_CRUD->insertData('trans_signed_pi_attachment', $paramsAttachment_2);
                 }
 
                 $header = $this->M_CRUD->insertData('trans_export_terms', $params);

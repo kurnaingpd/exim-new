@@ -21,7 +21,7 @@
                         <td><?=$rows->values?></td>
                         <td><?=$rows->created_at?></td>
                         <td>
-                            <a href="<?=base_url('assets/attachment/signedpi/'.$rows->values)?>" class="btn btn-sm btn-info" target="_blank">
+                            <a href="<?=base_url($rows->values)?>" class="btn btn-sm btn-info" target="_blank">
                                 <i class="fas fa-download"></i>
                             </a>
                         </td>

@@ -3,6 +3,21 @@
         <h6><i class="fas fa-chalkboard-teacher mr-2"></i><?=$header?></h6>
     </div>
     <div class="card-body">
+        <div class="row border-bottom mb-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="code" class="control-label">Proforma invoice no. :</label>
+                    <input type="text" class="form-control" value="<?=$params['detail']->code?>" disabled>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="code" class="control-label">Progress (%) :</label>
+                    <input type="text" class="form-control" value="<?=$params['detail']->progress?>" disabled>
+                </div>
+            </div>
+        </div>
+
         <form id="form-signed-pi">
             <input type="hidden" id="id" name="id" value="<?=$params['id']?>" disabled>
             <div class="row">
@@ -144,7 +159,7 @@
 
                             <div class="col-md-1 text-center">
                                 <?php if($item_id->option_id == 1) : ?>
-                                    <?php if($item_id->pi_item_id == 14 || $item_id->pi_item_id == 15) : ?>
+                                    <?php if($item_id->pi_item_id == 14 || $item_id->pi_item_id == 15 || $item_id->pi_item_id == 18) : ?>
                                         <a href="<?=site_url('export/signedpi/attachment/'.$params['id'].'/'.$item_id->pi_item_id)?>" class="btn btn-block btn-info <?=$item_id->download?>">
                                             <i class="fas fa-list"></i>
                                         </a>
