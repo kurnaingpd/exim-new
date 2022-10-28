@@ -88,7 +88,7 @@
             $datas['params'] = [
                 'header' => $this->M_CRUD->readDatabyID('view_print_trans_invoice_header', ['is_deleted' => '0', 'id' => $id]),
                 'category' => $this->M_CRUD->pi_category('view_print_trans_invoice_category', ['invoice_id' => $id]),
-                'detail' => $this->M_CRUD->pi_item('view_print_trans_invoice_detail', ['is_deleted' => '0', 'invoice_id' => $id]),
+                'detail' => $this->M_CRUD->invoice_list('view_print_trans_invoice_detail', ['is_deleted' => '0', 'invoice_id' => $id]),
                 'footer' => $this->M_CRUD->readData('view_print_trans_invoice_footer', ['invoice_id' => $id]),
                 // 'signature' => $this->M_CRUD->readDatabyID('view_print_trans_pi_signature', ['pi_id' => $id]),
             ];

@@ -382,6 +382,29 @@
 			return $result;
         }
 
+		public function invoice_list($table, $params = NULL)
+        {
+            $result = array();
+            $this -> db -> from($table);
+			if($params) {
+				foreach($params as $conditions => $val) {
+					$this -> db -> where($conditions, $val);
+				}
+			}
+			
+			$query = $this -> db -> get();
+
+            if($query -> num_rows() > 0)
+			{
+				foreach($query -> result_array() as $rows)
+				{
+					$result[$rows['pi_item_category_id']][$rows['qcontrol_check_id']] = $rows;
+				}
+			}
+			
+			return $result;
+        }
+
 		public function signed_item($table, $params = NULL)
         {
             $result = array();
