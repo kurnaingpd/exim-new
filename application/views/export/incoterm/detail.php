@@ -9,14 +9,14 @@
                 <div class="col-md-2">
                     <div class="form-group required">
                         <label for="code" class="control-label">Code</label>
-                        <input type="text" name="code" class="form-control upper" id="code" placeholder="Enter code" autocomplete="off" value="<?=$params['detail']->code?>" autofocus required>
+                        <input type="text" name="code" class="form-control upper" id="code" placeholder="Enter code" autocomplete="off" value="<?=$params['detail']->code?>" disabled>
                     </div>
                 </div>
 
                 <div class="col-md-10">
                     <div class="form-group required">
                         <label for="description" class="control-label">Description</label>
-                        <input type="text" name="description" class="form-control" id="description" placeholder="Enter description" autocomplete="off" value="<?=$params['detail']->name?>" required>
+                        <input type="text" name="description" class="form-control" id="description" placeholder="Enter description" autocomplete="off" value="<?=$params['detail']->name?>" autofocus required>
                     </div>
                 </div>
             </div>

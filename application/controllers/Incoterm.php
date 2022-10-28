@@ -96,13 +96,13 @@
         {
             $post = $this->input->post();
             $condition = ['id' => $post['id']];
-            $incoterm = $this->M_CRUD->readDatabyID('master_incoterm', ['code' => $post['code'], 'is_deleted' => '0']);
+            // $incoterm = $this->M_CRUD->readDatabyID('master_incoterm', ['code' => $post['code'], 'is_deleted' => '0']);
 
-            if($incoterm) {
-                $response = ['status' => 0, 'messages' => 'Incoterm code already exist.', 'icon' => 'error'];
-            } else {
+            // if($incoterm) {
+            //     $response = ['status' => 0, 'messages' => 'Incoterm code already exist.', 'icon' => 'error'];
+            // } else {
                 $param = [
-                    'code' => $post['code'],
+                    // 'code' => $post['code'],
                     'name' => ucwords($post['description']),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ];
@@ -112,7 +112,7 @@
                 } else {
                     $response = ['status' => 0, 'messages' => 'Incoterm has failed to update.', 'icon' => 'error'];
                 }
-            }
+            // }
             
             echo json_encode($response);
         }
