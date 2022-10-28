@@ -327,12 +327,13 @@
                 'incoterm' => $this->M_CRUD->readData('master_incoterm', ['is_deleted' => '0']),
                 'import_bill' => $this->M_CRUD->readData('master_import_doc_option', ['flag' => '1', 'is_deleted' => '0']),
                 'import_nonbill' => $this->M_CRUD->readData('master_import_doc_option', ['flag' => '2', 'is_deleted' => '0']),
+                'coding' => $this->M_CRUD->readData('master_coding_type', ['is_deleted' => '0']),
                 'cust_coding' => $this->M_CRUD->readDatabyID('master_customer_coding', ['customer_id' => $id]),
             ];
             $datas['detail'] = [
-                'coding' => $this->M_CRUD->readData('view_master_customer_coding_type_detail', ['customer_coding_id' => $datas['params']['cust_coding']->id]),
+                'coding' => $this->M_CRUD->readData('view_master_customer_coding_type_detail', ['customer_coding_id' => ($datas['params']['cust_coding']?$datas['params']['cust_coding']->id:'')]),
                 'cust_ship' => $this->M_CRUD->readData('master_customer_ship_detail', ['is_deleted' => '0', 'customer_ship_id' => $datas['params']['cust_ship']->id]),
-                'cust_coding' => $this->M_CRUD->readData('view_master_customer_coding_detail', ['is_deleted' => '0', 'customer_coding_id' => $datas['params']['cust_coding']->id]),
+                'cust_coding' => $this->M_CRUD->readData('view_master_customer_coding_detail', ['is_deleted' => '0', 'customer_coding_id' => ($datas['params']['cust_coding']?$datas['params']['cust_coding']->id:'')]),
             ];
 
             $this->template->load('default', 'contents' , 'export/customer/detail/index', $datas);
@@ -489,7 +490,16 @@
                 'phone' => ($param['cpshipto_phone']?$param['cpshipto_phone']:NULL),
                 'email' => ($param['cpshipto_email']?$param['cpshipto_email']:NULL),
             ];
-            $this->M_CRUD->updateData('master_customer_cp_ship', $datas, ['customer_id' => $cust_id]);
+            $customer = $this->M_CRUD->readDatabyID('master_customer_cp_ship', ['customer_id' => $cust_id]);
+            
+            if($customer) {
+                $this->M_CRUD->updateData('master_customer_cp_ship', $datas, ['customer_id' => $cust_id]);
+            } else {
+                $datas = array_merge(
+                    $datas, ['customer_id' => $cust_id]
+                );
+                $this->M_CRUD->insertData('master_customer_cp_ship', $datas);
+            }
         }
 
         public function saveUpdateFreight($param, $cust_id)
@@ -499,7 +509,16 @@
                 'contact' => $param['freight_contact'],
                 'number' => $param['freight_number'],
             ];
-            $this->M_CRUD->updateData('master_customer_freight', $datas, ['customer_id' => $cust_id]);
+            $customer = $this->M_CRUD->readDatabyID('master_customer_freight', ['customer_id' => $cust_id]);
+            
+            if($customer) {
+                $this->M_CRUD->updateData('master_customer_freight', $datas, ['customer_id' => $cust_id]);
+            } else {
+                $datas = array_merge(
+                    $datas, ['customer_id' => $cust_id]
+                );
+                $this->M_CRUD->insertData('master_customer_freight', $datas);
+            }
         }
 
         public function saveUpdateImport($param, $cust_id)
@@ -517,7 +536,16 @@
                 'qcertificate' => ($param['imp_qc']?$param['imp_qc']:NULL),
                 'others' => ($param['imp_others']?$param['imp_others']:NULL),
             ];
-            $this->M_CRUD->updateData('master_customer_import_doc', $datas, ['customer_id' => $cust_id]);
+            $customer = $this->M_CRUD->readDatabyID('master_customer_import_doc', ['customer_id' => $cust_id]);
+
+            if($customer) {
+                $this->M_CRUD->updateData('master_customer_import_doc', $datas, ['customer_id' => $cust_id]);
+            } else {
+                $datas = array_merge(
+                    $datas, ['customer_id' => $cust_id]
+                );
+                $this->M_CRUD->insertData('master_customer_import_doc', $datas);
+            }
         }
 
         public function saveUpdateCoding($param, $cust_id)
@@ -525,7 +553,7 @@
             $datas = [
                 'notes' => ($param['coding_notes']?$param['coding_notes']:NULL),
             ];
-            $this->M_CRUD->updateData('master_customer_coding', $datas, ['customer_id' => $cust_id]);
+            $customer = $this->M_CRUD->readDatabyID('master_customer_coding', ['customer_id' => $cust_id]);
             $Grid = array();
         
             foreach($_POST as $index => $value){
@@ -543,20 +571,50 @@
                 }
             }
 
-            if(!empty($Grid)) {
-                foreach($Grid as $detail) {
-                    $condition = [
-                        'customer_coding_id' => $detail['customer_coding_id'],
-                        'coding_type_id' => $detail['coding_type'],
-                    ];
-                    $params = [
-                        
-                        'import_by' => $detail['coding_import'],
-                        'hotline' => $detail['coding_hotline'],
-                        'best_before' => $detail['coding_bb'],
-                        'is_deleted' => '0',
-                    ];
-                    $this->M_CRUD->updateData('master_customer_coding_detail', $params, $condition);
+            if($customer) {
+                $this->M_CRUD->updateData('master_customer_coding', $datas, ['customer_id' => $cust_id]);
+                
+                if(!empty($Grid)) {
+                    foreach($Grid as $detail) {
+                        $condition = [
+                            'customer_coding_id' => $detail['customer_coding_id'],
+                            'coding_type_id' => $detail['coding_type'],
+                        ];
+                        $params = [
+                            'import_by' => $detail['coding_import'],
+                            'hotline' => $detail['coding_hotline'],
+                            'best_before' => $detail['coding_bb'],
+                            'is_deleted' => '0',
+                        ];
+                        $this->M_CRUD->updateData('master_customer_coding_detail', $params, $condition);
+                    }
+                }
+            } else {
+                $datas = array_merge(
+                    $datas, ['customer_id' => $cust_id]
+                );
+                
+                if(!empty($Grid)) {
+                    $id = $this->M_CRUD->insertData('master_customer_coding', $datas);
+                    if($id ) {
+                        foreach($Grid as $detail) {
+                            // $condition = [
+                            //     'customer_coding_id' => $detail['customer_coding_id'],
+                            //     'coding_type_id' => $detail['coding_type'],
+                            // ];
+                            $params = [
+                                'coding_type_id' => $detail['coding_type'],
+                                'import_by' => $detail['coding_import'],
+                                'hotline' => $detail['coding_hotline'],
+                                'best_before' => $detail['coding_bb'],
+                                'is_deleted' => '0',
+                            ];
+                            $params = array_merge(
+                                ['customer_coding_id' => $id], $params
+                            );
+                            $this->M_CRUD->insertData('master_customer_coding_detail', $params);
+                        }
+                    }
                 }
             }
         }

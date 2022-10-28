@@ -5,9 +5,15 @@
                 <label for="coding_type" class="control-label">Type</label>
                 <select name="coding_type" class="form-control select2bs4 cod_print coding" id="coding_type">
                     <option></option>
-                    <?php foreach($detail['coding'] as $rows) : ?>
-                        <option value="<?=$rows->id?>"><?=$rows->name?></option>
-                    <?php endforeach; ?>
+                    <?php if($detail['coding']) : ?>
+                        <?php foreach($detail['coding'] as $rows) : ?>
+                            <option value="<?=$rows->id?>"><?=$rows->name?></option>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <?php foreach($params['coding'] as $rows) : ?>
+                            <option value="<?=$rows->id?>"><?=$rows->name?></option>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </select>
             </div>
         </div>
@@ -38,7 +44,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label for="coding_notes" class="control-label">Notes</label>
-                <textarea name="coding_notes" class="form-control upper cod_print" id="coding_notes" placeholder="Enter notes" autocomplete="off" rows="2"><?=$params['cust_coding']->notes?></textarea>
+                <textarea name="coding_notes" class="form-control upper cod_print" id="coding_notes" placeholder="Enter notes" autocomplete="off" rows="2"><?=($params['cust_coding']?$params['cust_coding']->notes:'-')?></textarea>
             </div>
         </div>
     </div>
@@ -65,26 +71,28 @@
                         </tr>
                     </thead>
                     <tbody id="data-coding">
-                        <?php foreach($detail['cust_coding'] as $rows) : ?>
-                            <tr class="text-center" data-id="<?=$rows->id?>">
-                                <td>
-                                    <input type="hidden" id="cd_dtl_coding_type_<?=$rows->id?>" name="cd_dtl_coding_type_<?=$rows->id?>" value="<?=$rows->id?>" disabled />
-                                    <input type="text" class="form-control" id="cd_dtl_coding_type_name_<?=$rows->id?>" name="cd_dtl_coding_type_name_<?=$rows->id?>" value="<?=$rows->coding_type_name?>" style="background-color:#ffffff;" disabled />
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control" id="cd_dtl_coding_import_<?=$rows->id?>" name="cd_dtl_coding_import_<?=$rows->id?>"" value="<?=$rows->import_by?>" style="background-color:#ffffff;" disabled />
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control" id="cd_dtl_coding_hotline_<?=$rows->id?>" name="cd_dtl_coding_hotline_<?=$rows->id?>" value="<?=$rows->hotline?>" style="background-color:#ffffff;" disabled />
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control" id="cd_dtl_coding_bb_<?=$rows->id?>" name="cd_dtl_coding_bb_<?=$rows->id?>" value="<?=$rows->best_before?>" style="background-color:#ffffff;" disabled />
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-flat btn-remove-coding" style="cursor:pointer;" data-row="<?=$rows->id?>"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+                        <?php if(isset($detail['cust_coding'])) : ?>
+                            <?php foreach($detail['cust_coding'] as $rows) : ?>
+                                <tr class="text-center" data-id="<?=$rows->id?>">
+                                    <td>
+                                        <input type="hidden" id="cd_dtl_coding_type_<?=$rows->id?>" name="cd_dtl_coding_type_<?=$rows->id?>" value="<?=$rows->id?>" disabled />
+                                        <input type="text" class="form-control" id="cd_dtl_coding_type_name_<?=$rows->id?>" name="cd_dtl_coding_type_name_<?=$rows->id?>" value="<?=$rows->coding_type_name?>" style="background-color:#ffffff;" disabled />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" id="cd_dtl_coding_import_<?=$rows->id?>" name="cd_dtl_coding_import_<?=$rows->id?>"" value="<?=$rows->import_by?>" style="background-color:#ffffff;" disabled />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" id="cd_dtl_coding_hotline_<?=$rows->id?>" name="cd_dtl_coding_hotline_<?=$rows->id?>" value="<?=$rows->hotline?>" style="background-color:#ffffff;" disabled />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" id="cd_dtl_coding_bb_<?=$rows->id?>" name="cd_dtl_coding_bb_<?=$rows->id?>" value="<?=$rows->best_before?>" style="background-color:#ffffff;" disabled />
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-flat btn-remove-coding" style="cursor:pointer;" data-row="<?=$rows->id?>"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </li>

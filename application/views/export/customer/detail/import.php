@@ -124,7 +124,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <label for="imp_others" class="control-label">Others</label>
-            <input type="text" name="imp_others" class="form-control import" id="imp_others" autocomplete="off" value="<?=$params['cust_import']->others?>">
+            <input type="text" name="imp_others" class="form-control import" id="imp_others" autocomplete="off" value="<?=($params['cust_import']?$params['cust_import']->others:'-')?>">
         </div>
     </div>
 </div>

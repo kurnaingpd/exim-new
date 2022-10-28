@@ -37,15 +37,6 @@
             </div>
         </div>
 
-        <!-- <div class="card">
-            <div class="card-header">
-                <h6>Ship-to address</h6>
-            </div>
-            <div class="card-body">
-                <?php $this->load->view('export/customer/detail/shipto'); ?>
-            </div>
-        </div> -->
-
         <div class="card">
             <div class="card-header">
                 <h6>Ship-to address</h6>
