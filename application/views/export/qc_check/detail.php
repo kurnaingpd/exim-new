@@ -30,9 +30,9 @@
                         <div class="col-md-3">
                             <div class="form-group required">
                                 <label for="prod_date" class="control-label">Production date</label>
-                                <div class="input-group date" id="prod_date" data-target-input="nearest">
+                                <div class="input-group date" data-target-input="nearest">
                                     <input type="text" class="form-control datetimepicker-input cursor-context" autocomplete="off" id="prod_date" name="prod_date" value="<?=$params['detail']->production_date?>" placeholder="Enter production date" required>
-                                    <div class="input-group-append" data-target="#prod_date" data-toggle="datetimepicker">
+                                    <div class="input-group-append">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
                                 </div>
@@ -42,9 +42,9 @@
                         <div class="col-md-3">
                             <div class="form-group required">
                                 <label for="exp_date" class="control-label">Expired date</label>
-                                <div class="input-group date" id="exp_date" data-target-input="nearest">
+                                <div class="input-group date" data-target-input="nearest">
                                     <input type="text" class="form-control datetimepicker-input cursor-context" autocomplete="off" id="exp_date" name="exp_date" value="<?=$params['detail']->expired_date?>" placeholder="Enter expired date" required>
-                                    <div class="input-group-append" data-target="#exp_date" data-toggle="datetimepicker">
+                                    <div class="input-group-append">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="attachment_1" class="control-label">Image</label>
+                                <label for="attachment_1" class="control-label">Image (1)</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="attachment_1" name="attachment_1" accept="image/*" autofocus autocomplete="off">
@@ -81,7 +81,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="attachment_2" class="control-label">Image</label>
+                                <label for="attachment_2" class="control-label">Image (2)</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="attachment_2" name="attachment_2" accept="image/*" autofocus autocomplete="off">
@@ -147,9 +147,9 @@
                         <div class="col-md-3">
                             <div class="form-group required">
                                 <label for="finish_date" class="control-label">Finish good check date</label>
-                                <div class="input-group date" id="finish_date" data-target-input="nearest">
+                                <div class="input-group date" data-target-input="nearest">
                                     <input type="text" class="form-control datetimepicker-input cursor-context" autocomplete="off" id="finish_date" name="finish_date" value="<?=$params['detail']->finish_good_date?>" placeholder="Enter finish good check date" required>
-                                    <div class="input-group-append" data-target="#finish_date" data-toggle="datetimepicker">
+                                    <div class="input-group-append">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
                                 </div>
@@ -168,9 +168,9 @@
                         <div class="col-md-6">
                             <div class="form-group required">
                                 <label for="analys_date" class="control-label">Analysis date</label>
-                                <div class="input-group date" id="analys_date" data-target-input="nearest">
+                                <div class="input-group date" data-target-input="nearest">
                                     <input type="text" class="form-control datetimepicker-input cursor-context" autocomplete="off" id="analys_date" name="analys_date" value="<?=$params['detail']->analys_date?>" placeholder="Enter analysis date" required>
-                                    <div class="input-group-append" data-target="#analys_date" data-toggle="datetimepicker">
+                                    <div class="input-group-append">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
                                 </div>
@@ -180,9 +180,9 @@
                         <div class="col-md-6">
                             <div class="form-group required">
                                 <label for="analys_end_date" class="control-label">Analysis end date</label>
-                                <div class="input-group date" id="analys_end_date" data-target-input="nearest">
+                                <div class="input-group date" data-target-input="nearest">
                                     <input type="text" class="form-control datetimepicker-input cursor-context" autocomplete="off" id="analys_end_date" name="analys_end_date" value="<?=$params['detail']->analys_end_date?>" placeholder="Enter analysis end date" required>
-                                    <div class="input-group-append" data-target="#analys_end_date" data-toggle="datetimepicker">
+                                    <div class="input-group-append">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
                                 </div>
@@ -243,9 +243,9 @@
                         <div class="col-md-6">
                             <div class="form-group required">
                                 <label for="release_date" class="control-label">Release QC</label>
-                                <div class="input-group date" id="release_date" data-target-input="nearest">
+                                <div class="input-group date" data-target-input="nearest">
                                     <input type="text" class="form-control datetimepicker-input cursor-context" autocomplete="off" id="release_date" name="release_date" value="<?=$params['detail']->release_date?>" placeholder="Enter release qc date" required>
-                                    <div class="input-group-append" data-target="#release_date" data-toggle="datetimepicker">
+                                    <div class="input-group-append">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
                                 </div>

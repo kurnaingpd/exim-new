@@ -5,16 +5,54 @@ $(function () {
         allowClear: true
     })
 
-    bsCustomFileInput.init();
-
     $(".datetimepicker-input").css("background-color", "#FFF");
 
-    flatpickr(".datetimepicker-input", {
+    let prod_date = $('#prod_date');
+    let exp_date = $('#exp_date');
+    let release_date = $('#release_date');
+
+    prod_date.flatpickr({
         dateFormat: "Y-m-d",
         allowInput: false,
-        disableMobile: "true",
-        minDate: "today",
+        disableMobile: true,
+        onChange: function(selectedDates, dateStr, instance) {
+            exp_date.flatpickr({
+                dateFormat: "Y-m-d",
+                allowInput: false,
+                disableMobile: "true",
+                minDate: new Date(selectedDates).fp_incr(1), // add 1 day
+            });
+
+            release_date.flatpickr({
+                dateFormat: "Y-m-d",
+                allowInput: false,
+                disableMobile: "true",
+                minDate: new Date(selectedDates).fp_incr(1), // add 1 day
+            });
+        }
     });
+
+    exp_date.flatpickr({});
+    release_date.flatpickr({});
+
+    let analys_date = $('#analys_date');
+    let analys_end_date = $('#analys_end_date');
+
+    analys_date.flatpickr({
+        dateFormat: "Y-m-d",
+        allowInput: false,
+        disableMobile: true,
+        onChange: function(selectedDates, dateStr, instance) {
+            analys_end_date.flatpickr({
+                dateFormat: "Y-m-d",
+                allowInput: false,
+                disableMobile: "true",
+                minDate: new Date(selectedDates).fp_incr(1), // add 1 day
+            });
+        }
+    });
+
+    analys_end_date.flatpickr({});
 
     $(".upper").keyup(function () {
         this.value = this.value.toLocaleUpperCase();
