@@ -274,11 +274,11 @@ function item(id)
                 var heights = Number(response.height);
                 var volume = ((lengths) * (widths) * (heights)) / 1000000000;
                 document.getElementById("volume").value = volume;
-                document.getElementById("hs_code").value = response.hs_code;
+                // document.getElementById("hs_code").value = response.hs_code;
                 document.getElementById("config").value = response.pack_desc;
             } else {
                 document.getElementById("volume").value = 0;
-                document.getElementById("hs_code").value = '';
+                // document.getElementById("hs_code").value = '';
                 document.getElementById("config").value = '';
             }
         },

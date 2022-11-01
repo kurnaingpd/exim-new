@@ -55,7 +55,7 @@
                                 <?php endif ?>
                                 
                                 <?php if($this->session->userdata('logged_in')->role_id == 3) : ?>
-                                    <?php if($rows->pi_status_id <> 1 && $rows->pi_status_id <> 5 && $rows->pi_status_id <> 6) : ?>
+                                    <?php if($rows->pi_status_id <> 1 && $rows->pi_status_id <> 3 && $rows->pi_status_id <> 5 && $rows->pi_status_id <> 6) : ?>
                                         <a href="<?=site_url('export/proforma/process/'.$rows->id)?>" class="btn btn-sm btn-warning">
                                             <i class="fas fa-edit"></i>
                                         </a>
