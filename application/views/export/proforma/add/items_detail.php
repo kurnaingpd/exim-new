@@ -3,7 +3,7 @@
         <tr class="text-center">
             <th>Item category</th>
             <th>Product</th>
-            <th>HS code</th>
+            <!-- <th>HS code</th> -->
             <th>Configuration</th>
             <th>Qty</th>
             <th>Price</th>
