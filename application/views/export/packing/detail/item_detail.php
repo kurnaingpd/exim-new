@@ -18,7 +18,7 @@
             <tr data-id="<?=$rows->id?>">
                 <td class="carton <?=($params['detail']->carton == '0'?'d-none':'')?>" style="width: 10%">
                     <input type="text" class="form-control" value="<?=$rows->carton_barcode?>" disabled style="background-color:#ffffff;">
-                    <input type="hidden" class="form-control pi_detail_id" value="<?=$rows->pi_detail_id?>">
+                    <input type="hidden" class="form-control id" value="<?=$rows->id?>">
                 </td>
                 <td style="width: 28%">
                     <input type="text" class="form-control" value="<?=$rows->item_name?>" disabled style="background-color:#ffffff;">
@@ -45,7 +45,7 @@
                     <input type="text" class="form-control" value="<?=$rows->dimensions?>" disabled style="background-color:#ffffff;">
                 </td>
                 <td class="text-center">
-                    <button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="<?=$rows->id?>" data-value="<?=$rows->pi_detail_id?>"><i class="fas fa-trash"></i></button>
+                    <button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="<?=$rows->id?>" data-value="<?=$rows->item_id?>"><i class="fas fa-trash"></i></button>
                 </td>
             </tr>
         <?php $no++; endforeach; ?>

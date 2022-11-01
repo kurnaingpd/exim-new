@@ -80,19 +80,19 @@
 
         public function item($id = NULL)
         {
-            $data = $this->M_CRUD->readData('view_trans_packing_item', ['is_deleted' => '0', 'id' => $id]);
+            $data = $this->M_CRUD->readData('view_trans_packing_item', ['invoice_id' => $id]);
             echo json_encode($data);
         }
 
         public function item_detail($id = NULL)
         {
-            $data = $this->M_CRUD->readDatabyID('view_trans_packing_item_get', ['is_deleted' => '0', 'pi_detail_id' => $id]);
+            $data = $this->M_CRUD->readDatabyID('view_trans_packing_item_get', ['item_id' => $id]);
             echo json_encode($data);
         }
 
         public function batch($id = NULL)
         {
-            $data = $this->M_CRUD->readData('view_trans_packing_batch', ['pi_detail_id' => $id]);
+            $data = $this->M_CRUD->readData('trans_qcontrol_check', ['item_id' => $id]);
             echo json_encode($data);
         }
 
@@ -114,7 +114,6 @@
                     'code' => $post['code'],
                     'invoice_id' => $post['invoice'],
                     'dates' => $post['pack_date'],
-                    // 'container' => $post['container'],
                     'created_by' => $this->session->userdata('logged_in')->id,
                 ];
                 $header = $this->M_CRUD->insertData('trans_packing_list', $params);
@@ -145,7 +144,7 @@
                         foreach($Grid as $detail) {
                             $paramDetail = [
                                 'packing_list_id' => $header,
-                                'pi_detail_id' => $detail['pi_detail_id'],
+                                'item_id' => $detail['product'],
                                 'qty' => $detail['qty'],
                                 'carton_barcode' => $detail['carton'],
                                 'qcontrol_check_id' => $detail['batch'],
@@ -235,7 +234,7 @@
                     foreach($Grid as $detail) {
                         $paramDetail = [
                             'packing_list_id' => $post['id'],
-                            'pi_detail_id' => $detail['pi_detail_id'],
+                            'item_id' => $detail['product'],
                             'qty' => $detail['qty'],
                             'carton_barcode' => $detail['carton'],
                             'qcontrol_check_id' => $detail['batch'],

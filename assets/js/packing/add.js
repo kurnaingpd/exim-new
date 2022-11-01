@@ -42,7 +42,7 @@ $(function () {
                             '<input type="text" class="form-control" id="grid_carton_'+rnd+'" name="grid_carton_'+rnd+'" value="'+$('input.item[name="carton"]').val()+'" style="background-color:#ffffff;" readonly />'+
                         '</td>'+
                         '<td style="width: 28%">'+
-                            '<input type="hidden" id="grid_pi_detail_id_'+rnd+'" name="grid_pi_detail_id_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
+                            '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
                             '<input type="text" class="form-control" value="'+$('select.item[name="product"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
                         '</td>'+
                         '<td>'+
@@ -196,7 +196,7 @@ function get_item(id)
             var i;
             for(i=0; i<response.length; i++) {
                 html += '<option></option>';
-                html += '<option value="'+response[i].pi_detail_id+'">'+response[i].item_name+'</option>';
+                html += '<option value="'+response[i].item_id+'">'+response[i].item_name+'</option>';
             }
             $('#product').html(html);
         },
@@ -217,7 +217,7 @@ function get_item_qty(id)
             var html = '';
             var i;
             for(i=0; i<response.length; i++) {
-                html += '<input type="hidden" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
+                html += '<input type="hidden" id="qty_'+response[i].item_id+'" value="'+response[i].qty+'">';
             }
             $('#item_qty').html(html);
         },
@@ -269,7 +269,7 @@ function get_batch(id)
                 var i;
                 for(i=0; i<response.length; i++) {
                     html += '<option></option>';
-                    html += '<option value="'+response[i].qcontrol_check_id+'">'+response[i].batch+'</option>';
+                    html += '<option value="'+response[i].id+'">'+response[i].batch+'</option>';
                 }
                 $('#batch').html(html);
             } else {

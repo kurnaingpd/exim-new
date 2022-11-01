@@ -5,7 +5,7 @@
             <select name="product" class="form-control select2bs4 item" id="product">
                 <option></option>
                 <?php foreach($params['item'] as $rows) : ?>
-                    <option value="<?=$rows->pi_detail_id?>"><?=$rows->item_name?></option>
+                    <option value="<?=$rows->item_id?>"><?=$rows->item_name?></option>
                 <?php endforeach; ?>
             </select>
             <input type="hidden" class="item" id="hscode" name="hscode">
