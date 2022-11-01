@@ -7,6 +7,12 @@ $(function () {
 
     $(".datetimepicker-input").css("background-color", "#FFF");
 
+    flatpickr("#finish_date", {
+        dateFormat: "Y-m-d",
+        allowInput: false,
+        disableMobile: "true",
+    });
+
     let prod_date = $('#prod_date');
     let exp_date = $('#exp_date');
     let release_date = $('#release_date');
