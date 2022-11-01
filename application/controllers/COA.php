@@ -98,8 +98,9 @@
         public function save()
         {
             $post = $this->input->post();
+            $country = $this->M_CRUD->readDatabyID('view_trans_coa_country', ['id' => $post['invoice']]);
             $params = [
-                'code' => $post['code'],
+                'code' => $this->M_CRUD->autoNumberCOA('trans_coa', 'code', '/'.date('m/Y').'/', 4).$country->country_code,
                 'invoice_id' => $post['invoice'],
                 'created_by' => $this->session->userdata('logged_in')->id,
             ];
