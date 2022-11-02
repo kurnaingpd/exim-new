@@ -83,11 +83,11 @@
             echo json_encode($data);
         }
 
-        public function qcheck($id = NULL)
-        {
-            $data = $this->M_CRUD->readDatabyID('trans_qcontrol_check', ['is_deleted' => '0', 'item_id' => $id]);
-            echo json_encode($data);
-        }
+        // public function qcheck($id = NULL)
+        // {
+        //     $data = $this->M_CRUD->readDatabyID('trans_qcontrol_check', ['is_deleted' => '0', 'item_id' => $id]);
+        //     echo json_encode($data);
+        // }
 
         public function tanggal($id = NULL)
         {
@@ -129,7 +129,6 @@
                         $params = [
                             'coa_id' => $header,
                             'item_id' => $detail['product'],
-                            // 'packing_list_detail_id' => $detail['batch'],
                             'qcontrol_check_id' => $detail['batch'],
                             'mercury' => $detail['mercury'],
                             'lead' => $detail['lead'],

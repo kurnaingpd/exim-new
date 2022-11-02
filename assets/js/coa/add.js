@@ -93,7 +93,6 @@ $(function () {
 
 $('#invoice').on('change', function() {
     var data = $('#invoice').select2('data');
-    // country(data[0].id);
     item(data[0].id);
 });
 
