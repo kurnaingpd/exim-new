@@ -13,11 +13,11 @@ $(function () {
         console.log('item');
         var item_category = $('.item_category').val();
         var product = $('#product').val();
-        // var hs_code = $('#hs_code').val();
+        var hs_code = $('#hs_code').val();
         var config = $('#config').val();
         var qty = $('#qty').val();
 
-        if(item_category == "" || product == "" || config == "" || qty == "" || price == "") {
+        if(item_category == "" || product == "" || hs_code == "" || config == "" || qty == "" || price == "") {
             swal("", "Item data cannot be empty.", "warning");
         } else {
             var rnd = Math.floor((Math.random() * 10000) + 1);
@@ -41,9 +41,9 @@ $(function () {
                             '<input type="hidden" class="form-control volume" id="grid_volume_'+rnd+'" name="grid_volume_'+rnd+'" data-value="'+$('input.item[name="volume"]').val()+'" value="'+$('input.item[name="volume"]').val()+'" style="background-color:#ffffff;" readonly />'+
                             '<input type="hidden" class="form-control volume" id="grid_cbm_'+rnd+'" name="grid_cbm_'+rnd+'" data-value="'+cbm_item+'" value="'+cbm_item+'" />'+
                         '</td>'+
-                        // '<td style="width: 8%">'+
-                        //     '<input type="text" class="form-control" id="grid_hs_code_'+rnd+'" name="grid_hs_code_'+rnd+'" value="'+$('input.item[name="hs_code"]').val()+'" style="background-color:#ffffff;" readonly required />'+
-                        // '</td>'+
+                        '<td style="width: 8%">'+
+                            '<input type="text" class="form-control" id="grid_hs_code_'+rnd+'" name="grid_hs_code_'+rnd+'" value="'+$('input.item[name="hs_code"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+                        '</td>'+
                         '<td style="width: 26%">'+
                             '<input type="text" class="form-control" id="grid_config_'+rnd+'" name="grid_config_'+rnd+'" value="'+$('input.item[name="config"]').val()+'" style="background-color:#ffffff;" readonly required />'+
                         '</td>'+

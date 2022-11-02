@@ -17,7 +17,7 @@ $(function () {
         var config = $('#config').val();
         var qty = $('#qty').val();
 
-        if(item_category == "" || product == "" || config == "" || qty == "" || price == "") {
+        if(item_category == "" || product == "" || hs_code == "" || config == "" || qty == "" || price == "") {
             swal("", "Item data cannot be empty.", "warning");
         } else {
             var rnd = Math.floor((Math.random() * 10000) + 1);

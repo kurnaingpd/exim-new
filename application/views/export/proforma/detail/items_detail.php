@@ -3,7 +3,7 @@
         <tr class="text-center">
             <th>Item category</th>
             <th>Product</th>
-            <!-- <th>HS code</th> -->
+            <th>HS code</th>
             <th>Configuration</th>
             <th>Qty</th>
             <th>Price</th>
@@ -20,9 +20,9 @@
                 <td style="width: 34%">
                     <input type="text" class="form-control" id="pi_product_<?=$rows->id?>" name="pi_product_<?=$rows->id?>" value="<?=$rows->item_name?>" size="25" disabled style="background-color:#ffffff;">
                 </td>
-                <!-- <td style="width: 8%">
-                    <input type="text" class="form-control" id="pi_hs_code_<?=$rows->id?>" name="pi_hs_code_<?=$rows->id?>" value="<?=$rows->hs_code?>" disabled style="background-color:#ffffff;">
-                </td> -->
+                <td style="width: 8%">
+                    <input type="text" class="form-control" id="pi_hs_code_<?=$rows->id?>" name="pi_hs_code_<?=$rows->id?>" value="<?=($rows->hs_code?$rows->hs_code:'-')?>" disabled style="background-color:#ffffff;">
+                </td>
                 <td style="width: 26%">
                     <input type="text" class="form-control" id="pi_config_<?=$rows->id?>" name="pi_config_<?=$rows->id?>" value="<?=$rows->pack_desc?>" disabled style="background-color:#ffffff;">
                 </td>
