@@ -42,7 +42,7 @@ $(function () {
                             '<input type="text" class="form-control" id="grid_carton_'+rnd+'" name="grid_carton_'+rnd+'" value="'+$('input.item[name="carton"]').val()+'" style="background-color:#ffffff;" readonly />'+
                         '</td>'+
                         '<td style="width: 28%">'+
-                            '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
+                            '<input type="hidden" id="grid_pi_detail_id_'+rnd+'" name="grid_pi_detail_id_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
                             '<input type="text" class="form-control" value="'+$('select.item[name="product"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
                         '</td>'+
                         '<td>'+
@@ -74,7 +74,7 @@ $(function () {
                 );
     
                 $('.item').val('');
-                $(".item").val('').trigger('change')
+                $(".item").val('').trigger('change');
             }
 
             $('button.btn-remove').off('click').on('click',function(){
@@ -113,8 +113,16 @@ $(function () {
 $('select#invoice').on('change', function() {
     var data = $('select#invoice').select2('data');
     get_data(data[0].id);
-    get_item(data[0].id);
+    // get_item(data[0].id);
     get_item_qty(data[0].id);
+});
+
+$('select#category').on('change', function() {
+    var invoice = $('select#invoice').select2('data');
+    var category = $('select#category').select2('data');
+    // get_data(data[0].id);
+    get_item(invoice[0].id, category[0].id);
+    // get_item_qty(data[0].id);
 });
 
 $('select#product').on('change', function() {
@@ -185,39 +193,44 @@ function get_data(id)
     });
 }
 
-function get_item(id)
+function get_item(invoice, category)
 {
     $.ajax({
-        url: site_url + "export/packing/item/" + id,
+        url: site_url + "export/packing/item/" + invoice +"/"+ category,
         type: "POST",
         dataType: "json",
         success: function(response) {
-            var html = '';
-            var i;
-            for(i=0; i<response.length; i++) {
-                html += '<option></option>';
-                html += '<option value="'+response[i].item_id+'">'+response[i].item_name+'</option>';
+            if(response) {
+                var html = '';
+                var i;
+                for(i=0; i<response.length; i++) {
+                    html += '<option></option>';
+                    html += '<option value="'+response[i].pi_detail_id+'">'+response[i].item_name+'</option>';
+                }
+                $('#product').html(html);
+            } else {
+                $('#product').html("");
+                $('#qty').html("");
             }
-            $('#product').html(html);
         },
-        error: function (e) {
-            console.log("Terjadi kesalahan pada sistem");
-            swal("", "Terjadi kesalahan pada sistem.", "error");
-        }        
+        // error: function (e) {
+        //     console.log("Terjadi kesalahan pada sistem");
+        //     swal("", "Terjadi kesalahan pada sistem.", "error");
+        // }        
     });
 }
 
 function get_item_qty(id)
 {
     $.ajax({
-        url: site_url + "export/packing/item/" + id,
+        url: site_url + "export/packing/item_qty/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {
             var html = '';
             var i;
             for(i=0; i<response.length; i++) {
-                html += '<input type="hidden" id="qty_'+response[i].item_id+'" value="'+response[i].qty+'">';
+                html += '<input type="text" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
             }
             $('#item_qty').html(html);
         },
@@ -269,7 +282,7 @@ function get_batch(id)
                 var i;
                 for(i=0; i<response.length; i++) {
                     html += '<option></option>';
-                    html += '<option value="'+response[i].id+'">'+response[i].batch+'</option>';
+                    html += '<option value="'+response[i].qcontrol_check_id+'">'+response[i].batch+'</option>';
                 }
                 $('#batch').html(html);
             } else {

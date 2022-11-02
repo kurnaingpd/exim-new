@@ -65,8 +65,9 @@
             $datas['params'] = [
                 'autonumber' => $this->M_CRUD->autoNumberPacking('trans_packing_list', 'code', '/SKP-EXT/PL/'.date('m/Y'), 4),
                 'invoice' => $this->M_CRUD->readData('view_trans_pi_packing'),
-                'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
-                'loading' => $this->M_CRUD->readData('master_loading_port', ['is_deleted' => '0']),
+                // 'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
+                // 'loading' => $this->M_CRUD->readData('master_loading_port', ['is_deleted' => '0']),
+                'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
             ];
 
             $this->template->load('default', 'contents' , 'export/packing/add/index', $datas);
@@ -78,21 +79,27 @@
             echo json_encode($data);
         }
 
-        public function item($id = NULL)
+        public function item($invoice = NULL, $category = NULL)
         {
-            $data = $this->M_CRUD->readData('view_trans_packing_item', ['invoice_id' => $id]);
+            $data = $this->M_CRUD->readData('view_trans_packing_item', ['id' => $invoice, 'pi_item_category_id' => $category]);
+            echo json_encode($data);
+        }
+
+        public function item_qty($invoice = NULL)
+        {
+            $data = $this->M_CRUD->readData('view_trans_packing_item', ['id' => $invoice]);
             echo json_encode($data);
         }
 
         public function item_detail($id = NULL)
         {
-            $data = $this->M_CRUD->readDatabyID('view_trans_packing_item_get', ['item_id' => $id]);
+            $data = $this->M_CRUD->readDatabyID('view_trans_packing_item_get', ['pi_detail_id' => $id]);
             echo json_encode($data);
         }
 
         public function batch($id = NULL)
         {
-            $data = $this->M_CRUD->readData('trans_qcontrol_check', ['item_id' => $id]);
+            $data = $this->M_CRUD->readData('view_trans_packing_batch', ['pi_detail_id' => $id]);
             echo json_encode($data);
         }
 
@@ -144,7 +151,7 @@
                         foreach($Grid as $detail) {
                             $paramDetail = [
                                 'packing_list_id' => $header,
-                                'item_id' => $detail['product'],
+                                'pi_detail_id' => $detail['pi_detail_id'],
                                 'qty' => $detail['qty'],
                                 'carton_barcode' => $detail['carton'],
                                 'qcontrol_check_id' => $detail['batch'],
@@ -234,7 +241,7 @@
                     foreach($Grid as $detail) {
                         $paramDetail = [
                             'packing_list_id' => $post['id'],
-                            'item_id' => $detail['product'],
+                            'pi_detail_id' => $detail['pi_detail_id'],
                             'qty' => $detail['qty'],
                             'carton_barcode' => $detail['carton'],
                             'qcontrol_check_id' => $detail['batch'],
