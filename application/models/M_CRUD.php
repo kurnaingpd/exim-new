@@ -398,7 +398,11 @@
 			{
 				foreach($query -> result_array() as $rows)
 				{
-					$result[$rows['pi_item_category_id']][$rows['qcontrol_check_id']] = $rows;
+					if($rows['qcontrol_check_id']) {
+						$result[$rows['pi_item_category_id']][$rows['qcontrol_check_id']] = $rows;
+					} else {
+						$result[$rows['pi_item_category_id']][$rows['id']] = $rows;
+					}
 				}
 			}
 			

@@ -4,9 +4,6 @@
             <label for="category" class="control-label">Item category</label>
             <select name="category" class="form-control select2bs4 item" id="category">
                 <option></option>
-                <?php foreach($params['category'] as $rows) : ?>
-                    <option value="<?=$rows->id?>"><?=$rows->name?></option>
-                <?php endforeach; ?>
             </select>
         </div>
     </div>

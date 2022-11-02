@@ -111,21 +111,23 @@ $(function () {
 });
 
 $('select#invoice').on('change', function() {
+    $('#product').html("");
     var data = $('select#invoice').select2('data');
     get_data(data[0].id);
-    // get_item(data[0].id);
+    get_category(data[0].id);
     get_item_qty(data[0].id);
 });
 
 $('select#category').on('change', function() {
+    $('#product').html("");
+    $('#qty').val("");
     var invoice = $('select#invoice').select2('data');
     var category = $('select#category').select2('data');
-    // get_data(data[0].id);
     get_item(invoice[0].id, category[0].id);
-    // get_item_qty(data[0].id);
 });
 
 $('select#product').on('change', function() {
+    $('#qty').val("");
     var data = $('select#product').select2('data');
     get_data_item(data[0].id);
     get_batch(data[0].id);
@@ -193,10 +195,32 @@ function get_data(id)
     });
 }
 
+function get_category(id)
+{
+    $.ajax({
+        url: site_url + "export/packing/category/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            if(response) {
+                var html = '';
+                var i;
+                for(i=0; i<response.length; i++) {
+                    html += '<option></option>';
+                    html += '<option value="'+response[i].pi_item_category_id+'">'+response[i].name+'</option>';
+                }
+                $('#category').html(html);
+            } else {
+                $('#category').html("");
+            }
+        },      
+    });
+}
+
 function get_item(invoice, category)
 {
     $.ajax({
-        url: site_url + "export/packing/item/" + invoice +"/"+ category,
+        url: site_url + "export/packing/item/" + category +"/"+ invoice,
         type: "POST",
         dataType: "json",
         success: function(response) {
@@ -210,13 +234,8 @@ function get_item(invoice, category)
                 $('#product').html(html);
             } else {
                 $('#product').html("");
-                $('#qty').html("");
             }
-        },
-        // error: function (e) {
-        //     console.log("Terjadi kesalahan pada sistem");
-        //     swal("", "Terjadi kesalahan pada sistem.", "error");
-        // }        
+        },      
     });
 }
 
@@ -230,7 +249,7 @@ function get_item_qty(id)
             var html = '';
             var i;
             for(i=0; i<response.length; i++) {
-                html += '<input type="text" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
+                html += '<input type="hidden" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
             }
             $('#item_qty').html(html);
         },

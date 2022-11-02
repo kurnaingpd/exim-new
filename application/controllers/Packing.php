@@ -67,7 +67,7 @@
                 'invoice' => $this->M_CRUD->readData('view_trans_pi_packing'),
                 // 'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
                 // 'loading' => $this->M_CRUD->readData('master_loading_port', ['is_deleted' => '0']),
-                'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
+                // 'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
             ];
 
             $this->template->load('default', 'contents' , 'export/packing/add/index', $datas);
@@ -79,7 +79,13 @@
             echo json_encode($data);
         }
 
-        public function item($invoice = NULL, $category = NULL)
+        public function category($id = NULl)
+        {
+            $data = $this->M_CRUD->readData('view_trans_packing_item_category', ['invoice_id' => $id]);
+            echo json_encode($data);
+        }
+
+        public function item($category = NULL, $invoice = NULL)
         {
             $data = $this->M_CRUD->readData('view_trans_packing_item', ['id' => $invoice, 'pi_item_category_id' => $category]);
             echo json_encode($data);
@@ -196,7 +202,8 @@
             $datas['params'] = [
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_packing_detail', ['is_deleted' => '0', 'id' => $id]),
                 'list' => $this->M_CRUD->readData('view_trans_packing_detail_list', ['packing_list_id' => $id]),
-                'item' => $this->M_CRUD->readData('view_trans_packing_detail_item', ['packing_list_id' => $id]),
+                'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
+                // 'item' => $this->M_CRUD->readData('view_trans_packing_detail_item', ['packing_list_id' => $id]),
             ];
             
             $datas['chained'] = [
@@ -204,6 +211,12 @@
             ];
 
             $this->template->load('default', 'contents' , 'export/packing/detail/index', $datas);
+        }
+
+        public function item_detail_by_category($pl = NULL, $category = NULL)
+        {
+            $data = $this->M_CRUD->readData('view_trans_packing_detail_item', ['packing_list_id' => $pl, 'pi_item_category_id' => $category]);
+            echo json_encode($data);
         }
 
         public function update()
@@ -245,8 +258,6 @@
                             'qty' => $detail['qty'],
                             'carton_barcode' => $detail['carton'],
                             'qcontrol_check_id' => $detail['batch'],
-                            // 'expired_date' => $detail['expdate'],
-                            // 'production_date' => $detail['proddate'],
                         ];
                         $this->M_CRUD->insertData('trans_packing_list_detail', $paramDetail);
                     }

@@ -45,7 +45,7 @@
                     <input type="text" class="form-control" value="<?=$rows->dimensions?>" disabled style="background-color:#ffffff;">
                 </td>
                 <td class="text-center">
-                    <button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="<?=$rows->id?>" data-value="<?=$rows->item_id?>"><i class="fas fa-trash"></i></button>
+                    <button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="<?=$rows->id?>" data-value="<?=$rows->pi_detail_id?>"><i class="fas fa-trash"></i></button>
                 </td>
             </tr>
         <?php $no++; endforeach; ?>

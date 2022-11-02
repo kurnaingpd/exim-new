@@ -56,7 +56,7 @@ $(function () {
                             '<input type="text" class="form-control" id="grid_carton_'+rnd+'" name="grid_carton_'+rnd+'" value="'+$('input.item[name="carton"]').val()+'" style="background-color:#ffffff;" readonly />'+
                         '</td>'+
                         '<td style="width: 28%">'+
-                            '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
+                            '<input type="hidden" id="grid_pi_detail_id_'+rnd+'" name="grid_pi_detail_id_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
                             '<input type="text" class="form-control" value="'+$('select.item[name="product"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
                         '</td>'+
                         '<td>'+
@@ -122,6 +122,14 @@ $(function () {
     });
 });
 
+$('select#category').on('change', function() {
+    $('#product').html("");
+    $('#qty').val("");
+    var pl_id = document.getElementById("id").value;
+    var category = $('select#category').select2('data');
+    get_item(pl_id, category[0].id);
+});
+
 $('select#product').on('change', function() {
     var data = $('select#product').select2('data');
     get_data_item(data[0].id);
@@ -135,13 +143,12 @@ $('select#batchs').on('change', function() {
 
 $('button.btn-remove').off('click').on('click',function(){
     var id = $(this).attr('data-row');
-    var item_id = $(this).attr('data-value');
+    var pi_detail_id = $(this).attr('data-value');
     var qty = Number($("tr[data-id="+id+"]").find(".qty").val());
-    var remain = Number(document.getElementById("qty_"+item_id).value);
-    document.getElementById("qty_"+item_id).value = remain + qty;
+    var remain = Number(document.getElementById("qty_"+pi_detail_id).value);
+    document.getElementById("qty_"+pi_detail_id).value = remain + qty;
     $("tr[data-id="+id+"]").remove();
     $('#product').val('').trigger('change');
-    // $(".item").val('').trigger('change')
     item_delete(id);
 });
 
@@ -174,6 +181,29 @@ function checking(packing, id, data)
         error: function (e) {
             console.log("Terjadi kesalahan pada sistem");
         }        
+    });
+}
+
+function get_item(pl_id, category)
+{
+    $.ajax({
+        url: site_url + "export/packing/item_by_category/" + pl_id +"/"+ category,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            if(response) {
+                var html = '';
+                var i;
+                for(i=0; i<response.length; i++) {
+                    html += '<option></option>';
+                    html += '<option value="'+response[i].pi_detail_id+'">'+response[i].item_name+'</option>';
+                }
+                $('#product').html(html);
+            } else {
+                $('#product').html("");
+                $('#qty').html("");
+            }
+        },      
     });
 }
 
@@ -218,7 +248,7 @@ function get_batch(id)
             var i;
             for(i=0; i<response.length; i++) {
                 html += '<option></option>';
-                html += '<option value="'+response[i].id+'">'+response[i].batch+'</option>';
+                html += '<option value="'+response[i].qcontrol_check_id+'">'+response[i].batch+'</option>';
             }
             $('#batchs').html(html);
         },
