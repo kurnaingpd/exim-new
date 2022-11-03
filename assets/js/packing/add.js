@@ -75,7 +75,6 @@ $(function () {
     
                 $('.item').val('');
                 $(".item").val('').trigger('change');
-                $('#category').html("");
             }
 
             $('button.btn-remove').off('click').on('click',function(){
