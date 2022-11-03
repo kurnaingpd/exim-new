@@ -23,7 +23,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>PO#</th>
+                                <th>PO#/<br>Container #</th>
                                 <th>Quantity<br>(Carton)</th>
                                 <th>Production Date</th>
                                 <th>Expiry Date</th>
@@ -34,7 +34,10 @@
                         <tbody>
                             <?php $no = 1; foreach($params['detail'] as $rows) : ?>
                                 <tr>
-                                    <td class="data-border" align="center"><?=$rows->po_no?></td>
+                                    <td class="data-border" align="center">
+                                        PO: <?=$rows->po_no?><br><br>
+                                        CONT NO: <?=$rows->number_of_container?>
+                                    </td>
                                     <td class="data-border" align="center"><?=$rows->qty?></td>
                                     <td class="data-border" align="center"><?=$rows->production_date?></td>
                                     <td class="data-border" align="center"><?=$rows->expired_date?></td>
