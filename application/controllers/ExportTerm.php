@@ -208,7 +208,7 @@
             $path = 'assets/attachment/expterm/';
             $post = $this->input->post();
             $condition = ['id' => $post['expterm_id']];
-            $attachment = $this->M_CRUD->readData('trans_signed_pi_attachment', ['pi_id' => $post['pi_id']]);
+            $attachment = $this->M_CRUD->readData('trans_signed_pi_attachment', ['pi_id' => $post['pi_id'], 'pi_item_id' => 18]);
             $params = [
                 'pi_status_id' => $post['status'],
                 'updated_at' => date('Y-m-d H:i:s'),
