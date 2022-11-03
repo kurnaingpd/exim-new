@@ -146,9 +146,9 @@
                         <div class="col-md-3">
                             <div class="form-group required">
                                 <label for="finish_date" class="control-label">Finish good check date</label>
-                                <div class="input-group date" id="finish_date" data-target-input="nearest">
+                                <div class="input-group date" data-target-input="nearest">
                                     <input type="text" class="form-control datetimepicker-input cursor-context" autocomplete="off" id="finish_date" name="finish_date" placeholder="Enter finish good check date" required>
-                                    <div class="input-group-append" data-target="#finish_date" data-toggle="datetimepicker">
+                                    <div class="input-group-append">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
                                 </div>

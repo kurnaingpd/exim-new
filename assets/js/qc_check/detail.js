@@ -18,6 +18,7 @@ $(function () {
     let prod_date = $('#prod_date');
     let exp_date = $('#exp_date');
     let release_date = $('#release_date');
+    let finish_date = $('#finish_date');
 
     prod_date.flatpickr({
         dateFormat: "Y-m-d",
@@ -32,6 +33,13 @@ $(function () {
             });
 
             release_date.flatpickr({
+                dateFormat: "Y-m-d",
+                allowInput: false,
+                disableMobile: "true",
+                minDate: new Date(selectedDates).fp_incr(1), // add 1 day
+            });
+
+            finish_date.flatpickr({
                 dateFormat: "Y-m-d",
                 allowInput: false,
                 disableMobile: "true",
