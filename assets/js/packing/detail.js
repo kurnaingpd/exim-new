@@ -201,7 +201,6 @@ function get_item(pl_id, category)
                 $('#product').html(html);
             } else {
                 $('#product').html("");
-                $('#qty').html("");
             }
         },      
     });
