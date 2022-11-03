@@ -208,7 +208,7 @@
             $path = 'assets/attachment/expterm/';
             $post = $this->input->post();
             $condition = ['id' => $post['expterm_id']];
-
+            $attachment = $this->M_CRUD->readData('trans_signed_pi_attachment', ['pi_id' => $post['pi_id']]);
             $params = [
                 'pi_status_id' => $post['status'],
                 'updated_at' => date('Y-m-d H:i:s'),
@@ -223,13 +223,13 @@
                     $timestamp = mt_rand(1, time());
                     $randomDate = date("d M Y", $timestamp);
                     $filename1 = 'Export-Terms-'.md5($randomDate).'.'.$end;
-
-                    if ( !file_exists($path) ) {
-                        mkdir($path, 0777, true);
-                    }
-
                     move_uploaded_file($_FILES['attachment1']['tmp_name'], $path.$filename1);
                     $params['file_1'] = $path.$filename1;
+                    $conditionAttachment_1 = [
+                        'id' => $attachment[0]->id
+                    ];
+                    $paramsAttachment_1['values'] = $path.$filename1;
+                    $this->M_CRUD->updateData('trans_signed_pi_attachment', $paramsAttachment_1, $conditionAttachment_1);
                 }
 
                 if ( isset($_FILES['attachment2']) && $_FILES['attachment2']['name'] != '' ) {
@@ -239,13 +239,13 @@
                     $timestamp = mt_rand(1, time());
                     $randomDate = date("d M Y", $timestamp);
                     $filename2 = 'Export-Terms-'.md5($randomDate).'.'.$end;
-
-                    if ( !file_exists($path) ) {
-                        mkdir($path, 0777, true);
-                    }
-
                     move_uploaded_file($_FILES['attachment2']['tmp_name'], $path.$filename2);
                     $params['file_2'] = $path.$filename2;
+                    $conditionAttachment_2 = [
+                        'id' => $attachment[1]->id
+                    ];
+                    $paramsAttachment_2['values'] = $path.$filename2;
+                    $this->M_CRUD->updateData('trans_signed_pi_attachment', $paramsAttachment_2, $conditionAttachment_2);
                 }
 
                 if($this->M_CRUD->updateData('trans_export_terms', $params, $condition)) {

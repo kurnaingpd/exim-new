@@ -33,11 +33,17 @@ $('select#status').on('change', function() {
 
     if(data[0].id == 6 || data[0].id == 7) {
         $("div#required").addClass("required");
+        $('input#attachment1').prop('disabled', false);
+        $('input#attachment2').prop('disabled', false);
         $('textarea#remark').prop('readonly', false);
+        $('input#attachment1').prop('required', true);
         $('textarea#remark').prop('required', true);
     } else {
         $("div#required").removeClass("required");
+        $('input#attachment1').prop('disabled', true);
+        $('input#attachment2').prop('disabled', true);
         $('textarea#remark').prop('readonly', true);
+        $('input#attachment1').prop('required', false);
         $('textarea#remark').prop('required', false);
     }
 });
@@ -56,10 +62,10 @@ function save()
         cache : false,
         contentType: false,
         processData: false,
-        beforeSend: function(){
-            $('a.cancel').prop('disabled', true);
-            $('button#btn-process').html("<img src=" + base_url + "assets/images/inventory/loader.gif style='height:20px;'  /> Saving...").prop('disabled', true);
-        },
+        // beforeSend: function(){
+        //     $('a.cancel').prop('disabled', true);
+        //     $('button#btn-process').html("<img src=" + base_url + "assets/images/inventory/loader.gif style='height:20px;'  /> Saving...").prop('disabled', true);
+        // },
         success: function(response) {
             console.log(response);
             if(response.status == 1) {
@@ -76,7 +82,7 @@ function save()
             console.log("Terjadi kesalahan pada sistem");
             swal("", "Terjadi kesalahan pada sistem.", "error");
             $('a.cancel').prop('disabled', true);
-            $('button#btn-customer-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', true);
+            $('button#btn-customer-save').html("<i class='fas fa-save mr-2'></i>Save").prop('disabled', false);
         }     
     });
 }
