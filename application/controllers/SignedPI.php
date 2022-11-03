@@ -244,7 +244,7 @@
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Signed PI'];
             $datas['header'] = 'Attachment list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('trans_signed_pi_attachment', ['pi_id' => $pi_id])
+                'list' => $this->M_CRUD->readData('trans_signed_pi_attachment', ['pi_id' => $pi_id, 'pi_item_id' => $item_id])
             ];
 
             $this->template->load('default', 'contents' , 'export/signedpi/attachment', $datas);
