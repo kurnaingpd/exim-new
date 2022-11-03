@@ -27,7 +27,7 @@
     <div class="col-md-1">
         <div class="form-group required">
             <label for="hs_code" class="control-label">HS code</label>
-            <input type="text" name="hs_code" class="form-control upper item" id="hs_code" placeholder="Enter hs code" disabled style="background-color:#ffffff;">
+            <input type="text" name="hs_code" class="form-control upper item" id="hs_code" placeholder="Enter hs code">
         </div>
     </div>
 
