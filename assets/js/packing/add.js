@@ -75,6 +75,7 @@ $(function () {
     
                 $('.item').val('');
                 $(".item").val('').trigger('change');
+                $('#category').html("");
             }
 
             $('button.btn-remove').off('click').on('click',function(){
@@ -111,6 +112,7 @@ $(function () {
 });
 
 $('select#invoice').on('change', function() {
+    $('#category').html("");
     $('#product').html("");
     var data = $('select#invoice').select2('data');
     get_data(data[0].id);
@@ -121,21 +123,38 @@ $('select#invoice').on('change', function() {
 $('select#category').on('change', function() {
     $('#product').html("");
     $('#qty').val("");
+    $('#batch').html("");
     var invoice = $('select#invoice').select2('data');
     var category = $('select#category').select2('data');
-    get_item(invoice[0].id, category[0].id);
+    
+
+    if(category.length == 1) {
+        get_item(invoice[0].id, category[0].id);
+    } else {
+        get_item(invoice[0].id);
+    }
 });
 
 $('select#product').on('change', function() {
     $('#qty').val("");
+    $('#batch').html("");
     var data = $('select#product').select2('data');
-    get_data_item(data[0].id);
-    get_batch(data[0].id);
+    if(data.length == 1) {
+        get_data_item(data[0].id);
+        get_batch(data[0].id);
+    } else {
+        get_data_item();
+        get_batch();
+    }
 });
 
 $('select#batch').on('change', function() {
     var data = $('select#batch').select2('data');
-    get_date(data[0].id);
+    if(data.length == 1) {
+        get_date(data[0].id);
+    } else {
+        get_date();
+    }
 });
 
 function get_data(id)
@@ -217,7 +236,7 @@ function get_category(id)
     });
 }
 
-function get_item(invoice, category)
+function get_item(invoice, category = '')
 {
     $.ajax({
         url: site_url + "export/packing/item/" + category +"/"+ invoice,
@@ -260,7 +279,7 @@ function get_item_qty(id)
     });
 }
 
-function get_data_item(id)
+function get_data_item(id = '')
 {
     $.ajax({
         type  : 'ajax',
@@ -289,7 +308,7 @@ function get_data_item(id)
     });
 }
 
-function get_batch(id)
+function get_batch(id = '')
 {
     $.ajax({
         url: site_url + "export/packing/batch/" + id,
@@ -315,7 +334,7 @@ function get_batch(id)
     });
 }
 
-function get_date(id)
+function get_date(id = '')
 {
     $.ajax({
         type  : 'ajax',
