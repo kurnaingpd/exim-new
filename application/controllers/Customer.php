@@ -79,7 +79,7 @@
         {
             $post = $this->input->post();
             $country = $this->M_CRUD->readDatabyID('master_country', ['is_deleted' => '0', 'id' => $post['con_country']]);
-            $autonumber = $this->M_CRUD->autoNumber('master_customer', 'code', '8801', $country->code, 4);
+            $autonumber = $this->M_CRUD->autoNumberCustomer('master_customer', 'code', '8801', $country->code, 4);
 
             if($post) {
                 $paramConsignee = [

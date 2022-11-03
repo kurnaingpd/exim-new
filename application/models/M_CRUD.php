@@ -165,6 +165,23 @@
 			return $code;
 		}
 
+		public function autoNumberCustomer($table, $column, $prefix, $country, $run_number) {
+			$this->db->from($table);
+			$this->db->order_by($column, 'DESC');
+			$query = $this -> db -> get();
+			$record = $query -> row();
+
+			if(!$record) {
+				$code = 1;
+			} else {
+				$code = intval(substr($record->code, -4)) + 1;
+			}
+
+			$code = $prefix.$country.str_pad($code, $run_number, 0, STR_PAD_LEFT);
+
+			return $code;
+		}
+
 		public function autoNumberExpTerms($table, $column, $prefix, $run_number) {
 			$this->db->from($table);
 			$this->db->order_by($column, 'DESC');
