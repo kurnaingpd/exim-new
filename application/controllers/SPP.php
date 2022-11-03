@@ -103,7 +103,7 @@
                     foreach($Grid as $detail) {
                         $params = [
                             'spp_id' => $header,
-                            'packing_list_detail_id_local' => $detail['l_trade'],
+                            'item_id' => $detail['l_trade'],
                             'type_local' => $detail['l_type'],
                             'md_no_local' => $detail['l_md_no'],
                             'name_export' => $detail['e_trade'],

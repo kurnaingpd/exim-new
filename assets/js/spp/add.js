@@ -97,7 +97,7 @@ function items(id)
             var i;
             for(i=0; i<response.length; i++) {
                 html += '<option></option>';
-                html += '<option value="'+response[i].id+'">'+response[i].item+'</option>';
+                html += '<option value="'+response[i].item_id+'">'+response[i].item+'</option>';
             }
             $('#l_trade').html(html);
         },
