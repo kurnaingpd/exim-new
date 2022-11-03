@@ -125,7 +125,6 @@ $('select#category').on('change', function() {
     $('#batch').html("");
     var invoice = $('select#invoice').select2('data');
     var category = $('select#category').select2('data');
-    
 
     if(category.length == 1) {
         get_item(invoice[0].id, category[0].id);
@@ -138,6 +137,7 @@ $('select#product').on('change', function() {
     $('#qty').val("");
     $('#batch').html("");
     var data = $('select#product').select2('data');
+    
     if(data.length == 1) {
         get_data_item(data[0].id);
         get_batch(data[0].id);
