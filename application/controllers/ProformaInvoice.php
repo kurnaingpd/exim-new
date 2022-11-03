@@ -462,6 +462,7 @@
                             'pi_id' => $detail['pi_id'],
                             'pi_item_category_id' => $detail['item_category'],
                             'item_id' => $detail['product'],
+                            'hs_code' => $detail['hs_code'],
                             'qty' => $detail['qty'],
                             'price' => $detail['price'],
                             'cbm_item' => $detail['cbm'],
