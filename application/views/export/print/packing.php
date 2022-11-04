@@ -63,7 +63,7 @@
                     <div id="row">
                         <div class="box-name">NO. CONTAINER/ SEAL</div>
                         <div class="box-colon">:</div>
-                        <div class="box-value"><?=$params['header']->country_origin?></div>
+                        <div class="box-value"><?=$params['header']->number_of_container?></div>
                     </div>
                 </div>
 
