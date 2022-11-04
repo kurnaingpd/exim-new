@@ -9,7 +9,7 @@
     <div class="col-md-4">
         <div class="form-group required">
             <label for="cp_phone" class="control-label">Phone number</label>
-            <input type="text" name="cp_phone" class="form-control" id="cp_phone" placeholder="Enter phone number" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9+]/g, '').replace(/(\..*?)\..*/g, '$1');">
+            <input type="text" name="cp_phone" class="form-control" id="cp_phone" placeholder="Enter phone number" autocomplete="off" required>
         </div>
     </div>
 

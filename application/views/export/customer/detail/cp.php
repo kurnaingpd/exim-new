@@ -37,7 +37,7 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="cp_dp" class="control-label">DP (in %)</label>
-            <input type="text" name="cp_dp" class="form-control" id="cp_dp" placeholder="Enter DP" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');" value="<?=$params['cust_cp']->dp?>">
+            <input type="text" name="cp_dp" class="form-control" id="cp_dp" placeholder="Enter DP" autocomplete="off" required value="<?=$params['cust_cp']->dp?>">
         </div>
     </div>
 

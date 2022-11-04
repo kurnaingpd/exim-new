@@ -35,7 +35,7 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="con_phone" class="control-label">Phone number</label>
-            <input type="text" name="con_phone" class="form-control" id="con_phone" placeholder="Enter phone number" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9+]/g, '').replace(/(\..*?)\..*/g, '$1');">
+            <input type="text" name="con_phone" class="form-control" id="con_phone" placeholder="Enter phone number" autocomplete="off" required>
         </div>
     </div>
 
