@@ -59,6 +59,12 @@
                         <div class="box-colon">:</div>
                         <div class="box-value"><?=$params['header']->country_origin?></div>
                     </div>
+
+                    <div id="row">
+                        <div class="box-name">NO. CONTAINER/ SEAL</div>
+                        <div class="box-colon">:</div>
+                        <div class="box-value"><?=$params['header']->country_origin?></div>
+                    </div>
                 </div>
 
                 <div id="detail" class="content" style="margin-top: 1%;">
