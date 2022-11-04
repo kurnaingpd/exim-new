@@ -216,7 +216,7 @@
             $this->load->library('email');
             $this->email->set_newline("\r\n");
             $this->email->set_crlf("\r\n");
-            $this->email->from('no-reply7@gonusa-distribusi.com');
+            $this->email->from('no-reply4@gonusa-distribusi.com');
             $this->email->to($implode);
             $this->email->subject($subject);
             $this->email->message($content);
