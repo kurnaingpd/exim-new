@@ -25,3 +25,29 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group required">
+            <label for="product" class="control-label">Product name</label>
+            <select name="product" class="form-control select2bs4 grid packing" id="product">
+                <option></option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="form-group required">
+            <label for="batch" class="control-label">Batch</label>
+            <select name="batch" class="form-control select2bs4 grid packing" id="batch">
+                <option></option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <input type="button" class="btn btn-block btn-success" id="btn-item" value="Add detail(s)">
+    </div>
+</div>

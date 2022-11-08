@@ -15,15 +15,6 @@
 
             <div class="card">
                 <div class="card-header">
-                    <i class="fas fa-list-alt mr-2"></i>Datas
-                </div>
-                <div class="card-body">
-                    <?php $this->load->view('export/prodspec/add/datas'); ?>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
                     <i class="fas fa-list-alt mr-2"></i>Detail(s)
                 </div>
                 <div class="card-body">

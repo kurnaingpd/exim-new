@@ -3,7 +3,7 @@
         <tr class="text-center">
             <th>Product name</th>
             <th>Batch</th>
-            <th>Description</th>
+            <!-- <th>Description</th>
             <th>Form</th>
             <th>Texture</th>
             <th>Colour</th>
@@ -19,7 +19,7 @@
             <th>Function of the food material</th>
             <th>Usage</th>
             <th>Source Of Allergen</th>
-            <th>Country of origin</th>
+            <th>Country of origin</th> -->
             <th><i class="fas fa-ellipsis-h"></i></th>
         </tr>
     </thead>

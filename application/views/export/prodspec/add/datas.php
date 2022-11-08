@@ -17,15 +17,15 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
         <div class="form-group required">
             <label for="desc" class="control-label">Description</label>
             <textarea class="form-control grid" id="desc" name="desc" rows="4" autocomplete="off" placeholder="Enter description" ></textarea>
         </div>
-    </div>
+    </div> -->
 </div>
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-3">
         <div class="form-group required">
             <label for="form" class="control-label">Form</label>
@@ -145,7 +145,7 @@
             <input type="text" class="form-control grid" id="country" name="country" autocomplete="off" placeholder="Enter country of origin" >
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="row">
     <div class="col-md-12">

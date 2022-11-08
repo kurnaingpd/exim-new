@@ -160,27 +160,54 @@
             ];
             
             if($this->M_CRUD->updateData('master_item', $param, $condition)) {
-                $paramSpec = [
-                    'description' => $post['spec_desc'],
-                    'form' => $post['form'],
-                    'texture' => $post['texture'],
-                    'colour' => $post['colour'],
-                    'taste' => $post['taste'],
-                    'odour' => $post['odour'],
-                    'fat' => $post['fat'],
-                    'moisture' => $post['moisture'],
-                    'caffeine' => $post['caffeine'],
-                    'ingredients' => $post['ingredients'],
-                    'product_shelf' => $post['product_shelf'],
-                    'packaging' => $post['packaging'],
-                    'storage' => $post['storage'],
-                    'functions' => $post['functions'],
-                    'usage' => $post['usage'],
-                    'source' => $post['source'],
-                    'country' => $post['country'],
-                    'created_by' => $this->session->userdata('logged_in')->id,
-                ];
-                $this->M_CRUD->updateData('master_item_spec', $paramSpec, ['item_id' => $post['id']]);
+                $item_spec = $this->M_CRUD->readDatabyID('master_item_spec', ['item_id' => $post['id']]);
+
+                if($item_spec) {
+                    $paramSpec = [
+                        'description' => $post['spec_desc'],
+                        'form' => $post['form'],
+                        'texture' => $post['texture'],
+                        'colour' => $post['colour'],
+                        'taste' => $post['taste'],
+                        'odour' => $post['odour'],
+                        'fat' => $post['fat'],
+                        'moisture' => $post['moisture'],
+                        'caffeine' => $post['caffeine'],
+                        'ingredients' => $post['ingredients'],
+                        'product_shelf' => $post['product_shelf'],
+                        'packaging' => $post['packaging'],
+                        'storage' => $post['storage'],
+                        'functions' => $post['functions'],
+                        'usage' => $post['usage'],
+                        'source' => $post['source'],
+                        'country' => $post['country'],
+                    ];
+                    $this->M_CRUD->updateData('master_item_spec', $paramSpec, ['item_id' => $post['id']]);
+                } else {
+                    $paramSpec = [
+                        'item_id' => $post['id'],
+                        'description' => $post['desc'],
+                        'form' => $post['form'],
+                        'texture' => $post['texture'],
+                        'colour' => $post['colour'],
+                        'taste' => $post['taste'],
+                        'odour' => $post['odour'],
+                        'fat' => $post['fat'],
+                        'moisture' => $post['moisture'],
+                        'caffeine' => $post['caffeine'],
+                        'ingredients' => $post['ingredients'],
+                        'product_shelf' => $post['product_shelf'],
+                        'packaging' => $post['packaging'],
+                        'storage' => $post['storage'],
+                        'functions' => $post['functions'],
+                        'usage' => $post['usage'],
+                        'source' => $post['source'],
+                        'country' => $post['country'],
+                        'created_by' => $this->session->userdata('logged_in')->id,
+                    ];
+                    $this->M_CRUD->insertData('master_item_spec', $paramSpec);
+                }
+                
                 $response = ['status' => 1, 'messages' => 'Item has been updated successfully.', 'icon' => 'success', 'url' => 'export/item'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Item has failed to update.', 'icon' => 'error'];
