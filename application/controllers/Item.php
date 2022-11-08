@@ -30,7 +30,7 @@
             $datas['breadcrumb'] = ['Export', 'Master', 'Item'];
             $datas['header'] = 'Item list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('view_item', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD->readData('view_item')
             ];
 
             $this->template->load('default', 'contents' , 'export/item/list', $datas);
@@ -70,7 +70,7 @@
             } else {
                 $param = [
                     'code' => $post['code'],
-                    'hs_code' => $post['hscode'],
+                    'hs_code' => 'NULL',
                     'item_category_id' => $post['category'],
                     'item_category_id' => $post['category'],
                     'name' => $post['name'],
@@ -81,8 +81,31 @@
                     'width' => $post['width'],
                     'height' => $post['height'],
                 ];
+                $insert_id = $this->M_CRUD->insertData('master_item', $param);
 
-                if($this->M_CRUD->insertData('master_item', $param)) {
+                if($insert_id) {
+                    $paramSpec = [
+                        'item_id' => $insert_id,
+                        'description' => $post['desc'],
+                        'form' => $post['form'],
+                        'texture' => $post['texture'],
+                        'colour' => $post['colour'],
+                        'taste' => $post['taste'],
+                        'odour' => $post['odour'],
+                        'fat' => $post['fat'],
+                        'moisture' => $post['moisture'],
+                        'caffeine' => $post['caffeine'],
+                        'ingredients' => $post['ingredients'],
+                        'product_shelf' => $post['product_shelf'],
+                        'packaging' => $post['packaging'],
+                        'storage' => $post['storage'],
+                        'functions' => $post['functions'],
+                        'usage' => $post['usage'],
+                        'source' => $post['source'],
+                        'country' => $post['country'],
+                        'created_by' => $this->session->userdata('logged_in')->id,
+                    ];
+                    $this->M_CRUD->insertData('master_item_spec', $paramSpec);
                     $response = ['status' => 1, 'messages' => 'Item has been saved successfully.', 'icon' => 'success', 'url' => 'export/item'];
                 } else {
                     $response = ['status' => 0, 'messages' => 'Item has failed to save.', 'icon' => 'error'];
@@ -110,8 +133,9 @@
             $datas['breadcrumb'] = ['Export', 'Master', 'Item'];
             $datas['header'] = 'Detail record';
             $datas['params'] = [
-                'detail' => $this->M_CRUD->readDatabyID('master_item', ['is_deleted' => '0', 'id' => $id]),
-                'category' => $this->M_CRUD->readData('master_item_category', ['is_deleted' => '0'])
+                'detail' => $this->M_CRUD->readDatabyID('master_item', ['id' => $id]),
+                'category' => $this->M_CRUD->readData('master_item_category', ['is_deleted' => '0']),
+                'spec' => $this->M_CRUD->readDatabyID('master_item_spec', ['item_id' => $id]),
             ];
             
             $this->template->load('default', 'contents' , 'export/item/detail', $datas);
@@ -122,7 +146,7 @@
             $post = $this->input->post();
             $condition = ['id' => $post['id']];
             $param = [
-                'hs_code' => $post['hscode'],
+                'hs_code' => 'NULL',
                 'item_category_id' => $post['category'],
                 'item_category_id' => $post['category'],
                 'name' => $post['name'],
@@ -136,6 +160,27 @@
             ];
             
             if($this->M_CRUD->updateData('master_item', $param, $condition)) {
+                $paramSpec = [
+                    'description' => $post['spec_desc'],
+                    'form' => $post['form'],
+                    'texture' => $post['texture'],
+                    'colour' => $post['colour'],
+                    'taste' => $post['taste'],
+                    'odour' => $post['odour'],
+                    'fat' => $post['fat'],
+                    'moisture' => $post['moisture'],
+                    'caffeine' => $post['caffeine'],
+                    'ingredients' => $post['ingredients'],
+                    'product_shelf' => $post['product_shelf'],
+                    'packaging' => $post['packaging'],
+                    'storage' => $post['storage'],
+                    'functions' => $post['functions'],
+                    'usage' => $post['usage'],
+                    'source' => $post['source'],
+                    'country' => $post['country'],
+                    'created_by' => $this->session->userdata('logged_in')->id,
+                ];
+                $this->M_CRUD->updateData('master_item_spec', $paramSpec, ['item_id' => $post['id']]);
                 $response = ['status' => 1, 'messages' => 'Item has been updated successfully.', 'icon' => 'success', 'url' => 'export/item'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Item has failed to update.', 'icon' => 'error'];
