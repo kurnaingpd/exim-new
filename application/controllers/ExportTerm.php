@@ -214,6 +214,15 @@
                 'updated_at' => date('Y-m-d H:i:s'),
                 'updated_by' => $this->session->userdata('logged_in')->id,
             ];
+            $conditionSignedPI = [
+                'pi_id' => $post['pi_id'],
+                'pi_item_id' => 19,
+            ];
+            $paramsSignePI = [
+                'dates' => date('Y-m-d'),
+                'updated_by' => $this->session->userdata('logged_in')->id,
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
 
             if($_FILES) {
                 if ( isset($_FILES['attachment1']) && $_FILES['attachment1']['name'] != '' ) {
@@ -255,14 +264,32 @@
                         'remark' => ($post['remark']?$post['remark']:NULL),
                         'created_by' => $this->session->userdata('logged_in')->id,
                     ];
-    
-                    $this->M_CRUD->insertData('trans_export_terms_history', $paramHistory);
+
+                    if($this->M_CRUD->insertData('trans_export_terms_history', $paramHistory)) {
+                        if($post['status'] == 5) {
+                            $this->M_CRUD->updateData('trans_signed_pi', $paramsSignePI, $conditionSignedPI);
+                        }
+                    }
+
                     $response = ['status' => 1, 'messages' => 'Export terms has been updated successfully.', 'icon' => 'success', 'url' => 'export/expterm'];
                 } else {
                     $response = ['status' => 0, 'messages' => 'Export terms has failed to update.', 'icon' => 'error'];
                 }
             } else {
                 if($this->M_CRUD->updateData('trans_export_terms', $params, $condition)) {
+                    $paramHistory = [
+                        'export_terms_id' => $post['expterm_id'],
+                        'status_id' => $post['status'],
+                        'remark' => ($post['remark']?$post['remark']:NULL),
+                        'created_by' => $this->session->userdata('logged_in')->id,
+                    ];
+
+                    if($this->M_CRUD->insertData('trans_export_terms_history', $paramHistory)) {
+                        if($post['status'] == 5) {
+                            $this->M_CRUD->updateData('trans_signed_pi', $paramsSignePI, $conditionSignedPI);
+                        }
+                    }
+                    
                     $response = ['status' => 1, 'messages' => 'Export terms has been updated successfully.', 'icon' => 'success', 'url' => 'export/expterm'];
                 } else {
                     $response = ['status' => 0, 'messages' => 'Export terms has failed to update.', 'icon' => 'error'];
