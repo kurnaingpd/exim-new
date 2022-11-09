@@ -12,10 +12,8 @@
                     <th>Customer</th>
                     <th>Country</th>
                     <th>PIC</th>
+                    <th>Last updated</th>
                     <th>Remarks</th>
-                    <th>Status</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
                     <th><i class="fas fa-ellipsis-h"></i></th>
                 </tr>
             </thead>
@@ -28,12 +26,8 @@
                         <td><?=$rows->customer?></td>
                         <td><?=$rows->country_name?></td>
                         <td><?=$rows->pic?></td>
-                        <td><?=$rows->remarks?></td>
-                        <td class="text-center">
-                            <span class="badge bg-<?=$rows->bg_color?>"><?=$rows->status_name?></span>
-                        </td>
-                        <td class="text-center"><?=$rows->created_at?></td>
-                        <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
+                        <td><?=$rows->last_updated?></td>
+                        <td <?=($rows->remarks=='-'?'class="text-center"':'')?>><?=$rows->remarks?></td>
                         <td class="text-center">
                             <?php if($rows->pi_status_id == 8 && $this->session->userdata('logged_in')->role_id == 3) : ?>
                                 <a href="<?=site_url('export/proforma/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
