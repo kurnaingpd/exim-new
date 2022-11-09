@@ -14,10 +14,8 @@
                     <th>Country</th>
                     <th>File 1</th>
                     <th>File 2</th>
+                    <th>Last updated</th>
                     <th>Remarks</th>
-                    <th>Status</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
                     <th><i class="fas fa-ellipsis-h"></i></th>
                 </tr>
             </thead>
@@ -45,12 +43,8 @@
                                 </a>
                             <?php endif; ?>
                         </td>
+                        <td><?=$rows->last_updated?></td>
                         <td><?=$rows->remarks?></td>
-                        <td class="text-center">
-                            <span class="badge bg-<?=$rows->bg_color?>"><?=$rows->pi_status_name?></span>
-                        </td>
-                        <td class="text-center"><?=$rows->created_at?></td>
-                        <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center">
                             <a href="<?=site_url('export/expterm/detail/'.$rows->pi_id)?>" class="btn btn-sm btn-info">
                                 <i class="fas fa-file-alt"></i>
