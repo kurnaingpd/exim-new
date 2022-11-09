@@ -1,6 +1,13 @@
 <div class="row">
     <div class="col-md-2">
         <div class="form-group required">
+            <label for="container_no" class="control-label">Number of container</label>
+            <input type="text" name="container_no" class="form-control upper container" id="container_no" placeholder="Enter number of container">
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="form-group required">
             <label for="item_category" class="control-label">Item category</label>
             <select name="item_category" class="form-control select2bs4 item" id="item_category">
                 <option></option>
@@ -28,13 +35,6 @@
         <div class="form-group required">
             <label for="hs_code" class="control-label">HS code</label>
             <input type="text" name="hs_code" class="form-control upper item" id="hs_code" placeholder="Enter hs code">
-        </div>
-    </div>
-
-    <div class="col-md-2">
-        <div class="form-group required">
-            <label for="config" class="control-label">Configuration</label>
-            <input type="text" name="config" class="form-control upper item" id="config" placeholder="Enter configuration" disabled style="background-color:#ffffff;">
         </div>
     </div>
 
