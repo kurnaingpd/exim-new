@@ -27,12 +27,12 @@
         </div>
     </div>
 
-    <div class="col-md-2">
+    <!-- <div class="col-md-2">
         <div class="form-group required">
             <label for="container_no" class="control-label">Number of container</label>
             <input type="text" name="container_no" class="form-control upper" id="container_no" value="<?=$params['detail']->number_of_container?>" disabled>
         </div>
-    </div>
+    </div> -->
 
     <div class="col-md-2">
         <div class="form-group required">
@@ -40,16 +40,16 @@
             <input type="text" name="freight_company" class="form-control upper" id="freight_company" value="<?=$params['detail']->freight_company?>" disabled>
         </div>
     </div>
-</div>
 
-<div class="row">
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_company_cont" class="control-label">Freight company contact</label>
             <input type="text" name="freight_company_cont" class="form-control upper" id="freight_company_cont" value="<?=$params['detail']->freight_company_contact?>" disabled>
         </div>
     </div>
+</div>
 
+<div class="row">
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_company_no" class="control-label">Freight company number</label>
