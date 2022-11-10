@@ -568,6 +568,7 @@
                     foreach($Grid as $detail) {
                         $params = [
                             'pi_id' => $detail['pi_id'],
+                            'number_of_container' => $detail['container_no'],
                             'pi_item_category_id' => $detail['item_category'],
                             'item_id' => $detail['product'],
                             'hs_code' => $detail['hs_code'],

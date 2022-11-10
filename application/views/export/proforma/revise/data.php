@@ -44,27 +44,20 @@
 
     <div class="col-md-2">
         <div class="form-group required">
-            <label for="container_no" class="control-label">Number of container</label>
-            <input type="text" name="container_no" class="form-control upper" id="container_no" placeholder="Enter number of container" value="<?=$params['detail']->number_of_container?>" disabled>
-        </div>
-    </div>
-
-    <div class="col-md-2">
-        <div class="form-group required">
             <label for="freight_company" class="control-label">Freight company</label>
             <input type="text" name="freight_company" class="form-control upper" id="freight_company" placeholder="Enter freight company" value="<?=($chained['freight']?$chained['freight']->company:'-')?>" disabled>
         </div>
     </div>
-</div>
 
-<div class="row">
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_company_cont" class="control-label">Freight company contact</label>
             <input type="text" class="form-control upper" id="freight_company_cont" placeholder="Enter freight company contact" value="<?=($chained['freight']?$chained['freight']->contact:'-')?>" disabled>
         </div>
     </div>
+</div>
 
+<div class="row">
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_company_no" class="control-label">Freight company number</label>
