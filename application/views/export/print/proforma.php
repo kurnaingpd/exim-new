@@ -1,3 +1,24 @@
+<?php
+    $container = array();
+    $category = array();
+    $item = array();
+
+    foreach($params['container'] as $cont => $value_1)
+    {
+        $container[$value_1->number_of_container] = $value_1;
+    }
+
+    foreach($params['category'] as $cat => $value_2)
+    {
+        $category[$value_2->number_of_container][$value_2->item_category_id] = $value_2;
+    }
+
+    foreach($params['detail'] as $dtl => $value_3)
+    {
+        $item[$value_3->number_of_container][$value_3->pi_item_category_id][$value_3->id] = $value_3;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -78,23 +99,43 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($params['category'] as $group => $grp) : ?>
+                            <?php
+                                $totQty = 0;
+                                $totPrice = 0;
+                                $totGrand = 0;
+                            ?>
+                            <?php foreach($container as $nomor => $rows_1) : ?>
                                 <tr>
-                                    <td class="data"><b><?=$grp['item_category_name']?></b></td>
-                                    <td class="data"></td>
-                                    <td class="data"></td>
-                                    <td class="data"></td>
-                                    <td class="data"></td>
+                                    <td class="" style="border-style: solid;border-width: 1px;border-bottom-style: none;padding-top: 1%;"></td>
+                                    <td class="" style="border-style: solid;border-width: 1px;border-bottom-style: none;padding-top: 1%;"></td>
+                                    <td class="" style="border-style: solid;border-width: 1px;border-bottom-style: none;padding-top: 1%;"></td>
+                                    <td class="" style="border-style: solid;border-width: 1px;border-bottom-style: none;padding-top: 1%;"></td>
+                                    <td class="" style="border-style: solid;border-width: 1px;border-bottom-style: none;padding-top: 1%;"></td>
                                 </tr>
-
-                                <?php foreach($params['detail'][$group] as $detail => $dtl) : ?>
+                                <?php foreach($category[$nomor] as $cats => $rows_2) : ?>
                                     <tr>
-                                        <td class="data"><?=$dtl['item_name']?></td>
-                                        <td class="data"><?=$dtl['pack_desc']?></td>
-                                        <td class="data" align="right"><?=number_format($dtl['qty'])?></td>
-                                        <td class="data" align="right"><?=$params['header']->currency_icon.' '.number_format($dtl['price'], 2)?></td>
-                                        <td class="data" align="right"><?=$params['header']->currency_icon.' '.number_format($dtl['total'], 2)?></td>
+                                        <td class="data"><b><?=$rows_2->item_category_name?></b></td>
+                                        <td class="data"></td>
+                                        <td class="data"></td>
+                                        <td class="data"></td>
+                                        <td class="data"></td>
                                     </tr>
+
+                                    <?php foreach($item[$nomor][$cats] as $detail => $rows_3) : ?>
+                                        <?php $grand = ($rows_3->qty * $rows_3->price); ?>
+                                        <tr>
+                                            <td class="data"><?=$rows_3->item_name?></td>
+                                            <td class="data"><?=$rows_3->pack_desc?></td>
+                                            <td class="data" align="right"><?=number_format($rows_3->qty)?></td>
+                                            <td class="data" align="right"><?=$params['header']->currency_icon.' '.number_format($rows_3->price, 2)?></td>
+                                            <td class="data" align="right"><?=$params['header']->currency_icon.' '.number_format($rows_3->total, 2)?></td>
+                                        </tr>
+                                        <?php
+                                            $totQty += $rows_3->qty;
+                                            $totPrice += $rows_3->price;
+                                            $totGrand += $grand;
+                                        ?>
+                                    <?php endforeach; ?>
                                 <?php endforeach; ?>
                             <?php endforeach; ?>
                         </tbody>
@@ -102,9 +143,9 @@
                             <tr>
                                 <td class="foot">GRAND TOTAL <?=$params['header']->incoterm.' '.$params['header']->destination?></td>
                                 <td class="foot"></td>
-                                <td class="foot" align="right"><?=number_format($params['footer']->tot_qty)?></td>
-                                <td class="foot" align="right"><?=$params['header']->currency_icon.' '.number_format($params['footer']->tot_price, 2)?></td>
-                                <td class="foot" align="right"><?=$params['header']->currency_icon.' '.number_format($params['footer']->grand_total, 2)?></td>
+                                <td class="foot" align="right"><?=number_format($totQty)?></td>
+                                <td class="foot" align="right"><?=$params['header']->currency_icon.' '.number_format($totPrice, 2)?></td>
+                                <td class="foot" align="right"><?=$params['header']->currency_icon.' '.number_format($totGrand, 2)?></td>
                             </tr>
                         </tfoot>
                     </table>

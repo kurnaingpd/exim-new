@@ -42,7 +42,7 @@
 th {
     border-style: solid;
     border-width: 1px;
-    padding: 1%;
+    padding: 0.8%;
 }
 
 .data {
@@ -50,7 +50,8 @@ th {
     border-width: 1px;
     border-top-style: none;
     border-bottom-style: none;
-    padding: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
 }
 
 .foot {
@@ -58,6 +59,6 @@ th {
     border-width: 1px;
     border-left-style: none;
     border-right-style: none;
-    padding: 1%;
+    padding: 0.8%;
     font-weight: bold;
 }

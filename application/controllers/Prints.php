@@ -19,9 +19,9 @@
             ];
             $datas['params'] = [
                 'header' => $this->M_CRUD->readDatabyID('view_print_trans_pi_header', ['is_deleted' => '0', 'id' => $id]),
-                'category' => $this->M_CRUD->pi_category('view_print_trans_pi_category', ['pi_id' => $id]),
-                'detail' => $this->M_CRUD->pi_item('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
-                'footer' => $this->M_CRUD->readDatabyID('view_print_trans_pi_footer', ['pi_id' => $id]),
+                'container' => $this->M_CRUD->readData('view_print_trans_pi_container', ['pi_id' => $id]),
+                'category' => $this->M_CRUD->readData('view_print_trans_pi_category', ['pi_id' => $id]),
+                'detail' => $this->M_CRUD->readData('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
                 'signature' => $this->M_CRUD->readDatabyID('view_print_trans_pi_signature', ['pi_id' => $id]),
             ];
 
