@@ -1,17 +1,12 @@
 <?php
-    $totIncoterm = 0;
-
-    foreach($params['item'][1] as $rows) :
-        $totIncoterm += $rows['total'];
-    endforeach;
-    
-    $total = ($totIncoterm + $params['detail']->freight_cost + $params['detail']->insurance);
+    $item = array();
+    $total = ($params['summary']->total + $params['detail']->freight_cost + $params['detail']->insurance);
 ?>
 <div class="row">
     <div class="col-md-3">
         <div class="form-group">
             <label for="remark" class="control-label"><?=$params['detail']->incoterm_name.' ('.$params['detail']->incoterm_code.')'?></label>
-            <input type="text" name="incoterm" class="form-control upper" id="incoterm" value="<?=number_format($totIncoterm, 2)?>" disabled>
+            <input type="text" name="incoterm" class="form-control upper" id="incoterm" value="<?=number_format($params['summary']->total, 2)?>" disabled>
         </div>
     </div>
 

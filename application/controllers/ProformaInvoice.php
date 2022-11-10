@@ -413,8 +413,12 @@
             $datas['header'] = 'Process';
             $datas['params'] = [
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_detail', ['is_deleted' => '0', 'id' => $id]),
-                'category' => $this->M_CRUD->pi_category('view_print_trans_pi_category', ['pi_id' => $id]),
-                'item' => $this->M_CRUD->pi_item('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
+                'container' => $this->M_CRUD->readData('view_print_trans_pi_container', ['pi_id' => $id]),
+                'category' => $this->M_CRUD->readData('view_print_trans_pi_category', ['pi_id' => $id]),
+                // 'category' => $this->M_CRUD->pi_category('view_print_trans_pi_category', ['pi_id' => $id]),
+                'item' => $this->M_CRUD->readData('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
+                'summary' => $this->M_CRUD->readDatabyID('view_trans_pi_detail_summary', ['pi_id' => $id]),
+                // 'item' => $this->M_CRUD->pi_item('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
                 'categories' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
                 'items' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0']),
                 'item_revise' => $this->M_CRUD->readData('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),

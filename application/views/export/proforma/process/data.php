@@ -84,16 +84,16 @@
             <input type="text" name="currency" class="form-control" id="currency" value="<?=$params['detail']->data_currency?>" disabled>
         </div>
     </div>
-</div>
 
-<div class="row">
     <div class="col-md-2">
         <div class="form-group required">
             <label for="ppn" class="control-label">PPN</label>
             <input type="text" name="ppn" class="form-control" id="ppn" value="<?=$params['detail']->data_ppn?>" disabled>
         </div>
     </div>
+</div>
 
+<div class="row">
     <div class="col-md-2">
         <div class="form-group required">
             <label for="top" class="control-label">Terms of payment</label>
