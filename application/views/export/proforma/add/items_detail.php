@@ -5,7 +5,6 @@
             <th>Item category</th>
             <th>Product</th>
             <th>HS code</th>
-            <!-- <th>Configuration</th> -->
             <th>Qty</th>
             <th>Price</th>
             <th><i class="fas fa-ellipsis-h"></i></th>
