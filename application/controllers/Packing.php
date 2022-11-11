@@ -65,9 +65,6 @@
             $datas['params'] = [
                 'autonumber' => $this->M_CRUD->autoNumberPacking('trans_packing_list', 'code', '/SKP-EXT/PL/'.date('m/Y'), 4),
                 'invoice' => $this->M_CRUD->readData('view_trans_pi_packing'),
-                // 'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
-                // 'loading' => $this->M_CRUD->readData('master_loading_port', ['is_deleted' => '0']),
-                // 'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
             ];
 
             $this->template->load('default', 'contents' , 'export/packing/add/index', $datas);
@@ -75,19 +72,25 @@
 
         public function data($id = NULl)
         {
-            $data = $this->M_CRUD->readDatabyID('view_trans_packing_get', ['is_deleted' => '0', 'id' => $id]);
+            $data = $this->M_CRUD->readDatabyID('view_trans_packing_data', ['is_deleted' => '0', 'id' => $id]);
             echo json_encode($data);
         }
 
-        public function category($id = NULl)
+        public function container($id = NULl)
         {
-            $data = $this->M_CRUD->readData('view_trans_packing_item_category', ['invoice_id' => $id]);
+            $data = $this->M_CRUD->readData('view_trans_packing_container', ['invoice_id' => $id]);
             echo json_encode($data);
         }
 
-        public function item($category = NULL, $invoice = NULL)
+        public function category($id = NULl, $container = NULL)
         {
-            $data = $this->M_CRUD->readData('view_trans_packing_item', ['id' => $invoice, 'pi_item_category_id' => $category]);
+            $data = $this->M_CRUD->readData('view_trans_packing_item_category', ['invoice_id' => $id, 'number_of_container' => urldecode($container)]);
+            echo json_encode($data);
+        }
+
+        public function item($invoice = NULL, $container = NULL, $category = NULL)
+        {
+            $data = $this->M_CRUD->readData('view_trans_packing_item', ['id' => $invoice, 'number_of_container' => urldecode($container), 'pi_item_category_id' => $category]);
             echo json_encode($data);
         }
 

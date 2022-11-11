@@ -1,6 +1,15 @@
 <div class="row">
     <div class="col-md-2">
         <div class="form-group required">
+            <label for="container_no" class="control-label">Number of container</label>
+            <select name="container_no" class="form-control select2bs4 item" id="container_no">
+                <option></option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="form-group required">
             <label for="category" class="control-label">Item category</label>
             <select name="category" class="form-control select2bs4 item" id="category">
                 <option></option>
@@ -25,20 +34,6 @@
 
     <div class="col-md-1">
         <div class="form-group required">
-            <label for="qty" class="control-label">Qty</label>
-            <input type="text" name="qty" class="form-control item" id="qty" placeholder="Enter qty" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-        </div>
-    </div>
-
-    <div class="col-md-2">
-        <div class="form-group required">
-            <label for="carton" class="control-label">Carton barcode</label>
-            <input type="text" name="carton" class="form-control item" id="carton" placeholder="Enter carton barcode">
-        </div>
-    </div>
-
-    <div class="col-md-2">
-        <div class="form-group required">
             <label for="batch" class="control-label">Batch</label>
             <select name="batch" class="form-control select2bs4 item" id="batch">
                 <option></option>
@@ -48,25 +43,29 @@
 
     <div class="col-md-1">
         <div class="form-group required">
+            <label for="qty" class="control-label">Qty</label>
+            <input type="text" name="qty" class="form-control item" id="qty" placeholder="Enter qty" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+        </div>
+    </div>
+
+    <div class="col-md-1">
+        <div class="form-group required">
+            <label for="carton" class="control-label">Ctn. barcode</label>
+            <input type="text" name="carton" class="form-control item" id="carton" placeholder="Enter carton barcode">
+        </div>
+    </div>
+
+    <div class="col-md-1">
+        <div class="form-group required">
             <label for="proddate" class="control-label">Prod. date</label>
-            <!-- <div class="input-group date" id="prod_date" data-target-input="nearest"> -->
-                <input type="text" class="form-control cursor-context item" autocomplete="off" id="proddate" name="proddate" placeholder="Enter production date" disabled>
-                <!-- <div class="input-group-append" data-target="#prod_date" data-toggle="datetimepicker">
-                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                </div>
-            </div> -->
+            <input type="text" class="form-control cursor-context item" autocomplete="off" id="proddate" name="proddate" placeholder="Enter production date" disabled>
         </div>
     </div>
 
     <div class="col-md-1">
         <div class="form-group required">
             <label for="expdate" class="control-label">Exp. date</label>
-            <!-- <div class="input-group date" id="prod_date" data-target-input="nearest"> -->
-                <input type="text" class="form-control cursor-context item" autocomplete="off" id="expdate" name="expdate" placeholder="Enter expired date" disabled>
-                <!-- <div class="input-group-append" data-target="#prod_date" data-toggle="datetimepicker">
-                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                </div>
-            </div> -->
+            <input type="text" class="form-control cursor-context item" autocomplete="off" id="expdate" name="expdate" placeholder="Enter expired date" disabled>
         </div>
     </div>
 </div>

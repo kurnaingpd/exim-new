@@ -39,33 +39,36 @@ $(function () {
                 $('tbody#show-data').append(
                     '<tr data-id="'+rnd+'">'+
                         '<td style="width: 10%">'+
-                            '<input type="text" class="form-control" id="grid_carton_'+rnd+'" name="grid_carton_'+rnd+'" value="'+$('input.item[name="carton"]').val()+'" style="background-color:#ffffff;" readonly />'+
+                            '<input type="text" class="form-control" value="'+$('select.item[name="container_no"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
                         '</td>'+
-                        '<td style="width: 28%">'+
+                        '<td style="width: 24%">'+
                             '<input type="hidden" id="grid_pi_detail_id_'+rnd+'" name="grid_pi_detail_id_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
-                            '<input type="text" class="form-control" value="'+$('select.item[name="product"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
-                        '</td>'+
-                        '<td>'+
-                            '<input type="text" class="form-control qty" id="grid_qty_'+rnd+'" name="grid_qty_'+rnd+'" value="'+$('input.item[name="qty"]').val()+'" style="background-color:#ffffff;" readonly />'+
+                            '<input type="text" class="form-control" value="'+$('select.item[name="product"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
                         '</td>'+
                         '<td>'+
                             '<input type="hidden" id="grid_batch_'+rnd+'" name="grid_batch_'+rnd+'" value="'+$('select.item[name="batch"]').val()+'" />'+
-                            '<input type="text" class="form-control" value="'+$('select.item[name="batch"] option:selected').text()+'" style="background-color:#ffffff;" readonly required />'+
+                            '<input type="text" class="form-control" value="'+$('select.item[name="batch"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
                         '</td>'+
                         '<td>'+
-                            '<input type="text" class="form-control" id="grid_proddate_'+rnd+'" name="grid_proddate_'+rnd+'" value="'+$('input.item[name="proddate"]').val()+'" style="background-color:#ffffff;" readonly />'+
+                            '<input type="text" class="form-control qty" id="grid_qty_'+rnd+'" name="grid_qty_'+rnd+'" value="'+$('input.item[name="qty"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
+                        '</td>'+
+                        '<td style="width: 10%">'+
+                            '<input type="text" class="form-control" id="grid_carton_'+rnd+'" name="grid_carton_'+rnd+'" value="'+$('input.item[name="carton"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
                         '</td>'+
                         '<td>'+
-                            '<input type="text" class="form-control" id="grid_expdate_'+rnd+'" name="grid_expdate_'+rnd+'" value="'+$('input.item[name="expdate"]').val()+'" style="background-color:#ffffff;" readonly />'+
+                            '<input type="text" class="form-control" id="grid_proddate_'+rnd+'" name="grid_proddate_'+rnd+'" value="'+$('input.item[name="proddate"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
                         '</td>'+
                         '<td>'+
-                            '<input type="text" class="form-control" id="grid_net_'+rnd+'" name="grid_net_'+rnd+'" value="'+$('input.item[name="net"]').val()+'" style="background-color:#ffffff;" readonly />'+
+                            '<input type="text" class="form-control" id="grid_expdate_'+rnd+'" name="grid_expdate_'+rnd+'" value="'+$('input.item[name="expdate"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
                         '</td>'+
                         '<td>'+
-                            '<input type="text" class="form-control" id="grid_gross_'+rnd+'" name="grid_gross_'+rnd+'" value="'+$('input.item[name="gross"]').val()+'" style="background-color:#ffffff;" readonly />'+
+                            '<input type="text" class="form-control" id="grid_net_'+rnd+'" name="grid_net_'+rnd+'" value="'+$('input.item[name="net"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
                         '</td>'+
                         '<td>'+
-                            '<input type="text" class="form-control" id="grid_dimension_'+rnd+'" name="grid_dimension_'+rnd+'" value="'+$('input.item[name="dimension"]').val()+'" style="background-color:#ffffff;" readonly />'+
+                            '<input type="text" class="form-control" id="grid_gross_'+rnd+'" name="grid_gross_'+rnd+'" value="'+$('input.item[name="gross"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="text" class="form-control" id="grid_dimension_'+rnd+'" name="grid_dimension_'+rnd+'" value="'+$('input.item[name="dimension"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
                         '</td>'+
                         '<td class="text-center">'+
                             '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
@@ -111,49 +114,38 @@ $(function () {
 });
 
 $('select#invoice').on('change', function() {
-    $('#category').html("");
-    $('#product').html("");
     var data = $('select#invoice').select2('data');
     get_data(data[0].id);
-    get_category(data[0].id);
+    get_container(data[0].id);
     get_item_qty(data[0].id);
 });
 
-$('select#category').on('change', function() {
+$('select#container_no').on('change', function() {
     $('#product').html("");
-    $('#qty').val("");
-    $('#batch').html("");
     var invoice = $('select#invoice').select2('data');
-    var category = $('select#category').select2('data');
+    var container = $('select#container_no').select2('data');
+    get_category(invoice[0].id, container[0].id);
+});
 
-    if(category.length == 1) {
-        get_item(invoice[0].id, category[0].id);
-    } else {
-        get_item(invoice[0].id);
-    }
+$('select#category').on('change', function() {
+    $('#qty').html("");
+    var invoice = $('select#invoice').select2('data');
+    var container = $('select#container_no').select2('data');
+    var category = $('select#category').select2('data');
+    get_item(invoice[0].id, container[0].id, category[0].id);
 });
 
 $('select#product').on('change', function() {
-    $('#qty').val("");
+    $('#qty').html("");
     $('#batch').html("");
     var data = $('select#product').select2('data');
-    
-    if(data.length == 1) {
-        get_data_item(data[0].id);
-        get_batch(data[0].id);
-    } else {
-        get_data_item();
-        get_batch();
-    }
+    get_data_item(data[0].id);
+    get_batch(data[0].id);
 });
 
 $('select#batch').on('change', function() {
     var data = $('select#batch').select2('data');
-    if(data.length == 1) {
-        get_date(data[0].id);
-    } else {
-        get_date();
-    }
+    get_date(data[0].id);
 });
 
 function get_data(id)
@@ -166,7 +158,6 @@ function get_data(id)
             console.log(response);
             if(response) {
                 document.getElementById("pi_id").value = response.pi_id;
-                document.getElementById("container").value = response.number_of_container;
                 document.getElementById("cons_company").value = response.cons_name;
                 document.getElementById("cons_address").value = response.cons_address;
                 document.getElementById("cons_country").value = response.cons_country_name;
@@ -186,7 +177,6 @@ function get_data(id)
                 document.getElementById("ship_country").value = response.country_origin;
             } else {
                 document.getElementById("pi_id").value = "";
-                document.getElementById("container").value = "";
                 document.getElementById("cons_company").value = "";
                 document.getElementById("cons_address").value = "";
                 document.getElementById("cons_country").value = "";
@@ -213,13 +203,61 @@ function get_data(id)
     });
 }
 
-function get_category(id)
+function get_container(id)
 {
     $.ajax({
-        url: site_url + "export/packing/category/" + id,
+        url: site_url + "export/packing/container/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {
+            if(response) {
+                var html = '';
+                var i;
+                for(i=0; i<response.length; i++) {
+                    html += '<option></option>';
+                    html += '<option value="'+response[i].number_of_container+'">'+response[i].number_of_container+'</option>';
+                }
+                $('#container_no').html(html);
+            } else {
+                $('#container_no').html("");
+            }
+        },      
+    });
+}
+
+function get_item_qty(id)
+{
+    $.ajax({
+        url: site_url + "export/packing/item_qty/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            if(response) {
+                var html = '';
+                var i;
+                for(i=0; i<response.length; i++) {
+                    html += '<input type="hidden" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
+                }
+                $('#item_qty').html(html);
+            } else {
+                $('#item_qty').html("");
+            }
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+            swal("", "Terjadi kesalahan pada sistem.", "error");
+        }        
+    });
+}
+
+function get_category(inv_id = '', container = '')
+{
+    $.ajax({
+        url: site_url + "export/packing/category/" + inv_id + "/" + container,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            console.log(response)
             if(response) {
                 var html = '';
                 var i;
@@ -235,10 +273,10 @@ function get_category(id)
     });
 }
 
-function get_item(invoice, category = '')
+function get_item(invoice = '', container = '', category = '')
 {
     $.ajax({
-        url: site_url + "export/packing/item/" + category +"/"+ invoice,
+        url: site_url + "export/packing/item/" + invoice + "/" + container + "/" + category,
         type: "POST",
         dataType: "json",
         success: function(response) {
@@ -257,28 +295,7 @@ function get_item(invoice, category = '')
     });
 }
 
-function get_item_qty(id)
-{
-    $.ajax({
-        url: site_url + "export/packing/item_qty/" + id,
-        type: "POST",
-        dataType: "json",
-        success: function(response) {
-            var html = '';
-            var i;
-            for(i=0; i<response.length; i++) {
-                html += '<input type="hidden" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
-            }
-            $('#item_qty').html(html);
-        },
-        error: function (e) {
-            console.log("Terjadi kesalahan pada sistem");
-            swal("", "Terjadi kesalahan pada sistem.", "error");
-        }        
-    });
-}
-
-function get_data_item(id = '')
+function get_data_item(id)
 {
     $.ajax({
         type  : 'ajax',
@@ -307,7 +324,7 @@ function get_data_item(id = '')
     });
 }
 
-function get_batch(id = '')
+function get_batch(id)
 {
     $.ajax({
         url: site_url + "export/packing/batch/" + id,
