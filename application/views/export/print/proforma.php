@@ -179,12 +179,15 @@
                 <div id="signature" style="margin-top: 4%; box-sizing: border-box; content: ''; clear: both; display: table;">
                     <div style="float: left; width: 50%; text-align: center;">
                         Jakarta, <?=IndoDate?>
-                        <div style="margin-top: 15%;"><?=$params['signature']->pic?></div>
+                        <div>
+                            <img src="<?=base_url($params['signature']->signature)?>" height="18%">
+                        </div>
+                        <div><?=$params['signature']->pic?></div>
                         <div><?=$params['signature']->positions?></div>
                     </div>
                     <div style="float: left; width: 50%; text-align: center;">
                         <?=$params['signature']->town.', '.IndoDate?>
-                        <div style="margin-top: 15%;"><?=$params['signature']->cp_name?></div>
+                        <div style="margin-top: 18%;"><?=$params['signature']->cp_name?></div>
                         <div><?=$params['signature']->company_name?></div>
                     </div>
                 </div>
