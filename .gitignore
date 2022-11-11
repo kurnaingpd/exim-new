@@ -22,6 +22,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /assets/attachment/signedpi/
 /assets/attachment/expterm/
 /assets/attachment/qc_check/
+/assets/attachment/user/
 
 # IDE Files
 #-------------------------
