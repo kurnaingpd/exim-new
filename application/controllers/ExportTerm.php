@@ -163,8 +163,10 @@
             $datas['header'] = 'Detail record';
             $datas['params'] = [
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_detail', ['is_deleted' => '0', 'id' => $id]),
-                'category' => $this->M_CRUD->pi_category('view_print_trans_pi_category', ['pi_id' => $id]),
-                'item' => $this->M_CRUD->pi_item('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
+                'container' => $this->M_CRUD->readData('view_print_trans_pi_container', ['pi_id' => $id]),
+                'category' => $this->M_CRUD->readData('view_print_trans_pi_category', ['pi_id' => $id]),
+                'item' => $this->M_CRUD->readData('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
+                'summary' => $this->M_CRUD->readDatabyID('view_trans_pi_detail_summary', ['pi_id' => $id]),
             ];
 
             $this->template->load('default', 'contents' , 'export/expterm/detail', $datas);
@@ -190,8 +192,10 @@
             $datas['params'] = [
                 'term' => $this->M_CRUD->readDatabyID('trans_export_terms', ['is_deleted' => '0', 'pi_id' => $id]),
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_pi_detail', ['is_deleted' => '0', 'id' => $id]),
-                'category' => $this->M_CRUD->pi_category('view_print_trans_pi_category', ['pi_id' => $id]),
-                'item' => $this->M_CRUD->pi_item('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
+                'container' => $this->M_CRUD->readData('view_print_trans_pi_container', ['pi_id' => $id]),
+                'category' => $this->M_CRUD->readData('view_print_trans_pi_category', ['pi_id' => $id]),
+                'item' => $this->M_CRUD->readData('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
+                'summary' => $this->M_CRUD->readDatabyID('view_trans_pi_detail_summary', ['pi_id' => $id]),
             ];
 
             if($datas['params']['term']->pi_status_id == 7) {
