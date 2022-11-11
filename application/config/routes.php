@@ -73,6 +73,8 @@ $route['uac/user/position/(:num)'] = 'User/position/$1';
 $route['uac/user/save'] = 'User/save';
 $route['uac/user/detail/(:num)'] = 'User/detail/$1';
 $route['uac/user/update'] = 'User/update';
+$route['uac/user/upload/(:num)'] = 'User/upload/$1';
+$route['uac/user/process'] = 'User/process';
 $route['uac/user/delete/(:num)'] = 'User/delete/$1';
 
 /** UAC - Module */

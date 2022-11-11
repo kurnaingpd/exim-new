@@ -153,6 +153,62 @@
             echo json_encode($respponse);
         }
 
+        public function upload($id)
+        {
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+            ];
+            $datas['js'] = [
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/user/upload.js"),
+            ];
+            $datas['title'] = 'UAC - User';
+            $datas['breadcrumb'] = ['UAC', 'Master', 'User'];
+            $datas['header'] = 'Upload signature';
+            $datas['params'] = [
+                'detail' => $this->M_CRUD->readDatabyID('view_user_role', ['is_deleted' => '0', 'id' => $id]),
+                'role' => $this->M_CRUD->readData('master_role', ['is_deleted' => '0'])
+            ];
+
+            $this->template->load('default', 'contents' , 'uac/user/upload', $datas);
+        }
+
+        public function process()
+        {
+            $post = $this->input->post();
+            $path = 'assets/attachment/user/';
+            $id = $post['id'];
+            $condition = [
+                'id' => $id
+            ];
+
+            if($_FILES) {
+                if ( isset($_FILES['attachment']) && $_FILES['attachment']['name'] != '' ) {
+                    $temp_name = $_FILES['attachment']['name'];
+                    $ext = explode('.', $temp_name);
+                    $end = strtolower(end($ext));
+                    $timestamp = mt_rand(1, time());
+                    $randomDate = date("d M Y", $timestamp);
+                    $filename = 'Signature-'.md5($randomDate).'.'.$end;
+                    move_uploaded_file($_FILES['attachment']['tmp_name'], $path.$filename);
+                    $params['signature'] = $path.$filename;
+
+                    if($this->M_CRUD->updateData('master_user', $params, $condition)) {
+                        $response = ['status' => 1, 'messages' => 'User signature has been saved successfully.', 'icon' => 'success', 'url' => 'uac/user'];
+                    } else {
+                        $response = ['status' => 0, 'messages' => 'User signature has failed to save.', 'icon' => 'error'];
+                    }
+                }
+            }
+
+            echo json_encode($response);
+        }
+
         public function delete($id)
         {
             $condition = [

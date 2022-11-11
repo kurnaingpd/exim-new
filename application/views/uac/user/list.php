@@ -32,6 +32,9 @@
                             <a href="<?=site_url('uac/user/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
                                 <i class="fas fa-edit"></i>
                             </a>
+                            <a href="<?=site_url('uac/user/upload/'.$rows->id)?>" class="btn btn-sm btn-warning">
+                                <i class="fas fa-file-upload"></i>
+                            </a>
                             <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">
                                 <i class="fas fa-trash"></i>
                             </button>
