@@ -289,6 +289,7 @@ $route['export/packing/detail_item/(:num)/(:any)/(:num)'] = 'Packing/detail_item
 // $route['export/packing/detail_item_data/(:num)'] = 'Packing/detail_item_data/$1';
 $route['export/packing/update'] = 'Packing/update';
 $route['export/packing/detail_container/(:num)'] = 'Packing/detail_container/$1';
+$route['export/packing/update_container/(:num)/(:any)/(:any)'] = 'Packing/update_container/$1/$2/$3';
 $route['export/packing/filter/(:num)'] = 'Packing/filter/$1';
 $route['export/packing/print/(:num)'] = 'Prints/packing/$1';
 $route['export/packing/delete/(:num)'] = 'Packing/delete/$1';

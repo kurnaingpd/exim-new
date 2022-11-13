@@ -300,16 +300,37 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/packing/detail.js"),
+                base_url("assets/js/packing/container.js"),
             ];
             $datas['title'] = 'Export - Packing';
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Packing'];
-            $datas['header'] = 'Detail record';
+            $datas['header'] = 'Detail container';
             $datas['params'] = [
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_packing_detail', ['is_deleted' => '0', 'id' => $id]),
                 'container' => $this->M_CRUD->readData('view_trans_packing_detail_container', ['id' => $id]),
             ];
             $this->template->load('default', 'contents' , 'export/packing/container/index', $datas);
+        }
+
+        public function update_container($id, $no_container, $value)
+        {
+            $post = $this->input->post();
+            $pi = $this->M_CRUD->readDatabyID('view_trans_packing_detail_container', ['id' => $id, 'number_of_container' => urldecode($no_container)]);
+            $condition = [
+                'pi_id' => $pi->pi_id,
+                'number_of_container' => urldecode($no_container),
+            ];
+            $params = [
+                'number_of_container' => urldecode($value),
+            ];
+
+            if($this->M_CRUD->updateData('trans_pi_detail', $params, $condition)) {
+                $response = ['status' => 1, 'messages' => 'Container has been updated successfully.', 'icon' => 'success', 'url' => 'export/packing'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Container has failed to update.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
         }
 
         public function filter($id)

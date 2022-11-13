@@ -1,19 +1,4 @@
 <table id="tpackingitemlist" class="table table-sm table-bordered table-striped">
-    <!-- <thead>
-        <tr class="text-center align-middle">
-            <th class="carton <?=($params['detail']->carton == '0'?'d-none':'')?>">Carton barcode</th>
-            <th>Description of goods</th>
-            <th>Qty</th>
-            <th class="batch <?=($params['detail']->batch == '0'?'d-none':'')?>">Batch</th>
-            <th class="production <?=($params['detail']->production == '0'?'d-none':'')?>">Production date<br><small>Format: YYYY-MM-DD</small></th>
-            <th class="expired <?=($params['detail']->expired == '0'?'d-none':'')?>">Expired date<br><small>Format: YYYY-MM-DD</small></th>
-            <th>Net weight</th>
-            <th>Gross weight</th>
-            <th>Dimension each cartoon</th>
-            <th><i class="fas fa-ellipsis-h"></i></th>
-        </tr>
-    </thead> -->
-
     <thead>
         <tr class="text-center align-middle">
             <th>Number of container</th>
