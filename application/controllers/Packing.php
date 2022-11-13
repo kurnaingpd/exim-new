@@ -205,8 +205,7 @@
             $datas['params'] = [
                 'detail' => $this->M_CRUD->readDatabyID('view_trans_packing_detail', ['is_deleted' => '0', 'id' => $id]),
                 'list' => $this->M_CRUD->readData('view_trans_packing_detail_list', ['packing_list_id' => $id]),
-                'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
-                // 'item' => $this->M_CRUD->readData('view_trans_packing_detail_item', ['packing_list_id' => $id]),
+                'container' => $this->M_CRUD->readData('view_trans_packing_container', ['packing_list_id' => $id]),
             ];
             
             $datas['chained'] = [
@@ -216,9 +215,21 @@
             $this->template->load('default', 'contents' , 'export/packing/detail/index', $datas);
         }
 
-        public function item_detail_by_category($pl = NULL, $category = NULL)
+        public function detail_category($id = NULl, $container = NULL)
         {
-            $data = $this->M_CRUD->readData('view_trans_packing_detail_item', ['packing_list_id' => $pl, 'pi_item_category_id' => $category]);
+            $data = $this->M_CRUD->readData('view_trans_packing_item_category', ['packing_list_id' => $id, 'number_of_container' => urldecode($container)]);
+            echo json_encode($data);
+        }
+
+        public function detail_item($pl = NULL, $container = NULL, $category = NULL)
+        {
+            $data = $this->M_CRUD->readData('view_trans_packing_detail_item', ['packing_list_id' => $pl, 'number_of_container' => urldecode($container), 'pi_item_category_id' => $category]);
+            echo json_encode($data);
+        }
+
+        public function detail_item_data($item = NULL)
+        {
+            $data = $this->M_CRUD->readData('view_trans_packing_item_get', ['pi_detail_id' => $item]);
             echo json_encode($data);
         }
 
@@ -249,10 +260,6 @@
             $header = $this->M_CRUD->updateData('trans_packing_list', $params, ['id' => $post['id']]);
 
             if($header) {
-                $pi = $this->M_CRUD->readDatabyID('view_trans_packing_list_pi', ['packing_id' => $post['id']]);
-                $paramsPI = ['number_of_container' => $post['container']];
-                $this->M_CRUD->updateData('trans_pi', $paramsPI, ['id' => $pi->id]);
-
                 if(!empty($Grid)) {
                     foreach($Grid as $detail) {
                         $paramDetail = [
@@ -271,6 +278,38 @@
             }
 
             echo json_encode($response);
+        }
+
+        public function detail_container($id)
+        {
+            $datas['css'] = [
+                "text/css,stylesheet, https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css",
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"),
+            ];
+
+            $datas['js'] = [
+                "https://cdn.jsdelivr.net/npm/flatpickr",
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/datatables/jquery.dataTables.min.js"),
+                base_url("assets/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"),
+                base_url("assets/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"),
+                base_url("assets/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/packing/detail.js"),
+            ];
+            $datas['title'] = 'Export - Packing';
+            $datas['breadcrumb'] = ['Export', 'Transaction', 'Packing'];
+            $datas['header'] = 'Detail record';
+            $datas['params'] = [
+                'detail' => $this->M_CRUD->readDatabyID('view_trans_packing_detail', ['is_deleted' => '0', 'id' => $id]),
+                'container' => $this->M_CRUD->readData('view_trans_packing_detail_container', ['id' => $id]),
+            ];
+            $this->template->load('default', 'contents' , 'export/packing/container/index', $datas);
         }
 
         public function filter($id)

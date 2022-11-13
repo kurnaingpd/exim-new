@@ -8,9 +8,9 @@
             <th>Carton barcode</th>
             <th>Prod. date</th>
             <th>Exp. date</th>
-            <th>Net weight</th>
+            <!-- <th>Net weight</th>
             <th>Gross weight</th>
-            <th>Dimension each cartoon</th>
+            <th>Dimension each cartoon</th> -->
             <th><i class="fas fa-ellipsis-h"></i></th>
         </tr>
     </thead>

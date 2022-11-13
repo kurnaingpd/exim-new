@@ -1,12 +1,19 @@
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="form-group required">
             <label for="code" class="control-label">Packing no.</label>
             <input type="text" class="form-control" value="<?=$params['detail']->code?>" disabled>
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
+        <div class="form-group required">
+            <label for="invoice" class="control-label">Invoice no.</label>
+            <input type="text" class="form-control" value="<?=$params['detail']->invoice_code?>" disabled>
+        </div>
+    </div>
+
+    <div class="col-md-4">
         <div class="form-group required">
             <label for="pack_date" class="control-label">Packing date</label>
             <div class="input-group date" id="pack_date" data-target-input="nearest">
@@ -15,20 +22,6 @@
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="form-group required">
-            <label for="invoice" class="control-label">Invoice no.</label>
-            <input type="text" class="form-control" value="<?=$params['detail']->invoice_code?>" disabled>
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="form-group required">
-            <label for="container" class="control-label">Container</label>
-            <input type="text" class="form-control upper" id="container" name="container" value="<?=$params['detail']->number_of_container?>">
         </div>
     </div>
 </div>
