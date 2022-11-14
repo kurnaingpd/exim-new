@@ -60,7 +60,7 @@
                                     <div class="col-md-2">
                                         <div class="card">
                                             <div class="card-body text-center">
-                                                <i class="<?=$mod['menu_module_icon']?> fa-6x"></i>
+                                                <img src="<?=base_url('assets/images/inventory/'.$mod['menu_module_image'])?>" class="brand-image" style="height: 150px;">
                                             </div>
                                             <div class="card-footer border-top">
                                                 <a href="<?=site_url($mod['menu_module_url'])?>" class="btn btn-block btn-default">
