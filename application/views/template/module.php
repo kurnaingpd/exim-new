@@ -77,7 +77,7 @@
             </div>
 
             <footer class="main-footer">
-                <div class="float-right d-none d-sm-inline mr-4"><b>System Version</b> 1.0.0</div>
+                <div class="float-right d-none d-sm-inline mr-4"><b>System Version</b> 1.1.0</div>
                 <div class="ml-1">
                     <strong>
                         Copyright &copy; <?=date('Y')?>. 
