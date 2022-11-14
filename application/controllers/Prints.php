@@ -156,6 +156,7 @@
             $datas['params'] = [
                 'header' => $this->M_CRUD->readDatabyID('view_print_trans_packing_header', ['is_deleted' => '0', 'id' => $id]),
                 'detail' => $this->M_CRUD->readData('view_print_trans_packing_detail', ['packing_list_id' => $id]),
+                'container' => $this->M_CRUD->readData('view_print_trans_packing_container', ['packing_list_id' => $id]),
             ];
 
             $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);

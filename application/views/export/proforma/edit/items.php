@@ -1,5 +1,3 @@
-
-
 <?php
     $container = array();
     $category = array();
