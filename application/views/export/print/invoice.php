@@ -139,7 +139,7 @@
                                     <?php endif; ?>
                                     
                                     <?php if($no == 1) : ?>
-                                        <td class="data-border" align="center"><?=$params['header']->number_of_container?></td>
+                                        <td class="data-border" align="center"><?=$dtl['number_of_container']?></td>
                                     <?php else : ?>
                                         <td class="data-border" align="center"></td>
                                     <?php endif; ?>
