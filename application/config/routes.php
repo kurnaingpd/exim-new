@@ -339,6 +339,8 @@ $route['export/spp'] = 'SPP';
 $route['export/spp/add'] = 'SPP/add';
 $route['export/spp/item'] = 'SPP/item';
 $route['export/spp/item/(:num)'] = 'SPP/item/$1';
+$route['export/spp/md_no'] = 'SPP/md_no';
+$route['export/spp/md_no/(:num)'] = 'SPP/md_no/$1';
 $route['export/spp/save'] = 'SPP/save';
 $route['export/spp/print/(:num)'] = 'Prints/spp/$1';
 

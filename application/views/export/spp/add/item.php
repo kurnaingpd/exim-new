@@ -18,7 +18,7 @@
     <div class="col-md-2">
         <div class="form-group">
             <label for="l_md_no" class="control-label">(Local) MD no.</label>
-            <input type="text" name="l_md_no" class="form-control grid" id="l_md_no" placeholder="Enter md no." autocomplete="off">
+            <input type="text" name="l_md_no" class="form-control grid" id="l_md_no" placeholder="Enter md no." autocomplete="off" disabled style="background-color: transparent;">
         </div>
     </div>
 

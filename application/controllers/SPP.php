@@ -68,6 +68,12 @@
             echo json_encode($data);
         }
 
+        public function md_no($id = NULL)
+        {
+            $data = $this->M_CRUD->readDatabyID('master_item', ['id' => $id]);
+            echo json_encode($data);
+        }
+
         public function save()
         {
             $post = $this->input->post();
@@ -105,7 +111,7 @@
                             'spp_id' => $header,
                             'item_id' => $detail['l_trade'],
                             'type_local' => $detail['l_type'],
-                            'md_no_local' => $detail['l_md_no'],
+                            // 'md_no_local' => $detail['l_md_no'],
                             'name_export' => $detail['e_trade'],
                             'type_export' => $detail['e_type'],
                         ];

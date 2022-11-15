@@ -51,7 +51,7 @@
                                 <tr>
                                     <td class="data-border"><?=$rows->name_local?></td>
                                     <td class="data-border"><?=$rows->type_local?></td>
-                                    <td class="data-border"><?=$rows->md_no_local?></td>
+                                    <td class="data-border"><?=$rows->md_no?></td>
                                     <td class="data-border"><?=$rows->name_export?></td>
                                     <td class="data-border"><?=$rows->type_export?></td>
                                 </tr>

@@ -86,6 +86,11 @@ $('select#invoice').on('change', function() {
     items(data[0].id);
 });
 
+$('select#l_trade').on('change', function() {
+    var data = $('select#l_trade').select2('data');
+    md(data[0].id);
+});
+
 function items(id)
 {
     $.ajax({
@@ -100,6 +105,26 @@ function items(id)
                 html += '<option value="'+response[i].item_id+'">'+response[i].item+'</option>';
             }
             $('#l_trade').html(html);
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+            swal("", "Terjadi kesalahan pada sistem.", "error");
+        }        
+    });
+}
+
+function md(id)
+{
+    $.ajax({
+        url: site_url + "export/spp/md_no/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            if(response) {
+                document.getElementById("l_md_no").value = response.md_no;
+            } else {
+                document.getElementById("l_md_no").value = response.md_no;
+            }
         },
         error: function (e) {
             console.log("Terjadi kesalahan pada sistem");
