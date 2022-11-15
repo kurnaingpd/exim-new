@@ -80,7 +80,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="md_no" class="control-label">MD no.</label>
-                            <input type="text" name="md_no" class="form-control" id="md_no" placeholder="Enter md no" autocomplete="off">
+                            <input type="text" name="md_no" class="form-control" id="md_no" placeholder="Enter md no" autocomplete="off" value="<?=$params['detail']->md_no?>">
                         </div>
                     </div>
                 </div>
