@@ -7,21 +7,14 @@
             <div class="card-body">
                 <input type="hidden" id="id" name="id" value="<?=$params['detail']->id?>">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group required">
                             <label for="code" class="control-label">Item code</label>
                             <input type="text" name="code" class="form-control" id="code" placeholder="Enter item code" autocomplete="off" autofocus disabled oninput="this.value = this.value.replace(/[^0-9]/g, '');" value="<?=$params['detail']->code?>">
                         </div>
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="form-group required">
-                            <label for="hscode" class="control-label">HS code</label>
-                            <input type="text" name="hscode" class="form-control" id="hscode" placeholder="Enter HS code" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '');" value="<?=$params['detail']->hs_code?>">
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group required">
                             <label for="hscode" class="control-label">Category</label>
                             <select name="category" class="form-control select2bs4" id="category" required>
@@ -33,22 +26,22 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group required">
                             <label for="name" class="control-label">Name</label>
                             <input type="text" name="name" class="form-control upper" id="name" placeholder="Enter name" autocomplete="off" required value="<?=$params['detail']->name?>">
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="form-group required">
                             <label for="desc" class="control-label">Packing description</label>
                             <input type="text" name="desc" class="form-control upper" id="desc" placeholder="Enter description" autocomplete="off" required value="<?=$params['detail']->pack_desc?>">
                         </div>
                     </div>
+                </div>
 
+                <div class="row">
                     <div class="col-md-2">
                         <div class="form-group required">
                             <label for="net" class="control-label">Net weight</label>
@@ -81,6 +74,13 @@
                         <div class="form-group required">
                             <label for="height" class="control-label">Height</label>
                             <input type="text" name="height" class="form-control" id="height" placeholder="Enter in MM" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" value="<?=$params['detail']->height?>">
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="md_no" class="control-label">MD no.</label>
+                            <input type="text" name="md_no" class="form-control" id="md_no" placeholder="Enter md no" autocomplete="off">
                         </div>
                     </div>
                 </div>

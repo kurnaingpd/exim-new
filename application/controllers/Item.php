@@ -80,6 +80,7 @@
                     'length' => $post['length'],
                     'width' => $post['width'],
                     'height' => $post['height'],
+                    'md_no' => ($post['md_no']?$post['md_no']:NULL),
                 ];
                 $insert_id = $this->M_CRUD->insertData('master_item', $param);
 
@@ -156,6 +157,7 @@
                 'length' => $post['length'],
                 'width' => $post['width'],
                 'height' => $post['height'],
+                'md_no' => ($post['md_no']?$post['md_no']:NULL),
                 'updated_at' => date('Y-m-d H:i:s'),
             ];
             

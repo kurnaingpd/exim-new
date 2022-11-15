@@ -75,6 +75,13 @@
                             <input type="text" name="height" class="form-control" id="height" placeholder="Enter in MM" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                         </div>
                     </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="md_no" class="control-label">MD no.</label>
+                            <input type="text" name="md_no" class="form-control" id="md_no" placeholder="Enter md no" autocomplete="off">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
