@@ -34,6 +34,7 @@
                 if( password_verify($post['password'], $datas->password) ) {
                     $datas = (object) array_merge((array) $datas, (array) ['status' => 1]);
                     $this -> session -> set_userdata('logged_in', $datas);
+                    $this->M_CRUD->insertData('trans_auth', ['user_id' => $datas->id, 'flag' => '1']);
                     $response = ['status' => 1, 'url' => 'home'];
                 } else {
                     $response = ['status' => 0, 'icon' => 'info', 'messages' => 'Invalid username/password', 'url' => '/'];
@@ -48,6 +49,7 @@
         public function logout()
         {
             $this -> session -> sess_destroy();
+            $this->M_CRUD->insertData('trans_auth', ['user_id' => $this->session->userdata('logged_in')->id, 'flag' => '2']);
             redirect('/');
         }
     }
