@@ -74,12 +74,6 @@
                         <div class="box-colon">:</div>
                         <div class="box-value"><?=$params['header']->country_origin?></div>
                     </div>
-
-                    <!-- <div id="row">
-                        <div class="box-name">NO. CONTAINER/ SEAL</div>
-                        <div class="box-colon">:</div>
-                        <div class="box-value"><?=$params['header']->number_of_container?></div>
-                    </div> -->
                 </div>
 
                 <div id="detail" class="content" style="margin-top: 1%;">
@@ -169,25 +163,25 @@
                                 </tr>
                             <?php $no++; endforeach; ?>
                             <tr>
-                                <td style="text-align: left; padding: 1%; font-weight: bold;" colspan="<?=$cols_total?>">TOTAL</td>
+                                <td class="summary" style="text-align: left; padding: 1%; font-weight: bold;" colspan="<?=$cols_total?>">TOTAL</td>
                                 <td align="center" class="summary"><?=number_format($totQty)?></td>
                                 
                                 <?php if($params['header']->batch == 1) : ?>
-                                <td></td>
+                                <td class="summary"></td>
                                 <?php endif; ?>
 
                                 <?php if($params['header']->expired == 1) : ?>
-                                <td></td>
+                                <td class="summary"></td>
                                 <?php endif; ?>
 
                                 <?php if($params['header']->production == 1) : ?>
-                                <td></td>
+                                <td class="summary"></td>
                                 <?php endif; ?>
 
                                 <td class="summary" align="center"><?=number_format($totNet, 2)?></td>
                                 <td class="summary" align="center"><?=number_format($totGross, 2)?></td>
                                 <td class="summary" align="center"><?=round($totCBM, 4)?></td>
-                                <td></td>
+                                <td class="summary"></td>
                             </tr>
                         </tbody>
                         <?php 
@@ -199,25 +193,25 @@
                         ?>
                         <tfoot>
                             <tr>
-                                <td style="text-align: left; padding: 1%; font-weight: bold;" colspan="<?=$cols_total?>">GRAND TOTAL</td>
+                                <td class="summary" style="text-align: left; padding: 1%; font-weight: bold;" colspan="<?=$cols_total?>">GRAND TOTAL</td>
                                 <td align="center" class="summary"><?=number_format($totGrandQty)?></td>
                                 
                                 <?php if($params['header']->batch == 1) : ?>
-                                <td></td>
+                                <td class="summary"></td>
                                 <?php endif; ?>
 
                                 <?php if($params['header']->expired == 1) : ?>
-                                <td></td>
+                                <td class="summary"></td>
                                 <?php endif; ?>
 
                                 <?php if($params['header']->production == 1) : ?>
-                                <td></td>
+                                <td class="summary"></td>
                                 <?php endif; ?>
 
                                 <td class="summary" align="center"><?=number_format($totGrandNet, 2)?></td>
                                 <td class="summary" align="center"><?=number_format($totGrandGross, 2)?></td>
                                 <td class="summary" align="center"><?=round($totGrandCBM, 4)?></td>
-                                <td></td>
+                                <td class="summary"></td>
                             </tr>
                         </tfoot>
                     </table>
