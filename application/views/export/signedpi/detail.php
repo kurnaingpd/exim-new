@@ -159,7 +159,7 @@
 
                             <div class="col-md-1 text-center">
                                 <?php if($item_id->option_id == 1) : ?>
-                                    <?php if($item_id->pi_item_id == 14 || $item_id->pi_item_id == 15 || $item_id->pi_item_id == 18) : ?>
+                                    <?php if($item_id->pi_item_id == 14 || $item_id->pi_item_id == 15 || $item_id->pi_item_id == 18 || $item_id->pi_item_id == 34) : ?>
                                         <a href="<?=site_url('export/signedpi/attachment/'.$params['id'].'/'.$item_id->pi_item_id)?>" class="btn btn-block btn-info <?=$item_id->download?>">
                                             <i class="fas fa-list"></i>
                                         </a>
@@ -233,7 +233,7 @@
 
                             <div class="col-md-1 text-center">
                                 <?php if($item_id->option_id == 1) : ?>
-                                    <?php if($item_id->pi_item_id == 14 || $item_id->pi_item_id == 15 || $item_id->pi_item_id == 18) : ?>
+                                    <?php if($item_id->pi_item_id == 14 || $item_id->pi_item_id == 15 || $item_id->pi_item_id == 18 || $item_id->pi_item_id == 34) : ?>
                                         <a href="<?=site_url('export/signedpi/attachment/'.$params['id'].'/'.$item_id->pi_item_id)?>" class="btn btn-block btn-info <?=$item_id->download?>">
                                             <i class="fas fa-list"></i>
                                         </a>
