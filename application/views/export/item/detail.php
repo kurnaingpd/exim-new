@@ -26,14 +26,21 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group required">
                             <label for="name" class="control-label">Name</label>
                             <input type="text" name="name" class="form-control upper" id="name" placeholder="Enter name" autocomplete="off" required value="<?=$params['detail']->name?>">
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
+                        <div class="form-group required">
+                            <label for="wh_name" class="control-label">Warehouse name</label>
+                            <input type="text" name="wh_name" class="form-control upper" id="wh_name" placeholder="Enter warehouse name" autocomplete="off" required value="<?=$params['detail']->wh_name?>">
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
                         <div class="form-group required">
                             <label for="desc" class="control-label">Packing description</label>
                             <input type="text" name="desc" class="form-control upper" id="desc" placeholder="Enter description" autocomplete="off" required value="<?=$params['detail']->pack_desc?>">
