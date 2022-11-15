@@ -98,6 +98,9 @@ $route['uac/assignmenu'] = 'AssignMenu';
 $route['uac/assignmenu/save'] = 'AssignMenu/save';
 $route['uac/assignmenu/delete/(:num)'] = 'AssignMenu/delete/$1';
 
+/** UAC - Log Access */
+$route['uac/report'] = 'Auth/report';
+
 /** Export */
 $route['export'] = 'Home/export';
 

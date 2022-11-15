@@ -52,6 +52,34 @@
             $this->M_CRUD->insertData('trans_auth', ['user_id' => $this->session->userdata('logged_in')->id, 'flag' => '2']);
             redirect('/');
         }
+
+        public function report()
+        {
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css"),
+            ];
+            $datas['js'] = [
+                base_url("assets/adminlte/plugins/datatables/jquery.dataTables.min.js"),
+                base_url("assets/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"),
+                base_url("assets/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"),
+                base_url("assets/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"),
+                base_url("assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"),
+                base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"),
+                base_url("assets/adminlte/plugins/jszip/jszip.min.js"),
+                base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"),
+                base_url("assets/js/auth/report.js"),
+            ];
+            $datas['title'] = 'UAC - Log Access';
+            $datas['breadcrumb'] = ['Export', 'Transaction', 'Log Access'];
+            $datas['header'] = 'Log Access';
+            $datas['params'] = [
+                'list' => $this->M_CRUD->readData('view_report_auth')
+            ];
+            $this->template->load('default', 'contents' , 'auth/report', $datas);
+        }
     }
 
 ?>
