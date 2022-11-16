@@ -124,7 +124,6 @@
                 'beneficiary_id' => $post['pi_beneficiary'],
                 'loading_port_id' => $post['loading_port'],
                 'customer_ship_id' => $post['discharge_port'],
-                'container_id' => $post['container'],
                 'bank_id' => $post['bank'],
                 'currency_id' => $post['currency'],
                 'ppn' => $post['ppn'],
@@ -156,15 +155,10 @@
                     foreach($Grid as $detail) {
                         $params = [
                             'pi_id' => $detail['pi_id'],
+                            'container_id' => $detail['containers'],
                             'number_of_container' => $detail['container_no'],
-                            'pi_item_category_id' => $detail['item_category'],
-                            'item_id' => $detail['product'],
-                            'hs_code' => $detail['hs_code'],
-                            'qty' => $detail['qty'],
-                            'price' => $detail['price'],
-                            'cbm_item' => $detail['cbm'],
                         ];
-                        $this->M_CRUD->insertData('trans_pi_detail', $params);
+                        $this->M_CRUD->insertData('trans_pi_container', $params);
                     }
                 }
 

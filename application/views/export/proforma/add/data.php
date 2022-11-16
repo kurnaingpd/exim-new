@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="col-md-2">
+    <!-- <div class="col-md-2">
         <div class="form-group required">
             <label for="container" class="control-label">Container</label>
             <select name="container" class="form-control select2bs4" id="container" required>
@@ -40,7 +40,7 @@
                 <?php endforeach; ?>
             </select>
         </div>
-    </div>
+    </div> -->
 
     <!-- <div class="col-md-2">
         <div class="form-group required">
@@ -62,16 +62,16 @@
             <input type="text" class="form-control upper" id="freight_company_cont" placeholder="Enter freight company contact" disabled>
         </div>
     </div>
-</div>
 
-<div class="row">
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_company_no" class="control-label">Freight company number</label>
             <input type="text" class="form-control upper" id="freight_company_no" placeholder="Enter freight company number" disabled>
         </div>
     </div>
-    
+</div>
+
+<div class="row">
     <?php if($this->session->userdata('logged_in')->role_id == 7) : ?>
     <div class="col-md-2">
         <div class="form-group required">

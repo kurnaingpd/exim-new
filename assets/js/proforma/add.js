@@ -9,73 +9,109 @@ $(function () {
         this.value = this.value.toLocaleUpperCase();
     });
 
-    $('input#btn-item').on('click',function(){
-        console.log('item');
-        var item_category = $('.item_category').val();
-        var product = $('#product').val();
-        var hs_code = $('#hs_code').val();
-        var config = $('#config').val();
-        var qty = $('#qty').val();
+    $('input#btn-container').on('click',function() {
+        var container_type = $('#containers').val();
+        var container_no = $('#container_no').val();
 
-        if(item_category == "" || product == "" || hs_code == "" || config == "" || qty == "" || price == "") {
-            swal("", "Item data cannot be empty.", "warning");
+        if(container_type == "" || container_no == "") {
+            swal("", "Container(s) data cannot be empty.", "warning");
         } else {
             var rnd = Math.floor((Math.random() * 10000) + 1);
-            var cbm_item = Number(document.getElementById("volume").value) * Number(document.getElementById("qty").value);
-            var remain_cbm = document.getElementById("remain_cbm").value - (Number(document.getElementById("volume").value) * Number(document.getElementById("qty").value));
-            console.log(remain_cbm);
-            
-            if(remain_cbm < 0) {
-                swal("", "Qty melebihi maximum CBM.", "warning");
-            } else {
-                document.getElementById("remain_cbm").value = remain_cbm;
-                $('tbody#data-item').append(
-                    '<tr data-id="'+rnd+'">'+
-                        '<td>'+
-                            '<input type="text" class="form-control" id="grid_container_no_'+rnd+'" name="grid_container_no_'+rnd+'" data-value="'+$('input.container[name="container_no"]').val()+'" value="'+$('input.container[name="container_no"]').val()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
-                        '</td>'+
-                        '<td style="width: 16%">'+
-                            '<input type="hidden" id="grid_item_category_'+rnd+'" name="grid_item_category_'+rnd+'" value="'+$('select.item[name="item_category"]').val()+'" />'+
-                            '<input type="text" class="form-control" value="'+$('select.item[name="item_category"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
-                        '</td>'+
-                        '<td style="width: 34%">'+
-                            '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
-                            '<input type="text" class="form-control" value="'+$('select.item[name="product"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
-                            '<input type="hidden" class="form-control volume" id="grid_volume_'+rnd+'" name="grid_volume_'+rnd+'" data-value="'+$('input.item[name="volume"]').val()+'" value="'+$('input.item[name="volume"]').val()+'" />'+
-                            '<input type="hidden" class="form-control volume" id="grid_cbm_'+rnd+'" name="grid_cbm_'+rnd+'" data-value="'+cbm_item+'" value="'+cbm_item+'" />'+
-                        '</td>'+
-                        '<td style="width: 8%">'+
-                            '<input type="text" class="form-control" id="grid_hs_code_'+rnd+'" name="grid_hs_code_'+rnd+'" value="'+$('input.item[name="hs_code"]').val()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
-                        '</td>'+
-                        // '<td style="width: 26%">'+
-                        //     '<input type="text" class="form-control" id="grid_config_'+rnd+'" name="grid_config_'+rnd+'" value="'+$('input.item[name="config"]').val()+'" style="background-color:#ffffff;" readonly required />'+
-                        // '</td>'+
-                        '<td>'+
-                            '<input type="text" class="form-control qty" id="grid_qty_'+rnd+'" name="grid_qty_'+rnd+'" data-value="'+$('input.item[name="qty"]').val()+'" value="'+$('input.item[name="qty"]').val()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
-                        '</td>'+
-                        '<td>'+
-                            '<input type="text" class="form-control" id="grid_price_'+rnd+'" name="grid_price_'+rnd+'" value="'+$('input.item[name="price"]').val()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
-                        '</td>'+
-                        '<td class="text-center">'+
-                            '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
-                        '</td>'+
-                    '</tr>'
-                );
-                
-                $('.item').val('');
-                $(".item").val('').trigger('change')
-            }
-            
-            $('button.btn-remove').off('click').on('click',function(){
-                var id = $(this).attr('data-row');
-                var volume = $("tr[data-id="+id+"]").find(".volume").data("value");
-                var qty = $("tr[data-id="+id+"]").find(".qty").data("value");
-                var cbm = (volume * qty);
-                $("tr[data-id="+id+"]").remove();
-                document.getElementById("remain_cbm").value = Number(document.getElementById("remain_cbm").value) + cbm;
-            });
+            $('tbody#data-container').append(
+                '<tr data-id="'+rnd+'">'+
+                    '<td>'+
+                        '<input type="hidden" id="grid_containers_'+rnd+'" name="grid_containers_'+rnd+'" value="'+$('select.container[name="containers"]').val()+'" />'+
+                        '<input type="text" class="form-control" value="'+$('select.container[name="containers"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="text" class="form-control qty" id="grid_max_cbm_'+rnd+'" name="grid_max_cbm_'+rnd+'" value="'+$('input.container[name="max_cbm"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="text" class="form-control qty" id="grid_container_no_'+rnd+'" name="grid_container_no_'+rnd+'" value="'+$('input.container[name="container_no"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
+                    '</td>'+
+                    '<td class="text-center">'+
+                        '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
+                    '</td>'+
+                '</tr>'
+            );
+
+            $('.container').val('');
+            $(".container").val('').trigger('change')
         }
+
+        $('button.btn-remove').off('click').on('click',function() {
+            var id = $(this).attr('data-row');
+            $("tr[data-id="+id+"]").remove();
+        });
     });
+
+    // $('input#btn-item').on('click',function(){
+    //     console.log('item');
+    //     var item_category = $('.item_category').val();
+    //     var product = $('#product').val();
+    //     var hs_code = $('#hs_code').val();
+    //     var config = $('#config').val();
+    //     var qty = $('#qty').val();
+
+    //     if(item_category == "" || product == "" || hs_code == "" || config == "" || qty == "" || price == "") {
+    //         swal("", "Item data cannot be empty.", "warning");
+    //     } else {
+    //         var rnd = Math.floor((Math.random() * 10000) + 1);
+    //         var cbm_item = Number(document.getElementById("volume").value) * Number(document.getElementById("qty").value);
+    //         var remain_cbm = document.getElementById("remain_cbm").value - (Number(document.getElementById("volume").value) * Number(document.getElementById("qty").value));
+    //         console.log(remain_cbm);
+            
+    //         if(remain_cbm < 0) {
+    //             swal("", "Qty melebihi maximum CBM.", "warning");
+    //         } else {
+    //             document.getElementById("remain_cbm").value = remain_cbm;
+    //             $('tbody#data-item').append(
+    //                 '<tr data-id="'+rnd+'">'+
+    //                     '<td>'+
+    //                         '<input type="text" class="form-control" id="grid_container_no_'+rnd+'" name="grid_container_no_'+rnd+'" data-value="'+$('input.container[name="container_no"]').val()+'" value="'+$('input.container[name="container_no"]').val()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
+    //                     '</td>'+
+    //                     '<td style="width: 16%">'+
+    //                         '<input type="hidden" id="grid_item_category_'+rnd+'" name="grid_item_category_'+rnd+'" value="'+$('select.item[name="item_category"]').val()+'" />'+
+    //                         '<input type="text" class="form-control" value="'+$('select.item[name="item_category"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
+    //                     '</td>'+
+    //                     '<td style="width: 34%">'+
+    //                         '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
+    //                         '<input type="text" class="form-control" value="'+$('select.item[name="product"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
+    //                         '<input type="hidden" class="form-control volume" id="grid_volume_'+rnd+'" name="grid_volume_'+rnd+'" data-value="'+$('input.item[name="volume"]').val()+'" value="'+$('input.item[name="volume"]').val()+'" />'+
+    //                         '<input type="hidden" class="form-control volume" id="grid_cbm_'+rnd+'" name="grid_cbm_'+rnd+'" data-value="'+cbm_item+'" value="'+cbm_item+'" />'+
+    //                     '</td>'+
+    //                     '<td style="width: 8%">'+
+    //                         '<input type="text" class="form-control" id="grid_hs_code_'+rnd+'" name="grid_hs_code_'+rnd+'" value="'+$('input.item[name="hs_code"]').val()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
+    //                     '</td>'+
+    //                     // '<td style="width: 26%">'+
+    //                     //     '<input type="text" class="form-control" id="grid_config_'+rnd+'" name="grid_config_'+rnd+'" value="'+$('input.item[name="config"]').val()+'" style="background-color:#ffffff;" readonly required />'+
+    //                     // '</td>'+
+    //                     '<td>'+
+    //                         '<input type="text" class="form-control qty" id="grid_qty_'+rnd+'" name="grid_qty_'+rnd+'" data-value="'+$('input.item[name="qty"]').val()+'" value="'+$('input.item[name="qty"]').val()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
+    //                     '</td>'+
+    //                     '<td>'+
+    //                         '<input type="text" class="form-control" id="grid_price_'+rnd+'" name="grid_price_'+rnd+'" value="'+$('input.item[name="price"]').val()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
+    //                     '</td>'+
+    //                     '<td class="text-center">'+
+    //                         '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
+    //                     '</td>'+
+    //                 '</tr>'
+    //             );
+                
+    //             $('.item').val('');
+    //             $(".item").val('').trigger('change')
+    //         }
+            
+    //         $('button.btn-remove').off('click').on('click',function(){
+    //             var id = $(this).attr('data-row');
+    //             var volume = $("tr[data-id="+id+"]").find(".volume").data("value");
+    //             var qty = $("tr[data-id="+id+"]").find(".qty").data("value");
+    //             var cbm = (volume * qty);
+    //             $("tr[data-id="+id+"]").remove();
+    //             document.getElementById("remain_cbm").value = Number(document.getElementById("remain_cbm").value) + cbm;
+    //         });
+    //     }
+    // });
 
     $.validator.setDefaults({
         submitHandler: function () {
@@ -115,17 +151,9 @@ $('select#discharge_port').on('change', function() {
     destination(data[0].id);
 });
 
-$('select#container').on('change', function() {
-    var data = $('select#container').select2('data');
+$('select#containers').on('change', function() {
+    var data = $('select#containers').select2('data');
     cbm(data[0].id);
-    var rowCount = $('#data-item tr').length;
-    console.log(rowCount);
-
-    if(rowCount > 0) {
-        swal("", "Items and CBM have been reset.", "warning");
-        $('#data-item').html("");
-        cbm(data[0].id);
-    }    
 });
 
 $('select#freight_company').on('change', function() {
@@ -133,10 +161,10 @@ $('select#freight_company').on('change', function() {
     freight(data[0].id);
 });
 
-$('select#product').on('change', function() {
-    var data = $('select#product').select2('data');
-    item(data[0].id);
-});
+// $('select#product').on('change', function() {
+//     var data = $('select#product').select2('data');
+//     item(data[0].id);
+// });
 
 function consignee(id)
 {
@@ -250,11 +278,9 @@ function cbm(id)
         dataType: "json",
         success: function(response) {
             if(response) {
-                document.getElementById("currenct_cbm").value = response.max_cbm;
-                document.getElementById("remain_cbm").value = response.max_cbm;
+                document.getElementById("max_cbm").value = response.max_cbm;
             } else {
-                document.getElementById("currenct_cbm").value = 0;
-                document.getElementById("remain_cbm").value = 0;
+                document.getElementById("max_cbm").value = "";
             }
         },
         error: function (e) {
@@ -264,33 +290,33 @@ function cbm(id)
     });
 }
 
-function item(id)
-{
-    $.ajax({
-        url: site_url + "export/proforma/item/" + id,
-        type: "POST",
-        dataType: "json",
-        success: function(response) {
-            if(response) {
-                var lengths = Number(response.length);
-                var widths = Number(response.width);
-                var heights = Number(response.height);
-                var volume = ((lengths) * (widths) * (heights)) / 1000000000;
-                document.getElementById("volume").value = volume;
-                // document.getElementById("hs_code").value = response.hs_code;
-                document.getElementById("config").value = response.pack_desc;
-            } else {
-                document.getElementById("volume").value = 0;
-                // document.getElementById("hs_code").value = '';
-                document.getElementById("config").value = '';
-            }
-        },
-        error: function (e) {
-            console.log("Terjadi kesalahan pada sistem");
-            swal("", "Terjadi kesalahan pada sistem.", "error");
-        }        
-    });
-}
+// function item(id)
+// {
+//     $.ajax({
+//         url: site_url + "export/proforma/item/" + id,
+//         type: "POST",
+//         dataType: "json",
+//         success: function(response) {
+//             if(response) {
+//                 var lengths = Number(response.length);
+//                 var widths = Number(response.width);
+//                 var heights = Number(response.height);
+//                 var volume = ((lengths) * (widths) * (heights)) / 1000000000;
+//                 document.getElementById("volume").value = volume;
+//                 // document.getElementById("hs_code").value = response.hs_code;
+//                 document.getElementById("config").value = response.pack_desc;
+//             } else {
+//                 document.getElementById("volume").value = 0;
+//                 // document.getElementById("hs_code").value = '';
+//                 document.getElementById("config").value = '';
+//             }
+//         },
+//         error: function (e) {
+//             console.log("Terjadi kesalahan pada sistem");
+//             swal("", "Terjadi kesalahan pada sistem.", "error");
+//         }        
+//     });
+// }
 
 function coding(id)
 {
@@ -301,28 +327,28 @@ function coding(id)
         success: function(response) {
             console.log(response)
             if(response) {
-                document.getElementById("sachet_imported").value = response[0].import_by;
-                document.getElementById("sachet_hotline").value = response[0].hotline;
-                document.getElementById("sachet_bb").value = response[0].best_before;
-                document.getElementById("pouch_imported").value = response[1].import_by;
-                document.getElementById("pouch_hotline").value = response[1].hotline;
-                document.getElementById("pouch_bb").value = response[1].best_before;
-                document.getElementById("case_imported").value = response[2].import_by;
-                document.getElementById("case_hotline").value = response[2].hotline;
-                document.getElementById("case_bb").value = response[2].best_before;
-                document.getElementById("notes").value = response[0].notes;
+                document.getElementById("sachet_imported").value = (response[0]?response[0].import_by:'-');
+                document.getElementById("sachet_hotline").value = (response[0]?response[0].hotline:'-');
+                document.getElementById("sachet_bb").value = (response[0]?response[0].best_before:'-');
+                document.getElementById("pouch_imported").value = (response[1]?response[1].import_by:'-');
+                document.getElementById("pouch_hotline").value = (response[1]?response[1].hotline:'-');
+                document.getElementById("pouch_bb").value = (response[1]?response[1].best_before:'-');
+                document.getElementById("case_imported").value = (response[2]?response[2].import_by:'-');
+                document.getElementById("case_hotline").value = (response[2]?response[2].hotline:'-');
+                document.getElementById("case_bb").value = (response[2]?response[2].best_before:'-');
+                document.getElementById("notes").value = (response[0]?response[0].notes:'-');
                 
             } else {
                 document.getElementById("sachet_imported").value = '';
                 document.getElementById("sachet_hotline").value = '';
                 document.getElementById("sachet_bb").value = '';
-                document.getElementById("pouch_imported").value = response[1].import_by;
-                document.getElementById("pouch_hotline").value = response[1].hotline;
-                document.getElementById("pouch_bb").value = response[1].best_before;
-                document.getElementById("case_imported").value = response[2].import_by;
-                document.getElementById("case_hotline").value = response[2].hotline;
-                document.getElementById("case_bb").value = response[2].best_before;
-                document.getElementById("notes").value = response[2].notes;
+                document.getElementById("pouch_imported").value = '';
+                document.getElementById("pouch_hotline").value = '';
+                document.getElementById("pouch_bb").value = '';
+                document.getElementById("case_imported").value = '';
+                document.getElementById("case_hotline").value = '';
+                document.getElementById("case_bb").value = '';
+                document.getElementById("notes").value = '';
             }
         },
         error: function (e) {

@@ -61,6 +61,18 @@
 
             <div class="card">
                 <div class="card-header">
+                    <h6>Container(s)</h6>
+                </div>
+                <div class="card-body">
+                    <?php $this->load->view('export/proforma/add/container'); ?>
+                </div>
+                <div class="card-body border-top">
+                    <?php $this->load->view('export/proforma/add/container_detail'); ?>
+                </div>
+            </div>
+
+            <!-- <div class="card">
+                <div class="card-header">
                     <h6>Item(s)</h6>
                 </div>
                 <div class="card-body">
@@ -75,7 +87,7 @@
                         Remain CBM: <input type="text" value="0" id="remain_cbm" style="background-color: transparent; border: 0;">
                     </small>
                 </div>
-            </div>
+            </div> -->
 
             <div class="card">
                 <div class="card-header">
