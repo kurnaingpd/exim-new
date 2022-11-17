@@ -5,17 +5,17 @@
 
     foreach($params['container'] as $cont => $value_1)
     {
-        $container[$value_1->number_of_container] = $value_1;
+        $container[$value_1->id] = $value_1;
     }
 
     foreach($params['category'] as $cat => $value_2)
     {
-        $category[$value_2->number_of_container][$value_2->item_category_id] = $value_2;
+        $category[$value_2->id][$value_2->item_category_id] = $value_2;
     }
 
     foreach($params['item'] as $dtl => $value_3)
     {
-        $item[$value_3->number_of_container][$value_3->pi_item_category_id][$value_3->id] = $value_3;
+        $item[$value_3->id][$value_3->pi_item_category_id][$value_3->pi_detail_id] = $value_3;
     }
 ?>
 
