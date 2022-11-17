@@ -213,10 +213,8 @@
                 'container' => $this->M_CRUD->readData('master_container', ['is_deleted' => '0']),
                 'bank' => $this->M_CRUD->readData('master_bank', ['is_deleted' => '0']),
                 'currency' => $this->M_CRUD->readData('master_currency', ['is_deleted' => '0']),
+                'container_no' => $this->M_CRUD->readData('view_trans_pi_container', ['is_deleted' => '0', 'pi_id' => $id]),
                 'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
-                'item' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0']),
-                'item_value' => $this->M_CRUD->readData('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
-                'cbm_value' => $this->M_CRUD->readDatabyID('view_trans_pi_detail_item', ['is_deleted' => '0', 'pi_id' => $id]),
             ];
             $datas['chained'] = [
                 'discharge' => $this->M_CRUD->readData('view_customer_ship_detail', ['is_deleted' => '0', 'customer_id' => $datas['params']['detail']->customer_id]),
@@ -226,6 +224,77 @@
             ];
 
             $this->template->load('default', 'contents' , 'export/proforma/detail/index', $datas);
+        }
+
+        public function add_detail_container($id)
+        {
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/bs-stepper/css/bs-stepper.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+            ];
+
+            $datas['js'] = [
+                base_url("assets/adminlte/plugins/bs-stepper/js/bs-stepper.min.js"),
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/proforma/detail_container.js"),
+            ];
+            $datas['title'] = 'Export - Proforma Invoice';
+            $datas['breadcrumb'] = ['Export', 'Transaction', 'Proforma Invoice'];
+            $datas['params'] = [
+                'container' => $this->M_CRUD->readDatabyID('view_trans_pi_container', ['is_deleted' => '0', 'id' => $id]),
+                'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
+                'item' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0']),
+                'item_detail' => $this->M_CRUD->readData('view_trans_pi_detail_item', ['is_deleted' => '0', 'pi_container_id' => $id]),
+                'cbm' => $this->M_CRUD->readDatabyID('view_trans_pi_detail_remain_cbm', ['is_deleted' => '0', 'pi_container_id' => $id]),
+            ];
+            $this->template->load('default', 'contents' , 'export/proforma/detail/items', $datas);
+        }
+
+        public function insert_detail_container()
+        {
+            $post = $this->input->post();
+            $pi = $this->M_CRUD->readDatabyID('trans_pi_container', ['id' => $post['id']]);
+            $Grid = array();
+			
+            foreach($_POST as $index => $value){
+                if(preg_match("/^grid_/i", $index)) {
+                    $index = preg_replace("/^grid_/i","",$index);
+                    $arr = explode('_',$index);
+                    $rnd = $arr[count($arr)-1];
+                    array_pop($arr);
+                    $idx = implode('_',$arr);
+                    
+                    $Grid[$rnd][$idx] = $value;
+                    if(!isset($Grid[$rnd]['pi_id'])){
+                        $Grid[$rnd]['pi_id'] = $post['id'];
+                    }
+                }
+            }
+
+            if(!empty($Grid)) {
+                foreach($Grid as $detail) {
+                    $params = [
+                        'pi_container_id' => $detail['container'],
+                        'pi_item_category_id' => $detail['item_category'],
+                        'item_id' => $detail['product'],
+                        'hs_code' => $detail['hs_code'],
+                        'qty' => $detail['qty'],
+                        'price' => $detail['price'],
+                        'cbm_item' => $detail['cbm'],
+                    ];
+                    $this->M_CRUD->insertData('trans_pi_detail', $params);
+                }
+
+                $response = ['status' => 1, 'messages' => 'Container has been saved successfully.', 'icon' => 'success', 'url' => 'export/proforma/detail/'.$pi->pi_id];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Container has failed to save.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
         }
 
         public function update()
@@ -269,16 +338,11 @@
                 if(!empty($Grid)) {
                     foreach($Grid as $detail) {
                         $params = [
-                            'pi_id' => $detail['pi_id'],
+                            'pi_id' => $post['id'],
+                            'container_id' => $detail['containers'],
                             'number_of_container' => $detail['container_no'],
-                            'pi_item_category_id' => $detail['item_category'],
-                            'item_id' => $detail['product'],
-                            'hs_code' => $detail['hs_code'],
-                            'qty' => $detail['qty'],
-                            'price' => $detail['price'],
-                            'cbm_item' => $detail['cbm'],
                         ];
-                        $this->M_CRUD->insertData('trans_pi_detail', $params);
+                        $this->M_CRUD->insertData('trans_pi_container', $params);
                     }
                 }
 
@@ -327,6 +391,21 @@
                 $response = ['status' => 1, 'messages' => 'Proforma invoice has been deleted successfully.', 'icon' => 'success', 'url' => 'export/proforma'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Proforma invoice has failed to delete.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
+        }
+
+        public function delete_container($id)
+        {
+            $condition = [
+                'id' => $id
+            ];
+            
+            if($this->M_CRUD->deleteData('trans_pi_container', $condition)) {
+                $response = ['status' => 1, 'messages' => 'Container has been deleted successfully.'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Container has failed to delete.'];
             }
 
             echo json_encode($response);

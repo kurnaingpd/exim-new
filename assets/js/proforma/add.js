@@ -151,16 +151,15 @@ $('select#discharge_port').on('change', function() {
     destination(data[0].id);
 });
 
-$('select#containers').on('change', function() {
-    var data = $('select#containers').select2('data');
-    cbm(data[0].id);
-});
-
 $('select#freight_company').on('change', function() {
     var data = $('select#freight_company').select2('data');
     freight(data[0].id);
 });
 
+$('select#containers').on('change', function() {
+    var data = $('select#containers').select2('data');
+    cbm(data[0].id);
+});
 // $('select#product').on('change', function() {
 //     var data = $('select#product').select2('data');
 //     item(data[0].id);

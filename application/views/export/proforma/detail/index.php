@@ -67,19 +67,13 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h6>Item(s)</h6>
+                    <h6>Container(s)</h6>
                 </div>
                 <div class="card-body">
-                    <?php $this->load->view('export/proforma/detail/items'); ?>
+                    <?php $this->load->view('export/proforma/detail/container'); ?>
                 </div>
                 <div class="card-body border-top">
-                    <?php $this->load->view('export/proforma/detail/items_detail'); ?>
-                </div>
-                <div class="card-footer">
-                    <small>
-                        Maximum CBM: <input type="text" value="<?=$params['detail_value']->max_cbm?>" size="4" id="currenct_cbm" style="background-color: transparent; border: 0;"><br>
-                        Remain CBM: <input type="text" value="<?=$params['detail_value']->max_cbm - $params['cbm_value']->cbm?>" id="remain_cbm" style="background-color: transparent; border: 0;">
-                    </small>
+                    <?php $this->load->view('export/proforma/detail/container_detail'); ?>
                 </div>
             </div>
 
@@ -95,7 +89,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-default btn-block cancel" href="<?=site_url('export/proforma')?>">
+                    <a class="btn btn-default btn-block cancel" href="#" onclick="history.go(-1)">
                         <i class="fas fa-ban mr-2"></i>Cancel
                     </a>
                 </div>

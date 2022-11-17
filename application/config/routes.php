@@ -218,6 +218,8 @@ $route['export/proforma/coding/(:num)'] = 'ProformaInvoice/coding/$1';
 $route['export/proforma/save'] = 'ProformaInvoice/save';
 $route['export/proforma/print/(:num)'] = 'Prints/proforma/$1';
 $route['export/proforma/detail/(:num)'] = 'ProformaInvoice/detail/$1';
+$route['export/proforma/detail/container/(:num)'] = 'ProformaInvoice/add_detail_container/$1';
+$route['export/proforma/insert_detail_container'] = 'ProformaInvoice/insert_detail_container';
 $route['export/proforma/update'] = 'ProformaInvoice/update';
 $route['export/proforma/submit/(:num)'] = 'ProformaInvoice/submit/$1';
 $route['export/proforma/process/(:num)'] = 'ProformaInvoice/process/$1';
@@ -228,6 +230,7 @@ $route['export/proforma/edit/(:num)'] = 'ProformaInvoice/edit/$1';
 $route['export/proforma/edit_procurement'] = 'ProformaInvoice/edit_procurement';
 $route['export/proforma/delete/(:num)'] = 'ProformaInvoice/delete/$1';
 $route['export/proforma/delete_item/(:num)'] = 'ProformaInvoice/delete_item/$1';
+$route['export/proforma/delete_container/(:num)'] = 'ProformaInvoice/delete_container/$1';
 
 /** Export - Signed PI */
 $route['export/signedpi'] = 'SignedPI';
