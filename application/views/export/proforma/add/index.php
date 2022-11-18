@@ -71,24 +71,6 @@
                 </div>
             </div>
 
-            <!-- <div class="card">
-                <div class="card-header">
-                    <h6>Item(s)</h6>
-                </div>
-                <div class="card-body">
-                    <?php $this->load->view('export/proforma/add/items'); ?>
-                </div>
-                <div class="card-body border-top">
-                    <?php $this->load->view('export/proforma/add/items_detail'); ?>
-                </div>
-                <div class="card-footer">
-                    <small>
-                        Maximum CBM: <input type="text" value="0" size="4" id="currenct_cbm" style="background-color: transparent; border: 0;"><br>
-                        Remain CBM: <input type="text" value="0" id="remain_cbm" style="background-color: transparent; border: 0;">
-                    </small>
-                </div>
-            </div> -->
-
             <div class="card">
                 <div class="card-header">
                     <h6>Coding printing</h6>

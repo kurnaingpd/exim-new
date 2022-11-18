@@ -214,7 +214,6 @@
                 'bank' => $this->M_CRUD->readData('master_bank', ['is_deleted' => '0']),
                 'currency' => $this->M_CRUD->readData('master_currency', ['is_deleted' => '0']),
                 'container_no' => $this->M_CRUD->readData('view_trans_pi_container', ['is_deleted' => '0', 'pi_id' => $id]),
-                'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
             ];
             $datas['chained'] = [
                 'discharge' => $this->M_CRUD->readData('view_customer_ship_detail', ['is_deleted' => '0', 'customer_id' => $datas['params']['detail']->customer_id]),
@@ -448,10 +447,12 @@
                 'category' => $this->M_CRUD->readData('view_print_trans_pi_category', ['pi_id' => $id]),
                 'item' => $this->M_CRUD->readData('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
                 'summary' => $this->M_CRUD->readDatabyID('view_trans_pi_detail_summary', ['pi_id' => $id]),
+                'container_no' => $this->M_CRUD->readData('view_trans_pi_container', ['is_deleted' => '0', 'pi_id' => $id]),
+                // 'cbm' => $this->M_CRUD->readDatabyID('view_trans_pi_detail_remain_cbm', ['pi_id' => $id]),
                 // 'categories' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
                 // 'items' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0']),
                 // 'item_revise' => $this->M_CRUD->readData('view_print_trans_pi_detail', ['is_deleted' => '0', 'pi_id' => $id]),
-                // 'cbm_revise' => $this->M_CRUD->readDatabyID('view_trans_pi_detail_item', ['is_deleted' => '0', 'pi_id' => $id]),
+                // 'cbm_revise' => $this->M_CRUD->readDatabyID('view_trans_pi_detail_item', ['is_deleted' => '0', 'id' => $id]),
             ];
 
             if($datas['params']['detail']->pi_status_id == 7) {
@@ -461,6 +462,94 @@
             }
 
             $this->template->load('default', 'contents' , 'export/proforma/process/index', $datas);
+        }
+
+        public function add_process_container($id)
+        {
+            $datas['css'] = [
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/bs-stepper/css/bs-stepper.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2/css/select2.min.css"),
+                "text/css,stylesheet,".base_url("assets/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"),
+            ];
+
+            $datas['js'] = [
+                base_url("assets/adminlte/plugins/bs-stepper/js/bs-stepper.min.js"),
+                base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
+                base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
+                base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
+                base_url("assets/js/proforma/process_container.js"),
+            ];
+            $datas['title'] = 'Export - Proforma Invoice';
+            $datas['breadcrumb'] = ['Export', 'Transaction', 'Proforma Invoice'];
+            $datas['params'] = [
+                'container' => $this->M_CRUD->readDatabyID('view_trans_pi_container', ['is_deleted' => '0', 'id' => $id]),
+                'category' => $this->M_CRUD->readData('master_pi_item_category', ['is_deleted' => '0']),
+                'item' => $this->M_CRUD->readData('master_item', ['is_deleted' => '0']),
+                'item_detail' => $this->M_CRUD->readData('view_trans_pi_detail_item', ['is_deleted' => '0', 'pi_container_id' => $id]),
+                'cbm' => $this->M_CRUD->readDatabyID('view_trans_pi_detail_remain_cbm', ['is_deleted' => '0', 'pi_container_id' => $id]),
+            ];
+            $this->template->load('default', 'contents' , 'export/proforma/process/items_revise', $datas);
+        }
+
+        public function update_process()
+        {
+            $post = $this->input->post();
+            $condition = ['id' => $post['id']];
+            $param = [
+                'pi_status_id' => $post['status'],
+                'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $this->session->userdata('logged_in')->id,
+            ];
+
+            if($this->M_CRUD->updateData('trans_pi', $param, $condition)) {
+                $Grid = array();
+
+                foreach($_POST as $index => $value){
+                    if(preg_match("/^grid_/i", $index)) {
+                        $index = preg_replace("/^grid_/i","",$index);
+                        $arr = explode('_',$index);
+                        $rnd = $arr[count($arr)-1];
+                        array_pop($arr);
+                        $idx = implode('_',$arr);
+                        
+                        $Grid[$rnd][$idx] = $value;
+                        if(!isset($Grid[$rnd]['pi_id'])){
+                            $Grid[$rnd]['pi_id'] = $post['id'];
+                        }
+                    }
+                }
+
+                if(!empty($Grid)) {
+                    foreach($Grid as $detail) {
+                        $params = [
+                            'pi_id' => $detail['pi_id'],
+                            'number_of_container' => $detail['container_no'],
+                            'pi_item_category_id' => $detail['item_category'],
+                            'item_id' => $detail['product'],
+                            'hs_code' => $detail['hs_code'],
+                            'qty' => $detail['qty'],
+                            'price' => $detail['price'],
+                            'cbm_item' => $detail['cbm'],
+                        ];
+                        $this->M_CRUD->insertData('trans_pi_detail', $params);
+                    }
+                }
+
+                $paramHistory = [
+                    'pi_id' => $post['id'],
+                    'pi_status_id' => $post['status'],
+                    'remark' => ($post['remark']?$post['remark']:NULL),
+                    'created_by' => $this->session->userdata('logged_in')->id,
+                ];
+
+                $this->M_CRUD->insertData('trans_pi_history', $paramHistory);
+                $response = ['status' => 1, 'messages' => 'Proforma invoice has been updated successfully.', 'icon' => 'success', 'url' => 'export/proforma'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Proforma invoice has failed to update.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
         }
 
 
