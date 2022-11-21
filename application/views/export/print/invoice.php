@@ -1,3 +1,24 @@
+<?php
+    $category = array();
+    $container = array();
+    $item = array();
+
+    foreach($params['category'] as $cat => $value_1)
+    {
+        $category[$value_1->item_category_id] = $value_1;
+    }
+
+    foreach($params['container'] as $dtl => $value_2)
+    {
+        $container[$value_2->item_category_id][$value_2->pi_container_id] = $value_2;
+    }
+
+    foreach($params['detail'] as $dtl => $value_3)
+    {
+        $item[$value_3->pi_item_category_id][$value_3->pi_container_id][$value_3->pi_detail_id] = $value_3;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -80,22 +101,20 @@
                 </div>
 
                 <div id="detail" class="content">
-                    <?php foreach($params['category'] as $group => $item) : ?>
-                        <div class="title" style="font-size: 8px; margin-top: 2%; text-align: left; font-weight: bold;"><?=$item['pi_item_category_name']?></div>
+                    <?php foreach($category as $cats => $rows_1) : ?>
+                        <div class="title" style="font-size: 8px; margin-top: 2%; text-align: left; font-weight: bold;"><?=$rows_1->pi_item_category_name?></div>
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <!-- <th>NO.</th> -->
-
-                                    <?php if($params['header']->carton == 1) : ?>
-                                    <th>CARTON BARCODE</th>
-                                    <?php endif; ?>
-
                                     <th>CONTAINER</th>
                                     <th>HS CODE</th>
                                     <th>DESCRIPTION OF GOODS</th>
                                     <th>PACKING</th>
                                     <th>QTY</th>
+
+                                    <?php if($params['header']->carton == 1) : ?>
+                                    <th>CARTON BARCODE</th>
+                                    <?php endif; ?>
 
                                     <?php if($params['header']->batch == 1) : ?>
                                     <th>BATCH</th>
@@ -115,67 +134,65 @@
                             </thead>
                             <tbody>
                                 <?php 
-                                    $no = 1;
                                     $tQty = 0;
-                                    $Grand = 0;
                                     $tGrand = 0;
-                                    $row_1_cols_tot_incoterm = 4 + $params['header']->carton;
-                                    $row_1_cols_qty_price = 2 + $params['header']->batch + $params['header']->expired + $params['header']->production;
-                                    $row_cols_ocean = 6 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
-                                    $row_cols_insurance = 6 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
-                                    $row_cols_grand = 6 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
-                                    $row_cols_says = 7 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
-
-                                    foreach($params['detail'][$group] as $detail => $dtl) :
-                                        $tQty += $dtl['qty'];
-                                        $Grand = ($dtl['qty'] * $dtl['price']);
-                                        $tGrand += $Grand;
+                                    foreach($container[$cats] as $cons => $rows_2) : 
                                 ?>
-                                <tr>
-                                    <!-- <td class="data-border" align="center"><?=$no?>.</td> -->
+                                    <?php 
+                                        $no = 1;
+                                        $row_1_cols_tot_incoterm = 4 + $params['header']->carton;
+                                        $row_1_cols_qty_price = 2 + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                        $row_cols_ocean = 6 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                        $row_cols_insurance = 6 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                        $row_cols_grand = 6 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                        $row_cols_says = 7 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                        foreach($item[$cats][$cons] as $detail => $rows_3) : 
+                                            $tQty += $rows_3->qty;
+                                            $Grand = ($rows_3->qty * $rows_3->price);
+                                            $tGrand += $Grand;
+                                    ?>
+                                        <tr>
+                                            <?php if($no == 1) : ?>
+                                                <td class="data-border" align="center" rowspan="<?=$rows_2->rowspan?>"><?=$rows_2->number_of_container?></td>
+                                            <?php endif; ?>
+                                            
 
-                                    <?php if($params['header']->carton == 1) : ?>
-                                    <td class="data-border" align="center"><?=($dtl['cartons']?$dtl['cartons']:'-')?></td>
-                                    <?php endif; ?>
-                                    
-                                    <?php if($no == 1) : ?>
-                                        <td class="data-border" align="center"><?=$dtl['number_of_container']?></td>
-                                    <?php else : ?>
-                                        <td class="data-border" align="center"></td>
-                                    <?php endif; ?>
-                                    
+                                            <td class="data-border" align="center"><?=($rows_3->hs_code)?></td>
+                                            <td class="data-border"><?=($rows_3->item_name)?></td>
+                                            <td class="data-border"><?=($rows_3->pack)?></td>
+                                            <td class="data-border" align="right"><?=number_format($rows_3->qty)?></td>
 
-                                    <td class="data-border" align="center"><?=($dtl['hs_code'])?></td>
-                                    <td class="data-border"><?=($dtl['item_name'])?></td>
-                                    <td class="data-border"><?=($dtl['pack'])?></td>
-                                    <td class="data-border" align="right"><?=number_format($dtl['qty'])?></td>
+                                            <?php if($params['header']->carton == 1) : ?>
+                                            <td class="data-border" align="center"><?=($rows_3->cartons?$rows_3->cartons:'-')?></td>
+                                            <?php endif; ?>
 
-                                    <?php if($params['header']->batch == 1) : ?>
-                                    <td class="data-border" align="center"><?=($dtl['batchs']?$dtl['batchs']:'-')?></td>
-                                    <?php endif; ?>
+                                            <?php if($params['header']->batch == 1) : ?>
+                                            <td class="data-border" align="center"><?=($rows_3->batchs?$rows_3->batchs:'-')?></td>
+                                            <?php endif; ?>
 
-                                    <?php if($params['header']->production == 1) : ?>
-                                    <td class="data-border" align="center"><?=($dtl['prod_date']?$dtl['prod_date']:'-')?></td>
-                                    <?php endif; ?>
-                                    
-                                    <?php if($params['header']->expired == 1) : ?>
-                                    <td class="data-border" align="center"><?=($dtl['exp_date']?$dtl['exp_date']:'-')?></td>
-                                    <?php endif; ?>
+                                            <?php if($params['header']->production == 1) : ?>
+                                            <td class="data-border" align="center"><?=($rows_3->prod_date?$rows_3->prod_date:'-')?></td>
+                                            <?php endif; ?>
+                                            
+                                            <?php if($params['header']->expired == 1) : ?>
+                                            <td class="data-border" align="center"><?=($rows_3->exp_date?$rows_3->exp_date:'-')?></td>
+                                            <?php endif; ?>
 
-                                    <td class="data-border" align="right"><?=number_format($dtl['price'], 2)?></td>
-                                    <td class="data-border" align="right"><?=number_format($dtl['total'], 2)?></td>
-                                </tr>
-                                <?php 
-                                    $no++; endforeach;
-                                    if($params['header']->incoterm_id == 3) {
-                                        $totAll = $tGrand + $params['header']->freight_cost + $params['header']->insurance;
-                                    } elseif($params['header']->incoterm_id == 2) {
-                                        $totAll = $tGrand + $params['header']->freight_cost;
-                                    } else {
-                                        $totAll = $tGrand;
-                                    }
-                                    $said = CurencyLang::toEnglish($totAll);
-                                ?>
+                                            <td class="data-border" align="right"><?=number_format($rows_3->price, 2)?></td>
+                                            <td class="data-border" align="right"><?=number_format($rows_3->total, 2)?></td>
+                                        </tr>
+                                    <?php 
+                                        $no++; endforeach;
+                                        if($params['header']->incoterm_id == 3) {
+                                            $totAll = $tGrand + $params['header']->freight_cost + $params['header']->insurance;
+                                        } elseif($params['header']->incoterm_id == 2) {
+                                            $totAll = $tGrand + $params['header']->freight_cost;
+                                        } else {
+                                            $totAll = $tGrand;
+                                        }
+                                        $said = CurencyLang::toEnglish($totAll);
+                                    ?>
+                                <?php endforeach; ?>
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -183,7 +200,7 @@
                                     <td class="data-border" align="right"><?=number_format($tQty)?></td>
                                     <td class="data-border" colspan="<?=$row_1_cols_qty_price?>" align="right"><?=number_format($tGrand, 2)?></td>
                                 </tr>
-                                <?php if($group == 1) : ?>
+                                <?php if($cats == 1) : ?>
                                     <?php if($params['header']->incoterm_id <> 1) : ?>
                                     <tr>
                                         <td class="data-border" style="text-align: left; font-weight: bold;" colspan="<?=$row_cols_ocean?>">OCEAN FREIGHT</th>
