@@ -132,8 +132,8 @@
                         $ext = explode('.', $temp_name);
                         $end = strtolower(end($ext));
                         $timestamp = mt_rand(1, time());
-                        $randomDate = date("d M Y", $timestamp);
-                        $filename = $item_name.'-'.md5($randomDate).'.'.$end;
+                        $randomDate = date("YmdHis", $timestamp);
+                        $filename = $item_name.'-'.$randomDate.'.'.$end;
     
                         if ( !file_exists($path) ) {
                             mkdir($path, 0777, true);
