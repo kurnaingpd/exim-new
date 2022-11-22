@@ -155,8 +155,8 @@
             ];
             $datas['params'] = [
                 'header' => $this->M_CRUD->readDatabyID('view_print_trans_packing_header', ['is_deleted' => '0', 'id' => $id]),
-                'detail' => $this->M_CRUD->readData('view_print_trans_packing_detail', ['packing_list_id' => $id]),
                 'container' => $this->M_CRUD->readData('view_print_trans_packing_container', ['packing_list_id' => $id]),
+                'detail' => $this->M_CRUD->readData('view_print_trans_packing_detail', ['packing_list_id' => $id]),
             ];
 
             $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
@@ -164,9 +164,9 @@
             $mpdf->defaultfooterline = 0;
             $mpdf->setAutoTopMargin = 'stretch';
             $mpdf->setAutoBottomMargin = 'stretch';
-            $mpdf->SetHeader('<img src="' . base_url() . 'assets/images/inventory/skp-logo-crop-removebg.png" width="11%" />||');
+            $mpdf->SetHeader('<img src="' . base_url() . 'assets/images/inventory/skp-logo-crop-removebg.png" width="12%" />||');
             $mpdf->AddPage(
-                'L', // L - landscape, P - portrait 
+                'P', // L - landscape, P - portrait 
                 '', '', '', '',
                 20, // margin_left
                 20, // margin right

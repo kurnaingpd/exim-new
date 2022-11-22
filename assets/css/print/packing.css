@@ -7,7 +7,7 @@
 }
 
 .content {
-    font-size: 7px;
+    font-size: 8px;
 }
 
 .clearfix-content::after {
@@ -33,7 +33,7 @@
 
 .table {
     width: 100%;
-    font-size: 7px;
+    font-size: 8px;
     border-style: solid;
     border-width: 1px;
     border-collapse: collapse;
@@ -54,6 +54,8 @@ th {
 
 .summary {
     border-top-style: solid;
+    border-right-style: solid;
+    border-left-style: solid;
     border-width: 1px;
     font-weight: bold;
     background-color: #e6e6e6;

@@ -4,12 +4,12 @@
     
     foreach($params['container'] as $cont => $value_1)
     {
-        $container[$value_1->number_of_container] = $value_1;
+        $container[$value_1->pi_container_id] = $value_1;
     }
 
     foreach($params['detail'] as $details => $value_2)
     {
-        $detail[$value_2->number_of_container][$value_2->id] = $value_2;
+        $detail[$value_2->pi_container_id][$value_2->id] = $value_2;
     }
 ?>
 
@@ -29,7 +29,7 @@
     <body>
         <div id="container">
             <h6 class="title" style="margin-bottom: 0px;"><u>PACKING LIST</u></h6>
-            <div class="title" style="font-size: 7px; margin-bottom: 1%;">No. <?=$params['header']->code?></div>
+            <div class="title" style="font-size: 8px; margin-bottom: 1%;">No. <?=$params['header']->code?></div>
 
             <div id="content" class="content">
                 <div id="header" class="clearfix-content">
@@ -117,73 +117,76 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php 
-                                $no = 1;
-                                $totQty = 0;
-                                $totNet = 0;
-                                $totGross = 0;
-                                $totCBM = 0;
-                                foreach($detail[$rows_1] as $dtl => $rows) :
-                                    $totQty += $rows->qty;
-                                    $totNet += $rows->net_wight;
-                                    $totGross += $rows->gross_weight;
-                                    $cols_total = 4 + $params['header']->carton;
-                                    $totCBM += $rows->cbm_item;
-                            ?>
+                                <?php
+                                    $no = 1;
+                                    $totQty = 0;
+                                    $totNet = 0;
+                                    $totGross = 0;
+                                    $totCBM = 0;
+                                    foreach($detail[$rows_1] as $rows_2 => $vals_2) :
+                                        $cols_total = 4 + $params['header']->carton;
+                                        $totQty += $vals_2->tot_qty;
+                                        $totNet += $vals_2->net_wight;
+                                        $totGross += $vals_2->gross_weight;
+                                        $totCBM += $vals_2->cbm_item;
+                                ?>
                                 <tr>
                                     <?php if($no==1) : ?>
-                                        <td class="data-border" align="center" rowspan="<?=$vals_1->rowspan?>"><?=$rows->container?></td>
+                                        <td class="data-border" align="center" rowspan="<?=$vals_1->rowspan?>"><?=$vals_2->container?></td>
                                     <?php endif; ?>
 
                                     <?php if($params['header']->carton == 1) : ?>
-                                    <td class="data-border" align="center"><?=$rows->carton_barcode?></td>
+                                        <td class="data-border" align="center"><?=$vals_2->carton_barcode?></td>
                                     <?php endif; ?>
 
-                                    <td class="data-border"><?=$rows->item_name?></td>
-                                    <td class="data-border" align="center"><?=$rows->hs_code?></td>
-                                    <td class="data-border" align="center"><?=$rows->packing?></td>
-                                    <td class="data-border" align="right"><?=number_format($rows->tot_qty)?></td>
+                                    <td class="data-border"><?=$vals_2->item_name?></td>
+                                    <td class="data-border" align="center"><?=$vals_2->hs_code?></td>
+                                    <td class="data-border" align="center"><?=$vals_2->packing?></td>
+                                    <td class="data-border" align="right"><?=number_format($vals_2->tot_qty)?></td>
 
                                     <?php if($params['header']->batch == 1) : ?>
-                                    <td class="data-border" align="center"><?=$rows->batch?></td>
+                                        <td class="data-border" align="center"><?=$vals_2->batch?></td>
                                     <?php endif; ?>
                                     
                                     <?php if($params['header']->production == 1) : ?>
-                                    <td class="data-border"><?=$rows->production_date?></td>
+                                        <td class="data-border"><?=$vals_2->production_date?></td>
                                     <?php endif; ?>
 
                                     <?php if($params['header']->expired == 1) : ?>
-                                    <td class="data-border"><?=$rows->expired_date?></td>
+                                        <td class="data-border"><?=$vals_2->expired_date?></td>
                                     <?php endif; ?>
 
-                                    <td class="data-border" align="center"><?=number_format($rows->net_wight, 2)?></td>
-                                    <td class="data-border" align="center"><?=number_format($rows->gross_weight, 2)?></td>
-                                    <td class="data-border" align="center"><?=round($rows->cbm_item, 4)?></td>
-                                    <td class="data-border" align="center"><?=$rows->dimensions?></td>
+                                    <td class="data-border" align="center"><?=number_format($vals_2->net_wight, 2)?></td>
+                                    <td class="data-border" align="center"><?=number_format($vals_2->gross_weight, 2)?></td>
+                                    <td class="data-border" align="center"><?=round($vals_2->cbm_item, 4)?></td>
+                                    <td class="data-border" align="center"><?=$vals_2->dimensions?></td>
                                 </tr>
-                            <?php $no++; endforeach; ?>
-                            <tr>
-                                <td class="summary" style="text-align: left; padding: 1%; font-weight: bold;" colspan="<?=$cols_total?>">TOTAL</td>
-                                <td align="center" class="summary"><?=number_format($totQty)?></td>
-                                
-                                <?php if($params['header']->batch == 1) : ?>
-                                <td class="summary"></td>
-                                <?php endif; ?>
+                                <?php
+                                        $no++;
+                                    endforeach;
+                                ?>
+                                <tr>
+                                    <td class="summary" style="text-align: left; padding: 1%; font-weight: bold;" colspan="<?=$cols_total?>">TOTAL</td>
+                                    <td align="center" class="summary"><?=number_format($totQty)?></td>
+                                    
+                                    <?php if($params['header']->batch == 1) : ?>
+                                    <td class="summary"></td>
+                                    <?php endif; ?>
 
-                                <?php if($params['header']->expired == 1) : ?>
-                                <td class="summary"></td>
-                                <?php endif; ?>
+                                    <?php if($params['header']->expired == 1) : ?>
+                                    <td class="summary"></td>
+                                    <?php endif; ?>
 
-                                <?php if($params['header']->production == 1) : ?>
-                                <td class="summary"></td>
-                                <?php endif; ?>
+                                    <?php if($params['header']->production == 1) : ?>
+                                    <td class="summary"></td>
+                                    <?php endif; ?>
 
-                                <td class="summary" align="center"><?=number_format($totNet, 2)?></td>
-                                <td class="summary" align="center"><?=number_format($totGross, 2)?></td>
-                                <td class="summary" align="center"><?=round($totCBM, 4)?></td>
-                                <td class="summary"></td>
-                            </tr>
-                        </tbody>
+                                    <td class="summary" align="center"><?=number_format($totNet, 2)?></td>
+                                    <td class="summary" align="center"><?=number_format($totGross, 2)?></td>
+                                    <td class="summary" align="center"><?=round($totCBM, 4)?></td>
+                                    <td class="summary"></td>
+                                </tr>
+                            </tbody>
                         <?php 
                                 $totGrandQty += $totQty;
                                 $totGrandNet += $totNet;
@@ -217,10 +220,10 @@
                     </table>
                 </div>
 
-                <div id="signature" style="margin-top: 1%; box-sizing: border-box; content: ''; clear: both; display: table;">
+                <div id="signature" style="margin-top: 3%; box-sizing: border-box; content: ''; clear: both; display: table;">
                     <div style="float: left; width: 20%; text-align: center;">
                         Kudus, <?=IndoDate?>
-                        <div style="margin-top: 20%;">EVAN GUSTIN</div>
+                        <div style="margin-top: 30%;">EVAN GUSTIN</div>
                     </div>
                 </div>
             </div>
