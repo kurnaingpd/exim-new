@@ -53,7 +53,10 @@ $(function () {
                 $('tbody#show-data').append(
                     '<tr data-id="'+rnd+'">'+
                         '<td style="width: 10%">'+
-                            '<input type="text" class="form-control" id="grid_container_no_'+rnd+'" name="grid_container_no_'+rnd+'" value="'+$('select.item[name="container_no"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
+                            '<input type="text" class="form-control" value="'+$('select.item[name="container_no"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="text" class="form-control" value="'+$('select.item[name="category"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly />'+
                         '</td>'+
                         '<td style="width: 28%">'+
                             '<input type="hidden" id="grid_pi_detail_id_'+rnd+'" name="grid_pi_detail_id_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
@@ -75,15 +78,6 @@ $(function () {
                         '<td>'+
                             '<input type="text" class="form-control" id="grid_expdate_'+rnd+'" name="grid_expdate_'+rnd+'" value="'+$('input.item[name="expdate"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
                         '</td>'+
-                        // '<td>'+
-                        //     '<input type="text" class="form-control" id="grid_net_'+rnd+'" name="grid_net_'+rnd+'" value="'+$('input.item[name="net"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
-                        // '</td>'+
-                        // '<td>'+
-                        //     '<input type="text" class="form-control" id="grid_gross_'+rnd+'" name="grid_gross_'+rnd+'" value="'+$('input.item[name="gross"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
-                        // '</td>'+
-                        // '<td>'+
-                        //     '<input type="text" class="form-control" id="grid_dimension_'+rnd+'" name="grid_dimension_'+rnd+'" value="'+$('input.item[name="dimension"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
-                        // '</td>'+
                         '<td class="text-center">'+
                             '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
                         '</td>'+

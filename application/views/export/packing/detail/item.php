@@ -5,7 +5,7 @@
             <select name="container_no" class="form-control select2bs4 item" id="container_no">
                 <option></option>
                 <?php foreach($params['container'] as $rows) : ?>
-                    <option value="<?=$rows->number_of_container?>"><?=$rows->number_of_container?></option>
+                    <option value="<?=$rows->pi_container_id?>"><?=$rows->number_of_container?></option>
                 <?php endforeach; ?>
             </select>
         </div>
