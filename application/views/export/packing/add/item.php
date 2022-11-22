@@ -23,11 +23,11 @@
             <select name="product" class="form-control select2bs4 item" id="product">
                 <option></option>
             </select>
-            <input type="hidden" class="item" id="hscode" name="hscode">
+            <!-- <input type="hidden" class="item" id="hscode" name="hscode">
             <input type="hidden" class="item" id="packing" name="packing">
             <input type="hidden" class="item" id="net" name="net">
             <input type="hidden" class="item" id="gross" name="gross">
-            <input type="hidden" class="item" id="dimension" name="dimension">
+            <input type="hidden" class="item" id="dimension" name="dimension"> -->
             <input type="hidden" class="item" id="qty_inv" name="qty_inv">
         </div>
     </div>

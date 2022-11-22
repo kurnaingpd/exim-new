@@ -41,6 +41,9 @@ $(function () {
                         '<td style="width: 10%">'+
                             '<input type="text" class="form-control" value="'+$('select.item[name="container_no"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
                         '</td>'+
+                        '<td>'+
+                            '<input type="text" class="form-control" value="'+$('select.item[name="category"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
+                        '</td>'+
                         '<td style="width: 24%">'+
                             '<input type="hidden" id="grid_pi_detail_id_'+rnd+'" name="grid_pi_detail_id_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
                             '<input type="text" class="form-control" value="'+$('select.item[name="product"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
@@ -61,15 +64,6 @@ $(function () {
                         '<td>'+
                             '<input type="text" class="form-control" id="grid_expdate_'+rnd+'" name="grid_expdate_'+rnd+'" value="'+$('input.item[name="expdate"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
                         '</td>'+
-                        // '<td>'+
-                        //     '<input type="text" class="form-control" id="grid_net_'+rnd+'" name="grid_net_'+rnd+'" value="'+$('input.item[name="net"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
-                        // '</td>'+
-                        // '<td>'+
-                        //     '<input type="text" class="form-control" id="grid_gross_'+rnd+'" name="grid_gross_'+rnd+'" value="'+$('input.item[name="gross"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
-                        // '</td>'+
-                        // '<td>'+
-                        //     '<input type="text" class="form-control" id="grid_dimension_'+rnd+'" name="grid_dimension_'+rnd+'" value="'+$('input.item[name="dimension"]').val()+'" style="background-color:transparent; border: none transparent;" readonly />'+
-                        // '</td>'+
                         '<td class="text-center">'+
                             '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
                         '</td>'+
@@ -121,31 +115,36 @@ $('select#invoice').on('change', function() {
 });
 
 $('select#container_no').on('change', function() {
-    $('#product').html("");
     var invoice = $('select#invoice').select2('data');
     var container = $('select#container_no').select2('data');
     get_category(invoice[0].id, container[0].id);
 });
 
 $('select#category').on('change', function() {
-    $('#qty').html("");
     var invoice = $('select#invoice').select2('data');
     var container = $('select#container_no').select2('data');
     var category = $('select#category').select2('data');
-    get_item(invoice[0].id, container[0].id, category[0].id);
+
+    if(category.length == 1) {
+        get_item(invoice[0].id, container[0].id, category[0].id);
+    }
 });
 
 $('select#product').on('change', function() {
-    $('#qty').html("");
-    $('#batch').html("");
     var data = $('select#product').select2('data');
-    get_data_item(data[0].id);
-    get_batch(data[0].id);
+
+    if(data.length == 1) {
+        get_data_item(data[0].id);
+        get_batch(data[0].id);
+    }
 });
 
 $('select#batch').on('change', function() {
     var data = $('select#batch').select2('data');
-    get_date(data[0].id);
+
+    if(data.length == 1) {
+        get_date(data[0].id);
+    }
 });
 
 function get_data(id)
@@ -215,7 +214,7 @@ function get_container(id)
                 var i;
                 for(i=0; i<response.length; i++) {
                     html += '<option></option>';
-                    html += '<option value="'+response[i].number_of_container+'">'+response[i].number_of_container+'</option>';
+                    html += '<option value="'+response[i].pi_container_id+'">'+response[i].number_of_container+'</option>';
                 }
                 $('#container_no').html(html);
             } else {
@@ -236,7 +235,7 @@ function get_item_qty(id)
                 var html = '';
                 var i;
                 for(i=0; i<response.length; i++) {
-                    html += '<input type="hidden" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
+                    html += '<input type="text" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
                 }
                 $('#item_qty').html(html);
             } else {
@@ -295,7 +294,7 @@ function get_item(invoice = '', container = '', category = '')
     });
 }
 
-function get_data_item(id)
+function get_data_item(id = '')
 {
     $.ajax({
         type  : 'ajax',
@@ -304,19 +303,19 @@ function get_data_item(id)
         dataType : 'json',
         success : function(data){
             if(data) {
-                document.getElementById("hscode").value = data.hs_code;
-                document.getElementById("packing").value = data.pack_desc;
-                document.getElementById("net").value = data.net_wight;
-                document.getElementById("gross").value = data.gross_weight;
-                document.getElementById("dimension").value = data.dimensions;
+                // document.getElementById("hscode").value = data.hs_code;
+                // document.getElementById("packing").value = data.pack_desc;
+                // document.getElementById("net").value = data.net_wight;
+                // document.getElementById("gross").value = data.gross_weight;
+                // document.getElementById("dimension").value = data.dimensions;
                 document.getElementById("qty_inv").value = data.qty;
                 document.getElementById("qty").value = ((data.qty == Number(document.getElementById("qty_"+id).value))?(data.qty - 0):(Number(document.getElementById("qty_"+id).value)));
             } else {
-                document.getElementById("hscode").value = "";
-                document.getElementById("packing").value = "";
-                document.getElementById("net").value = "";
-                document.getElementById("gross").value = "";
-                document.getElementById("dimension").value = "";
+                // document.getElementById("hscode").value = "";
+                // document.getElementById("packing").value = "";
+                // document.getElementById("net").value = "";
+                // document.getElementById("gross").value = "";
+                // document.getElementById("dimension").value = "";
                 document.getElementById("qty").value = "";
             }
         }

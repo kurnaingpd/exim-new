@@ -84,13 +84,13 @@
 
         public function category($id = NULl, $container = NULL)
         {
-            $data = $this->M_CRUD->readData('view_trans_packing_item_category', ['invoice_id' => $id, 'number_of_container' => urldecode($container)]);
+            $data = $this->M_CRUD->readData('view_trans_packing_item_category', ['invoice_id' => $id, 'pi_container_id' => $container]);
             echo json_encode($data);
         }
 
         public function item($invoice = NULL, $container = NULL, $category = NULL)
         {
-            $data = $this->M_CRUD->readData('view_trans_packing_item', ['id' => $invoice, 'number_of_container' => urldecode($container), 'pi_item_category_id' => $category]);
+            $data = $this->M_CRUD->readData('view_trans_packing_item', ['id' => $invoice, 'pi_container_id' => $container, 'pi_item_category_id' => $category]);
             echo json_encode($data);
         }
 
