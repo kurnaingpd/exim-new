@@ -73,10 +73,10 @@
                 <?php $no = 1; foreach($detail['cust_ship'] as $rows) : ?>
                     <tr class="text-center" data-id="<?=$rows->id?>">
                         <td>
-                            <input type="text" class="form-control" id="dtl_shipto_discharge_<?=$rows->id?>" name="dtl_shipto_discharge_<?=$rows->id?>" value="<?=$rows->discharge_port?>" style="background-color:#ffffff;" disabled>
+                            <input type="text" class="form-control" id="dtl_shipto_discharge_<?=$rows->id?>" name="dtl_shipto_discharge_<?=$rows->id?>" value="<?=$rows->discharge_port?>" style="background-color:transparent; border: none transparent;" disabled>
                         </td>
                         <td>
-                            <input type="text" class="form-control" id="dtl_shipto_destination_<?=$rows->id?>" name="dtl_shipto_destination_<?=$rows->id?>" value="<?=$rows->destination_port?>" style="background-color:#ffffff;" disabled>
+                            <input type="text" class="form-control" id="dtl_shipto_destination_<?=$rows->id?>" name="dtl_shipto_destination_<?=$rows->id?>" value="<?=$rows->destination_port?>" style="background-color:transparent; border: none transparent;" disabled>
                         </td>
                         <td>
                             <button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="<?=$rows->id?>"><i class="fas fa-trash"></i></button>

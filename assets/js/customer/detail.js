@@ -20,8 +20,8 @@ $(function () {
             var rnd = Math.floor((Math.random() * 10000) + 1);
             $('tbody#data-shipto').append(
                 '<tr data-id="'+rnd+'">'+
-                    '<td><input type="text" class="form-control" id="grid_shipto_discharge_'+rnd+'" name="grid_shipto_discharge_'+rnd+'" value="'+$('input.port[name="shipto_discharge"]').val()+'" style="background-color:#ffffff;" readonly /></td>'+
-                    '<td><input type="text" class="form-control" id="grid_shipto_destination_'+rnd+'" name="grid_shipto_destination_'+rnd+'" value="'+$('input.port[name="shipto_destination"]').val()+'" style="background-color:#ffffff;" readonly /></td>'+
+                    '<td><input type="text" class="form-control" id="grid_shipto_discharge_'+rnd+'" name="grid_shipto_discharge_'+rnd+'" value="'+$('input.port[name="shipto_discharge"]').val()+'" style="background-color:transparent; border: none transparent;" readonly /></td>'+
+                    '<td><input type="text" class="form-control" id="grid_shipto_destination_'+rnd+'" name="grid_shipto_destination_'+rnd+'" value="'+$('input.port[name="shipto_destination"]').val()+'" style="background-color:transparent; border: none transparent;" readonly /></td>'+
                     '<td class="text-center">'+
                         '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
                     '</td>'+
@@ -52,11 +52,11 @@ $(function () {
                 '<tr data-id="'+rnd+'">'+
                     '<td>'+
                         '<input type="hidden" id="cd_coding_type_'+rnd+'" name="cd_coding_type_'+rnd+'" value="'+$('select.coding[name="coding_type"]').val()+'" />'+
-                        '<input type="text" id="cd_coding_type_name_'+rnd+'" name="cd_coding_type_name_'+rnd+'" class="form-control" value="'+$('select.coding[name="coding_type"] option:selected').text()+'" style="background-color:#ffffff;" readonly />'+
+                        '<input type="text" id="cd_coding_type_name_'+rnd+'" name="cd_coding_type_name_'+rnd+'" class="form-control" value="'+$('select.coding[name="coding_type"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly />'+
                     '</td>'+
-                    '<td><input type="text" class="form-control" id="cd_coding_import_'+rnd+'" name="cd_coding_import_'+rnd+'" value="'+$('input.coding[name="coding_import"]').val()+'" style="background-color:#ffffff;" readonly /></td>'+
-                    '<td><input type="text" class="form-control" id="cd_coding_hotline_'+rnd+'" name="cd_coding_hotline_'+rnd+'" value="'+$('input.coding[name="coding_hotline"]').val()+'" style="background-color:#ffffff;" readonly /></td>'+
-                    '<td><input type="text" class="form-control" id="cd_coding_bb_'+rnd+'" name="cd_coding_bb_'+rnd+'" value="'+$('input.coding[name="coding_bb"]').val()+'" style="background-color:#ffffff;" readonly /></td>'+
+                    '<td><input type="text" class="form-control" id="cd_coding_import_'+rnd+'" name="cd_coding_import_'+rnd+'" value="'+$('input.coding[name="coding_import"]').val()+'" style="background-color:transparent; border: none transparent;" readonly /></td>'+
+                    '<td><input type="text" class="form-control" id="cd_coding_hotline_'+rnd+'" name="cd_coding_hotline_'+rnd+'" value="'+$('input.coding[name="coding_hotline"]').val()+'" style="background-color:transparent; border: none transparent;" readonly /></td>'+
+                    '<td><input type="text" class="form-control" id="cd_coding_bb_'+rnd+'" name="cd_coding_bb_'+rnd+'" value="'+$('input.coding[name="coding_bb"]').val()+'" style="background-color:transparent; border: none transparent;" readonly /></td>'+
                     '<td class="text-center">'+
                         '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
                     '</td>'+
@@ -98,24 +98,24 @@ $(function () {
     });
 });
 
-$("#con_company").keyup(function () {
-    document.getElementById("not_company").value = this.value;
-});
+// $("#con_company").keyup(function () {
+//     document.getElementById("not_company").value = this.value;
+// });
 
-$("#con_address").keyup(function () {
-    document.getElementById("not_address").value = this.value;
-    document.getElementById("shipto_address").value = this.value;
-});
+// $("#con_address").keyup(function () {
+//     document.getElementById("not_address").value = this.value;
+//     document.getElementById("shipto_address").value = this.value;
+// });
 
-$('select#con_country').on('change', function() {
-    var data = $('select#con_country').select2('data');
-    document.getElementById("not_country_id").value = data[0].id;
-    document.getElementById("not_country_name").value = data[0].text;
-});
+// $('select#con_country').on('change', function() {
+//     var data = $('select#con_country').select2('data');
+//     document.getElementById("not_country_id").value = data[0].id;
+//     document.getElementById("not_country_name").value = data[0].text;
+// });
 
-$("#con_phone").keyup(function () {
-    document.getElementById("not_phone").value = this.value;
-});
+// $("#con_phone").keyup(function () {
+//     document.getElementById("not_phone").value = this.value;
+// });
 
 $("#cp_name").keyup(function () {
     document.getElementById("cpshipto_name").value = this.value;

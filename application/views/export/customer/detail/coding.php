@@ -76,16 +76,16 @@
                                 <tr class="text-center" data-id="<?=$rows->id?>">
                                     <td>
                                         <input type="hidden" id="cd_dtl_coding_type_<?=$rows->id?>" name="cd_dtl_coding_type_<?=$rows->id?>" value="<?=$rows->id?>" disabled />
-                                        <input type="text" class="form-control" id="cd_dtl_coding_type_name_<?=$rows->id?>" name="cd_dtl_coding_type_name_<?=$rows->id?>" value="<?=$rows->coding_type_name?>" style="background-color:#ffffff;" disabled />
+                                        <input type="text" class="form-control" id="cd_dtl_coding_type_name_<?=$rows->id?>" name="cd_dtl_coding_type_name_<?=$rows->id?>" value="<?=$rows->coding_type_name?>" style="background-color:transparent; border: none transparent;" disabled />
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" id="cd_dtl_coding_import_<?=$rows->id?>" name="cd_dtl_coding_import_<?=$rows->id?>"" value="<?=$rows->import_by?>" style="background-color:#ffffff;" disabled />
+                                        <input type="text" class="form-control" id="cd_dtl_coding_import_<?=$rows->id?>" name="cd_dtl_coding_import_<?=$rows->id?>"" value="<?=$rows->import_by?>" style="background-color:transparent; border: none transparent;" disabled />
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" id="cd_dtl_coding_hotline_<?=$rows->id?>" name="cd_dtl_coding_hotline_<?=$rows->id?>" value="<?=$rows->hotline?>" style="background-color:#ffffff;" disabled />
+                                        <input type="text" class="form-control" id="cd_dtl_coding_hotline_<?=$rows->id?>" name="cd_dtl_coding_hotline_<?=$rows->id?>" value="<?=$rows->hotline?>" style="background-color:transparent; border: none transparent;" disabled />
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" id="cd_dtl_coding_bb_<?=$rows->id?>" name="cd_dtl_coding_bb_<?=$rows->id?>" value="<?=$rows->best_before?>" style="background-color:#ffffff;" disabled />
+                                        <input type="text" class="form-control" id="cd_dtl_coding_bb_<?=$rows->id?>" name="cd_dtl_coding_bb_<?=$rows->id?>" value="<?=$rows->best_before?>" style="background-color:transparent; border: none transparent;" disabled />
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-danger btn-flat btn-remove-coding" style="cursor:pointer;" data-row="<?=$rows->id?>"><i class="fas fa-trash"></i></button>
