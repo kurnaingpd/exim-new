@@ -202,15 +202,19 @@
                                 </tr>
                                 <?php if($cats == 1) : ?>
                                     <?php if($params['header']->incoterm_id <> 1) : ?>
-                                    <tr>
-                                        <td class="data-border" style="text-align: left; font-weight: bold;" colspan="<?=$row_cols_ocean?>">OCEAN FREIGHT</th>
-                                        <td class="data-border" align="right"><?=number_format($params['header']->freight_cost, 2)?></td>
-                                    </tr>
+                                        <?php if($params['header']->freight == 1) : ?>
+                                            <tr>
+                                                <td class="data-border" style="text-align: left; font-weight: bold;" colspan="<?=$row_cols_ocean?>">OCEAN FREIGHT</th>
+                                                <td class="data-border" align="right"><?=number_format($params['header']->freight_cost, 2)?></td>
+                                            </tr>
+                                        <?php endif; ?>
                                     <?php if($params['header']->incoterm_id <> 2) : ?>
-                                    <tr>
-                                        <td class="data-border" style="text-align: left; font-weight: bold;" colspan="<?=$row_cols_insurance?>">INSURANCE</th>
-                                        <td class="data-border" align="right"><?=number_format($params['header']->insurance, 2)?></td>
-                                    </tr>
+                                        <?php if($params['header']->freight == 1) : ?>
+                                            <tr>
+                                                <td class="data-border" style="text-align: left; font-weight: bold;" colspan="<?=$row_cols_insurance?>">INSURANCE</th>
+                                                <td class="data-border" align="right"><?=number_format($params['header']->insurance, 2)?></td>
+                                            </tr>
+                                        <?php endif; ?>
                                     <?php endif; ?>
                                     <tr>
                                         <td class="data-border" style="text-align: left; font-weight: bold;" colspan="<?=$row_cols_grand?>">GRAND TOTAL <?=$params['header']->incoterm.' '.$params['header']->destination_port?></th>
