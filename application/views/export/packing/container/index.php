@@ -20,10 +20,10 @@
                                 <tr class="text-center">
                                     <td><?=$no?>.</td>
                                     <td>
-                                        <input type="text" class="form-control cont" id="container" name="container" value="<?=$rows->number_of_container?>" style="background-color:transparent;">
+                                        <input type="text" class="form-control cont" id="container_<?=$rows->pi_container_id?>" name="container_<?=$rows->pi_container_id?>" value="<?=$rows->number_of_container?>" style="background-color:transparent;">
                                     </td>
                                     <td>
-                                        <button type="button" id="update" class="btn btn-info btn-flat btn-remove" style="cursor:pointer;" data-id="<?=$rows->id?>" data-value="<?=$rows->number_of_container?>"><i class="fas fa-edit"></i></button>
+                                        <button type="button" id="update" class="btn btn-info btn-flat btn-remove" style="cursor:pointer;" data-id="<?=$rows->pi_container_id?>"><i class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
                             <?php $no++; endforeach; ?>

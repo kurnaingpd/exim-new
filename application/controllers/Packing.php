@@ -312,19 +312,16 @@
             $this->template->load('default', 'contents' , 'export/packing/container/index', $datas);
         }
 
-        public function update_container($id, $no_container, $value)
+        public function update_container($id, $value)
         {
-            $post = $this->input->post();
-            $pi = $this->M_CRUD->readDatabyID('view_trans_packing_detail_container', ['id' => $id, 'number_of_container' => urldecode($no_container)]);
             $condition = [
-                'pi_id' => $pi->pi_id,
-                'number_of_container' => urldecode($no_container),
+                'id' => $id,
             ];
             $params = [
                 'number_of_container' => urldecode($value),
             ];
 
-            if($this->M_CRUD->updateData('trans_pi_detail', $params, $condition)) {
+            if($this->M_CRUD->updateData('trans_pi_container', $params, $condition)) {
                 $response = ['status' => 1, 'messages' => 'Container has been updated successfully.', 'icon' => 'success', 'url' => 'export/packing'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Container has failed to update.', 'icon' => 'error'];

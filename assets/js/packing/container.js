@@ -1,8 +1,7 @@
 $(function () {
     $('#tcontainer tbody').on('click', 'button#update', function () {
         var id = $(this).attr("data-id");
-        var no_container = $(this).attr("data-value");
-        var val_container = document.getElementById("container").value;
+        var val_container = document.getElementById("container_" + id).value;
         swal({
             title: "",
             text: "Are you sure to change container?",
@@ -12,7 +11,7 @@ $(function () {
         })
         .then((willDelete) => {
             if (willDelete) {
-                update(id, no_container, val_container);
+                update(id, val_container);
             } else {
                 swal("", "Container canceled for change.", "info").then((value) => {
                     window.location.href = site_url + "export/packing";
@@ -22,10 +21,10 @@ $(function () {
     });
 });
 
-function update(id, no_container, val_container)
+function update(id, val_container)
 {
     $.ajax({
-        url: site_url + "export/packing/update_container/" + id + "/" + no_container + "/" + val_container,
+        url: site_url + "export/packing/update_container/" + id + "/" + val_container,
         type: "POST",
         dataType: "json",
         success: function(response) {
