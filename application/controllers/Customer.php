@@ -88,7 +88,8 @@
                     'address' => $post['con_address'],
                     'town' => $post['con_town'],
                     'country_id' => $post['con_country'],
-                    'phone_no' => $post['con_phone'],
+                    'phone_no_tel' => $post['con_phone_tel'],
+                    'phone_no_fax' => ($post['con_phone_fax']?$post['con_phone_fax']:NULL),
                     'created_by' => $this->session->userdata('logged_in')->id,
                 ];
                 $customer = $this->M_CRUD->insertData('master_customer', $paramConsignee);
@@ -135,7 +136,8 @@
                 'company_name' => $param['not_company'],
                 'address' => $param['not_address'],
                 'country_id' => $param['not_country_id'],
-                'phone_no' => $param['not_phone'],
+                'phone_no_tel' => $param['not_phone_tel'],
+                'phone_no_fax' => ($param['not_phone_fax']?$param['not_phone_fax']:NULL),
             ];
             $this->M_CRUD->insertData('master_customer_notify', $datas);
         }
@@ -377,7 +379,9 @@
                 'address' => $post['con_address'],
                 'town' => $post['con_town'],
                 'country_id' => $post['con_country'],
-                'phone_no' => $post['con_phone'],
+                // 'phone_no' => $post['con_phone'],
+                'phone_no_tel' => $post['con_phone_tel'],
+                'phone_no_fax' => ($post['con_phone_fax']?$post['con_phone_fax']:NULL),
                 'updated_at' => date('Y-m-d H:i:s'),
                 'updated_by' => $this->session->userdata('logged_in')->id,
             ];
@@ -415,7 +419,9 @@
                 'company_name' => $param['not_company'],
                 'address' => $param['not_address'],
                 'country_id' => $param['not_country_id'],
-                'phone_no' => $param['not_phone'],
+                // 'phone_no' => $param['not_phone'],
+                'phone_no_tel' => $param['not_phone_tel'],
+                'phone_no_fax' => ($param['not_phone_fax']?$param['not_phone_fax']:NULL),
             ];
             $this->M_CRUD->updateData('master_customer_notify', $datas, ['customer_id' => $cust_id]);
         }

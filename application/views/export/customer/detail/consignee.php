@@ -34,11 +34,39 @@
 
     <div class="col-md-2">
         <div class="form-group required">
-            <label for="con_phone" class="control-label">Phone number</label>
-            <input type="text" name="con_phone" class="form-control" id="con_phone" placeholder="Enter phone number" autocomplete="off" required value="<?=$params['customer']->phone_no?>">
+            <label for="con_phone_tel" class="control-label">Phone number (Tel)</label>
+            <!-- <input type="text" name="con_phone" class="form-control" id="con_phone" placeholder="Enter phone number" autocomplete="off" required> -->
+            <div class="input-group" id="con_phone_tel" data-target-input="nearest">
+                <div class="input-group-append">
+                    <div class="input-group-text"><i class="fa fa-phone-alt"></i></div>
+                </div>
+                <input type="text" class="form-control" autocomplete="off" id="con_phone_tel" name="con_phone_tel" placeholder="Enter phone number" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9+]/g, '').replace(/(\..*?)\..*/g, '$1');" value="<?=$params['customer']->phone_no_tel?>">
+            </div>
         </div>
     </div>
 
+    <div class="col-md-2">
+        <div class="form-group">
+            <label for="con_phone_fax" class="control-label">Phone number (Fax)</label>
+            <!-- <input type="text" name="con_phone" class="form-control" id="con_phone" placeholder="Enter phone number" autocomplete="off" required> -->
+            <div class="input-group" id="con_phone_fax" data-target-input="nearest">
+                <div class="input-group-append">
+                    <div class="input-group-text"><i class="fa fa-fax"></i></div>
+                </div>
+                <input type="text" class="form-control" autocomplete="off" id="con_phone_fax" name="con_phone_fax" placeholder="Enter phone number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9+]/g, '').replace(/(\..*?)\..*/g, '$1');" value="<?=$params['customer']->phone_no_fax?>">
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="col-md-2">
+        <div class="form-group required">
+            <label for="con_phone" class="control-label">Phone number</label>
+            <input type="text" name="con_phone" class="form-control" id="con_phone" placeholder="Enter phone number" autocomplete="off" required value="<?=$params['customer']->phone_no?>">
+        </div>
+    </div> -->
+</div>
+
+<div class="row">
     <div class="col-md-2">
         <div class="form-group required">
             <label for="con_bank" class="control-label">Bank</label>

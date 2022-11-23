@@ -11,7 +11,8 @@
                     <th>Company name</th>
                     <th>Town</th>
                     <th>Country</th>
-                    <th>Phone</th>
+                    <th>Phone (Tel)</th>
+                    <th>Phone (Fax)</th>
                     <th>Created at</th>
                     <th>Updated at</th>
                     <th>Status</th>
@@ -26,7 +27,8 @@
                         <td><?=$rows->company_name?></td>
                         <td><?=$rows->town?></td>
                         <td><?=$rows->country_name?></td>
-                        <td class="text-center"><?=$rows->phone_no?></td>
+                        <td class="text-center"><?=$rows->phone_no_tel?></td>
+                        <td class="text-center"><?=$rows->phone_no_fax?></td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center"><?=($rows->stats_desc)?></td>
