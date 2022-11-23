@@ -223,24 +223,28 @@
                                 </div>
                             </div>
 
-                            <!-- <div class="col-md-1">
-                                <?php if($item_id->option_id == 1) : ?>
-                                    <a href="<?=base_url('assets/attachment/signedpi/'.$item_id->value)?>" class="btn btn-block btn-info text-center <?=$item_id->download?>" target="_blank"  >
-                                        <i class="fas fa-download"></i>
-                                    </a>
-                                <?php endif; ?>
-                            </div> -->
-
                             <div class="col-md-1 text-center">
                                 <?php if($item_id->option_id == 1) : ?>
-                                    <?php if($item_id->pi_item_id == 14 || $item_id->pi_item_id == 15 || $item_id->pi_item_id == 18 || $item_id->pi_item_id == 34) : ?>
-                                        <a href="<?=site_url('export/signedpi/attachment/'.$params['id'].'/'.$item_id->pi_item_id)?>" class="btn btn-block btn-info <?=$item_id->download?>">
-                                            <i class="fas fa-list"></i>
-                                        </a>
+                                    <?php if($item_id->dates) : ?>
+                                        <?php if($item_id->pi_item_id == 14 || $item_id->pi_item_id == 15 || $item_id->pi_item_id == 18 || $item_id->pi_item_id == 34) : ?>
+                                            <a href="<?=site_url('export/signedpi/attachment/'.$params['id'].'/'.$item_id->pi_item_id)?>" class="btn btn-block btn-info">
+                                                <i class="fas fa-list"></i>
+                                            </a>
+                                        <?php else : ?>
+                                            <a href="<?=base_url($item_id->value)?>" class="btn btn-block btn-info" target="_blank"  >
+                                                <i class="fas fa-download"></i>
+                                            </a>
+                                        <?php endif; ?>
                                     <?php else : ?>
-                                        <a href="<?=base_url($item_id->value)?>" class="btn btn-block btn-info <?=$item_id->download?>" target="_blank"  >
-                                            <i class="fas fa-download"></i>
-                                        </a>
+                                        <?php if($item_id->pi_item_id == 14 || $item_id->pi_item_id == 15 || $item_id->pi_item_id == 18 || $item_id->pi_item_id == 34) : ?>
+                                            <a href="<?=site_url('export/signedpi/attachment/'.$params['id'].'/'.$item_id->pi_item_id)?>" class="btn btn-block btn-info <?=$item_id->download?>">
+                                                <i class="fas fa-list"></i>
+                                            </a>
+                                        <?php else : ?>
+                                            <a href="<?=base_url($item_id->value)?>" class="btn btn-block btn-info <?=$item_id->download?>" target="_blank"  >
+                                                <i class="fas fa-download"></i>
+                                            </a>
+                                        <?php endif; ?>
                                     <?php endif; ?>
                                 <?php endif; ?>
                             </div>

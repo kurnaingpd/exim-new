@@ -14,11 +14,15 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $no=1; foreach($params['list'] as $rows) : ?>
+                <?php 
+                    $no=1; 
+                    foreach($params['list'] as $rows) : 
+                        $values = explode("/",$rows->values);
+                ?>
                     <tr class="align-middle text-center">
                         <td><?=$no?>.</td>
                         <td><?=$rows->dates?></td>
-                        <td><?=$rows->values?></td>
+                        <td><?=$values[3]?></td>
                         <td><?=$rows->created_at?></td>
                         <td>
                             <a href="<?=base_url($rows->values)?>" class="btn btn-sm btn-info" target="_blank">

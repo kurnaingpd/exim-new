@@ -132,16 +132,10 @@
                         $ext = explode('.', $temp_name);
                         $end = strtolower(end($ext));
                         $timestamp = mt_rand(1, time());
-                        $randomDate = date("YmdHis", $timestamp);
-                        $filename = $item_name.'-'.$randomDate.'.'.$end;
-    
-                        if ( !file_exists($path) ) {
-                            mkdir($path, 0777, true);
-                        }
-    
                         $name = "pi_val_".$item['item_id'];
+                        $randomDate = date("Ymd_His");
+                        $filename = preg_replace('/\s+/', '', ucwords(strtolower($ext[0]))).'_'.$randomDate.'.'.$end;
                         move_uploaded_file($_FILES[$name]['tmp_name'], $path.$filename);
-    
                         $condition = [
                             'pi_id' => $item['id'],
                             'pi_item_id' => $item['item_id'],
