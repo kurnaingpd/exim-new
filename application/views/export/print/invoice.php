@@ -140,8 +140,8 @@
                                 ?>
                                     <?php 
                                         $no = 1;
-                                        $row_1_cols_tot_incoterm = 4 + $params['header']->carton;
-                                        $row_1_cols_qty_price = 2 + $params['header']->batch + $params['header']->expired + $params['header']->production;
+                                        $row_1_cols_tot_incoterm = 4;
+                                        $row_1_cols_qty_price = 2 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
                                         $row_cols_ocean = 6 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
                                         $row_cols_insurance = 6 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
                                         $row_cols_grand = 6 + $params['header']->carton + $params['header']->batch + $params['header']->expired + $params['header']->production;
