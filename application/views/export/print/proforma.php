@@ -144,14 +144,19 @@
                                 if($params['header']->incoterm_id == 3) : 
                                     $totGrand = ($totGrand + $params['header']->freight_cost + $params['header']->insurance);
                             ?>
-                                <tr>
-                                    <td class="foot">OCEAN FREIGHT</td>
-                                    <td class="foot" align="right" colspan="4"><?=$params['header']->currency_icon.' '.number_format($params['header']->freight_cost, 2)?></td>
-                                </tr>
-                                <tr>
-                                    <td class="foot">INSURANCE</td>
-                                    <td class="foot" align="right" colspan="4"><?=$params['header']->currency_icon.' '.number_format($params['header']->insurance, 2)?></td>
-                                </tr>
+                                <?php if($params['header']->freight == 1) : ?>
+                                    <tr>
+                                        <td class="foot">OCEAN FREIGHT</td>
+                                        <td class="foot" align="right" colspan="4"><?=$params['header']->currency_icon.' '.number_format($params['header']->freight_cost, 2)?></td>
+                                    </tr>
+                                <?php endif; ?>
+
+                                <?php if($params['header']->insurances == 1) : ?>
+                                    <tr>
+                                        <td class="foot">INSURANCE</td>
+                                        <td class="foot" align="right" colspan="4"><?=$params['header']->currency_icon.' '.number_format($params['header']->insurance, 2)?></td>
+                                    </tr>
+                                <?php endif; ?>
                             <?php endif; ?>
                             <tr>
                                 <td class="foot">GRAND TOTAL <?=$params['header']->incoterm.' '.$params['header']->destination?></td>

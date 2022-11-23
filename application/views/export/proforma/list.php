@@ -14,6 +14,8 @@
                     <th>PIC</th>
                     <th>Last updated</th>
                     <th>Remarks</th>
+                    <th>Freight</th>
+                    <th>Insurance</th>
                     <th><i class="fas fa-ellipsis-h"></i></th>
                 </tr>
             </thead>
@@ -28,6 +30,20 @@
                         <td><?=$rows->pic?></td>
                         <td><?=$rows->last_updated?></td>
                         <td <?=($rows->remarks=='-'?'class="text-center"':'')?>><?=$rows->remarks?></td>
+                        <td class="text-center">
+                            <div class="form-group" <?=$rows->filters?>>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input check" type="checkbox" id="freight" name="freight" data-pi="<?=$rows->id?>" <?=($rows->freight == '1'?'checked':'')?>>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <div class="form-group" <?=$rows->filters?>>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input check" type="checkbox" id="insurance" name="insurance" data-pi="<?=$rows->id?>" <?=($rows->insurances == '1'?'checked':'')?>>
+                                </div>
+                            </div>
+                        </td>
                         <td class="text-center">
                             <?php if($rows->pi_status_id == 8 && $this->session->userdata('logged_in')->role_id == 3) : ?>
                                 <a href="<?=site_url('export/proforma/detail/'.$rows->id)?>" class="btn btn-sm btn-info">

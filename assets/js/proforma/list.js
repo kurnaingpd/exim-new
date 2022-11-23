@@ -49,7 +49,40 @@ $(function () {
             }
         });
     });
+
+    $('input.check').on('change', function() {
+        var id = $(this).attr('id');
+        var pi = $(this).attr('data-pi');
+        var status = $(this).is(":checked");
+        
+        if (status) {
+            console.log(status)
+            checking(pi, id, '1')
+            $('.'+id).removeClass("d-none");
+            $('.'+id).show();
+        } else {
+            console.log(status)
+            checking(pi, id, '0')
+            $('.'+id).hide();
+        }
+    });
 });
+
+function checking(pi, id, data)
+{
+    $.ajax({
+        url: site_url + "export/proforma/filter/" + pi,
+        type: "POST",
+        data: {fields: id, filter: data},
+        dataType: "json",
+        success: function(response) {
+            console.log(response);
+        },
+        error: function (e) {
+            console.log("Terjadi kesalahan pada sistem");
+        }        
+    });
+}
 
 function del(id)
 {

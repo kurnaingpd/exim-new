@@ -235,6 +235,7 @@ $route['export/proforma/edit_procurement'] = 'ProformaInvoice/edit_procurement';
 $route['export/proforma/delete/(:num)'] = 'ProformaInvoice/delete/$1';
 $route['export/proforma/delete_item/(:num)'] = 'ProformaInvoice/delete_item/$1';
 $route['export/proforma/delete_container/(:num)'] = 'ProformaInvoice/delete_container/$1';
+$route['export/proforma/filter/(:num)'] = 'ProformaInvoice/filter/$1';
 
 /** Export - Signed PI */
 $route['export/signedpi'] = 'SignedPI';

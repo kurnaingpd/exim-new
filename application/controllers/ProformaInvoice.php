@@ -539,6 +539,10 @@
                 ];
 
                 $this->M_CRUD->insertData('trans_pi_history', $paramHistory);
+
+                if($post['status'] == 5) {
+                    $this->M_CRUD->insertData('trans_pi_filter', ['pi_id' => $post['id']]);
+                }
                 $response = ['status' => 1, 'messages' => 'Proforma invoice has been updated successfully.', 'icon' => 'success', 'url' => 'export/proforma'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Proforma invoice has failed to update.', 'icon' => 'error'];
@@ -755,6 +759,21 @@
                 $response = ['status' => 1, 'messages' => 'Proforma invoice has been updated successfully.', 'icon' => 'success', 'url' => 'export/proforma'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Proforma invoice has failed to update.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
+        }
+
+        public function filter($id)
+        {
+            $post = $this->input->post();
+            $params = [
+                $post['fields'] => $post['filter'],
+            ];
+            if($this->M_CRUD->updateData('trans_pi_filter', $params, ['pi_id' => $id])) {
+                $response = ['status' => 1, 'messages' => 'Filter packing list has been updated successfully.', 'icon' => 'success'];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Packing check has failed to update.', 'icon' => 'error'];
             }
 
             echo json_encode($response);
