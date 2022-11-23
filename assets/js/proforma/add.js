@@ -45,74 +45,6 @@ $(function () {
         });
     });
 
-    // $('input#btn-item').on('click',function(){
-    //     console.log('item');
-    //     var item_category = $('.item_category').val();
-    //     var product = $('#product').val();
-    //     var hs_code = $('#hs_code').val();
-    //     var config = $('#config').val();
-    //     var qty = $('#qty').val();
-
-    //     if(item_category == "" || product == "" || hs_code == "" || config == "" || qty == "" || price == "") {
-    //         swal("", "Item data cannot be empty.", "warning");
-    //     } else {
-    //         var rnd = Math.floor((Math.random() * 10000) + 1);
-    //         var cbm_item = Number(document.getElementById("volume").value) * Number(document.getElementById("qty").value);
-    //         var remain_cbm = document.getElementById("remain_cbm").value - (Number(document.getElementById("volume").value) * Number(document.getElementById("qty").value));
-    //         console.log(remain_cbm);
-            
-    //         if(remain_cbm < 0) {
-    //             swal("", "Qty melebihi maximum CBM.", "warning");
-    //         } else {
-    //             document.getElementById("remain_cbm").value = remain_cbm;
-    //             $('tbody#data-item').append(
-    //                 '<tr data-id="'+rnd+'">'+
-    //                     '<td>'+
-    //                         '<input type="text" class="form-control" id="grid_container_no_'+rnd+'" name="grid_container_no_'+rnd+'" data-value="'+$('input.container[name="container_no"]').val()+'" value="'+$('input.container[name="container_no"]').val()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
-    //                     '</td>'+
-    //                     '<td style="width: 16%">'+
-    //                         '<input type="hidden" id="grid_item_category_'+rnd+'" name="grid_item_category_'+rnd+'" value="'+$('select.item[name="item_category"]').val()+'" />'+
-    //                         '<input type="text" class="form-control" value="'+$('select.item[name="item_category"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
-    //                     '</td>'+
-    //                     '<td style="width: 34%">'+
-    //                         '<input type="hidden" id="grid_product_'+rnd+'" name="grid_product_'+rnd+'" value="'+$('select.item[name="product"]').val()+'" />'+
-    //                         '<input type="text" class="form-control" value="'+$('select.item[name="product"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
-    //                         '<input type="hidden" class="form-control volume" id="grid_volume_'+rnd+'" name="grid_volume_'+rnd+'" data-value="'+$('input.item[name="volume"]').val()+'" value="'+$('input.item[name="volume"]').val()+'" />'+
-    //                         '<input type="hidden" class="form-control volume" id="grid_cbm_'+rnd+'" name="grid_cbm_'+rnd+'" data-value="'+cbm_item+'" value="'+cbm_item+'" />'+
-    //                     '</td>'+
-    //                     '<td style="width: 8%">'+
-    //                         '<input type="text" class="form-control" id="grid_hs_code_'+rnd+'" name="grid_hs_code_'+rnd+'" value="'+$('input.item[name="hs_code"]').val()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
-    //                     '</td>'+
-    //                     // '<td style="width: 26%">'+
-    //                     //     '<input type="text" class="form-control" id="grid_config_'+rnd+'" name="grid_config_'+rnd+'" value="'+$('input.item[name="config"]').val()+'" style="background-color:#ffffff;" readonly required />'+
-    //                     // '</td>'+
-    //                     '<td>'+
-    //                         '<input type="text" class="form-control qty" id="grid_qty_'+rnd+'" name="grid_qty_'+rnd+'" data-value="'+$('input.item[name="qty"]').val()+'" value="'+$('input.item[name="qty"]').val()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
-    //                     '</td>'+
-    //                     '<td>'+
-    //                         '<input type="text" class="form-control" id="grid_price_'+rnd+'" name="grid_price_'+rnd+'" value="'+$('input.item[name="price"]').val()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
-    //                     '</td>'+
-    //                     '<td class="text-center">'+
-    //                         '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
-    //                     '</td>'+
-    //                 '</tr>'
-    //             );
-                
-    //             $('.item').val('');
-    //             $(".item").val('').trigger('change')
-    //         }
-            
-    //         $('button.btn-remove').off('click').on('click',function(){
-    //             var id = $(this).attr('data-row');
-    //             var volume = $("tr[data-id="+id+"]").find(".volume").data("value");
-    //             var qty = $("tr[data-id="+id+"]").find(".qty").data("value");
-    //             var cbm = (volume * qty);
-    //             $("tr[data-id="+id+"]").remove();
-    //             document.getElementById("remain_cbm").value = Number(document.getElementById("remain_cbm").value) + cbm;
-    //         });
-    //     }
-    // });
-
     $.validator.setDefaults({
         submitHandler: function () {
             save();
@@ -175,7 +107,8 @@ function consignee(id)
             if(response) {
                 document.getElementById("consignee_address").value = response.address;
                 document.getElementById("consignee_country").value = response.country_name;
-                document.getElementById("consignee_phone").value = response.phone_no;
+                document.getElementById("consignee_phone_tel").value = response.phone_no_tel;
+                document.getElementById("consignee_phone_fax").value = response.phone_no_fax;
                 document.getElementById("consignee_cp").value = response.name;
                 document.getElementById("top_id").value = response.top_id;
                 document.getElementById("top").value = response.top_name;
@@ -185,7 +118,8 @@ function consignee(id)
             } else {
                 document.getElementById("consignee_address").value = '';
                 document.getElementById("consignee_country").value = '';
-                document.getElementById("consignee_phone").value = '';
+                document.getElementById("consignee_phone_tel").value = '';
+                document.getElementById("consignee_phone_fax").value = '';
                 document.getElementById("consignee_cp").value = '';
                 document.getElementById("top_id").value = '';
                 document.getElementById("top").value = '';
