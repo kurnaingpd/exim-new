@@ -77,12 +77,6 @@
                     <div class="card-body border-top">
                         <?php $this->load->view('export/proforma/process/container_revise_detail'); ?>
                     </div>
-                    <!-- <div class="card-footer">
-                        <small>
-                            Maximum CBM: <input type="text" value="<#?=$params['detail']->max_cbm?>" size="4" id="currenct_cbm" style="background-color: transparent; border: 0;"><br>
-                            Remain CBM: <input type="text" value="<#?=$params['detail']->max_cbm - $params['cbm_revise']->cbm?>" id="remain_cbm" style="background-color: transparent; border: 0;">
-                        </small>
-                    </div> -->
                 <?php else : ?>
                     <div class="card-body">
                         <?php $this->load->view('export/proforma/process/items'); ?>

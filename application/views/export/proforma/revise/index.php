@@ -69,17 +69,11 @@
                 <div class="card-header">
                     <h6>Item(s)</h6>
                 </div>
-                <div class="card-body">
-                    <?php $this->load->view('export/proforma/revise/items'); ?>
-                </div>
+                <!-- <div class="card-body">
+                    <?php $this->load->view('export/proforma/revise/container_request'); ?>
+                </div> -->
                 <div class="card-body border-top">
-                    <?php $this->load->view('export/proforma/revise/items_detail'); ?>
-                </div>
-                <div class="card-footer">
-                    <small>
-                        Maximum CBM: <input type="text" value="<?=$params['detail_value']->max_cbm?>" size="4" id="currenct_cbm" style="background-color: transparent; border: 0;"><br>
-                        Remain CBM: <input type="text" value="<?=$params['detail_value']->max_cbm - $params['cbm_value']->cbm?>" id="remain_cbm" style="background-color: transparent; border: 0;">
-                    </small>
+                    <?php $this->load->view('export/proforma/revise/container_request_detail'); ?>
                 </div>
             </div>
 

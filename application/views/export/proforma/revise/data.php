@@ -32,18 +32,6 @@
 
     <div class="col-md-2">
         <div class="form-group required">
-            <label for="container" class="control-label">Container</label>
-            <select name="container" class="form-control select2bs4" id="container" disabled>
-                <option></option>
-                <?php foreach($params['container'] as $rows) : ?>
-                    <option value="<?=$rows->id?>" <?=(($rows->id==$params['detail']->container_id)?'selected':'')?>><?=$rows->name?></option>
-                <?php endforeach; ?>
-            </select>
-        </div>
-    </div>
-
-    <div class="col-md-2">
-        <div class="form-group required">
             <label for="freight_company" class="control-label">Freight company</label>
             <input type="text" name="freight_company" class="form-control upper" id="freight_company" placeholder="Enter freight company" value="<?=($chained['freight']?$chained['freight']->company:'-')?>" disabled>
         </div>
@@ -55,16 +43,16 @@
             <input type="text" class="form-control upper" id="freight_company_cont" placeholder="Enter freight company contact" value="<?=($chained['freight']?$chained['freight']->contact:'-')?>" disabled>
         </div>
     </div>
-</div>
 
-<div class="row">
     <div class="col-md-2">
         <div class="form-group required">
             <label for="freight_company_no" class="control-label">Freight company number</label>
             <input type="text" class="form-control upper" id="freight_company_no" placeholder="Enter freight company number" value="<?=($chained['freight']?$chained['freight']->number:'-')?>" disabled>
         </div>
     </div>
-    
+</div>
+
+<div class="row">
     <?php if($this->session->userdata('logged_in')->role_id == 7) : ?>
     <div class="col-md-2">
         <div class="form-group required">
