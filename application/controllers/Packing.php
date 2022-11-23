@@ -254,6 +254,7 @@
             }
 
             $params = [
+                'dates' => $post['pack_date'],
                 'updated_at' => date('Y-m-d H:i:s'),
                 'updated_by' => $this->session->userdata('logged_in')->id,
             ];

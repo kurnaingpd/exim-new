@@ -17,7 +17,7 @@
         <div class="form-group required">
             <label for="pack_date" class="control-label">Packing date</label>
             <div class="input-group date" id="pack_date" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input cursor-context" value="<?=$params['detail']->dates?>" disabled>
+                <input type="text" class="form-control datetimepicker-input cursor-context" autocomplete="off" id="pack_date" name="pack_date" placeholder="Enter packing date" required value="<?=$params['detail']->dates?>">
                 <div class="input-group-append" data-target="#pack_date" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
