@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-2">
         <div class="form-group">
             <label for="con_company" class="control-label">Address</label>
             <textarea class="form-control" rows="3" id="cons_address" placeholder="Enter address" disabled></textarea>
@@ -21,9 +21,26 @@
     </div>
 
     <div class="col-md-2">
-        <div class="form-group">
-            <label for="con_company" class="control-label">Phone</label>
-            <input type="text" class="form-control" id="cons_phone" placeholder="Enter phone number" disabled>
+        <div class="form-group required">
+            <label for="cons_phone_tel" class="control-label">Phone number (Tel)</label>
+            <div class="input-group">
+                <div class="input-group-append">
+                    <div class="input-group-text"><i class="fa fa-phone-alt"></i></div>
+                </div>
+                <input type="text" class="form-control" class="form-control upper" id="cons_phone_tel" name="cons_phone_tel" placeholder="Enter phone" disabled>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="form-group required">
+            <label for="cons_phone_fax" class="control-label">Phone number (Fax)</label>
+            <div class="input-group">
+                <div class="input-group-append">
+                    <div class="input-group-text"><i class="fa fa-fax"></i></div>
+                </div>
+                <input type="text" class="form-control" class="form-control upper" id="cons_phone_fax" name="cons_phone_fax" placeholder="Enter phone" disabled>
+            </div>
         </div>
     </div>
 

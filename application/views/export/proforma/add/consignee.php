@@ -26,11 +26,6 @@
     </div>
 
     <div class="col-md-2">
-        <!-- <div class="form-group required">
-            <label for="consignee_phone" class="control-label">Phone</label>
-            <input type="text" name="consignee_phone" class="form-control upper" id="consignee_phone" placeholder="Enter phone" readonly required>
-        </div> -->
-
         <div class="form-group required">
             <label for="consignee_phone_tel" class="control-label">Phone number (Tel)</label>
             <div class="input-group">

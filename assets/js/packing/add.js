@@ -160,13 +160,15 @@ function get_data(id)
                 document.getElementById("cons_company").value = response.cons_name;
                 document.getElementById("cons_address").value = response.cons_address;
                 document.getElementById("cons_country").value = response.cons_country_name;
-                document.getElementById("cons_phone").value = response.cons_phone;
+                document.getElementById("cons_phone_tel").value = response.cons_phone_tel;
+                document.getElementById("cons_phone_fax").value = response.cons_phone_fax;
                 document.getElementById("cons_cp").value = response.cp_name;
 
                 document.getElementById("not_company").value = response.not_name;
                 document.getElementById("not_address").value = response.not_address;
                 document.getElementById("not_country").value = response.not_country_name;
-                document.getElementById("not_phone").value = response.not_phone;
+                document.getElementById("not_phone_tel").value = response.not_phone_tel;
+                document.getElementById("not_phone_fax").value = response.not_phone_fax;
                 document.getElementById("not_cp").value = response.cp_name;
 
                 document.getElementById("ship_company").value = response.ship_name;
@@ -179,13 +181,15 @@ function get_data(id)
                 document.getElementById("cons_company").value = "";
                 document.getElementById("cons_address").value = "";
                 document.getElementById("cons_country").value = "";
-                document.getElementById("cons_phone").value = "";
+                document.getElementById("cons_phone_tel").value = "";
+                document.getElementById("cons_phone_fax").value = "";
                 document.getElementById("cons_cp").value = "";
 
                 document.getElementById("not_company").value = "";
                 document.getElementById("not_address").value = "";
                 document.getElementById("not_country").value = "";
-                document.getElementById("not_phone").value = "";
+                document.getElementById("not_phone_tel").value = "";
+                document.getElementById("not_phone_fax").value = "";
                 document.getElementById("not_cp").value = "";
 
                 document.getElementById("ship_company").value = "";
@@ -235,7 +239,7 @@ function get_item_qty(id)
                 var html = '';
                 var i;
                 for(i=0; i<response.length; i++) {
-                    html += '<input type="text" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
+                    html += '<input type="hidden" id="qty_'+response[i].pi_detail_id+'" value="'+response[i].qty+'">';
                 }
                 $('#item_qty').html(html);
             } else {
