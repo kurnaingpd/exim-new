@@ -60,7 +60,7 @@
                     <div id="row">
                         <div class="box-name">NOTIFY</div>
                         <div class="box-colon">:</div>
-                        <div class="box-value"><?=$params['header']->consignee?></div>
+                        <div class="box-value"><?=$params['header']->notify?></div>
                     </div>
 
                     <div id="row">
