@@ -105,7 +105,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <a class="btn btn-default btn-block cancel" href="<?=site_url('export/proforma/process/'.$params['container']->pi_id)?>">
-                        <i class="fas fa-ban mr-2"></i>Cancel
+                        <i class="fas fa-arrow-left mr-2"></i>Back
                     </a>
                 </div>
                 <div class="col-md-6">

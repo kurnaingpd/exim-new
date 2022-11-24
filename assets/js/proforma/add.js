@@ -92,10 +92,6 @@ $('select#containers').on('change', function() {
     var data = $('select#containers').select2('data');
     cbm(data[0].id);
 });
-// $('select#product').on('change', function() {
-//     var data = $('select#product').select2('data');
-//     item(data[0].id);
-// });
 
 function consignee(id)
 {

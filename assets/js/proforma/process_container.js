@@ -5,6 +5,8 @@ $(function () {
         allowClear: true
     })
 
+    $('button#btn-proforma-save').prop('disabled', true);
+
     $(".upper").keyup(function () {
         this.value = this.value.toLocaleUpperCase();
     });
@@ -30,7 +32,7 @@ $(function () {
             } else {
                 document.getElementById("remain_cbm").value = remain_cbm;
                 $('tbody#data-item').append(
-                    '<tr data-id="'+rnd+'">'+
+                    '<tr id="count" data-id="'+rnd+'">'+
                         '<td style="width: 16%">'+
                             '<input type="hidden" id="grid_container_'+rnd+'" name="grid_container_'+rnd+'" value="'+$('input.containers[name="id"]').val()+'" />'+
                             '<input type="hidden" id="grid_item_category_'+rnd+'" name="grid_item_category_'+rnd+'" value="'+$('select.item[name="item_category"]').val()+'" />'+
@@ -61,6 +63,13 @@ $(function () {
                 
                 $('.item').val('');
                 $(".item").val('').trigger('change')
+                var count = $('tr#count').length;
+                
+                if(count > 0) {
+                    $('button.save').prop('disabled', false);
+                } else {
+                    $('button.save').prop('disabled', true);
+                }
             }
             
             $('button.btn-remove').off('click').on('click',function(){
@@ -70,6 +79,13 @@ $(function () {
                 var cbm = (volume * qty);
                 $("tr[data-id="+id+"]").remove();
                 document.getElementById("remain_cbm").value = Number(document.getElementById("remain_cbm").value) + cbm;
+                var count = $('tr#count').length;
+
+                if(count > 0) {
+                    $('button#btn-proforma-save').prop('disabled', false);
+                } else {
+                    $('button#btn-proforma-save').prop('disabled', true);
+                }
             });
         }
     });

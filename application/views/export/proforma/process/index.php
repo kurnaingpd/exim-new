@@ -126,7 +126,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <a class="btn btn-default btn-block cancel" href="<?=site_url('export/proforma')?>">
-                                <i class="fas fa-ban mr-2"></i>Cancel
+                                <i class="fas fa-arrow-left mr-2"></i>Back
                             </a>
                         </div>
 
@@ -140,34 +140,4 @@
             </div>
         </div>
     </div>
-
-    <!-- <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-3">
-                    <a class="btn btn-default btn-block cancel" href="<?=site_url('export/proforma')?>">
-                        <i class="fas fa-ban mr-2"></i>Cancel
-                    </a>
-                </div>
-
-                <div class="col-md-3">
-                    <button class="btn btn-danger save btn-block" id="btn-proforma-cancel">
-                        <i class="fas fa-eject mr-2"></i>Canceled
-                    </button>
-                </div>
-
-                <div class="col-md-3">
-                    <button class="btn btn-warning save btn-block" id="btn-proforma-request">
-                        <i class="fas fa-redo mr-2"></i>Request to revise
-                    </button>
-                </div>
-
-                <div class="col-md-3">
-                    <button class="btn btn-success save btn-block" id="btn-proforma-approve">
-                        <i class="fas fa-user-check mr-2"></i>Approved
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </form>
