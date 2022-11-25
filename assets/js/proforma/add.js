@@ -5,6 +5,8 @@ $(function () {
         allowClear: true
     })
 
+    $('button#btn-proforma-save').prop('disabled', true);
+
     $(".upper").keyup(function () {
         this.value = this.value.toLocaleUpperCase();
     });
@@ -18,7 +20,7 @@ $(function () {
         } else {
             var rnd = Math.floor((Math.random() * 10000) + 1);
             $('tbody#data-container').append(
-                '<tr data-id="'+rnd+'">'+
+                '<tr id="count" data-id="'+rnd+'">'+
                     '<td>'+
                         '<input type="hidden" id="grid_containers_'+rnd+'" name="grid_containers_'+rnd+'" value="'+$('select.container[name="containers"]').val()+'" />'+
                         '<input type="text" class="form-control" value="'+$('select.container[name="containers"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly />'+
@@ -37,11 +39,25 @@ $(function () {
 
             $('.container').val('');
             $(".container").val('').trigger('change')
+            var count = $('tr#count').length;
+                
+            if(count > 0) {
+                $('button.save').prop('disabled', false);
+            } else {
+                $('button.save').prop('disabled', true);
+            }
         }
 
         $('button.btn-remove').off('click').on('click',function() {
             var id = $(this).attr('data-row');
             $("tr[data-id="+id+"]").remove();
+            var count = $('tr#count').length;
+
+            if(count > 0) {
+                $('button#btn-proforma-save').prop('disabled', false);
+            } else {
+                $('button#btn-proforma-save').prop('disabled', true);
+            }
         });
     });
 
