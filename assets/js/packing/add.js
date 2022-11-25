@@ -6,6 +6,7 @@ $(function () {
     })
 
     $(".datetimepicker-input").css("background-color", "#FFF");
+    $('button#btn-packing-save').prop('disabled', true);
 
     flatpickr(".datetimepicker-input", {
         dateFormat: "Y-m-d",
@@ -37,7 +38,7 @@ $(function () {
             } else {
                 document.getElementById("qty_"+item).value = remain;
                 $('tbody#show-data').append(
-                    '<tr data-id="'+rnd+'">'+
+                    '<tr id="count" data-id="'+rnd+'">'+
                         '<td style="width: 10%">'+
                             '<input type="text" class="form-control" value="'+$('select.item[name="container_no"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly required />'+
                         '</td>'+
@@ -72,6 +73,13 @@ $(function () {
     
                 $('.item').val('');
                 $(".item").val('').trigger('change');
+                var count = $('tr#count').length;
+                
+                if(count > 0) {
+                    $('button.save').prop('disabled', false);
+                } else {
+                    $('button.save').prop('disabled', true);
+                }
             }
 
             $('button.btn-remove').off('click').on('click',function(){
@@ -82,6 +90,13 @@ $(function () {
                 $("tr[data-id="+id+"]").remove();
                 $('.item').val('');
                 $(".item").val('').trigger('change')
+                var count = $('tr#count').length;
+                
+                if(count > 0) {
+                    $('button.save').prop('disabled', false);
+                } else {
+                    $('button.save').prop('disabled', true);
+                }
             });
         }
     });
