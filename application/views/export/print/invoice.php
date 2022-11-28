@@ -15,7 +15,11 @@
 
     foreach($params['detail'] as $dtl => $value_3)
     {
-        $item[$value_3->pi_item_category_id][$value_3->pi_container_id][$value_3->pi_detail_id] = $value_3;
+        if($value_3->qcontrol_check_id) {
+            $item[$value_3->pi_item_category_id][$value_3->pi_container_id][$value_3->qcontrol_check_id] = $value_3;
+        } else {
+            $item[$value_3->pi_item_category_id][$value_3->pi_container_id][$value_3->pi_detail_id] = $value_3;
+        }
     }
 ?>
 

@@ -89,6 +89,7 @@
                 'header' => $this->M_CRUD->readDatabyID('view_print_trans_invoice_header', ['is_deleted' => '0', 'id' => $id]),
                 'category' => $this->M_CRUD->readData('view_print_trans_invoice_category', ['invoice_id' => $id]),
                 'container' => $this->M_CRUD->readData('view_print_trans_invoice_container', ['invoice_id' => $id]),
+                'rowspan' => $this->M_CRUD->readData('view_print_trans_invoice_rowspan', ['invoice_id' => $id]),
                 'detail' => $this->M_CRUD->readData('view_print_trans_invoice_detail', ['is_deleted' => '0', 'invoice_id' => $id]),
                 'footer' => $this->M_CRUD->readData('view_print_trans_invoice_footer', ['invoice_id' => $id]),
             ];
