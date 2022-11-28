@@ -347,7 +347,7 @@
             ];
             $datas['params'] = [
                 'header' => $this->M_CRUD->readDatabyID('view_print_trans_qcertificate_header', ['id' => $id]),
-                'detail' => $this->M_CRUD->readData('view_print_trans_qcertificate_detail', ['id' => $id]),
+                'detail' => $this->M_CRUD->readData('view_print_trans_qcertificate_detail', ['qcertificate_id' => $id]),
             ];
 
             $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
