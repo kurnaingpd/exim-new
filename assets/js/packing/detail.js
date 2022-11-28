@@ -33,7 +33,7 @@ $(function () {
     $('input#btn-item').on('click',function() {
         console.log('item');
         var carton = $('#carton').val();
-        var batch = $('#batch').val();
+        var batch = $('#batchs').val();
 
         if(carton == "" || batch == "") {
             swal("", "Item data cannot be empty.", "warning");
