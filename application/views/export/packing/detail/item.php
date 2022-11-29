@@ -49,7 +49,7 @@
     <div class="col-md-1">
         <div class="form-group required">
             <label for="carton" class="control-label">Ctn. barcode</label>
-            <input type="text" name="carton" class="form-control item" id="carton" placeholder="Enter carton barcode">
+            <input type="text" name="cartons" class="form-control item" id="cartons" placeholder="Enter carton barcode">
         </div>
     </div>
 

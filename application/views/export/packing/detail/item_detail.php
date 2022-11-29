@@ -29,7 +29,7 @@
                     <input type="text" class="form-control" value="<?=$rows->batch?>" disabled style="background-color:transparent; border: none transparent;">
                 </td>
                 <td class="text-right">
-                    <input type="text" class="form-control qty" value="<?=number_format($rows->qty)?>" disabled style="background-color:transparent; border: none transparent;">
+                    <input type="text" class="form-control qty" value="<?=$rows->qty?>" disabled style="background-color:transparent; border: none transparent;">
                 </td>
                 <td class="carton <?=($params['detail']->carton == '0'?'d-none':'')?>" style="width: 10%">
                     <input type="text" class="form-control" value="<?=$rows->carton_barcode?>" disabled style="background-color:transparent; border: none transparent;">
