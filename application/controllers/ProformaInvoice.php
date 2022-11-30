@@ -487,6 +487,49 @@
             $this->template->load('default', 'contents' , 'export/proforma/process/items_revise', $datas);
         }
 
+        public function insert_process_container()
+        {
+            $post = $this->input->post();
+            $pi = $this->M_CRUD->readDatabyID('trans_pi_container', ['id' => $post['id']]);
+            $Grid = array();
+			
+            foreach($_POST as $index => $value){
+                if(preg_match("/^grid_/i", $index)) {
+                    $index = preg_replace("/^grid_/i","",$index);
+                    $arr = explode('_',$index);
+                    $rnd = $arr[count($arr)-1];
+                    array_pop($arr);
+                    $idx = implode('_',$arr);
+                    
+                    $Grid[$rnd][$idx] = $value;
+                    if(!isset($Grid[$rnd]['pi_id'])){
+                        $Grid[$rnd]['pi_id'] = $post['id'];
+                    }
+                }
+            }
+
+            if(!empty($Grid)) {
+                foreach($Grid as $detail) {
+                    $params = [
+                        'pi_container_id' => $detail['container'],
+                        'pi_item_category_id' => $detail['item_category'],
+                        'item_id' => $detail['product'],
+                        'hs_code' => $detail['hs_code'],
+                        'qty' => $detail['qty'],
+                        'price' => $detail['price'],
+                        'cbm_item' => $detail['cbm'],
+                    ];
+                    $this->M_CRUD->insertData('trans_pi_detail', $params);
+                }
+
+                $response = ['status' => 1, 'messages' => 'Container has been saved successfully.', 'icon' => 'success', 'url' => 'export/proforma/process/'.$pi->pi_id];
+            } else {
+                $response = ['status' => 0, 'messages' => 'Container has failed to save.', 'icon' => 'error'];
+            }
+
+            echo json_encode($response);
+        }
+
         public function update_process()
         {
             $post = $this->input->post();

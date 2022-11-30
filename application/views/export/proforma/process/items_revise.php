@@ -1,4 +1,4 @@
-<form id="form-proforma-detail_container">
+<form id="form-proforma-process-container">
     <input type="hidden" class="containers" id="id" name="id" value="<?=$params['container']->id?>">
     <div class="card">
         <div class="card-header">

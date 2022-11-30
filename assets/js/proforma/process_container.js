@@ -150,9 +150,9 @@ function item_delete(id, cbm)
 function save()
 {
     $.ajax({
-        url: site_url + "export/proforma/insert_detail_container",
+        url: site_url + "export/proforma/insert_process_container",
         type: "POST",
-        data: $('#form-proforma-detail_container').serialize(),
+        data: $('#form-proforma-process-container').serialize(),
         dataType: "json",
         beforeSend: function(){
             $('a.cancel').prop('disabled', true);
