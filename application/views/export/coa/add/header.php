@@ -1,11 +1,4 @@
 <div class="row">
-    <!-- <div class="col-md-6">
-        <div class="form-group required">
-            <label for="code" class="control-label">COA no.</label>
-            <input type="text" name="code" class="form-control" id="code" value="<?=$params['autonumber']?>" readonly>
-        </div>
-    </div> -->
-
     <div class="col-md-6">
         <div class="form-group required">
             <label for="invoice" class="control-label">Invoice no.</label>
@@ -24,6 +17,7 @@
             <select name="product" class="form-control select2bs4 grid" id="product">
                 <option></option>
             </select>
+            <input type="hidden" id="packing_list_id" name="packing_list_id">
         </div>
     </div>
 </div>

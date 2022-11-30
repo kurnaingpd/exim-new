@@ -315,6 +315,7 @@ $route['export/coa/item'] = 'COA/item';
 $route['export/coa/item/(:num)'] = 'COA/item/$1';
 $route['export/coa/batch'] = 'COA/batch';
 $route['export/coa/batch/(:num)'] = 'COA/batch/$1';
+$route['export/coa/batch/(:num)/(:num)'] = 'COA/batch/$1/$2';
 $route['export/coa/qcheck'] = 'COA/qcheck';
 $route['export/coa/qcheck/(:num)'] = 'COA/qcheck/$1';
 $route['export/coa/tanggal'] = 'COA/tanggal';

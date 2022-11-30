@@ -98,7 +98,8 @@ $('#invoice').on('change', function() {
 
 $('#product').on('change', function() {
     var data = $('#product').select2('data');
-    batch(data[0].id);
+    var invoice = $('#invoice').select2('data');
+    batch(invoice[0].id, data[0].id);
 });
 
 $('#batch').on('change', function() {
@@ -148,10 +149,10 @@ function item(id)
     });
 }
 
-function batch(id)
+function batch(invoice, item)
 {
     $.ajax({
-        url: site_url + "export/coa/batch/" + id,
+        url: site_url + "export/coa/batch/" + invoice + "/" + item,
         type: "POST",
         dataType: "json",
         success: function(response) {

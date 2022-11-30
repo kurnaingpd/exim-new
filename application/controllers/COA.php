@@ -77,9 +77,9 @@
             echo json_encode($data);
         }
 
-        public function batch($id = NULL)
+        public function batch($invoice = NULL, $item = NULL)
         {
-            $data = $this->M_CRUD->readData('view_trans_coa_batch', ['item_id' => $id]);
+            $data = $this->M_CRUD->readData('view_trans_coa_batch', ['invoice_id' => $invoice, 'item_id' => $item]);
             echo json_encode($data);
         }
 
