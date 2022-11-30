@@ -94,8 +94,9 @@ $('#invoice').on('change', function() {
 });
 
 $('#product').on('change', function() {
+    var invoice = $('#invoice').select2('data');
     var data = $('#product').select2('data');
-    batch(data[0].id);
+    batch(invoice[0].id, data[0].id);
 });
 
 function po(id)
@@ -144,10 +145,10 @@ function item(id)
     });
 }
 
-function batch(id)
+function batch(invoice, item)
 {
     $.ajax({
-        url: site_url + "export/prodspec/batch/" + id,
+        url: site_url + "export/prodspec/batch/" + invoice + "/" + item,
         type: "POST",
         dataType: "json",
         success: function(response) {

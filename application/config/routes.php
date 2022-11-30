@@ -332,6 +332,7 @@ $route['export/prodspec/item'] = 'ProductSpec/item';
 $route['export/prodspec/item/(:num)'] = 'ProductSpec/item/$1';
 $route['export/prodspec/batch'] = 'ProductSpec/batch';
 $route['export/prodspec/batch/(:num)'] = 'ProductSpec/batch/$1';
+$route['export/prodspec/batch/(:num)/(:num)'] = 'ProductSpec/batch/$1/$2';
 $route['export/prodspec/save'] = 'ProductSpec/save';
 $route['export/prodspec/print/(:num)'] = 'Prints/prodspec/$1';
 
