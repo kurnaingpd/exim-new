@@ -50,26 +50,48 @@
                 <div class="content-header">
                     <div class="content">
                         <div class="container" style="max-width: 99%;">
+                            <div class="row mt-3">
+                                <div class="col-md-1">
+                                    <a href="<?=site_url()?>" class="btn btn-block btn-warning text-center">
+                                        <i class="fas fa-arrow-left mr-1"></i> Back
+                                    </a>
+                                </div>
+
+                                <div class="col-md-11">
+                                    <div class="row mb-2">
+                                        <div class="col-sm-12">
+                                            <ol class="breadcrumb float-sm-right">
+                                            <li class="breadcrumb-item"><a href="#"><?=$breadcrumb[0]?></a></li>
+                                            <li class="breadcrumb-item"><a href="#"><?=$breadcrumb[1]?></a></li>
+                                            <?php if(isset($breadcrumb[2])) : ?>
+                                                <li class="breadcrumb-item active"><?=$breadcrumb[2]?></li>
+                                            <?php endif; ?>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <?php
                                 $CI =& get_instance();
                                 $CI->load->model(['M_CRUD']);
-                                $modules = array();
-                                $module = $CI->M_CRUD->readData('view_trans_assign_module', ['role_id' => $this->session->userdata('logged_in')->role_id]);
-                                foreach($module as $cont => $value_1)
+                                $groups = array();
+                                $module = $this->uri->segment(1);
+                                $group = $CI->M_CRUD->readData('view_trans_assign_group', ['role_id' => $this->session->userdata('logged_in')->role_id, 'menu_module_url' => $module]);
+                                foreach($group as $cont => $value_1)
                                 {
-                                    $modules[$value_1->menu_module_id] = $value_1;
+                                    $groups[$value_1->menu_group_id] = $value_1;
                                 }
                             ?>
-                            <div class="row">
-                                <?php foreach($modules as $mod => $rows_1) : ?>
+                            <div class="row mt-3">
+                                <?php foreach($groups as $grp => $rows_1) : ?>
                                     <div class="col-md-2">
                                         <div class="card">
                                             <div class="card-body text-center">
-                                                <img src="<?=base_url('assets/images/inventory/'.$rows_1->menu_module_image)?>" class="brand-image" style="height: 150px;">
+                                                <img src="<?=base_url('assets/images/inventory/'.$rows_1->menu_group_image)?>" class="brand-image" style="height: 150px;">
                                             </div>
                                             <div class="card-footer border-top">
-                                                <a href="<?=site_url($rows_1->menu_module_url)?>" class="btn btn-block btn-default">
-                                                    <?=$rows_1->menu_module_name?>
+                                                <a href="<?=site_url($module.'/'.$rows_1->menu_group_url)?>" class="btn btn-block btn-default">
+                                                    <?=$rows_1->menu_group_name?>
                                                 </a>
                                             </div>
                                         </div>

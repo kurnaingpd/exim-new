@@ -13,7 +13,7 @@
             if($this->session->userdata('logged_in')) redirect('home');
             
             $datas['js'] = [
-                base_url("assets/js/auth/login.js"),
+                base_url("assets/js/uac/auth/login.js"),
             ];
             $datas['title'] = 'Login';
 
@@ -28,7 +28,7 @@
                 'username' => $post['username']
             ];
 
-            $datas = $this -> M_CRUD -> readDatabyID('view_user_role', $condition);
+            $datas = $this -> M_CRUD -> readDatabyID('view_master_user_role', $condition);
 
             if($datas) {
                 if( password_verify($post['password'], $datas->password) ) {

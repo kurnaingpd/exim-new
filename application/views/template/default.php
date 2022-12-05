@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?=$title?> | EXIM</title>
+    <title><?=$title?> | PORTAL</title>
 
     <!-- Favicon icon -->
     <link rel="shortcut icon" href="<?php echo base_url('assets/images/inventory/logo-gonusa.png');?>" >
@@ -73,13 +73,13 @@
                     <div class="content">
                         <div class="container" style="max-width: 99%; padding-right: 1%;">
                             <div class="row mt-3">
-                                <div class="col-md-2">
-                                    <a href="<?=site_url('home')?>" class="btn btn-block btn-warning text-center">
-                                        <i class="fas fa-home mr-1"></i> Back to home
+                                <div class="col-md-1">
+                                    <a href="#" onclick="history.go(-1)" class="btn btn-block btn-warning text-center">
+                                        <i class="fas fa-arrow-left mr-1"></i> Back
                                     </a>
                                 </div>
 
-                                <div class="col-md-10">
+                                <div class="col-md-11">
                                     <div class="row mb-2">
                                         <div class="col-sm-6">
                                             <h3 class="m-0"><small><?=$title?></small></h3>
@@ -103,28 +103,26 @@
                                         $CI =& get_instance();
                                         $CI->load->model(['M_CRUD']);
                                         $module = $this->uri->segment(1);
-                                        $group = $CI->M_CRUD->assigngroup('view_assign_group', ['role_id' => $this->session->userdata('logged_in')->role_id, 'menu_module_url' => $module]);
-                                        $menu = $CI->M_CRUD->assignmenu('view_assign_menu', ['role_id' => $this->session->userdata('logged_in')->role_id, 'menu_module_url' => $module]);
+                                        $group = $this->uri->segment(2);
+                                        $menu = $CI->M_CRUD->readData('view_trans_assign_sub', ['role_id' => $this->session->userdata('logged_in')->role_id, 'menu_module_url' => $module, 'menu_group_url' => $group]);
                                     ?>
 
-                                    <?php foreach($group as $grp => $gm) : ?>
-                                        <div class="card border">
-                                            <div class="card-header" style="background-color: #e6e6e6;">
-                                                <i class="<?=$gm['menu_group_icon']?> mr-2"></i><b><?=$gm['menu_group_name']?></b>
-                                            </div>
-                                            <ul class="list-group list-group-flush">
-                                                <div class="overflow-auto" style="max-height: 250px; overflow-y: hidden;">
-                                                <?php foreach($menu[$grp] as $val => $sm) : ?>
-                                                    <li class="list-group-item">
-                                                        <a href="<?=site_url($sm['menu_sub_url'])?>" class="text-secondary">
-                                                            <i class="<?=$sm['menu_sub_icon']?> mr-2"></i><?=$sm['menu_sub_name']?>
-                                                        </a>
-                                                    </li>
-                                                <?php endforeach; ?>
-                                                </div>
-                                            </ul>
+                                    <div class="card border">
+                                        <div class="card-header" style="background-color: #e6e6e6;">
+                                            <i class="fas list-alt mr-2"></i><b>Menu</b>
                                         </div>
-                                    <?php endforeach; ?>
+                                        <ul class="list-group list-group-flush">
+                                            <div class="overflow-auto" style="max-height: 250px; overflow-y: hidden;">
+                                            <?php foreach($menu as $val => $sm) : ?>
+                                                <li class="list-group-item">
+                                                    <a href="<?=site_url($sm->menu_sub_url)?>" class="text-secondary">
+                                                        <i class="<?=$sm->menu_sub_icon?> mr-2"></i><?=$sm->menu_sub_name?>
+                                                    </a>
+                                                </li>
+                                            <?php endforeach; ?>
+                                            </div>
+                                        </ul>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-10">

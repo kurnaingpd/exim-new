@@ -20,7 +20,22 @@
             $datas['title'] = 'UAC - Home';
             $datas['breadcrumb'] = ['UAC', 'Home'];
             $datas['modules'] = 'UAC';
+            $this->load->view('template/group', $datas);
+        }
 
+        public function uac_master()
+        {
+            $datas['title'] = 'UAC - Master';
+            $datas['breadcrumb'] = ['UAC', 'Master', 'Home'];
+            $datas['modules'] = 'UAC - Master';
+            $this->template->load('default', 'contents' , 'home/index', $datas);
+        }
+
+        public function uac_transaction()
+        {
+            $datas['title'] = 'UAC | Master - Home';
+            $datas['breadcrumb'] = ['UAC', 'Master', 'Home'];
+            $datas['modules'] = 'UAC - Master';
             $this->template->load('default', 'contents' , 'home/index', $datas);
         }
 

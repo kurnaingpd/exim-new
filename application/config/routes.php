@@ -64,9 +64,11 @@ $route['home'] = 'Home/modules';
 
 /** UAC */
 $route['uac'] = 'Home/uac';
+$route['uac/master'] = 'Home/uac_master';
+$route['uac/transaction'] = 'Home/uac_transaction';
 
-/** UAC - User */
-$route['uac/user'] = 'User';
+/** UAC - Master - User */
+$route['uac/master/user'] = 'User';
 $route['uac/user/add'] = 'User/add';
 $route['uac/user/position'] = 'User/position';
 $route['uac/user/position/(:num)'] = 'User/position/$1';
