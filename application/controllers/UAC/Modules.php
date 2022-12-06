@@ -24,7 +24,7 @@
                 base_url("assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"),
                 base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/modules/list.js"),
+                base_url("assets/js/uac/modules/list.js"),
             ];
             $datas['title'] = 'UAC - Module';
             $datas['breadcrumb'] = ['UAC', 'Master', 'Module'];
@@ -44,10 +44,11 @@
             ];
             $datas['js'] = [
                 base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/modules/add.js"),
+                base_url("assets/js/uac/modules/add.js"),
             ];
             $datas['title'] = 'UAC - Module';
             $datas['breadcrumb'] = ['UAC', 'Master', 'Module'];
@@ -62,16 +63,24 @@
         public function save()
         {
             $post = $this->input->post();
+            $path = 'assets/images/inventory/';
             $paramModule = [
                 'name' => $post['module'],
-                'icon' => $post['icon'],
                 'url' => $post['url'],
+                'created_by' => $this->session->userdata('logged_in')->id,
             ];
 
-            if($this->M_CRUD->insertData('master_menu_module', $paramModule)) {
-                $response = ['status' => 1, 'messages' => 'Module has been saved successfully.', 'icon' => 'success', 'url' => 'uac/modules'];
-            } else {
-                $response = ['status' => 0, 'messages' => 'Module has failed to save.', 'icon' => 'error'];
+            if($_FILES) {
+                if ( isset($_FILES['icon']) && $_FILES['icon']['name'] != '' ) {
+                    move_uploaded_file($_FILES['icon']['tmp_name'], $path.$_FILES['icon']['name']);
+                    $paramModule['icon'] = $_FILES['icon']['name'];
+                }
+    
+                if($this->M_CRUD->insertData('master_menu_module', $paramModule)) {
+                    $response = ['status' => 1, 'messages' => 'Module has been saved successfully.', 'icon' => 'success', 'url' => 'uac/master/modules'];
+                } else {
+                    $response = ['status' => 0, 'messages' => 'Module has failed to save.', 'icon' => 'error'];
+                }
             }
 
             echo json_encode($response);
@@ -85,10 +94,11 @@
             ];
             $datas['js'] = [
                 base_url("assets/adminlte/plugins/select2/js/select2.full.min.js"),
+                base_url("assets/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/modules/detail.js"),
+                base_url("assets/js/uac/modules/detail.js"),
             ];
             $datas['title'] = 'UAC - Module';
             $datas['breadcrumb'] = ['UAC', 'Master', 'Module'];
@@ -103,24 +113,30 @@
         public function update()
         {
             $post = $this->input->post();
+            $path = 'assets/images/inventory/';
             $id = $post['id'];
-            $paramUser = [
+            $condition = ['id' => $id];
+            $paramModule = [
                 'name' => $post['module'],
-                'icon' => $post['icon'],
                 'url' => $post['url'],
                 'updated_at' => date('Y-m-d H:i:s'),
-            ];
-            $condition = [
-                'id' => $id
+                'updated_by' => $this->session->userdata('logged_in')->id,
             ];
 
-            if($this->M_CRUD->updateData('master_menu_module', $paramUser, $condition)) {
-                $respponse = ['status' => 1, 'messages' => 'Module has been updated successfully.', 'icon' => 'success', 'url' => 'uac/modules'];
+            if($_FILES) {
+                if ( isset($_FILES['icon']) && $_FILES['icon']['name'] != '' ) {
+                    move_uploaded_file($_FILES['icon']['tmp_name'], $path.$_FILES['icon']['name']);
+                    $paramModule['icon'] = $_FILES['icon']['name'];
+                }
+            }
+
+            if($this->M_CRUD->updateData('master_menu_module', $paramModule, $condition)) {
+                $response = ['status' => 1, 'messages' => 'Module has been updated successfully.', 'icon' => 'success', 'url' => 'uac/master/modules'];
             } else {
-                $respponse = ['status' => 0, 'messages' => 'Module has failed to save.', 'icon' => 'error'];
+                $response = ['status' => 0, 'messages' => 'Module has failed to update.', 'icon' => 'error'];
             }
             
-            echo json_encode($respponse);
+            echo json_encode($response);
         }
 
         public function delete($id)
@@ -130,7 +146,7 @@
             ];
             
             if($this->M_CRUD->deleteData('master_menu_module', $condition)) {
-                $response = ['status' => 1, 'messages' => 'Module has been deleted successfully.', 'icon' => 'success', 'url' => 'uac/modules'];
+                $response = ['status' => 1, 'messages' => 'Module has been deleted successfully.', 'icon' => 'success', 'url' => 'uac/master/modules'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Module has failed to delete.', 'icon' => 'error'];
             }

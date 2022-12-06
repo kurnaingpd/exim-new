@@ -20,12 +20,14 @@
                     <tr class="align-middle">
                         <td class="text-center"><?=$no?></td>
                         <td><?=$rows->name?></td>
-                        <td class="text-center"><?=$rows->icon?></td>
+                        <td class="text-center">
+                            <a href="<?=site_url('assets/images/inventory/'.$rows->icon)?>" target="_blank"><?=$rows->icon?></a>
+                        </td>
                         <td class="text-center"><?=$rows->url?></td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=$rows->updated_at?></td>
                         <td class="text-center">
-                            <a href="<?=site_url('uac/modules/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
+                            <a href="<?=site_url('uac/master/modules/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">

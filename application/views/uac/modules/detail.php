@@ -14,10 +14,15 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class="form-group required">
+                    <div class="form-group">
                         <label for="icon" class="control-label">Icon</label>
-                        <input type="text" name="icon" class="form-control lower" id="icon" placeholder="Enter icon" autocomplete="off" required value="<?=$params['detail']->icon?>">
-                        <small>Example: far fa-keyboard</small>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="icon" name="icon" accept="image/*" autofocus autocomplete="off">
+                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            </div>
+                        </div>
+                        <small>Note: download images from <a href="https://www.flaticon.com/" target="_blank">https://www.flaticon.com/</a></small>
                     </div>
                 </div>
 
@@ -30,7 +35,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-block btn-default cancel" href="<?=site_url('uac/modules')?>">
+                    <a class="btn btn-block btn-default cancel" href="<?=site_url('uac/master/modules')?>">
                         <i class="fas fa-ban mr-2"></i>Cancel
                     </a>
                 </div>
