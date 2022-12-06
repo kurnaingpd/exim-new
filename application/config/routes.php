@@ -68,37 +68,37 @@ $route['uac/master'] = 'Home/uac_master';
 $route['uac/transaction'] = 'Home/uac_transaction';
 
 /** UAC - Master - User */
-$route['uac/master/user'] = 'UAC/User';
-$route['uac/master/user/add'] = 'UAC/User/add';
-$route['uac/master/user/position'] = 'UAC/User/position';
-$route['uac/master/user/position/(:num)'] = 'UAC/User/position/$1';
-$route['uac/master/user/save'] = 'UAC/User/save';
-$route['uac/master/user/detail/(:num)'] = 'UAC/User/detail/$1';
-$route['uac/master/user/update'] = 'UAC/User/update';
-$route['uac/master/user/upload/(:num)'] = 'UAC/User/upload/$1';
-$route['uac/master/user/process'] = 'UAC/User/process';
-$route['uac/master/user/delete/(:num)'] = 'UAC/User/delete/$1';
+$route['uac/master/user'] = 'uac/User';
+$route['uac/master/user/add'] = 'uac/User/add';
+$route['uac/master/user/position'] = 'uac/User/position';
+$route['uac/master/user/position/(:num)'] = 'uac/User/position/$1';
+$route['uac/master/user/save'] = 'uac/User/save';
+$route['uac/master/user/detail/(:num)'] = 'uac/User/detail/$1';
+$route['uac/master/user/update'] = 'uac/User/update';
+$route['uac/master/user/upload/(:num)'] = 'uac/User/upload/$1';
+$route['uac/master/user/process'] = 'uac/User/process';
+$route['uac/master/user/delete/(:num)'] = 'uac/User/delete/$1';
 
 /** UAC - Master -  Module */
-$route['uac/master/modules'] = 'UAC/Modules';
-$route['uac/master/modules/add'] = 'UAC/Modules/add';
-$route['uac/master/modules/save'] = 'UAC/Modules/save';
-$route['uac/master/modules/detail/(:num)'] = 'UAC/Modules/detail/$1';
-$route['uac/master/modules/update'] = 'UAC/Modules/update';
-$route['uac/master/modules/delete/(:num)'] = 'UAC/Modules/delete/$1';
+$route['uac/master/modules'] = 'uac/Modules';
+$route['uac/master/modules/add'] = 'uac/Modules/add';
+$route['uac/master/modules/save'] = 'uac/Modules/save';
+$route['uac/master/modules/detail/(:num)'] = 'uac/Modules/detail/$1';
+$route['uac/master/modules/update'] = 'uac/Modules/update';
+$route['uac/master/modules/delete/(:num)'] = 'uac/Modules/delete/$1';
 
 /** UAC - Master - Menu */
-$route['uac/master/menu'] = 'UAC/Menu';
-$route['uac/master/menu/add'] = 'UAC/Menu/add';
-$route['uac/master/menu/save'] = 'UAC/Menu/save';
-$route['uac/master/menu/detail/(:num)'] = 'UAC/Menu/detail/$1';
-$route['uac/master/menu/update'] = 'UAC/Menu/update';
-$route['uac/master/menu/delete/(:num)'] = 'UAC/Menu/delete/$1';
+$route['uac/master/menu'] = 'uac/Menu';
+$route['uac/master/menu/add'] = 'uac/Menu/add';
+$route['uac/master/menu/save'] = 'uac/Menu/save';
+$route['uac/master/menu/detail/(:num)'] = 'uac/Menu/detail/$1';
+$route['uac/master/menu/update'] = 'uac/Menu/update';
+$route['uac/master/menu/delete/(:num)'] = 'uac/Menu/delete/$1';
 
 /** UAC - Assign menu */
-$route['uac/assignmenu'] = 'AssignMenu';
-$route['uac/assignmenu/save'] = 'AssignMenu/save';
-$route['uac/assignmenu/delete/(:num)'] = 'AssignMenu/delete/$1';
+$route['uac/transaction/assignmenu'] = 'uac/AssignMenu';
+$route['uac/transaction/assignmenu/save'] = 'uac/AssignMenu/save';
+$route['uac/transaction/assignmenu/delete/(:num)'] = 'uac/AssignMenu/delete/$1';
 
 /** UAC - Log Access */
 $route['uac/report'] = 'Auth/report';

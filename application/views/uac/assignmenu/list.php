@@ -19,9 +19,9 @@
                 <?php $no=1; foreach($params['list'] as $rows) : ?>
                     <tr>
                         <td class="text-center"><?=$no?>.</td>
-                        <td><?=$rows->module_name?></td>
-                        <td><?=$rows->group_name?></td>
-                        <td><?=$rows->menu_name?></td>
+                        <td class="text-center"><?=$rows->module_name?></td>
+                        <td class="text-center"><?=$rows->group_name?></td>
+                        <td><?=$rows->menu_sub_name?></td>
                         <td class="text-center"><?=$rows->role_name?></td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center">

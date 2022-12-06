@@ -29,16 +29,16 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/assignmenu/index.js"),
+                base_url("assets/js/uac/assignmenu/index.js"),
             ];
             $datas['title'] = 'UAC - Assign Menu';
             $datas['breadcrumb'] = ['UAC', 'Transaction', 'Assign Menu'];
             $datas['header'] = 'Add record';
             $datas['table'] = 'Record list';
             $datas['params'] = [
-                'menu' => $this->M_CRUD->readData('view_menu_sub', ['is_deleted' => '0']),
+                'menu' => $this->M_CRUD->readData('view_master_menu_sub', ['is_deleted' => '0']),
                 'role' => $this->M_CRUD->readData('master_role', ['is_deleted' => '0']),
-                'list' => $this->M_CRUD->readData('view_menu_assign'),
+                'list' => $this->M_CRUD->readData('view_trans_assign_sub'),
             ];
 
             $this->template->load('default', 'contents' , 'uac/assignmenu/index', $datas);
@@ -61,7 +61,7 @@
                     'role_id' => $post['role'],
                 ];
                 if($this->M_CRUD->insertData('trans_menu_assign', $param)) {
-                    $response = ['status' => 1, 'messages' => 'Assign menu has been saved successfully.', 'icon' => 'success', 'url' => 'uac/assignmenu'];
+                    $response = ['status' => 1, 'messages' => 'Assign menu has been saved successfully.', 'icon' => 'success', 'url' => 'uac/transaction/assignmenu'];
                 } else {
                     $response = ['status' => 0, 'messages' => 'Assign menu has failed to save.', 'icon' => 'error'];
                 }
@@ -76,7 +76,7 @@
                 'id' => $id
             ];
             if($this->M_CRUD->deletePermanent('trans_menu_assign', $condition)) {
-                $response = ['status' => 1, 'messages' => 'Assign menu has been deleted successfully.', 'icon' => 'success', 'url' => 'uac/assignmenu'];
+                $response = ['status' => 1, 'messages' => 'Assign menu has been deleted successfully.', 'icon' => 'success', 'url' => 'uac/transaction/assignmenu'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Assign menu has failed to delete.', 'icon' => 'error'];
             }

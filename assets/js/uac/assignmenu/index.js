@@ -17,7 +17,7 @@ $(function () {
                 del(id);
             } else {
                 swal("", "Assign menu canceled for deletion.", "info").then((value) => {
-                    window.location.href = site_url + "uac/assignmenu";
+                    window.location.href = site_url + "uac/transaction/assignmenu";
                 });
             }
         });
@@ -36,14 +36,6 @@ $(function () {
     });
 
     $('#form-assign-menu').validate({
-        rules: {
-            menu: {
-                required: true,
-            },
-            role: {
-                required: true,
-            },
-        },
         errorElement: 'span',
         errorPlacement: function (error, element) {
             error.addClass('invalid-feedback');
@@ -61,7 +53,7 @@ $(function () {
 function save()
 {
     $.ajax({
-        url: site_url + "uac/assignmenu/save",
+        url: site_url + "uac/transaction/assignmenu/save",
         type: "POST",
         data: $("#form-assign-menu").serialize(),
         dataType: "json",
@@ -90,7 +82,7 @@ function save()
 function del(id)
 {
     $.ajax({
-        url: site_url + "uac/assignmenu/delete/" + id,
+        url: site_url + "uac/transaction/assignmenu/delete/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {
