@@ -74,8 +74,8 @@
                         <div class="container" style="max-width: 99%; padding-right: 1%;">
                             <div class="row mt-3">
                                 <div class="col-md-1">
-                                    <a href="#" onclick="history.go(-1)" class="btn btn-block btn-warning text-center">
-                                        <i class="fas fa-arrow-left mr-1"></i> Back
+                                    <a href="<?=site_url($this->uri->segment(1))?>" class="btn btn-block btn-warning text-center">
+                                        <i class="fas fa-arrow-left mr-1"></i> Back to group
                                     </a>
                                 </div>
 

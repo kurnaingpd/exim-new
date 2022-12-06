@@ -53,7 +53,7 @@
                             <div class="row mt-3">
                                 <div class="col-md-1">
                                     <a href="<?=site_url()?>" class="btn btn-block btn-warning text-center">
-                                        <i class="fas fa-arrow-left mr-1"></i> Back
+                                        <i class="fas fa-arrow-left mr-1"></i> Back to module
                                     </a>
                                 </div>
 
