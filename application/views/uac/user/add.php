@@ -15,7 +15,7 @@
                 <div class="col-md-2">
                     <div class="form-group required">
                         <label for="username" class="control-label">Username</label>
-                        <input type="text" name="username" class="form-control no-space lower" id="username" placeholder="Enter username" autocomplete="off" required>
+                        <input type="text" name="username" class="form-control no-space lower" id="username" placeholder="Enter username" autocomplete="off" minlength="5" maxlength="30" required>
                     </div>
                 </div>
 
@@ -50,13 +50,13 @@
                 <div class="col-md-2">
                     <div class="form-group required">
                         <label for="password" class="control-label">Password</label>
-                        <input type="password" name="password" class="form-control no-space" id="password" placeholder="Enter password" autocomplete="off" required>
+                        <input type="password" name="password" class="form-control no-space" id="password" placeholder="Enter password" autocomplete="off" minlength="5" required>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-block btn-default cancel" href="<?=site_url('uac/user')?>">
+                    <a class="btn btn-block btn-default cancel" href="<?=site_url('uac/master/user')?>">
                         <i class="fas fa-ban mr-2"></i>Cancel
                     </a>
                 </div>

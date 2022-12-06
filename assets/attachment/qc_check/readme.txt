@@ -1,1 +1,0 @@
-yang penting ga kosong

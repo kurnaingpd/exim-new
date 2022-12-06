@@ -21,26 +21,6 @@ $(function () {
     });
 
     $('#form-user-add').validate({
-        rules: {
-            fullname: {
-                required: true,
-            },
-            username: {
-                required: true,
-                minlength: 5,
-                maxlength: 30,
-            },
-            email: {
-                required: true,
-            },
-            role: {
-                required: true,
-            },
-            password: {
-                required: true,
-                minlength: 5,
-            },
-        },
         errorElement: 'span',
         errorPlacement: function (error, element) {
             error.addClass('invalid-feedback');
@@ -85,7 +65,7 @@ function position(id)
 function save()
 {
     $.ajax({
-        url: site_url + "uac/user/save",
+        url: site_url + "uac/master/user/save",
         type: "POST",
         data: $("#form-user-add").serialize(),
         dataType: "json",

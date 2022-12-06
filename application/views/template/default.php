@@ -115,7 +115,7 @@
                                             <div class="overflow-auto" style="max-height: 250px; overflow-y: hidden;">
                                             <?php foreach($menu as $val => $sm) : ?>
                                                 <li class="list-group-item">
-                                                    <a href="<?=site_url($sm->menu_sub_url)?>" class="text-secondary">
+                                                    <a href="<?=site_url($module.'/'.$group.'/'.$sm->menu_sub_url)?>" class="text-secondary">
                                                         <i class="<?=$sm->menu_sub_icon?> mr-2"></i><?=$sm->menu_sub_name?>
                                                     </a>
                                                 </li>

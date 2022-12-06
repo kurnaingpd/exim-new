@@ -24,13 +24,13 @@
                 base_url("assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"),
                 base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/user/list.js"),
+                base_url("assets/js/uac/user/list.js"),
             ];
-            $datas['title'] = 'UAC - User';
+            $datas['title'] = 'UAC | Master - User';
             $datas['breadcrumb'] = ['UAC', 'Master', 'User'];
             $datas['header'] = 'User list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('view_user_list', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD->readData('view_master_user_list', ['is_deleted' => '0'])
             ];
 
             $this->template->load('default', 'contents' , 'uac/user/list', $datas);
@@ -47,9 +47,9 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/user/add.js"),
+                base_url("assets/js/uac/user/add.js"),
             ];
-            $datas['title'] = 'UAC - User';
+            $datas['title'] = 'UAC | Master - User';
             $datas['breadcrumb'] = ['UAC', 'Master', 'User'];
             $datas['header'] = 'Add record';
             $datas['params'] = [
@@ -68,8 +68,8 @@
         public function save()
         {
             $post = $this->input->post();
-            $check_username = $this->M_CRUD->readDatabyID('view_user_role', ['is_deleted' => '0', 'username' => $post['username']]);
-            $check_email = $this->M_CRUD->readDatabyID('view_user_role', ['is_deleted' => '0', 'email' => $post['email']]);
+            $check_username = $this->M_CRUD->readDatabyID('master_user', ['is_deleted' => '0', 'username' => $post['username']]);
+            $check_email = $this->M_CRUD->readDatabyID('master_user', ['is_deleted' => '0', 'email' => $post['email']]);
 
             if($check_username) {
                 $response = ['status' => 0, 'messages' => 'Username already exists.', 'icon' => 'info'];
@@ -111,13 +111,13 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/user/detail.js"),
+                base_url("assets/js/uac/user/detail.js"),
             ];
             $datas['title'] = 'UAC - User';
             $datas['breadcrumb'] = ['UAC', 'Master', 'User'];
             $datas['header'] = 'Detail record';
             $datas['params'] = [
-                'detail' => $this->M_CRUD->readDatabyID('view_user_role', ['is_deleted' => '0', 'id' => $id]),
+                'detail' => $this->M_CRUD->readDatabyID('view_master_user_role', ['is_deleted' => '0', 'id' => $id]),
                 'role' => $this->M_CRUD->readData('master_role', ['is_deleted' => '0'])
             ];
 
@@ -145,7 +145,7 @@
             ];
 
             if($this->M_CRUD->updateData('master_user', $paramUser, $condition)) {
-                $respponse = ['status' => 1, 'messages' => 'User has been updated successfully.', 'icon' => 'success', 'url' => 'uac/user'];
+                $respponse = ['status' => 1, 'messages' => 'User has been updated successfully.', 'icon' => 'success', 'url' => 'uac/master/user'];
             } else {
                 $respponse = ['status' => 0, 'messages' => 'User has failed to save.', 'icon' => 'error'];
             }
@@ -165,13 +165,13 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/user/upload.js"),
+                base_url("assets/js/uac/user/upload.js"),
             ];
             $datas['title'] = 'UAC - User';
             $datas['breadcrumb'] = ['UAC', 'Master', 'User'];
             $datas['header'] = 'Upload signature';
             $datas['params'] = [
-                'detail' => $this->M_CRUD->readDatabyID('view_user_role', ['is_deleted' => '0', 'id' => $id]),
+                'detail' => $this->M_CRUD->readDatabyID('view_master_user_role', ['is_deleted' => '0', 'id' => $id]),
                 'role' => $this->M_CRUD->readData('master_role', ['is_deleted' => '0'])
             ];
 
@@ -181,7 +181,7 @@
         public function process()
         {
             $post = $this->input->post();
-            $path = 'assets/attachment/user/';
+            $path = 'assets/attachment/uac/user/';
             $id = $post['id'];
             $condition = [
                 'id' => $id
@@ -193,13 +193,14 @@
                     $ext = explode('.', $temp_name);
                     $end = strtolower(end($ext));
                     $timestamp = mt_rand(1, time());
-                    $randomDate = date("d M Y", $timestamp);
-                    $filename = 'Signature-'.md5($randomDate).'.'.$end;
+                    // $randomDate = date("d M Y", $timestamp);
+                    $username = $this->session->userdata('logged_in')->username;
+                    $filename = 'signature_'.$username.'_'.$timestamp.'.'.$end;
                     move_uploaded_file($_FILES['attachment']['tmp_name'], $path.$filename);
                     $params['signature'] = $path.$filename;
 
                     if($this->M_CRUD->updateData('master_user', $params, $condition)) {
-                        $response = ['status' => 1, 'messages' => 'User signature has been saved successfully.', 'icon' => 'success', 'url' => 'uac/user'];
+                        $response = ['status' => 1, 'messages' => 'User signature has been saved successfully.', 'icon' => 'success', 'url' => 'uac/master/user'];
                     } else {
                         $response = ['status' => 0, 'messages' => 'User signature has failed to save.', 'icon' => 'error'];
                     }
@@ -216,7 +217,7 @@
             ];
             
             if($this->M_CRUD->deleteData('master_user', $condition)) {
-                $response = ['status' => 1, 'messages' => 'User has been deleted successfully.', 'icon' => 'success', 'url' => 'user'];
+                $response = ['status' => 1, 'messages' => 'User has been deleted successfully.', 'icon' => 'success', 'url' => 'uac/master/user'];
             } else {
                 $response = ['status' => 0, 'messages' => 'User has failed to delete.', 'icon' => 'error'];
             }

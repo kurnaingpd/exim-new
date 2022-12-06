@@ -42,13 +42,13 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="password">Change password</label>
-                        <input type="password" name="password" class="form-control no-space" id="password" placeholder="Enter password" autocomplete="off">
+                        <input type="password" name="password" class="form-control no-space" id="password" placeholder="Enter password" autocomplete="off" minlength="5" required value="<?=$params['detail']->password?>">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-block btn-default cancel" href="<?=site_url('uac/user')?>">
+                    <a class="btn btn-block btn-default cancel" href="<?=site_url('uac/master/user')?>">
                         <i class="fas fa-ban mr-2"></i>Cancel
                     </a>
                 </div>

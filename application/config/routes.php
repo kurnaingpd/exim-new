@@ -68,24 +68,24 @@ $route['uac/master'] = 'Home/uac_master';
 $route['uac/transaction'] = 'Home/uac_transaction';
 
 /** UAC - Master - User */
-$route['uac/master/user'] = 'User';
-$route['uac/user/add'] = 'User/add';
-$route['uac/user/position'] = 'User/position';
-$route['uac/user/position/(:num)'] = 'User/position/$1';
-$route['uac/user/save'] = 'User/save';
-$route['uac/user/detail/(:num)'] = 'User/detail/$1';
-$route['uac/user/update'] = 'User/update';
-$route['uac/user/upload/(:num)'] = 'User/upload/$1';
-$route['uac/user/process'] = 'User/process';
-$route['uac/user/delete/(:num)'] = 'User/delete/$1';
+$route['uac/master/user'] = 'UAC/User';
+$route['uac/master/user/add'] = 'UAC/User/add';
+$route['uac/master/user/position'] = 'UAC/User/position';
+$route['uac/master/user/position/(:num)'] = 'UAC/User/position/$1';
+$route['uac/master/user/save'] = 'UAC/User/save';
+$route['uac/master/user/detail/(:num)'] = 'UAC/User/detail/$1';
+$route['uac/master/user/update'] = 'UAC/User/update';
+$route['uac/master/user/upload/(:num)'] = 'UAC/User/upload/$1';
+$route['uac/master/user/process'] = 'UAC/User/process';
+$route['uac/master/user/delete/(:num)'] = 'UAC/User/delete/$1';
 
-/** UAC - Module */
-$route['uac/modules'] = 'Modules';
-$route['uac/modules/add'] = 'Modules/add';
-$route['uac/modules/save'] = 'Modules/save';
-$route['uac/modules/detail/(:num)'] = 'Modules/detail/$1';
-$route['uac/modules/update'] = 'Modules/update';
-$route['uac/modules/delete/(:num)'] = 'Modules/delete/$1';
+/** UAC - Master -  Module */
+$route['uac/master/modules'] = 'UAC/Modules';
+$route['uac/master/modules/add'] = 'UAC/Modules/add';
+$route['uac/master/modules/save'] = 'UAC/Modules/save';
+$route['uac/master/modules/detail/(:num)'] = 'UAC/Modules/detail/$1';
+$route['uac/master/modules/update'] = 'UAC/Modules/update';
+$route['uac/master/modules/delete/(:num)'] = 'UAC/Modules/delete/$1';
 
 /** UAC - Menu */
 $route['uac/menu'] = 'Menu';

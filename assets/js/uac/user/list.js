@@ -4,7 +4,7 @@ $(function () {
         "buttons": [{
             "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
             "action": function ( e, dt, node, config ) {
-                window.location.href = site_url + "uac/user/add";
+                window.location.href = site_url + "uac/master/user/add";
             }
         }]
     }).buttons().container().appendTo('#tuserlist_wrapper .col-md-6:eq(0)');
@@ -23,7 +23,7 @@ $(function () {
                 del(id);
             } else {
                 swal("", "User canceled for deletion.", "info").then((value) => {
-                    window.location.href = site_url + "uac/user";
+                    window.location.href = site_url + "uac/master/user";
                 });
             }
         });
@@ -33,7 +33,7 @@ $(function () {
 function del(id)
 {
     $.ajax({
-        url: site_url + "uac/user/delete/" + id,
+        url: site_url + "uac/master/user/delete/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {

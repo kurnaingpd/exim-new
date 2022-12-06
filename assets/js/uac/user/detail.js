@@ -21,17 +21,6 @@ $(function () {
     });
 
     $('#form-user-detail').validate({
-        rules: {
-            fullname: {
-                required: true,
-            },
-            email: {
-                required: true,
-            },
-            password: {
-                minlength: 5,
-            },
-        },
         errorElement: 'span',
         errorPlacement: function (error, element) {
             error.addClass('invalid-feedback');

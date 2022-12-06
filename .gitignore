@@ -19,10 +19,10 @@ user_guide_src/cilexer/build/*
 user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
 /vendor/
-/assets/attachment/signedpi/
-/assets/attachment/expterm/
-/assets/attachment/qc_check/
-/assets/attachment/user/
+/assets/attachment/export/signedpi/
+/assets/attachment/export/expterm/
+/assets/attachment/export/qc_check/
+/assets/attachment/uac/user/
 
 # IDE Files
 #-------------------------
