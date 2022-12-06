@@ -87,13 +87,13 @@ $route['uac/master/modules/detail/(:num)'] = 'UAC/Modules/detail/$1';
 $route['uac/master/modules/update'] = 'UAC/Modules/update';
 $route['uac/master/modules/delete/(:num)'] = 'UAC/Modules/delete/$1';
 
-/** UAC - Menu */
-$route['uac/menu'] = 'Menu';
-$route['uac/menu/add'] = 'Menu/add';
-$route['uac/menu/save'] = 'Menu/save';
-$route['uac/menu/detail/(:num)'] = 'Menu/detail/$1';
-$route['uac/menu/update'] = 'Menu/update';
-$route['uac/menu/delete/(:num)'] = 'Menu/delete/$1';
+/** UAC - Master - Menu */
+$route['uac/master/menu'] = 'UAC/Menu';
+$route['uac/master/menu/add'] = 'UAC/Menu/add';
+$route['uac/master/menu/save'] = 'UAC/Menu/save';
+$route['uac/master/menu/detail/(:num)'] = 'UAC/Menu/detail/$1';
+$route['uac/master/menu/update'] = 'UAC/Menu/update';
+$route['uac/master/menu/delete/(:num)'] = 'UAC/Menu/delete/$1';
 
 /** UAC - Assign menu */
 $route['uac/assignmenu'] = 'AssignMenu';

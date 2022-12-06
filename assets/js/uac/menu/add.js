@@ -21,23 +21,6 @@ $(function () {
     });
 
     $('#form-menu-add').validate({
-        rules: {
-            module: {
-                required: true,
-            },
-            group: {
-                required: true,
-            },
-            menu: {
-                required: true,
-            },
-            icon: {
-                required: true,
-            },
-            url: {
-                required: true,
-            },
-        },
         errorElement: 'span',
         errorPlacement: function (error, element) {
             error.addClass('invalid-feedback');
@@ -55,7 +38,7 @@ $(function () {
 function save()
 {
     $.ajax({
-        url: site_url + "uac/menu/save",
+        url: site_url + "uac/master/menu/save",
         type: "POST",
         data: $("#form-menu-add").serialize(),
         dataType: "json",
@@ -64,7 +47,6 @@ function save()
             $('button.save').html("<img src=" + base_url + "assets/images/inventory/loader.gif style='height:20px;'  /> Saving...").prop('disabled', true);
         },
         success: function(response) {
-            console.log(response);
             if(response.status == 1) {
                 swal("", response.messages, response.icon).then((value) => {
                     window.location.href = site_url + response.url;

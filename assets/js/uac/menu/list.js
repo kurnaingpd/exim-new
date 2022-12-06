@@ -4,7 +4,7 @@ $(function () {
         "buttons": [{
             "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
             "action": function ( e, dt, node, config ) {
-                window.location.href = site_url + "uac/menu/add";
+                window.location.href = site_url + "uac/master/menu/add";
             }
         }]
     }).buttons().container().appendTo('#tmenulist_wrapper .col-md-6:eq(0)');
@@ -23,7 +23,7 @@ $(function () {
                 del(id);
             } else {
                 swal("", "Menu canceled for deletion.", "info").then((value) => {
-                    window.location.href = site_url + "uac/menu";
+                    window.location.href = site_url + "uac/master/menu";
                 });
             }
         });
@@ -33,7 +33,7 @@ $(function () {
 function del(id)
 {
     $.ajax({
-        url: site_url + "uac/menu/delete/" + id,
+        url: site_url + "uac/master/menu/delete/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {

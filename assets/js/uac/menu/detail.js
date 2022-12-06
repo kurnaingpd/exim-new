@@ -21,23 +21,6 @@ $(function () {
     });
 
     $('#form-menu-detail').validate({
-        rules: {
-            module: {
-                required: true,
-            },
-            group: {
-                required: true,
-            },
-            menu: {
-                required: true,
-            },
-            icon: {
-                required: true,
-            },
-            url: {
-                required: true,
-            },
-        },
         errorElement: 'span',
         errorPlacement: function (error, element) {
             error.addClass('invalid-feedback');
@@ -55,7 +38,7 @@ $(function () {
 function save()
 {
     $.ajax({
-        url: site_url + "uac/menu/update",
+        url: site_url + "uac/master/menu/update",
         type: "POST",
         data: $("#form-menu-detail").serialize(),
         dataType: "json",

@@ -8,7 +8,7 @@
                 <div class="col-md-2">
                     <div class="form-group required">
                         <label for="module" class="control-label">Module name</label>
-                        <select class="form-control select2bs4" id="module" name="module">
+                        <select class="form-control select2bs4" id="module" name="module" required>
                             <option></option>
                             <?php foreach($params['module'] as $rows) : ?>
                                 <option value="<?=$rows->id?>"><?=$rows->name?></option>
@@ -20,7 +20,7 @@
                 <div class="col-md-2">
                     <div class="form-group required">
                         <label for="group" class="control-label">Group name</label>
-                        <select class="form-control select2bs4" id="group" name="group">
+                        <select class="form-control select2bs4" id="group" name="group" required>
                             <option></option>
                             <?php foreach($params['group'] as $rows) : ?>
                                 <option value="<?=$rows->id?>"><?=$rows->name?></option>
@@ -40,7 +40,7 @@
                     <div class="form-group required">
                         <label for="icon" class="control-label">Icon</label>
                         <input type="text" name="icon" class="form-control lower" id="icon" placeholder="Enter icon" autocomplete="off" required>
-                        <small>Example: far fa-keyboard</small>
+                        <small><b>Notes:</b> example => far fa-keyboard & download icon at <a href="https://fontawesome.com/v5/search?o=r&m=free" target="_blank">Font Awesome</a></small>
                     </div>
                 </div>
 
@@ -53,7 +53,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-block btn-default cancel" href="<?=site_url('uac/menu')?>">
+                    <a class="btn btn-block btn-default cancel" href="<?=site_url('uac/master/menu')?>">
                         <i class="fas fa-ban mr-2"></i>Cancel
                     </a>
                 </div>

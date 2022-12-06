@@ -24,13 +24,13 @@
                 base_url("assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"),
                 base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/menu/list.js"),
+                base_url("assets/js/uac/menu/list.js"),
             ];
             $datas['title'] = 'UAC - Menu';
             $datas['breadcrumb'] = ['UAC', 'Master', 'Menu'];
             $datas['header'] = 'Menu list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('view_menu_sub', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD->readData('view_master_menu_sub', ['is_deleted' => '0'])
             ];
 
             $this->template->load('default', 'contents' , 'uac/menu/list', $datas);
@@ -47,7 +47,7 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/menu/add.js"),
+                base_url("assets/js/uac/menu/add.js"),
             ];
             $datas['title'] = 'UAC - Menu';
             $datas['breadcrumb'] = ['UAC', 'Master', 'Menu'];
@@ -72,7 +72,7 @@
             ];
 
             if($this->M_CRUD->insertData('master_menu_sub', $param)) {
-                $response = ['status' => 1, 'messages' => 'Menu has been saved successfully.', 'icon' => 'success', 'url' => 'uac/menu'];
+                $response = ['status' => 1, 'messages' => 'Menu has been saved successfully.', 'icon' => 'success', 'url' => 'uac/master/menu'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Menu has failed to save.', 'icon' => 'error'];
             }
@@ -91,7 +91,7 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/menu/detail.js"),
+                base_url("assets/js/uac/menu/detail.js"),
             ];
             $datas['title'] = 'UAC - Menu';
             $datas['breadcrumb'] = ['UAC', 'Master', 'Menu'];
@@ -123,7 +123,7 @@
             ];
 
             if($this->M_CRUD->updateData('master_menu_sub', $param, $condition)) {
-                $respponse = ['status' => 1, 'messages' => 'Menu has been updated successfully.', 'icon' => 'success', 'url' => 'uac/menu'];
+                $respponse = ['status' => 1, 'messages' => 'Menu has been updated successfully.', 'icon' => 'success', 'url' => 'uac/master/menu'];
             } else {
                 $respponse = ['status' => 0, 'messages' => 'Menu has failed to save.', 'icon' => 'error'];
             }
@@ -138,7 +138,7 @@
             ];
             
             if($this->M_CRUD->deleteData('master_menu_sub', $condition)) {
-                $response = ['status' => 1, 'messages' => 'Menu has been deleted successfully.', 'icon' => 'success', 'url' => 'uac/menu'];
+                $response = ['status' => 1, 'messages' => 'Menu has been deleted successfully.', 'icon' => 'success', 'url' => 'uac/master/menu'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Menu has failed to delete.', 'icon' => 'error'];
             }

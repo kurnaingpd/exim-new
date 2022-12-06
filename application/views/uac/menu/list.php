@@ -20,16 +20,16 @@
             <tbody>
                 <?php $no=1; foreach($params['list'] as $rows) : ?>
                     <tr class="align-middle">
-                        <td class="text-center"><?=$no?></td>
-                        <td><?=$rows->menu_module_name?></td>
-                        <td><?=$rows->menu_group_name?></td>
+                        <td class="text-center"><?=$no?>.</td>
+                        <td class="text-center"><?=$rows->menu_module_name?></td>
+                        <td class="text-center"><?=$rows->menu_group_name?></td>
                         <td><?=$rows->name?></td>
                         <td><?=$rows->icon?></td>
                         <td><?=$rows->url?></td>
                         <td class="text-center"><?=$rows->created_at?></td>
-                        <td class="text-center"><?=$rows->updated_at?></td>
+                        <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
                         <td class="text-center">
-                            <a href="<?=site_url('uac/menu/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
+                            <a href="<?=site_url('uac/master/menu/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">
