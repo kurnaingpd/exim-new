@@ -9,14 +9,14 @@
                 <div class="col-md-3">
                     <div class="form-group required">
                         <label for="top" class="control-label">Country code</label>
-                        <input type="text" name="code" class="form-control no-space upper" id="code" placeholder="Enter country code" autocomplete="off" autofocus required value="<?=$params['detail']->code?>">
+                        <input type="text" name="code" class="form-control no-space upper" id="code" placeholder="Enter country code" value="<?=$params['detail']->code?>" disabled>
                     </div>
                 </div>
 
                 <div class="col-md-9">
                     <div class="form-group required">
                         <label for="name" class="control-label">Country name</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter country name" autocomplete="off" autofocus required value="<?=$params['detail']->name?>">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter country name" autocomplete="off" autofocus pattern="^[a-zA-Z\s]+$" required value="<?=$params['detail']->name?>">
                     </div>
                 </div>
             </div>

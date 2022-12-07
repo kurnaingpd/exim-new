@@ -4,7 +4,7 @@ $(function () {
         "buttons": [{
             "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
             "action": function ( e, dt, node, config ) {
-                window.location.href = site_url + "export/country/add";
+                window.location.href = site_url + "export/master/country/add";
             }
         }]
     }).buttons().container().appendTo('#tcountrylist_wrapper .col-md-6:eq(0)');
@@ -23,7 +23,7 @@ $(function () {
                 del(id);
             } else {
                 swal("", "Country canceled for deletion.", "info").then((value) => {
-                    window.location.href = site_url + "export/country";
+                    window.location.href = site_url + "export/master/country";
                 });
             }
         });
@@ -33,7 +33,7 @@ $(function () {
 function del(id)
 {
     $.ajax({
-        url: site_url + "export/country/delete/" + id,
+        url: site_url + "export/master/country/delete/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {

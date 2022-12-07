@@ -8,20 +8,20 @@
                 <div class="col-md-3">
                     <div class="form-group required">
                         <label for="top" class="control-label">Country code</label>
-                        <input type="text" name="code" class="form-control no-space upper" id="code" placeholder="Enter country code" autocomplete="off" autofocus required>
+                        <input type="text" name="code" class="form-control no-space upper" id="code" placeholder="Enter country code" autocomplete="off" maxlength="3" autofocus required pattern="^[A-Z]+$">
                     </div>
                 </div>
 
                 <div class="col-md-9">
                     <div class="form-group required">
                         <label for="name" class="control-label">Country name</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter country name" autocomplete="off" autofocus required>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter country name" autocomplete="off" required pattern="^[a-zA-Z\s]+$">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-block btn-default cancel" href="<?=site_url('export/country')?>">
+                    <a class="btn btn-block btn-default cancel" href="<?=site_url('export/master/country')?>">
                         <i class="fas fa-ban mr-2"></i>Cancel
                     </a>
                 </div>

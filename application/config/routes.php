@@ -118,12 +118,12 @@ $route['export/master/top/update'] = 'export/TOP/update';
 $route['export/master/top/delete/(:num)'] = 'export/TOP/delete/$1';
 
 /** Export - Country */
-$route['export/country'] = 'Country';
-$route['export/country/add'] = 'Country/add';
-$route['export/country/save'] = 'Country/save';
-$route['export/country/detail/(:num)'] = 'Country/detail/$1';
-$route['export/country/update'] = 'Country/update';
-$route['export/country/delete/(:num)'] = 'Country/delete/$1';
+$route['export/master/country'] = 'export/Country';
+$route['export/master/country/add'] = 'export/Country/add';
+$route['export/master/country/save'] = 'export/Country/save';
+$route['export/master/country/detail/(:num)'] = 'export/Country/detail/$1';
+$route['export/master/country/update'] = 'export/Country/update';
+$route['export/master/country/delete/(:num)'] = 'export/Country/delete/$1';
 
 /** Export - Container */
 $route['export/container'] = 'Container';

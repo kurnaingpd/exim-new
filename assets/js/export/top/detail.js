@@ -27,20 +27,6 @@ function save()
         type: "POST",
         data: $("#form-top-detail").serialize(),
         dataType: "json",
-        // success: function(response) {
-        //     console.log(response);
-        //     if(response.status == 1) {
-        //         swal("", response.messages, response.icon).then((value) => {
-        //             window.location.href = site_url + response.url;
-        //         });
-        //     } else {
-        //         swal("", response.messages, response.icon);
-        //     }
-        // },
-        // error: function (e) {
-        //     console.log("Terjadi kesalahan pada sistem");
-        //     swal("", "Terjadi kesalahan pada sistem.", "error");
-        // } 
         beforeSend: function(){
             $('a.cancel').prop('disabled', true);
             $('button.save').html("<img src=" + base_url + "assets/images/inventory/loader.gif style='height:20px;'  /> Saving...").prop('disabled', true);
