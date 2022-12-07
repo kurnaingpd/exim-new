@@ -33,9 +33,17 @@
 
         public function uac_transaction()
         {
-            $datas['title'] = 'UAC | Master - Home';
-            $datas['breadcrumb'] = ['UAC', 'Master', 'Home'];
-            $datas['modules'] = 'UAC - Master';
+            $datas['title'] = 'UAC | Transaction - Home';
+            $datas['breadcrumb'] = ['UAC', 'Transaction', 'Home'];
+            $datas['modules'] = 'UAC - Transaction';
+            $this->template->load('default', 'contents' , 'home/index', $datas);
+        }
+
+        public function uac_report()
+        {
+            $datas['title'] = 'UAC | Report - Home';
+            $datas['breadcrumb'] = ['UAC', 'Report', 'Home'];
+            $datas['modules'] = 'UAC - Report';
             $this->template->load('default', 'contents' , 'home/index', $datas);
         }
 

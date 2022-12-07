@@ -70,13 +70,13 @@
                 base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"),
                 base_url("assets/adminlte/plugins/jszip/jszip.min.js"),
                 base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"),
-                base_url("assets/js/auth/report.js"),
+                base_url("assets/js/uac/auth/report.js"),
             ];
             $datas['title'] = 'UAC - Log Access';
             $datas['breadcrumb'] = ['Export', 'Transaction', 'Log Access'];
             $datas['header'] = 'Log Access';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('view_report_auth')
+                'list' => $this->M_CRUD->readData('view_trans_auth')
             ];
             $this->template->load('default', 'contents' , 'auth/report', $datas);
         }

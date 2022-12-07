@@ -66,6 +66,7 @@ $route['home'] = 'Home/modules';
 $route['uac'] = 'Home/uac';
 $route['uac/master'] = 'Home/uac_master';
 $route['uac/transaction'] = 'Home/uac_transaction';
+$route['uac/report'] = 'Home/uac_report';
 
 /** UAC - Master - User */
 $route['uac/master/user'] = 'uac/User';
@@ -95,13 +96,13 @@ $route['uac/master/menu/detail/(:num)'] = 'uac/Menu/detail/$1';
 $route['uac/master/menu/update'] = 'uac/Menu/update';
 $route['uac/master/menu/delete/(:num)'] = 'uac/Menu/delete/$1';
 
-/** UAC - Assign menu */
+/** UAC - Transaction - Assign menu */
 $route['uac/transaction/assignmenu'] = 'uac/AssignMenu';
 $route['uac/transaction/assignmenu/save'] = 'uac/AssignMenu/save';
 $route['uac/transaction/assignmenu/delete/(:num)'] = 'uac/AssignMenu/delete/$1';
 
 /** UAC - Log Access */
-$route['uac/report'] = 'Auth/report';
+$route['uac/report/log_auth'] = 'Auth/report';
 
 /** Export */
 $route['export'] = 'Home/export';
