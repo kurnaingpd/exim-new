@@ -126,12 +126,12 @@ $route['export/master/country/update'] = 'export/Country/update';
 $route['export/master/country/delete/(:num)'] = 'export/Country/delete/$1';
 
 /** Export - Container */
-$route['export/container'] = 'Container';
-$route['export/container/add'] = 'Container/add';
-$route['export/container/save'] = 'Container/save';
-$route['export/container/detail/(:num)'] = 'Container/detail/$1';
-$route['export/container/update'] = 'Container/update';
-$route['export/container/delete/(:num)'] = 'Container/delete/$1';
+$route['export/master/container'] = 'export/Container';
+$route['export/master/container/add'] = 'export/Container/add';
+$route['export/master/container/save'] = 'export/Container/save';
+$route['export/master/container/detail/(:num)'] = 'export/Container/detail/$1';
+$route['export/master/container/update'] = 'export/Container/update';
+$route['export/master/container/delete/(:num)'] = 'export/Container/delete/$1';
 
 /** Export - Incoterm */
 $route['export/incoterm'] = 'Incoterm';

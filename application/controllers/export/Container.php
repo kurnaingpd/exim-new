@@ -6,7 +6,7 @@
         {
             parent::__construct();
             if(!$this->session->userdata('logged_in')) redirect('/');
-            $this->load->model(['M_CRUD']);
+            $this->load->model(['M_CRUD_Exp']);
         }
 
         public function index()
@@ -24,13 +24,13 @@
                 base_url("assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"),
                 base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/container/list.js"),
+                base_url("assets/js/export/container/list.js"),
             ];
             $datas['title'] = 'Export - Container';
             $datas['breadcrumb'] = ['Export', 'Master', 'Container'];
             $datas['header'] = 'Container list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('master_container', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD_Exp->readData('view_master_container')
             ];
 
             $this->template->load('default', 'contents' , 'export/container/list', $datas);
@@ -42,7 +42,7 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/container/add.js"),
+                base_url("assets/js/export/container/add.js"),
             ];
             $datas['title'] = 'Export - Container';
             $datas['breadcrumb'] = ['Export', 'Master', 'Container'];
@@ -57,10 +57,11 @@
             $param = [
                 'name' => $post['name'],
                 'max_cbm' => $post['cbm'],
+                'created_by' => $this->session->userdata('logged_in')->id
             ];
 
-            if($this->M_CRUD->insertData('master_container', $param)) {
-                $response = ['status' => 1, 'messages' => 'Container has been saved successfully.', 'icon' => 'success', 'url' => 'export/container'];
+            if($this->M_CRUD_Exp->insertData('master_container', $param)) {
+                $response = ['status' => 1, 'messages' => 'Container has been saved successfully.', 'icon' => 'success', 'url' => 'export/master/container'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Container has failed to save.', 'icon' => 'error'];
             }
@@ -79,13 +80,13 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/container/detail.js"),
+                base_url("assets/js/export/container/detail.js"),
             ];
             $datas['title'] = 'Export - Container';
             $datas['breadcrumb'] = ['Export', 'Master', 'Container'];
             $datas['header'] = 'Detail record';
             $datas['params'] = [
-                'detail' => $this->M_CRUD->readDatabyID('master_container', ['is_deleted' => '0', 'id' => $id]),
+                'detail' => $this->M_CRUD_Exp->readDatabyID('master_container', ['is_deleted' => '0', 'id' => $id]),
             ];
 
             $this->template->load('default', 'contents' , 'export/container/detail', $datas);
@@ -99,10 +100,11 @@
                 'name' => $post['name'],
                 'max_cbm' => $post['cbm'],
                 'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $this->session->userdata('logged_in')->id
             ];
 
-            if($this->M_CRUD->updateData('master_container', $param, $condition)) {
-                $response = ['status' => 1, 'messages' => 'Container has been updated successfully.', 'icon' => 'success', 'url' => 'export/container'];
+            if($this->M_CRUD_Exp->updateData('master_container', $param, $condition)) {
+                $response = ['status' => 1, 'messages' => 'Container has been updated successfully.', 'icon' => 'success', 'url' => 'export/master/container'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Container has failed to update.', 'icon' => 'error'];
             }
@@ -112,12 +114,12 @@
 
         public function delete($id)
         {
-            $condition = [
-                'id' => $id
-            ];
+            $condition = ['id' => $id];
+            $country = $this->M_CRUD_Exp->readDatabyID('master_container', ['id' => $id]);
+            $status = ($country->is_deleted == '1'?'0':'1');
             
-            if($this->M_CRUD->deleteData('master_container', $condition)) {
-                $response = ['status' => 1, 'messages' => 'Container has been deleted successfully.', 'icon' => 'success', 'url' => 'export/container'];
+            if($this->M_CRUD_Exp->updateData('master_container', ['is_deleted' => $status], $condition)) {
+                $response = ['status' => 1, 'messages' => 'Container has been deleted successfully.', 'icon' => 'success', 'url' => 'export/master/container'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Container has failed to delete.', 'icon' => 'error'];
             }
