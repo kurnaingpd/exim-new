@@ -22,7 +22,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-block btn-default cancel" href="<?=site_url('export/country')?>">
+                    <a class="btn btn-block btn-default cancel" href="<?=site_url('export/master/country')?>">
                         <i class="fas fa-ban mr-2"></i>Cancel
                     </a>
                 </div>

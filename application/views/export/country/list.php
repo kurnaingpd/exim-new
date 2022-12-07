@@ -33,7 +33,6 @@
                                 <i class="fas fa-edit"></i>
                             </a>
                             <button class="btn btn-sm btn-default" id="delete" data-id="<?=$rows->id?>">
-                                <!-- <i class="fas fa-trash"></i> -->
                                 <?=$rows->flags?>
                             </button>
                         </td>
