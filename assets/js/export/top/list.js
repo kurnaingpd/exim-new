@@ -4,7 +4,7 @@ $(function () {
         "buttons": [{
             "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
             "action": function ( e, dt, node, config ) {
-                window.location.href = site_url + "export/top/add";
+                window.location.href = site_url + "export/master/top/add";
             }
         }]
     }).buttons().container().appendTo('#ttoplist_wrapper .col-md-6:eq(0)');
@@ -23,7 +23,7 @@ $(function () {
                 del(id);
             } else {
                 swal("", "TOP canceled for deletion.", "info").then((value) => {
-                    window.location.href = site_url + "export/top";
+                    window.location.href = site_url + "export/master/top";
                 });
             }
         });
@@ -33,7 +33,7 @@ $(function () {
 function del(id)
 {
     $.ajax({
-        url: site_url + "export/top/delete/" + id,
+        url: site_url + "export/master/top/delete/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {

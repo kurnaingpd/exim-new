@@ -6,7 +6,7 @@
         {
             parent::__construct();
             if(!$this->session->userdata('logged_in')) redirect('/');
-            $this->load->model(['M_CRUD']);
+            $this->load->model(['M_CRUD_Exp']);
         }
 
         public function index()
@@ -24,13 +24,13 @@
                 base_url("assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"),
                 base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/top/list.js"),
+                base_url("assets/js/export/top/list.js"),
             ];
             $datas['title'] = 'Export - Terms Of Payment';
             $datas['breadcrumb'] = ['Export', 'Master', 'Terms Of Payment'];
             $datas['header'] = 'Terms of payment list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('master_top', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD_Exp->readData('view_master_top')
             ];
 
             $this->template->load('default', 'contents' , 'export/top/list', $datas);
@@ -42,7 +42,7 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/top/add.js"),
+                base_url("assets/js/export/top/add.js"),
             ];
             $datas['title'] = 'Export - Terms Of Payment';
             $datas['breadcrumb'] = ['Export', 'Master', 'Terms Of Payment'];
@@ -55,11 +55,12 @@
         {
             $post = $this->input->post();
             $param = [
-                'name' => $post['top']
+                'name' => $post['top'],
+                'created_by' => $this->session->userdata('logged_in')->id
             ];
 
-            if($this->M_CRUD->insertData('master_top', $param)) {
-                $response = ['status' => 1, 'messages' => 'Terms of payment has been saved successfully.', 'icon' => 'success', 'url' => 'export/top'];
+            if($this->M_CRUD_Exp->insertData('master_top', $param)) {
+                $response = ['status' => 1, 'messages' => 'Terms of payment has been saved successfully.', 'icon' => 'success', 'url' => 'export/master/top'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Terms of payment has failed to save.', 'icon' => 'error'];
             }
@@ -73,13 +74,13 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/top/detail.js"),
+                base_url("assets/js/export/top/detail.js"),
             ];
             $datas['title'] = 'Export - Terms Of Payment';
             $datas['breadcrumb'] = ['Export', 'Master', 'Terms Of Payment'];
             $datas['header'] = 'Detail record';
             $datas['params'] = [
-                'detail' => $this->M_CRUD->readDatabyID('master_top', ['is_deleted' => '0', 'id' => $id]),
+                'detail' => $this->M_CRUD_Exp->readDatabyID('master_top', ['is_deleted' => '0', 'id' => $id]),
             ];
 
             $this->template->load('default', 'contents' , 'export/top/detail', $datas);
@@ -92,13 +93,14 @@
             $param = [
                 'name' => $post['top'],
                 'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $this->session->userdata('logged_in')->id
             ];
             $condition = [
                 'id' => $id
             ];
 
-            if($this->M_CRUD->updateData('master_top', $param, $condition)) {
-                $respponse = ['status' => 1, 'messages' => 'Terms of payment has been updated successfully.', 'icon' => 'success', 'url' => 'export/top'];
+            if($this->M_CRUD_Exp->updateData('master_top', $param, $condition)) {
+                $respponse = ['status' => 1, 'messages' => 'Terms of payment has been updated successfully.', 'icon' => 'success', 'url' => 'export/master/top'];
             } else {
                 $respponse = ['status' => 0, 'messages' => 'Terms of payment has failed to save.', 'icon' => 'error'];
             }
@@ -112,8 +114,8 @@
                 'id' => $id
             ];
             
-            if($this->M_CRUD->deleteData('master_top', $condition)) {
-                $response = ['status' => 1, 'messages' => 'Terms of payment has been deleted successfully.', 'icon' => 'success', 'url' => 'export/top'];
+            if($this->M_CRUD_Exp->deleteData('master_top', $condition)) {
+                $response = ['status' => 1, 'messages' => 'Terms of payment has been deleted successfully.', 'icon' => 'success', 'url' => 'export/master/top'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Terms of payment has failed to delete.', 'icon' => 'error'];
             }
