@@ -11,7 +11,6 @@
         public function modules()
         {
             $datas['title'] = 'Home';
-
             $this->load->view('template/module', $datas);
         }
 
@@ -52,7 +51,22 @@
             $datas['title'] = 'Export - Home';
             $datas['breadcrumb'] = ['Export', 'Home'];
             $datas['modules'] = 'Export';
+            $this->load->view('template/group', $datas);
+        }
 
+        public function export_master()
+        {
+            $datas['title'] = 'Export - Master';
+            $datas['breadcrumb'] = ['Export', 'Master', 'Home'];
+            $datas['modules'] = 'Export - Master';
+            $this->template->load('default', 'contents' , 'home/index', $datas);
+        }
+
+        public function export_transaction()
+        {
+            $datas['title'] = 'Export - Transaction';
+            $datas['breadcrumb'] = ['Export', 'Transaction', 'Home'];
+            $datas['modules'] = 'Export - Transaction';
             $this->template->load('default', 'contents' , 'home/index', $datas);
         }
 

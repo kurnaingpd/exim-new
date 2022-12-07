@@ -106,14 +106,16 @@ $route['uac/report/log_auth'] = 'Auth/report';
 
 /** Export */
 $route['export'] = 'Home/export';
+$route['export/master'] = 'Home/export_master';
+$route['export/transaction'] = 'Home/export_transaction';
 
-/** Export - TOP */
-$route['export/top'] = 'TOP';
-$route['export/top/add'] = 'TOP/add';
-$route['export/top/save'] = 'TOP/save';
-$route['export/top/detail/(:num)'] = 'TOP/detail/$1';
-$route['export/top/update'] = 'TOP/update';
-$route['export/top/delete/(:num)'] = 'TOP/delete/$1';
+/** Export - Master - TOP */
+$route['export/master/top'] = 'TOP';
+$route['export/master/top/add'] = 'TOP/add';
+$route['export/master/top/save'] = 'TOP/save';
+$route['export/master/top/detail/(:num)'] = 'TOP/detail/$1';
+$route['export/master/top/update'] = 'TOP/update';
+$route['export/master/top/delete/(:num)'] = 'TOP/delete/$1';
 
 /** Export - Country */
 $route['export/country'] = 'Country';

@@ -109,18 +109,21 @@
 
                                     <div class="card border">
                                         <div class="card-header" style="background-color: #e6e6e6;">
-                                            <i class="fas list-alt mr-2"></i><b>Menu</b>
+                                            <i class="fas fa-list-alt mr-2"></i><b>Menu</b>
                                         </div>
                                         <ul class="list-group list-group-flush">
-                                            <div class="overflow-auto" style="max-height: 250px; overflow-y: hidden;">
                                             <?php foreach($menu as $val => $sm) : ?>
                                                 <li class="list-group-item">
                                                     <a href="<?=site_url($module.'/'.$group.'/'.$sm->menu_sub_url)?>" class="text-secondary">
-                                                        <i class="<?=$sm->menu_sub_icon?> mr-2"></i><?=$sm->menu_sub_name?>
+                                                        <?php if($module.'/'.$group.'/'.$sm->menu_sub_url == $module.'/'.$group.'/'.$this->uri->segment(3)) : ?>
+                                                            <i class="<?=$sm->menu_sub_icon?> mr-2"></i>
+                                                            <b><?=$sm->menu_sub_name?></b>
+                                                        <?php else : ?>
+                                                            <i class="<?=$sm->menu_sub_icon?> mr-2"></i><?=$sm->menu_sub_name?>
+                                                        <?php endif; ?>
                                                     </a>
                                                 </li>
                                             <?php endforeach; ?>
-                                            </div>
                                         </ul>
                                     </div>
                                 </div>
