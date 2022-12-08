@@ -23,8 +23,8 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-block btn-default cancel" href="<?=site_url('export/loading_port')?>">
-                        <i class="fas fa-ban mr-2"></i>Cancel
+                    <a class="btn btn-block btn-default cancel" href="<?=site_url('export/master/loading_port')?>">
+                        <i class="fas fa-arrow-left mr-2"></i>Back
                     </a>
                 </div>
                 <div class="col-md-6">

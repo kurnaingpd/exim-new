@@ -4,7 +4,7 @@ $(function () {
         "buttons": [{
             "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
             "action": function ( e, dt, node, config ) {
-                window.location.href = site_url + "export/loading_port/add";
+                window.location.href = site_url + "export/master/loading_port/add";
             }
         }]
     }).buttons().container().appendTo('#tloadinglist_wrapper .col-md-6:eq(0)');
@@ -23,7 +23,7 @@ $(function () {
                 del(id);
             } else {
                 swal("", "Loading port canceled for deletion.", "info").then((value) => {
-                    window.location.href = site_url + "export/loading_port";
+                    window.location.href = site_url + "export/master/loading_port";
                 });
             }
         });
@@ -33,7 +33,7 @@ $(function () {
 function del(id)
 {
     $.ajax({
-        url: site_url + "export/loading_port/delete/" + id,
+        url: site_url + "export/master/loading_port/delete/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {

@@ -6,7 +6,7 @@
         {
             parent::__construct();
             if(!$this->session->userdata('logged_in')) redirect('/');
-            $this->load->model(['M_CRUD']);
+            $this->load->model(['M_CRUD_Exp']);
         }
 
         public function index()
@@ -24,13 +24,13 @@
                 base_url("assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"),
                 base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/loading_port/list.js"),
+                base_url("assets/js/export/loading_port/list.js"),
             ];
             $datas['title'] = 'Export - Loading Port';
             $datas['breadcrumb'] = ['Export', 'Master', 'Loading Port'];
             $datas['header'] = 'Loading port list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('master_loading_port', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD_Exp->readData('view_master_loading_port')
             ];
 
             $this->template->load('default', 'contents' , 'export/loading_port/list', $datas);
@@ -42,7 +42,7 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/loading_port/add.js"),
+                base_url("assets/js/export/loading_port/add.js"),
             ];
             $datas['title'] = 'Export - Loading Port';
             $datas['breadcrumb'] = ['Export', 'Master', 'Loading Port'];
@@ -54,7 +54,7 @@
         public function save()
         {
             $post = $this->input->post();
-            $loading_port = $this->M_CRUD->readDatabyID('master_loading_port', ['is_deleted' => '0', 'code' => $post['code']]);
+            $loading_port = $this->M_CRUD_Exp->readDatabyID('master_loading_port', ['is_deleted' => '0', 'code' => $post['code']]);
 
             if($loading_port) {
                 $response = ['status' => 0, 'messages' => 'Loading port code already exist.', 'icon' => 'error'];
@@ -62,10 +62,11 @@
                 $param = [
                     'code' => $post['code'],
                     'name' => ucwords($post['names']),
+                    'created_by' => $this->session->userdata('logged_in')->id,
                 ];
 
-                if($this->M_CRUD->insertData('master_loading_port', $param)) {
-                    $response = ['status' => 1, 'messages' => 'Loading port has been saved successfully.', 'icon' => 'success', 'url' => 'export/loading_port'];
+                if($this->M_CRUD_Exp->insertData('master_loading_port', $param)) {
+                    $response = ['status' => 1, 'messages' => 'Loading port has been saved successfully.', 'icon' => 'success', 'url' => 'export/master/loading_port'];
                 } else {
                     $response = ['status' => 0, 'messages' => 'Loading port has failed to save.', 'icon' => 'error'];
                 }
@@ -80,13 +81,13 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/loading_port/detail.js"),
+                base_url("assets/js/export/loading_port/detail.js"),
             ];
             $datas['title'] = 'Export - Loading Port';
             $datas['breadcrumb'] = ['Export', 'Master', 'Loading Port'];
             $datas['header'] = 'Edit record';
             $datas['params'] = [
-                'detail' => $this->M_CRUD->readDatabyID('master_loading_port', ['is_deleted' => '0', 'id' => $id]),
+                'detail' => $this->M_CRUD_Exp->readDatabyID('master_loading_port', ['is_deleted' => '0', 'id' => $id]),
             ];
 
             $this->template->load('default', 'contents' , 'export/loading_port/detail', $datas);
@@ -99,10 +100,11 @@
             $param = [
                 'name' => $post['names'],
                 'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $this->session->userdata('logged_in')->id,
             ];
 
-            if($this->M_CRUD->updateData('master_loading_port', $param, $condition)) {
-                $response = ['status' => 1, 'messages' => 'Loading port has been updated successfully.', 'icon' => 'success', 'url' => 'export/loading_port'];
+            if($this->M_CRUD_Exp->updateData('master_loading_port', $param, $condition)) {
+                $response = ['status' => 1, 'messages' => 'Loading port has been updated successfully.', 'icon' => 'success', 'url' => 'export/master/loading_port'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Loading port has failed to update.', 'icon' => 'error'];
             }
@@ -112,12 +114,12 @@
 
         public function delete($id)
         {
-            $condition = [
-                'id' => $id
-            ];
+            $condition = ['id' => $id];
+            $loading_port = $this->M_CRUD_Exp->readDatabyID('master_loading_port', ['id' => $id]);
+            $status = ($loading_port->is_deleted == '1'?'0':'1');
             
-            if($this->M_CRUD->deleteData('master_loading_port', $condition)) {
-                $response = ['status' => 1, 'messages' => 'Loading port has been deleted successfully.', 'icon' => 'success', 'url' => 'export/loading_port'];
+            if($this->M_CRUD_Exp->updateData('master_loading_port', ['is_deleted' => $status], $condition)) {
+                $response = ['status' => 1, 'messages' => 'Loading port has been deleted successfully.', 'icon' => 'success', 'url' => 'export/master/loading_port'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Loading port has failed to delete.', 'icon' => 'error'];
             }

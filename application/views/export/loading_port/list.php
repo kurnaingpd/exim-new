@@ -10,7 +10,10 @@
                     <th>Code</th>
                     <th>Name</th>
                     <th>Created at</th>
+                    <th>Created by</th>
                     <th>Updated at</th>
+                    <th>Updated by</th>
+                    <th>Status</th>
                     <th><i class="fas fa-ellipsis-h"></i></th>
                 </tr>
             </thead>
@@ -21,13 +24,16 @@
                         <td class="text-center"><?=$rows->code?></td>
                         <td><?=$rows->name?></td>
                         <td class="text-center"><?=$rows->created_at?></td>
+                        <td class="text-center"><?=$rows->creator_name?></td>
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
+                        <td class="text-center"><?=($rows->updated_name?$rows->updated_name:'-')?></td>
+                        <td class="text-center"><?=$rows->is_active?></td>
                         <td class="text-center">
-                            <a href="<?=site_url('export/loading_port/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
+                            <a href="<?=site_url('export/master/loading_port/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">
-                                <i class="fas fa-trash"></i>
+                            <button class="btn btn-sm btn-default" id="delete" data-id="<?=$rows->id?>">
+                                <?=$rows->flags?>
                             </button>
                         </td>
                     </tr>

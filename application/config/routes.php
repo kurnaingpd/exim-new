@@ -166,12 +166,12 @@ $route['export/master/bank/update'] = 'export/Bank/update';
 $route['export/master/bank/delete/(:num)'] = 'export/Bank/delete/$1';
 
 /** Export - Loading Port */
-$route['export/loading_port'] = 'LoadingPort';
-$route['export/loading_port/add'] = 'LoadingPort/add';
-$route['export/loading_port/save'] = 'LoadingPort/save';
-$route['export/loading_port/detail/(:num)'] = 'LoadingPort/detail/$1';
-$route['export/loading_port/update'] = 'LoadingPort/update';
-$route['export/loading_port/delete/(:num)'] = 'LoadingPort/delete/$1';
+$route['export/master/loading_port'] = 'export/LoadingPort';
+$route['export/master/loading_port/add'] = 'export/LoadingPort/add';
+$route['export/master/loading_port/save'] = 'export/LoadingPort/save';
+$route['export/master/loading_port/detail/(:num)'] = 'export/LoadingPort/detail/$1';
+$route['export/master/loading_port/update'] = 'export/LoadingPort/update';
+$route['export/master/loading_port/delete/(:num)'] = 'export/LoadingPort/delete/$1';
 
 /** Export - Beneficiary */
 $route['export/beneficiary'] = 'Beneficiary';

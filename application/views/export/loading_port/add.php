@@ -5,14 +5,14 @@
     <div class="card-body">
         <form id="form-loading-add">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="form-group required">
                         <label for="code" class="control-label">Code</label>
-                        <input type="text" name="code" class="form-control upper" id="code" placeholder="Enter loading port code" autocomplete="off" autofocus required>
+                        <input type="text" name="code" class="form-control upper" id="code" placeholder="Enter loading port code" autocomplete="off" autofocus maxlength="3" required>
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <div class="form-group required">
                         <label for="names" class="control-label">Name</label>
                         <input type="text" name="names" class="form-control" id="names" placeholder="Enter loading port name" autocomplete="off" required>
@@ -22,8 +22,8 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-block btn-default cancel" href="<?=site_url('export/loading_port')?>">
-                        <i class="fas fa-ban mr-2"></i>Cancel
+                    <a class="btn btn-block btn-default cancel" href="<?=site_url('export/master/loading_port')?>">
+                        <i class="fas fa-arrow-left mr-2"></i>Back
                     </a>
                 </div>
                 <div class="col-md-6">
