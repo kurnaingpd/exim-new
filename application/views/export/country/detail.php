@@ -16,7 +16,7 @@
                 <div class="col-md-9">
                     <div class="form-group required">
                         <label for="name" class="control-label">Country name</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter country name" autocomplete="off" autofocus pattern="^[a-zA-Z\s]+$" required value="<?=$params['detail']->name?>">
+                        <input type="text" name="name" class="form-control upper" id="name" placeholder="Enter country name" autocomplete="off" autofocus pattern="^[a-zA-Z\s]+$" required value="<?=$params['detail']->name?>">
                     </div>
                 </div>
             </div>
