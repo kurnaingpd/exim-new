@@ -52,35 +52,35 @@
                     <div class="col-md-2">
                         <div class="form-group required">
                             <label for="net" class="control-label">Net weight</label>
-                            <input type="text" name="net" class="form-control" id="net" placeholder="Enter in KG" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" value="<?=$params['detail']->net_wight?>">
+                            <input type="text" name="net" class="form-control" id="net" placeholder="Enter in KG" autocomplete="off" required pattern="^[0-9.]+$" value="<?=$params['detail']->net_weight?>">
                         </div>
                     </div>
 
                     <div class="col-md-2">
                         <div class="form-group required">
                             <label for="gross" class="control-label">Gross weight</label>
-                            <input type="text" name="gross" class="form-control" id="gross" placeholder="Enter in KG" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" value="<?=$params['detail']->gross_weight?>">
+                            <input type="text" name="gross" class="form-control" id="gross" placeholder="Enter in KG" autocomplete="off" required pattern="^[0-9.]+$" value="<?=$params['detail']->gross_weight?>">
                         </div>
                     </div>
 
                     <div class="col-md-2">
                         <div class="form-group required">
                             <label for="length" class="control-label">Length</label>
-                            <input type="text" name="length" class="form-control" id="length" placeholder="Enter in MM" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" value="<?=$params['detail']->length?>">
+                            <input type="text" name="length" class="form-control" id="length" placeholder="Enter in MM" autocomplete="off" required pattern="^[0-9]+$" value="<?=$params['detail']->length?>">
                         </div>
                     </div>
 
                     <div class="col-md-2">
                         <div class="form-group required">
                             <label for="width" class="control-label">Width</label>
-                            <input type="text" name="width" class="form-control" id="width" placeholder="Enter in MM" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" value="<?=$params['detail']->width?>">
+                            <input type="text" name="width" class="form-control" id="width" placeholder="Enter in MM" autocomplete="off" required pattern="^[0-9]+$" value="<?=$params['detail']->width?>">
                         </div>
                     </div>
 
                     <div class="col-md-2">
                         <div class="form-group required">
                             <label for="height" class="control-label">Height</label>
-                            <input type="text" name="height" class="form-control" id="height" placeholder="Enter in MM" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" value="<?=$params['detail']->height?>">
+                            <input type="text" name="height" class="form-control" id="height" placeholder="Enter in MM" autocomplete="off" required pattern="^[0-9]+$" value="<?=$params['detail']->height?>">
                         </div>
                     </div>
 
@@ -149,21 +149,21 @@
                     <div class="col-md-4">
                         <div class="form-group required">
                             <label for="fat" class="control-label">Fat</label>
-                            <input type="text" class="form-control grid" id="fat" name="fat" autocomplete="off" placeholder="Enter fat" required value="<?=($params['spec']?$params['spec']->fat:'-')?>">
+                            <input type="text" class="form-control grid" id="fat" name="fat" autocomplete="off" placeholder="Enter fat" required value="<?=($params['spec']?$params['spec']->fat:'-')?>" pattern="^[0-9-]+$">
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="form-group required">
                             <label for="moisture" class="control-label">Moisture content (%)</label>
-                            <input type="text" class="form-control grid" id="moisture" name="moisture" autocomplete="off" placeholder="Enter moisture" required value="<?=($params['spec']?$params['spec']->moisture:'-')?>">
+                            <input type="text" class="form-control grid" id="moisture" name="moisture" autocomplete="off" placeholder="Enter moisture" required value="<?=($params['spec']?$params['spec']->moisture:'-')?>" pattern="^[A-Za-z0-9-.]+$">
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="form-group required">
                             <label for="caffeine" class="control-label">Caffeine</label>
-                            <input type="text" class="form-control grid" id="caffeine" name="caffeine" autocomplete="off" placeholder="Enter caffeine" required value="<?=($params['spec']?$params['spec']->caffeine:'-')?>">
+                            <input type="text" class="form-control grid" id="caffeine" name="caffeine" autocomplete="off" placeholder="Enter caffeine" required value="<?=($params['spec']?$params['spec']->caffeine:'-')?>" pattern="^[a-z0-9-.]+$">
                         </div>
                     </div>
                 </div>

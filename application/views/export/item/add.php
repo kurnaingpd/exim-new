@@ -9,7 +9,7 @@
                     <div class="col-md-2">
                         <div class="form-group required">
                             <label for="code" class="control-label">Item code</label>
-                            <input type="text" name="code" class="form-control" id="code" placeholder="Enter item code" autocomplete="off" autofocus required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                            <input type="text" name="code" class="form-control" id="code" placeholder="Enter item code" autocomplete="off" autofocus required pattern="^[0-9]+$">
                         </div>
                     </div>
 
@@ -42,7 +42,7 @@
                     <div class="col-md-2">
                         <div class="form-group required">
                             <label for="desc" class="control-label">Packing description</label>
-                            <input type="text" name="desc" class="form-control upper" id="desc" placeholder="Enter description" autocomplete="off" required>
+                            <input type="text" name="desc" class="form-control upper" id="desc" placeholder="Enter packing description" autocomplete="off" required>
                         </div>
                     </div>
                 </div>
@@ -51,35 +51,35 @@
                     <div class="col-md-2">
                         <div class="form-group required">
                             <label for="net" class="control-label">Net weight</label>
-                            <input type="text" name="net" class="form-control" id="net" placeholder="Enter in KG" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                            <input type="text" name="net" class="form-control" id="net" placeholder="Enter in KG" autocomplete="off" required pattern="^[0-9.]+$">
                         </div>
                     </div>
 
                     <div class="col-md-2">
                         <div class="form-group required">
                             <label for="gross" class="control-label">Gross weight</label>
-                            <input type="text" name="gross" class="form-control" id="gross" placeholder="Enter in KG" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                            <input type="text" name="gross" class="form-control" id="gross" placeholder="Enter in KG" autocomplete="off" required pattern="^[0-9.]+$">
                         </div>
                     </div>
 
                     <div class="col-md-2">
                         <div class="form-group required">
                             <label for="length" class="control-label">Length</label>
-                            <input type="text" name="length" class="form-control" id="length" placeholder="Enter in MM" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                            <input type="text" name="length" class="form-control" id="length" placeholder="Enter in MM" autocomplete="off" required pattern="^[0-9]+$">
                         </div>
                     </div>
 
                     <div class="col-md-2">
                         <div class="form-group required">
                             <label for="width" class="control-label">Width</label>
-                            <input type="text" name="width" class="form-control" id="width" placeholder="Enter in MM" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                            <input type="text" name="width" class="form-control" id="width" placeholder="Enter in MM" autocomplete="off" required pattern="^[0-9]+$">
                         </div>
                     </div>
 
                     <div class="col-md-2">
                         <div class="form-group required">
                             <label for="height" class="control-label">Height</label>
-                            <input type="text" name="height" class="form-control" id="height" placeholder="Enter in MM" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                            <input type="text" name="height" class="form-control" id="height" placeholder="Enter in MM" autocomplete="off" required pattern="^[0-9]+$">
                         </div>
                     </div>
 
@@ -147,22 +147,22 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group required">
-                            <label for="fat" class="control-label">Fat</label>
-                            <input type="text" class="form-control grid" id="fat" name="fat" autocomplete="off" placeholder="Enter fat" required>
+                            <label for="fat" class="control-label">Fat (%)</label>
+                            <input type="text" class="form-control grid" id="fat" name="fat" autocomplete="off" placeholder="Enter fat" pattern="^[0-9-]+$" required>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="form-group required">
                             <label for="moisture" class="control-label">Moisture content (%)</label>
-                            <input type="text" class="form-control grid" id="moisture" name="moisture" autocomplete="off" placeholder="Enter moisture" required>
+                            <input type="text" class="form-control grid" id="moisture" name="moisture" autocomplete="off" placeholder="Enter moisture" pattern="^[A-Za-z0-9-.]+$" required>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="form-group required">
                             <label for="caffeine" class="control-label">Caffeine</label>
-                            <input type="text" class="form-control grid" id="caffeine" name="caffeine" autocomplete="off" placeholder="Enter caffeine" required>
+                            <input type="text" class="form-control grid" id="caffeine" name="caffeine" autocomplete="off" placeholder="Enter caffeine" pattern="^[a-z0-9-.]+$" required>
                         </div>
                     </div>
                 </div>
@@ -236,7 +236,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-block btn-default cancel" href="<?=site_url('export/item')?>">
+                    <a class="btn btn-block btn-default cancel" href="<?=site_url('export/master/item')?>">
                         <i class="fas fa-ban mr-2"></i>Cancel
                     </a>
                 </div>

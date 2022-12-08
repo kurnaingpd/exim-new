@@ -142,12 +142,12 @@ $route['export/master/incoterm/update'] = 'export/Incoterm/update';
 $route['export/master/incoterm/delete/(:num)'] = 'export/Incoterm/delete/$1';
 
 /** Export - Item */
-$route['export/item'] = 'Item';
-$route['export/item/add'] = 'Item/add';
-$route['export/item/save'] = 'Item/save';
-$route['export/item/detail/(:num)'] = 'Item/detail/$1';
-$route['export/item/update'] = 'Item/update';
-$route['export/item/delete/(:num)'] = 'Item/delete/$1';
+$route['export/master/item'] = 'export/Item';
+$route['export/master/item/add'] = 'export/Item/add';
+$route['export/master/item/save'] = 'export/Item/save';
+$route['export/master/item/detail/(:num)'] = 'export/Item/detail/$1';
+$route['export/master/item/update'] = 'export/Item/update';
+$route['export/master/item/delete/(:num)'] = 'export/Item/delete/$1';
 
 /** Export - Item Mapping */
 $route['export/item_mapping'] = 'ItemMapping';

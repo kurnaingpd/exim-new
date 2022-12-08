@@ -4,7 +4,7 @@ $(function () {
         "buttons": [{
             "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
             "action": function ( e, dt, node, config ) {
-                window.location.href = site_url + "export/item/add";
+                window.location.href = site_url + "export/master/item/add";
             }
         }]
     }).buttons().container().appendTo('#titemlist_wrapper .col-md-6:eq(0)');
@@ -23,7 +23,7 @@ $(function () {
                 del(id);
             } else {
                 swal("", "Item canceled for deletion.", "info").then((value) => {
-                    window.location.href = site_url + "export/item";
+                    window.location.href = site_url + "export/master/item";
                 });
             }
         });
@@ -33,7 +33,7 @@ $(function () {
 function del(id)
 {
     $.ajax({
-        url: site_url + "export/item/delete/" + id,
+        url: site_url + "export/master/item/delete/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {

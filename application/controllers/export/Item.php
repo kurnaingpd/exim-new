@@ -6,7 +6,7 @@
         {
             parent::__construct();
             if(!$this->session->userdata('logged_in')) redirect('/');
-            $this->load->model(['M_CRUD']);
+            $this->load->model(['M_CRUD_Exp']);
         }
 
         public function index()
@@ -24,13 +24,13 @@
                 base_url("assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"),
                 base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/item/list.js"),
+                base_url("assets/js/export/item/list.js"),
             ];
             $datas['title'] = 'Export - Item';
             $datas['breadcrumb'] = ['Export', 'Master', 'Item'];
             $datas['header'] = 'Item list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('view_item')
+                'list' => $this->M_CRUD_Exp->readData('view_master_item')
             ];
 
             $this->template->load('default', 'contents' , 'export/item/list', $datas);
@@ -48,13 +48,13 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/item/add.js"),
+                base_url("assets/js/export/item/add.js"),
             ];
             $datas['title'] = 'Export - Item';
             $datas['breadcrumb'] = ['Export', 'Master', 'Item'];
             $datas['header'] = 'Add record';
             $datas['params'] = [
-                'category' => $this->M_CRUD->readData('master_item_category', ['is_deleted' => '0'])
+                'category' => $this->M_CRUD_Exp->readData('master_item_category', ['is_deleted' => '0'])
             ];
 
             $this->template->load('default', 'contents' , 'export/item/add', $datas);
@@ -63,31 +63,31 @@
         public function save()
         {
             $post = $this->input->post();
-            $item_code = $this->M_CRUD->readDatabyID('master_item', ['is_deleted' => '0', 'code' => $post['code']]);
+            $item_code = $this->M_CRUD_Exp->readDatabyID('master_item', ['is_deleted' => '0', 'code' => $post['code']]);
 
             if($item_code) {
                 $response = ['status' => 0, 'messages' => 'Item code already exist.', 'icon' => 'error'];
             } else {
                 $param = [
                     'code' => $post['code'],
-                    'hs_code' => 'NULL',
                     'item_category_id' => $post['category'],
                     'name' => $post['name'],
                     'wh_name' => $post['wh_name'],
                     'pack_desc' => $post['desc'],
-                    'net_wight' => $post['net'],
+                    'net_weight' => $post['net'],
                     'gross_weight' => $post['gross'],
                     'length' => $post['length'],
                     'width' => $post['width'],
                     'height' => $post['height'],
                     'md_no' => ($post['md_no']?$post['md_no']:NULL),
+                    'created_by' => $this->session->userdata('logged_in')->id,
                 ];
-                $insert_id = $this->M_CRUD->insertData('master_item', $param);
+                $insert_id = $this->M_CRUD_Exp->insertData('master_item', $param);
 
                 if($insert_id) {
                     $paramSpec = [
                         'item_id' => $insert_id,
-                        'description' => $post['desc'],
+                        'description' => $post['spec_desc'],
                         'form' => $post['form'],
                         'texture' => $post['texture'],
                         'colour' => $post['colour'],
@@ -104,10 +104,9 @@
                         'usage' => $post['usage'],
                         'source' => $post['source'],
                         'country' => $post['country'],
-                        'created_by' => $this->session->userdata('logged_in')->id,
                     ];
-                    $this->M_CRUD->insertData('master_item_spec', $paramSpec);
-                    $response = ['status' => 1, 'messages' => 'Item has been saved successfully.', 'icon' => 'success', 'url' => 'export/item'];
+                    $this->M_CRUD_Exp->insertData('master_item_spec', $paramSpec);
+                    $response = ['status' => 1, 'messages' => 'Item has been saved successfully.', 'icon' => 'success', 'url' => 'export/master/item'];
                 } else {
                     $response = ['status' => 0, 'messages' => 'Item has failed to save.', 'icon' => 'error'];
                 }
@@ -128,15 +127,15 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/item/detail.js"),
+                base_url("assets/js/export/item/detail.js"),
             ];
             $datas['title'] = 'Export - Item';
             $datas['breadcrumb'] = ['Export', 'Master', 'Item'];
             $datas['header'] = 'Detail record';
             $datas['params'] = [
-                'detail' => $this->M_CRUD->readDatabyID('master_item', ['id' => $id]),
-                'category' => $this->M_CRUD->readData('master_item_category', ['is_deleted' => '0']),
-                'spec' => $this->M_CRUD->readDatabyID('master_item_spec', ['item_id' => $id]),
+                'detail' => $this->M_CRUD_Exp->readDatabyID('master_item', ['id' => $id]),
+                'category' => $this->M_CRUD_Exp->readData('master_item_category', ['is_deleted' => '0']),
+                'spec' => $this->M_CRUD_Exp->readDatabyID('master_item_spec', ['item_id' => $id]),
             ];
             
             $this->template->load('default', 'contents' , 'export/item/detail', $datas);
@@ -147,22 +146,22 @@
             $post = $this->input->post();
             $condition = ['id' => $post['id']];
             $param = [
-                'hs_code' => 'NULL',
                 'item_category_id' => $post['category'],
                 'name' => $post['name'],
                 'wh_name' => $post['wh_name'],
                 'pack_desc' => $post['desc'],
-                'net_wight' => $post['net'],
+                'net_weight' => $post['net'],
                 'gross_weight' => $post['gross'],
                 'length' => $post['length'],
                 'width' => $post['width'],
                 'height' => $post['height'],
                 'md_no' => ($post['md_no']?$post['md_no']:NULL),
                 'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $this->session->userdata('logged_in')->id,
             ];
             
-            if($this->M_CRUD->updateData('master_item', $param, $condition)) {
-                $item_spec = $this->M_CRUD->readDatabyID('master_item_spec', ['item_id' => $post['id']]);
+            if($this->M_CRUD_Exp->updateData('master_item', $param, $condition)) {
+                $item_spec = $this->M_CRUD_Exp->readDatabyID('master_item_spec', ['item_id' => $post['id']]);
 
                 if($item_spec) {
                     $paramSpec = [
@@ -184,7 +183,7 @@
                         'source' => $post['source'],
                         'country' => $post['country'],
                     ];
-                    $this->M_CRUD->updateData('master_item_spec', $paramSpec, ['item_id' => $post['id']]);
+                    $this->M_CRUD_Exp->updateData('master_item_spec', $paramSpec, ['item_id' => $post['id']]);
                 } else {
                     $paramSpec = [
                         'item_id' => $post['id'],
@@ -205,12 +204,11 @@
                         'usage' => $post['usage'],
                         'source' => $post['source'],
                         'country' => $post['country'],
-                        'created_by' => $this->session->userdata('logged_in')->id,
                     ];
-                    $this->M_CRUD->insertData('master_item_spec', $paramSpec);
+                    $this->M_CRUD_Exp->insertData('master_item_spec', $paramSpec);
                 }
                 
-                $response = ['status' => 1, 'messages' => 'Item has been updated successfully.', 'icon' => 'success', 'url' => 'export/item'];
+                $response = ['status' => 1, 'messages' => 'Item has been updated successfully.', 'icon' => 'success', 'url' => 'export/master/item'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Item has failed to update.', 'icon' => 'error'];
             }
@@ -220,12 +218,12 @@
 
         public function delete($id)
         {
-            $condition = [
-                'id' => $id
-            ];
+            $condition = ['id' => $id];
+            $item = $this->M_CRUD_Exp->readDatabyID('master_item', ['id' => $id]);
+            $status = ($item->is_deleted == '1'?'0':'1');
             
-            if($this->M_CRUD->deleteData('master_item', $condition)) {
-                $response = ['status' => 1, 'messages' => 'Item has been deleted successfully.', 'icon' => 'success', 'url' => 'export/item'];
+            if($this->M_CRUD_Exp->updateData('master_item', ['is_deleted' => $status], $condition)) {
+                $response = ['status' => 1, 'messages' => 'Item has been deleted successfully.', 'icon' => 'success', 'url' => 'export/master/item'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Item has failed to delete.', 'icon' => 'error'];
             }
