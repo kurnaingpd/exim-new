@@ -39,9 +39,9 @@
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group required">
                         <label for="phone" class="control-label">Phone number</label>
-                        <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter phone number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                        <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter phone number" autocomplete="off" pattern="^[0-9]+$" maxlength="20" required>
                     </div>
                 </div>
             </div>
@@ -57,8 +57,8 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-block btn-default cancel" href="<?=site_url('export/beneficiary')?>">
-                        <i class="fas fa-ban mr-2"></i>Cancel
+                    <a class="btn btn-block btn-default cancel" href="<?=site_url('export/master/beneficiary')?>">
+                        <i class="fas fa-arrow-left mr-2"></i>Back
                     </a>
                 </div>
                 <div class="col-md-6">

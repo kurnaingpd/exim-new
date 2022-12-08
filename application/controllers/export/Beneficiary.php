@@ -6,7 +6,7 @@
         {
             parent::__construct();
             if(!$this->session->userdata('logged_in')) redirect('/');
-            $this->load->model(['M_CRUD']);
+            $this->load->model(['M_CRUD_Exp']);
         }
 
         public function index()
@@ -24,13 +24,13 @@
                 base_url("assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"),
                 base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/beneficiary/list.js"),
+                base_url("assets/js/export/beneficiary/list.js"),
             ];
             $datas['title'] = 'Export - Beneficiary';
             $datas['breadcrumb'] = ['Export', 'Master', 'Beneficiary'];
             $datas['header'] = 'Beneficiary list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('view_beneficiary', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD_Exp->readData('view_master_beneficiary')
             ];
 
             $this->template->load('default', 'contents' , 'export/beneficiary/list', $datas);
@@ -48,13 +48,13 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/beneficiary/add.js"),
+                base_url("assets/js/export/beneficiary/add.js"),
             ];
             $datas['title'] = 'Export - Beneficiary';
             $datas['breadcrumb'] = ['Export', 'Master', 'Beneficiary'];
             $datas['header'] = 'Add record';
             $datas['params'] = [
-                'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
+                'country' => $this->M_CRUD_Exp->readData('master_country', ['is_deleted' => '0']),
             ];
 
             $this->template->load('default', 'contents' , 'export/beneficiary/add', $datas);
@@ -64,16 +64,17 @@
         {
             $post = $this->input->post();
             $param = [
-                'company_name' => $post['company'],
+                'name' => $post['company'],
                 'office' => $post['office'],
                 'address' => $post['address'],
                 'country_id' => $post['country'],
-                'cp_name' => $post['cp'],
-                'phone' => ($post['phone']?$post['phone']:NULL),
+                'contact_person' => $post['cp'],
+                'phone_no' => $post['phone'],
+                'created_by' => $this->session->userdata('logged_in')->id,
             ];
 
-            if($this->M_CRUD->insertData('master_beneficiary', $param)) {
-                $response = ['status' => 1, 'messages' => 'Beneficiary has been saved successfully.', 'icon' => 'success', 'url' => 'export/beneficiary'];
+            if($this->M_CRUD_Exp->insertData('master_beneficiary', $param)) {
+                $response = ['status' => 1, 'messages' => 'Beneficiary has been saved successfully.', 'icon' => 'success', 'url' => 'export/master/beneficiary'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Beneficiary has failed to save.', 'icon' => 'error'];
             }
@@ -93,14 +94,14 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/beneficiary/detail.js"),
+                base_url("assets/js/export/beneficiary/detail.js"),
             ];
             $datas['title'] = 'Export - Beneficiary';
             $datas['breadcrumb'] = ['Export', 'Master', 'Beneficiary'];
             $datas['header'] = 'Detail record';
             $datas['params'] = [
-                'detail' => $this->M_CRUD->readDatabyID('master_beneficiary', ['is_deleted' => '0', 'id' => $id]),
-                'country' => $this->M_CRUD->readData('master_country', ['is_deleted' => '0']),
+                'detail' => $this->M_CRUD_Exp->readDatabyID('master_beneficiary', ['is_deleted' => '0', 'id' => $id]),
+                'country' => $this->M_CRUD_Exp->readData('master_country', ['is_deleted' => '0']),
             ];
             
             $this->template->load('default', 'contents' , 'export/beneficiary/detail', $datas);
@@ -111,17 +112,18 @@
             $post = $this->input->post();
             $condition = ['id' => $post['id']];
             $param = [
-                'company_name' => $post['company'],
+                'name' => $post['company'],
                 'office' => $post['office'],
                 'address' => $post['address'],
                 'country_id' => $post['country'],
-                'cp_name' => $post['cp'],
-                'phone' => ($post['phone']?$post['phone']:NULL),
+                'contact_person' => $post['cp'],
+                'phone_no' => $post['phone'],
                 'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $this->session->userdata('logged_in')->id,
             ];
 
-            if($this->M_CRUD->updateData('master_beneficiary', $param, $condition)) {
-                $response = ['status' => 1, 'messages' => 'Beneficiary has been updated successfully.', 'icon' => 'success', 'url' => 'export/beneficiary'];
+            if($this->M_CRUD_Exp->updateData('master_beneficiary', $param, $condition)) {
+                $response = ['status' => 1, 'messages' => 'Beneficiary has been updated successfully.', 'icon' => 'success', 'url' => 'export/master/beneficiary'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Beneficiary has failed to update.', 'icon' => 'error'];
             }
@@ -131,12 +133,12 @@
 
         public function delete($id)
         {
-            $condition = [
-                'id' => $id
-            ];
+            $condition = ['id' => $id];
+            $beneficiary = $this->M_CRUD_Exp->readDatabyID('master_beneficiary', ['id' => $id]);
+            $status = ($beneficiary->is_deleted == '1'?'0':'1');
             
-            if($this->M_CRUD->deleteData('master_beneficiary', $condition)) {
-                $response = ['status' => 1, 'messages' => 'Beneficiary has been deleted successfully.', 'icon' => 'success', 'url' => 'export/beneficiary'];
+            if($this->M_CRUD_Exp->updateData('master_beneficiary', ['is_deleted' => $status], $condition)) {
+                $response = ['status' => 1, 'messages' => 'Beneficiary has been deleted successfully.', 'icon' => 'success', 'url' => 'export/master/beneficiary'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Beneficiary has failed to delete.', 'icon' => 'error'];
             }

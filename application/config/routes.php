@@ -165,7 +165,7 @@ $route['export/master/bank/detail/(:num)'] = 'export/Bank/detail/$1';
 $route['export/master/bank/update'] = 'export/Bank/update';
 $route['export/master/bank/delete/(:num)'] = 'export/Bank/delete/$1';
 
-/** Export - Loading Port */
+/** Export - Master - Loading Port */
 $route['export/master/loading_port'] = 'export/LoadingPort';
 $route['export/master/loading_port/add'] = 'export/LoadingPort/add';
 $route['export/master/loading_port/save'] = 'export/LoadingPort/save';
@@ -173,13 +173,13 @@ $route['export/master/loading_port/detail/(:num)'] = 'export/LoadingPort/detail/
 $route['export/master/loading_port/update'] = 'export/LoadingPort/update';
 $route['export/master/loading_port/delete/(:num)'] = 'export/LoadingPort/delete/$1';
 
-/** Export - Beneficiary */
-$route['export/beneficiary'] = 'Beneficiary';
-$route['export/beneficiary/add'] = 'Beneficiary/add';
-$route['export/beneficiary/save'] = 'Beneficiary/save';
-$route['export/beneficiary/detail/(:num)'] = 'Beneficiary/detail/$1';
-$route['export/beneficiary/update'] = 'Beneficiary/update';
-$route['export/beneficiary/delete/(:num)'] = 'Beneficiary/delete/$1';
+/** Export - Master - Beneficiary */
+$route['export/master/beneficiary'] = 'export/Beneficiary';
+$route['export/master/beneficiary/add'] = 'export/Beneficiary/add';
+$route['export/master/beneficiary/save'] = 'export/Beneficiary/save';
+$route['export/master/beneficiary/detail/(:num)'] = 'export/Beneficiary/detail/$1';
+$route['export/master/beneficiary/update'] = 'export/Beneficiary/update';
+$route['export/master/beneficiary/delete/(:num)'] = 'export/Beneficiary/delete/$1';
 
 /** Export - Customer */
 $route['export/customer'] = 'Customer';

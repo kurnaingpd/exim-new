@@ -4,7 +4,7 @@ $(function () {
         "buttons": [{
             "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
             "action": function ( e, dt, node, config ) {
-                window.location.href = site_url + "export/beneficiary/add";
+                window.location.href = site_url + "export/master/beneficiary/add";
             }
         }]
     }).buttons().container().appendTo('#tbeneficiarylist_wrapper .col-md-6:eq(0)');
@@ -23,7 +23,7 @@ $(function () {
                 del(id);
             } else {
                 swal("", "Beneficiary canceled for deletion.", "info").then((value) => {
-                    window.location.href = site_url + "export/beneficiary";
+                    window.location.href = site_url + "export/master/beneficiary";
                 });
             }
         });
@@ -33,7 +33,7 @@ $(function () {
 function del(id)
 {
     $.ajax({
-        url: site_url + "export/beneficiary/delete/" + id,
+        url: site_url + "export/master/beneficiary/delete/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {

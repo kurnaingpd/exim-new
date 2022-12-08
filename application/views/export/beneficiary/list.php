@@ -15,6 +15,7 @@
                     <th>Phone number</th>
                     <th>Created at</th>
                     <th>Updated at</th>
+                    <th>Status</th>
                     <th><i class="fas fa-ellipsis-h"></i></th>
                 </tr>
             </thead>
@@ -22,20 +23,21 @@
                 <?php $no=1; foreach($params['list'] as $rows) : ?>
                     <tr class="align-middle">
                         <td class="text-center"><?=$no?>.</td>
-                        <td><?=$rows->company_name?></td>
+                        <td><?=$rows->name?></td>
                         <td><?=$rows->office?></td>
                         <td><?=$rows->address?></td>
                         <td><?=$rows->country_name?></td>
-                        <td><?=$rows->cp_name?></td>
-                        <td class="text-center"><?=($rows->phone?$rows->phone:'-')?></td>
+                        <td><?=$rows->contact_person?></td>
+                        <td class="text-center"><?=$rows->phone_no?></td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
+                        <td class="text-center"><?=$rows->is_active?></td>
                         <td class="text-center">
-                            <a href="<?=site_url('export/beneficiary/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
+                            <a href="<?=site_url('export/master/beneficiary/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">
-                                <i class="fas fa-trash"></i>
+                            <button class="btn btn-sm btn-default" id="delete" data-id="<?=$rows->id?>">
+                                <?=$rows->flags?>
                             </button>
                         </td>
                     </tr>
