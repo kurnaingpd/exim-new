@@ -4,7 +4,7 @@ $(function () {
         "buttons": [{
             "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
             "action": function ( e, dt, node, config ) {
-                window.location.href = site_url + "export/incoterm/add";
+                window.location.href = site_url + "export/master/incoterm/add";
             }
         }]
     }).buttons().container().appendTo('#tincotermlist_wrapper .col-md-6:eq(0)');
@@ -23,7 +23,7 @@ $(function () {
                 del(id);
             } else {
                 swal("", "Incoterm canceled for deletion.", "info").then((value) => {
-                    window.location.href = site_url + "export/incoterm";
+                    window.location.href = site_url + "export/master/incoterm";
                 });
             }
         });
@@ -33,7 +33,7 @@ $(function () {
 function del(id)
 {
     $.ajax({
-        url: site_url + "export/incoterm/delete/" + id,
+        url: site_url + "export/master/incoterm/delete/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {

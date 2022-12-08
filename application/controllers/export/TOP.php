@@ -111,8 +111,8 @@
         public function delete($id)
         {
             $condition = ['id' => $id];
-            $country = $this->M_CRUD_Exp->readDatabyID('master_top', ['id' => $id]);
-            $status = ($country->is_deleted == '1'?'0':'1');
+            $top = $this->M_CRUD_Exp->readDatabyID('master_top', ['id' => $id]);
+            $status = ($top->is_deleted == '1'?'0':'1');
             
             if($this->M_CRUD_Exp->updateData('master_top', ['is_deleted' => $status], $condition)) {
                 $response = ['status' => 1, 'messages' => 'Terms of payment has been deleted successfully.', 'icon' => 'success', 'url' => 'export/master/top'];

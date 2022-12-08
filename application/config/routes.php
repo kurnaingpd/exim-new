@@ -134,12 +134,12 @@ $route['export/master/container/update'] = 'export/Container/update';
 $route['export/master/container/delete/(:num)'] = 'export/Container/delete/$1';
 
 /** Export - Incoterm */
-$route['export/incoterm'] = 'Incoterm';
-$route['export/incoterm/add'] = 'Incoterm/add';
-$route['export/incoterm/save'] = 'Incoterm/save';
-$route['export/incoterm/detail/(:num)'] = 'Incoterm/detail/$1';
-$route['export/incoterm/update'] = 'Incoterm/update';
-$route['export/incoterm/delete/(:num)'] = 'Incoterm/delete/$1';
+$route['export/master/incoterm'] = 'export/Incoterm';
+$route['export/master/incoterm/add'] = 'export/Incoterm/add';
+$route['export/master/incoterm/save'] = 'export/Incoterm/save';
+$route['export/master/incoterm/detail/(:num)'] = 'export/Incoterm/detail/$1';
+$route['export/master/incoterm/update'] = 'export/Incoterm/update';
+$route['export/master/incoterm/delete/(:num)'] = 'export/Incoterm/delete/$1';
 
 /** Export - Item */
 $route['export/item'] = 'Item';
