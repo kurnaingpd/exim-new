@@ -4,7 +4,7 @@ $(function () {
         "buttons": [{
             "text": '<i class="fa fa-fw fa-plus-circle"></i> Add record',
             "action": function ( e, dt, node, config ) {
-                window.location.href = site_url + "export/bank/add";
+                window.location.href = site_url + "export/master/bank/add";
             }
         }]
     }).buttons().container().appendTo('#tbanklist_wrapper .col-md-6:eq(0)');
@@ -23,7 +23,7 @@ $(function () {
                 del(id);
             } else {
                 swal("", "Bank canceled for deletion.", "info").then((value) => {
-                    window.location.href = site_url + "export/bank";
+                    window.location.href = site_url + "export/master/bank";
                 });
             }
         });
@@ -33,7 +33,7 @@ $(function () {
 function del(id)
 {
     $.ajax({
-        url: site_url + "export/bank/delete/" + id,
+        url: site_url + "export/master/bank/delete/" + id,
         type: "POST",
         dataType: "json",
         success: function(response) {

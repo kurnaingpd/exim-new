@@ -117,7 +117,7 @@ $route['export/master/top/detail/(:num)'] = 'export/TOP/detail/$1';
 $route['export/master/top/update'] = 'export/TOP/update';
 $route['export/master/top/delete/(:num)'] = 'export/TOP/delete/$1';
 
-/** Export - Country */
+/** Export - Master - Country */
 $route['export/master/country'] = 'export/Country';
 $route['export/master/country/add'] = 'export/Country/add';
 $route['export/master/country/save'] = 'export/Country/save';
@@ -125,7 +125,7 @@ $route['export/master/country/detail/(:num)'] = 'export/Country/detail/$1';
 $route['export/master/country/update'] = 'export/Country/update';
 $route['export/master/country/delete/(:num)'] = 'export/Country/delete/$1';
 
-/** Export - Container */
+/** Export - Master - Container */
 $route['export/master/container'] = 'export/Container';
 $route['export/master/container/add'] = 'export/Container/add';
 $route['export/master/container/save'] = 'export/Container/save';
@@ -133,7 +133,7 @@ $route['export/master/container/detail/(:num)'] = 'export/Container/detail/$1';
 $route['export/master/container/update'] = 'export/Container/update';
 $route['export/master/container/delete/(:num)'] = 'export/Container/delete/$1';
 
-/** Export - Incoterm */
+/** Export - Master - Incoterm */
 $route['export/master/incoterm'] = 'export/Incoterm';
 $route['export/master/incoterm/add'] = 'export/Incoterm/add';
 $route['export/master/incoterm/save'] = 'export/Incoterm/save';
@@ -141,7 +141,7 @@ $route['export/master/incoterm/detail/(:num)'] = 'export/Incoterm/detail/$1';
 $route['export/master/incoterm/update'] = 'export/Incoterm/update';
 $route['export/master/incoterm/delete/(:num)'] = 'export/Incoterm/delete/$1';
 
-/** Export - Item */
+/** Export - Master - Item */
 $route['export/master/item'] = 'export/Item';
 $route['export/master/item/add'] = 'export/Item/add';
 $route['export/master/item/save'] = 'export/Item/save';
@@ -150,20 +150,20 @@ $route['export/master/item/update'] = 'export/Item/update';
 $route['export/master/item/delete/(:num)'] = 'export/Item/delete/$1';
 
 /** Export - Item Mapping */
-$route['export/item_mapping'] = 'ItemMapping';
-$route['export/item_mapping/add'] = 'ItemMapping/add';
-$route['export/item_mapping/save'] = 'ItemMapping/save';
-$route['export/item_mapping/detail/(:num)'] = 'ItemMapping/detail/$1';
-$route['export/item_mapping/update'] = 'ItemMapping/update';
-$route['export/item_mapping/delete/(:num)'] = 'ItemMapping/delete/$1';
+// $route['export/item_mapping'] = 'ItemMapping';
+// $route['export/item_mapping/add'] = 'ItemMapping/add';
+// $route['export/item_mapping/save'] = 'ItemMapping/save';
+// $route['export/item_mapping/detail/(:num)'] = 'ItemMapping/detail/$1';
+// $route['export/item_mapping/update'] = 'ItemMapping/update';
+// $route['export/item_mapping/delete/(:num)'] = 'ItemMapping/delete/$1';
 
-/** Export - Bank */
-$route['export/bank'] = 'Bank';
-$route['export/bank/add'] = 'Bank/add';
-$route['export/bank/save'] = 'Bank/save';
-$route['export/bank/detail/(:num)'] = 'Bank/detail/$1';
-$route['export/bank/update'] = 'Bank/update';
-$route['export/bank/delete/(:num)'] = 'Bank/delete/$1';
+/** Export - Master - Bank */
+$route['export/master/bank'] = 'export/Bank';
+$route['export/master/bank/add'] = 'export/Bank/add';
+$route['export/master/bank/save'] = 'export/Bank/save';
+$route['export/master/bank/detail/(:num)'] = 'export/Bank/detail/$1';
+$route['export/master/bank/update'] = 'export/Bank/update';
+$route['export/master/bank/delete/(:num)'] = 'export/Bank/delete/$1';
 
 /** Export - Loading Port */
 $route['export/loading_port'] = 'LoadingPort';

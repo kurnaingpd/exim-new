@@ -6,7 +6,7 @@
         {
             parent::__construct();
             if(!$this->session->userdata('logged_in')) redirect('/');
-            $this->load->model(['M_CRUD']);
+            $this->load->model(['M_CRUD_Exp']);
         }
 
         public function index()
@@ -24,13 +24,13 @@
                 base_url("assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"),
                 base_url("assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/bank/list.js"),
+                base_url("assets/js/export/bank/list.js"),
             ];
             $datas['title'] = 'Export - Bank';
             $datas['breadcrumb'] = ['Export', 'Master', 'Bank'];
             $datas['header'] = 'Bank list';
             $datas['params'] = [
-                'list' => $this->M_CRUD->readData('master_bank', ['is_deleted' => '0'])
+                'list' => $this->M_CRUD_Exp->readData('view_master_bank')
             ];
 
             $this->template->load('default', 'contents' , 'export/bank/list', $datas);
@@ -42,7 +42,7 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/bank/add.js"),
+                base_url("assets/js/export/bank/add.js"),
             ];
             $datas['title'] = 'Export - Bank';
             $datas['breadcrumb'] = ['Export', 'Master', 'Bank'];
@@ -54,8 +54,8 @@
         public function save()
         {
             $post = $this->input->post();
-            $bank_code = $this->M_CRUD->readDatabyID('master_bank', ['is_deleted' => '0', 'code' => $post['code']]);
-            $bank_swift = $this->M_CRUD->readDatabyID('master_bank', ['is_deleted' => '0', 'swift_code' => $post['swift']]);
+            $bank_code = $this->M_CRUD_Exp->readDatabyID('master_bank', ['is_deleted' => '0', 'code' => $post['code']]);
+            $bank_swift = $this->M_CRUD_Exp->readDatabyID('master_bank', ['is_deleted' => '0', 'swift_code' => $post['swift']]);
 
             if($bank_code) {
                 $response = ['status' => 0, 'messages' => 'Bank code already exist.', 'icon' => 'error'];
@@ -69,10 +69,11 @@
                     'branch' => $post['branch'],
                     'address' => $post['address'],
                     'swift_code' => $post['swift'],
+                    'created_by' => $this->session->userdata('logged_in')
                 ];
 
-                if($this->M_CRUD->insertData('master_bank', $param)) {
-                    $response = ['status' => 1, 'messages' => 'Bank has been saved successfully.', 'icon' => 'success', 'url' => 'export/bank'];
+                if($this->M_CRUD_Exp->insertData('master_bank', $param)) {
+                    $response = ['status' => 1, 'messages' => 'Bank has been saved successfully.', 'icon' => 'success', 'url' => 'export/master/bank'];
                 } else {
                     $response = ['status' => 0, 'messages' => 'Bank has failed to save.', 'icon' => 'error'];
                 }
@@ -87,13 +88,13 @@
                 base_url("assets/adminlte/plugins/jquery-validation/jquery.validate.min.js"),
                 base_url("assets/adminlte/plugins/jquery-validation/additional-methods.min.js"),
                 base_url("assets/adminlte/plugins/sweetalert/sweetalert.min.js"),
-                base_url("assets/js/bank/detail.js"),
+                base_url("assets/js/export/bank/detail.js"),
             ];
             $datas['title'] = 'Export - Bank';
             $datas['breadcrumb'] = ['Export', 'Master', 'Bank'];
             $datas['header'] = 'Edit record';
             $datas['params'] = [
-                'detail' => $this->M_CRUD->readDatabyID('master_bank', ['is_deleted' => '0', 'id' => $id]),
+                'detail' => $this->M_CRUD_Exp->readDatabyID('master_bank', ['is_deleted' => '0', 'id' => $id]),
             ];
 
             $this->template->load('default', 'contents' , 'export/bank/detail', $datas);
@@ -110,10 +111,11 @@
                 'address' => $post['address'],
                 'swift_code' => $post['swift'],
                 'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $this->session->userdata('logged_in')->id
             ];
 
-            if($this->M_CRUD->updateData('master_bank', $param, $condition)) {
-                $response = ['status' => 1, 'messages' => 'Bank has been updated successfully.', 'icon' => 'success', 'url' => 'export/bank'];
+            if($this->M_CRUD_Exp->updateData('master_bank', $param, $condition)) {
+                $response = ['status' => 1, 'messages' => 'Bank has been updated successfully.', 'icon' => 'success', 'url' => 'export/master/bank'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Bank has failed to update.', 'icon' => 'error'];
             }
@@ -123,12 +125,12 @@
 
         public function delete($id)
         {
-            $condition = [
-                'id' => $id
-            ];
+            $condition = ['id' => $id];
+            $bank = $this->M_CRUD_Exp->readDatabyID('master_bank', ['id' => $id]);
+            $status = ($bank->is_deleted == '1'?'0':'1');
             
-            if($this->M_CRUD->deleteData('master_bank', $condition)) {
-                $response = ['status' => 1, 'messages' => 'Bank has been deleted successfully.', 'icon' => 'success', 'url' => 'export/bank'];
+            if($this->M_CRUD_Exp->updateData('master_bank', ['is_deleted' => $status], $condition)) {
+                $response = ['status' => 1, 'messages' => 'Bank has been deleted successfully.', 'icon' => 'success', 'url' => 'export/master/bank'];
             } else {
                 $response = ['status' => 0, 'messages' => 'Bank has failed to delete.', 'icon' => 'error'];
             }
