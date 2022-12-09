@@ -12,17 +12,6 @@ $(function () {
     });
 
     $('#form-login').validate({
-        rules: {
-            username: {
-                required: true,
-                minlength: 5,
-                maxlength: 30
-            },
-            password: {
-                required: true,
-                minlength: 5
-            }
-        },
         errorElement: 'span',
         errorPlacement: function (error, element) {
             error.addClass('invalid-feedback');

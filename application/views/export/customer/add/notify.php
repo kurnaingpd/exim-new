@@ -6,13 +6,6 @@
         </div>
     </div>
 
-    <div class="col-md-3">
-        <div class="form-group required">
-            <label for="not_address" class="control-label">Address</label>
-            <textarea name="not_address" class="form-control upper" id="not_address" rows="3" placeholder="Enter address" required></textarea>
-        </div>
-    </div>
-
     <div class="col-md-2">
         <div class="form-group required">
             <label for="not_country" class="control-label">Country</label>
@@ -28,12 +21,11 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="not_phone" class="control-label">Phone number (Tel)</label>
-            <!-- <input type="text" name="not_phone" class="form-control" id="not_phone" placeholder="Enter phone number" required> -->
             <div class="input-group" id="not_phone_tel" data-target-input="nearest">
                 <div class="input-group-append">
                     <div class="input-group-text"><i class="fa fa-phone-alt"></i></div>
                 </div>
-                <input type="text" class="form-control" autocomplete="off" id="not_phone_tel" name="not_phone_tel" placeholder="Enter phone number" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9+]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                <input type="text" class="form-control" autocomplete="off" id="not_phone_tel" name="not_phone_tel" placeholder="Enter phone number" autocomplete="off" required pattern="^[0-9+]+$">
             </div>
         </div>
     </div>
@@ -41,13 +33,19 @@
     <div class="col-md-2">
         <div class="form-group">
             <label for="not_phone" class="control-label">Phone number (Fax)</label>
-            <!-- <input type="text" name="not_phone" class="form-control" id="not_phone" placeholder="Enter phone number" required> -->
             <div class="input-group" id="not_phone_fax" data-target-input="nearest">
                 <div class="input-group-append">
                     <div class="input-group-text"><i class="fa fa-fax"></i></div>
                 </div>
-                <input type="text" class="form-control" autocomplete="off" id="not_phone_fax" name="not_phone_fax" placeholder="Enter phone number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9+]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                <input type="text" class="form-control" autocomplete="off" id="not_phone_fax" name="not_phone_fax" placeholder="Enter phone number" autocomplete="off" pattern="^[0-9+]+$">
             </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group required">
+            <label for="not_address" class="control-label">Address</label>
+            <textarea name="not_address" class="form-control upper" id="not_address" rows="3" placeholder="Enter address" required></textarea>
         </div>
     </div>
 </div>

@@ -2,7 +2,7 @@
     <div style="max-height: 650px; overflow-x: hidden;">
         <div class="card">
             <div class="card-header">
-                <h6>Consignee</h6>
+                <b><u>Consignee</u></b>
             </div>
             <div class="card-body">
                 <?php $this->load->view('export/customer/add/consignee'); ?>
@@ -11,7 +11,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h6>Notify</h6>
+                <b><u>Notify</u></b>
             </div>
             <div class="card-body">
                 <?php $this->load->view('export/customer/add/notify'); ?>
@@ -20,19 +20,19 @@
 
         <div class="card">
             <div class="card-header">
-                <h6>Contact person</h6>
+                <b><u>Contact person</u></b>
             </div>
             <div class="card-body">
                 <?php $this->load->view('export/customer/add/cp'); ?>
             </div>
         </div>
 
-        <div class="card">
+        <!-- <div class="card">
             <div class="card-header">
                 <h6>Bank account</h6>
             </div>
             <div class="card-body">
-                <?php $this->load->view('export/customer/add/bank'); ?>
+                <#?php $this->load->view('export/customer/add/bank'); ?>
             </div>
         </div>
 
@@ -41,7 +41,7 @@
                 <h6>Ship-to address</h6>
             </div>
             <div class="card-body">
-                <?php $this->load->view('export/customer/add/shipto'); ?>
+                <#?php $this->load->view('export/customer/add/shipto'); ?>
             </div>
         </div>
 
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <?php $this->load->view('export/customer/add/cpshipto'); ?>
+                <#?php $this->load->view('export/customer/add/cpshipto'); ?>
             </div>
         </div>
 
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <?php $this->load->view('export/customer/add/freight'); ?>
+                <#?php $this->load->view('export/customer/add/freight'); ?>
             </div>
         </div>
 
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <?php $this->load->view('export/customer/add/import'); ?>
+                <#?php $this->load->view('export/customer/add/import'); ?>
             </div>
         </div>
 
@@ -89,16 +89,16 @@
                 </div>
             </div>
             <div class="card-body">
-                <?php $this->load->view('export/customer/add/coding'); ?>
+                <#?php $this->load->view('export/customer/add/coding'); ?>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-default btn-block cancel" href="<?=site_url('export/customer')?>">
+                    <a class="btn btn-default btn-block cancel" href="<?=site_url('export/master/customer')?>">
                         <i class="fas fa-ban mr-2"></i>Cancel
                     </a>
                 </div>

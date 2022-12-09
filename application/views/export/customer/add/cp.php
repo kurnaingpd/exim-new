@@ -7,9 +7,19 @@
     </div>
 
     <div class="col-md-4">
-        <div class="form-group required">
+        <!-- <div class="form-group required">
             <label for="cp_phone" class="control-label">Phone number</label>
             <input type="text" name="cp_phone" class="form-control" id="cp_phone" placeholder="Enter phone number" autocomplete="off" required>
+        </div> -->
+        
+        <div class="form-group required">
+            <label for="cp_phone" class="control-label">Phone number</label>
+            <div class="input-group" id="cp_phone">
+                <div class="input-group-append">
+                    <div class="input-group-text"><i class="fa fa-phone-alt"></i></div>
+                </div>
+                <input type="text" class="form-control" autocomplete="off" id="cp_phone" name="cp_phone" placeholder="Enter phone number" autocomplete="off" pattern="^[0-9+]+$" required>
+            </div>
         </div>
     </div>
 
@@ -37,14 +47,14 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="cp_dp" class="control-label">DP (in %)</label>
-            <input type="text" name="cp_dp" class="form-control" id="cp_dp" placeholder="Enter DP" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');">
+            <input type="text" name="cp_dp" class="form-control" id="cp_dp" placeholder="0" autocomplete="off" required pattern="^[0-9]+$" maxlength="3" max="100">
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="cp_balancing" class="control-label">Balancing (in %)</label>
-            <input type="text" name="cp_balancing" class="form-control" id="cp_balancing" value="100" readonly style="background-color: white;">
+            <input type="text" name="cp_balancing" class="form-control" id="cp_balancing" value="100" readonly>
         </div>
     </div>
 

@@ -35,7 +35,7 @@
                     <p class="login-box-msg">Sign in to start your session</p>
                     <form id="form-login">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Username" id="username" name="username" autocomplete="off" required autofocus>
+                            <input type="text" class="form-control" placeholder="Username" id="username" name="username" autocomplete="off" minlength="5" maxlength="30" autofocus required>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Password" id="password" name="password" autocomplete="off" required>
+                            <input type="password" class="form-control" placeholder="Password" id="password" name="password" autocomplete="off" minlength="5" required>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-lock"></span>
@@ -56,7 +56,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary btn-block" id="btnLogin">
-                                    <i class="fas fa-save mr-1"></i> Sign In
+                                    <i class="fas fa-sign-in-alt mr-1"></i> Sign In
                                 </button>
                             </div>
                         </div>

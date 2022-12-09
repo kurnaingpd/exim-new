@@ -182,16 +182,16 @@ $route['export/master/beneficiary/update'] = 'export/Beneficiary/update';
 $route['export/master/beneficiary/delete/(:num)'] = 'export/Beneficiary/delete/$1';
 
 /** Export - Customer */
-$route['export/customer'] = 'Customer';
-$route['export/customer/add'] = 'Customer/add';
-$route['export/customer/bank'] = 'Customer/bank';
-$route['export/customer/bank/(:num)'] = 'Customer/bank/$1';
-$route['export/customer/save'] = 'Customer/save';
-$route['export/customer/detail/(:num)'] = 'Customer/detail/$1';
-$route['export/customer/shipto_delete/(:num)'] = 'Customer/shipto_del/$1';
-$route['export/customer/coding_delete/(:num)'] = 'Customer/coding_del/$1';
-$route['export/customer/update'] = 'Customer/update';
-$route['export/customer/delete/(:num)'] = 'Customer/delete/$1';
+$route['export/master/customer'] = 'export/Customer';
+$route['export/master/customer/add'] = 'export/Customer/add';
+// $route['export/customer/bank'] = 'export/Customer/bank';
+// $route['export/customer/bank/(:num)'] = 'export/Customer/bank/$1';
+$route['export/master/customer/save'] = 'export/Customer/save';
+// $route['export/customer/detail/(:num)'] = 'export/Customer/detail/$1';
+// $route['export/customer/shipto_delete/(:num)'] = 'export/Customer/shipto_del/$1';
+// $route['export/customer/coding_delete/(:num)'] = 'export/Customer/coding_del/$1';
+// $route['export/customer/update'] = 'export/Customer/update';
+$route['export/master/customer/delete/(:num)'] = 'export/Customer/delete/$1';
 
 /** Export - Freight */
 $route['export/freight'] = 'Freight';

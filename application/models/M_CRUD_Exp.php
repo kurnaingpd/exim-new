@@ -77,6 +77,23 @@
             $this -> db2 -> delete($table, $where);
             return $this -> db2 -> affected_rows();
         }
+
+        public function autoNumberCustomer($table, $column, $prefix, $country, $run_number) {
+			$this->db2->from($table);
+			$this->db2->order_by($column, 'DESC');
+			$query = $this -> db2 -> get();
+			$record = $query -> row();
+
+			if(!$record) {
+				$code = 1;
+			} else {
+				$code = intval(substr($record->code, -4)) + 1;
+			}
+
+			$code = $prefix.$country.str_pad($code, $run_number, 0, STR_PAD_LEFT);
+
+			return $code;
+		}
     }
 
 ?>

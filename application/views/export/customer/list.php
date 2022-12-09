@@ -24,20 +24,20 @@
                     <tr class="align-middle">
                         <td class="text-center"><?=$no?>.</td>
                         <td class="text-center"><?=$rows->code?></td>
-                        <td><?=$rows->company_name?></td>
+                        <td><?=$rows->name?></td>
                         <td><?=$rows->town?></td>
                         <td><?=$rows->country_name?></td>
                         <td class="text-center"><?=$rows->phone_no_tel?></td>
                         <td class="text-center"><?=$rows->phone_no_fax?></td>
                         <td class="text-center"><?=$rows->created_at?></td>
                         <td class="text-center"><?=($rows->updated_at?$rows->updated_at:'-')?></td>
-                        <td class="text-center"><?=($rows->stats_desc)?></td>
+                        <td class="text-center"><?=($rows->is_active)?></td>
                         <td class="text-center">
                             <a href="<?=site_url('export/customer/detail/'.$rows->id)?>" class="btn btn-sm btn-info">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <button class="btn btn-sm btn-danger" id="delete" data-id="<?=$rows->id?>">
-                                <?=($rows->stats_icon)?>
+                            <button class="btn btn-sm btn-default" id="delete" data-id="<?=$rows->id?>">
+                                <?=$rows->flags?>
                             </button>
                         </td>
                     </tr>
