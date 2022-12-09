@@ -5,47 +5,54 @@
     <div class="card-body">
         <form id="form-bank-add">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group required">
                         <label for="code" class="control-label">Code</label>
-                        <input type="text" name="code" class="form-control" id="code" placeholder="Enter bank code" autocomplete="off" autofocus required oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                        <input type="text" name="code" class="form-control" id="code" placeholder="Enter bank code" autocomplete="off" autofocus required pattern="^[0-9]+$" maxlength="3">
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group required">
                         <label for="names" class="control-label">Name</label>
                         <input type="text" name="names" class="form-control upper" id="names" placeholder="Enter bank name" autocomplete="off" required>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="form-group required">
-                        <label for="account" class="control-label">Account</label>
-                        <input type="text" name="account" class="form-control upper" id="account" placeholder="Enter bank account" autocomplete="off" required>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group required">
                         <label for="swift" class="control-label">Swift code</label>
                         <input type="text" name="swift" class="form-control lower" id="swift" placeholder="Enter swift code" autocomplete="off" required>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-2">
                     <div class="form-group required">
                         <label for="branch" class="control-label">Branch</label>
-                        <textarea name="branch" class="form-control upper" id="branch" placeholder="Enter branch" autocomplete="off" rows="4" required></textarea>
+                        <input type="text" name="branch" class="form-control upper" id="branch" placeholder="Enter branch" autocomplete="off" required>
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-2">
+                    <div class="form-group required">
+                        <label for="account_no" class="control-label">Account no.</label>
+                        <input type="text" name="account_no" class="form-control upper" id="account_no" placeholder="Enter account no." autocomplete="off" required>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group required">
+                        <label for="account_name" class="control-label">Account name</label>
+                        <input type="text" name="account_name" class="form-control upper" id="account_name" placeholder="Enter account name" autocomplete="off" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
                     <div class="form-group required">
                         <label for="address" class="control-label">Address</label>
-                        <textarea type="text" name="address" class="form-control upper" id="address" placeholder="Enter address" autocomplete="off" rows="4" required></textarea>
+                        <textarea type="text" name="address" class="form-control upper" id="address" placeholder="Enter address" autocomplete="off" rows="3" required></textarea>
                     </div>
                 </div>
             </div>

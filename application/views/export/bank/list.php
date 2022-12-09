@@ -9,7 +9,8 @@
                     <th>#</th>
                     <th>Code</th>
                     <th>Name</th>
-                    <th>Account</th>
+                    <th>Account no.</th>
+                    <th>Account name</th>
                     <th>Branch</th>
                     <th>Address</th>
                     <th>Swift code</th>
@@ -25,7 +26,8 @@
                         <td class="text-center"><?=$no?>.</td>
                         <td class="text-center"><?=$rows->code?></td>
                         <td><?=$rows->name?></td>
-                        <td class="text-center"><?=$rows->account?></td>
+                        <td class="text-center"><?=$rows->account_no?></td>
+                        <td class="text-center"><?=$rows->account_name?></td>
                         <td><?=$rows->branch?></td>
                         <td><?=$rows->address?></td>
                         <td class="text-center"><?=$rows->swift_code?></td>

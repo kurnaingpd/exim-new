@@ -65,11 +65,12 @@
                 $param = [
                     'code' => $post['code'],
                     'name' => $post['names'],
-                    'account' => $post['account'],
+                    'account_name' => $post['account_name'],
+                    'account_no' => $post['account_no'],
                     'branch' => $post['branch'],
                     'address' => $post['address'],
                     'swift_code' => $post['swift'],
-                    'created_by' => $this->session->userdata('logged_in')
+                    'created_by' => $this->session->userdata('logged_in')->id
                 ];
 
                 if($this->M_CRUD_Exp->insertData('master_bank', $param)) {
@@ -106,7 +107,8 @@
             $condition = ['id' => $post['id']];
             $param = [
                 'name' => $post['names'],
-                'account' => $post['account'],
+                'account_name' => $post['account_name'],
+                'account_no' => $post['account_no'],
                 'branch' => $post['branch'],
                 'address' => $post['address'],
                 'swift_code' => $post['swift'],
