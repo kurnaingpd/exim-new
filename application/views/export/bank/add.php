@@ -12,7 +12,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group required">
                         <label for="names" class="control-label">Name</label>
                         <input type="text" name="names" class="form-control upper" id="names" placeholder="Enter bank name" autocomplete="off" required>
@@ -33,10 +33,26 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group required">
                         <label for="account_name" class="control-label">Account name</label>
                         <input type="text" name="account_name" class="form-control upper" id="account_name" placeholder="Enter account name" autocomplete="off" required>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group required">
+                        <label for="branch" class="control-label">Branch</label>
+                        <input class="form-control upper" id="branch" name="branch" placeholder="Enter bank branch" autocomplete="off" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group required">
+                        <label for="address" class="control-label">Address</label>
+                        <textarea name="address" class="form-control upper" id="address" placeholder="Enter bank address" required rows="3"></textarea>
                     </div>
                 </div>
             </div>
@@ -44,7 +60,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <a class="btn btn-block btn-default cancel" href="<?=site_url('export/master/bank')?>">
-                        <i class="fas fa-ban mr-2"></i>Cancel
+                        <i class="fas fa-arrow-left mr-2"></i>Back
                     </a>
                 </div>
                 <div class="col-md-6">

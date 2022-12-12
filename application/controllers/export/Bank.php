@@ -68,6 +68,8 @@
                     'account_name' => $post['account_name'],
                     'account_no' => $post['account_no'],
                     'swift_code' => $post['swift'],
+                    'branch' => $post['branch'],
+                    'address' => $post['address'],
                     'created_by' => $this->session->userdata('logged_in')->id
                 ];
 
@@ -108,6 +110,8 @@
                 'account_name' => $post['account_name'],
                 'account_no' => $post['account_no'],
                 'swift_code' => $post['swift'],
+                'branch' => $post['branch'],
+                'address' => $post['address'],
                 'updated_at' => date('Y-m-d H:i:s'),
                 'updated_by' => $this->session->userdata('logged_in')->id
             ];
