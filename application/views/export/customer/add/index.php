@@ -27,33 +27,34 @@
             </div>
         </div>
 
-        <!-- <div class="card">
+        <div class="card">
             <div class="card-header">
-                <h6>Bank account</h6>
+                <b><u>Bank account</u></b>
             </div>
             <div class="card-body">
-                <#?php $this->load->view('export/customer/add/bank'); ?>
+                <?php $this->load->view('export/customer/add/bank'); ?>
             </div>
         </div>
 
         <div class="card">
             <div class="card-header">
-                <h6>Ship-to address</h6>
+                <b><u>Ship-to address</u></b>
             </div>
             <div class="card-body">
-                <#?php $this->load->view('export/customer/add/shipto'); ?>
+                <?php $this->load->view('export/customer/add/shipto'); ?>
             </div>
+            <input type="hidden" id="count">
         </div>
 
         <div class="card">
             <div class="card-header">
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="cpshipto" name="cpshipto">
-                    <label class="form-check-label" for="cpshipto">Contact person ship-to</label>
+                    <label class="form-check-label" for="cpshipto"><b><u>Contact person ship-to</u></b></label>
                 </div>
             </div>
             <div class="card-body">
-                <#?php $this->load->view('export/customer/add/cpshipto'); ?>
+                <?php $this->load->view('export/customer/add/cpshipto'); ?>
             </div>
         </div>
 
@@ -61,11 +62,11 @@
             <div class="card-header">
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="freight" name="freight">
-                    <label class="form-check-label" for="freight">Freight</label>
+                    <label class="form-check-label" for="freight"><b><u>Freight</u></b></label>
                 </div>
             </div>
             <div class="card-body">
-                <#?php $this->load->view('export/customer/add/freight'); ?>
+                <?php $this->load->view('export/customer/add/freight'); ?>
             </div>
         </div>
 
@@ -73,11 +74,11 @@
             <div class="card-header">
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="import_doc" name="import_doc">
-                    <label class="form-check-label" for="import">Import document needs</label>
+                    <label class="form-check-label" for="import"><b><u>Import document needs</u></b></label>
                 </div>
             </div>
             <div class="card-body">
-                <#?php $this->load->view('export/customer/add/import'); ?>
+                <?php $this->load->view('export/customer/add/import'); ?>
             </div>
         </div>
 
@@ -85,13 +86,13 @@
             <div class="card-header">
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="coding_print" name="coding_print">
-                    <label class="form-check-label" for="coding">Coding printing</label>
+                    <label class="form-check-label" for="coding"><b><u>Coding printing</u></b></label>
                 </div>
             </div>
             <div class="card-body">
-                <#?php $this->load->view('export/customer/add/coding'); ?>
+                <?php $this->load->view('export/customer/add/coding'); ?>
             </div>
-        </div> -->
+        </div>
     </div>
 
     <div class="card">
@@ -99,7 +100,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <a class="btn btn-default btn-block cancel" href="<?=site_url('export/master/customer')?>">
-                        <i class="fas fa-ban mr-2"></i>Cancel
+                        <i class="fas fa-arrow-left mr-2"></i>Back
                     </a>
                 </div>
                 <div class="col-md-6">

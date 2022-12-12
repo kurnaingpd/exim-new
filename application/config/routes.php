@@ -184,8 +184,8 @@ $route['export/master/beneficiary/delete/(:num)'] = 'export/Beneficiary/delete/$
 /** Export - Customer */
 $route['export/master/customer'] = 'export/Customer';
 $route['export/master/customer/add'] = 'export/Customer/add';
-// $route['export/customer/bank'] = 'export/Customer/bank';
-// $route['export/customer/bank/(:num)'] = 'export/Customer/bank/$1';
+$route['export/master/customer/bank'] = 'export/Customer/bank';
+$route['export/master/customer/bank/(:num)'] = 'export/Customer/bank/$1';
 $route['export/master/customer/save'] = 'export/Customer/save';
 // $route['export/customer/detail/(:num)'] = 'export/Customer/detail/$1';
 // $route['export/customer/shipto_delete/(:num)'] = 'export/Customer/shipto_del/$1';

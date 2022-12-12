@@ -124,7 +124,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <label for="imp_others" class="control-label">Others</label>
-            <input type="text" name="imp_others" class="form-control import" id="imp_others" autocomplete="off" disabled>
+            <input type="text" name="imp_others" class="form-control import upper" id="imp_others" autocomplete="off" disabled>
         </div>
     </div>
 </div>

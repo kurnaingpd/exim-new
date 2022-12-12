@@ -2,7 +2,7 @@
     <div class="col-md-3">
         <div class="form-group required">
             <label for="not_company" class="control-label">Company name</label>
-            <input type="text" name="not_company" class="form-control upper" id="not_company" placeholder="Enter company name" required>
+            <input type="text" name="not_company" class="form-control upper" id="not_company" placeholder="Enter company name" autocomplete="off" required>
         </div>
     </div>
 

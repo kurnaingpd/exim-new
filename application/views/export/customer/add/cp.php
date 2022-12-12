@@ -7,18 +7,13 @@
     </div>
 
     <div class="col-md-4">
-        <!-- <div class="form-group required">
-            <label for="cp_phone" class="control-label">Phone number</label>
-            <input type="text" name="cp_phone" class="form-control" id="cp_phone" placeholder="Enter phone number" autocomplete="off" required>
-        </div> -->
-        
         <div class="form-group required">
             <label for="cp_phone" class="control-label">Phone number</label>
-            <div class="input-group" id="cp_phone">
+            <div class="input-group">
                 <div class="input-group-append">
                     <div class="input-group-text"><i class="fa fa-phone-alt"></i></div>
                 </div>
-                <input type="text" class="form-control" autocomplete="off" id="cp_phone" name="cp_phone" placeholder="Enter phone number" autocomplete="off" pattern="^[0-9+]+$" required>
+                <input type="text" class="form-control" id="cp_phone" name="cp_phone" placeholder="Enter phone number" autocomplete="off" pattern="^[0-9+]+$" required>
             </div>
         </div>
     </div>
@@ -26,7 +21,7 @@
     <div class="col-md-4">
         <div class="form-group required">
             <label for="cp_email" class="control-label">Email</label>
-            <input type="email" name="cp_email" class="form-control" id="cp_email" placeholder="Enter email" autocomplete="off" required>
+            <input type="email" name="cp_email" class="form-control lower" id="cp_email" placeholder="Enter email" autocomplete="off" required>
         </div>
     </div>
 </div>
