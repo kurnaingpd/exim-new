@@ -78,8 +78,9 @@
             return $this -> db2 -> affected_rows();
         }
 
-        public function autoNumberCustomer($table, $column, $prefix, $country, $run_number) {
+        public function autoNumberCustomer($table, $column, $prefix, $country, $country_id, $run_number) {
 			$this->db2->from($table);
+			$this->db2->where('country_id', $country_id);
 			$this->db2->order_by($column, 'DESC');
 			$query = $this -> db2 -> get();
 			$record = $query -> row();

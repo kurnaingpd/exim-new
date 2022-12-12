@@ -81,7 +81,7 @@
         {
             $post = $this->input->post();
             $country = $this->M_CRUD_Exp->readDatabyID('master_country', ['is_deleted' => '0', 'id' => $post['con_country']]);
-            $autonumber = $this->M_CRUD_Exp->autoNumberCustomer('master_customer', 'code', '8801', $country->code, 4);
+            $autonumber = $this->M_CRUD_Exp->autoNumberCustomer('master_customer', 'code', '8801', $country->code, $post['con_country'], 4);
 
             if($post) {
                 $paramConsignee = [
@@ -116,11 +116,6 @@
 
                     $response = ['status' => 1, 'messages' => 'Customer has been saved successfully.', 'icon' => 'success', 'url' => 'export/master/customer'];
                 }
-                
-                // if($this->M_CRUD_Exp->insertData('master_customer', $paramConsignee)) {
-                // } else {
-                //     $response = ['status' => 0, 'messages' => 'Customer has failed to save.', 'icon' => 'error'];
-                // }
     
                 echo json_encode($response);
             }
@@ -199,69 +194,186 @@
 
         public function saveCPShipTo($param, $cust_id)
         {
-            $datas = [
-                'customer_id' => $cust_id,
-                'name' => (!empty($param['cpshipto'])?$param['cpshipto_name']:NULL),
-                'phone_no' => (!empty($param['cpshipto'])?$param['cpshipto_phone']:NULL),
-                'email' => (!empty($param['cpshipto'])?$param['cpshipto_email']:NULL),
-            ];
+            // $datas = [
+            //     'customer_id' => $cust_id,
+            //     'name' => (!empty($param['cpshipto'])?$param['cpshipto_name']:NULL),
+            //     'phone_no' => (!empty($param['cpshipto'])?$param['cpshipto_phone']:NULL),
+            //     'email' => (!empty($param['cpshipto'])?$param['cpshipto_email']:NULL),
+            // ];
+            // $this->M_CRUD_Exp->insertData('master_customer_contact_person_ship', $datas);
+
+            if(!empty($param['cpshipto'])) {
+                $datas = [
+                    'customer_id' => $cust_id,
+                    'name' => ($param['cpshipto_name']?$param['cpshipto_name']:NULL),
+                    'phone_no' => ($param['cpshipto_phone']?$param['cpshipto_phone']:NULL),
+                    'email' => ($param['cpshipto_email']?$param['cpshipto_email']:NULL),
+                ];
+            } else {
+                $datas = [
+                    'customer_id' => $cust_id,
+                    'name' => NULL,
+                    'phone_no' => NULL,
+                    'email' => NULL,
+                ];
+            }
+
             $this->M_CRUD_Exp->insertData('master_customer_contact_person_ship', $datas);
         }
 
         public function saveFreight($param, $cust_id)
         {
-            $datas = [
-                'customer_id' => $cust_id,
-                'company' => (!empty($param['freight'])?$param['freight_company']:NULL),
-                'contact' => (!empty($param['freight'])?$param['freight_contact']:NULL),
-                'phone_no' => (!empty($param['freight'])?$param['freight_number']:NULL),
-            ];
+            // $datas = [
+            //     'customer_id' => $cust_id,
+            //     'company' => (!empty($param['freight'])?$param['freight_company']:NULL),
+            //     'contact' => (!empty($param['freight'])?$param['freight_contact']:NULL),
+            //     'phone_no' => (!empty($param['freight'])?$param['freight_number']:NULL),
+            // ];
+            
+            if(!empty($param['freight'])) {
+                $datas = [
+                    'customer_id' => $cust_id,
+                    'company' => ($param['freight_company']?$param['freight_company']:NULL),
+                    'contact' => ($param['freight_company']?$param['freight_contact']:NULL),
+                    'phone_no' => ($param['freight_company']?$param['freight_number']:NULL),
+                ];
+            } else {
+                $datas = [
+                    'customer_id' => $cust_id,
+                    'company' => NULL,
+                    'contact' => NULL,
+                    'phone_no' => NULL,
+                ];
+            }
+
             $this->M_CRUD_Exp->insertData('master_customer_freight', $datas);
         }
 
         public function saveImport($param, $cust_id)
         {
-            $datas = [
-                'customer_id' => $cust_id,
-                'bill_of_ladding' => (!empty($param['import_doc'])?$param['imp_bill']:NULL),
-                'packing_list' => (!empty($param['import_doc'])?$param['imp_packing']:NULL),
-                'invoice' => (!empty($param['import_doc'])?$param['imp_inv']:NULL),
-                'invoice_uv' => (!empty($param['import_doc'])?$param['imp_inv_uv']:NULL),
-                'coo' => (!empty($param['import_doc'])?$param['imp_coo']:NULL),
-                'health_cert' => (!empty($param['import_doc'])?$param['imp_hc']:NULL),
-                'material_safety' => (!empty($param['import_doc'])?$param['imp_mat']:NULL),
-                'coa' => (!empty($param['import_doc'])?$param['imp_coa']:NULL),
-                'product_spec' => (!empty($param['import_doc'])?$param['imp_ps']:NULL),
-                'qcertificate' => (!empty($param['import_doc'])?$param['imp_qc']:NULL),
-                'others' => (!empty($param['import_doc'])?$param['imp_others']:NULL),
-            ];
+            // $datas = [
+            //     'customer_id' => $cust_id,
+            //     'bill_of_ladding' => (!empty($param['import_doc'])?$param['imp_bill']:NULL),
+            //     'packing_list' => (!empty($param['import_doc'])?$param['imp_packing']:NULL),
+            //     'invoice' => (!empty($param['import_doc'])?$param['imp_inv']:NULL),
+            //     'invoice_uv' => (!empty($param['import_doc'])?$param['imp_inv_uv']:NULL),
+            //     'coo' => (!empty($param['import_doc'])?$param['imp_coo']:NULL),
+            //     'health_cert' => (!empty($param['import_doc'])?$param['imp_hc']:NULL),
+            //     'material_safety' => (!empty($param['import_doc'])?$param['imp_mat']:NULL),
+            //     'coa' => (!empty($param['import_doc'])?$param['imp_coa']:NULL),
+            //     'product_spec' => (!empty($param['import_doc'])?$param['imp_ps']:NULL),
+            //     'qcertificate' => (!empty($param['import_doc'])?$param['imp_qc']:NULL),
+            //     'others' => (!empty($param['import_doc'])?$param['imp_others']:NULL),
+            // ];
+            
+            if(!empty($param['import_doc'])) {
+                $datas = [
+                    'customer_id' => $cust_id,
+                    'bill_of_ladding' => ($param['imp_bill']?$param['imp_bill']:NULL),
+                    'packing_list' => ($param['imp_packing']?$param['imp_packing']:NULL),
+                    'invoice' => ($param['imp_inv']?$param['imp_inv']:NULL),
+                    'invoice_uv' => ($param['imp_inv_uv']?$param['imp_inv_uv']:NULL),
+                    'coo' => ($param['imp_coo']?$param['imp_coo']:NULL),
+                    'health_cert' => ($param['imp_hc']?$param['imp_hc']:NULL),
+                    'material_safety' => ($param['imp_mat']?$param['imp_mat']:NULL),
+                    'coa' => ($param['imp_coa']?$param['imp_coa']:NULL),
+                    'product_spec' => ($param['imp_ps']?$param['imp_ps']:NULL),
+                    'qcertificate' => ($param['imp_qc']?$param['imp_qc']:NULL),
+                    'others' => ($param['imp_others']?$param['imp_others']:NULL),
+                ];
+            } else {
+                $datas = [
+                    'customer_id' => $cust_id,
+                    'bill_of_ladding' => NULL,
+                    'packing_list' => NULL,
+                    'invoice' => NULL,
+                    'invoice_uv' => NULL,
+                    'coo' => NULL,
+                    'health_cert' => NULL,
+                    'material_safety' => NULL,
+                    'coa' => NULL,
+                    'product_spec' => NULL,
+                    'qcertificate' => NULL,
+                    'others' => NULL,
+                ];
+            }
+
             $this->M_CRUD_Exp->insertData('master_customer_import_doc', $datas);
         }
 
         public function saveCoding($param, $cust_id)
         {
-            $datas = [
-                'customer_id' => $cust_id,
-                'sachet_company' => (!empty($param['coding_print'])?$param['coding_sachet_company']:NULL),
-                'sachet_city' => (!empty($param['coding_print'])?$param['coding_sachet_city']:NULL),
-                'sachet_postal' => (!empty($param['coding_print'])?$param['coding_sachet_postal']:NULL),
-                'sachet_hotline' => (!empty($param['coding_print'])?$param['coding_sachet_hotline']:NULL),
-                'sachet_best_before' => (!empty($param['coding_print'])?$param['coding_sachet_bb']:NULL),
-                'sachet_batch' => (!empty($param['coding_print'])?$param['coding_sachet_batch']:NULL),
-                'pouch_company' => (!empty($param['coding_print'])?$param['coding_pouch_company']:NULL),
-                'pouch_city' => (!empty($param['coding_print'])?$param['coding_pouch_city']:NULL),
-                'pouch_postal' => (!empty($param['coding_print'])?$param['coding_pouch_postal']:NULL),
-                'pouch_hotline' => (!empty($param['coding_print'])?$param['coding_pouch_hotline']:NULL),
-                'pouch_best_before' => (!empty($param['coding_print'])?$param['coding_pouch_bb']:NULL),
-                'pouch_batch' => (!empty($param['coding_print'])?$param['coding_pouch_batch']:NULL),
-                'case_company' => (!empty($param['coding_print'])?$param['coding_case_company']:NULL),
-                'case_city' => (!empty($param['coding_print'])?$param['coding_case_city']:NULL),
-                'case_postal' => (!empty($param['coding_print'])?$param['coding_case_postal']:NULL),
-                'case_hotline' => (!empty($param['coding_print'])?$param['coding_case_hotline']:NULL),
-                'case_best_before' => (!empty($param['coding_print'])?$param['coding_case_bb']:NULL),
-                'case_batch' => (!empty($param['coding_print'])?$param['coding_case_batch']:NULL),
-                'notes' => (!empty($param['coding_print'])?$param['coding_notes']:NULL),
-            ];
+            // $datas = [
+            //     'customer_id' => $cust_id,
+            //     'sachet_company' => ((!empty($param['coding_print']) && $param['coding_sachet_company'])?$param['coding_sachet_company']:NULL),
+            //     'sachet_city' => ((!empty($param['coding_print']) && $param['coding_sachet_city'])?$param['coding_sachet_city']:NULL),
+            //     'sachet_postal' => ((!empty($param['coding_print']) && $param['coding_sachet_postal'])?$param['coding_sachet_postal']:NULL),
+            //     'sachet_hotline' => ((!empty($param['coding_print']) && $param['coding_sachet_hotline'])?$param['coding_sachet_hotline']:NULL),
+            //     'sachet_best_before' => ((!empty($param['coding_print']) && $param['coding_sachet_bb'])?$param['coding_sachet_bb']:NULL),
+            //     'sachet_batch' => ((!empty($param['coding_print']) && $param['coding_sachet_batch'])?$param['coding_sachet_batch']:NULL),
+            //     'pouch_company' => ((!empty($param['coding_print']) && $param['coding_pouch_company'])?$param['coding_pouch_company']:NULL),
+            //     'pouch_city' => ((!empty($param['coding_print']) && $param['coding_pouch_city'])?$param['coding_pouch_city']:NULL),
+            //     'pouch_postal' => ((!empty($param['coding_print']) && $param['coding_pouch_postal'])?$param['coding_pouch_postal']:NULL),
+            //     'pouch_hotline' => ((!empty($param['coding_print']) && $param['coding_pouch_hotline'])?$param['coding_pouch_hotline']:NULL),
+            //     'pouch_best_before' => ((!empty($param['coding_print']) && $param['coding_pouch_bb'])?$param['coding_pouch_bb']:NULL),
+            //     'pouch_batch' => ((!empty($param['coding_print']) && $param['coding_pouch_batch'])?$param['coding_pouch_batch']:NULL),
+            //     'case_company' => ((!empty($param['coding_print']) && $param['coding_case_company'])?$param['coding_case_company']:NULL),
+            //     'case_city' => ((!empty($param['coding_print']) && $param['coding_case_city'])?$param['coding_case_city']:NULL),
+            //     'case_postal' => ((!empty($param['coding_print']) && $param['coding_case_postal'])?$param['coding_case_postal']:NULL),
+            //     'case_hotline' => ((!empty($param['coding_print']) && $param['coding_case_hotline'])?$param['coding_case_hotline']:NULL),
+            //     'case_best_before' => ((!empty($param['coding_print']) && $param['coding_case_bb'])?$param['coding_case_bb']:NULL),
+            //     'case_batch' => ((!empty($param['coding_print']) && $param['coding_case_batch'])?$param['coding_case_batch']:NULL),
+            //     'notes' => ((!empty($param['coding_print']) && $param['coding_notes'])?$param['coding_notes']:NULL),
+            // ];
+            
+            if(!empty($param['coding_print'])) {
+                $datas = [
+                    'customer_id' => $cust_id,
+                    'sachet_company' => ($param['coding_sachet_company']?$param['coding_sachet_company']:NULL),
+                    'sachet_city' => ($param['coding_sachet_city']?$param['coding_sachet_city']:NULL),
+                    'sachet_postal' => ($param['coding_sachet_postal']?$param['coding_sachet_postal']:NULL),
+                    'sachet_hotline' => ($param['coding_sachet_hotline']?$param['coding_sachet_hotline']:NULL),
+                    'sachet_best_before' => ($param['coding_sachet_bb']?$param['coding_sachet_bb']:NULL),
+                    'sachet_batch' => ($param['coding_sachet_batch']?$param['coding_sachet_batch']:NULL),
+                    'pouch_company' => ($param['coding_pouch_company']?$param['coding_pouch_company']:NULL),
+                    'pouch_city' => ($param['coding_pouch_city']?$param['coding_pouch_city']:NULL),
+                    'pouch_postal' => ($param['coding_pouch_postal']?$param['coding_pouch_postal']:NULL),
+                    'pouch_hotline' => ($param['coding_pouch_hotline']?$param['coding_pouch_hotline']:NULL),
+                    'pouch_best_before' => ($param['coding_pouch_bb']?$param['coding_pouch_bb']:NULL),
+                    'pouch_batch' => ($param['coding_pouch_batch']?$param['coding_pouch_batch']:NULL),
+                    'case_company' => ($param['coding_case_company']?$param['coding_case_company']:NULL),
+                    'case_city' => ($param['coding_case_city']?$param['coding_case_city']:NULL),
+                    'case_postal' => ($param['coding_case_postal']?$param['coding_case_postal']:NULL),
+                    'case_hotline' => ($param['coding_case_hotline']?$param['coding_case_hotline']:NULL),
+                    'case_best_before' => ($param['coding_case_bb']?$param['coding_case_bb']:NULL),
+                    'case_batch' => ($param['coding_case_batch']?$param['coding_case_batch']:NULL),
+                    'notes' => ($param['coding_notes']?$param['coding_notes']:NULL),
+                ];
+            } else {
+                $datas = [
+                    'customer_id' => $cust_id,
+                    'sachet_company' => NULL,
+                    'sachet_city' => NULL,
+                    'sachet_postal' => NULL,
+                    'sachet_hotline' => NULL,
+                    'sachet_best_before' => NULL,
+                    'sachet_batch' => NULL,
+                    'pouch_company' => NULL,
+                    'pouch_city' => NULL,
+                    'pouch_postal' => NULL,
+                    'pouch_hotline' => NULL,
+                    'pouch_best_before' => NULL,
+                    'pouch_batch' => NULL,
+                    'case_company' => NULL,
+                    'case_city' => NULL,
+                    'case_postal' => NULL,
+                    'case_hotline' => NULL,
+                    'case_best_before' => NULL,
+                    'case_batch' => NULL,
+                    'notes' => NULL,
+                ];
+            }
+
             $this->M_CRUD_Exp->insertData('master_customer_coding', $datas);
         }
 
