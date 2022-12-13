@@ -29,23 +29,28 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label for="shipto_phone" class="control-label">Phone number</label>
-                <input type="text" name="shipto_phone" class="form-control" id="shipto_phone" placeholder="Enter phone number" autocomplete="off" value="<?=$params['cust_ship']->phone_no?>">
+                <div class="input-group" id="shipto_phone">
+                    <div class="input-group-append">
+                        <div class="input-group-text"><i class="fa fa-phone-alt"></i></div>
+                    </div>
+                    <input type="text" name="shipto_phone" class="form-control" id="shipto_phone" placeholder="Enter phone number" autocomplete="off" pattern="^[0-9+]+$" value="<?=$params['cust_ship']->phone_no?>">
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <div id="detail">
-    <div class="row mt-3">
+    <div class="row">
         <div class="col-md-6">
-            <div class="form-group">
+            <div class="form-group required">
                 <label for="shipto_discharge" class="control-label">Discharge port</label>
                 <input type="text" name="shipto_discharge" class="form-control upper port" id="shipto_discharge" placeholder="Enter discharge port" autocomplete="off">
             </div>
         </div>
 
         <div class="col-md-6">
-            <div class="form-group">
+            <div class="form-group required">
                 <label for="shipto_destination" class="control-label">Destination port</label>
                 <input type="text" name="shipto_destination" class="form-control upper port" id="shipto_destination" placeholder="Enter destination port" autocomplete="off">
             </div>
@@ -54,7 +59,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <input type="button mt-5" class="btn btn-success btn-block" id="btn-shipto" value="Add detail(s)">
+            <input type="button" class="btn btn-info btn-block" id="btn-shipto" value="Add detail(s)">
         </div>
     </div>
 </div>
@@ -73,13 +78,13 @@
                 <?php $no = 1; foreach($detail['cust_ship'] as $rows) : ?>
                     <tr class="text-center" data-id="<?=$rows->id?>">
                         <td>
-                            <input type="text" class="form-control" id="dtl_shipto_discharge_<?=$rows->id?>" name="dtl_shipto_discharge_<?=$rows->id?>" value="<?=$rows->discharge_port?>" style="background-color:transparent; border: none transparent;" disabled>
+                            <input type="text" class="form-control" id="dtl_shipto_discharge_<?=$rows->id?>" name="dtl_shipto_discharge_<?=$rows->id?>" value="<?=$rows->discharge?>" style="background-color:transparent; border: none transparent;" disabled>
                         </td>
                         <td>
-                            <input type="text" class="form-control" id="dtl_shipto_destination_<?=$rows->id?>" name="dtl_shipto_destination_<?=$rows->id?>" value="<?=$rows->destination_port?>" style="background-color:transparent; border: none transparent;" disabled>
+                            <input type="text" class="form-control" id="dtl_shipto_destination_<?=$rows->id?>" name="dtl_shipto_destination_<?=$rows->id?>" value="<?=$rows->destination?>" style="background-color:transparent; border: none transparent;" disabled>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="<?=$rows->id?>"><i class="fas fa-trash"></i></button>
+                            <button type="button" class="btn btn-sm btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="<?=$rows->id?>"><i class="fas fa-trash"></i></button>
                         </td>
                     </tr>
                 <?php $no++; endforeach; ?>

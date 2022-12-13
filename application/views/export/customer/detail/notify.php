@@ -2,14 +2,7 @@
     <div class="col-md-3">
         <div class="form-group required">
             <label for="not_company" class="control-label">Company name</label>
-            <input type="text" name="not_company" class="form-control upper" id="not_company" placeholder="Enter company name" value="<?=$params['cust_notify']->company_name?>" required>
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="form-group required">
-            <label for="not_address" class="control-label">Address</label>
-            <textarea name="not_address" class="form-control upper" id="not_address" rows="3" placeholder="Enter address" required><?=$params['cust_notify']->address?></textarea>
+            <input type="text" name="not_company" class="form-control upper" id="not_company" placeholder="Enter company name" autocomplete="off" required value="<?=$params['cust_notify']->name?>">
         </div>
     </div>
 
@@ -19,28 +12,20 @@
             <select name="not_country_id" class="form-control select2bs4" id="not_country_id" required>
                 <option></option>
                 <?php foreach($params['country'] as $rows) : ?>
-                    <option value="<?=$rows->id?>" <?=(($params['cust_country']->country_id==$rows->id)?'selected':'')?>><?=$rows->code.' - '.$rows->name?></option>
+                    <option value="<?=$rows->id?>" <?=(($params['cust_notify']->country_id==$rows->id)?'selected':'')?>><?=$rows->code.' - '.$rows->name?></option>
                 <?php endforeach; ?>
             </select>
         </div>
     </div>
 
-    <!-- <div class="col-md-2">
-        <div class="form-group required">
-            <label for="not_phone" class="control-label">Phone number</label>
-            <input type="text" name="not_phone" class="form-control" id="not_phone" placeholder="Enter phone number" value="<?=$params['cust_notify']->phone_no?>" required>
-        </div>
-    </div> -->
-
     <div class="col-md-2">
         <div class="form-group required">
             <label for="not_phone" class="control-label">Phone number (Tel)</label>
-            <!-- <input type="text" name="not_phone" class="form-control" id="not_phone" placeholder="Enter phone number" required> -->
             <div class="input-group" id="not_phone_tel" data-target-input="nearest">
                 <div class="input-group-append">
                     <div class="input-group-text"><i class="fa fa-phone-alt"></i></div>
                 </div>
-                <input type="text" class="form-control" autocomplete="off" id="not_phone_tel" name="not_phone_tel" placeholder="Enter phone number" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9+]/g, '').replace(/(\..*?)\..*/g, '$1');" value="<?=$params['cust_notify']->phone_no_tel?>">
+                <input type="text" class="form-control" autocomplete="off" id="not_phone_tel" name="not_phone_tel" placeholder="Enter phone number" autocomplete="off" required pattern="^[0-9+]+$" value="<?=$params['cust_notify']->phone_no_tel?>">
             </div>
         </div>
     </div>
@@ -48,13 +33,19 @@
     <div class="col-md-2">
         <div class="form-group">
             <label for="not_phone" class="control-label">Phone number (Fax)</label>
-            <!-- <input type="text" name="not_phone" class="form-control" id="not_phone" placeholder="Enter phone number" required> -->
             <div class="input-group" id="not_phone_fax" data-target-input="nearest">
                 <div class="input-group-append">
                     <div class="input-group-text"><i class="fa fa-fax"></i></div>
                 </div>
-                <input type="text" class="form-control" autocomplete="off" id="not_phone_fax" name="not_phone_fax" placeholder="Enter phone number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9+]/g, '').replace(/(\..*?)\..*/g, '$1');" value="<?=$params['cust_notify']->phone_no_fax?>">
+                <input type="text" class="form-control" autocomplete="off" id="not_phone_fax" name="not_phone_fax" placeholder="Enter phone number" autocomplete="off" pattern="^[0-9+]+$" value="<?=$params['cust_notify']->phone_no_fax?>">
             </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group required">
+            <label for="not_address" class="control-label">Address</label>
+            <textarea name="not_address" class="form-control upper" id="not_address" rows="3" placeholder="Enter address" required><?=$params['cust_notify']->address?></textarea>
         </div>
     </div>
 </div>

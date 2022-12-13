@@ -9,7 +9,12 @@
     <div class="col-md-4">
         <div class="form-group required">
             <label for="cp_phone" class="control-label">Phone number</label>
-            <input type="text" name="cp_phone" class="form-control" id="cp_phone" placeholder="Enter phone number" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9+]/g, '').replace(/(\..*?)\..*/g, '$1');" value="<?=$params['cust_cp']->phone_no?>">
+            <div class="input-group">
+                <div class="input-group-append">
+                    <div class="input-group-text"><i class="fa fa-phone-alt"></i></div>
+                </div>
+                <input type="text" class="form-control" id="cp_phone" name="cp_phone" placeholder="Enter phone number" autocomplete="off" pattern="^[0-9+]+$" value="<?=$params['cust_cp']->phone_no?>" required>
+            </div>
         </div>
     </div>
 
@@ -37,14 +42,14 @@
     <div class="col-md-2">
         <div class="form-group required">
             <label for="cp_dp" class="control-label">DP (in %)</label>
-            <input type="text" name="cp_dp" class="form-control" id="cp_dp" placeholder="Enter DP" autocomplete="off" required value="<?=$params['cust_cp']->dp?>">
+            <input type="text" name="cp_dp" class="form-control" id="cp_dp" placeholder="0" autocomplete="off" pattern="^[0-9]+$" maxlength="3" max="100" required value="<?=$params['cust_cp']->dp?>">
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group required">
             <label for="cp_balancing" class="control-label">Balancing (in %)</label>
-            <input type="text" name="cp_balancing" class="form-control" id="cp_balancing" readonly style="background-color: white;" value="<?=$params['cust_cp']->balancing?>">
+            <input type="text" name="cp_balancing" class="form-control" id="cp_balancing" readonly value="<?=$params['cust_cp']->balancing?>">
         </div>
     </div>
 

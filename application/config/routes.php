@@ -187,10 +187,9 @@ $route['export/master/customer/add'] = 'export/Customer/add';
 $route['export/master/customer/bank'] = 'export/Customer/bank';
 $route['export/master/customer/bank/(:num)'] = 'export/Customer/bank/$1';
 $route['export/master/customer/save'] = 'export/Customer/save';
-// $route['export/customer/detail/(:num)'] = 'export/Customer/detail/$1';
-// $route['export/customer/shipto_delete/(:num)'] = 'export/Customer/shipto_del/$1';
-// $route['export/customer/coding_delete/(:num)'] = 'export/Customer/coding_del/$1';
-// $route['export/customer/update'] = 'export/Customer/update';
+$route['export/master/customer/detail/(:num)'] = 'export/Customer/detail/$1';
+$route['export/master/customer/shipto_delete/(:num)'] = 'export/Customer/shipto_del/$1';
+$route['export/master/customer/update'] = 'export/Customer/update';
 $route['export/master/customer/delete/(:num)'] = 'export/Customer/delete/$1';
 
 /** Export - Freight */

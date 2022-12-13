@@ -1,101 +1,161 @@
-<div id="detail">
+<div id="sachet">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group">
-                <label for="coding_type" class="control-label">Type</label>
-                <select name="coding_type" class="form-control select2bs4 cod_print coding" id="coding_type">
-                    <option></option>
-                    <?php if($detail['coding']) : ?>
-                        <?php foreach($detail['coding'] as $rows) : ?>
-                            <option value="<?=$rows->id?>"><?=$rows->name?></option>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <?php foreach($params['coding'] as $rows) : ?>
-                            <option value="<?=$rows->id?>"><?=$rows->name?></option>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </select>
+                <label for="coding_sachet_company" class="control-label">(Sachet) - Company name</label>
+                <input type="text" name="coding_sachet_company" class="form-control cod_print upper" id="coding_sachet_company" placeholder="Enter company name" autocomplete="off" value="<?=$params['cust_coding']->sachet_company?>">
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group">
-                <label for="coding_import" class="control-label">Imported by</label>
-                <input type="text" name="coding_import" class="form-control cod_print coding" id="coding_import" placeholder="Enter imported by" autocomplete="off">
+                <label for="coding_sachet_city" class="control-label">(Sachet) - City</label>
+                <input type="text" name="coding_sachet_city" class="form-control cod_print upper" id="coding_sachet_city" placeholder="Enter city" autocomplete="off" value="<?=$params['cust_coding']->sachet_city?>">
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group">
-                <label for="coding_hotline" class="control-label">Consumer hotline</label>
-                <input type="text" name="coding_hotline" class="form-control cod_print coding" id="coding_hotline" placeholder="Enter consumer hotline" autocomplete="off">
+                <label for="coding_sachet_postal" class="control-label">(Sachet) - Postal code</label>
+                <input type="text" name="coding_sachet_postal" class="form-control cod_print" id="coding_sachet_postal" placeholder="Enter postal code" autocomplete="off" pattern="^[0-9]+$" maxlength="10" value="<?=$params['cust_coding']->sachet_postal?>">
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group">
-                <label for="coding_bb" class="control-label">Best before</label>
-                <input type="text" name="coding_bb" class="form-control cod_print coding" id="coding_bb" placeholder="Enter best before" autocomplete="off">
+                <label for="coding_sachet_hotline" class="control-label">(Sachet) - Hotline</label>
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <div class="input-group-text"><i class="fa fa-phone-alt"></i></div>
+                    </div>
+                    <input type="text" name="coding_sachet_hotline" class="form-control cod_print" id="coding_sachet_hotline" placeholder="Enter hotline" autocomplete="off" pattern="^[0-9+]+$" value="<?=$params['cust_coding']->sachet_hotline?>">
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="row border-bottom">
-        <div class="col-md-12">
+        <div class="col-md-2">
             <div class="form-group">
-                <label for="coding_notes" class="control-label">Notes</label>
-                <textarea name="coding_notes" class="form-control upper cod_print" id="coding_notes" placeholder="Enter notes" autocomplete="off" rows="2"><?=($params['cust_coding']?$params['cust_coding']->notes:'-')?></textarea>
+                <label for="coding_sachet_bb" class="control-label">(Sachet) - Best before</label>
+                <input type="text" name="coding_sachet_bb" class="form-control cod_print datetimepicker-input" id="coding_sachet_bb" placeholder="Enter best before" autocomplete="off" value="<?=$params['cust_coding']->sachet_best_before?>">
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <input type="button mt-5" class="btn btn-success btn-block" id="btn-coding" value="Add detail(s)">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="coding_sachet_batch" class="control-label">(Sachet) - Batch</label>
+                <input type="text" name="coding_sachet_batch" class="form-control cod_print upper" id="coding_sachet_batch" placeholder="Enter batch" autocomplete="off" value="<?=$params['cust_coding']->sachet_batch?>">
+            </div>
         </div>
     </div>
 </div>
 
-<div class="row mt-3">
+<div id="pouch">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="coding_pouch_company" class="control-label">(Pouch) - Company name</label>
+                <input type="text" name="coding_pouch_company" class="form-control cod_print upper" id="coding_pouch_company" placeholder="Enter company name" autocomplete="off" value="<?=$params['cust_coding']->pouch_company?>">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="coding_pouch_city" class="control-label">(Pouch) - City</label>
+                <input type="text" name="coding_pouch_city" class="form-control cod_print upper" id="coding_pouch_city" placeholder="Enter city" autocomplete="off" value="<?=$params['cust_coding']->pouch_city?>">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="coding_pouch_postal" class="control-label">(Pouch) - Postal code</label>
+                <input type="text" name="coding_pouch_postal" class="form-control cod_print" id="coding_pouch_postal" placeholder="Enter postal code" autocomplete="off" pattern="^[0-9]+$" maxlength="10" value="<?=$params['cust_coding']->pouch_postal?>">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="coding_pouch_hotline" class="control-label">(Pouch) - Hotline</label>
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <div class="input-group-text"><i class="fa fa-phone-alt"></i></div>
+                    </div>
+                    <input type="text" name="coding_pouch_hotline" class="form-control cod_print" id="coding_pouch_hotline" placeholder="Enter hotline" autocomplete="off" pattern="^[0-9+]+$" value="<?=$params['cust_coding']->pouch_hotline?>">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="coding_pouch_bb" class="control-label">(Pouch) - Best before</label>
+                <input type="text" name="coding_pouch_bb" class="form-control cod_print datetimepicker-input" id="coding_pouch_bb" placeholder="Enter best before" autocomplete="off" value="<?=$params['cust_coding']->pouch_best_before?>">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="coding_pouch_batch" class="control-label">(Pouch) - Batch</label>
+                <input type="text" name="coding_pouch_batch" class="form-control cod_print upper" id="coding_pouch_batch" placeholder="Enter batch" autocomplete="off" value="<?=$params['cust_coding']->pouch_batch?>">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="case">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="coding_case_company" class="control-label">(Case) - Company name</label>
+                <input type="text" name="coding_case_company" class="form-control cod_print upper" id="coding_case_company" placeholder="Enter company name" autocomplete="off" value="<?=$params['cust_coding']->case_company?>">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="coding_case_city" class="control-label">(Case) - City</label>
+                <input type="text" name="coding_case_city" class="form-control cod_print upper" id="coding_case_city" placeholder="Enter city" autocomplete="off" value="<?=$params['cust_coding']->case_city?>">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="coding_case_postal" class="control-label">(Case) - Postal code</label>
+                <input type="text" name="coding_case_postal" class="form-control cod_print" id="coding_case_postal" placeholder="Enter postal code" autocomplete="off" pattern="^[0-9]+$" maxlength="10" value="<?=$params['cust_coding']->case_postal?>">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="coding_case_hotline" class="control-label">(Case) - Hotline</label>
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <div class="input-group-text"><i class="fa fa-phone-alt"></i></div>
+                    </div>
+                    <input type="text" name="coding_case_hotline" class="form-control cod_print" id="coding_case_hotline" placeholder="Enter hotline" autocomplete="off" pattern="^[0-9+]+$" value="<?=$params['cust_coding']->case_hotline?>">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="coding_case_bb" class="control-label">(Case) - Best before</label>
+                <input type="text" name="coding_case_bb" class="form-control cod_print datetimepicker-input" id="coding_case_bb" placeholder="Enter best before" autocomplete="off" value="<?=$params['cust_coding']->case_best_before?>">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="coding_case_batch" class="control-label">(Case) - Batch</label>
+                <input type="text" name="coding_case_batch" class="form-control cod_print upper" id="coding_case_batch" placeholder="Enter batch" autocomplete="off" value="<?=$params['cust_coding']->case_batch?>">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-md-12">
-        <ul class="list-group">
-            <li class="list-group-item">
-                <table class="table table-sm table-bordered table-striped">
-                    <thead>
-                        <tr class="text-center">
-                            <th>Type</th>
-                            <th>Imported by</th>
-                            <th>Consumer hotline</th>
-                            <th>Best before</th>
-                            <th><i class="fas fa-ellipsis-h"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody id="data-coding">
-                        <?php if(isset($detail['cust_coding'])) : ?>
-                            <?php foreach($detail['cust_coding'] as $rows) : ?>
-                                <tr class="text-center" data-id="<?=$rows->id?>">
-                                    <td>
-                                        <input type="hidden" id="cd_dtl_coding_type_<?=$rows->id?>" name="cd_dtl_coding_type_<?=$rows->id?>" value="<?=$rows->id?>" disabled />
-                                        <input type="text" class="form-control" id="cd_dtl_coding_type_name_<?=$rows->id?>" name="cd_dtl_coding_type_name_<?=$rows->id?>" value="<?=$rows->coding_type_name?>" style="background-color:transparent; border: none transparent;" disabled />
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" id="cd_dtl_coding_import_<?=$rows->id?>" name="cd_dtl_coding_import_<?=$rows->id?>"" value="<?=$rows->import_by?>" style="background-color:transparent; border: none transparent;" disabled />
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" id="cd_dtl_coding_hotline_<?=$rows->id?>" name="cd_dtl_coding_hotline_<?=$rows->id?>" value="<?=$rows->hotline?>" style="background-color:transparent; border: none transparent;" disabled />
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" id="cd_dtl_coding_bb_<?=$rows->id?>" name="cd_dtl_coding_bb_<?=$rows->id?>" value="<?=$rows->best_before?>" style="background-color:transparent; border: none transparent;" disabled />
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger btn-flat btn-remove-coding" style="cursor:pointer;" data-row="<?=$rows->id?>"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
-            </li>
-        </ul>
+        <div class="form-group">
+            <label for="coding_notes" class="control-label">Notes</label>
+            <textarea name="coding_notes" class="form-control upper cod_print" id="coding_notes" placeholder="Enter notes" autocomplete="off" rows="3"><?=$params['cust_coding']->notes?></textarea>
+        </div>
     </div>
 </div>

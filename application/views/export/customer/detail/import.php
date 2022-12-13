@@ -103,7 +103,7 @@
             <select name="imp_ps" class="form-control select2bs4 import" id="imp_ps" >
                 <option></option>
                 <?php foreach($params['import_nonbill'] as $rows) : ?>
-                    <option value="<?=$rows->id?>" <?=($params['cust_import']?($params['cust_import']->bill_of_ladding==$rows->id?'selected':''):'')?>><?=$rows->name?></option>
+                    <option value="<?=$rows->id?>" <?=($params['cust_import']?($params['cust_import']->product_spec==$rows->id?'selected':''):'')?>><?=$rows->name?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -124,7 +124,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <label for="imp_others" class="control-label">Others</label>
-            <input type="text" name="imp_others" class="form-control import" id="imp_others" autocomplete="off" value="<?=($params['cust_import']?$params['cust_import']->others:'-')?>">
+            <input type="text" name="imp_others" class="form-control import upper" id="imp_others" autocomplete="off" value="<?=($params['cust_import']?$params['cust_import']->others:'-')?>">
         </div>
     </div>
 </div>

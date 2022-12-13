@@ -62,46 +62,6 @@ $(function () {
         }
     });
 
-    // $('input#btn-coding').on('click',function(){
-    //     console.log('coding');
-    //     var type = $('#coding_type').val();
-    //     var imports = $('#coding_import').val();
-    //     var hotline = $('#coding_hotline').val();
-    //     var bb = $('#coding_bb').val();
-
-    //     if(type == "" || imports == "" || hotline == "" || bb == "") {
-    //         swal("", "Coding printing section cannot be empty.", "warning");
-    //     } else {
-    //         var rnd = Math.floor((Math.random() * 10000) + 1);
-    //         $('tbody#data-coding').append(
-    //             '<tr data-id="'+rnd+'">'+
-    //                 '<td>'+
-    //                     '<input type="hidden" id="cd_coding_type_'+rnd+'" name="cd_coding_type_'+rnd+'" value="'+$('select.coding[name="coding_type"]').val()+'" />'+
-    //                     '<input type="text" id="cd_coding_type_name_'+rnd+'" name="cd_coding_type_name_'+rnd+'" class="form-control" value="'+$('select.coding[name="coding_type"] option:selected').text()+'" style="background-color:transparent; border: none transparent;" readonly />'+
-    //                 '</td>'+
-    //                 '<td><input type="text" class="form-control" id="cd_coding_import_'+rnd+'" name="cd_coding_import_'+rnd+'" value="'+$('input.coding[name="coding_import"]').val()+'" style="background-color:transparent; border: none transparent;" readonly /></td>'+
-    //                 '<td><input type="text" class="form-control" id="cd_coding_hotline_'+rnd+'" name="cd_coding_hotline_'+rnd+'" value="'+$('input.coding[name="coding_hotline"]').val()+'" style="background-color:transparent; border: none transparent;" readonly /></td>'+
-    //                 '<td><input type="text" class="form-control" id="cd_coding_bb_'+rnd+'" name="cd_coding_bb_'+rnd+'" value="'+$('input.coding[name="coding_bb"]').val()+'" style="background-color:transparent; border: none transparent;" readonly /></td>'+
-    //                 '<td class="text-center">'+
-    //                     '<button type="button" class="btn btn-danger btn-flat btn-remove" style="cursor:pointer;" data-row="'+rnd+'"><i class="fas fa-trash"></i></button>'+
-    //                 '</td>'+
-    //             '</tr>'
-    //         );
-            
-    //         $("select#coding_type option[value='"+$('select.coding[name="coding_type"]').val()+"']").remove();
-    //         $('.coding').val('');
-    //         $(".coding").val('').trigger('change')
-            
-    //         $('button.btn-remove').off('click').on('click',function(){
-    //             var id = $(this).attr('data-row');
-    //             var coding_id = $("tr[data-id="+id+"]").find("#cd_coding_type_"+id).val();
-    //             var coding_name = $("tr[data-id="+id+"]").find("#cd_coding_type_name_"+id).val();
-    //             $('select#coding_type').append('<option value="'+coding_id+'">'+coding_name+'</option>');
-    //             $("tr[data-id="+id+"]").remove();
-    //         });
-    //     }
-    // });
-
     $('input#cpshipto').on('change', function() {
         var status = document.getElementById("cpshipto").checked;
         if (status) {
@@ -217,7 +177,6 @@ $("#cp_name").keyup(function () {
 
 $("#cp_phone").keyup(function () {
     document.getElementById("cpshipto_phone").value = this.value;
-    console.log(this.value)
 });
 
 $("#cp_email").keyup(function () {
